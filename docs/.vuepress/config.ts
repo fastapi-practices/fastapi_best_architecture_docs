@@ -2,16 +2,13 @@ import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { plumeTheme } from 'vuepress-theme-plume'
 import {myNavbar} from "./navbar";
-import {myNotes} from "./notes";
+import {mySidebar} from "./sidebar";
 
 export default defineUserConfig({
     lang: 'zh-CN',
     theme: plumeTheme({
-        notes: {
-            dir: '/notes/',
-            link: '/',
-            notes: [myNotes]
-        },
+        notes: false,
+        sidebar: mySidebar,
         navbar: myNavbar,
         logo: 'https://fastapi.tiangolo.com/img/icon-white.svg',
         docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',

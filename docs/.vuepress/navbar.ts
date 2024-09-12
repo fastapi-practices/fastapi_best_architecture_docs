@@ -4,7 +4,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '技术支持',
         icon: 'fluent-emoji-flat:unicorn',
-        link: 'https://wu-clan.github.io/sponsor/'
+        link: 'https://'
     },
     {
         text: '赞助',
