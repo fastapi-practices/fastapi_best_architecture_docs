@@ -1,13 +1,27 @@
-import {defineNotesConfig} from "vuepress-theme-plume";
+import {defineNoteConfig} from "vuepress-theme-plume";
 
-export const myNotes = defineNotesConfig({
-    dir: 'notes',
-    link: '/',
-    notes: [
+
+export const myNotes = defineNoteConfig({
+    dir: 'guide',
+    link: '/guide/',
+    sidebar: [
         {
-            dir: 'deploy',
-            link: '/deploy/',
-            sidebar: 'auto',
+            text: '指南',
+            collapsed: false,
+            items: [
+                '介绍',
+                '快速开始'
+            ]
+        },
+        {
+            text: '部署',
+            collapsed: false,
+            prefix: '部署',
+            items: [
+                'Docker',
+                '传统'
+            ]
         }
     ]
 })
+
