@@ -1,5 +1,6 @@
 ---
 home: true
+watermark: false
 config:
   - 
     type: 'hero'

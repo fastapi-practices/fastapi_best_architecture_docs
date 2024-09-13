@@ -6,19 +6,21 @@ export const mySidebar: SidebarMulti = {
         {
             text: '指南',
             collapsed: false,
-            prefix: '/introduction',
+            prefix: '/guide/introduction/',
             items: [
-                {text: '介绍', link: '/fba'},
-                {text: '快速开始', link: '/quick-start'}
+                {text: '关于 FBA', link: 'fba'},
+                {text: '为什么选择我们？', link: 'why'},
+                {text: '快速开始', link: 'quick-start'},
+                {text: '精简版', link: 'fsm'},
             ]
         },
         {
             text: '部署',
             collapsed: false,
-            prefix: '/deploy',
+            prefix: '/guide/deploy/',
             items: [
-                {text: 'Docker', link: '/Docker'},
-                {text: '传统', link: '/legacy'}
+                {text: 'Docker', link: 'Docker'},
+                {text: '传统', link: 'legacy'}
             ]
         }
     ],
