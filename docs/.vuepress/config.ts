@@ -23,6 +23,10 @@ export default defineUserConfig({
         docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
         docsBranch: 'master',
         docsDir: 'docs',
+        social: [
+            { icon: 'github', link: 'https://github.com/fastapi-practices/fastapi_best_architecture' }
+        ],
+        navbarSocialInclude: ['github'],
         footer: {
             message: 'MIT License',
             copyright: 'Copyright © 2024-present FastAPI Practices'
