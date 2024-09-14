@@ -8,7 +8,6 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: '/guide/introduction/',
             items: [
-                {text: '关于 FBA', link: 'fba'},
                 {text: '为什么选择我们？', link: 'why'},
                 {text: '快速开始', link: 'quick-start'},
                 {text: '精简版', link: 'fsm'},

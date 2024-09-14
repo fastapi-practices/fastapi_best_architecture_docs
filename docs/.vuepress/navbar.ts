@@ -4,7 +4,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '技术支持',
         icon: 'fluent-emoji-flat:unicorn',
-        link: 'https://'
+        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
     },
     {
         text: '赞助',
