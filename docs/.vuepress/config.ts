@@ -35,7 +35,7 @@ export default defineUserConfig({
             watermark: true,
             markdownPower: {
                 icons: true,
-            }
+            },
         }
     }),
     bundler: viteBundler(),
