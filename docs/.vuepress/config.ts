@@ -5,6 +5,7 @@ import {myNavbar} from "./navbar";
 import {mySidebar} from "./sidebar";
 
 export default defineUserConfig({
+    base: '/fastapi_best_architecture_docs/',
     lang: 'zh-CN',
     title: 'FastAPI Best Architecture',
     head: [
@@ -28,6 +29,9 @@ export default defineUserConfig({
         ],
         navbarSocialInclude: ['github'],
         editLinkText: '在 GitHub 上编辑此页面',
+        lastUpdated: {
+            text: 'Releases',
+        },
         footer: {
             message: 'MIT License',
             copyright: 'Copyright © 2024-present FastAPI Practices'
