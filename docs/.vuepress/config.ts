@@ -27,6 +27,7 @@ export default defineUserConfig({
             { icon: 'github', link: 'https://github.com/fastapi-practices/fastapi_best_architecture' }
         ],
         navbarSocialInclude: ['github'],
+        editLinkText: '在 GitHub 上编辑此页面',
         footer: {
             message: 'MIT License',
             copyright: 'Copyright © 2024-present FastAPI Practices'
