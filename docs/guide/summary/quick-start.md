@@ -139,7 +139,7 @@ createTime: 2024/09/12 20:40:22
    ::: caution
    目前它仅作为效果演示，而不是用于生产！
    
-   如果你不想前端问题带来干扰，请务必使用 `yarn`
+   如果你不想前端依赖安装问题带来困扰，请务必使用 `yarn` v1.x 版本
    :::
    
    你可以跳转 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 查看详情

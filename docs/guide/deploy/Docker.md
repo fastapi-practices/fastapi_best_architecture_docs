@@ -11,6 +11,11 @@ createTime: 2024/09/12 20:40:22
 
 ## 本机部署
 
+> [!CAUTION]
+> **部署** 意味着你的所有代码已经准备就绪，可以用于生产，而本机部署则是为了能够快捷的提供本地 API 服务，所以，此教程仅提供 API 本机部署教程
+
+### 后端
+
 :::: steps
 1. env
 
@@ -41,10 +46,15 @@ createTime: 2024/09/12 20:40:22
 5. 打开浏览器访问：[http://127.0.0.1:8000/api/v1/docs](http://127.0.0.1:8000/api/v1/docs)
 ::::
 
+### 前端
+
+> [!CAUTION]
+> 此教程不提供前端本机部署方案，对于前后端本地开发或联调，你不应该进行部署，请转至文档：[本地开发](../summary/quick-start.md#本地开发)
+
 ## 服务器部署
 
 > [!TIP]
-> 此教程以 https 为例
+> 此教程以 ==https== 为例，如果你没有相关经验，请自行 Google 进行了解
 
 ### 后端
 
@@ -446,7 +456,7 @@ docker container prune
 docker system prune
 ```
 
-如果要同时清理所有悬空的镜像和未使用的卷
+清理所有悬空的镜像和卷
 
 ```shell
 docker system prune -a --volumes
