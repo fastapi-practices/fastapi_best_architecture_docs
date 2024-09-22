@@ -40,6 +40,7 @@ export default defineUserConfig({
             watermark: true,
             markdownPower: {
                 icons: true,
+                bilibili: true,
             },
         }
     }),

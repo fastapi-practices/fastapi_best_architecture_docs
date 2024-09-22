@@ -6,7 +6,7 @@ export const mySidebar: SidebarMulti = {
         {
             text: '简介',
             collapsed: false,
-            prefix: '/guide/summary/',
+            prefix: 'summary/',
             items: [
                 {text: '为什么选择我们？', link: 'why'},
                 {text: '快速开始', link: 'quick-start'},
@@ -16,7 +16,7 @@ export const mySidebar: SidebarMulti = {
         {
             text: '参考',
             collapsed: false,
-            prefix: '/guide/reference/',
+            prefix: 'reference/',
             items: [
                 {text: '登录', link: 'login'},
                 {text: '权限', link: 'permission'},
@@ -25,7 +25,7 @@ export const mySidebar: SidebarMulti = {
         {
             text: '部署',
             collapsed: false,
-            prefix: '/guide/deploy/',
+            prefix: 'deploy/',
             items: [
                 {text: 'Docker', link: 'Docker'},
                 {text: '传统', link: 'legacy'}
