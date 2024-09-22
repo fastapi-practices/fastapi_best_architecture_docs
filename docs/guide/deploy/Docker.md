@@ -167,8 +167,8 @@ createTime: 2024/09/12 20:40:22
         networks:
           - fba_network
     
-      # 后端专用，这与 fba_ui 冲突，如果你选择使用 fba_ui， // [!code focus:47] // [!code --:15]
-      # 你应该停止使用 fba_nginx 容器，而使用 fba_ui 容器
+      # 后端专用，这与 fba_ui 冲突，如果你选择使用 fba_ui， // [!code focus:51] // [!code --:15]
+      # 你应该注释或删除 fba_nginx 容器脚本，并使用 fba_ui 容器
       fba_nginx:
         image: nginx
         ports:
@@ -183,7 +183,7 @@ createTime: 2024/09/12 20:40:22
         networks:
           - fba_network
     
-      # 如果服务器内存小于 4GB，CPU 小于四个内核 // [!code ++:31]
+      # 如果服务器内存小于 4GB，CPU 小于四个内核 // [!code ++:34]
       # 建议进入 fba_ui 项目单独构建这个容器（参考下方前端部署教程）
       # 如果你不选择单独构建，务必在执行下面步骤前根据前端部署教程更新前端配置文件
       # 如果你选择单独构建，务必注释或删除此容器脚本
@@ -205,10 +205,13 @@ createTime: 2024/09/12 20:40:22
           - daemon off;
         volumes:
           # nginx https conf
-          # 通过 docker 进行部署时，需要打开此配置项并
-          # 确保 docker ssl 文件路径配置与 nginx conf 中的 ssl 文件路径配置一致
-          # local_ssl_pem_path：服务器存放 ssl pem 文件的路径
-          # local_ssl_key_path: 服务器存放 ssl key 文件的路径
+          # 通过 docker 进行部署时，需要打开此配置项并确保<挂载到容器内的证书文件路径>配置
+          # 与 nginx conf 中的 ssl 证书文件路径配置一致，如果你直接将 ssl 证书文件 cp
+          # 到了 docker 容器内，则无需挂载证书文件，直接将它们注释或删除即可
+          # local_ssl_pem_path：你在服务器存放 ssl pem 证书文件的路径，自行修改
+          # local_ssl_key_path: 你在服务器存放 ssl key 证书文件的路径，自行修改
+          # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
+          # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
           - local_ssl_pem_path:/etc/ssl/xxx.pem
           - local_ssl_key_path:/etc/ssl/xxx.key
           - fba_static:/www/fba_server/backend/static
@@ -272,7 +275,7 @@ createTime: 2024/09/12 20:40:22
 
 ### 前端
 
-::: warning
+::: caution
 我们提供此前端部署教程的目的是为你提供前端 Docker 部署解决方案，请记住我们的声明，此前端项目仅作为效果演示，而不是用于生产！
 :::
 
@@ -325,14 +328,16 @@ createTime: 2024/09/12 20:40:22
            server_name  127.0.0.1;
    
            listen 443 ssl; // [!code focus:10] // [!code ++:10]
-           # docker ssl 文件路径配置应该与 docker-compose 中的保持一致
+           # docker ssl 证书文件路径配置应该与 docker-compose 中的保持一致
+           # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
+           # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
            ssl_certificate /etc/ssl/xxx.pem;
            ssl_certificate_key /etc/ssl/xxx.key;
            ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
            ssl_prefer_server_ciphers on;
            
-           # xxx.com 应该与 env 中的配置保持一致
+           # xxx.com 应该与 .env.production 中的配置保持一致
            server_name xxx.com;
    
            client_max_body_size   10m;
@@ -362,7 +367,7 @@ createTime: 2024/09/12 20:40:22
    
        server { // [!code focus:6] // [!code ++:6]
            listen 80;
-           # xxx.com 应该与 env 中的配置保持一致
+           # xxx.com 应该与 .env.production 中的配置保持一致
            server_name xxx.com;
            rewrite ^(.*)$ https://$host$1 permanent;
        }
@@ -371,6 +376,10 @@ createTime: 2024/09/12 20:40:22
    :::
 
 4. 更新脚本文件
+
+   ::: warning
+   如果已通过后端 docker-compose 构建前端项目，此步骤和后面的剩余步骤直接跳过即可
+   :::
 
    ::: details
    ```yaml
@@ -398,11 +407,14 @@ createTime: 2024/09/12 20:40:22
          - -g
          - daemon off;
        volumes:
-         # nginx https conf
-         # 通过 docker 进行部署时，需要打开此配置项并
-         # 确保 docker ssl 文件路径配置与 nginx conf 中的 ssl 文件路径配置一致
-         # local_ssl_pem_path：服务器存放 ssl pem 文件的路径
-         # local_ssl_key_path: 服务器存放 ssl key 文件的路径
+          # nginx https conf
+          # 通过 docker 进行部署时，需要打开此配置项并确保<挂载到容器内的证书文件路径>配置
+          # 与 nginx conf 中的 ssl 证书文件路径配置一致，如果你直接将 ssl 证书文件 cp
+          # 到了 docker 容器内，则无需挂载证书文件，直接将它们注释或删除即可
+          # local_ssl_pem_path：你在服务器存放 ssl pem 证书文件的路径，自行修改
+          # local_ssl_key_path: 你在服务器存放 ssl key 证书文件的路径，自行修改
+          # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
+          # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
          - local_ssl_pem_path:/etc/ssl/xxx.pem
          - local_ssl_key_path:/etc/ssl/xxx.key
          - fba_static:/www/fba_server/backend/static
@@ -413,7 +425,7 @@ createTime: 2024/09/12 20:40:22
 
 5. 构建并启动容器
 
-   创建网络（如果已构建后端可忽略）
+   创建网络
 
    ```shell
    docker network create fba_network
