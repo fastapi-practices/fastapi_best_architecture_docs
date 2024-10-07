@@ -31,7 +31,7 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '互动',
-        icon: 'mage:we-chat',
+        icon: 'ic:baseline-discord',
         link: 'https://wu-clan.github.io/homepage/'
     },
     {
