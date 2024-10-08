@@ -27,12 +27,20 @@ export const mySidebar: SidebarMulti = {
             ]
         },
         {
+            text: 'MiXin',
+            collapsed: false,
+            prefix: 'mixin/',
+            items: [
+                {text: '用户', link: 'user'},
+            ]
+        },
+        {
             text: '部署',
             collapsed: false,
             prefix: 'deploy/',
             items: [
                 {text: 'Docker', link: 'Docker'},
-                {text: '传统', link: 'legacy'}
+                {text: '传统', link: 'legacy'},
             ]
         }
     ],

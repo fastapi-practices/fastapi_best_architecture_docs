@@ -15,8 +15,9 @@ export default defineUserConfig({
         blog: false,
         notes: false,
         autoFrontmatter: {
+            title: true,
             permalink: false,
-            title: false,
+            createTime: false,
         },
         sidebar: mySidebar,
         navbar: myNavbar,
@@ -29,14 +30,17 @@ export default defineUserConfig({
         ],
         navbarSocialInclude: ['github'],
         editLinkText: '在 GitHub 上编辑此页面',
-        lastUpdated: {
-            text: 'Releases',
-        },
+        // lastUpdated: {
+        //     text: 'Releases',
+        // },
         footer: {
             message: 'MIT License',
             copyright: 'Copyright © 2024-present FastAPI Practices'
         },
         plugins: {
+            shiki: {
+                languages: ['shell','yaml','py']
+            },
             watermark: true,
             markdownPower: {
                 icons: true,

@@ -1,6 +1,5 @@
 ---
 title: FastAPI Best Architecture
-createTime: 2024/09/12 20:40:22
 ---
 
 > [!TIP]

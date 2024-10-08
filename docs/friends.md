@@ -1,5 +1,4 @@
 ---
-createTime: 2024/09/16 21:50:25
 pageLayout: friends
 title: 友情链接
 description: 如果您的网站与 FastAPI Best Architecture 相关，或者也属于开源项目（无知识星球付费内容，无授权相关内容），欢迎与我们联系

@@ -12,9 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.15",
+    "sass-embedded": "^1.79.4",
     "vue": "^3.5.4",
-    "vuepress": "2.0.0-rc.15",
-    "vuepress-theme-plume": "1.0.0-rc.97"
+    "vuepress": "^2.0.0-rc.17",
+    "vuepress-theme-plume": "^1.0.0-rc.106"
   },
   "dependencies": {
     "@iconify/json": "^2.2.247"
