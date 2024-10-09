@@ -1,8 +1,9 @@
-import {defineUserConfig} from 'vuepress'
-import {viteBundler} from '@vuepress/bundler-vite'
-import {plumeTheme} from 'vuepress-theme-plume'
 import {myNavbar} from "./navbar";
 import {mySidebar} from "./sidebar";
+import {defineUserConfig} from "vuepress";
+import plumeTheme from "vuepress-theme-plume";
+import { viteBundler } from '@vuepress/bundler-vite'
+
 
 export default defineUserConfig({
     base: '/fastapi_best_architecture_docs/',

@@ -11,7 +11,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'Beta',
+        text: 'v0.0.1 Beta',
         items: [
             {
                 text: '贡献',
