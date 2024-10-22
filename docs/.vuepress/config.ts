@@ -3,6 +3,7 @@ import {mySidebar} from "./sidebar";
 import {defineUserConfig} from "vuepress";
 import plumeTheme from "vuepress-theme-plume";
 import { viteBundler } from '@vuepress/bundler-vite'
+import {myBulletin} from "./bulletin";
 
 
 export default defineUserConfig({
@@ -20,6 +21,7 @@ export default defineUserConfig({
             permalink: false,
             createTime: false,
         },
+        bulletin: myBulletin,
         sidebar: mySidebar,
         navbar: myNavbar,
         logo: 'https://fastapi.tiangolo.com/img/favicon.png',
