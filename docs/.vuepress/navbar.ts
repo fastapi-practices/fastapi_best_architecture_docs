@@ -5,7 +5,7 @@ export const myNavbar = defineNavbarConfig([
         text: '演示',
         items: [
             {
-                text: 'Arco Design Pro 版本',
+                text: 'Arco Design 版本',
                 link: 'https://fba.xwboy.top/'
             }
         ]

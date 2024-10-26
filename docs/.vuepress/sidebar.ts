@@ -18,16 +18,15 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
-                {text: '登录', link: 'login'},
-                {text: 'OAuth 2.0', link: 'oauth2'},
+                {text: '授权', link: 'oauth'},
                 {text: '跨域', link: 'cors'},
-                {text: '权限', link: 'permission'},
+                {text: 'RBAC', link: 'RBAC'},
                 {text: '事务', link: 'transaction'},
                 {text: '代码生成', link: 'code-generation'},
             ]
         },
         {
-            text: 'MiXin',
+            text: 'Mixin',
             collapsed: false,
             prefix: 'mixin/',
             items: [

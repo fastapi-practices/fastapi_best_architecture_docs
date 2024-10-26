@@ -29,4 +29,7 @@ TODO
 
 ## 质量与规范
 
-TODO
+- 高可用代码注解
+- 严格遵守[自定义 ruff 规则](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/.ruff.toml)
+- 全局使用 reStructuredText 文档风格
+- GitHub CI 代码规范检测
