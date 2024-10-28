@@ -41,6 +41,14 @@ export const mySidebar: SidebarMulti = {
                 {text: 'Docker', link: 'Docker'},
                 {text: '传统', link: 'legacy'},
             ]
+        },
+        {
+            text: '其他',
+            collapsed: false,
+            prefix: 'other/',
+            items: [
+                {text: '更新记录', link: 'changelog'},
+            ]
         }
     ],
 }

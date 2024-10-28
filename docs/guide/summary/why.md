@@ -15,8 +15,10 @@ title: 为什么选择我们？
 ## 承诺
 
 <div style="text-align: center">
-  <h3>「永久 MIT 协议」「永久免费」「永久免授权」</h3>
-  <p>无任何强制收费行为，我们唯一的收入来源仅为赞助，它们将全部用于基础设施建设（服务器，域名...）</p>
+  <h3>「永久 MIT 协议」「永久免授权」</h3>
+  <p>只需一个 GitHub star，无任何强制收费行为，我们唯一的收入来源仅为<a href="https://wu-clan.github.io/sponsor/">赞助</a></p>
+  <p style="float: right">--- <a href="https://github.com/fastapi-practices">fastapi-practices</a> 对此拥有所有解释权</p>
+  <br>
 </div>
 
 ## 架构
@@ -25,11 +27,12 @@ title: 为什么选择我们？
 
 ## 框架历程
 
-TODO
+建设中...
 
 ## 质量与规范
 
-- 高可用代码注解
-- 严格遵守[自定义 ruff 规则](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/.ruff.toml)
+- 真正有用的代码注解
 - 全局使用 reStructuredText 文档风格
+- 快速同步框架新特性
+- 编码严格遵守[自定义 ruff 规则](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/.ruff.toml)
 - GitHub CI 代码规范检测

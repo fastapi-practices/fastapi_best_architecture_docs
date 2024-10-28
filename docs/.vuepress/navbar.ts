@@ -16,6 +16,10 @@ export const myNavbar = defineNavbarConfig([
             {
                 text: '贡献',
                 link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
+            },
+            {
+                text: '更新记录',
+                link: ''
             }
         ]
     },
@@ -23,6 +27,11 @@ export const myNavbar = defineNavbarConfig([
         text: '技术支持',
         icon: 'fluent-emoji-high-contrast:unicorn',
         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+    },
+    {
+        text: '授权',
+        icon: 'ri:key-2-fill',
+        link: '/guide/summary/why.md#承诺'
     },
     {
         text: '赞助',
