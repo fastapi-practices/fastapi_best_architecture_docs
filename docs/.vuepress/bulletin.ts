@@ -14,6 +14,8 @@ export const myBulletin: BulletinOptions = {
 
 **知识星球：** [FBA](https://t.zsxq.com/sDbws)
 
+（优惠将于 2024/11/1 00:00 正式开启！）
+
 <img src="https://wu-clan.github.io/picx-images-hosting/星球优惠券.png">
 
 `,
