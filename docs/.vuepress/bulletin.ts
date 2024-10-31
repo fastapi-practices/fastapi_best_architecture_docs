@@ -4,20 +4,15 @@ export const myBulletin: BulletinOptions = {
     enablePage: true,
     title: '欢迎加入我们',
     content: `
-免费订阅：
+::: center
 
 **Discord 服务器：** [Python 开发交流社区](https://discord.com/invite/yNN3wTbVAC)
 
-<hr/>
+<hr>
 
-付费订阅：
+<iframe src="https://discord.com/widget?id=1185035164577972344&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
-**知识星球：** [FBA](https://t.zsxq.com/sDbws)
-
-（优惠将于 2024/11/1 00:00 正式开启！）
-
-<img src="https://wu-clan.github.io/picx-images-hosting/星球优惠券.png">
-
+:::
 `,
     contentType: 'markdown'
 }
