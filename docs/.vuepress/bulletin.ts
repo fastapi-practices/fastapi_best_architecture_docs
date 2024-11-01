@@ -6,11 +6,11 @@ export const myBulletin: BulletinOptions = {
     content: `
 ::: center
 
-**Discord 服务器：** [Python 开发交流社区](https://discord.com/invite/yNN3wTbVAC)
+**知识星球：** [玩转 FBA，不止 FBA](https://t.zsxq.com/sDbws)
 
 <hr>
 
-<iframe src="https://discord.com/widget?id=1185035164577972344&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+<img src="https://cdn.discordapp.com/attachments/1301387495648399370/1301545907581620274/161730382949_.pic.jpg?ex=67258755&is=672435d5&hm=5fcbcb555e7208bb4ad63bfc1ceeb1bf289b5a998efc601d966e04c2cbc45a49&">
 
 :::
 `,
