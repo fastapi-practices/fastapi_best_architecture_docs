@@ -10,9 +10,9 @@ export const myBulletin: BulletinOptions = {
 
 <hr>
 
-[加入 Discord 频道](https://discord.gg/yNN3wTbVAC)，获取更多优惠哟
+<p style="font-size: 14px; color: rgb(160, 160, 160);">加入 <a href="https://discord.gg/yNN3wTbVAC">Discord</a> 频道，即可领取免费体验机会，更有大额优惠券随机发放，先到先得！</p>
 
-<img src="https://wu-clan.github.io/picx-images-hosting/星球体验卡.png">
+<img src="https://wu-clan.github.io/picx-images-hosting/知识星球.png">
 
 :::
 `,
