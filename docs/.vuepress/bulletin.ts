@@ -10,7 +10,9 @@ export const myBulletin: BulletinOptions = {
 
 <hr>
 
-<img src="https://cdn.discordapp.com/attachments/1301387495648399370/1301545907581620274/161730382949_.pic.jpg?ex=67258755&is=672435d5&hm=5fcbcb555e7208bb4ad63bfc1ceeb1bf289b5a998efc601d966e04c2cbc45a49&">
+[加入 Discord 频道](https://discord.gg/yNN3wTbVAC)，获取更多优惠哟
+
+<img src="https://wu-clan.github.io/picx-images-hosting/星球体验卡.png">
 
 :::
 `,
