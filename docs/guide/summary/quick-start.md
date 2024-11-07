@@ -13,9 +13,9 @@ title: 快速开始
 
 1. 准备本地环境
 
-   * Python 3.10+
-   * Mysql 8.0+
-   * Redis 推荐最新稳定版
+    * Python 3.10+
+    * Mysql 8.0+
+    * Redis 推荐最新稳定版
 
 2. 准备 Git 仓库
 
@@ -23,20 +23,21 @@ title: 快速开始
    提供两种方案，选择其中一种即可
    :::
 
-   1. 拉取源代码仓库
+    1. 拉取源代码仓库
 
-      此方式需要你删除拉取项目后根目录下的 `.git` 文件夹，之后上传到你指定的仓库即可，具体请自行查阅你要上传平台的行为准则
+       此方式需要你删除拉取项目后根目录下的 `.git` 文件夹，之后上传到你指定的仓库即可，具体请自行查阅你要上传平台的行为准则
 
-      ```shell
-      git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
-      ```
+       ```shell
+       git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
+       ```
 
-   2. 拉取模板仓库
+    2. 拉取模板仓库
 
-      此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork（独立无绑定的关系）的个人账户仓库，如果所示，进入此项目 GitHub 首页，
-      使用 `use this template` 按钮创建即可，创建完成之后，使用 `git clone` 命令拉取你自己的仓库即可
-   
-      ![use_this_template](/images/use_this_template.png)
+       此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork（独立无绑定的关系）的个人账户仓库，如果所示，进入此项目
+       GitHub 首页，
+       使用 `use this template` 按钮创建即可，创建完成之后，使用 `git clone` 命令拉取你自己的仓库即可
+
+       ![use_this_template](/images/use_this_template.png)
 
 3. 安装依赖包
 
@@ -75,7 +76,7 @@ title: 快速开始
    ```shell
    alembic revision --autogenerate
    ```
-   
+
    执行迁移
 
    ```shell
@@ -129,21 +130,37 @@ title: 快速开始
 ### 前端
 
 :::: steps
+
 1. 准备本地环境
 
-   * Nodejs 14.0+
+    * Nodejs 18.0+
+    * yarn 1.x
 
 2. 安装和启动
 
    ::: caution
    目前它仅作为效果演示，而不是用于生产！
-   
+
    如果你不想前端依赖安装问题带来困扰，请务必使用 `yarn` v1.x 版本
    :::
-   
-   你可以跳转 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 查看详情
-::::
 
+   安装依赖
+
+   ```shell
+   yarn install
+   ```
+
+   启动
+
+   ```shell
+   yarn dev
+   ```
+
+   ::: warning
+   第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
+   查看详情
+   :::
+::::
 
 ## 开发流程
 
@@ -152,6 +169,7 @@ title: 快速开始
 :::
 
 ::: steps
+
 1. 定义数据库模型（model）
 
 2. 定义数据验证模型（schema）
@@ -161,7 +179,7 @@ title: 快速开始
 4. 编写业务（service）
 
 5. 编写数据库操作（crud）
-:::
+   :::
 
 ## 单元测试
 
@@ -170,6 +188,7 @@ title: 快速开始
 :::
 
 ::: steps
+
 1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码
 2. 使用 `backend/sql/create_tables.sql` 文件创建数据库表
 3. 使用 `backend/sql/init_pytest_data.sql` 文件初始化用于单元测试的测试数据
@@ -178,4 +197,5 @@ title: 快速开始
    ```shell
    pytest -vs --disable-warnings
    ```
+
 :::
