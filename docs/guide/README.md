@@ -100,7 +100,7 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 ## 相关
 
-<RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
+<RepoCard repo="wu-clan/sqlalchemy-crud-plus" />
 
 ::: tip 特别鸣谢
 本文档由 [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume)

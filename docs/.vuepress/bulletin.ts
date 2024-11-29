@@ -6,13 +6,13 @@ export const myBulletin: BulletinOptions = {
     content: `
 ::: center
 
-**知识星球：** [玩转 FBA，不止 FBA](https://t.zsxq.com/sDbws)
+**Discord 服务器：** [Python 开发交流社区](https://discord.com/invite/yNN3wTbVAC)
 
 <hr>
 
-<p style="font-size: 14px; color: rgb(160, 160, 160);">加入 <a href="https://discord.gg/yNN3wTbVAC">Discord</a> 频道，即可领取免费体验机会，更有大额优惠券随机发放，先到先得！</p>
+<p style="font-size: 14px; color: rgb(160, 160, 160);">加入并订阅此服务器，即可尊享闲聊，技术分享，疑难杂症解答，与大佬肩并肩，速速行动吧！</p>
 
-<img src="https://wu-clan.github.io/picx-images-hosting/知识星球.png">
+<iframe src="https://discord.com/widget?id=1185035164577972344&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 :::
 `,

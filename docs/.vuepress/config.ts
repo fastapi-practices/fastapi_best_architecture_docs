@@ -2,7 +2,7 @@ import {myNavbar} from "./navbar";
 import {mySidebar} from "./sidebar";
 import {defineUserConfig} from "vuepress";
 import plumeTheme from "vuepress-theme-plume";
-import { viteBundler } from '@vuepress/bundler-vite'
+import {viteBundler} from '@vuepress/bundler-vite'
 import {myBulletin} from "./bulletin";
 
 
@@ -11,7 +11,7 @@ export default defineUserConfig({
     lang: 'zh-CN',
     title: 'FastAPI Best Architecture',
     head: [
-        ['link', {rel: 'icon', href: 'https://fastapi.tiangolo.com/img/favicon.png'}]
+        ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}]
     ],
     theme: plumeTheme({
         blog: false,
@@ -24,14 +24,15 @@ export default defineUserConfig({
         bulletin: myBulletin,
         sidebar: mySidebar,
         navbar: myNavbar,
-        logo: 'https://fastapi.tiangolo.com/img/favicon.png',
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
         docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
         docsBranch: 'master',
         docsDir: 'docs',
         social: [
-            { icon: 'github', link: 'https://github.com/fastapi-practices/fastapi_best_architecture' }
+            {icon: 'github', link: 'https://github.com/fastapi-practices/fastapi_best_architecture'},
+            {icon: 'discord', link: 'https://discord.com/invite/yNN3wTbVAC'}
         ],
-        navbarSocialInclude: ['github'],
+        // navbarSocialInclude: ['github'],
         editLinkText: '在 GitHub 上编辑此页面',
         // lastUpdated: {
         //     text: 'Releases',
@@ -42,14 +43,14 @@ export default defineUserConfig({
         },
         plugins: {
             shiki: {
-                languages: ['shell','yaml','py']
+                languages: ['shell', 'yaml', 'py']
             },
             watermark: true,
             markdownPower: {
                 icons: true,
                 bilibili: true,
             },
-        }
+        },
     }),
     bundler: viteBundler(),
 })
