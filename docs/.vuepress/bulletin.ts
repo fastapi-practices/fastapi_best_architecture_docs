@@ -10,8 +10,6 @@ export const myBulletin: BulletinOptions = {
 
 <hr>
 
-<p style="font-size: 14px; color: rgb(160, 160, 160);">加入并订阅此服务器，即可尊享闲聊，技术分享，疑难杂症解答，与大佬肩并肩，速速行动吧！</p>
-
 <iframe src="https://discord.com/widget?id=1185035164577972344&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 :::

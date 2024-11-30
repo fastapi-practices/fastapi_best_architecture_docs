@@ -19,7 +19,7 @@ export const myNavbar = defineNavbarConfig([
             },
             {
                 text: '更新记录',
-                link: ''
+                link: '/guide/other/changelog.md'
             }
         ]
     },
