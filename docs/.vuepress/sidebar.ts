@@ -22,6 +22,7 @@ export const mySidebar: SidebarMulti = {
                 {text: '跨域', link: 'cors'},
                 {text: 'RBAC', link: 'RBAC'},
                 {text: '事务', link: 'transaction'},
+                {text: '数据规则', link: 'data-rule'},
                 {text: '代码生成', link: 'code-generation'},
             ]
         },
