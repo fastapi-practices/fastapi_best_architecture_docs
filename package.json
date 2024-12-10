@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@iconify/json": "^2.2.262",
-    "@vuepress-plume/plugin-search": "1.0.0-rc.118"
+    "@vuepress-plume/plugin-search": "1.0.0-rc.118",
+    "swiper": "^11.1.15"
   }
 }
