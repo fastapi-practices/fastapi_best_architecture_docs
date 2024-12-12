@@ -16,6 +16,7 @@ config:
         - theme: alt
           text: 在线预览
           link: https://fba.xwboy.top
+  - type: custom
   - type: features
     features:
       - title: 最新技术栈
@@ -45,7 +46,6 @@ config:
       - title: 日志
         icon: 📝
         details: 内置十分强大的日志系统，全方位 Trace ID 助你一步锁定问题
-  - type: custom
   - type: profile
     name: wu-clan
     description: 一个喜欢在夜深人静时进行开源创作的 coder
@@ -56,12 +56,6 @@ config:
 import { ref } from 'vue'
 
 const goldSponsors = ref([
-  {
-    link: 'https://wu-clan.github.io/picx-images-hosting/fba.png',
-    text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
-    alt: 'wu-clan',
-  },
   {
     link: '',
     text: '成为赞助商',
@@ -84,7 +78,7 @@ const goldSponsors = ref([
 
 const sponsors = ref([
   {
-    link: 'https://wu-clan.github.io/picx-images-hosting/fba.png',
+    link: '',
     text: '成为赞助商',
     href: 'https://github.com/wu-clan',
     alt: 'wu-clan',
@@ -116,16 +110,16 @@ const sponsors = ref([
 ])
 </script>
 
-<h1 v-if="goldSponsors.length" align="center">金牌赞助商</h1>
+<h1 v-if="goldSponsors.length" align="center">特别赞助商</h1>
 
 <Swiper
 v-if="goldSponsors.length"
 :items="goldSponsors"
-mode="carousel"
+mode="broadcast"
 :height="200"
 :slides-per-view="3"
 :space-between="15"
-:speed="15000"
+mousewheel
 />
 
 <h2 v-if="sponsors.length" align="center">赞助商</h2>

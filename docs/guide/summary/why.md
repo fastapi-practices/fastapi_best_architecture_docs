@@ -18,7 +18,7 @@ title: 为什么选择我们？
 
 <div style="text-align: center">
   <h3>「永久 MIT 协议」「永久免授权」</h3>
-  <p>如果可以，请给此项目一个 GitHub star，此仓库作为模板库公开，任何人或企业均可免费使用！</p>
+  <p>如果可以，请给此项目一个 GitHub star，此仓库作为模板库公开，任何个人或企业均可免费使用！</p>
   <p style="float: right">--- <a href="https://github.com/fastapi-practices">fastapi-practices</a> 对此拥有所有解释权</p>
   <br>
 </div>

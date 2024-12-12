@@ -11,10 +11,10 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v0.0.1 Beta',
+        text: 'Beta',
         items: [
             {
-                text: '贡献',
+                text: '参与贡献',
                 link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
             },
             {
@@ -35,8 +35,8 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '赞助',
-        icon: 'ci:coffee',
-        link: 'https://wu-clan.github.io/sponsor/'
+        icon: 'ph:coffee-fill',
+        link: '/sponsors'
     },
     {
         text: '互动',
@@ -44,8 +44,19 @@ export const myNavbar = defineNavbarConfig([
         link: 'https://wu-clan.github.io/homepage/'
     },
     {
-        text: '友情链接',
-        icon: 'fa-solid:user-friends',
-        link: '/friends'
+        text: '关于',
+        icon: 'mingcute:more-4-fill',
+        items: [
+            {
+                text: '谁在使用',
+                icon: 'fa-solid:user-friends',
+                link: '/who'
+            },
+            {
+                text: '维护团队',
+                icon: 'fa-solid:user-friends',
+                link: '/team'
+            },
+        ],
     }
 ])

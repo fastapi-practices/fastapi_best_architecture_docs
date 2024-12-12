@@ -198,7 +198,7 @@ function onSwiper(swiper: SwiperType) {
 .swiper-slide-custom-container {
     width: 100%;
     height: 100%;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 8px;
 }
 
