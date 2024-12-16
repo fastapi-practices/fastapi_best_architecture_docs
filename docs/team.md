@@ -12,6 +12,8 @@ groups:
         link: https://wu-clan.github.io/homepage/
         avatar: https://avatars.githubusercontent.com/u/52145145?v=4
         desc: 一个喜欢在夜深人静时进行开源创作的 coder
+        location: 郑州，河南
+        organization: FastAPI Practices
         socials: [
           {icon: 'github', link: 'https://github.com/wu-clan'},
           {icon: 'x', link: 'https://twitter.com/_chulan'},
@@ -20,9 +22,11 @@ groups:
         ]
       -
         name: dowdawn
-        link: https://github.com/downdawn
+        link: https://blog.csdn.net/qq_42280510?type=blog
         avatar: https://avatars.githubusercontent.com/u/41266749?v=4
         desc: AI 全干工程狮
+        location: 厦门，福建
+        organization: FastAPI Practices
         socials: [
           {icon: 'github', link: 'https://github.com/downdawn'}
         ]

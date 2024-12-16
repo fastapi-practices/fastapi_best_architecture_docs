@@ -59,19 +59,19 @@ const goldSponsors = ref([
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   }
 ])
@@ -80,31 +80,31 @@ const sponsors = ref([
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   },
   {
     link: '',
     text: '成为赞助商',
-    href: 'https://github.com/wu-clan',
+    href: 'https://discord.com/invite/yNN3wTbVAC',
     alt: 'wu-clan',
   }
 ])
@@ -131,5 +131,5 @@ mode="carousel"
 :height="200"
 :slides-per-view="4"
 :space-between="10"
-:speed="2500"
+:speed="5000"
 />
