@@ -2,6 +2,7 @@ import {BulletinOptions} from "vuepress-theme-plume";
 
 export const myBulletin: BulletinOptions = {
     enablePage: true,
+    lifetime: 'session',
     title: '欢迎加入我们',
     content: `
 ::: center

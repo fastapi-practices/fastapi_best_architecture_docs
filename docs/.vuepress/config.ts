@@ -49,6 +49,9 @@ export default defineUserConfig({
                 icons: true,
                 bilibili: true,
             },
+            markdownEnhance: {
+                mermaid: true,
+            },
         },
     }),
     bundler: viteBundler(),

@@ -16,7 +16,6 @@ config:
         - theme: alt
           text: 在线预览
           link: https://fba.xwboy.top
-  - type: custom
   - type: features
     features:
       - title: 最新技术栈
@@ -28,24 +27,25 @@ config:
       - title: 全局异步
         icon: 🔄
         details: 基于 async/await + asgiref 实现全局异步处理，告别协程阻塞问题
-      - title: 代码生成
-        icon: ⚙️
-        details: 提供后端代码自动生成，告别繁琐基础代码结构 cv
-      - title: 权限管理
-        icon: 🛠️
-        details: 提供 Casbin、Role-Menu 两种 RBAC 权限方案。开关控制选择
       - title: JWT
         icon: 🔏
         details: 带有缓存和白名单的 JWT 中间件自动认证
-      - title: Docker
-        icon: 🐳
-        details: 提供 Docker compose 一键部署方案
+      - title: 权限管理
+        icon: 🛠️
+        details: 提供 Casbin、Role-Menu 两种 RBAC 权限方案。开关控制选择
+      - title: 代码生成
+        icon: ⚙️
+        details: 提供后端代码自动生成，告别繁琐基础代码结构 cv
       - title: 时区时间
         icon: ⌛
         details: 通过配置一键应用全局时区时间，告别时间处理烦恼
       - title: 日志
         icon: 📝
         details: 内置十分强大的日志系统，全方位 Trace ID 助你一步锁定问题
+      - title: Docker
+        icon: 🐳
+        details: 提供 Docker compose 一键部署方案
+  - type: custom
   - type: profile
     name: wu-clan
     description: 一个喜欢在夜深人静时进行开源创作的 coder
@@ -53,61 +53,7 @@ config:
 ---
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const goldSponsors = ref([
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  }
-])
-
-const sponsors = ref([
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  },
-  {
-    link: '',
-    text: '成为赞助商',
-    href: 'https://discord.com/invite/yNN3wTbVAC',
-    alt: 'wu-clan',
-  }
-])
+import { goldSponsors, generalSponsors } from '@source/.vuepress/data/sponsors'
 </script>
 
 <h1 v-if="goldSponsors.length" align="center">特别赞助商</h1>
@@ -122,11 +68,11 @@ mode="broadcast"
 mousewheel
 />
 
-<h2 v-if="sponsors.length" align="center">赞助商</h2>
+<h2 v-if="generalSponsors.length" align="center">赞助商</h2>
 
 <Swiper
-v-if="sponsors.length"
-:items="sponsors"
+v-if="generalSponsors.length"
+:items="generalSponsors"
 mode="carousel"
 :height="200"
 :slides-per-view="4"

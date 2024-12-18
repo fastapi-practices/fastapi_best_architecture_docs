@@ -18,12 +18,21 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
-                {text: '授权', link: 'oauth'},
-                {text: '跨域', link: 'cors'},
+                {text: 'JWT', link: 'jwt'},
+                {text: '跨域', link: 'CORS'},
                 {text: 'RBAC', link: 'RBAC'},
+                {text: 'CRUD', link: 'CRUD'},
                 {text: '事务', link: 'transaction'},
+                {text: '切换数据库', link: 'db'},
                 {text: '数据规则', link: 'data-rule'},
                 {text: '代码生成', link: 'code-generation'},
+                {text: '自定义异常', link: 'custom-err-msg'},
+                {text: '接口响应', link: 'response'},
+                {text: '分页', link: 'paginate'},
+                {text: 'Celery', link: 'Celery'},
+                {text: 'APScheduler', link: 'apscheduler'},
+                {text: '日志分析', link: 'log'},
+                {text: 'Socketio', link: 'socketio'},
             ]
         },
         {
@@ -31,7 +40,7 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'mixin/',
             items: [
-                {text: '用户', link: 'user'},
+                {text: '用户信息', link: 'user'},
             ]
         },
         {

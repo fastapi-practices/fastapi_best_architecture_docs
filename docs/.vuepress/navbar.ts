@@ -40,7 +40,7 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '互动',
-        icon: 'ic:baseline-discord',
+        icon: 'game-icons:talk',
         link: 'https://wu-clan.github.io/homepage/'
     },
     {
@@ -49,7 +49,7 @@ export const myNavbar = defineNavbarConfig([
         items: [
             {
                 text: '谁在使用',
-                icon: 'fa-solid:user-friends',
+                icon: 'mdi:user-check',
                 link: '/who'
             },
             {

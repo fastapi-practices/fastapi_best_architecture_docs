@@ -7,6 +7,7 @@ import {
     EffectCreative,
     EffectCube,
     EffectFade,
+    EffectFlip,
     Mousewheel,
     Navigation,
     Pagination,
@@ -198,8 +199,8 @@ function onSwiper(swiper: SwiperType) {
 .swiper-slide-custom-container {
     width: 100%;
     height: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid var(--vp-c-text-3);
+    border-radius: 6px;
 }
 
 .swiper-slide-text {
