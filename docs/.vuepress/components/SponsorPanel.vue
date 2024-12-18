@@ -75,6 +75,10 @@ const openSponsorLink = (href) => {
     min-height: 68px;
 }
 
+.sponsor-item:hover {
+    border: 1px solid var(--vp-c-brand);
+}
+
 .sponsor-item.gold {
     height: 88px;
 }
