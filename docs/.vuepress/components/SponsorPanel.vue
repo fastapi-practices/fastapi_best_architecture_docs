@@ -63,7 +63,7 @@ const openSponsorLink = (href) => {
 .general-sponsors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3px;
+    gap: 4px;
 }
 
 .sponsor-item {
@@ -76,13 +76,13 @@ const openSponsorLink = (href) => {
 }
 
 .sponsor-item.gold {
-    height: 98px;
+    height: 88px;
 }
 
 .sponsor-image {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 .sponsor-text {
