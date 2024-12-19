@@ -12,7 +12,7 @@ config:
       actions:
         - theme: brand
           text: 快速开始 ->
-          link: /guide/
+          link: /guide/summary/intro
         - theme: alt
           text: 在线预览
           link: https://fba.xwboy.top
@@ -64,7 +64,7 @@ v-if="goldSponsors.length"
 mode="broadcast"
 :height="200"
 :slides-per-view="3"
-:space-between="15"
+:space-between="10"
 mousewheel
 />
 
@@ -74,7 +74,7 @@ mousewheel
 v-if="generalSponsors.length"
 :items="generalSponsors"
 mode="carousel"
-:height="200"
+:height="150"
 :slides-per-view="4"
 :space-between="10"
 :speed="5000"

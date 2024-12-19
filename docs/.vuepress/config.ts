@@ -14,6 +14,7 @@ export default defineUserConfig({
         ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}]
     ],
     theme: plumeTheme({
+        hostname: 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/',
         blog: false,
         notes: false,
         autoFrontmatter: {

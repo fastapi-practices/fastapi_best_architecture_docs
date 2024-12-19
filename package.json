@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@iconify/json": "^2.2.282",
-    "@vuepress-plume/plugin-search": "1.0.0-rc.121",
     "mermaid": "^11.4.1",
     "swiper": "^11.1.15"
   }

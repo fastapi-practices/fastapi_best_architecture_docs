@@ -5,7 +5,7 @@ export const myNavbar = defineNavbarConfig([
         text: '演示',
         items: [
             {
-                text: 'Arco Design 版本',
+                text: 'Arco Design 实验版本',
                 link: 'https://fba.xwboy.top/'
             }
         ]
@@ -56,6 +56,11 @@ export const myNavbar = defineNavbarConfig([
                 text: '维护团队',
                 icon: 'fa-solid:user-friends',
                 link: '/team'
+            },
+            {
+                text: '申请加入',
+                icon: 'solar:pen-new-square-bold',
+                link: 'https://discord.com/channels/1185035164577972344/1319245794271956993'
             },
         ],
     }

@@ -4,10 +4,11 @@ import {SidebarMulti} from "vuepress-theme-plume/lib/shared";
 export const mySidebar: SidebarMulti = {
     '/guide/': [
         {
-            text: '简介',
+            text: '介绍',
             collapsed: false,
             prefix: 'summary/',
             items: [
+                {text: '简介', link: 'intro'},
                 {text: '为什么选择我们？', link: 'why'},
                 {text: '快速开始', link: 'quick-start'},
                 {text: '精简版', link: 'fsm'},
@@ -24,15 +25,15 @@ export const mySidebar: SidebarMulti = {
                 {text: 'CRUD', link: 'CRUD'},
                 {text: '事务', link: 'transaction'},
                 {text: '切换数据库', link: 'db'},
-                {text: '数据规则', link: 'data-rule'},
+                {text: '数据规则', link: 'data-rule', icon: 'mdi:planet'},
                 {text: '代码生成', link: 'code-generation'},
-                {text: '自定义异常', link: 'custom-err-msg'},
-                {text: '接口响应', link: 'response'},
+                {text: '自定义异常', link: 'custom-err-msg', icon: 'mdi:planet'},
+                {text: '接口响应', link: 'response', icon: 'mdi:planet'},
                 {text: '分页', link: 'paginate'},
-                {text: 'Celery', link: 'Celery'},
+                {text: 'Celery', link: 'Celery', icon: 'mdi:planet'},
                 {text: 'APScheduler', link: 'apscheduler'},
-                {text: '日志分析', link: 'log'},
-                {text: 'Socketio', link: 'socketio'},
+                {text: '日志分析', link: 'log', icon: 'mdi:planet'},
+                {text: 'Socketio', link: 'socketio', icon: 'mdi:planet'},
             ]
         },
         {
@@ -40,7 +41,7 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'mixin/',
             items: [
-                {text: '用户信息', link: 'user'},
+                {text: '用户信息', link: 'user', icon: 'mdi:planet'},
             ]
         },
         {

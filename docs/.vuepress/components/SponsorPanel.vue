@@ -1,6 +1,6 @@
 <template>
     <div class="sponsor-container">
-        <!-- Gold Sponsors Section -->
+        <!-- Gold Sponsors -->
         <div class="gold-sponsors">
             <div
                     v-for="(sponsor, index) in goldSponsors"
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <!-- Regular Sponsors Section -->
+        <!-- General Sponsors -->
         <div class="general-sponsors">
             <div
                     v-for="(sponsor, index) in generalSponsors"
@@ -72,7 +72,7 @@ const openSponsorLink = (href) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 68px;
+    min-height: 65px;
 }
 
 .sponsor-item:hover {
@@ -80,7 +80,7 @@ const openSponsorLink = (href) => {
 }
 
 .sponsor-item.gold {
-    height: 88px;
+    height: 95px;
 }
 
 .sponsor-image {

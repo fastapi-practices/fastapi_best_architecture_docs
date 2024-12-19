@@ -1,5 +1,5 @@
 ---
-title: FastAPI Best Architecture
+title: 简介
 ---
 
 > [!TIP]
@@ -60,31 +60,32 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 ## 项目结构
 
 ::: file-tree
+
 - backend/ 后端
-  - alembic/ 数据库迁移
-  - app/ 应用
-    - admin 系统后台
-      - api/ 接口
-      - crud/  CRUD
-      - model/ 模型
-      - schema/ 数据传输
-      - service/ 服务
-      - tests/ 测试
-    - generator/ 代码生成
-    - task/ 任务
-  - common/ 公共资源
-  - core/ 核心配置
-  - database/ 数据库连接
-  - log/ 日志
-  - middleware/ 中间件
-  - scripts/ 脚本
-  - sql/ SQL文件
-  - static/ 静态文件
-  - templates/ 模版文件
-  - utils/ 工具包
+    - alembic/ 数据库迁移
+    - app/ 应用
+        - admin 系统后台
+            - api/ 接口
+            - crud/ CRUD
+            - model/ 模型
+            - schema/ 数据传输
+            - service/ 服务
+            - tests/ 测试
+        - generator/ 代码生成
+        - task/ 任务
+    - common/ 公共资源
+    - core/ 核心配置
+    - database/ 数据库连接
+    - log/ 日志
+    - middleware/ 中间件
+    - scripts/ 脚本
+    - sql/ SQL文件
+    - static/ 静态文件
+    - templates/ 模版文件
+    - utils/ 工具包
 - deploy/ 服务器部署
 - ...
-:::
+  :::
 
 ## 贡献者
 
@@ -99,8 +100,6 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 [![Stargazers over time](https://starchart.cc/fastapi-practices/fastapi_best_architecture.svg?variant=adaptive)](https://starchart.cc/fastapi-practices/fastapi_best_architecture)
 
 ## 相关
-
-<RepoCard repo="wu-clan/sqlalchemy-crud-plus" />
 
 ::: tip 特别鸣谢
 本文档由 [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume)
