@@ -1,7 +1,7 @@
 {
   "name": "fastapi_best_architecture_docs",
   "version": "1.0.0",
-  "description": "fastapi_best_architecture 官方文档\n\n",
+  "description": "fastapi_best_architecture 官方文档",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",
@@ -21,5 +21,8 @@
     "@iconify/json": "^2.2.282",
     "mermaid": "^11.4.1",
     "swiper": "^11.1.15"
+  },
+  "resolutions": {
+    "esbuild": "0.24.0"
   }
 }
