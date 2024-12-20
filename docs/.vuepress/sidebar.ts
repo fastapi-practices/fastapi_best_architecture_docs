@@ -30,7 +30,7 @@ export const mySidebar: SidebarMulti = {
                 {text: '自定义异常', link: 'custom-err-msg', icon: 'mdi:planet'},
                 {text: '接口响应', link: 'response', icon: 'mdi:planet'},
                 {text: '分页', link: 'paginate'},
-                {text: 'Celery', link: 'Celery', icon: 'mdi:planet'},
+                {text: 'Celery', link: 'celery', icon: 'mdi:planet'},
                 {text: 'APScheduler', link: 'apscheduler'},
                 {text: '日志分析', link: 'log', icon: 'mdi:planet'},
                 {text: 'Socketio', link: 'socketio', icon: 'mdi:planet'},
