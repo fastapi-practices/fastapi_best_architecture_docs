@@ -29,7 +29,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 架构
 
-独一无二，自主研发，自主命名，开发人员可轻松驾驭的独特架构：[伪三层架构](../README.md#伪三层架构)
+独一无二，自主研发，自主命名，开发人员可轻松驾驭的独特架构：[伪三层架构](../summary/intro.md#伪三层架构)
 
 ## 长期维护
 
