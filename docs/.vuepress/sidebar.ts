@@ -9,8 +9,8 @@ export const mySidebar: SidebarMulti = {
             prefix: 'summary/',
             items: [
                 {text: '简介', link: 'intro'},
-                {text: '为什么选择我们？', link: 'why'},
                 {text: '快速开始', link: 'quick-start'},
+                {text: '为什么选择我们？', link: 'why'},
                 {text: '精简版', link: 'fsm'},
             ]
         },
@@ -28,12 +28,12 @@ export const mySidebar: SidebarMulti = {
                 {text: '数据规则', link: 'data-rule', icon: 'mdi:planet'},
                 {text: '代码生成', link: 'code-generation'},
                 {text: '自定义异常', link: 'custom-err-msg', icon: 'mdi:planet'},
-                {text: '接口响应', link: 'response', icon: 'mdi:planet'},
+                {text: '接口响应', link: 'response'},
                 {text: '分页', link: 'paginate'},
                 {text: 'Celery', link: 'celery', icon: 'mdi:planet'},
                 {text: 'APScheduler', link: 'apscheduler'},
                 {text: '日志分析', link: 'log', icon: 'mdi:planet'},
-                {text: 'Socketio', link: 'socketio', icon: 'mdi:planet'},
+                {text: 'Socketio', link: 'socketio'},
             ]
         },
         {

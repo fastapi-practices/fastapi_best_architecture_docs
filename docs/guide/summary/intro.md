@@ -101,7 +101,6 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 ## 相关
 
-::: tip 特别鸣谢
-本文档由 [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume)
-驱动，感谢 [pengzhanbo](https://github.com/pengzhanbo) 对此开源项目的杰出贡献
-:::
+> [!IMPORTANT]
+> 本文档由 [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume)
+> 驱动，感谢 [pengzhanbo](https://github.com/pengzhanbo) 对此开源项目的杰出贡献

@@ -12,10 +12,10 @@ config:
       actions:
         - theme: brand
           text: 快速开始 ->
-          link: /guide/summary/intro
+          link: /guide/summary/quick-start
         - theme: alt
-          text: 在线预览
-          link: https://fba.xwboy.top
+          text: 为什么选择我们?
+          link: /guide/summary/why
   - type: features
     features:
       - title: 最新技术栈
