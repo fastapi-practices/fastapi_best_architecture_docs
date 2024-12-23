@@ -140,8 +140,8 @@ FBA
 
 <CardGrid>
   <RepoCard repo="wu-clan/sqlalchemy-crud-plus" />
-  <RepoCard repo="wu-clan/fast-captcha" />
   <RepoCard repo="wu-clan/fastapi_scheduler" />
+  <RepoCard repo="wu-clan/fast-captcha" />
   <RepoCard repo="wu-clan/fastapi-oauth20" />
 </CardGrid>
 

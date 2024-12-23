@@ -19,6 +19,7 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
+                {text: '路由', link: 'route'},
                 {text: 'JWT', link: 'jwt'},
                 {text: '跨域', link: 'CORS'},
                 {text: 'RBAC', link: 'RBAC'},
@@ -41,6 +42,7 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'mixin/',
             items: [
+                {text: 'CRUD', link: 'CRUD'},
                 {text: '用户信息', link: 'user', icon: 'mdi:planet'},
             ]
         },
