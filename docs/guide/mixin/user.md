@@ -13,7 +13,7 @@ title: 用户信息
 
 <p style="font-size: 14px; color: rgb(110,110,110);">
 附：星球用作
-<a href="http://localhost:8080/fastapi_best_architecture_docs/sponsors.html#%E6%9C%89%E5%81%BF%E8%B5%9E%E5%8A%A9">有偿赞助</a>
+<a href="https://fastapi-practices.github.io/fastapi_best_architecture_docs/sponsors.html#%E6%9C%89%E5%81%BF%E8%B5%9E%E5%8A%A9">有偿赞助</a>
 ，加入 Discord 社区，可领取免费体验资格
 </p>
 
