@@ -9,18 +9,22 @@ title: 快速开始
 
 ### 后端
 
+::: tip
+如果你是 PostgreSQL 用户，请先移步到 [切换数据库](../reference/db.md)
+:::
+
 :::: steps
 
 1. 准备本地环境
 
     * Python 3.10+
-    * Mysql 8.0+
+    * MySQL 8.0+ 或 PostgreSQL 16.0 +
     * Redis 推荐最新稳定版
 
 2. 准备 Git 仓库
 
    ::: info
-   提供两种方案，选择其中一种即可
+   两种方案，选择其中一种即可
    :::
 
     1. 拉取源代码仓库
@@ -31,9 +35,9 @@ title: 快速开始
        git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
        ```
 
-    2. 拉取模板仓库
+    2. 创建模板仓库
 
-       此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork（独立无绑定的关系）的个人账户仓库，如果所示，进入此项目
+       此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork（独立无绑定的关系）的个人仓库，如果所示，进入此项目
        GitHub 首页，
        使用 `use this template` 按钮创建即可，创建完成之后，使用 `git clone` 命令拉取你自己的仓库即可
 
@@ -47,7 +51,7 @@ title: 快速开始
    pip install -r requirements.txt
    ```
 
-4. 创建一个数据库：`fba`，选择 utf8mb4 编码
+4. 创建数据库：`fba`，选择 utf8mb4 编码，postgres 用户可忽略编码
 5. 启动 Redis
 6. env
 
@@ -69,21 +73,27 @@ title: 快速开始
    默认情况下，首次启动不需要修改
    :::
 
-8. 数据库迁移 [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+8. 创建数据库表（三选一）
 
-   生成迁移文件
+    - 直接启动后端项目（自动创建）
+    - 数据库迁移 [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
-   ```shell
-   alembic revision --autogenerate
-   ```
+      ::: details
+      生成迁移文件
 
-   执行迁移
+      ```shell
+      alembic revision --autogenerate
+      ```
 
-   ```shell
-   alembic upgrade head
-   ```
+      执行迁移
 
-9. 启动 celery worker, beat 和 flower ==(可选)==
+      ```shell
+      alembic upgrade head
+      ```
+      :::
+    - 执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
+
+9. ==（可选）== 启动 celery worker, beat 和 flower
 
    Celery 应用程序
 
@@ -105,11 +115,13 @@ title: 快速开始
 
 10. 初始化测试数据
 
-    使用 `backend/sql/init_test_data.sql` 文件初始化测试数据
+    执行 `backend/sql/init_test_data.sql` 脚本初始化测试数据
 
 11. 启动 fastapi 服务
 
-    此项目采用 fastapi CLI 应用启动服务，当前，为了方便本地调试，你仍然可以选择使用 pycharm 右键运行 `main.py` 文件
+    ::: warning
+    此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 main.py 文件
+    :::
 
     帮助
 
@@ -129,6 +141,12 @@ title: 快速开始
 
 ### 前端
 
+::: caution
+目前它仅作为效果演示，而不是用于生产！
+
+如果你不想因前端依赖安装问题带来困扰，请务必使用 yarn v1.x 版本
+:::
+
 :::: steps
 
 1. 准备本地环境
@@ -137,12 +155,6 @@ title: 快速开始
     * yarn 1.x
 
 2. 安装和启动
-
-   ::: caution
-   目前它仅作为效果演示，而不是用于生产！
-
-   如果你不想因前端依赖安装问题带来困扰，请务必使用 yarn v1.x 版本
-   :::
 
    安装依赖
 
@@ -156,11 +168,12 @@ title: 快速开始
    yarn dev
    ```
 
-   ::: warning
+   ::: tip
    第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
    查看详情
    :::
-   ::::
+
+::::
 
 ## 开发流程
 
@@ -187,15 +200,15 @@ title: 快速开始
 通过 `pytest` 运行单元测试，项目内仅提供了非常简易的 demo，并不是完整单元测试，如需要，请自行编写
 :::
 
-::: steps
+:::: steps
 
-1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码
-2. 使用 `backend/sql/create_tables.sql` 文件创建数据库表
-3. 使用 `backend/sql/init_pytest_data.sql` 文件初始化用于单元测试的测试数据
+1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，postgres 用户可忽略编码
+2. 创建数据库表，执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
+3. 初始化测试数据，执行 `backend/sql/` 目录下对应数据库的 `init_test_data.sql` 脚本
 4. 进入 `backend` 目录，执行单元测试命令
 
    ```shell
    pytest -vs --disable-warnings
    ```
 
-:::
+::::
