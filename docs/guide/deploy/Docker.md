@@ -97,9 +97,7 @@ title: Docker 部署
 
    如果你没有前端需求，请查看 [本机部署](#本机部署)，否则，请查看下方脚本并修改 `docker-compose.yml` 文件
 
-   ```yaml :collapsed-lines=2
-   version: "3.10"
-   
+   ```yaml :collapsed-lines=2 
    networks:
    fba_network:
      name: fba_network
@@ -110,6 +108,7 @@ title: Docker 部署
          - subnet: 172.10.10.0/24
    
    volumes:
+   # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres  // [!code warning:3]
    fba_mysql:
      name: fba_mysql
    fba_redis:
@@ -127,6 +126,7 @@ title: Docker 部署
        image: fba_server:latest
        container_name: fba_server
        restart: always
+       # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres // [!code warning:3]
        depends_on:
          - fba_mysql
          - fba_redis
@@ -135,6 +135,7 @@ title: Docker 部署
          - fba_static:/fba/backend/app/static
        networks:
          - fba_network
+       # 如果你是 postgres 用户，应将 fba_mysql:3306 修改为 fba_postgres:5432 // [!code warning:6]
        command:
          - bash
          - -c
@@ -164,7 +165,7 @@ title: Docker 部署
          --collation-server=utf8mb4_general_ci
          --lower_case_table_names=1
      
-     # 如果你是 postgres 用户，应保留 fba_postgres 容器脚本并删除 fba_mysql 容器脚本 // [!code focus:16] // [!code ++:16]
+     # 如果你是 postgres 用户，应保留 fba_postgres 容器脚本并删除 fba_mysql 容器脚本 // [!code warning:16]
      # 否则，删除 fba_postgres 容器脚本
      fba_postgres:
        image: postgres:16
@@ -194,7 +195,7 @@ title: Docker 部署
        networks:
          - fba_network
    
-     # 后端专用，这与 fba_ui 容器冲突，如果你选择使用 fba_ui 容器，// [!code focus:51] // [!code --:15]
+     # 后端专用，这与 fba_ui 容器冲突，如果你选择使用 fba_ui 容器，// [!code warning:15]
      # 你应该注释或删除 fba_nginx 容器脚本，并使用 fba_ui 容器
      fba_nginx:
        image: nginx
@@ -210,7 +211,7 @@ title: Docker 部署
        networks:
          - fba_network
      
-     # 如果服务器内存小于 4GB，CPU 小于四个内核 // [!code ++:34]
+     # 如果服务器内存小于 4GB，CPU 小于四个内核 // [!code warning:34]
      # 建议进入 fba_ui 项目单独构建这个容器（参考下方前端部署教程）
      # 如果你不选择单独构建，务必在执行下面步骤前根据前端部署教程更新前端配置文件
      # 如果你选择单独构建，务必注释或删除此容器脚本
