@@ -11,7 +11,7 @@ FBA 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
 如果本地未安装 pg，你可以使用以下命令创建 Docker 镜像
 
 ```shell
-docker run -d --name fba_postgres --restart always -e POSTGRES_DB='fba' -e POSTGRES_PASSWORD='123456' -e TZ='Asia/Shanghai' -v fba_postgrs:/var/lib/postgresql/data -p 5432:5432 postgres:16
+docker run -d --name fba_postgres --restart always -e POSTGRES_DB='fba' -e POSTGRES_PASSWORD='123456' -e TZ='Asia/Shanghai' -v fba_postgres:/var/lib/postgresql/data -p 5432:5432 postgres:16
 ```
 
 ## 默认配置
