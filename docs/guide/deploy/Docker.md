@@ -79,8 +79,8 @@ title: Docker 部署
    ```env
    DATABASE_TYPE='postgresql'
    DATABASE_HOST='fba_postgres'
-   DATABASE_PORT=3306
-   DATABASE_USER='root'
+   DATABASE_PORT=5432
+   DATABASE_USER='postgres'
    DATABASE_PASSWORD='123456'
    ```
    :::
