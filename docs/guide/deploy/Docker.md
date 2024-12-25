@@ -47,9 +47,7 @@ title: Docker 部署
 
 ### 前端
 
-::: caution
 此教程不提供前端本机部署方案，对于前后端本地开发或联调，请转至文档：[本地开发](../summary/quick-start.md#本地开发)
-:::
 
 ## 服务器部署
 
@@ -64,21 +62,32 @@ title: Docker 部署
 
    将代码拉取到服务器通常采用 ssh 方式（更安全），但是你也可以选择使用 https 方式，具体方式请根据个人自行决定，如果使用 ssh
    方式拉取代码，
-   请自行 Google 拉取教程，如果使用 https 方式，你可以查看 [后端步骤2](../introduction/quick-start.md#后端)
+   请自行 Google 拉取教程，如果使用 https 方式，你可以查看 [后端步骤 2](../summary/quick-start.md#后端)
 
 2. env
 
    进入 `deploy/backend/docker-compose` 目录，创建环境变量文件 `.env`
 
-    ```shell
-    touch .env.server ../../../backend/.env
-    ```
+   ```shell
+   touch .env.server ../../../backend/.env
+   ```
 
    将初始化环境变量配置拷贝到环境变量文件中
 
-    ```shell
-    cp .env.server ../../../backend/.env
-    ```
+   ::: warning
+   环境变量默认使用 MySQL 数据库，如果你需要使用 PostgreSQL，需修改 `.env.server` 部分配置如下：
+   ```env
+   DATABASE_TYPE='postgresql'
+   DATABASE_HOST='fba_postgres'
+   DATABASE_PORT=3306
+   DATABASE_USER='root'
+   DATABASE_PASSWORD='123456'
+   ```
+   :::
+
+   ```shell
+   cp .env.server ../../../backend/.env
+   ```
 
 3. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
 
@@ -88,7 +97,7 @@ title: Docker 部署
 
    如果你没有前端需求，请查看 [本机部署](#本机部署)，否则，请查看下方脚本并修改 `docker-compose.yml` 文件
 
-   ```yaml :collapsed-lines=6
+   ```yaml :collapsed-lines=2
    version: "3.10"
    
    networks:
@@ -279,13 +288,11 @@ title: Docker 部署
 
 5. 执行一键启动命令
 
-   ::: info
    命令执行期间遇到镜像拉取问题请自行 Google
-   :::
 
-    ```shell
-    docker-compose up -d --build
-    ```
+   ```shell
+   docker-compose up -d --build
+   ```
 
 6. 等待命令执行完成
    ::::
@@ -307,7 +314,7 @@ title: Docker 部署
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ``` :collapsed-lines=6
+   ``` :collapsed-lines=2
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -397,7 +404,7 @@ title: Docker 部署
    如果你已通过后端 docker-compose 构建前端项目，此步骤和后面的剩余步骤直接跳过即可
    :::
 
-   ```yaml :collapsed-lines=6
+   ```yaml :collapsed-lines=2
    networks:
      fba_network:
        external: true
