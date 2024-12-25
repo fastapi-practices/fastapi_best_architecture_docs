@@ -29,8 +29,13 @@ export const myNavbar = defineNavbarConfig([
         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
     },
     {
+        text: '插件市场',
+        icon: 'clarity:plugin-solid',
+        link: '/plugins'
+    },
+    {
         text: '授权',
-        icon: 'ri:key-2-fill',
+        icon: 'fluent:person-key-20-filled',
         link: '/guide/summary/why.md#承诺'
     },
     {

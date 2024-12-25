@@ -2,8 +2,15 @@
 title: 快速开始
 ---
 
+::: caution
+==FBA 仅适用于资深 Python 后端开发人员==，如果您是非资深用户，请使用 [精简版](../summary/fsm.md)
+:::
+
 > [!IMPORTANT]
-> 请一字不落的认真对待此文档，并严格按照本文档的顺序启动项目，否则你有很大几率在启动过程中遇到各种问题
+> 我们建议新手用户从一些基础和简单的内容入手，这不仅是对自身学习的一种负责态度，也是为将来能够顺利掌握这一架构所奠定的坚实基础，欢迎加入我们的
+> Discord 社区进行讨论
+>
+> 最后，请认真对待此文档，并严格按照本文档的顺序启动项目，否则你有很大几率在启动过程中遇到各种问题
 
 ## 本地开发
 
@@ -68,17 +75,16 @@ title: 快速开始
    ```
 
 7. 按需修改配置文件 `core/conf.py` 和 `.env`
-
-   ::: info   
-   默认情况下，首次启动不需要修改
-   :::
-
 8. 创建数据库表（三选一）
 
     - 直接启动后端项目（自动创建）
     - 数据库迁移 [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
-      ::: details
+      :::: details
+      ::: warning
+      此方法暂不适用于 PostgreSQL 用户，详情请查看：[#1584](https://github.com/sqlalchemy/alembic/discussions/1584)
+      :::
+
       生成迁移文件
 
       ```shell
@@ -90,10 +96,10 @@ title: 快速开始
       ```shell
       alembic upgrade head
       ```
-      :::
+      ::::
     - 执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
 
-9. ==（可选）== 启动 celery worker, beat 和 flower
+9. 启动 celery worker, beat 和 flower ==（可选）==
 
    Celery 应用程序
 
