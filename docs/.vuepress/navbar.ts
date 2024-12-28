@@ -10,7 +10,7 @@ export const myNavbar = defineNavbarConfig([
                 //link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
             },
             {
-                text: 'Ant Desgin Vue 孵化中...',
+                text: 'Vben Admin Antd 生产中...',
                 link: 'https://github.com/fastapi-practices/fba_ui'
             }
         ]

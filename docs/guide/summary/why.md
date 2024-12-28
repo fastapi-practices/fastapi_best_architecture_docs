@@ -29,7 +29,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 自创建此项目以来，我们已为此项目付出了大量的时间，并且，这仍然在继续！
 
-![Commits_over_time.png](/images/Commits_over_time.png)
+![commits_over_time.png](/images/commits_over_time.png)
 
 ## 框架由来
 

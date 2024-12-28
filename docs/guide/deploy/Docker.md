@@ -293,14 +293,14 @@ title: Docker 部署
    :::: details Arco Desgin Vue
    
    ::: caution
-   这是一个实验版本，它仅用作效果演示，而不是用于生产！
+   这是一个实验性实施，它仅用作效果演示，而不是用于生产！
    :::
    
    修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
    ::::
 
-   :::: details Ant Desgin Vue
-   生产可用？我知道你很急，但你先别急...
+   :::: details Vben Admin Antd
+   我知道你很急，但你先别急...
    ::::
 
 3. 更新 nginx 配置
