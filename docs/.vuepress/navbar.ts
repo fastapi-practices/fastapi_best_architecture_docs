@@ -2,16 +2,21 @@ import {defineNavbarConfig} from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: '演示',
+        text: 'UI 演示',
         items: [
             {
-                text: 'Arco Design 实验版本',
+                text: 'Arco Design Vue 实验性实施',
                 link: 'https://fba.xwboy.top/'
+                //link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
+            },
+            {
+                text: 'Ant Desgin Vue 孵化中...',
+                link: 'https://github.com/fastapi-practices/fba_ui'
             }
         ]
     },
     {
-        text: 'Beta',
+        text: '0.0.0 Beta',
         items: [
             {
                 text: '参与贡献',

@@ -147,10 +147,10 @@ title: 快速开始
 
 ### 前端
 
-::: caution
-目前它仅作为效果演示，而不是用于生产！
+::::: details Arco Desgin Vue
 
-如果你不想因前端依赖安装问题带来困扰，请务必使用 yarn v1.x 版本
+::: caution
+这是一个实验版本，它仅用作效果演示，而不是用于生产！
 :::
 
 :::: steps
@@ -161,6 +161,11 @@ title: 快速开始
     * yarn 1.x
 
 2. 安装和启动
+
+   ::: warning
+   第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
+   查看详情
+   :::
 
    安装依赖
 
@@ -174,12 +179,14 @@ title: 快速开始
    yarn dev
    ```
 
-   ::: tip
-   第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
-   查看详情
-   :::
-
 ::::
+:::::
+
+::::: details Ant Desgin Vue
+
+生产可用？我知道你很急，但你先别急...
+
+:::::
 
 ## 开发流程
 

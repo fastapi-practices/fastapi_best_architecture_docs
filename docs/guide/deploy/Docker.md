@@ -8,46 +8,32 @@ title: Docker 部署
 如果 docker 容器启动时端口被占用，会导致启动失败，建议在启动前检查本地端口占用情况
 :::
 
-## 本机部署
+## 本地部署
 
-本机部署是为了能够快捷的提供本地 API 服务
+本地部署是为了能够快捷的提供本地 API 服务
 
 ### 后端
 
-:::: steps
+::: steps
 
-1. env
+1. 确保你位于项目根目录
+2. 运行以下命令构建容器
 
-   进入 `deploy/backend/docker-compose` 目录，创建环境变量文件 `.env`
+   ```shell
+   docker build -f backend/backend.dockerfile -t fba_backend_independent .
+   ```
 
-    ```shell
-    touch .env.server ../../../backend/.env
-    ```
+3. 启动容器
 
-   将初始化环境变量配置拷贝到环境变量文件中
+   ```shell
+   docker run -d fba_backend_independent -p 8000:8000 --name fba_app
+   ```
 
-    ```shell
-    cp .env.server ../../../backend/.env
-    ```
-
-2. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-3. 执行一键启动命令
-
-   ::: info
-   命令执行期间遇到镜像拉取问题请自行 Google
-   :::
-
-    ```shell
-    docker-compose up -d --build
-    ```
-
-4. 等待命令执行完成
-5. 打开浏览器访问：[http://127.0.0.1:8000/api/v1/docs](http://127.0.0.1:8000/api/v1/docs)
-   ::::
+:::
 
 ### 前端
 
-此教程不提供前端本机部署方案，对于前后端本地开发或联调，请转至文档：[本地开发](../summary/quick-start.md#本地开发)
+无前端本地部署方案，请转至文档 [本地开发](../summary/quick-start.md#本地开发)
 
 ## 服务器部署
 
@@ -61,8 +47,9 @@ title: Docker 部署
 1. 拉取代码到服务器
 
    将代码拉取到服务器通常采用 ssh 方式（更安全），但是你也可以选择使用 https 方式，具体方式请根据个人自行决定，如果使用 ssh
-   方式拉取代码，
-   请自行 Google 拉取教程，如果使用 https 方式，你可以查看 [后端步骤 2](../summary/quick-start.md#后端)
+   方式拉取代码，请自行 Google 拉取教程
+   
+   如果使用 https 方式，你可以查看 [后端步骤 2](../summary/quick-start.md#后端)
 
 2. env
 
@@ -75,7 +62,7 @@ title: Docker 部署
    将初始化环境变量配置拷贝到环境变量文件中
 
    ::: warning
-   环境变量默认使用 MySQL 数据库，如果你需要使用 PostgreSQL，需修改 `.env.server` 部分配置如下：
+   如果你需要使用 PostgreSQL 数据库，需修改 `.env.server` 部分配置如下：
    ```env
    DATABASE_TYPE='postgresql'
    DATABASE_HOST='fba_postgres'
@@ -94,8 +81,6 @@ title: Docker 部署
    建议修改 `.env` 中的 `ENVIRONMENT` 为 `pro`
 
 4. 更新脚本文件
-
-   如果你没有前端需求，请查看 [本机部署](#本机部署)，否则，请查看下方脚本并修改 `docker-compose.yml` 文件
 
    ```yaml :collapsed-lines=2 
    networks:
@@ -300,16 +285,23 @@ title: Docker 部署
 
 ### 前端
 
-::: caution
-我们提供此前端部署教程的目的是为你提供前端 Docker 部署解决方案，请记住我们的声明，此前端项目仅作为效果演示，而不是用于生产！
-:::
-
-:::: steps
+::::: steps
 
 1. 拉取代码到服务器
 2. env
 
+   :::: details Arco Desgin Vue
+   
+   ::: caution
+   这是一个实验版本，它仅用作效果演示，而不是用于生产！
+   :::
+   
    修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
+   ::::
+
+   :::: details Ant Desgin Vue
+   生产可用？我知道你很急，但你先别急...
+   ::::
 
 3. 更新 nginx 配置
 
@@ -465,7 +457,7 @@ title: Docker 部署
    docker-compose run fba_ui
    ```
 
-::::
+:::::
 
 ## 注意事项
 
