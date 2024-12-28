@@ -135,8 +135,8 @@ FBA
 <CardGrid>
   <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
   <RepoCard repo="fastapi-practices/fastapi_scheduler" />
-  <RepoCard repo="fastapi-practices/fast-captcha" />
   <RepoCard repo="fastapi-practices/fastapi-oauth20" />
+  <RepoCard repo="wu-clan/fast-captcha" />
 </CardGrid>
 
 ## 精简版
