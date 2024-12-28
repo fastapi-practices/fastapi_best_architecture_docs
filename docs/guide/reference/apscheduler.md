@@ -7,7 +7,7 @@ title: APScheduler
 
 FastAPI + APScheduler 现已作为独立仓库发行，它的优势在于其灵活性与动态任务，如果你没有繁重的任务需求，它将是一个不错的选择
 
-<RepoCard repo="wu-clan/fastapi_scheduler" />
+<RepoCard repo="fastapi-practices/fastapi_scheduler" />
 
 ::: warning
 此仓库 master 分支使用 APScheduler 4.x 版本进行开发，但由于 aps

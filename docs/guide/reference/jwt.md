@@ -80,6 +80,6 @@ Token -->> 客户端: 成功
 这种授权方式通常适用于第三方平台认证登录，第三方授权成功后，将依据第三方平台信息自动创建本地用户并自动授权登录，这一切都是用户无感知的
 
 但是，想要使用此方式鉴权，你需要首先了解 OAuth 2.0 相关知识，并遵循第三方平台认证登录要求，获取平台应用和权限，
-最终，使用 [fastapi-oauth20](https://github.com/wu-clan/fastapi-oauth20) 完成编码
+最终，使用 [fastapi-oauth20](https://github.com/fastapi-practices/fastapi-oauth20) 完成编码
 
 您可以在代码路径 `backend/app/admin/api/v1/oauth2` 中查看我们的官方实现示例
