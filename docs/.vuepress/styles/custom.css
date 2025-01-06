@@ -1,5 +1,5 @@
 :root {
-    --vp-bulletin-width: 385px; /* 公告宽度 */
+    /*--vp-bulletin-width: 385px; !* 公告宽度 *!*/
     --vp-c-brand-1: rgba(0, 148, 133, 1); /* 链接颜色、强调色 */
     --vp-c-brand-2: rgba(0, 148, 133, 1); /* 链接、按钮 hover 颜色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1); /* 背景色、边框色 */

@@ -3,17 +3,7 @@ import {BulletinOptions} from "vuepress-theme-plume";
 export const myBulletin: BulletinOptions = {
     enablePage: true,
     lifetime: 'session',
-    title: '欢迎加入我们',
-    content: `
-::: center
-
-**Discord 服务器：** [Python 开发交流社区](https://discord.com/invite/yNN3wTbVAC)
-
-<hr>
-
-<iframe src="https://discord.com/widget?id=1185035164577972344&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-
-:::
-`,
-    contentType: 'markdown'
+    contentType: 'markdown',
+    title: 'Vben Admin Antd',
+    content: '已基于 VAA 5.5.2 版本完成登录适配；您可以从导航栏 UI 演示中获取详情，我们暂不提供线上演示，它正处于积极开发阶段，欢迎 PR 共创',
 }
