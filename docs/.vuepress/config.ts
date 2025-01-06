@@ -4,6 +4,8 @@ import {defineUserConfig} from "vuepress";
 import plumeTheme from "vuepress-theme-plume";
 import {viteBundler} from '@vuepress/bundler-vite'
 import {myBulletin} from "./bulletin";
+import {baiduAnalyticsPlugin} from "@vuepress/plugin-baidu-analytics";
+import {googleAnalyticsPlugin} from "@vuepress/plugin-google-analytics";
 
 
 export default defineUserConfig({
@@ -12,6 +14,14 @@ export default defineUserConfig({
     title: 'FastAPI Best Architecture',
     head: [
         ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}]
+    ],
+    plugins: [
+        baiduAnalyticsPlugin({
+            id: '6202e3701ae5a932577a1cf195084e9e'
+        }),
+        googleAnalyticsPlugin({
+            id: 'G-WVH2LQEPKY'
+        })
     ],
     theme: plumeTheme({
         hostname: 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/',
@@ -56,4 +66,5 @@ export default defineUserConfig({
         },
     }),
     bundler: viteBundler(),
+    shouldPrefetch: false,
 })
