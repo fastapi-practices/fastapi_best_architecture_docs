@@ -160,14 +160,20 @@ title: 快速开始
     * Nodejs 18.0+
     * yarn 1.x
 
-2. 安装和启动
+2. 拉取 Git 项目
+
+   ```shell
+   git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui.git
+   ```
+
+3. 安装和启动
 
    ::: warning
    第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
    查看详情
    :::
 
-   安装依赖
+   进入项目根目录，安装依赖
 
    ```shell
    yarn install
