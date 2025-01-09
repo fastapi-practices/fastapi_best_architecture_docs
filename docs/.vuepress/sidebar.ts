@@ -24,17 +24,17 @@ export const mySidebar: SidebarMulti = {
                 {text: 'CRUD', link: 'CRUD'},
                 {text: '接口响应', link: 'response'},
                 {text: '分页', link: 'paginate'},
-                {text: '自定义异常', link: 'custom-err-msg', icon: 'mdi:planet'},
+                {text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16'},
                 {text: '切换数据库', link: 'db'},
                 {text: '代码生成', link: 'code-generation'},
-                {text: '数据规则', link: 'data-rule', icon: 'mdi:planet'},
+                {text: '数据规则', link: '/planet', icon: 'fluent-color:video-16'},
                 {text: '跨域', link: 'CORS'},
                 {text: 'RBAC', link: 'RBAC'},
                 {text: '事务', link: 'transaction'},
-                {text: 'Celery', link: 'celery', icon: 'mdi:planet'},
+                {text: 'Celery', link: '/planet', icon: 'fluent-color:video-16'},
                 {text: 'APScheduler', link: 'apscheduler'},
-                {text: '日志分析', link: 'log', icon: 'mdi:planet'},
-                {text: 'Socketio', link: 'socketio', icon: 'mdi:planet'},
+                {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
+                {text: 'Socketio', link: '/planet', icon: 'fluent-color:receipt-16'},
             ]
         },
         {
@@ -43,7 +43,7 @@ export const mySidebar: SidebarMulti = {
             prefix: 'mixin/',
             items: [
                 {text: 'CRUD', link: 'CRUD'},
-                {text: '用户信息', link: 'user', icon: 'mdi:planet'},
+                {text: '操作人信息', link: '/planet', icon: 'fluent-color:receipt-16'},
             ]
         },
         {

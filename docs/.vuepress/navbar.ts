@@ -10,7 +10,7 @@ export const myNavbar = defineNavbarConfig([
                 //link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
             },
             {
-                text: 'Vben Admin Antd 生产中...',
+                text: 'Vben Admin Antd 下一代实施',
                 link: 'https://github.com/fastapi-practices/fba_ui'
             }
         ]
@@ -75,9 +75,14 @@ export const myNavbar = defineNavbarConfig([
                 link: '/team'
             },
             {
-                text: '申请加入',
-                icon: 'solar:pen-new-square-bold',
+                text: '加入团队',
+                icon: 'mingcute:user-add-2-fill',
                 link: 'https://discord.com/channels/1185035164577972344/1319245794271956993'
+            },
+            {
+                text: '知识星球',
+                icon: 'ph:planet-fill',
+                link: '/planet'
             },
         ],
     }
