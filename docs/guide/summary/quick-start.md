@@ -189,7 +189,32 @@ title: 快速开始
 :::::
 
 ::::: details Vben Admin Antd
-我知道你很急，但你先别急...
+
+1. 准备本地环境
+
+    * Nodejs 20.10.0+
+    * pnpm 9.12.0+
+
+2. 拉取 Git 项目
+
+   ```shell
+   git clone https://github.com/fastapi-practices/fba_ui.git
+   ```
+
+3. 安装和启动
+
+   进入项目根目录，安装依赖
+
+   ```shell
+   pnpm install
+   ```
+
+   启动
+
+   ```shell
+   pnpm dev
+   ```
+
 :::::
 
 ## 开发流程

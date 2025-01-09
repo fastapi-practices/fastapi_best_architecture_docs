@@ -29,12 +29,12 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 自创建此项目以来，我们已为此项目付出了大量的时间，并且，这仍然在继续！
 
-![commits_over_time.png](/images/commits_over_time.png)
+![Alt](https://repobeats.axiom.co/api/embed/b2174ef1abbebaea309091f1c998fc97d0c1536a.svg "Repo beats analytics image")
 
 ## 框架由来
 
-我们有一个完整的关于 FBA 由来的 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)，但它被不小心删除且无法到达
-😭，我们尝试联系了 GitHub 支持，但我们只能获取 issue 问题本身的正文 😭
+我们有一个完整的关于 FBA 由来的 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
+，但它被不小心删除且无法到达 😭，我们尝试联系了 GitHub 支持，但我们只能获取 issue 问题本身的正文 😭
 
 大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 FBA 创建之前，找到了 FBA 现在的精简版
 [fastapi_sqlalchemy_mysql](fsm.md#sqlalchemy)，并创建了 issue：==几点讨论与建议==；我们就此 issue 展开了为期数天的讨论，最终决定并创建了

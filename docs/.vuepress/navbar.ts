@@ -16,22 +16,29 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: '0.0.0 Beta',
+        text: 'Beta',
         items: [
             {
+                text: '技术支持',
+                icon: 'fluent-emoji-high-contrast:unicorn',
+                link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+            },
+            {
                 text: '参与贡献',
+                icon: 'mdi:people-add',
                 link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
             },
             {
                 text: '更新记录',
+                icon: 'stash:last-updates-duotone',
                 link: '/guide/other/changelog.md'
-            }
+            },
+            {
+                text: '我要催更',
+                icon: 'material-symbols:update-rounded',
+                link: 'https://discord.gg/JyedBeHXkn'
+            },
         ]
-    },
-    {
-        text: '技术支持',
-        icon: 'fluent-emoji-high-contrast:unicorn',
-        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
     },
     {
         text: '插件市场',

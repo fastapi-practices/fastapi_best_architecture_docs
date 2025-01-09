@@ -5,10 +5,6 @@ title: 简介
 > [!TIP]
 > 此仓库作为模板库公开，任何个人或企业均可免费使用！
 
-**🔥持续更新维护中🔥**
-
-![Alt](https://repobeats.axiom.co/api/embed/b2174ef1abbebaea309091f1c998fc97d0c1536a.svg "Repo beats analytics image")
-
 ## 伪三层架构
 
 mvc 架构作为常规设计模式，在 python web 中很常见，但是三层架构更令人着迷
