@@ -7,7 +7,7 @@ config:
     background: tint-plate
     hero:
       name: FastAPI Best Architecture
-      tagline: 企业级中后台解决方案
+      tagline: 企业级后端架构解决方案
       text: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
       actions:
         - theme: brand

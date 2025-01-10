@@ -2,14 +2,10 @@
 title: JWT
 ---
 
-::: tip
-通过 JWT 中间件实现全局自动授权
-:::
-
 我们编写了自定义的 JWT 授权中间件，使其可以在每次请求发起时，自动调用此中间件实现自动授权，并且，通过 Redis 和 Rust
-库对用户信息进行快速缓存，使其性能影响尽可能降到最低
+库对用户信息进行缓存和解析，使其性能影响尽可能降到最低
 
-```python
+```python :collapsed-lines=10
 class JwtAuthMiddleware(AuthenticationBackend):
     """JWT 认证中间件"""
 
@@ -47,11 +43,17 @@ class JwtAuthMiddleware(AuthenticationBackend):
         return AuthCredentials(['authenticated']), user
 ```
 
-## 验证码登录
+## Token
 
-您可以通过验证码登录进行授权，在大多数情况下，这更适用于前端登录验证
+内置遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750) 标准实现的 HTTP 授权方式，如果您想使用自定义 header
+添加 token 进行授权，可以查看我们的 [非公开内容](../../planet.md#fastapi)
 
-我们在 FBA 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回，您可以通过在线 base64 转图片或配合前端项目将其转为图片进行预览
+### 验证码登录
+
+您可以通过验证码登录获取 token，在大多数情况下，这更适用于配合前端实现登录授权
+
+我们在 FBA 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回；您可以通过在线
+base64 转图片或配合前端项目将其转为图片进行预览，以下使其工作流程：
 
 ```sequence 验证码登录逻辑
 actor 客户端
@@ -71,15 +73,14 @@ fast_captcha ->> Redis: 缓存验证码
 Token -->> 客户端: 成功
 ```
 
-## Swagger 登录
+### Swagger 登录
 
-这是一种快捷的授权方式，但仅出于调试目的，在服务启动后，进入 Swagger UI，可通过此调试接口快速获取授权 token（无需验证码）
+这是一种快捷的授权方式，但仅出于调试目的，在服务启动后，进入 Swagger 文档，可通过此调试接口快速获取授权 token（无需验证码）
 
-## OAuth 2.0
+### OAuth 2.0
 
 这种授权方式通常适用于第三方平台认证登录，第三方授权成功后，将依据第三方平台信息自动创建本地用户并自动授权登录，这一切都是用户无感知的
 
-但是，想要使用此方式鉴权，你需要首先了解 OAuth 2.0 相关知识，并遵循第三方平台认证登录要求，获取平台应用和权限，
-最终，使用 [fastapi-oauth20](https://github.com/fastapi-practices/fastapi-oauth20) 完成编码
+但是，想要使用此方式进行授权，你需要先了解 OAuth 2.0 相关知识，并遵循第三方平台认证要求，获取平台应用相关密钥，最终，手动编码完成集成
 
 您可以在代码路径 `backend/app/admin/api/v1/oauth2` 中查看我们的官方实现示例

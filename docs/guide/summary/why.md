@@ -7,16 +7,18 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 </script>
 
 ::: note
-我们不会去和其他架构做比较，我们认为每个架构都有自己的特点，适合不同的场景
-
-我们的目标是提供一个最佳架构，让开发者可以快速上手，能够专注于业务逻辑的开发，所以我们只会不断完善和优化我们的架构，为开发者带来更好的体验
+我们不会去对比其他架构，我们认为每个架构都有自己的特点，适合不同的场景
 :::
+
+## 目标
+
+==我们的目标==是提供一个最佳架构，让开发者可以快速上手，能够专注于业务逻辑开发，或从此架构中获得灵感，优化本地架构设计，所以我们只会不断完善和优化我们的架构，为开发者带来更好的体验
 
 ## 承诺
 
 <div style="text-align: center">
   <h3>「永久 MIT 协议」「永久免授权」</h3>
-  <p>如果可以，请给此项目一个 <NpmBadge repo="fastapi-practices/fastapi_best_architecture" type="stars" />，此仓库作为模板库公开，任何个人或企业均可免费使用！</p>
+  <p>如果可以，请您给此项目一个 <NpmBadge repo="fastapi-practices/fastapi_best_architecture" type="stars" />，此仓库作为模板库公开，任何个人或企业均可免费使用！</p>
   <p style="float: right">--- <a href="https://github.com/fastapi-practices">fastapi-practices</a>对此拥有所有解释权</p>
   <br>
 </div>
@@ -148,7 +150,7 @@ FBA
 
 - 全局使用 reStructuredText 文档风格
 
-  我们采用 rest 的文档风格，这是一种非常流行的 Python 代码文档，并且，与 IDE 有非常好的集成
+  我们采用了 rest 文档风格，这是一种非常流行的 Python 代码文档，并且，与 IDE 有非常好的集成
 
 - 快速同步框架新特性
 

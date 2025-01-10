@@ -15,20 +15,28 @@ CORS_ALLOWED_ORIGINS: list[str] = [
 
 ## 服务器
 
-1. 非 https 部署
+HTTP 部署
 
-    ```py
-    # [!code word:http]
-    CORS_ALLOWED_ORIGINS: list[str] = [
-            'http://服务器ip:端口号',  # 前端访问地址，末尾不要带 '/'
-        ]
-    ```
+```py
+# [!code word:http]
+CORS_ALLOWED_ORIGINS: list[str] = [
+      'http://服务器ip:端口号',  # 前端访问地址，末尾不要带 '/'
+  ]
+```
 
-2. https 部署
+HTTPS 部署
 
-    ```py
-    # [!code word:https]
-    CORS_ALLOWED_ORIGINS: list[str] = [
-            'https://域名',  # 前端访问地址，末尾不要带 '/'
-        ]
-    ```
+```py
+# [!code word:https]
+CORS_ALLOWED_ORIGINS: list[str] = [
+      'https://域名',  # 前端访问地址，末尾不要带 '/'
+  ]
+```
+
+## 局域网
+
+此方式取决于前端项目是否配置局域网服务
+
+```py
+CORS_ALLOWED_ORIGINS: list[str] = ['*']
+```
