@@ -141,7 +141,7 @@ title: 快速开始
     fastapi dev main.py
     ```
 
-12. 打开浏览器访问：[http://127.0.0.1:8000/api/v1/docs](http://127.0.0.1:8000/api/v1/docs)
+12. 打开浏览器访问：[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ::::
 
