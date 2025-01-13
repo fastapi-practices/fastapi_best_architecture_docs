@@ -15,6 +15,14 @@ title: 知识星球
 </div>
 :::
 
+<div align="center">
+(
+<Icon name="fluent-color:receipt-16" />-> 纯文字文章
+&nbsp;
+<Icon name="fluent-color:video-16" />-> 带有视频讲解的文章
+)
+</div>
+
 ## FBA
 
 <CardGrid>
@@ -42,18 +50,6 @@ title: 知识星球
     href="https://t.zsxq.com/P03oX"
     description="如何编写自定义中间件?"
     />
-  <LinkCard
-    title="自定义异常"
-    icon="fluent-color:receipt-16"
-    href="/planet"
-    description="即将到来..."
-    />
-  <LinkCard
-    title="日志分析" 
-    icon="fluent-color:receipt-16"
-    href="/planet" 
-    description="即将到来..."
-    />
 </CardGrid>
 
 ## FastAPI
@@ -70,5 +66,22 @@ title: 知识星球
     icon="fluent-color:receipt-16"
     href="https://t.zsxq.com/7qYpx"
     description="如何使用自定义 header token 实现授权？" 
+    />
+</CardGrid>
+
+## TODO
+
+<CardGrid>
+  <LinkCard
+    title="自定义异常"
+    icon="fluent-color:receipt-16"
+    href="/planet"
+    description="即将到来..."
+    />
+  <LinkCard
+    title="日志分析" 
+    icon="fluent-color:receipt-16"
+    href="/planet" 
+    description="即将到来..."
     />
 </CardGrid>

@@ -82,7 +82,7 @@ title: Docker 部署
 
 4. 更新脚本文件
 
-   ```yaml :collapsed-lines=2 
+   ```yaml :collapsed-lines
    networks:
    fba_network:
      name: fba_network
@@ -180,7 +180,8 @@ title: Docker 部署
        networks:
          - fba_network
    
-     # 后端专用，这与 fba_ui 容器冲突，如果你选择使用 fba_ui 容器，// [!code warning:15]
+     # 后端专用，如果使用此容器，意味着你只需部署后端 API 服务，不需要前端；// [!code warning:16]
+     # 这与下面的 fba_ui 容器冲突，如果你选择使用 fba_ui 容器
      # 你应该注释或删除 fba_nginx 容器脚本，并使用 fba_ui 容器
      fba_nginx:
        image: nginx
@@ -307,7 +308,7 @@ title: Docker 部署
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ``` :collapsed-lines=2
+   ``` :collapsed-lines
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -397,7 +398,7 @@ title: Docker 部署
    如果你已通过后端 docker-compose 构建前端项目，此步骤和后面的剩余步骤直接跳过即可
    :::
 
-   ```yaml :collapsed-lines=2
+   ```yaml :collapsed-lines
    networks:
      fba_network:
        external: true
