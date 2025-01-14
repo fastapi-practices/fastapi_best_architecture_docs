@@ -2,7 +2,7 @@
 pageLayout: friends
 title: FastAPI Practices
 description: FastAPI Practices 及其生态系统发展的背后是一个由开源社区人员组成的团队，我们对团队中的任何成员以及所有的关注者都致以崇高的敬意；
-  我们欢迎每一位开源伙伴的加入，请查看：关于 -> 申请加入
+  我们欢迎每一位开源伙伴的加入，请查看：关于 -> 加入团队
 groups:
   - title: 核心团队
     desc: 核心团队成员是那些积极参与维护一个或多个核心项目的人，他们对项目做出了重大贡献
@@ -29,7 +29,7 @@ groups:
           { icon: 'github', link: 'https://github.com/downdawn' }
         ]
   - title: 名誉核心团队
-    desc: 我们在此致敬过去曾做出过突出贡献但不再活跃的团队成员
+    desc: 名誉核心团队成员在过去曾为项目做出过突出贡献，我们在此向他们致敬
     list:
       - name: Meepo
         link: https://github.com/Meepoljdx
