@@ -40,11 +40,11 @@ export const myNavbar = defineNavbarConfig([
             },
         ]
     },
-    {
-        text: '插件市场',
-        icon: 'clarity:plugin-solid',
-        link: '/plugins'
-    },
+    // {
+    //     text: '插件市场',
+    //     icon: 'clarity:plugin-solid',
+    //     link: '/plugins'
+    // },
     {
         text: '授权',
         icon: 'fluent:person-key-20-filled',
