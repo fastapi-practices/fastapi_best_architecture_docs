@@ -70,6 +70,15 @@ export default defineUserConfig({
             markdownEnhance: {
                 mermaid: true,
             },
+            comment: {
+                provider: 'Giscus',
+                comment: true,
+                repo: 'fastapi-practices/fastapi_best_architecture_docs',
+                repoId: 'R_kgDOMv5sMQ',
+                category: 'Comment',
+                categoryId: 'DIC_kwDOMv5sMc4CmLp9',
+                lazyLoading: true,
+            },
         },
     }),
     bundler: viteBundler(),
