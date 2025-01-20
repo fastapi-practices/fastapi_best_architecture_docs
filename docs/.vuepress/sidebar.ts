@@ -23,7 +23,7 @@ export const mySidebar: SidebarMulti = {
                 {text: 'JWT', link: 'jwt'},
                 {text: 'CRUD', link: 'CRUD'},
                 {text: '接口响应', link: 'response'},
-                {text: '分页', link: 'paginate'},
+                {text: '分页', link: 'pagination'},
                 {text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16'},
                 {text: '切换数据库', link: 'db'},
                 {text: '代码生成', link: 'code-generation'},

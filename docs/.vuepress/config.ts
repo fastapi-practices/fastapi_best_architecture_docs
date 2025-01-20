@@ -32,7 +32,7 @@ export default defineUserConfig({
             permalink: false,
             createTime: false,
         },
-        bulletin: myBulletin,
+        // bulletin: myBulletin,
         sidebar: mySidebar,
         navbar: myNavbar,
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
