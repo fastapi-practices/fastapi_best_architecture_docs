@@ -64,4 +64,15 @@ export const mySidebar: SidebarMulti = {
             ]
         }
     ],
+    '/plugin/': [
+        {
+            text: '插件',
+            collapsed: false,
+            items: [
+                {text: '前言', link: 'before'},
+                {text: '插件开发', link: 'dev'},
+                {text: '插件市场', link: 'market'},
+            ]
+        }
+    ]
 }
