@@ -6,8 +6,7 @@ export const myNavbar = defineNavbarConfig([
         items: [
             {
                 text: 'Arco Design Vue 实验性实施',
-                link: 'https://fba.xwboy.top/'
-                //link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
+                link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
             },
             {
                 text: 'Vben Admin Antd 下一代实施',

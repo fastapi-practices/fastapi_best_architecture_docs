@@ -15,15 +15,13 @@ title: 知识星球
 </div>
 :::
 
-<div align="center">
-(
-<Icon name="fluent-color:receipt-16" />-> 纯文字文章
-&nbsp;
-<Icon name="fluent-color:video-16" />-> 带有视频讲解的文章
-)
-</div>
+## 教程
 
-## FBA
+- <Icon name="fluent-color:receipt-16" /> 纯文字文章
+- <Icon name="fluent-color:video-16" /> 带有视频讲解的文章
+
+
+### FBA 专属
 
 <CardGrid>
   <LinkCard 
@@ -52,7 +50,7 @@ title: 知识星球
     />
 </CardGrid>
 
-## FastAPI
+### FastAPI 通用
 
 <CardGrid>
   <LinkCard
@@ -69,7 +67,7 @@ title: 知识星球
     />
 </CardGrid>
 
-## TODO
+### TODO
 
 <CardGrid>
   <LinkCard
@@ -85,3 +83,7 @@ title: 知识星球
     description="即将到来..."
     />
 </CardGrid>
+
+## 插件
+
+即将到来...
