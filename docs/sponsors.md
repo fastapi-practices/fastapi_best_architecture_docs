@@ -5,12 +5,11 @@ title: 成为 FBA 的赞助者
 > [!TIP]
 > 此仓库作为模板库公开，任何个人或企业均可免费使用！
 
-::: note 前言
+::: note 用爱发电，回馈开源<Icon name="twemoji:sparkling-heart" />
+FBA 基于 MIT 开源协议，您可以查看我们的 [授权](/guide/summary/why.md#承诺) 方式
+
 FBA 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。自 2023/04/07
 启，我们一直致力于持续更新和维护，为此，我们投入了大量的时间和无限的热爱
-
-FBA 基于 MIT 开源协议，您可以查看我们的 [授权](/guide/summary/why.md#承诺)
-方式，用爱发电，回馈开源<Icon name="twemoji:sparkling-heart" />
 :::
 
 ## 无偿赞助
