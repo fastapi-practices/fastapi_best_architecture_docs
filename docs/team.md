@@ -40,8 +40,17 @@ groups:
         socials: [
           { icon: 'github', link: 'https://github.com/Meepoljdx' }
         ]
+      - name: Davidduang
+        link: https://github.com/dividduang
+        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
+        desc: 一个平平无奇的网管
+        location: 深圳，广东
+        organization: FastAPI Practices
+        socials: [
+          { icon: 'github', link: 'https://github.com/dividduang' }
+        ]
   - title: 社区伙伴
-    desc: 社区成员让这里变得更加丰富多彩，有必要在此特别提及。我们与这些主要合作伙伴建立了更加亲密的关系，经常与他们就即将到来的功能和新闻展开协作
+    desc: 社区成员让这里变得更加丰富多彩，有必要在此特别提及。我们与这些合作伙伴建立了更加亲密的关系，经常与他们就即将到来的功能和新闻展开协作
     list:
       - name: 向申
         link: https://github.com/xiangshen123
