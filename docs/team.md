@@ -45,7 +45,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/110005582?v=4
         desc: 一个平平无奇的网管
         location: 深圳，广东
-        organization: FastAPI Practices
+        organization: --
         socials: [
           { icon: 'github', link: 'https://github.com/dividduang' }
         ]
