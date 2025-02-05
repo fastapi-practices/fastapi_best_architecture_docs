@@ -7,12 +7,11 @@ title: 知识星球
 
 附：星球用于 [有偿赞助](../../sponsors.md#有偿赞助)，加入 Discord
 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
-<p style="color: yellow">如果您觉得还不错，再选择正式加入即可</p>
 </div>
 
-::: details 我要正式加入
+::: details 如果您觉得还不错，快来正式加入订阅吧
 <div align="center">
-  <p>大额优惠已发放，速速加入 <a href="https://discord.gg/Sdg6dT5kjz">Discord</a> 免费领取吧</p>
+  <p style="color: yellow">大额优惠券已发放，速速加入 <a href="https://discord.gg/Sdg6dT5kjz">Discord</a> 免费领取吧</p>
   <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" alt="知识星球">
 </div>
 :::

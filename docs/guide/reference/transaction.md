@@ -39,8 +39,7 @@ async def get_pagination_apis(db: CurrentSession) -> ResponseModel:
 
 这种方式由 SQLAlchemy 官方实现，在线程安全方面，由于在同一个函数中，可能存在多次调用，所以没有 Session 生成器严谨
 
-```python
-# [!code word:begin]
+```python{2}
 async def create(*, obj: CreateIns) -> None:
     async with async_db_session.begin() as db:
         await xxx_dao.create(db, obj)

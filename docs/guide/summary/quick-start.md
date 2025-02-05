@@ -235,15 +235,13 @@ title: 快速开始
 ::: steps
 
 1. 定义数据库模型（model）
-
 2. 定义数据验证模型（schema）
-
 3. 定义视图（api）和路由（router）
-
 4. 编写业务（service）
 
 5. 编写数据库操作（crud）
-   :::
+
+:::
 
 ## 单元测试
 
@@ -251,7 +249,7 @@ title: 快速开始
 通过 `pytest` 运行单元测试，项目内仅提供了非常简易的 demo，并不是完整单元测试，如需要，请自行编写
 :::
 
-:::: steps
+::: steps
 
 1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，postgres 用户可忽略编码
 2. 创建数据库表，执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
@@ -262,4 +260,4 @@ title: 快速开始
    pytest -vs --disable-warnings
    ```
 
-::::
+:::
