@@ -14,7 +14,7 @@ export default defineUserConfig({
     title: 'FastAPI Best Architecture',
     head: [
         ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}],
-        ['script', { src: 'https://cn.vercount.one/js' }],
+        // ['script', { src: 'https://cn.vercount.one/js' }],
         ['script', { src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }]
     ],
     plugins: [
