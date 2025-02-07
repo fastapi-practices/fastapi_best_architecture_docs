@@ -35,7 +35,7 @@ FBA 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 
 ::: info 访问统计
 
-以下信息来自于 [vercount](https://github.com/EvanNotFound/vercount)，如不显示，请尝试刷新页面
+以下信息来自于 [vercount](https://github.com/EvanNotFound/vercount)，自 2025-02-08 开始统计，如不显示，请尝试刷新页面
 
 |  统计模式  |                       统计量                       | 统计方法                      |
 |:------:|:-----------------------------------------------:|---------------------------|
