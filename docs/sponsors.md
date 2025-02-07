@@ -42,6 +42,13 @@ FBA 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 | 本站总访问量 | <span id="vercount_value_site_pv">计算中...</span> | 每访问 1 次加 1                |
 | 本站总访客数 | <span id="vercount_value_site_uv">计算中...</span> | 通过用户的 UserAgent 和 IP 地址判断 |
 
+以下信息来自于 [不如](https://ibruce.info/)，自 2025-02-08 开始统计，如不显示，请尝试刷新页面
+
+|  统计模式  |                       统计量                       | 统计方法                      |
+|:------:|:-----------------------------------------------:|---------------------------|
+| 本站总访问量 | <span id="busuanzi_value_site_pv">计算中...</span> | 单个用户连续点击 n 篇文章，记录 n 次访问量  |
+| 本站总访客数 | <span id="busuanzi_value_site_uv">计算中...</span> | 单个用户连续点击 n 篇文章，只记录 1 次访客数 |
+
 :::
 
 ::: warning 展位赞助说明
