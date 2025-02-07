@@ -61,4 +61,13 @@ groups:
         socials: [
           { icon: 'github', link: 'https://github.com/xiangshen123' }
         ]
+      - name: 陈安生（陈大锤）
+        link: https://github.com/chenansheng
+        avatar: https://avatars.githubusercontent.com/u/33371724?v=4
+        desc: 国企 java 后端，深度学习开发选手
+        location: 济南，山东
+        organization: --
+        socials: [
+          { icon: 'github', link: 'https://github.com/chenansheng' }
+        ]
 ---

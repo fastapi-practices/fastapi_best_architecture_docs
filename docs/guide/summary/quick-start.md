@@ -80,11 +80,6 @@ title: 快速开始
     - 直接启动后端项目（自动创建）
     - 数据库迁移 [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
-      :::: details
-      ::: warning
-      此方法暂不适用于 PostgreSQL 用户，详情请查看：[#1584](https://github.com/sqlalchemy/alembic/discussions/1584)
-      :::
-
       生成迁移文件
 
       ```shell
@@ -96,7 +91,7 @@ title: 快速开始
       ```shell
       alembic upgrade head
       ```
-      ::::
+
     - 执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
 
 9. 启动 celery worker, beat 和 flower ==（可选）==
