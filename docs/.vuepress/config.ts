@@ -13,7 +13,8 @@ export default defineUserConfig({
     lang: 'zh-CN',
     title: 'FastAPI Best Architecture',
     head: [
-        ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}]
+        ['link', {rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg'}],
+        ['script', { src: 'https://cn.vercount.one/js' }]
     ],
     plugins: [
         baiduAnalyticsPlugin({
