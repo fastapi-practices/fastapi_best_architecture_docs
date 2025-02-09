@@ -35,6 +35,7 @@ export default defineUserConfig({
         },
         bulletin: myBulletin,
         sidebar: mySidebar,
+        sidebarScrollbar: false,
         navbar: myNavbar,
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
         docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',

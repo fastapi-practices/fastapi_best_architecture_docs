@@ -17,11 +17,11 @@ title: 插件市场
 
 ## 插件标签
 
-- <Badge type="tip" text="free" /> - 免费
+- <Badge type="info" text="free" /> - 免费
 - <Badge type="danger" text="pay" /> - 付费
-- <Badge type="info" text="fba" /> - 仅后端
-- <Badge type="info" text="fba-arco" /> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui)
-- <Badge type="info" text="fba-vben" /> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui)
+- <Badge type="tip" text="fba" /> - 仅后端
+- <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui)
+- <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui)
 
 ## 官方
 
@@ -31,8 +31,8 @@ title: 插件市场
   <LinkCard title="通知公告" href="https://discord.com/channels/1185035164577972344/1336557178437373984">
     <p>添加后台通知公告功能</p>
     <span>
-    <Badge type="tip" text="free" />
-    <Badge type="info" text="fba" />
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
     </span>
   </LinkCard>
 </CardGrid>

@@ -38,7 +38,11 @@ title: Docker 部署
 ## 服务器部署
 
 > [!TIP]
-> 此教程以 ==https== 为例，如果你没有相关经验，请自行 Google 进行了解
+> 此教程以 https 为例，如果你没有相关经验，请自行 Google 进行了解
+
+> [!NOTE]
+> 免费 SSL 证书推荐使用 [httpsok-SSL证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
+> 证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
 
 ### 后端
 
@@ -48,7 +52,7 @@ title: Docker 部署
 
    将代码拉取到服务器通常采用 ssh 方式（更安全），但是你也可以选择使用 https 方式，具体方式请根据个人自行决定，如果使用 ssh
    方式拉取代码，请自行 Google 拉取教程
-   
+
    如果使用 https 方式，你可以查看 [后端步骤 2](../summary/quick-start.md#后端)
 
 2. env
@@ -292,11 +296,11 @@ title: Docker 部署
 2. env
 
    :::: details Arco Desgin Vue
-   
+
    ::: caution
    这是一个实验性实施，它仅用作效果演示，而不是用于生产！
    :::
-   
+
    修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
    ::::
 

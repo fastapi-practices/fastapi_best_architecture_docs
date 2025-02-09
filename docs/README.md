@@ -2,7 +2,7 @@
 home: true
 watermark: false
 config:
-  - type: 'hero'
+  - type: hero
     full: true
     background: tint-plate
     hero:
