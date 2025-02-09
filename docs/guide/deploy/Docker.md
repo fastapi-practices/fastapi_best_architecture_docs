@@ -8,6 +8,10 @@ title: Docker 部署
 如果 docker 容器启动时端口被占用，会导致启动失败，建议在启动前检查本地端口占用情况
 :::
 
+::: info
+一个还不错的教程网站：[Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice)
+:::
+
 ## 本地部署
 
 本地部署是为了能够快捷的提供本地 API 服务
