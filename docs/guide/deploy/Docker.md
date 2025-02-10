@@ -91,26 +91,6 @@ title: Docker 部署
 4. 更新脚本文件
 
    ```yaml :collapsed-lines
-   networks:
-   fba_network:
-     name: fba_network
-     driver: bridge
-     ipam:
-       driver: default
-       config:
-         - subnet: 172.10.10.0/24
-   
-   volumes:
-   # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres  // [!code warning:3]
-   fba_mysql:
-     name: fba_mysql
-   fba_redis:
-     name: fba_redis
-   fba_static:
-     name: fba_static
-   fba_rabbitmq:
-     name: fba_rabbitmq
-   
    services:
      fba_server:
        build:
@@ -119,8 +99,8 @@ title: Docker 部署
        image: fba_server:latest
        container_name: fba_server
        restart: always
-       # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres // [!code warning:3]
-       depends_on:
+       # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres
+       depends_on: # [!code warning:2]
          - fba_mysql
          - fba_redis
          - fba_celery
@@ -128,8 +108,8 @@ title: Docker 部署
          - fba_static:/fba/backend/app/static
        networks:
          - fba_network
-       # 如果你是 postgres 用户，应将 fba_mysql:3306 修改为 fba_postgres:5432 // [!code warning:6]
-       command:
+       # 如果你是 postgres 用户，应将 fba_mysql:3306 修改为 fba_postgres:5432
+       command: # [!code warning:5]
          - bash
          - -c
          - |
@@ -158,9 +138,9 @@ title: Docker 部署
          --collation-server=utf8mb4_general_ci
          --lower_case_table_names=1
      
-     # 如果你是 postgres 用户，应保留 fba_postgres 容器脚本并删除 fba_mysql 容器脚本 // [!code warning:16]
+     # 如果你是 postgres 用户，应保留 fba_postgres 容器脚本并删除 fba_mysql 容器脚本
      # 否则，删除 fba_postgres 容器脚本
-     fba_postgres:
+     fba_postgres: # [!code warning:14]
        image: postgres:16
        ports:
          - "${DOCKER_MYSQL_MAP_PORT:-5432}:5432"
@@ -188,10 +168,10 @@ title: Docker 部署
        networks:
          - fba_network
    
-     # 后端专用，如果使用此容器，意味着你只需部署后端 API 服务，不需要前端；// [!code warning:16]
+     # 后端专用，如果使用此容器，意味着你只需部署后端 API 服务，不需要前端；
      # 这与下面的 fba_ui 容器冲突，如果你选择使用 fba_ui 容器
      # 你应该注释或删除 fba_nginx 容器脚本，并使用 fba_ui 容器
-     fba_nginx:
+     fba_nginx: # [!code warning:13]
        image: nginx
        ports:
          - "8000:80"
@@ -205,11 +185,11 @@ title: Docker 部署
        networks:
          - fba_network
      
-     # 如果服务器内存小于 4GB，CPU 小于四个内核 // [!code warning:34]
+     # 如果服务器内存小于 4GB，CPU 小于四个内核
      # 建议进入 fba_ui 项目单独构建这个容器（参考下方前端部署教程）
      # 如果你不选择单独构建，务必在执行下面步骤前根据前端部署教程更新前端配置文件
      # 如果你选择单独构建，务必注释或删除此容器脚本
-     fba_ui:
+     fba_ui: # [!code warning:30]
        build:
          context: /root/fastapi_best_architecture_ui  # 根据 fba_ui 项目存放目录修改此路径
          dockerfile: Dockerfile
@@ -279,6 +259,26 @@ title: Docker 部署
            supervisorctl restart celery_worker
            supervisorctl restart celery_beat
            supervisorctl restart celery_flower
+   
+   networks:
+   fba_network:
+     name: fba_network
+     driver: bridge
+     ipam:
+       driver: default
+       config:
+         - subnet: 172.10.10.0/24
+   
+   volumes:
+   # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres
+   fba_mysql: # [!code warning:2]
+     name: fba_mysql
+   fba_redis:
+     name: fba_redis
+   fba_static:
+     name: fba_static
+   fba_rabbitmq:
+     name: fba_rabbitmq
    ```
 
 5. 执行一键启动命令
@@ -316,7 +316,7 @@ title: Docker 部署
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ``` :collapsed-lines
+   ```nginx :collapsed-lines
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -352,8 +352,8 @@ title: Docker 部署
            listen       80 default_server;
            listen       [::]:80 default_server;
            server_name  127.0.0.1;
-   
-           listen 443 ssl; // [!code focus:10] // [!code ++:9]
+           # [!code ++:9]
+           listen 443 ssl;
            # docker ssl 证书文件路径配置应该与 docker-compose 中的保持一致
            # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
            # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
@@ -390,8 +390,8 @@ title: Docker 部署
                    alias /www/fba_server/backend/static;
            }
        }
-   
-       server { // [!code focus:6] // [!code ++:6]
+       # [!code ++:6]
+       server {  
            listen 80;
            # xxx.com 应该与 .env.production 中的配置保持一致
            server_name xxx.com;
@@ -439,7 +439,7 @@ title: Docker 部署
           # local_ssl_key_path: 你在服务器存放 ssl key 证书文件的路径，自行修改
           # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
           # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
-         - local_ssl_pem_path:/etc/ssl/xxx.pem
+         - local_ssl_pem_path:/etc/ssl/xxx.pem # [!code warning:3]
          - local_ssl_key_path:/etc/ssl/xxx.key
          - fba_static:/www/fba_server/backend/static
        networks:
