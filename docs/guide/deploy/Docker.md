@@ -316,7 +316,7 @@ title: Docker 部署
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ```nginx :collapsed-lines
+   ```nginx
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -347,34 +347,40 @@ title: Docker 部署
        gzip_vary on;
    
        keepalive_timeout 300;
+       # [!code ++:7]
+       # server {
+       #     listen 80;
+       #     listen [::]:80;
+       #     # xxx.com 应该与 .env.production 中的配置保持一致
+       #     server_name xxx.com;
+       #     rewrite ^(.*)$ https://$host$1 permanent;
+       #}
    
        server {
+           # 删除这两行 [!code --:2]
            listen       80 default_server;
            listen       [::]:80 default_server;
-           server_name  127.0.0.1;
-           # [!code ++:9]
-           listen 443 ssl;
-           # docker ssl 证书文件路径配置应该与 docker-compose 中的保持一致
-           # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
-           # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
-           ssl_certificate /etc/ssl/xxx.pem;
-           ssl_certificate_key /etc/ssl/xxx.key;
-           ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-           ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-           ssl_prefer_server_ciphers on;
            
-           # xxx.com 应该与 .env.production 中的配置保持一致
-           server_name xxx.com;
+           # 更新为与上面 server_name 相同 [!code warning]
+           server_name  127.0.0.1;
+           # [!code ++:6]
+           # listen 443 ssl;
+           # ssl_certificate /etc/ssl/xxx.pem;  # 证书
+           # ssl_certificate_key /etc/ssl/xxx.key;  # 密钥
+           # ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+           # ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+           # ssl_prefer_server_ciphers on;
    
-           client_max_body_size   10m;
+           client_max_body_size   5m;
    
-           root /www/fba_ui;
+           root /var/www/fba_ui;
    
            location / {
                    try_files $uri $uri/ /index.html;
            }
    
            location /api/v1/ {
+                   # 更新 fba_server 为 0.0.0.0 [!code warning]
                    proxy_pass http://fba_server:8001;
    
                    proxy_set_header Host $http_host;
@@ -387,15 +393,8 @@ title: Docker 部署
            }
    
            location /static/ {
-                   alias /www/fba_server/backend/static;
+                   alias /var/www/fba_server/backend/static;
            }
-       }
-       # [!code ++:6]
-       server {  
-           listen 80;
-           # xxx.com 应该与 .env.production 中的配置保持一致
-           server_name xxx.com;
-           rewrite ^(.*)$ https://$host$1 permanent;
        }
    }
    ```
