@@ -52,11 +52,15 @@ title: 插件开发
 
 - 如果插件作为独立 app 发布（在 `backend/app` 目录下的应用，视为独立
   app），则插件路由应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行定义
-- 如果插件作为现有 app 扩展功能发布，则插件路由应当根据现有 app 中的路由结构进行 1:1 结构复制，插件路由将按结构自动注入，可参考
-  fba
+- 如果插件作为现有 app 扩展功能发布，则插件路由应当根据现有 app 中的路由结构进行 1:1 结构复制，可参考 fba
   源码中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
 
 :::
+
+### 插件路由说明
+
+如果插件符合插件开发的要求，则插件的所有路由都将自动注入到 FastAPI 应用中，无需任何其他操作，但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
+fba 会在启动前对所有插件进行解析
 
 ## 前端
 
