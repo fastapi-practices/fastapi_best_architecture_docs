@@ -8,20 +8,15 @@ title: 插件市场
 :::
 
 ::: info
-你可以在 [插件互动频道](https://discord.gg/5SDAZgDya9) 与插件作者及社区人员进行互动和交流
+您可以在 [插件互动频道](https://discord.gg/5SDAZgDya9) 与插件作者及社区人员进行互动和交流
+
+- <Badge type="info" text="free" /> - 免费插件
+- <Badge type="danger" text="pay" /> - 付费插件
+- <Badge type="tip" text="fba" /> - 仅后端代码插件
+- <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 代码插件
+- <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui) 代码插件
+
 :::
-
-> [!IMPORTANT]
-> 插件需要人工审核，请 [点击此处](https://discord.com/channels/1185035164577972344/1332032404663046204)
-> 与我们联系，一旦插件审核通过，我们会立即更新至此页面
-
-## 插件标签
-
-- <Badge type="info" text="free" /> - 免费
-- <Badge type="danger" text="pay" /> - 付费
-- <Badge type="tip" text="fba" /> - 仅后端
-- <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui)
-- <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui)
 
 ## 官方
 

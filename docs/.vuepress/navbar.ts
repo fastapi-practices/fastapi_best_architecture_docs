@@ -2,15 +2,31 @@ import {defineNavbarConfig} from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: 'UI 演示',
-        items: [
+        text: 'UI 效果',
+        items:[
             {
-                text: 'Arco Design Vue 实验性实施',
-                link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
+                text: 'Git 仓库',
+                icon: 'mdi:git',
+                items: [
+                    {
+                        text: 'Arco Design Vue 实验性实施',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
+                    },
+                    {
+                        text: 'Vben Admin Antd 下一代实施',
+                        link: 'https://github.com/fastapi-practices/fba_ui'
+                    }
+                ]
             },
             {
-                text: 'Vben Admin Antd 下一代实施',
-                link: 'https://github.com/fastapi-practices/fba_ui'
+                text: '线上演示',
+                icon: 'mdi:web',
+                items: [
+                    {
+                        text: 'Arco Design Vue 实验性实施',
+                        link: 'https://fba.wu-clan.site/'
+                    }
+                ]
             }
         ]
     },
@@ -40,12 +56,12 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: '插件',
+        text: '插件市场',
         icon: 'clarity:plugin-solid',
         link: '/plugin/before'
     },
     {
-        text: '授权',
+        text: '购买授权',
         icon: 'fluent:person-key-20-filled',
         link: '/guide/summary/why.md#承诺'
     },

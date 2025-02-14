@@ -19,7 +19,7 @@ export const mySidebar: SidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
-                {text: '路由', link: 'route'},
+                {text: '路由', link: 'router'},
                 {text: 'JWT', link: 'jwt'},
                 {text: 'CRUD', link: 'CRUD'},
                 {text: '接口响应', link: 'response'},
@@ -71,6 +71,7 @@ export const mySidebar: SidebarMulti = {
             items: [
                 {text: '前言', link: 'before'},
                 {text: '插件开发', link: 'dev'},
+                {text: '插件发布', link: 'publish'},
                 {text: '插件市场', link: 'market'},
             ]
         }

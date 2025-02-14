@@ -230,8 +230,11 @@ title: 快速开始
 ::: steps
 
 1. 定义数据库模型（model）
+
 2. 定义数据验证模型（schema）
+
 3. 定义视图（api）和路由（router）
+
 4. 编写业务（service）
 
 5. 编写数据库操作（crud）
