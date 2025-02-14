@@ -42,6 +42,8 @@ FBA 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 | 本站总访问量 | <span id="busuanzi_value_site_pv">计算中...</span> | 单个用户连续点击 n 篇文章，记录 n 次访问量  |
 | 本站总访客数 | <span id="busuanzi_value_site_uv">计算中...</span> | 单个用户连续点击 n 篇文章，只记录 1 次访客数 |
 
+如果需要，我们同时可以提供【谷歌统计】和【百度统计】
+
 :::
 
 ::: warning 展位赞助说明
