@@ -6,6 +6,7 @@ import {viteBundler} from '@vuepress/bundler-vite'
 import {myBulletin} from "./bulletin";
 import {baiduAnalyticsPlugin} from "@vuepress/plugin-baidu-analytics";
 import {googleAnalyticsPlugin} from "@vuepress/plugin-google-analytics";
+import {umamiAnalyticsPlugin} from "@vuepress/plugin-umami-analytics";
 
 
 export default defineUserConfig({
@@ -22,6 +23,9 @@ export default defineUserConfig({
         }),
         googleAnalyticsPlugin({
             id: 'G-WVH2LQEPKY'
+        }),
+        umamiAnalyticsPlugin({
+            id: '62984e7c-ec95-459a-9a2f-553766c6b3d4'
         })
     ],
     theme: plumeTheme({
