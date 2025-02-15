@@ -24,7 +24,14 @@ title: 插件市场
 
 <CardGrid>
   <LinkCard title="通知公告" href="https://discord.com/channels/1185035164577972344/1336557178437373984">
-    <p>添加后台通知公告功能</p>
+    <p>添加通知公告功能</p>
+    <span>
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
+    </span>
+  </LinkCard>
+  <LinkCard title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
+    <p>添加基于 Casbin 实现的 RBAC 权限</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />

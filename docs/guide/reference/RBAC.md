@@ -6,7 +6,7 @@ title: RBAC
 
 ## RBAC
 
-RBAC 提供了两种解决方案，分别为【角色菜单】、【Casbin】
+RBAC 内置了两种解决方案，分别为【角色菜单】、【Casbin】
 
 【角色菜单】是各类语言 web 开发中比较常见的解决方案，它可以设置按钮级别的控制规则
 
@@ -20,11 +20,11 @@ RBAC 提供了两种解决方案，分别为【角色菜单】、【Casbin】
 
 1. 更新 RBAC 鉴权配置
 
-   在 `core/conf.py` 文件中找到以下配置，并更新 `PERMISSION_MODE` 为 `role-menu`
+   在 `core/conf.py` 文件中找到以下配置，并更新 `RBAC_ROLE_MENU_MODE` 为 `True`
 
     ```py
     # Permission (RBAC)
-    PERMISSION_MODE: Literal['casbin', 'role-menu'] = 'role-menu'
+    RBAC_ROLE_MENU_MODE: bool = False
     ```
 
 2. 添加接口依赖
@@ -42,7 +42,7 @@ RBAC 提供了两种解决方案，分别为【角色菜单】、【Casbin】
     )
     ```
 
-3. 在菜单中添加权限标识
+3. 在系统菜单中添加权限标识
 
    我们在接口依赖中可以看到 `sys:api:add` 之类的值，这些值正是对应着菜单中的权限标识，
    只有它们完全一致，并且用户拥有对应的菜单时，才会获得相应的操作权限
@@ -103,17 +103,11 @@ g 策略 (**依赖 p 策略**)：
 ### 角色菜单
 
 - 删除 `backend/common/security/permission.py` 文件中的 `RequestPermission` 类及所有类调用
-- 删除 `backend/core/conf.py` 文件中的 `PERMISSION_MODE` 和 `RBAC_ROLE_MENU_EXCLUDE`
-- 删除 `backend/common/security/rbac.py` 文件中 `rbac_verify` 方法里面的 `if settings.PERMISSION_MODE == 'role-menu':`
+- 删除 `backend/core/conf.py` 文件中的 `RBAC_ROLE_MENU_MODE` 和 `RBAC_ROLE_MENU_EXCLUDE`
+- 删除 `backend/common/security/rbac.py` 文件中 `rbac_verify` 方法里面的 `if settings.RBAC_ROLE_MENU_MODE:`
   条件及相关代码
 
 ### Casbin
 
-- 删除 `backend/app/admin/api/v1/sys/casbin.py`、`backend/app/admin/crud/crud_casbin.py`、
-  `backend/app/admin/model/casbin_rule.py`、`backend/app/admin/schema/casbin_rule.py`、
-  `backend/app/admin/service/casbin_service.py` 文件
-- 删除 `backend/core/conf.py` 文件中的 `RBAC_CASBIN_EXCLUDE`
-- 删除 `backend/common/security/rbac.py` 文件中 `enforcer` 方法
-- 删除 `backend/common/security/rbac.py` 文件中 `rbac_verify` 方法里面的 `if settings.PERMISSION_MODE == 'role-menu':`
-  条件和 else 条件中的相关代码
-- 删除 casbin 相关依赖包
+- 删除 `backend/plugin/casbin` 文件夹
+- 删除 `backend/common/security/rbac.py` 文件中的 `casbin_verify` 相关代码
