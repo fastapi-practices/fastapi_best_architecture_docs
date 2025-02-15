@@ -41,11 +41,11 @@ title: 插件开发
             - schema/ 数据传输
             - service/ 服务
             - utils/ 工具包，如果插件无需独立工具，则无需此目录
-            - \_\_init__.py 作为 python 包保留（必填项）
+            - \_\_init__.py 作为 python 包保留（必须项）
             - conf.py 配置，如果插件不需要独立配置，则无需此文件
             - plugin.toml 插件配置（必填项）
-            - README.md 插件使用说明，如果插件可直接使用，则无需此文件
-            - requirements.txt 依赖包文件，如果插件不需要安装额外依赖，则无需此文件
+            - README.md 插件使用说明
+            - requirements.txt 依赖包文件（非必须项）如果插件不需要安装额外依赖，则无需此文件
 
 :::
 
