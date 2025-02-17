@@ -56,7 +56,7 @@ title: 知识星球
     description="轻松实现自定义异常并自动处理"
     />
   <LinkCard
-    title="自定义异常"
+    title="Linux 部署"
     icon="fluent-color:video-16"
     href="https://t.zsxq.com/4Dv5Z"
     description="从零到一在 Linux 上部署 fba"
