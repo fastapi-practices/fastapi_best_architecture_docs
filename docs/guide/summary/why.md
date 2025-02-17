@@ -35,12 +35,12 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 框架由来
 
-我们有一个完整的关于 FBA 由来的 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
+我们有一个完整的关于 fba 由来的 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
 ，但它被不小心删除且无法到达 😭，我们尝试联系了 GitHub 支持，但我们只能获取 issue 问题本身的正文 😭
 
-大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 FBA 创建之前，找到了 FBA 现在的精简版
+大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 fba 创建之前，找到了 fba 现在的精简版
 [fastapi_sqlalchemy_mysql](fsm.md#sqlalchemy)，并创建了 issue：==几点讨论与建议==；我们就此 issue 展开了为期数天的讨论，最终决定并创建了
-FBA
+fba
 
 ::: details issue 正文（由 GitHub 支持提供，无法保证原始性）
 > ==讨论一：更清晰的结构建议==
@@ -132,7 +132,7 @@ FBA
 
 ## 套件产物
 
-在创建和迭代 FBA 的同时，我们创建了很多与之相关的套件，且他们非常实用，并且我们做到了 0 耦合，您完全可以将它们用到其他与之相关的项目中去
+在创建和迭代 fba 的同时，我们创建了很多与之相关的套件，且他们非常实用，并且我们做到了 0 耦合，您完全可以将它们用到其他与之相关的项目中去
 
 <CardGrid>
   <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
@@ -143,7 +143,7 @@ FBA
 
 ## 精简版
 
-尽管我们在 FBA
+尽管我们在 fba
 中尽可能地降低了耦合度，但是对于一个简易版本来讲，它需要删除太多东西，因此，我们同时提供了精简版本，详情请查看：[精简版](./fsm.md)
 
 ## 质量与规范

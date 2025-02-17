@@ -22,7 +22,7 @@ title: 知识星球
 - <Icon name="fluent-color:video-16" /> 带有视频讲解的文章
 
 
-### FBA 专属
+### fba 专属
 
 <CardGrid>
   <LinkCard 

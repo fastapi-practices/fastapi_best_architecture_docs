@@ -11,7 +11,7 @@ FastAPI 三层架构脚手架精简版的更新可能并不同步，你可能无
 
 ## SQLAlchemy
 
-==推荐== 如果您正在使用 SQLAlchemy，请使用以下版本，并且它的维护频率较高，且由 FBA 作者积极维护
+==推荐== 如果您正在使用 SQLAlchemy，请使用以下版本，并且它的维护频率较高，且由 fba 作者积极维护
 
 <RepoCard repo="fastapi-practices/fastapi_sqlalchemy_mysql" />
 

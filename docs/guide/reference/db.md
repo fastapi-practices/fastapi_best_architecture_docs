@@ -6,7 +6,7 @@ title: 切换数据库
 此教程仅适用于 pg 用户
 :::
 
-FBA 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
+fba 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
 
 如果本地未安装 pg，你可以使用以下命令创建 Docker 镜像
 

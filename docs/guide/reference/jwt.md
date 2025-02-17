@@ -52,7 +52,7 @@ class JwtAuthMiddleware(AuthenticationBackend):
 
 您可以通过验证码登录获取 token，在大多数情况下，这更适用于配合前端实现登录授权
 
-我们在 FBA 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回；您可以通过在线
+我们在 fba 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回；您可以通过在线
 base64 转图片或配合前端项目将其转为图片进行预览，以下使其工作流程：
 
 ```sequence 验证码登录逻辑

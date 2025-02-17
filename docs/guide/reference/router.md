@@ -2,7 +2,7 @@
 title: 路由
 ---
 
-FBA 中的路由遵循 Restful API 规范
+fba 中的路由遵循 Restful API 规范
 
 ## 路由结构
 
@@ -39,6 +39,6 @@ FBA 中的路由遵循 Restful API 规范
 ::: warning
 我们统一命名了所有接口路由参数为 router，这很有助于我们编写接口，但是，不可忽略的是，在注册路由时，一定要注意我们的导入方式
 
-在 FBA 中，我们可以查看所有路由的导入，它们看起来像 `from backend.app.admin.api.v1.sys.api import router as api_router`
+在 fba 中，我们可以查看所有路由的导入，它们看起来像 `from backend.app.admin.api.v1.sys.api import router as api_router`
 ，我们这里务必导入文件内的路由参数 `router`，为了避免参数名称冲突，我们可以使用 `as` 为路由参数起一个别名
 :::
