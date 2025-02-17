@@ -121,7 +121,10 @@ title: 快速开始
 11. 启动 fastapi 服务
 
     ::: warning
-    此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 main.py 文件
+    此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 `run.py` 文件
+
+    如果你在项目中安装了 [独立 app 插件](../../plugin/market.md)，请务必使用 `run.py`
+    启动项目，否则，您将收到启动错误，详情：[fastapi/fastapi#13372 (comment)](https://github.com/fastapi/fastapi/discussions/13372#discussioncomment-12211232)
     :::
 
     帮助

@@ -15,6 +15,8 @@ title: 插件市场
 - <Badge type="tip" text="fba" /> - 仅后端代码插件
 - <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 代码插件
 - <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui) 代码插件
+- <Badge text="app" color="#D6DD59"/> - 独立 app 插件
+- <Badge text="app-extra" color="#59C7DD"/> - 非独立 app 插件 / 内置 app 扩展
 
 :::
 
@@ -28,6 +30,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
+    <Badge text="app-extra" color="#59C7DD"/>
     </span>
   </LinkCard>
   <LinkCard title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
@@ -35,6 +38,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
+    <Badge text="app-extra" color="#59C7DD"/>
     </span>
   </LinkCard>
 </CardGrid>
@@ -47,7 +51,6 @@ title: 插件市场
   <Card title="空空如也">
   </Card>
 </CardGrid>
-
 
 ## 安装
 
