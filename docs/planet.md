@@ -55,6 +55,12 @@ title: 知识星球
     href="https://t.zsxq.com/FS7jY"
     description="轻松实现自定义异常并自动处理"
     />
+  <LinkCard
+    title="自定义异常"
+    icon="fluent-color:video-16"
+    href="https://t.zsxq.com/4Dv5Z"
+    description="从零到一在 Linux 上部署 fba"
+    />
 </CardGrid>
 
 ### FastAPI 通用
