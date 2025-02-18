@@ -9,9 +9,9 @@ title: 知识星球
 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
 </div>
 
-::: details 如果您觉得还不错，快来正式加入订阅吧
+::: details 如果您觉得还不错，欢迎正式加入订阅
 <div align="center">
-  <p style="color: yellow">大额优惠券已发放，速速加入 <a href="https://discord.gg/Sdg6dT5kjz">Discord</a> 免费领取吧</p>
+  <p style="color: yellow">我们在节假日会在 Discord 统一发送大额优惠券，敬请关注</p>
   <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" alt="知识星球">
 </div>
 :::
@@ -20,7 +20,6 @@ title: 知识星球
 
 - <Icon name="fluent-color:receipt-16" /> 纯文字文章
 - <Icon name="fluent-color:video-16" /> 带有视频讲解的文章
-
 
 ### fba 专属
 

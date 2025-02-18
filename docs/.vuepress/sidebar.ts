@@ -33,7 +33,7 @@ export const mySidebar: SidebarMulti = {
                 {text: '事务', link: 'transaction'},
                 {text: 'Celery', link: '/planet', icon: 'fluent-color:video-16'},
                 {text: 'APScheduler', link: 'apscheduler'},
-                {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
+                // {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
                 {text: 'Socketio', link: '/planet', icon: 'fluent-color:receipt-16'},
             ]
         },
@@ -52,7 +52,7 @@ export const mySidebar: SidebarMulti = {
             prefix: 'deploy/',
             items: [
                 {text: 'Docker', link: 'Docker'},
-                {text: '传统', link: 'legacy'},
+                {text: '传统', link: 'legacy', icon: 'fluent-color:video-16'},
             ]
         },
         {
