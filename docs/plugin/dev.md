@@ -26,6 +26,16 @@ title: 插件开发
 
 ::::
 
+### APP 说明
+
+- 独立 app
+
+  在 `backend/app` 目录下的应用（admin、task...），视为独立 app
+
+- 非独立 app
+
+  现有 app 的扩展功能
+
 ### 插件目录结构
 
 ::: file-tree
@@ -51,19 +61,32 @@ title: 插件开发
 
 ### 插件接口
 
-- 如果插件作为独立 app 发布（在 `backend/app` 目录下的应用，视为独立
-  app），则插件路由应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行定义
-- 如果插件作为现有 app 扩展功能发布，则插件路由必须根据现有 app 中的路由结构进行 1:1 结构复制，可参考 fba
-  源码中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
+- 独立 app
+
+  插件路由应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行定义
+
+- 非独立 app
+
+  插件路由必须根据现有 app 中的目录结构进行 1:1 复制，可参考 fba
+  中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
 
 ### 插件路由
 
-如果插件符合插件开发的要求，则插件的所有路由都将自动注入到 FastAPI 应用中，无需任何其他操作，但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
+如果插件符合插件开发的要求，则插件中的所有路由都将自动注入到 FastAPI 应用中，无需任何其他操作，但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
 fba 会在启动前对所有插件进行解析
 
 ### 插件配置
 
-`plugin.toml` 是插件的配置文件，它必须存在，此配置文件根据插件的属性进行定义
+`plugin.toml` 是插件的配置文件，它必须存在，此配置文件需根据插件的属性进行定义
+
+- 独立 app
+
+    ```toml
+    # app 配置
+    [app]
+    # 插件路由器版本，默认为 v1（可参考源码 `backend/app/admin/api/router.py`）
+    router = ['v1']
+    ```
 
 - 非独立 app
 
@@ -84,15 +107,6 @@ fba 会在启动前对所有插件进行解析
     tags = ''
     ```
 
-- 独立 app
-
-    ```toml
-    # app 配置
-    [app]
-    # 插件路由器版本，默认为 v1（可参考源码 `backend/app/admin/api/router.py`）
-    router = ['v1']
-    ```
-
 ## 前端
 
-一旦 [Vben Admin Antd 下一代实施](https://github.com/fastapi-practices/fba_ui) 生产可用，我们将开启此计划...
+暂无此计划...
