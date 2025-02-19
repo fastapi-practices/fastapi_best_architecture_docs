@@ -45,12 +45,12 @@ class JwtAuthMiddleware(AuthenticationBackend):
 
 ## Token
 
-内置遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750) 标准实现的 HTTP 授权方式，如果您想使用自定义 header
-添加 token 进行授权，可以查看我们的 [非公开内容](../../planet.md#fastapi)
+内置遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750) 标准实现的 HTTP 授权方式，如果您想通过自定义 header 添加
+token 进行授权，可以查看 [Header Token（自定义 header token 实现授权）](../../planet.md#fastapi)
 
-### 验证码登录
+## 验证码登录
 
-您可以通过验证码登录获取 token，在大多数情况下，这更适用于配合前端实现登录授权
+你可以通过此方式获取 token，在大多数情况下，这更适用于配合前端实现登录授权
 
 我们在 fba 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回；您可以通过在线
 base64 转图片或配合前端项目将其转为图片进行预览，以下使其工作流程：
@@ -73,11 +73,11 @@ fast_captcha ->> Redis: 缓存验证码
 Token -->> 客户端: 成功
 ```
 
-### Swagger 登录
+## Swagger 登录
 
-这是一种快捷的授权方式，但仅出于调试目的，在服务启动后，进入 Swagger 文档，可通过此调试接口快速获取授权 token（无需验证码）
+这是一种快捷的授权方式，仅用于调试目的，在服务启动后，进入 Swagger 文档，可通过此调试接口快速获取 token（无需验证码）
 
-### OAuth 2.0
+## OAuth 2.0
 
 这种授权方式通常适用于第三方平台认证登录，第三方授权成功后，将依据第三方平台信息自动创建本地用户并自动授权登录，这一切都是用户无感知的
 
