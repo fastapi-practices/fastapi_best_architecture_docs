@@ -25,16 +25,24 @@ title: 插件市场
 这些插件由 fba 开发人员提供和维护
 
 <CardGrid>
-  <LinkCard title="通知公告" href="https://discord.com/channels/1185035164577972344/1336557178437373984">
-    <p>添加通知公告功能</p>
+  <LinkCard icon="fe:notice-active" title="通知公告" href="https://discord.com/channels/1185035164577972344/1336557178437373984">
+    <p style="color: #898989;">添加通知公告功能</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
     <Badge text="app-extra" color="#59C7DD"/>
     </span>
   </LinkCard>
-  <LinkCard title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
-    <p>添加基于 Casbin 实现的 RBAC 权限</p>
+  <LinkCard icon="solar:user-check-bold" title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
+    <p style="color: #898989;">添加基于 Casbin 实现的 RBAC 权限</p>
+    <span>
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
+    <Badge text="app-extra" color="#59C7DD"/>
+    </span>
+  </LinkCard>
+  <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://discord.com/channels/1185035164577972344/1342478204400832593">
+    <p style="color: #898989;">添加阿里云 oss 上传文件功能</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />

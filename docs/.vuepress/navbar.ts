@@ -3,7 +3,7 @@ import {defineNavbarConfig} from "vuepress-theme-plume";
 export const myNavbar = defineNavbarConfig([
     {
         text: 'UI 效果',
-        items:[
+        items: [
             {
                 text: 'Git 仓库',
                 icon: 'mdi:git',
@@ -61,7 +61,7 @@ export const myNavbar = defineNavbarConfig([
         link: '/plugin/before'
     },
     {
-        text: '购买授权',
+        text: '授权',
         icon: 'fluent:person-key-20-filled',
         link: '/guide/summary/why.md#承诺'
     },

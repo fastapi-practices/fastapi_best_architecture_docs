@@ -43,7 +43,7 @@ title: 插件开发
 - backend fba 目录
     - plugin fba 目录
         - xxx 插件名
-            - api/ 接口，务必查看下方【插件接口附加说明】
+            - api/ 接口，务必查看下方【插件接口】
             - crud/ CRUD
             - model 模型
                 - \_\_init__.py 必须在此文件内导入所有模型类
