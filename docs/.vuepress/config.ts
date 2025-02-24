@@ -59,8 +59,13 @@ export default defineUserConfig({
         editLinkText: '在 GitHub 上编辑此页面',
         lastUpdated: false,
         contributors: false,
+        copyright: {
+            license: {
+                name: 'MIT',
+                url: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/LICENSE'
+            }
+        },
         footer: {
-            message: 'MIT License',
             copyright: 'Copyright © 2024-present FastAPI Practices'
         },
         plugins: {

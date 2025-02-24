@@ -31,7 +31,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'Beta',
+        text: 'v1.0.0',
         items: [
             {
                 text: '技术支持',
@@ -46,7 +46,7 @@ export const myNavbar = defineNavbarConfig([
             {
                 text: '更新记录',
                 icon: 'stash:last-updates-duotone',
-                link: '/guide/other/changelog.md'
+                link: '/changelog.md'
             },
             {
                 text: '我要催更',

@@ -56,14 +56,6 @@ export const mySidebar: SidebarMulti = {
                 {text: '传统', link: 'legacy', icon: 'fluent-color:video-16'},
             ]
         },
-        {
-            text: '其他',
-            collapsed: false,
-            prefix: 'other/',
-            items: [
-                {text: '更新记录', link: 'changelog'},
-            ]
-        }
     ],
     '/plugin/': [
         {
