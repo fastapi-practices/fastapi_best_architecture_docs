@@ -4,7 +4,8 @@ title: 谁在使用？
 
 > [!IMPORTANT]
 > 如果您/您所在的企业/组织使用了 fba
-> 进行项目开发，我们诚挚的邀请您参与：[用户登记](https://github.com/fastapi-practices/fastapi_best_architecture/issues/477)
+>
+进行项目开发，我们诚挚的邀请您参与：[用户登记](https://github.com/fastapi-practices/fastapi_best_architecture/issues/477)
 >
 > 1. **无偿登记**：您的登记完全免费，我们郑重承诺，并且绝对不会在任何阶段向您收取任何形式的使用费用，也不会将您的信息用于商业盈利或其他非公开目的
 > 2. **优先支持**：登记后，您将被视为我们的优质用户，我们的维护团队将优先响应您在实际使用过程中遇到的问题
@@ -19,7 +20,7 @@ title: 谁在使用？
   <ImageCard
     image="https://wu-clan.github.io/picx-images-hosting/fba.png"
     title="fba"
-    description="基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计， 支持 Python 3.10 及以上版本"
+    description="基于 FastAPI 框架的企业级后端架构解决方案，遵循伪三层架构设计， 支持 Python 3.10 及以上版本"
     href="https://fastapi-practices.github.io/fastapi_best_architecture_docs/"
   />
 </CardGrid>

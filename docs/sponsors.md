@@ -21,7 +21,7 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 您可以加入我们创建的 [知识星球](https://t.zsxq.com/PDk8b)，获取星球内提供的独家内容，另外，我们会为您添加 Discord
 身份标签，以便将您加入专属频道，针对标签用户，我们还可以提供一对一线上指导，远程支持等...
 
-请注意，我们不保证星球内容的更新频率，您可以==依据星球规则进行全额退款==，我们鼓励大家[参与贡献](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme)
+请注意，我们不保证星球内容的更新频率，==您可以依据星球规则进行全额退款==，我们鼓励大家[参与贡献](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme)
 ，如果您能为 Issues 提供 PR，并且被审核通过，我们将向您发送大额优惠券或免费邀请（基于 PR 质量）
 
 ## 展位赞助商

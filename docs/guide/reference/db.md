@@ -34,8 +34,7 @@ DATABASE_PASSWORD='123456'
 PostgreSQL，例如：
 
 ```python:no-line-numbers
-# [!code word:with_variant]
-remark: Mapped[str | None] = mapped_column(LONGTEXT().with_variant(TEXT, 'postgresql'))
+remark: Mapped[str | None] = mapped_column(LONGTEXT().with_variant(TEXT, 'postgresql'))  # [!code word:with_variant]
 ```
 
 - 删除 `with_variant` 相关代码并且仅保留数据库对应的类型

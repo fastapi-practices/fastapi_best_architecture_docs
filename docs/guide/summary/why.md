@@ -29,9 +29,9 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 开放性
 
-- MIT 协议 + 架构源码全开源
-- 模板仓库，便捷复制和自主命名
-- 架构内没有任何以 `fba` 强制命名的内容，也就是说，你可以通过 IDE 快捷替换所有 `fba` 参数为其他
+- MIT 协议 + 架构源码全量开源
+- GitHub 模板仓库，便捷复制和自主命名
+- 架构内没有任何以 `fba` 强制命名的内容，也就是说，你可以通过 IDE 快捷替换所有 `fba` 参数为自定义
 
 ## 长期维护
 

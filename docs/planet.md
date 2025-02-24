@@ -16,12 +16,16 @@ title: 知识星球
 </div>
 :::
 
-## 教程
+## 文章
 
 - <Icon name="fluent-color:receipt-16" /> 纯文字文章
 - <Icon name="fluent-color:video-16" /> 带有视频讲解的文章
 
 ### fba 专属
+
+::: note
+此分类下的文章主要应用于 fba 架构，可能无法应用于其他三方架构方案
+:::
 
 <CardGrid>
   <LinkCard 
@@ -64,6 +68,10 @@ title: 知识星球
 
 ### FastAPI 通用
 
+::: note
+此分类下的文章可应用于任何基于 FastAPI 框架开发的架构
+:::
+
 <CardGrid>
   <LinkCard
     title="Socketio" 
@@ -83,13 +91,21 @@ title: 知识星球
 
 <CardGrid>
   <LinkCard
-    title="日志分析" 
+    title="空" 
     icon="fluent-color:receipt-16"
-    href="/planet" 
-    description="即将到来..."
+    description="..."
     />
 </CardGrid>
 
 ## 插件
 
-即将到来...
+::: note
+此分类下的插件仅可应用于 fba 架构的 [插件系统](./plugin/market.md)
+:::
+
+<CardGrid>
+  <LinkCard
+    title="空"
+    description="..."
+    />
+</CardGrid>
