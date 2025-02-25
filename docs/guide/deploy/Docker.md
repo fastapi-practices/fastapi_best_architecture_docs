@@ -87,7 +87,7 @@ title: Docker 部署
      fba_server:
        build:
          context: ../../../
-         dockerfile: backend/backend.dockerfile
+         dockerfile: backend/Dockerfile
        image: fba_server:latest
        container_name: fba_server
        restart: always
@@ -124,8 +124,7 @@ title: Docker 部署
          - fba_mysql:/var/lib/mysql
        networks:
          - fba_network
-       command:
-         --default-authentication-plugin=mysql_native_password
+       command: --default-authentication-plugin=mysql_native_password
          --character-set-server=utf8mb4
          --collation-server=utf8mb4_general_ci
          --lower_case_table_names=1
@@ -231,7 +230,9 @@ title: Docker 部署
      fba_celery:
        build:
          context: ../../../
-         dockerfile: backend/celery.dockerfile
+         dockerfile: backend/Dockerfile
+         args:
+           - SERVICE_TYPE=celery
        image: fba_celery:latest
        ports:
          - "8555:8555"
