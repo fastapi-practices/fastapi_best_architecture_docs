@@ -63,8 +63,8 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 - backend 后端
     - alembic/ 数据库迁移
-    - app/ 应用
-        - admin 系统后台
+    - app 应用
+        - admin/ 系统后台
             - api/ 接口
             - crud/ CRUD
             - model 模型

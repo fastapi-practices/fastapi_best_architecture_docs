@@ -26,72 +26,74 @@ title: 插件开发
 
 ::::
 
-### APP 说明
+### 插件分类
 
-- 独立 app
+与插件相关的部分文档中，可能高频次出现以下两个词
 
-  在 `backend/app` 目录下的应用（admin、task...），视为独立 app
+- ==应用级插件=={.note}
 
-- 非独立 app
+  在 [项目结构](../guide/summary/intro.md#项目结构) 中，app
+  目录下的一级文件夹被视为应用，此原理同样应用于插件系统。也就是说，如果插件被开发为应用，那么它们将会像应用一样被注入到系统中，我们称这类插件为【应用级插件】
 
-  现有 app 的扩展功能
+- ==扩展级插件=={.note}
+
+  与【应用级插件】相反，如果插件不被开发为应用，那么它们将被开发为 app 目录下已存在应用的扩展功能，并做为扩展 API
+  被注入应用中，我们称这类插件为【扩展级插件】
 
 ### 插件目录结构
 
 ::: file-tree
 
-- backend fba 目录
-    - plugin fba 目录
+- backend 固定目录
+    - plugin 固定目录
         - xxx 插件名
-            - api/ 接口，务必查看下方【插件接口】
-            - crud/ CRUD
-            - model 模型
+            - api/ 接口，务必查看下方 [接口路由](#插件路由)
+            - crud/ CRUD（非必须项）
+            - model 模型（非必须项）
                 - \_\_init__.py 必须在此文件内导入所有模型类
                 - …
-            - schema/ 数据传输
-            - service/ 服务
-            - utils/ 工具包，如果插件无需独立工具，则无需此目录
+            - schema/ 数据传输（非必须项）
+            - service/ 服务（非必须项）
+            - utils/ 工具包（非必须项）
             - \_\_init__.py 作为 python 包保留（必须项）
-            - conf.py 常量配置，如果插件不需要独立常量配置，则无需此文件
-            - plugin.toml 插件配置文件（必填项）
-            - README.md 插件使用说明
-            - requirements.txt 依赖包文件（非必须项）如果插件不需要安装额外依赖，则无需此文件
+            - conf.py 常量配置（非必须项）
+            - plugin.toml 插件配置文件（必须项）
+            - README.md 插件使用说明（必须项）
+            - requirements.txt 依赖包文件（非必须项）如果插件需要安装依赖，则必须
 
 :::
-
-### 插件接口
-
-- 独立 app
-
-  插件路由应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行定义
-
-- 非独立 app
-
-  插件路由必须根据现有 app 中的目录结构进行 1:1 复制，可参考 fba
-  中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
 
 ### 插件路由
 
 如果插件符合插件开发的要求，则插件中的所有路由都将自动注入到 FastAPI 应用中，无需任何其他操作，但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
 fba 会在启动前对所有插件进行解析
 
+- 应用级插件
+
+  插件路由应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行定义
+
+- 扩展级插件
+
+  插件路由必须根据现有应用中的目录结构进行 1:1 复制，可参考 fba
+  中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
+
 ### 插件配置
 
 `plugin.toml` 是插件的配置文件，它必须存在，此配置文件需根据插件的属性进行定义
 
-- 独立 app
+- 应用级插件
 
     ```toml
-    # app 配置
+    # 应用配置
     [app]
-    # 插件路由器版本，默认为 v1（可参考源码 `backend/app/admin/api/router.py`）
+    # 插件路由器版本，默认为 v1，可参考源码：backend/app/admin/api/router.py
     router = ['v1']
     ```
 
-- 非独立 app
+- 扩展级插件
 
     ```toml
-    # app 配置 
+    # 应用配置 
     [app]
     # 此插件属于哪个 app
     include = ''

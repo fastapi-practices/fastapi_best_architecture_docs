@@ -74,6 +74,8 @@ export default defineUserConfig({
             },
             watermark: true,
             markdownPower: {
+                abbr: true,
+                annotation: true,
                 icons: true,
             },
             markdownEnhance: {

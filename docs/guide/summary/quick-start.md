@@ -52,11 +52,17 @@ title: 快速开始
 
 3. 安装依赖包
 
-   拉取项目到本地后，进入项目 `backend` 目录，执行以下命令
+    - 架构依赖
 
-   ```shell
-   pip install -r requirements.txt
-   ```
+      拉取项目到本地后，进入项目 `backend` 目录，执行以下命令安装架构依赖
+
+      ```shell
+      pip install -r requirements.txt
+      ```
+
+    - 插件依赖
+
+      执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
 
 4. 创建数据库：`fba`，选择 utf8mb4 编码，postgres 用户可忽略编码
 5. 启动 Redis
@@ -120,11 +126,15 @@ title: 快速开始
 
 11. 启动 fastapi 服务
 
-    ::: warning
+    ::: info
     此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 `run.py` 文件
+    :::
 
-    如果你在项目中安装了 [独立 app 插件](../../plugin/market.md)，请务必使用 `run.py`
-    启动项目，否则，您将收到启动错误，详情：[fastapi/fastapi#13372 (comment)](https://github.com/fastapi/fastapi/discussions/13372#discussioncomment-12211232)
+    ::: warning
+    如果你在项目中安装了 [应用级插件](../../plugin/dev.md#插件分类)，请务必使用 `run.py`
+    文件启动项目，否则，您将收到启动错误
+
+    详情：[fastapi/fastapi#13372 (comment)](https://github.com/fastapi/fastapi/discussions/13372#discussioncomment-12211232)
     :::
 
     帮助

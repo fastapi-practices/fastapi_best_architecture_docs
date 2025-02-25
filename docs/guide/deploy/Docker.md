@@ -61,16 +61,10 @@ title: Docker 部署
 
 2. env
 
-   进入 `deploy/backend/docker-compose` 目录，创建环境变量文件 `.env`
-
-   ```shell
-   touch .env.server ../../../backend/.env
-   ```
-
-   将初始化环境变量配置拷贝到环境变量文件中
+   进入 `deploy/backend/docker-compose` 目录，拷贝环境变量文件 `.env.server`
 
    ::: warning
-   如果你需要使用 PostgreSQL 数据库，需修改 `.env.server` 部分配置如下：
+   如果你需要使用 PostgreSQL 数据库，执行命令前，需修改 `.env.server` 部分配置如下：
    ```env
    DATABASE_TYPE='postgresql'
    DATABASE_HOST='fba_postgres'
@@ -84,9 +78,7 @@ title: Docker 部署
    cp .env.server ../../../backend/.env
    ```
 
-3. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-
-   建议修改 `.env` 中的 `ENVIRONMENT` 为 `pro`
+3. 按需修改配置文件 `backend/core/conf.py` 和 `backend/.env`
 
 4. 更新脚本文件
 
@@ -316,7 +308,7 @@ title: Docker 部署
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ```nginx
+   ```nginx :collapsed-lines
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -347,6 +339,8 @@ title: Docker 部署
        gzip_vary on;
    
        keepalive_timeout 300;
+   
+       # 添加 https conf
        # [!code ++:7]
        # server {
        #     listen 80;
@@ -357,12 +351,15 @@ title: Docker 部署
        #}
    
        server {
-           # 删除这两行 [!code --:2]
+           # 删除下面两行
+           # [!code --:2]
            listen       80 default_server;
            listen       [::]:80 default_server;
            
            # 更新为与上面 server_name 相同 [!code warning]
            server_name  127.0.0.1;
+   
+           # 添加 https conf
            # [!code ++:6]
            # listen 443 ssl;
            # ssl_certificate /etc/ssl/xxx.pem;  # 证书
@@ -380,7 +377,6 @@ title: Docker 部署
            }
    
            location /api/v1/ {
-                   # 更新 fba_server 为 0.0.0.0 [!code warning]
                    proxy_pass http://fba_server:8001;
    
                    proxy_set_header Host $http_host;
