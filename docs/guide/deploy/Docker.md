@@ -124,7 +124,8 @@ title: Docker 部署
          - fba_mysql:/var/lib/mysql
        networks:
          - fba_network
-       command: --default-authentication-plugin=mysql_native_password
+       command: 
+         --default-authentication-plugin=mysql_native_password
          --character-set-server=utf8mb4
          --collation-server=utf8mb4_general_ci
          --lower_case_table_names=1
@@ -254,24 +255,26 @@ title: Docker 部署
            supervisorctl restart celery_flower
    
    networks:
-   fba_network:
-     name: fba_network
-     driver: bridge
-     ipam:
-       driver: default
-       config:
-         - subnet: 172.10.10.0/24
+     fba_network:
+       name: fba_network
+       driver: bridge
+       ipam:
+         driver: default
+         config:
+           - subnet: 172.10.10.0/24
    
    volumes:
-   # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres
-   fba_mysql: # [!code warning:2]
-     name: fba_mysql
-   fba_redis:
-     name: fba_redis
-   fba_static:
-     name: fba_static
-   fba_rabbitmq:
-     name: fba_rabbitmq
+     # 如果你是 postgres 用户，应将 fba_mysql 修改为 fba_postgres
+     fba_mysql: # [!code warning:2]
+       name: fba_mysql
+     fba_redis:
+       name: fba_redis
+     fba_static:
+       name: fba_static
+     fba_static_upload:
+       name: fba_static_upload
+     fba_rabbitmq:
+       name: fba_rabbitmq
    ```
 
 5. 执行一键启动命令
