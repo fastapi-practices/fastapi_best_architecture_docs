@@ -10,9 +10,9 @@ fba [核心架构](./guide/summary/intro.md#伪三层架构)
 
 <a id="v1.0.1"></a>
 
-# [v1.0.1](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.1) - 2025-02-26
+## [v1.0.1](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.1) - 2025-02-26
 
-## What's Changed
+### What's Changed
 
 * Update the changelog for v1.0.0 by [@wu-clan](https://github.com/wu-clan)
   in [#524](https://github.com/fastapi-practices/fastapi_best_architecture/pull/524)
@@ -27,7 +27,7 @@ fba [核心架构](./guide/summary/intro.md#伪三层架构)
 * Optimize Dockerfile for faster builds by [@huyuwei1996](https://github.com/huyuwei1996)
   in [#526](https://github.com/fastapi-practices/fastapi_best_architecture/pull/526)
 
-## New Contributors
+### New Contributors
 
 * [@huyuwei1996](https://github.com/huyuwei1996) made their first contribution
   in [#525](https://github.com/fastapi-practices/fastapi_best_architecture/pull/525)
