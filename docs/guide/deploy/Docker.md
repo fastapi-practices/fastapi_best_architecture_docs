@@ -61,7 +61,12 @@ title: Docker 部署
 
 2. env
 
-   进入 `deploy/backend/docker-compose` 目录，拷贝环境变量文件 `.env.server`
+   进入 `deploy/backend/docker-compose` 目录，按需修改 `.env.server` 文件
+
+   ::: note
+   我们在 docker-compose 脚本内通过挂载的方式直接使用此文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至 docker
+   容器，这意味着，修改环境变量将无需重新 build 
+   :::
 
    ::: warning
    如果你需要使用 PostgreSQL 数据库，执行命令前，需修改 `.env.server` 部分配置如下：
@@ -74,11 +79,7 @@ title: Docker 部署
    ```
    :::
 
-   ```shell
-   cp .env.server ../../../backend/.env
-   ```
-
-3. 按需修改配置文件 `backend/core/conf.py` 和 `backend/.env`
+3. 按需修改配置文件 `backend/core/conf.py`
 
 4. 更新脚本文件
 
@@ -97,6 +98,7 @@ title: Docker 部署
          - fba_redis
          - fba_celery
        volumes:
+         - .env.server:/fba/backend/.env
          - fba_static:/fba/backend/app/static
        networks:
          - fba_network
@@ -111,7 +113,7 @@ title: Docker 部署
            supervisorctl restart fastapi_server
    
      fba_mysql:
-       image: mysql:8.0.29
+       image: mysql:8.0.41
        ports:
          - "${DOCKER_MYSQL_MAP_PORT:-3306}:3306"
        container_name: fba_mysql
@@ -148,7 +150,7 @@ title: Docker 部署
          - fba_network
    
      fba_redis:
-       image: redis:6.2.7
+       image: redis
        ports:
          - "${DOCKER_REDIS_MAP_PORT:-6379}:6379"
        container_name: fba_redis
@@ -156,7 +158,7 @@ title: Docker 部署
        environment:
          - TZ=Asia/Shanghai
        volumes:
-         - fba_redis:/var/lib/redis
+         - fba_redis:/usr/local/etc/redis
        networks:
          - fba_network
    
@@ -214,7 +216,7 @@ title: Docker 部署
    
      fba_rabbitmq:
        hostname: fba_rabbitmq
-       image: rabbitmq:3.12.7
+       image: rabbitmq:3.13.7
        ports:
          - "15672:15672"
          - "5672:5672"

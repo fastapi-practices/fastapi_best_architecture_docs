@@ -30,7 +30,7 @@ title: 快速开始
 
 2. 准备 Git 仓库
 
-   ::: info
+   ::: note
    两种方案，选择其中一种即可
    :::
 
@@ -52,12 +52,16 @@ title: 快速开始
 
 3. 安装依赖包
 
+   ::: note
+   无论你正在使用 uv 还是 pip，fba 内都不包含任何国内源配置，默认使用官方源，如果您需要依赖包加速，请自行 Google 配置国内源
+   :::
+
     - 架构依赖
 
       拉取项目到本地后，进入项目 `backend` 目录，执行以下命令安装架构依赖
 
       ```shell
-      pip install -r requirements.txt
+         pip install -r requirements.txt
       ```
 
     - 插件依赖
