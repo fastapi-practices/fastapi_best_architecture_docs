@@ -233,7 +233,7 @@ title: Docker 部署
          context: ../../../
          dockerfile: backend/Dockerfile
          args:
-           - SERVICE_TYPE=celery
+           - SERVER_TYPE=celery
        image: fba_celery:latest
        ports:
          - "8555:8555"
