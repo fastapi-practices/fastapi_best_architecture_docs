@@ -30,7 +30,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#59C7DD"/>
+    <Badge text="app-extra" color="#11aa00"/>
     </span>
   </LinkCard>
   <LinkCard icon="solar:user-check-bold" title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
@@ -38,7 +38,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#59C7DD"/>
+    <Badge text="app-extra" color="#11aa00"/>
     </span>
   </LinkCard>
   <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://discord.com/channels/1185035164577972344/1342478204400832593">
@@ -46,7 +46,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#59C7DD"/>
+    <Badge text="app-extra" color="#11aa00"/>
     </span>
   </LinkCard>
 </CardGrid>
@@ -80,7 +80,7 @@ title: 插件市场
       ![cg1](/images/plugin_zip.png)
       :::
 
-    - 通过 fba 插件打包接口创建的 zip 压缩包
+    - 通过插件打包接口创建的 zip 压缩包
 
 2. 将压缩包通过插件安装接口进行安装
 3. 根据插件使用说明完成安装
