@@ -72,7 +72,7 @@ export default defineUserConfig({
             shiki: {
                 languages: ['shell', 'yaml', 'py']
             },
-            watermark: true,
+            // watermark: true,
             markdownPower: {
                 abbr: true,
                 annotation: true,

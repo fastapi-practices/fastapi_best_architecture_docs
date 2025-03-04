@@ -24,7 +24,7 @@ title: Docker 部署
 2. 运行以下命令构建容器
 
    ```shell
-   docker build -f backend/backend.dockerfile -t fba_backend_independent .
+   docker build -f backend/Dockerfile -t fba_backend_independent .
    ```
 
 3. 启动容器
