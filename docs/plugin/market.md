@@ -15,8 +15,8 @@ title: 插件市场
 - <Badge type="tip" text="fba" /> - 仅后端代码插件
 - <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 代码插件
 - <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui) 代码插件
-- <Badge text="app" color="#D6DD59"/> - 应用级插件
-- <Badge text="app-extra" color="#59C7DD"/> - 扩展级插件
+- <Badge text="app" color="#ff9900"/> - 应用级插件
+- <Badge text="app-extra" color="#11aa00"/> - 扩展级插件
 
 :::
 
@@ -72,8 +72,15 @@ title: 插件市场
 
 ### 自动
 
-（此功能开发中...）
-
 1. 获取打包好的插件 zip 压缩包
+
+    - 插件 GitHub 仓库中的 Release zip 压缩包
+
+      ::: details 示例
+      ![cg1](/images/plugin_zip.png)
+      :::
+
+    - 通过 fba 插件打包接口创建的 zip 压缩包
+
 2. 将压缩包通过插件安装接口进行安装
 3. 根据插件使用说明完成安装
