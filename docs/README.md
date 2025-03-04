@@ -62,6 +62,7 @@ import { goldSponsors, generalSponsors } from '@source/.vuepress/data/sponsors'
 v-if="goldSponsors.length"
 :items="goldSponsors"
 mode="broadcast"
+:loop="false"
 :height="200"
 :slides-per-view="3"
 :space-between="10"

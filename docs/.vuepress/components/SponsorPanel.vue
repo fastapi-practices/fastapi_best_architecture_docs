@@ -72,7 +72,7 @@ const openSponsorLink = (href) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 65px;
+  height: 66px;
 }
 
 .sponsor-item:hover {
@@ -80,13 +80,13 @@ const openSponsorLink = (href) => {
 }
 
 .sponsor-item.gold {
-  height: 95px;
+  height: 96px;
 }
 
 .sponsor-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .sponsor-text {

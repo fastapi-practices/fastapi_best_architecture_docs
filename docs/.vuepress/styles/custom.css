@@ -12,3 +12,11 @@
     --vp-c-brand-2: rgba(0, 148, 133, 1); /* 链接、按钮 hover 颜色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1); /* 背景色、边框色 */
 }
+
+.vp-swiper .swiper-slide-img {
+    object-fit: fill;
+}
+
+.swiper-slide-custom-container {
+    border: 1px solid rgb(177 177 177 / 66%) !important;
+}
