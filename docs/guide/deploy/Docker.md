@@ -29,8 +29,10 @@ title: Docker 部署
 
 3. 启动容器
 
+   本机启动需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
+
    ```shell
-   docker run -d fba_backend_independent -p 8000:8000 --name fba_app
+   docker run -d -p 8000:8000 --name fba_server fba_backend_independent
    ```
 
 :::
