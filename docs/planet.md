@@ -11,7 +11,7 @@ title: 知识星球
 
 ::: details 如果您觉得还不错，欢迎正式加入订阅
 <div align="center">
-  <p style="color: yellow">我们在节假日会在 Discord 统一发送大额优惠券，敬请关注</p>
+  <p style="color: #fd7600">我们在节假日会在 Discord 统一发送大额优惠券，敬请关注</p>
   <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" alt="知识星球">
 </div>
 :::

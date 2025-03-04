@@ -7,7 +7,9 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 </script>
 
 ::: note
-我们不会去对比其他架构，我们认为每个架构都有自己的特点，适合不同的场景
+我们不会去对比其他架构，我们认为每个架构都有自己的特点，适合不同的场景。
+
+但 fba 绝对是开源架构中代码最干净，最规范且最令人赏心悦目的项目之一
 :::
 
 ## 目标
