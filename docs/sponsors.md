@@ -2,10 +2,7 @@
 title: 成为 fba 的赞助者
 ---
 
-> [!TIP]
-> 此仓库作为模板库公开，任何个人或企业均可免费使用！
-
-::: note 用爱发电，回馈开源<Icon name="twemoji:sparkling-heart" />
+::: note 用爱发电，回馈开源
 fba 基于 MIT 开源协议，您可以查看我们的 [授权方式](/guide/summary/why.md#承诺)
 
 fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。自 2023/04/07
@@ -15,6 +12,12 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 ## 无偿赞助
 
 您可以通过此链接 [null](https://wu-clan.github.io/sponsor/) 请 fba 作者喝杯奶茶/咖啡，不胜感激
+
+::: info
+我在 Linux Do 发了一篇主题：[FastAPI 最佳架构](https://linux.do/t/topic/470425?u=wu-clan)
+
+欢迎社区大佬们进行锐评，如果觉得项目还不错，请赞助我们一颗小心心吧 <Icon name="twemoji:sparkling-heart" />
+:::
 
 ## 有偿赞助
 

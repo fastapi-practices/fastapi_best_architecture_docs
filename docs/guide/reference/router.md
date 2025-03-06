@@ -14,7 +14,7 @@ fba 中的路由遵循 Restful API 规范
 
 - backend 后端
     - app 应用
-        - xxx 自定义应用（包含子包）
+        - xxx 自定义应用 <Badge type="warning" text="包含子包" />
             - api 接口
                 - v1
                     - xxx 子包
@@ -23,7 +23,7 @@ fba 中的路由遵循 Restful API 规范
                         - ...
                 - __init\_\_.py
                 - router.py 在此文件内注册所有子包 __init\_\_.py 文件中的路由
-        - xxx 自定义应用（不包含子包）
+        - xxx 自定义应用 <Badge type="warning" text="不包含子包" />
             - api 接口
                 - v1
                     - _\_init\_\_.py 不做任何操作

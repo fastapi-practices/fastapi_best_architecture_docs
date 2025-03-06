@@ -68,7 +68,7 @@ title: 快速开始
 
       执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
 
-4. 创建数据库：`fba`，选择 utf8mb4 编码，postgres 用户可忽略编码
+4. 创建数据库：`fba`，选择 utf8mb4 编码，PostgreSQL 用户可忽略编码
 5. 启动 Redis
 6. env
 
@@ -84,7 +84,7 @@ title: 快速开始
    cp .env.example .env
    ```
 
-7. 按需修改配置文件 `core/conf.py` 和 `.env`
+7. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
 8. 创建数据库表（三选一）
 
     - 直接启动后端项目（自动创建）
@@ -159,7 +159,7 @@ title: 快速开始
 
 ### 前端
 
-::: tip
+::: warning
 前端项目并不是我们发展的重心，我们创建的所有前端实施，均用于 UI
 效果演示，它们不一定适用于生产环境，您可以点击查看我们的 [目标](./why.md#目标)
 :::
@@ -167,7 +167,7 @@ title: 快速开始
 ::::: details Arco Desgin Vue
 
 ::: caution
-这是一个实验性实施，它仅用作效果演示，而不是用于生产！
+这是一个实验性实施，仅用于效果演示，此版本即将存档，请勿将其用于生产！
 :::
 
 :::: steps
@@ -207,8 +207,8 @@ title: 快速开始
 
 ::::: details Vben Admin Antd
 
-::: warning
-这是下一代实施，目前正处于积极开发阶段
+::: tip
+这是下一代实施，目前正处于积极开发阶段，未来将完全适配 fba
 :::
 
 1. 准备本地环境
@@ -219,7 +219,7 @@ title: 快速开始
 2. 拉取 Git 项目
 
    ```shell
-   git clone https://github.com/fastapi-practices/fba_ui.git
+   git clone https://github.com/fastapi-practices/fba_admin.git
    ```
 
 3. 安装和启动

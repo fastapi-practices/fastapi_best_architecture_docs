@@ -20,26 +20,39 @@ title: Docker 部署
 
 ::: steps
 
-1. 确保你位于项目根目录
-2. 运行以下命令构建容器
+1. env
+
+   在 `backend` 目录中，创建环境变量文件
+
+   ```shell
+   touch .env
+   ```
+
+   将初始化环境变量配置拷贝到环境变量文件中
+
+   ```shell
+   cp .env.example .env
+   ```
+
+2. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
+3. 确保你位于项目根目录
+4. 运行以下命令构建容器
+
+   如果容器要在本地启动，需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
 
    ```shell
    docker build -f backend/Dockerfile -t fba_backend_independent .
    ```
 
-3. 启动容器
+5. 启动容器
 
-   本机启动需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
+   由于构建不包含数据库，请确保本地已安装并启动相关数据库（mysql / postgresql、redis）
 
    ```shell
    docker run -d -p 8000:8000 --name fba_server fba_backend_independent
    ```
 
 :::
-
-### 前端
-
-无前端本地部署方案，请转至文档 [本地开发](../summary/quick-start.md#本地开发)
 
 ## 服务器部署
 
@@ -67,7 +80,7 @@ title: Docker 部署
 
    ::: note
    我们在 docker-compose 脚本内通过挂载的方式直接使用此文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至 docker
-   容器，这意味着，修改环境变量将无需重新 build 
+   容器，这意味着，修改环境变量将无需重新 build
    :::
 
    ::: warning
@@ -85,7 +98,7 @@ title: Docker 部署
 
 4. 更新脚本文件
 
-   ```yaml :collapsed-lines
+   ```yaml :collapsed-lines=6
    services:
      fba_server:
        build:
@@ -187,7 +200,7 @@ title: Docker 部署
      # 如果你选择单独构建，务必注释或删除此容器脚本
      fba_ui: # [!code warning:30]
        build:
-         context: /root/fastapi_best_architecture_ui  # 根据 fba_ui 项目存放目录修改此路径
+         context: /root/fastapi_best_architecture_ui  # 根据 Arco Desgin Vue 项目存放目录修改此路径
          dockerfile: Dockerfile
        image: fba_ui:latest
        ports:
@@ -300,23 +313,18 @@ title: Docker 部署
 2. env
 
    :::: details Arco Desgin Vue
-
-   ::: caution
-   这是一个实验性实施，它仅用作效果演示，而不是用于生产！
-   :::
-
    修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
    ::::
 
    :::: details Vben Admin Antd
-   我知道你很急，但你先别急...
+   即将到来...
    ::::
 
 3. 更新 nginx 配置
 
    进入 deploy 目录，修改 `nginx.conf` 文件
 
-   ```nginx :collapsed-lines
+   ```nginx :collapsed-lines=6
    # For more information on configuration, see:
    #   * Official English Documentation: http://nginx.org/en/docs/
    #   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -409,7 +417,7 @@ title: Docker 部署
    如果你已通过后端 docker-compose 构建前端项目，此步骤和后面的剩余步骤直接跳过即可
    :::
 
-   ```yaml :collapsed-lines
+   ```yaml :collapsed-lines=6
    networks:
      fba_network:
        external: true
@@ -442,7 +450,7 @@ title: Docker 部署
           # local_ssl_key_path: 你在服务器存放 ssl key 证书文件的路径，自行修改
           # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
           # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
-         - local_ssl_pem_path:/etc/ssl/xxx.pem # [!code warning:3]
+         - local_ssl_pem_path:/etc/ssl/xxx.pem # [!code warning:2]
          - local_ssl_key_path:/etc/ssl/xxx.key
          - fba_static:/www/fba_server/backend/static
        networks:
@@ -475,6 +483,10 @@ title: Docker 部署
 
 ::: warning
 不建议频繁使用 `docker-compose up -d --build` 命令，此命令每次执行都会重新构建容器，并将原容器自动本地备份保留，这会导致硬盘空间迅速锐减
+:::
+
+::: info
+[15 个 Docker 容器自动化管理的脚本](https://www.yuque.com/fcant/devops/itkfyytisf9z84y6)
 :::
 
 清理未使用的镜像

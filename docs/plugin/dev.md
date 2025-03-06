@@ -48,18 +48,19 @@ title: 插件开发
     - plugin 固定目录
         - xxx 插件名
             - api/ 接口，务必查看下方 [接口路由](#插件路由)
-            - crud/ CRUD（非必须项）
-            - model 模型（非必须项）
+            - crud/ CRUD <Badge type="warning" text="非必须" />
+            - model 模型 <Badge type="warning" text="非必须" />
                 - \_\_init__.py 必须在此文件内导入所有模型类
                 - …
-            - schema/ 数据传输（非必须项）
-            - service/ 服务（非必须项）
-            - utils/ 工具包（非必须项）
-            - \_\_init__.py 作为 python 包保留（必须项）
-            - conf.py 常量配置（非必须项）
-            - plugin.toml 插件配置文件（必须项）
-            - README.md 插件使用说明（必须项）
-            - requirements.txt 依赖包文件（非必须项）如果插件需要安装依赖，则必须
+            - schema/ 数据传输 <Badge type="warning" text="非必须" />
+            - service/ 服务 <Badge type="warning" text="非必须" />
+            - utils/ 工具包 <Badge type="warning" text="非必须" />
+            - \_\_init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
+            - conf.py 常量配置 <Badge type="warning" text="非必须" />
+            - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
+            - README.md 插件使用说明 <Badge type="danger" text="必须" />
+            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />
+              如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
 
 :::
 

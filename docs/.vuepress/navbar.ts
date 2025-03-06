@@ -5,7 +5,7 @@ export const myNavbar = defineNavbarConfig([
         text: 'UI 效果',
         items: [
             {
-                text: 'Git 仓库',
+                text: 'GitHub',
                 icon: 'mdi:git',
                 items: [
                     {
@@ -14,7 +14,7 @@ export const myNavbar = defineNavbarConfig([
                     },
                     {
                         text: 'Vben Admin Antd 下一代实施',
-                        link: 'https://github.com/fastapi-practices/fba_ui'
+                        link: 'https://github.com/fastapi-practices/fba_admin'
                     }
                 ]
             },

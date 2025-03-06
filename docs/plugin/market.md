@@ -13,10 +13,9 @@ title: 插件市场
 - <Badge type="info" text="free" /> - 免费插件
 - <Badge type="danger" text="pay" /> - 付费插件
 - <Badge type="tip" text="fba" /> - 仅后端代码插件
-- <Badge text="fba-arco" color="#4582ff"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 代码插件
-- <Badge text="fba-vben" color="#c178ec"/> - 包含前端 [fba_ui](https://github.com/fastapi-practices/fba_ui) 代码插件
+- <Badge text="fba + vben" color="#c178ec"/> - 包含前端 [fba_admin](https://github.com/fastapi-practices/fba_admin) 代码插件
 - <Badge text="app" color="#ff9900"/> - 应用级插件
-- <Badge text="app-extra" color="#11aa00"/> - 扩展级插件
+- <Badge text="extra" color="#11aa00"/> - 扩展级插件
 
 :::
 
@@ -30,7 +29,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#11aa00"/>
+    <Badge text="extra" color="#11aa00"/>
     </span>
   </LinkCard>
   <LinkCard icon="solar:user-check-bold" title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
@@ -38,7 +37,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#11aa00"/>
+    <Badge text="extra" color="#11aa00"/>
     </span>
   </LinkCard>
   <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://discord.com/channels/1185035164577972344/1342478204400832593">
@@ -46,7 +45,7 @@ title: 插件市场
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
-    <Badge text="app-extra" color="#11aa00"/>
+    <Badge text="extra" color="#11aa00"/>
     </span>
   </LinkCard>
 </CardGrid>

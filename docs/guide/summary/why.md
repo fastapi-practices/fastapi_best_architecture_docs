@@ -6,8 +6,11 @@ title: 为什么选择我们？
 import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 </script>
 
+> [!TIP]
+> 此仓库作为模板库公开，任何个人或企业均可免费使用！
+
 ::: note
-我们不会去对比其他架构，我们认为每个架构都有自己的特点，适合不同的场景。
+我们不会去对比任何其他架构，我们认为每个架构都有自己的特点，适用于不同的场景。
 
 但 fba 绝对是开源架构中代码最干净，最规范且最令人赏心悦目的项目之一
 :::
@@ -168,8 +171,8 @@ fba
 
   我们有十分严格的 CI
   代码质量检测和[规则](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/.ruff.toml)
-  ，使用非常流行且强大的 ruff 作为支撑，为每次 PR 的代码质量做到严格把控
+  ，使用非常流行且强大的 Ruff 作为支撑，为每次 PR 的代码质量做到严格把控
 
 - 持续的认可
 
-  在此我们不做任何宣传引导，您可以在交流群发出疑问，我们静待用户真实反馈
+  在此我们不做任何宣传引导，您可以在任意社区/交流群发出疑问，我们静待用户真实反馈
