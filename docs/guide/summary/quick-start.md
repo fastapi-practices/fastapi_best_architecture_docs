@@ -53,7 +53,7 @@ title: 快速开始
 3. 安装依赖包
 
    ::: note
-   无论你正在使用 uv 还是 pip，fba 内都不包含任何国内源配置，默认使用官方源，如果您需要依赖包加速，请自行 Google 配置国内源
+   fba 内默认使用 pypi 官方源，如果您需要安装依赖加速，可选择 🪜 或 [替换 pypi 国内源](https://github.com/RubyMetric/chsrc)
    :::
 
     - 架构依赖
