@@ -3,7 +3,7 @@ title: 快速开始
 ---
 
 ::: caution
-==FBA 仅适用于资深 Python 后端开发人员==，如果您是非资深用户，建议使用 [精简版](../summary/fsm.md)
+==fba 仅适用于资深 Python 后端开发人员==，如果您是非资深用户，建议使用 [精简版](../summary/fsm.md)
 :::
 
 > [!IMPORTANT]
