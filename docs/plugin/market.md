@@ -13,7 +13,7 @@ title: 插件市场
 - <Badge type="info" text="free" /> - 免费插件
 - <Badge type="danger" text="pay" /> - 付费插件
 - <Badge type="tip" text="fba" /> - 仅后端代码插件
-- <Badge text="fba + vben" color="#c178ec"/> - 包含前端 [fba_admin](https://github.com/fastapi-practices/fba_admin) 代码插件
+- <Badge text="fba + vben" color="#c178ec"/> - 包含前端 [fba_admin](https://github.com/fastapi-practices/fba_admin) 代码插件 <Badge type="warning" text="暂无此计划" />
 - <Badge text="app" color="#ff9900"/> - 应用级插件
 - <Badge text="extra" color="#11aa00"/> - 扩展级插件
 
@@ -55,21 +55,22 @@ title: 插件市场
 这些插件由社区中的开发者提供和维护
 
 <CardGrid>
-  <Card title="空空如也">
+  <Card title="空">
   </Card>
 </CardGrid>
 
 ## 安装
 
-插件安装方式可分为两种
+插件安装方式包含两种
 
-### 手动
+::: tabs
+@tab 1. 手动
 
 1. 获取插件仓库源码并下载，将源码中的插件目录直接拷贝到 fba 项目对应的目录下
 2. 如果插件包含依赖，执行 `backend/scripts/init_plugin.py` 文件安装依赖
 3. 根据插件使用说明完成安装
 
-### 自动
+@tab 2. 自动
 
 1. 获取打包好的插件 zip 压缩包
 
@@ -83,3 +84,5 @@ title: 插件市场
 
 2. 将压缩包通过插件安装接口进行安装
 3. 根据插件使用说明完成安装
+
+:::

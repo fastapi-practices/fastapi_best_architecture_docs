@@ -37,7 +37,7 @@ class DateTimeMixin(MappedAsDataclass):
 
 [MappedAsDataclass](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses)
 
-声明性数据类基类, 它将带有数据类集成, 允许使用更高级配置；此基类适用于==不包含日期时间的模型==
+声明性数据类基类, 它将带有数据类集成, 允许使用更高级配置；此基类适用于==不包含日期时间的模型=={.warning}
 
 ```python
 class DataClassBase(MappedAsDataclass, MappedBase):

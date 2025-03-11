@@ -24,13 +24,13 @@ title: Docker 部署
 
    在 `backend` 目录中，创建环境变量文件
 
-   ```shell
+   ```shell:no-line-numbers
    touch .env
    ```
 
    将初始化环境变量配置拷贝到环境变量文件中
 
-   ```shell
+   ```shell:no-line-numbers
    cp .env.example .env
    ```
 
@@ -40,15 +40,15 @@ title: Docker 部署
 
    如果容器要在本地启动，需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
 
-   ```shell
-   docker build -f backend/Dockerfile -t fba_backend_independent .
+   ```shell:no-line-numbers
+   docker build -f Dockerfile -t fba_backend_independent .
    ```
 
 5. 启动容器
 
    由于构建不包含数据库，请确保本地已安装并启动相关数据库（mysql / postgresql、redis）
 
-   ```shell
+   ```shell:no-line-numbers
    docker run -d -p 8000:8000 --name fba_server fba_backend_independent
    ```
 
@@ -85,7 +85,8 @@ title: Docker 部署
 
    ::: warning
    如果你需要使用 PostgreSQL 数据库，执行命令前，需修改 `.env.server` 部分配置如下：
-   ```env
+   ```env:no-line-numbers
+   # Database
    DATABASE_TYPE='postgresql'
    DATABASE_HOST='fba_postgres'
    DATABASE_PORT=5432
@@ -102,8 +103,8 @@ title: Docker 部署
    services:
      fba_server:
        build:
-         context: ../../../
-         dockerfile: backend/Dockerfile
+         context: .
+         dockerfile: Dockerfile
        image: fba_server:latest
        container_name: fba_server
        restart: always
@@ -247,8 +248,8 @@ title: Docker 部署
    
      fba_celery:
        build:
-         context: ../../../
-         dockerfile: backend/Dockerfile
+         context: .
+         dockerfile: Dockerfile
          args:
            - SERVER_TYPE=celery
        image: fba_celery:latest
@@ -298,7 +299,7 @@ title: Docker 部署
 
    命令执行期间遇到镜像拉取问题请自行 Google
 
-   ```shell
+   ```shell:no-line-numbers
    docker-compose up -d --build
    ```
 
@@ -311,14 +312,13 @@ title: Docker 部署
 
 1. 拉取代码到服务器
 2. env
-
-   :::: details Arco Desgin Vue
+   ::: tabs
+   @tab <Icon name="icon-park-outline:new-lark" />Arco Desgin Vue
    修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
-   ::::
 
-   :::: details Vben Admin Antd
-   即将到来...
-   ::::
+   @tab <Icon name="devicon:antdesign" />Vben Admin Antd
+   生产中...
+   :::
 
 3. 更新 nginx 配置
 
@@ -461,19 +461,19 @@ title: Docker 部署
 
    创建网络
 
-   ```shell
+   ```shell:no-line-numbers
    docker network create fba_network
    ```
 
    构建
 
-   ```shell
+   ```shell:no-line-numbers
    docker-compose build fba_ui
    ```
 
    启动
 
-   ```shell
+   ```shell:no-line-numbers
    docker-compose run fba_ui
    ```
 
@@ -491,18 +491,18 @@ title: Docker 部署
 
 清理未使用的镜像
 
-```shell
+```shell:no-line-numbers
 docker image prune
 ```
 
 清理未使用的容器
 
-```shell
+```shell:no-line-numbers
 docker container prune
 ```
 
 清理所有未使用的镜像、容器、网络和构建缓存
 
-```shell
+```shell:no-line-numbers
 docker system prune
 ```

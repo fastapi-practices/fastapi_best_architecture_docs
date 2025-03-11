@@ -38,7 +38,7 @@ title: 快速开始
 
        此方式需要你删除拉取项目后根目录下的 `.git` 文件夹，之后上传到你指定的仓库即可，具体请自行查阅你要上传平台的行为准则
 
-       ```shell
+       ```shell:no-line-numbers
        git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
        ```
 
@@ -52,17 +52,21 @@ title: 快速开始
 
 3. 安装依赖包
 
-   ::: note
-   fba 内默认使用 pypi 官方源，如果您需要安装依赖加速，可选择 🪜 或 [替换 pypi 国内源](https://github.com/RubyMetric/chsrc)
-   :::
-
     - 架构依赖
 
       拉取项目到本地后，在项目根目录，执行以下命令安装架构依赖
 
-      ```shell
+      ::: code-tabs
+      @tab <Icon name="material-icon-theme:uv" />uv
+      ```shell:no-line-numbers
+      uv sync --frozen
+      ```
+
+      @tab <Icon name="material-icon-theme:python" />pip
+      ```shell:no-line-numbers
       pip install -r requirements.txt
       ```
+      :::
 
     - 插件依赖
 
@@ -74,55 +78,57 @@ title: 快速开始
 
    在 `backend` 目录中，创建环境变量文件
 
-   ```shell
+   ```shell:no-line-numbers
    touch .env
    ```
 
    将初始化环境变量配置拷贝到环境变量文件中
 
-   ```shell
+   ```shell:no-line-numbers
    cp .env.example .env
    ```
 
 7. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
 8. 创建数据库表（三选一）
 
-    - 直接启动后端项目（自动创建）
-    - 数据库迁移 [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+   ::: tabs
+   @tab 自动创建
+   直接启动后端项目
 
-      生成迁移文件
+   @tab Alembic 迁移
+   生成迁移文件
+   ```shell:no-line-numbers
+   alembic revision --autogenerate
+   ```
 
-      ```shell
-      alembic revision --autogenerate
-      ```
+   执行迁移
+   ```shell:no-line-numbers
+   alembic upgrade head
+   ```
 
-      执行迁移
+   @tab SQL 脚本
+   执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
+   :::
 
-      ```shell
-      alembic upgrade head
-      ```
+9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选" />
 
-    - 执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
-
-9. 启动 celery worker, beat 和 flower ==（可选）==
-
-   Celery 应用程序
-
-   ```shell
+   ::: code-tabs
+   @tab Worker
+   ```shell:no-line-numbers
    celery -A app.task.celery worker -l info
    ```
 
-   定时任务
-
-   ```shell
+   @tab Beat
+   ```shell:no-line-numbers
    celery -A app.task.celery beat -l info
    ```
-
-   web 监控
-
-   ```shell
+   
+   @tab Flower
+   ```shell:no-line-numbers
    celery -A app.task.celery flower --port=8555 --basic-auth=admin:123456
    ```
+   :::
+
 
 10. 初始化测试数据
 
@@ -143,13 +149,13 @@ title: 快速开始
 
     帮助
 
-    ```shell
+    ```shell:no-line-numbers
     fastapi --help
     ```
 
     开发模式
 
-    ```shell
+    ```shell:no-line-numbers
     fastapi dev main.py
     ```
 
@@ -164,7 +170,8 @@ title: 快速开始
 效果演示，它们不一定适用于生产环境，您可以点击查看我们的 [目标](./why.md#目标)
 :::
 
-::::: details Arco Desgin Vue
+::::: tabs
+@tab <Icon name="icon-park-outline:new-lark" />Arco Desgin Vue
 
 ::: caution
 这是一个实验性实施，仅用于效果演示，此版本即将存档，请勿将其用于生产！
@@ -179,7 +186,7 @@ title: 快速开始
 
 2. 拉取 Git 项目
 
-   ```shell
+   ```shell:no-line-numbers
    git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui.git
    ```
 
@@ -192,24 +199,25 @@ title: 快速开始
 
    进入项目根目录，安装依赖
 
-   ```shell
+   ```shell:no-line-numbers
    yarn install
    ```
 
    启动
 
-   ```shell
+   ```shell:no-line-numbers
    yarn dev
    ```
 
 ::::
-:::::
 
-::::: details Vben Admin Antd
+@tab <Icon name="devicon:antdesign" />Vben Admin Antd
 
 ::: tip
 这是下一代实施，目前正处于积极开发阶段，未来将完全适配 fba
 :::
+
+:::: steps
 
 1. 准备本地环境
 
@@ -218,7 +226,7 @@ title: 快速开始
 
 2. 拉取 Git 项目
 
-   ```shell
+   ```shell:no-line-numbers
    git clone https://github.com/fastapi-practices/fba_admin.git
    ```
 
@@ -226,16 +234,17 @@ title: 快速开始
 
    进入项目根目录，安装依赖
 
-   ```shell
+   ```shell:no-line-numbers
    pnpm install
    ```
 
    启动
 
-   ```shell
+   ```shell:no-line-numbers
    pnpm dev
    ```
 
+::::
 :::::
 
 ## 开发流程
@@ -271,7 +280,7 @@ title: 快速开始
 3. 初始化测试数据，执行 `backend/sql/` 目录下对应数据库的 `init_test_data.sql` 脚本
 4. 在项目根目录，执行单元测试命令
 
-   ```shell
+   ```shell:no-line-numbers
    pytest -vs --disable-warnings
    ```
 

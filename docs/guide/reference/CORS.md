@@ -15,7 +15,8 @@ CORS_ALLOWED_ORIGINS: list[str] = [
 
 ## 服务器
 
-HTTP 部署
+::: code-tabs
+@tab <Icon name="arcticons:http-custom" />HTTP
 
 ```py
 # [!code word:http]
@@ -24,7 +25,7 @@ CORS_ALLOWED_ORIGINS: list[str] = [
   ]
 ```
 
-HTTPS 部署
+@tab <Icon name="ic:outline-https" /> HTTPS
 
 ```py
 # [!code word:https]

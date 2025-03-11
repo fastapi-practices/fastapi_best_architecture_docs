@@ -87,16 +87,6 @@ title: 知识星球
     />
 </CardGrid>
 
-### TODO
-
-<CardGrid>
-  <LinkCard
-    title="空" 
-    icon="fluent-color:receipt-16"
-    description="..."
-    />
-</CardGrid>
-
 ## 插件
 
 ::: note

@@ -19,7 +19,7 @@ class ResponseModel(BaseModel):
 以下是使用此模型进行返回的示例（遵循 FastAPI 官方教程），`response_model` 参数和 `->` 类型我们只需选择其中一种方式即可，因为
 FastAPI 会在内部自动解析并获取最终响应结构
 
-`response_model` 参数
+`response_model` 参数：
 
 ```python{1,3}
 @router.get('/test', response_model=ResponseModel)
@@ -27,7 +27,7 @@ def test():
     return ResponseModel(data={'test': 'test'})
 ```
 
-`->` 类型
+`->` 类型：
 
 ```python{2,3}
 @router.get('/test')
@@ -51,7 +51,7 @@ class ResponseSchemaModel(ResponseModel, Generic[SchemaT]):
 
 这是我们创建的用于 Schema 模式的统一返回模型，它的用法与 `ResponseModel` 基本相似
 
-`response_model` 参数
+`response_model` 参数：
 
 ```python{1,3}
 @router.get('/test', response_model=ResponseSchemaModel[GetApiDetail])
@@ -59,7 +59,7 @@ def test():
     return ResponseSchemaModel[GetApiDetail](data=GetApiDetail(...))
 ```
 
-`->` 类型
+`->` 类型：
 
 ```python{2,3}
 @router.get('/test')
@@ -98,7 +98,8 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 它们都是同步方法，而不是异步。因为这些返回方法并不涉及 io 操作，所以，定义为异步，不但没有性能提升，反而增加了异步协程的开销
 :::
 
-`success()`
+::: tabs
+@tab <Icon name="ix:success-filled" />`success()`
 
 此方法通常作为默认响应方法使用，默认返回信息如下
 
@@ -110,19 +111,19 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 }
 ```
 
-`fail()`
+@tab <Icon name="ix:namur-failure-filled" />`fail()`
 
 此方法通常在接口响应信息为失败时使用，默认返回信息如下
 
 ```json
 {
-  "code": 200,
-  "msg": "请求成功",
+  "code": 400,
+  "msg": "请求错误",
   "data": null
 }
 ```
 
-`fast_success()`
+@tab <Icon name="ix:certificate-success-filled" />`fast_success()`
 
 此方法通常仅用于接口返回大型 json 时，可为 json 解析性能带来质的提升，默认返回信息如下
 
@@ -133,6 +134,8 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
   "data": null
 }
 ```
+
+:::
 
 ## 响应状态码
 
