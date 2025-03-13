@@ -35,7 +35,7 @@ title: Docker 部署
    ```
 
 2. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-3. 确保你位于项目根目录
+3. 务必在 `Dockerfile` 所在目录打开终端
 4. 运行以下命令构建容器
 
    如果容器要在本地启动，需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
@@ -114,7 +114,7 @@ title: Docker 部署
          - fba_redis
          - fba_celery
        volumes:
-         - .env.server:/fba/backend/.env
+         - ./deploy/backend/docker-compose/.env.server:/fba/backend/.env
          - fba_static:/fba/backend/app/static
        networks:
          - fba_network
@@ -190,7 +190,7 @@ title: Docker 部署
        depends_on:
          - fba_server
        volumes:
-         - ../nginx.conf:/etc/nginx/nginx.conf:ro
+         - ./deploy/backend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
          - fba_static:/www/fba_server/backend/static
        networks:
          - fba_network
@@ -295,15 +295,18 @@ title: Docker 部署
        name: fba_rabbitmq
    ```
 
-5. 执行一键启动命令
+5. 务必在 `docker-compose.yml` 所在目录打开终端
+6. 执行一键启动命令
 
+   ::: warning
    命令执行期间遇到镜像拉取问题请自行 Google
+   :::
 
    ```shell:no-line-numbers
    docker-compose up -d --build
    ```
 
-6. 等待命令执行完成
+7. 等待命令执行完成
    ::::
 
 ### 前端

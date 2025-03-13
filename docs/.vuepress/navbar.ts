@@ -31,7 +31,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.0.2',
+        text: 'v1.0.3',
         items: [
             {
                 text: '技术支持',

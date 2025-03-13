@@ -9,18 +9,24 @@ title: 更新日志
 的成熟与稳定，更意味着它已完全通过验证，可以安心投入生产环境使用。在未来的版本迭代中，我们将持续为开发者带来更优质的产品体验。敬请期待！🤗
 :::
 
-## [v1.0.2](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.2) - 2025-03-01
+## [v1.0.3](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.3) - 2025-03-11
 
 ### What's Changed
 
-* Update the changelog for v1.0.1 by [@wu-clan](https://github.com/wu-clan)
-  in [#532](https://github.com/fastapi-practices/fastapi_best_architecture/pull/532)
-* Fix celery async task worker pool by [@wu-clan](https://github.com/wu-clan)
-  in [#533](https://github.com/fastapi-practices/fastapi_best_architecture/pull/533)
-* Add log module root and output levels by [@wu-clan](https://github.com/wu-clan)
-  in [#534](https://github.com/fastapi-practices/fastapi_best_architecture/pull/534)
-* Add plugin related interfaces by [@wu-clan](https://github.com/wu-clan)
-  in [#535](https://github.com/fastapi-practices/fastapi_best_architecture/pull/535)
+* Update the changelog for v1.0.2 by [@wu-clan](https://github.com/wu-clan)
+  in [#536](https://github.com/fastapi-practices/fastapi_best_architecture/pull/536)
+* Update docker scripts in backend README by [@wu-clan](https://github.com/wu-clan)
+  in [#537](https://github.com/fastapi-practices/fastapi_best_architecture/pull/537)
+* Refactor toml and dependencies file dir by [@wu-clan](https://github.com/wu-clan)
+  in [#538](https://github.com/fastapi-practices/fastapi_best_architecture/pull/538)
+* Fix typos in Dockerfile comments by [@huyuwei1996](https://github.com/huyuwei1996)
+  in [#539](https://github.com/fastapi-practices/fastapi_best_architecture/pull/539)
+* Fix Dockerfile mounts for dependency installation by [@huyuwei1996](https://github.com/huyuwei1996)
+  in [#540](https://github.com/fastapi-practices/fastapi_best_architecture/pull/540)
+* Add Aliyun mirror to PyPI index in pyproject.toml by [@huyuwei1996](https://github.com/huyuwei1996)
+  in [#541](https://github.com/fastapi-practices/fastapi_best_architecture/pull/541)
+* Update docker scripts and nginx conf by [@wu-clan](https://github.com/wu-clan)
+  in [#542](https://github.com/fastapi-practices/fastapi_best_architecture/pull/542)
 
 ::: demo-wrapper title="Full Changelog"
 完整版日志请查看：[CHANGELOG.md](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
