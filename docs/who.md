@@ -3,9 +3,8 @@ title: 谁在使用？
 ---
 
 > [!IMPORTANT]
-> 如果您/您所在的企业/组织使用了 fba
->
-进行项目开发，我们诚挚的邀请您参与：[用户登记](https://github.com/fastapi-practices/fastapi_best_architecture/issues/477)
+> 如果您/您所在的企业/组织使用了 fba 进行项目开发，我们诚挚的邀请您参与：
+> [用户登记](https://github.com/fastapi-practices/fastapi_best_architecture/issues/477)
 >
 > 1. **无偿登记**：您的登记完全免费，我们郑重承诺，并且绝对不会在任何阶段向您收取任何形式的使用费用，也不会将您的信息用于商业盈利或其他非公开目的
 > 2. **优先支持**：登记后，您将被视为我们的优质用户，我们的维护团队将优先响应您在实际使用过程中遇到的问题
