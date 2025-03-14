@@ -10,6 +10,7 @@ export const mySidebar: SidebarMulti = {
             items: [
                 {text: '简介', link: 'intro'},
                 {text: '快速开始', link: 'quick-start'},
+                {text: 'Visual Studio Code', link: 'vscode'},
                 {text: '为什么选择我们？', link: 'why'},
                 {text: '精简版', link: 'fsm'},
             ]
