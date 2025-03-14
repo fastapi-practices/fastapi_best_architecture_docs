@@ -3,12 +3,11 @@ title: 插件市场
 ---
 
 ::: warning
-插件功能目前处于测试阶段，如有任何建议，请立即和我们 [反馈](https://discord.com/channels/1185035164577972344/1332032404663046204)
+插件功能目前处于测试阶段，如有任何建议，请立即和我们 [反馈](https://discord.com/channels/1185035164577972344/1349951379560599572)
 吧
 :::
 
-::: info
-您可以在 [插件互动频道](https://discord.gg/5SDAZgDya9) 与插件作者及社区人员进行互动和交流
+::: info 标签说明
 
 - <Badge type="info" text="free" /> - 免费插件
 - <Badge type="danger" text="pay" /> - 付费插件
@@ -24,23 +23,23 @@ title: 插件市场
 这些插件由 fba 开发人员提供和维护
 
 <CardGrid>
-  <LinkCard icon="fe:notice-active" title="通知公告" href="https://discord.com/channels/1185035164577972344/1336557178437373984">
-    <p style="color: #898989;">添加通知公告功能</p>
+  <Card icon="fe:notice-active" title="通知公告">
+    <p style="color: #898989;">【内置】添加通知公告功能</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
     <Badge text="extra" color="#11aa00"/>
     </span>
-  </LinkCard>
-  <LinkCard icon="solar:user-check-bold" title="Casbin-RBAC" href="https://discord.com/channels/1185035164577972344/1340300371251302451">
-    <p style="color: #898989;">添加基于 Casbin 实现的 RBAC 权限</p>
+  </Card>
+  <Card icon="solar:user-check-bold" title="Casbin-RBAC">
+    <p style="color: #898989;">【内置】添加基于 Casbin 实现的 RBAC 权限</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
     <Badge text="extra" color="#11aa00"/>
     </span>
-  </LinkCard>
-  <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://discord.com/channels/1185035164577972344/1342478204400832593">
+  </Card>
+  <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://github.com/fastapi-practices/fba_aliyun_oss">
     <p style="color: #898989;">添加阿里云 oss 上传文件功能</p>
     <span>
     <Badge type="info" text="free" />

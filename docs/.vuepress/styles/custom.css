@@ -3,8 +3,6 @@
     --vp-c-brand-1: rgba(0, 148, 133, 1); /* 链接颜色、强调色 */
     --vp-c-brand-2: rgba(0, 148, 133, 1); /* 链接、按钮 hover 颜色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1); /* 背景色、边框色 */
-    color: #4582ff;
-    background-color: rgba(255, 255, 255, 0.16);
 }
 
 [data-theme="dark"] {
@@ -13,10 +11,16 @@
     --vp-c-brand-3: rgba(0, 148, 133, 1); /* 背景色、边框色 */
 }
 
-.vp-swiper .swiper-slide-img {
+.vp-repo-card,
+.vp-link-card,
+.vp-card-wrapper {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27), 0 1px 2px rgba(255, 255, 255, 0.22) !important /* 卡片阴影效果 */
+}
+
+.vp-swiper .swiper-slide-img { /* 轮播图图片拉伸效果 */
     object-fit: fill;
 }
 
 .swiper-slide-custom-container {
-    border: 1px solid rgb(177 177 177 / 66%) !important;
+    border: 1px solid rgb(177 177 177 / 66%) !important; /* 轮播图边框 */
 }

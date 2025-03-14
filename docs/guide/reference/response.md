@@ -16,8 +16,8 @@ class ResponseModel(BaseModel):
     data: Any | None = None
 ```
 
-以下是使用此模型进行返回的示例（遵循 FastAPI 官方教程），`response_model` 参数和 `->` 类型我们只需选择其中一种方式即可，因为
-FastAPI 会在内部自动解析并获取最终响应结构
+以下是使用此模型进行返回的示例（遵循 FastAPI 官方教程），`response_model` 参数和 `->` 类型选择其中一种方式即可，FastAPI
+会在内部自动解析并获取最终响应结构
 
 `response_model` 参数：
 
@@ -42,14 +42,15 @@ ResponseModel 做为统一响应模型，你会在 Swagger 文档得到（如图
 
 ![response_model](/images/response_model.png)
 
-显然，我们无法获取响应 Schema 中的 data 结构，前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面就是我们的解决办法
+显然，我们无法获取响应 Schema 中的 data 数据结构，前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面是我们创建的用于
+Schema 模式的统一返回模型
 
 ```python
 class ResponseSchemaModel(ResponseModel, Generic[SchemaT]):
     data: SchemaT
 ```
 
-这是我们创建的用于 Schema 模式的统一返回模型，它的用法与 `ResponseModel` 基本相似
+以下是使用此模型进行返回的示例（遵循 FastAPI 官方教程），它的用法与 ResponseModel 基本相似
 
 `response_model` 参数：
 
@@ -74,14 +75,14 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 我们可以看到，响应 Schema 中的 data 已经包含我们的响应体结构了，响应体结构正是解析的 `[]` 中的 Schema 模型，它们是对应的，如果返回的数据结构与
 Schema 不一致，将引发解析错误
 
-==我们建议将这种方式仅用于查询接口==，如果你不需要这种文档/验证，你完全可以不使用它，而是使用更加开放的统一响应模型
+==我们建议将这种方式仅用于查询接口=={.note}，如果你不需要这种文档，你完全可以不使用它，而是使用更加开放的统一响应模型
 ResponseModel
 
 ## 统一返回方法
 
 `response_base` 是我们做的全局响应实例，它大大简化了响应返回方式，用法如下：
 
-```python{3,8}
+```python{2-3,7-8}
 @router.get('/test')
 def test() -> ResponseModel:
     return response_base.success(data={'test': 'test'})
@@ -103,7 +104,7 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 
 此方法通常作为默认响应方法使用，默认返回信息如下
 
-```json
+```json:no-line-numbers
 {
   "code": 200,
   "msg": "请求成功",
@@ -115,7 +116,7 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 
 此方法通常在接口响应信息为失败时使用，默认返回信息如下
 
-```json
+```json:no-line-numbers
 {
   "code": 400,
   "msg": "请求错误",
@@ -127,7 +128,7 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 
 此方法通常仅用于接口返回大型 json 时，可为 json 解析性能带来质的提升，默认返回信息如下
 
-```json
+```json:no-line-numbers
 {
   "code": 200,
   "msg": "请求成功",

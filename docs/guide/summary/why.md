@@ -12,12 +12,12 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 ::: note
 我们不会去对比任何其他架构，我们认为每个架构都有自己的特点，适用于不同的场景。
 
-但 fba 绝对是开源架构中代码最干净，最规范且最令人赏心悦目的项目之一
+但 fba 绝对是开源架构中代码==最干净，最规范且最令人赏心悦目=={.note}的项目之一
 :::
 
 ## 目标
 
-==我们的目标==是提供一个最佳架构，让开发者可以快速上手，能够专注于业务逻辑开发，或从此架构中获得灵感，优化本地架构设计，所以我们只会不断完善和优化我们的架构，为开发者带来更好的体验
+我们的目标是提供一个最佳架构，让开发者可以快速上手，能够专注于业务逻辑开发，或从此架构中获得灵感，优化本地架构设计，所以我们只会不断完善和优化我们的架构，为开发者带来更好的体验
 
 ## 承诺
 
@@ -36,7 +36,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 - MIT 协议 + 架构源码全量开源
 - GitHub 模板仓库，便捷复制和自主命名
-- 架构内没有任何以 `fba` 强制命名的内容，也就是说，你可以通过 IDE 快捷替换所有 `fba` 参数为自定义
+- 没有任何以 `fba` 强制命名的内容，也就是说，你可以通过 IDE 统一替换所有 `fba` 关键字为其他
 
 ## 长期维护
 
@@ -46,100 +46,13 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 框架由来
 
-我们有一个完整的关于 fba 由来的 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
-，但它被不小心删除且无法到达 😭，我们尝试联系了 GitHub 支持，但我们只能获取 issue 问题本身的正文 😭
+我们有一个完整的关于 fba 由来的 [issues](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
+，但它被不小心永久删除且无法恢复 😭，我们尝试联系了 GitHub 支持，但不幸的是，我们仍无法获取完整 issues 😭
 
-大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 fba 创建之前，找到了 fba 现在的精简版
-[fastapi_sqlalchemy_mysql](fsm.md#sqlalchemy)，并创建了 issue：==几点讨论与建议==；我们就此 issue 展开了为期数天的讨论，最终决定并创建了
+大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 fba 创建之前，找到了 fba
+的前身仓库 [fastapi_sqlalchemy_mysql](fsm.md#sqlalchemy)，并创建了 issue：【几点讨论与建议】；我们就此 issue
+展开了为期数天的讨论，最终决定并创建了
 fba
-
-::: details issue 正文（由 GitHub 支持提供，无法保证原始性）
-> ==讨论一：更清晰的结构建议==
->
->现在的api结构是：
->
->```
->api
-> ═── service/
-> ═── v1
-> │ ═── auth
-> ═── init .py
-> ═──casbin.py
-> ═──jwt.py
-> ═──registrar.py
-> ═──routers.py
->```
->
->参考几个开源项目，结合个人建议是api目录下保留最简单的结构，casbin、jwt、registrar可以移动到其他目录，比如core。
->
->api <br/>
-> │ <br/>
-> ...
->
->api——>初始化.py
->
->```python
->from fastapi import APIRouter
->from api.auth import router as auth_router
->
->v1 = APIRouter(prefix='/v1')
->
->v1.include_router(auth_router)
->```
->
->api——>v1——>auth——>初始化.py
->
->```python
->from fastapi import APIRouter
->from api.auth.user import router as user_router
->
->router = APIRouter(prefix='/auth', tags=['认证'])
->
->router.include_router(user_router, prefix='/user')
->```
->
->==讨论二：基于类的视图==
->
->参考该讨论：https://github.com/zhanymkanov/fastapi-best-practices/issues/4与fastapi-utils项目
->
->基于类的比每个零散的方法看起来会更加清晰，并且可以在一个py管理多个路由（有时需要）
->
->```python
->from utils.cvb import cbv
->
->router = APIRouter(prefix='/api')
->
->
->@cbv(router)
->class APIRouter:
->user: User = Depends(get_current_user)
->service = ApiService()
->
->@router.get('', summary='获取所有API', response_model=Page[GetAllApi])
->async def get_all_api(self):
->print(self.user)
->return await self.service.get_api_list()
->```
->
->如上，原先的service文件里的方法也封装成ApiService类。同时建议service应该每个路由模块里都有一个，类似如下结构：
->
->api <br/>
-> │ │ │ <br/>
-> │ │ │ │ │ │ │ │ <br/>
-> │ │ │ │ │ │ │ │ │ │
->
->这样的话，应该有个Service基类，包含常见的query、create、update、delete方法。
->
->同时async with async_db_session.begin() as db:每个方法都有，可以进一步优化？
->
-> ==讨论三：权限==
->
->casbin是go项目扩展出来的思想？感觉有点冗重，权限这块自己封装比较好自定义。
->
->简单的基于redis或者mysql定义crud，可以对不同路由或者请求方法设置不同的权限。
->
->目前还没有很好的实现方法，但是参考过往的项目应该不难。
-:::
 
 ## 套件产物
 

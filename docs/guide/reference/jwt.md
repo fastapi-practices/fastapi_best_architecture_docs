@@ -45,14 +45,14 @@ class JwtAuthMiddleware(AuthenticationBackend):
 
 ## Token
 
-内置遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750) 标准实现的 HTTP 授权方式，如果您想通过自定义 header 添加
-token 进行授权，可以查看 [Header Token（自定义 header token 实现授权）](../../planet.md#fastapi)
+内置 token 授权方式遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750)，如果您想通过自定义请求头添加 token
+进行授权，可以查看文章 [Header Token](../../planet.md#fastapi)
 
 ## 验证码登录
 
 你可以通过此方式获取 token，在大多数情况下，这更适用于配合前端实现登录授权
 
-我们在 fba 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，通过接口进行数据返回；您可以通过在线
+我们在 fba 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，然后通过接口进行数据返回；您可以通过在线
 base64 转图片或配合前端项目将其转为图片进行预览，以下使其工作流程：
 
 ```sequence 验证码登录逻辑
@@ -83,4 +83,5 @@ Token -->> 客户端: 成功
 
 但是，想要使用此方式进行授权，你需要先了解 OAuth 2.0 相关知识，并遵循第三方平台认证要求，获取平台应用相关密钥，最终，手动编码完成集成
 
-您可以在代码路径 `backend/app/admin/api/v1/oauth2` 中查看我们的官方实现示例
+我们在 fba 中使用 [fastapi-oauth20](https://github.com/fastapi-practices/fastapi-oauth20) 集成 OAuth 2.0，您可以在代码路径
+`backend/app/admin/api/v1/oauth2` 中查看我们的官方实现示例

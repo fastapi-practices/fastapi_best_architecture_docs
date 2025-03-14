@@ -3,14 +3,14 @@ title: 快速开始
 ---
 
 ::: caution
-==fba 仅适用于资深 Python 后端开发人员==，如果您是非资深用户，建议使用 [精简版](../summary/fsm.md)
+==fba 仅适用于资深 Python 后端开发人员=={.warning}，如果您是非资深用户，建议使用 [精简版](../summary/fsm.md)
 :::
 
 > [!IMPORTANT]
-> 我们建议新手用户从一些基础和简单的内容入手，这不仅是对自身学习的一种负责态度，也是为将来能够顺利掌握这一架构所奠定的坚实基础，欢迎加入我们的
-> Discord 社区进行讨论
+> 我们建议新手用户从基础且简单的部分开始学习，这不仅是对自己学习负责的表现，也为未来顺利掌握这一架构奠定了坚实基础。欢迎加入我们的
+> Discord 社区，一起交流讨论！
 >
-> 最后，请认真对待此文档，并严格按照本文档的顺序启动项目，否则你有很大几率在启动过程中遇到各种问题
+> 最后，请务必认真阅读本文档，并严格按照文档的顺序启动项目，否则在启动过程中很可能会遇到各种问题。
 
 ## 本地开发
 
@@ -122,7 +122,7 @@ title: 快速开始
    ```shell:no-line-numbers
    celery -A app.task.celery beat -l info
    ```
-   
+
    @tab Flower
    ```shell:no-line-numbers
    celery -A app.task.celery flower --port=8555 --basic-auth=admin:123456

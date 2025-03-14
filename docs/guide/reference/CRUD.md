@@ -8,7 +8,7 @@ title: CRUD
 <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
 
 <iframe  
-height=666
+height=500
 width=100%
 src="https://fastapi-practices.github.io/sqlalchemy-crud-plus/"
 frameborder=0
