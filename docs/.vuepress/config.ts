@@ -29,21 +29,21 @@ export default defineUserConfig({
     ],
     theme: plumeTheme({
         hostname: 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/',
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
+        docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
+        docsBranch: 'master',
+        docsDir: 'docs',
         blog: false,
         notes: false,
+        bulletin: myBulletin,
+        sidebar: mySidebar,
+        sidebarScrollbar: false,
+        navbar: myNavbar,
         autoFrontmatter: {
             title: true,
             permalink: false,
             createTime: false,
         },
-        bulletin: myBulletin,
-        sidebar: mySidebar,
-        sidebarScrollbar: false,
-        navbar: myNavbar,
-        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
-        docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
-        docsBranch: 'master',
-        docsDir: 'docs',
         social: [
             {icon: 'github', link: 'https://github.com/fastapi-practices/fastapi_best_architecture'},
             {
@@ -56,8 +56,7 @@ export default defineUserConfig({
             {icon: 'discord', link: 'https://discord.com/invite/yNN3wTbVAC'}
         ],
         navbarSocialInclude: ['github', 'gitee', 'discord'],
-        editLinkText: '在 GitHub 上编辑此页面',
-        lastUpdated: false,
+        editLinkText: '编辑此页面',
         contributors: false,
         copyright: {
             license: {
@@ -68,28 +67,27 @@ export default defineUserConfig({
         footer: {
             copyright: 'Copyright © 2024-present FastAPI Practices'
         },
-        plugins: {
-            shiki: {
-                languages: ['shell', 'yaml', 'py']
-            },
-            // watermark: true,
-            markdownPower: {
-                abbr: true,
-                annotation: true,
-                icons: true,
-            },
-            markdownEnhance: {
-                mermaid: true,
-            },
-            comment: {
-                provider: 'Giscus',
-                comment: true,
-                repo: 'fastapi-practices/fastapi_best_architecture_docs',
-                repoId: 'R_kgDOMv5sMQ',
-                category: 'Comment',
-                categoryId: 'DIC_kwDOMv5sMc4CmLp9',
-                lazyLoading: true,
-            },
+        // watermark: false,
+        markdown: {
+            alert: true,
+            abbr: true,
+            annotation: true,
+            mermaid: true,
+        },
+        codeHighlighter: {
+            themes: {
+                dark: 'one-dark-pro',
+                light: 'one-light'
+            }
+        },
+        comment: {
+            provider: 'Giscus',
+            comment: true,
+            repo: 'fastapi-practices/fastapi_best_architecture_docs',
+            repoId: 'R_kgDOMv5sMQ',
+            category: 'Comment',
+            categoryId: 'DIC_kwDOMv5sMc4CmLp9',
+            lazyLoading: true,
         },
     }),
     bundler: viteBundler(),

@@ -34,6 +34,11 @@ export const myNavbar = defineNavbarConfig([
         text: 'v1.0.3',
         items: [
             {
+                text: '常见问题',
+                icon: 'healthicons:question',
+                link: '/questions.md'
+            },
+            {
                 text: '技术支持',
                 icon: 'fluent-emoji-high-contrast:unicorn',
                 link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'

@@ -77,7 +77,7 @@ fba 中默认使用此鉴权方式
 
    内置模型 `backend/plugin/casbin/utils/rbac.py`：
 
-    ```model
+    ```text:no-line-numbers
     [request_definition]
     r = sub, obj, act
     

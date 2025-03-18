@@ -2,12 +2,6 @@
 title: Docker 部署
 ---
 
-::: warning
-默认端口冲突：8000、3306、6379、5672、5432
-
-如果 docker 容器启动时端口被占用，会导致启动失败，建议在启动前检查本地端口占用情况
-:::
-
 ::: info
 一个还不错的教程网站：[Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice)
 :::
@@ -85,7 +79,7 @@ title: Docker 部署
 
    ::: warning
    如果你需要使用 PostgreSQL 数据库，执行命令前，需修改 `.env.server` 部分配置如下：
-   ```env:no-line-numbers
+   ```text:no-line-numbers
    # Database
    DATABASE_TYPE='postgresql'
    DATABASE_HOST='fba_postgres'

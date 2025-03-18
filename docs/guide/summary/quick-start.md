@@ -28,27 +28,23 @@ title: 快速开始
     * MySQL 8.0+ 或 PostgreSQL 16.0 +
     * Redis 推荐最新稳定版
 
-2. 准备 Git 仓库
+2. 准备 Git 仓库 <Badge type="warning" text="二选一" />
 
-   ::: note
-   两种方案，选择其中一种即可
+   ::: tabs
+   @tab 拉取源代码
+
+   ```shell:no-line-numbers
+   git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
+   ```
+
+   @tab 创建模板仓库
+
+   此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork 的个人仓库，如图所示，进入此项目
+   GitHub 首页，
+   使用 `use this template` 按钮创建即可，创建完成之后，使用 `git clone` 命令拉取你自己的仓库即可
+
+   ![use_this_template](/images/use_this_template.png)
    :::
-
-    1. 拉取源代码仓库
-
-       此方式需要你删除拉取项目后根目录下的 `.git` 文件夹，之后上传到你指定的仓库即可，具体请自行查阅你要上传平台的行为准则
-
-       ```shell:no-line-numbers
-       git clone https://github.com/fastapi-practices/fastapi_best_architecture.git
-       ```
-
-    2. 创建模板仓库
-
-       此项目支持创建模板仓库，意味着，你可以直接创建一个非 fork（独立无绑定的关系）的个人仓库，如果所示，进入此项目
-       GitHub 首页，
-       使用 `use this template` 按钮创建即可，创建完成之后，使用 `git clone` 命令拉取你自己的仓库即可
-
-       ![use_this_template](/images/use_this_template.png)
 
 3. 安装依赖包
 
@@ -57,7 +53,12 @@ title: 快速开始
       拉取项目到本地后，在项目根目录，执行以下命令安装架构依赖
 
       ::: code-tabs
-      @tab <Icon name="material-icon-theme:uv" />uv
+      @tab <Icon name="material-icon-theme:uv" />uv - pip
+      ```shell:no-line-numbers
+      uv pip install -r requirements.txt
+      ```
+      
+      @tab <Icon name="material-icon-theme:uv" />uv - sync
       ```shell:no-line-numbers
       uv sync --frozen
       ```
@@ -72,11 +73,11 @@ title: 快速开始
 
       执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
 
-4. 创建数据库：`fba`，选择 utf8mb4 编码，PostgreSQL 用户可忽略编码
+4. 创建数据库：`fba`，选择 utf8mb4 编码；PostgreSQL 用户可忽略编码
 5. 启动 Redis
 6. env
 
-   在 `backend` 目录中，创建环境变量文件
+   在 `backend` 目录打开终端，执行以下命令创建环境变量文件
 
    ```shell:no-line-numbers
    touch .env
@@ -89,7 +90,7 @@ title: 快速开始
    ```
 
 7. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-8. 创建数据库表（三选一）
+8. 创建数据库表 <Badge type="warning" text="三选一" />
 
    ::: tabs
    @tab 自动创建
@@ -111,6 +112,8 @@ title: 快速开始
    :::
 
 9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选" />
+
+   在 `backend` 目录打开终端，执行以下创建启动 celery 相关服务
 
    ::: code-tabs
    @tab Worker
