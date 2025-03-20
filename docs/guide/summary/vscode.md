@@ -20,7 +20,7 @@ title: vscode
       "request": "launch",
       "module": "uvicorn",
       "console": "integratedTerminal",
-      // 指定 python 解释器
+      // 指定 python 解释器，请根据实际情况自行修改
       //"python": "${workspaceFolder}/.venv/bin/python", // MacOS or Linux
       //"python": "${workspaceFolder}/.venv/Scripts/python.exe",  // Windows
       "env": {
