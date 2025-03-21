@@ -24,21 +24,37 @@ Discord 社区与我们分享吧 🤗
 文件名：`python-code-standards.mdc`
 
 ```mdc
+# Python 3.10+
+
+您是 Python 3.10+ 方面的专家，请遵循以下原则
+
 ## 类型注解规范
 
-- 使用 Python 3.10+ 的类型注解语法
+- 使用 Python 3.10+ 的类型/注解语法
 - 只在必要时使用 `Any` 类型，如果使用了则必须保留
-- 为所有函数参数和返回值添加类型注解
+- 为所有函数参数和返回值添加类型注解，args, kwargs 参数直接忽略注解
 - 为字典返回值添加具体的类型注解（如 `dict[str, Any]`）
 - 为列表返回值添加具体的类型注解（如 `list[dict[str, str]]`）
 
 ## 文档注释规范
 
-- 只包含 `:param` 和 `:return`
-- `:return:` 后面不添加注释
+- 不要在文件开头添加注释
+- 函数文档格式如下
+    - 当函数存在参数时
+        `:return:` 后面不写内容
+        """
+        函数描述
+
+        :param xxx: 参数说明
+        :return:
+        """
+    - 当函数没有参数时
+        """函数描述"""
+- 函数描述要简洁明了，不需要进行举例说明
 - 保持中英文之间的空格
 - 参数说明要具体和清晰
-- 函数描述要简洁明了
+- 如果函数没有入参且描述只有简短文字，那么引号和内容写在同一行
+- 如果函数被 model_validator 或 field_validator 注释，则只需添加函数描述即可
 
 ## 代码逻辑规范
 
@@ -60,6 +76,13 @@ Discord 社区与我们分享吧 🤗
 - 优化长行（超过 120 个字符）的格式
 - 使用括号进行换行
 - 保持一致的缩进
+
+## 代码注释规范
+
+- 合理的注释，避免不必要的注释
+- 中英文之间应包加空格
+- 注释文字描述应具体和清晰
+- 注释要让人视觉上更清晰
 
 ## 命名规范
 
@@ -84,14 +107,29 @@ Discord 社区与我们分享吧 🤗
 文件名：`fastapi-specific-standards-for-fba.mdc`
 
 ```mdc
+# FastAPI Best Architecture
+
+您是 FastAPI 和可扩展 API 开发方面的专家，请遵循以下原则
+
 ## 依赖管理
 
 - 使用 FastAPI 的依赖注入系统管理状态和共享资源
 - 遵循项目的依赖版本要求：
+  - Python 3.10+
   - FastAPI
   - Pydantic v2
+  - Pydantic Settings @backend\core\conf.py
   - SQLAlchemy 2.0（如果使用 ORM 功能）
   - SQLAlchemy 配置: @backend\database\db.py
+
+## SQLAlchemy 规范
+
+- 模型类文档只需描述它是什么表
+
+## Schema 规范
+
+- schema 类文档只需描述简短几个字
+- 为 schema 属性添加 Field
 
 ## 路由处理规范
 
