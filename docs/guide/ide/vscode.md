@@ -2,9 +2,7 @@
 title: vscode
 ---
 
-::: tip
-此章节仅限于 vscode 后端开发用户
-:::
+官网地址：[visualstudio](https://code.visualstudio.com/)
 
 ## DEBUG
 
@@ -24,7 +22,7 @@ title: vscode
       //"python": "${workspaceFolder}/.venv/bin/python", // MacOS or Linux
       //"python": "${workspaceFolder}/.venv/Scripts/python.exe",  // Windows
       "env": {
-          "PYTHONPATH": "${workspaceFolder};${env:PYTHONPATH}",
+        "PYTHONPATH": "${workspaceFolder};${env:PYTHONPATH}",
       },
       "envFile": "${workspaceFolder}/backend/.env",
       "args": [
