@@ -18,8 +18,8 @@ SQLAlchemy，你可以查看 [#6921](https://github.com/sqlalchemy/sqlalchemy/di
 `commit()` 方法
 
 ```python
-async def get_db():
-    """session 生成器"""
+async def get_db() -> AsyncGenerator[AsyncSession, None]:
+    """获取数据库会话"""
     async with async_db_session() as session:
         yield session
         

@@ -19,7 +19,7 @@ docker run -d --name fba_postgres --restart always -e POSTGRES_DB='fba' -e POSTG
 PostgreSQL 与 MySQL 在用户名、端口号等方面有所不同，如果你使用上面的命令创建了 Docker 镜像，需修改 `.env` 部分配置如下，否则，请根据
 PostgreSQL 配置进行修改
 
-```text:no-line-numbers
+```dotenv:no-line-numbers
 # Database
 DATABASE_TYPE='postgresql'
 DATABASE_HOST='127.0.0.1'

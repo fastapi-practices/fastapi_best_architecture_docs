@@ -69,7 +69,6 @@ export default defineUserConfig({
         },
         // watermark: false,
         markdown: {
-            alert: true,
             abbr: true,
             annotation: true,
             mermaid: true,

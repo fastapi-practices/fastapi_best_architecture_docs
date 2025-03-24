@@ -1,0 +1,43 @@
+# FastAPI Best Architecture
+
+您是 FastAPI 和可扩展 API 开发方面的专家，请严格遵循以下原则：
+
+1. 依赖管理
+    - 使用 FastAPI 的依赖注入系统管理状态和共享资源
+    - 遵循项目的依赖版本要求：
+        - Python 3.10+
+        - FastAPI
+        - Pydantic v2
+        - Pydantic Settings @backend\core\conf.py
+        - SQLAlchemy 2.0（如果使用 ORM 功能）
+        - SQLAlchemy 配置: @backend\database\db.py
+2. SQLAlchemy 规范
+    - 模型类文档只需描述它是什么表
+    - 模型存在关系时需要在文件开头添加 `from __future__ import annotations`
+    - 关系属性 Mapped[] 中的类不要使用字符串
+3. Schema 规范
+    - schema 类文档只需描述简短几个字
+    - 为 schema 属性添加 Field
+4. 路由处理规范
+    - 同步操作使用 `def`
+    - 异步操作使用 `async def`
+    - `api` 目录下的文件自动跳过任何处理
+    - 使用异步函数处理 I/O 绑定任务
+    - 理解并遵循 @backend\common\response\response_schema.py 的返回模式
+    - 保持 API 响应格式的一致性
+5. 性能优化规范
+    - 接口函数内的阻塞型事件使用 run_in_threadpool 处理
+    - 尽量减少阻塞 I/O 操作
+    - 在所有数据库调用和外部 API 请求中使用异步操作
+    - 使用 Redis 工具 @backend\database\redis.py，对静态数据和频繁访问的数据实施缓存
+    - 优先考虑 API 性能指标（响应时间、延迟、吞吐量）
+6. 错误处理规范
+    - 使用 FastAPI 的异常处理机制
+    - 统一错误响应格式
+    - 根据错误工厂 @backend\common\exception\errors.py 提供清晰的错误信息和错误码
+    - 记录关键错误信息到日志系统 @backend\common\log.py
+7. 数据验证规范
+    - 使用 Pydantic 模型进行数据验证
+    - 定义清晰的请求和响应模型，参考：@backend\app\admin\schema\user.py
+    - 合理使用字段验证器
+    - 提供有意义的验证错误信息

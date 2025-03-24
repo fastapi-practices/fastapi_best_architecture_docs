@@ -5,43 +5,7 @@ title: JWT
 我们编写了自定义的 JWT 授权中间件，使其可以在每次请求发起时，自动调用此中间件实现自动授权，并且，通过 Redis 和 Rust
 库对用户信息进行缓存和解析，使其性能影响尽可能降到最低
 
-```python :collapsed-lines=10
-class JwtAuthMiddleware(AuthenticationBackend):
-    """JWT 认证中间件"""
-
-    @staticmethod
-    def auth_exception_handler(conn: HTTPConnection, exc: _AuthenticationError) -> Response:
-        """覆盖内部认证错误处理"""
-        return MsgSpecJSONResponse(content={'code': exc.code, 'msg': exc.msg, 'data': None}, status_code=exc.code)
-
-    async def authenticate(self, request: Request) -> tuple[AuthCredentials, CurrentUserIns] | None:
-        # 获取请求头中的 token，如果未获取到，则视为无授权
-        token = request.headers.get('Authorization')
-        if not token:
-            return
-        
-        # 授权白名单过滤，如果路由位于白名单，则跳过授权
-        if request.url.path in settings.TOKEN_REQUEST_PATH_EXCLUDE:
-            return
-        
-        # 校验授权方式
-        scheme, token = get_authorization_scheme_param(token)
-        if scheme.lower() != 'bearer':
-            return
-
-        try:
-            # 通过 token 获取系统用户（方法内置缓存，详情请查看源码）
-            user = await jwt_authentication(token)
-        except TokenError as exc:
-            raise _AuthenticationError(code=exc.code, msg=exc.detail, headers=exc.headers)
-        except Exception as e:
-            log.error(f'JWT 授权异常：{e}')
-            raise _AuthenticationError(code=getattr(e, 'code', 500), msg=getattr(e, 'msg', 'Internal Server Error'))
-
-        # 请注意，此返回使用非标准模式，所以在认证通过时，将丢失某些标准特性
-        # 标准返回模式请查看：https://www.starlette.io/authentication/
-        return AuthCredentials(['authenticated']), user
-```
+@[code python](../../code/jwt.py)
 
 ## Token
 
