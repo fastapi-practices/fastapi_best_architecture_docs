@@ -54,7 +54,7 @@ title: Docker 部署
 > 此教程以 https 为例，如果你没有相关经验，请自行 Google 进行了解
 
 > [!NOTE]
-> 免费 SSL 证书推荐使用 [httpsok-SSL证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
+> 免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
 > 证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
 
 ### 后端
@@ -70,15 +70,22 @@ title: Docker 部署
 
 2. env
 
+   在 `backend` 目录中，创建环境变量文件
+
+   ```shell:no-line-numbers
+   touch .env
+   ```
+
    进入 `deploy/backend/docker-compose` 目录，按需修改 `.env.server` 文件
 
-   ::: note
-   我们在 docker-compose 脚本内通过挂载的方式直接使用此文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至 docker
+   ::: tip
+   我们在 docker-compose 脚本内通过挂载的方式使用 `.env.server` 文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至 docker
    容器，这意味着，修改环境变量将无需重新 build
    :::
 
    ::: warning
-   如果你需要使用 PostgreSQL 数据库，执行命令前，需修改 `.env.server` 部分配置如下：
+   如果您正在使用 PostgreSQL 数据库，需修改 `.env.server` 部分配置如下：
+
    ```dotenv:no-line-numbers
    # Database
    DATABASE_TYPE='postgresql'
@@ -87,12 +94,13 @@ title: Docker 部署
    DATABASE_USER='postgres'
    DATABASE_PASSWORD='123456'
    ```
+
    :::
 
 3. 按需修改配置文件 `backend/core/conf.py`
 
 4. 更新脚本文件
-   
+
    @[code yml :collapsed-lines=6](../../code/docker-compose.yml)
 
 5. 务必在 `docker-compose.yml` 所在目录打开终端
@@ -126,7 +134,7 @@ title: Docker 部署
 3. 更新 nginx 配置
 
    进入 deploy 目录，修改 `nginx.conf` 文件
-  
+
    @[code nginx :collapsed-lines=6](../../code/nginx.conf)
 
 4. 更新脚本文件
@@ -139,11 +147,11 @@ title: Docker 部署
    networks:
      fba_network:
        external: true
-   
+
    volumes:
      fba_static:
        external: true
-   
+
    services:
      fba_ui:
        build:

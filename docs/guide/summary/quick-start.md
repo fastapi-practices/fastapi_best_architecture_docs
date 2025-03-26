@@ -17,7 +17,7 @@ title: 快速开始
 ### 后端
 
 ::: tip
-如果你是 PostgreSQL 用户，请先移步到 [切换数据库](../reference/db.md)
+如果您是 PostgreSQL 用户，请先移步到 [切换数据库](../reference/db.md)
 :::
 
 :::: steps
