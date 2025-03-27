@@ -14,6 +14,9 @@ config:
           text: 快速开始 ->
           link: /guide/summary/quick-start
         - theme: alt
+          text: 伪三层架构?
+          link: /guide/summary/intro#伪三层架构
+        - theme: alt
           text: 为什么选择我们?
           link: /guide/summary/why
   - type: features

@@ -17,9 +17,8 @@ title: schema
 
 ## Field
 
-fba 内部暂未大量使用 Field，它后期可能被添加，但最也仅仅是将其用于添加描述，这很有助于接口文档字段说明，但也有可能因此
-PR 改变计划
-：[Allow to have multiple Query parameter models](https://github.com/fastapi/fastapi/pull/12944#pullrequestreview-2588580175)
+- 不建议将必填字段默认值设置为 `...`，参考：[必填字段](https://docs.pydantic.dev/latest/concepts/models/#required-fields)
+- 建议为所有字段至少添加 `description`，这对于 API 文档来说非常有用
 
 ## 驼峰返回
 
