@@ -46,7 +46,7 @@ export const mySidebar: SidebarMulti = {
                 { text: 'Celery', link: '/planet', icon: 'fluent-color:video-16' },
                 { text: 'APScheduler', link: 'apscheduler' },
                 // {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
-                { text: 'Socketio', link: '/planet', icon: 'fluent-color:receipt-16' },
+                { text: 'SocketIo', link: '/planet', icon: 'fluent-color:receipt-16' },
             ]
         },
         {

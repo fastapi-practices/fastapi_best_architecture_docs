@@ -77,7 +77,7 @@ title: 知识星球
     title="Socketio" 
     icon="fluent-color:receipt-16" 
     href="https://t.zsxq.com/Oi86a" 
-    description="轻松集成 Socketio" 
+    description="轻松集成 SocketIo" 
     />
   <LinkCard 
     title="Header Token"

@@ -22,9 +22,9 @@
     "vuepress-theme-plume": "1.0.0-rc.137"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.320",
+    "@iconify/json": "^2.2.321",
     "@vueuse/core": "^12.8.2",
-    "mermaid": "^11.5.0",
+    "mermaid": "^11.6.0",
     "swiper": "^11.2.6"
   }
 }
