@@ -50,7 +50,7 @@ title: 快速开始
 
     - 架构依赖
 
-      拉取项目到本地后，在项目根目录，执行以下命令安装架构依赖
+      拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
 
       ::: code-tabs
       @tab <Icon name="material-icon-theme:uv" />uv - pip
@@ -281,7 +281,7 @@ title: 快速开始
 1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，postgres 用户可忽略编码
 2. 创建数据库表，执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
 3. 初始化测试数据，执行 `backend/sql/` 目录下对应数据库的 `init_test_data.sql` 脚本
-4. 在项目根目录，执行单元测试命令
+4. 在项目根目录打开终端，执行以下单元测试命令
 
    ```shell:no-line-numbers
    pytest -vs --disable-warnings

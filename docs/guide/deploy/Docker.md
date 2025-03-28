@@ -12,11 +12,11 @@ title: Docker 部署
 
 ### 后端
 
-::: steps
+:::: steps
 
 1. env
 
-   在 `backend` 目录中，创建环境变量文件
+   在 `backend` 目录打开终端，创建环境变量文件
 
    ```shell:no-line-numbers
    touch .env
@@ -29,16 +29,19 @@ title: Docker 部署
    ```
 
 2. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-3. 务必在 `Dockerfile` 所在目录打开终端
-4. 运行以下命令构建容器
+3. 构建容器
 
+   在项目根目录中打开终端，执行以下命令
+
+   ::: note
    如果容器要在本地启动，需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
+   :::
 
    ```shell:no-line-numbers
    docker build -f Dockerfile -t fba_backend_independent .
    ```
 
-5. 启动容器
+4. 启动容器
 
    由于构建不包含数据库，请确保本地已安装并启动相关数据库（mysql / postgresql、redis）
 
@@ -46,7 +49,7 @@ title: Docker 部署
    docker run -d -p 8000:8000 --name fba_server fba_backend_independent
    ```
 
-:::
+::::
 
 ## 服务器部署
 
@@ -70,7 +73,7 @@ title: Docker 部署
 
 2. env
 
-   在 `backend` 目录中，创建环境变量文件
+   在 `backend` 目录打开终端，创建环境变量文件
 
    ```shell:no-line-numbers
    touch .env
@@ -103,8 +106,9 @@ title: Docker 部署
 
    @[code yml :collapsed-lines=6](../../code/docker-compose.yml)
 
-5. 务必在 `docker-compose.yml` 所在目录打开终端
-6. 执行一键启动命令
+5. 执行一键启动命令
+
+   在项目根目录中打开终端，执行以下命令
 
    ::: warning
    命令执行期间遇到镜像拉取问题请自行 Google
@@ -114,7 +118,7 @@ title: Docker 部署
    docker-compose up -d --build
    ```
 
-7. 等待命令执行完成
+6. 等待命令执行完成
    ::::
 
 ### 前端
