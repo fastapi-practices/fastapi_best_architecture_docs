@@ -12,7 +12,7 @@ title: 插件市场
 - <Badge type="info" text="free" /> - 免费插件
 - <Badge type="danger" text="pay" /> - 付费插件
 - <Badge type="tip" text="fba" /> - 仅后端代码插件
-- <Badge text="fba + vben" color="#c178ec"/> - 包含前端 [fba_admin](https://github.com/fastapi-practices/fba_admin) 代码插件 <Badge type="warning" text="暂无此计划" />
+- <Badge text="fba_ui" color="#c178ec"/> - 包含前端 [fastapi_best_architecture_ui](https://github.com/fastapi-practices/fastapi_best_architecture_ui) 代码插件 <Badge type="warning" text="暂无此计划" />
 - <Badge text="app" color="#ff9900"/> - 应用级插件
 - <Badge text="extra" color="#11aa00"/> - 扩展级插件
 
@@ -73,13 +73,13 @@ title: 插件市场
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
 
-    - 下载插件 GitHub 仓库为 zip 压缩包
+   - 下载插件 GitHub 仓库为 zip 压缩包
 
-      ::: details 示例
-      ![cg1](/images/plugin_zip.png)
-      :::
+     ::: details 示例
+     ![cg1](/images/plugin_zip.png)
+     :::
 
-    - 通过 fba 插件打包接口创建的 zip 压缩包
+   - 通过 fba 插件打包接口创建的 zip 压缩包
 
 2. 将压缩包通过插件安装接口进行安装
 3. 根据插件使用说明完成安装
@@ -87,5 +87,5 @@ title: 插件市场
 :::
 
 ::: warning
-无论采用哪种安装方式，插件都不会实时加载；您需要重新启动 fba，插件才能被正确加载到当前系统中
+无论采用哪种安装方式，插件都不会实时加载，您必须重新启动 fba，插件才能被正确加载到当前系统中
 :::

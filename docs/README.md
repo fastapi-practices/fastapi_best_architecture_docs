@@ -12,13 +12,13 @@ config:
       actions:
         - theme: brand
           text: 快速开始 ->
-          link: /guide/summary/quick-start
+          link: /backend/summary/quick-start
         - theme: alt
           text: 伪三层架构?
-          link: /guide/summary/intro#伪三层架构
+          link: /backend/summary/intro#伪三层架构
         - theme: alt
           text: 为什么选择我们?
-          link: /guide/summary/why
+          link: /backend/summary/why
   - type: features
     features:
       - title: 最新技术栈

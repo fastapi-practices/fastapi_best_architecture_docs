@@ -1,20 +1,20 @@
-import {defineNavbarConfig} from "vuepress-theme-plume";
+import { defineNavbarConfig } from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: 'UI 效果',
+        text: '后端',
+        link: '/backend/summary/quick-start.md'
+    },
+    {
+        text: '前端',
         items: [
             {
-                text: 'GitHub',
-                icon: 'mdi:git',
+                text: '文档',
+                icon: 'material-symbols:docs',
                 items: [
                     {
-                        text: 'Arco Design Vue 实验性实施',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
-                    },
-                    {
-                        text: 'Vben Admin Antd 下一代实施',
-                        link: 'https://github.com/fastapi-practices/fba_admin'
+                        text: 'Gi Admin Pro 官方适配实施',
+                        link: '/frontend/project'
                     }
                 ]
             },
@@ -23,11 +23,29 @@ export const myNavbar = defineNavbarConfig([
                 icon: 'mdi:web',
                 items: [
                     {
-                        text: 'Arco Design Vue 实验性实施',
+                        text: 'Arco Design Pro 实验性实施',
                         link: 'https://fba.wu-clan.site/'
                     }
                 ]
-            }
+            },
+            {
+                text: '文档',
+                icon: 'mdi:git',
+                items: [
+                    {
+                        text: 'Gi Admin Pro 官方适配实施',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
+                    },
+                    {
+                        text: 'Vben Admin Antd 社区适配实施',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_vben'
+                    },
+                    {
+                        text: 'Arco Design Pro 实验性实施',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco'
+                    }
+                ]
+            },
         ]
     },
     {
@@ -68,7 +86,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '授权',
         icon: 'fluent:person-key-20-filled',
-        link: '/guide/summary/why.md#承诺'
+        link: '/backend/summary/why.md#承诺'
     },
     {
         text: '赞助',

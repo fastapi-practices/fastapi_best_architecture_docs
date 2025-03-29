@@ -1,9 +1,9 @@
 import { text } from "mermaid/dist/rendering-util/rendering-elements/shapes/text.js";
-import { SidebarMulti } from "vuepress-theme-plume/lib/shared";
+import { ThemeSidebarMulti } from "vuepress-theme-plume";
 
 
-export const mySidebar: SidebarMulti = {
-    '/guide/': [
+export const mySidebar: ThemeSidebarMulti = {
+    '/backend/': [
         {
             text: '介绍',
             collapsed: false,
@@ -32,11 +32,11 @@ export const mySidebar: SidebarMulti = {
                 { text: '路由', link: 'router' },
                 { text: 'CRUD', link: 'CRUD' },
                 { text: 'Schema', link: 'schema' },
-                { text: '接口响应', link: 'response' },
+                { text: '操作人信息', link: '/planet', icon: 'fluent-color:receipt-16' },
                 { text: '分页', link: 'pagination' },
+                { text: '接口响应', link: 'response' },
                 { text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16' },
                 { text: '切换数据库', link: 'db' },
-                { text: '鉴权', link: 'permission' },
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
                 { text: '数据规则', link: '/planet', icon: 'fluent-color:video-16' },
@@ -47,15 +47,6 @@ export const mySidebar: SidebarMulti = {
                 { text: 'APScheduler', link: 'apscheduler' },
                 // {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
                 { text: 'SocketIo', link: '/planet', icon: 'fluent-color:receipt-16' },
-            ]
-        },
-        {
-            text: 'Mixin',
-            collapsed: false,
-            prefix: 'mixin/',
-            items: [
-                { text: 'CRUD', link: 'CRUD' },
-                { text: '操作人信息', link: '/planet', icon: 'fluent-color:receipt-16' },
             ]
         },
         {
@@ -77,6 +68,15 @@ export const mySidebar: SidebarMulti = {
                 { text: '插件开发', link: 'dev' },
                 { text: '插件发布', link: 'publish' },
                 { text: '插件市场', link: 'market' },
+            ]
+        }
+    ],
+    '/frontend/': [
+        {
+            text: '参考',
+            collapsed: false,
+            items: [
+                { text: '项目', link: 'project' },
             ]
         }
     ]

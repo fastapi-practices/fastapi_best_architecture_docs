@@ -53,7 +53,7 @@ title: 插件开发
 
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
-在 [项目结构](../guide/summary/intro.md#项目结构) 中，app
+在 [项目结构](../backend/summary/intro.md#项目结构) 中，app
 目录下的一级文件夹被视为应用，此原理同样应用于插件系统。也就是说，如果插件被开发为应用，那么它们将会像应用一样被注入到系统中，我们称这类插件为【应用级插件】
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
@@ -67,7 +67,7 @@ fba 会在启动前对所有插件进行解析
 
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
-插件路由结构应完全遵循 [路由结构](../guide/reference/router.md#路由结构) 进行开发
+插件路由结构应完全遵循 [路由结构](../backend/reference/router.md#路由结构) 进行开发
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 插件路由结构必须根据现有应用中的目录结构进行 1:1 复制，可参考 fba

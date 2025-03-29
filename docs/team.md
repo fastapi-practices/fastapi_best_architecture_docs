@@ -36,7 +36,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/63089130?v=4
         desc: 大数据运维吗喽，主要做监控、告警、平台分析以及运维开发等工作，略懂一些 Go 和 Python
         location: 成都，四川
-        organization: FastAPI Practices
+        organization: --
         socials: [
           { icon: 'github', link: 'https://github.com/Meepoljdx' }
         ]

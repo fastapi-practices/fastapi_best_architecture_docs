@@ -7,6 +7,23 @@ title: JWT
 
 @[code python](../../code/jwt.py)
 
+## 接口鉴权
+
+在文件 `backend/common/security/jwt.py` 中，包含以下代码
+
+```python
+# JWT authorizes dependency injection
+DependsJwtAuth = Depends(HTTPBearer())
+```
+
+我们通过在接口函数中添加此依赖实现 JWT 快速校验，它可以帮助我们检查请求头中是否包含 Bearer Token，使用方式参考如下：
+
+```python{1}
+@router.get('/hello', summary='你好', dependencies=[DependsJwtAuth])
+async def hello():
+    ...
+```
+
 ## Token
 
 内置 token 授权方式遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750)，如果您想通过自定义请求头添加 token

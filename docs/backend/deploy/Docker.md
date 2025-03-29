@@ -10,8 +10,6 @@ title: Docker 部署
 
 本地部署是为了能够快捷的提供本地 API 服务
 
-### 后端
-
 :::: steps
 
 1. env
@@ -53,12 +51,14 @@ title: Docker 部署
 
 ## 服务器部署
 
-> [!TIP]
-> 此教程以 https 为例，如果你没有相关经验，请自行 Google 进行了解
+::: tip
+此教程以 https 为例，如果你没有相关经验，请自行 Google 进行了解
+:::
 
-> [!NOTE]
-> 免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
-> 证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
+::: info
+免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL 
+证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
+:::
 
 ### 后端
 
@@ -126,14 +126,14 @@ title: Docker 部署
 ::::: steps
 
 1. 拉取代码到服务器
-2. env
-   ::: tabs
-   @tab <Icon name="icon-park-outline:new-lark" />Arco Desgin Vue
-   修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
 
-   @tab <Icon name="devicon:antdesign" />Vben Admin Antd
-   生产中...
-   :::
+   ```shell:no-line-numbers
+   git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco.git
+   ```
+
+2. env
+
+   修改 `.env.production` 中的 `VITE_API_BASE_URL` 为域名地址
 
 3. 更新 nginx 配置
 

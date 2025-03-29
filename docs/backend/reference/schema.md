@@ -4,9 +4,9 @@ title: schema
 
 在 fba 中，我们为 Schema 进行了大量量身定制，详情请查看源代码：`backend\common\schema.py`
 
-## 类定义
+## 类命名
 
-针对 schema 类，fba 遵循以下规范：
+fba 遵循以下命名规范：
 
 - 基础 schema: `XxxSchemaBase(SchemaBase)`
 - 接口入参：`XxxParam(XxxSchemaBase)`

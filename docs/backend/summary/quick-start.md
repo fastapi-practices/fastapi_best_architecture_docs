@@ -14,8 +14,6 @@ title: 快速开始
 
 ## 本地开发
 
-### 后端
-
 ::: tip
 如果您是 PostgreSQL 用户，请先移步到 [切换数据库](../reference/db.md)
 :::
@@ -24,9 +22,9 @@ title: 快速开始
 
 1. 准备本地环境
 
-    * Python 3.10+
-    * MySQL 8.0+ 或 PostgreSQL 16.0 +
-    * Redis 推荐最新稳定版
+   - Python 3.10+
+   - MySQL 8.0+ 或 PostgreSQL 16.0 +
+   - Redis 推荐最新稳定版
 
 2. 准备 Git 仓库 <Badge type="warning" text="二选一" />
 
@@ -48,30 +46,34 @@ title: 快速开始
 
 3. 安装依赖包
 
-    - 架构依赖
+   - 架构依赖
 
-      拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
+     拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
 
-      ::: code-tabs
-      @tab <Icon name="material-icon-theme:uv" />uv - pip
-      ```shell:no-line-numbers
-      uv pip install -r requirements.txt
-      ```
-      
-      @tab <Icon name="material-icon-theme:uv" />uv - sync
-      ```shell:no-line-numbers
-      uv sync --frozen
-      ```
+     ::: code-tabs
+     @tab <Icon name="material-icon-theme:uv" />uv - pip
 
-      @tab <Icon name="material-icon-theme:python" />pip
-      ```shell:no-line-numbers
-      pip install -r requirements.txt
-      ```
-      :::
+     ```shell:no-line-numbers
+     uv pip install -r requirements.txt
+     ```
 
-    - 插件依赖
+     @tab <Icon name="material-icon-theme:uv" />uv - sync
 
-      执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
+     ```shell:no-line-numbers
+     uv sync --frozen
+     ```
+
+     @tab <Icon name="material-icon-theme:python" />pip
+
+     ```shell:no-line-numbers
+     pip install -r requirements.txt
+     ```
+
+     :::
+
+   - 插件依赖
+
+     执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
 
 4. 创建数据库：`fba`，选择 utf8mb4 编码；PostgreSQL 用户可忽略编码
 5. 启动 Redis
@@ -98,11 +100,13 @@ title: 快速开始
 
    @tab Alembic 迁移
    生成迁移文件
+
    ```shell:no-line-numbers
    alembic revision --autogenerate
    ```
 
    执行迁移
+
    ```shell:no-line-numbers
    alembic upgrade head
    ```
@@ -117,21 +121,24 @@ title: 快速开始
 
    ::: code-tabs
    @tab Worker
+
    ```shell:no-line-numbers
    celery -A app.task.celery worker -l info
    ```
 
    @tab Beat
+
    ```shell:no-line-numbers
    celery -A app.task.celery beat -l info
    ```
 
    @tab Flower
+
    ```shell:no-line-numbers
    celery -A app.task.celery flower --port=8555 --basic-auth=admin:123456
    ```
-   :::
 
+   :::
 
 10. 初始化测试数据
 
@@ -166,94 +173,10 @@ title: 快速开始
 
 ::::
 
-### 前端
-
-::: warning
-前端项目并不是我们发展的重心，我们创建的所有前端实施，均用于 UI
-效果演示，它们不一定适用于生产环境，您可以点击查看我们的 [目标](./why.md#目标)
-:::
-
-::::: tabs
-@tab <Icon name="icon-park-outline:new-lark" />Arco Desgin Vue
-
-::: caution
-这是一个实验性实施，仅用于效果演示，此版本即将存档，请勿将其用于生产！
-:::
-
-:::: steps
-
-1. 准备本地环境
-
-    * Nodejs 18.0+
-    * yarn 1.x
-
-2. 拉取 Git 项目
-
-   ```shell:no-line-numbers
-   git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui.git
-   ```
-
-3. 安装和启动
-
-   ::: warning
-   第一次启动可能会很慢，你可以查看此 [Issue](https://github.com/fastapi-practices/fastapi_best_architecture_ui/issues/72)
-   查看详情
-   :::
-
-   进入项目根目录，安装依赖
-
-   ```shell:no-line-numbers
-   yarn install
-   ```
-
-   启动
-
-   ```shell:no-line-numbers
-   yarn dev
-   ```
-
-::::
-
-@tab <Icon name="devicon:antdesign" />Vben Admin Antd
-
-::: tip
-这是下一代实施，目前正处于积极开发阶段，未来将完全适配 fba
-:::
-
-:::: steps
-
-1. 准备本地环境
-
-    * Nodejs 20.10.0+
-    * pnpm 9.12.0+
-
-2. 拉取 Git 项目
-
-   ```shell:no-line-numbers
-   git clone https://github.com/fastapi-practices/fba_admin.git
-   ```
-
-3. 安装和启动
-
-   进入项目根目录，安装依赖
-
-   ```shell:no-line-numbers
-   pnpm install
-   ```
-
-   启动
-
-   ```shell:no-line-numbers
-   pnpm dev
-   ```
-
-::::
-:::::
-
 ## 开发流程
 
 ::: tip
-仅供参考，实际以个人为准
+仅供参考，实际以个人习惯为准
 :::
 
 ::: steps
