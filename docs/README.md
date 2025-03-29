@@ -2,12 +2,11 @@
 home: true
 watermark: false
 config:
-  - type: doc-hero
+  - type: hero
     hero:
       name: FastAPI Best Architecture
-      tagline: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
-      text: 企业级后端架构解决方案
-      image: https://wu-clan.github.io/picx-images-hosting/logo/fba.png
+      tagline: 企业级后端架构解决方案
+      text: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
       actions:
         - theme: brand
           text: 快速开始 ->
