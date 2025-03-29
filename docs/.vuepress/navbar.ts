@@ -9,16 +9,6 @@ export const myNavbar = defineNavbarConfig([
         text: '前端',
         items: [
             {
-                text: '文档',
-                icon: 'material-symbols:docs',
-                items: [
-                    {
-                        text: 'Gi Admin Pro 官方适配实施',
-                        link: '/frontend/intro'
-                    }
-                ]
-            },
-            {
                 text: '线上演示',
                 icon: 'mdi:web',
                 items: [
@@ -29,20 +19,26 @@ export const myNavbar = defineNavbarConfig([
                 ]
             },
             {
+                text: '文档',
+                icon: 'material-symbols:docs',
+                items: [
+                    {
+                        text: 'Vben Admin Antd 完整版实施',
+                        link: '/frontend/intro'
+                    }
+                ]
+            },
+            {
                 text: 'GitHub',
                 icon: 'mdi:git',
                 items: [
                     {
-                        text: 'Gi Admin Pro 官方适配实施',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
-                    },
-                    {
-                        text: 'Vben Admin Antd 社区适配实施',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_vben'
-                    },
-                    {
                         text: 'Arco Design Pro 实验性实施',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco'
+                    },
+                    {
+                        text: 'Vben Admin Antd 完整版实施',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
                     }
                 ]
             },
