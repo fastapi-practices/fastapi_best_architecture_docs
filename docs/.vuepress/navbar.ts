@@ -14,7 +14,7 @@ export const myNavbar = defineNavbarConfig([
                 items: [
                     {
                         text: 'Gi Admin Pro 官方适配实施',
-                        link: '/frontend/project'
+                        link: '/frontend/intro'
                     }
                 ]
             },
@@ -29,7 +29,7 @@ export const myNavbar = defineNavbarConfig([
                 ]
             },
             {
-                text: '文档',
+                text: 'GitHub',
                 icon: 'mdi:git',
                 items: [
                     {

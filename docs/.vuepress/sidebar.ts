@@ -76,7 +76,8 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '参考',
             collapsed: false,
             items: [
-                { text: '项目', link: 'project' },
+                { text: '介绍', link: 'intro' },
+                { text: '快速开始', link: 'quick-start' },
             ]
         }
     ]
