@@ -2,13 +2,12 @@
 home: true
 watermark: false
 config:
-  - type: hero
-    full: true
-    background: tint-plate
+  - type: doc-hero
     hero:
       name: FastAPI Best Architecture
-      tagline: 企业级后端架构解决方案
-      text: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
+      tagline: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
+      text: 企业级后端架构解决方案
+      image: https://wu-clan.github.io/picx-images-hosting/logo/fba.png
       actions:
         - theme: brand
           text: 快速开始 ->
@@ -49,10 +48,6 @@ config:
         icon: 🐳
         details: 提供 Docker compose 一键部署方案
   - type: custom
-  - type: profile
-    name: wu-clan
-    description: 一个喜欢在夜深人静时进行开源创作的 coder
-    avatar: https://avatars.githubusercontent.com/u/52145145?v=4
 ---
 
 <script setup lang="ts">
