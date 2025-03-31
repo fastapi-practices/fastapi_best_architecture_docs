@@ -14,6 +14,14 @@ title: cursor
 
 查看 cursor 官方文档：[rules-for-ai](https://docs.cursor.com/context/rules-for-ai)，然后添加以下规则：
 
+### fba
+
+::: tip
+此规则仅限用于 fba 项目
+:::
+
+@[code mdc](../../code/fastapi.mdc)
+
 ### Python
 
 ::: note
@@ -21,11 +29,3 @@ title: cursor
 :::
 
 @[code mdc](../../code/python.mdc)
-
-### FastAPI
-
-::: tip
-此规则仅限用于 fba 项目
-:::
-
-@[code mdc](../../code/fastapi.mdc)
