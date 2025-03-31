@@ -3,7 +3,7 @@
   "proseWrap": "preserve", // 超过宽度强制换行
   "tabWidth": 2, // 缩进使用 2 个空格
   "useTabs": false, // 使用空格而不是制表符
-  "printWidth": 80, // 设置行宽为 120
+  "printWidth": 120, // 设置行宽为 120
   "singleQuote": false, // 使用双引号
   "trailingComma": "none", // 不添加尾随逗号
   "overrides": [

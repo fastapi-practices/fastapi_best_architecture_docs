@@ -111,7 +111,7 @@ export const myNavbar = defineNavbarConfig([
             {
                 text: '加入团队',
                 icon: 'mingcute:user-add-2-fill',
-                link: 'https://discord.com/channels/1185035164577972344/1319245794271956993'
+                link: '/join'
             },
             {
                 text: '知识星球',
