@@ -92,7 +92,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '互动',
         icon: 'game-icons:talk',
-        link: 'https://wu-clan.github.io/homepage/'
+        link: '/group'
     },
     {
         text: '关于',

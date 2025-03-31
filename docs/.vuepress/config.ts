@@ -53,9 +53,8 @@ export default defineUserConfig({
                 },
                 link: 'https://gitee.com/wu_clan/fastapi_best_architecture'
             },
-            { icon: 'discord', link: 'https://discord.com/invite/yNN3wTbVAC' }
         ],
-        navbarSocialInclude: ['github', 'gitee', 'discord'],
+        navbarSocialInclude: ['github', 'gitee'],
         editLinkText: '编辑此页面',
         contributors: false,
         copyright: {
