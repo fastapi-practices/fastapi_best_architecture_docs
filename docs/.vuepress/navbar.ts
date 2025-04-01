@@ -23,6 +23,10 @@ export const myNavbar = defineNavbarConfig([
                 icon: 'material-symbols:docs',
                 items: [
                     {
+                        text: 'Arco Design Pro 实验性实施',
+                        link: '/frontend/arco'
+                    },
+                    {
                         text: 'Vben Admin Antd 完整版实施',
                         link: '/frontend/intro'
                     }
