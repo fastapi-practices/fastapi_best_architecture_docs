@@ -29,10 +29,10 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
+                { text: '模型', link: 'model' },
+                { text: 'Schema', link: 'schema' },
                 { text: '路由', link: 'router' },
                 { text: 'CRUD', link: 'CRUD' },
-                { text: 'Schema', link: 'schema' },
-                { text: '操作人信息', link: '/planet', icon: 'fluent-color:receipt-16' },
                 { text: '分页', link: 'pagination' },
                 { text: '接口响应', link: 'response' },
                 { text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16' },

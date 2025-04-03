@@ -14,15 +14,15 @@
   "license": "MIT",
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.20",
-    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.86",
+    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.91",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.80",
-    "@vuepress/plugin-umami-analytics": "2.0.0-rc.86",
+    "@vuepress/plugin-umami-analytics": "2.0.0-rc.91",
     "vue": "^3.5.13",
     "vuepress": "2.0.0-rc.20",
-    "vuepress-theme-plume": "1.0.0-rc.137"
+    "vuepress-theme-plume": "1.0.0-rc.138"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.321",
+    "@iconify/json": "^2.2.323",
     "@vueuse/core": "^12.8.2",
     "mermaid": "^11.6.0",
     "swiper": "^11.2.6"
