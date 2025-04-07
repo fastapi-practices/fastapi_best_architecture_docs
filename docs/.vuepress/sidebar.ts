@@ -36,6 +36,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '分页', link: 'pagination' },
                 { text: '接口响应', link: 'response' },
                 { text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16' },
+                { text: '节流', link: 'limit' },
                 { text: '切换数据库', link: 'db' },
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
