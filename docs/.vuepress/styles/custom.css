@@ -44,4 +44,5 @@
 .swiper-slide-custom-container {
     /* 轮播图边框 */
     border: 1px solid rgb(177 177 177 / 66%) !important;
+    color: #ed00b2;
 }
