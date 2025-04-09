@@ -49,7 +49,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.0.4',
+        text: 'v1.0.5',
         items: [
             {
                 text: '常见问题',
