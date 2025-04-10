@@ -46,27 +46,26 @@ title: 快速开始
 
 3. 安装依赖包
 
+   ::: warning
+   此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
+   如果您本地已经存在 uv, 建议将其升级至最新版本
+   :::
+
    - 架构依赖
 
      拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
 
      ::: code-tabs
-     @tab <Icon name="material-icon-theme:uv" />uv - pip
-
-     ```shell:no-line-numbers
-     uv pip install -r requirements.txt
-     ```
-
      @tab <Icon name="material-icon-theme:uv" />uv - sync
 
      ```shell:no-line-numbers
      uv sync --frozen
      ```
 
-     @tab <Icon name="material-icon-theme:python" />pip
+     @tab <Icon name="material-icon-theme:uv" />uv - pip
 
      ```shell:no-line-numbers
-     pip install -r requirements.txt
+     uv pip install -r requirements.txt
      ```
 
      :::
