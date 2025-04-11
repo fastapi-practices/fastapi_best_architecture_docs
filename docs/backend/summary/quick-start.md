@@ -46,33 +46,59 @@ title: 快速开始
 
 3. 安装依赖包
 
-   ::: warning
-   此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
-   如果您本地已经存在 uv, 建议将其升级至最新版本
-   :::
+   1. 架构依赖
 
-   - 架构依赖
+      ::: warning
+      此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
+      如果您本地已经存在 uv, 建议将其升级至最新版本
+      :::
 
-     拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
+      拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
 
-     ::: code-tabs
-     @tab <Icon name="material-icon-theme:uv" />uv - sync
+      ::: code-tabs
+      @tab <Icon name="material-icon-theme:uv" />uv - sync
 
-     ```shell:no-line-numbers
-     uv sync --frozen
-     ```
+      ```shell:no-line-numbers
+      uv sync --frozen
+      ```
 
-     @tab <Icon name="material-icon-theme:uv" />uv - pip
+      @tab <Icon name="material-icon-theme:uv" />uv - pip
 
-     ```shell:no-line-numbers
-     uv pip install -r requirements.txt
-     ```
+      ```shell:no-line-numbers
+      uv pip install -r requirements.txt
+      ```
 
-     :::
+      :::
 
-   - 插件依赖
+   2. 插件依赖
 
-     执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
+      ::: warning
+      为了实现插件 0 耦合，插件依赖并未使用 uv 进行管理。执行以下脚本后，后期如果仍需同步环境依赖，请务必使用命令：
+      `uv sync --frozen --inexact`
+      :::
+
+      执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
+
+      ::: details 报错：ModuleNotFoundError: No module named 'backend'
+
+      1. 自行搜索：将源根到添加到 PYTHONPATH
+      2. 执行以下命令：
+
+         Linux/Mac:
+
+         ```sh
+         # 修改 /path/to/fba 为您本地 fba 项目路径
+         export PYTHONPATH=$PYTHONPATH:/path/to/fba
+         ```
+
+         Windows:
+
+         ```sh
+         # 修改 D:\path\to\fba 为您本地 fba 项目路径
+         set PYTHONPATH=%PYTHONPATH%;D:\path\to\fba
+         ```
+
+      :::
 
 4. 创建数据库：`fba`，选择 utf8mb4 编码；PostgreSQL 用户可忽略编码
 5. 启动 Redis
