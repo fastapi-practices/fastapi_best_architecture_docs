@@ -22,7 +22,6 @@ title: 插件市场
 
 这些插件由 fba 内置
 
-
 <CardGrid>
   <Card icon="fe:notice-active" title="通知公告">
     <p style="color: #898989;">发布系统内部通知、公告</p>
@@ -65,6 +64,14 @@ title: 插件市场
 <CardGrid>
   <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://github.com/fastapi-practices/fba_aliyun_oss">
     <p style="color: #898989;">阿里云 oss 文件上传</p>
+    <span>
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
+    <Badge text="extra" color="#11aa00"/>
+    </span>
+  </LinkCard>
+  <LinkCard icon="streamline:ai-prompt-spark" title="MCP ChatGPT" href="https://github.com/fastapi-practices/fba_mcp">
+    <p style="color: #898989;">可调用 MCP 服务器的增强版 AI 聊天</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />

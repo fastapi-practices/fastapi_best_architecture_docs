@@ -11,5 +11,5 @@ title: Arco Design Pro 实验性实施
 
 ::: caution
 「Arco Design Pro 实验性实施」自 fba [v1.0.4](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.4)
-版本起，正式宣告其使命完结。
+版本起，正式宣告其使命完结，fba 后续版本将不再对此进行适配！
 :::

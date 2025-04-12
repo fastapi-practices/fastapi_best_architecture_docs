@@ -39,6 +39,7 @@ title: 插件开发
             - service/ 服务 <Badge type="warning" text="非必须" />
             - utils/ 工具包 <Badge type="warning" text="非必须" />
             - \_\_init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
+            - ...
             - conf.py 常量配置 <Badge type="warning" text="非必须" />
             - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
             - README.md 插件使用说明 <Badge type="danger" text="必须" />

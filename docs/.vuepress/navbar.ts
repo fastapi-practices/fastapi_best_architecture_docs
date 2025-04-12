@@ -80,11 +80,11 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '插件市场',
-        icon: 'clarity:plugin-solid',
+        icon: 'unjs:unplugin',
         link: '/plugin/before'
     },
     {
-        text: '授权',
+        text: '购买授权',
         icon: 'fluent:person-key-20-filled',
         link: '/backend/summary/why.md#承诺'
     },

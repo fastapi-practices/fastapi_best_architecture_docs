@@ -3,14 +3,8 @@ title: 快速开始
 ---
 
 ::: caution
-==fba 仅适用于资深 Python 后端开发人员=={.warning}，如果您是非资深用户，建议使用 [精简版](../summary/fsm.md)
+fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户，我们建议您从 [精简版](../summary/fsm.md) 开始学习
 :::
-
-> [!IMPORTANT]
-> 我们建议新手用户从基础且简单的部分开始学习，这不仅是对自己学习负责的表现，也为未来顺利掌握这一架构奠定了坚实基础。欢迎加入我们的
-> Discord 社区，一起交流讨论！
->
-> 最后，请务必认真阅读本文档，并严格按照文档的顺序启动项目，否则在启动过程中很可能会遇到各种问题。
 
 ## 本地开发
 
@@ -142,7 +136,7 @@ title: 快速开始
 
 9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选" />
 
-   在 `backend` 目录打开终端，执行以下创建启动 celery 相关服务
+   在 `backend` 目录打开终端，执行以下命令启动 celery 相关服务
 
    ::: code-tabs
    @tab Worker
