@@ -71,7 +71,7 @@ title: 插件市场
     </span>
   </LinkCard>
   <LinkCard icon="streamline:ai-prompt-spark" title="MCP ChatGPT" href="https://github.com/fastapi-practices/fba_mcp">
-    <p style="color: #898989;">可调用 MCP 服务器的增强版 AI 聊天</p>
+    <p style="color: #898989;">调用 MCP 服务器的进行 AI 聊天</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />

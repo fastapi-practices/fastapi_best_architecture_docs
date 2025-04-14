@@ -57,12 +57,6 @@ export default defineUserConfig({
         navbarSocialInclude: ['github', 'gitee'],
         editLinkText: '编辑此页面',
         contributors: false,
-        copyright: {
-            license: {
-                name: 'MIT',
-                url: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/LICENSE'
-            }
-        },
         footer: {
             copyright: 'Copyright © 2024-present FastAPI Practices'
         },
