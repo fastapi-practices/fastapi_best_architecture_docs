@@ -122,6 +122,11 @@ export const myNavbar = defineNavbarConfig([
                 icon: 'ph:planet-fill',
                 link: '/planet'
             },
+            {
+                text: '服务状态',
+                icon: 'simple-icons:uptimekuma',
+                link: 'https://status.wu-clan.site/status/services'
+            },
         ],
     }
 ])
