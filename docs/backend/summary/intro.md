@@ -10,15 +10,15 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 但请注意，我们并没有传统的多 app 结构（django、springBoot...），而是[自以为是的 app 结构](#项目结构)
 
-如果您不喜欢这种模式，可以使用模板对其进行任意改造！
+如果您不喜欢这种模式，可以对其进行任意改造！
 
-| 工作流程 | java           | fastapi_best_architecture |
+| 模块     | java           | fastapi_best_architecture |
 | -------- | -------------- | ------------------------- |
 | 视图     | controller     | api                       |
 | 数据传输 | dto            | schema                    |
 | 业务逻辑 | service + impl | service                   |
 | 数据访问 | dao / mapper   | crud                      |
-| 模型     | model / entity | model                     |
+| 模型     | entity         | model                     |
 
 ## 特性
 
