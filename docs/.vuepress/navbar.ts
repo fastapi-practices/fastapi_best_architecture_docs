@@ -79,7 +79,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: '插件市场',
+        text: '插件系统',
         icon: 'unjs:unplugin',
         link: '/plugin/before'
     },

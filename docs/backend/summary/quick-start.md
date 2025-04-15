@@ -66,11 +66,6 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
    2. 插件依赖
 
-      ::: warning
-      为了实现插件 0 耦合，插件依赖并未使用 uv 进行管理。执行以下脚本后，后期如果仍需同步环境依赖，请务必使用命令：
-      `uv sync --frozen --inexact`
-      :::
-
       执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
 
       ::: details 报错：ModuleNotFoundError: No module named 'backend'
@@ -92,6 +87,11 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
          set PYTHONPATH=%PYTHONPATH%;D:\path\to\fba
          ```
 
+      :::
+
+      ::: caution
+      为了实现插件 0 耦合，插件依赖并未使用 uv 进行管理。执行上面脚本文件后，如果后期您仍需同步环境依赖，请务必使用命令：
+      `uv sync --frozen --inexact`，否则插件依赖将被 uv 自动清理！
       :::
 
 4. 创建数据库：`fba`，选择 utf8mb4 编码；PostgreSQL 用户可忽略编码
@@ -134,7 +134,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    执行 `backend/sql/` 目录下对应数据库的 `create_tables.sql` 脚本
    :::
 
-9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选" />
+9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，三个都可以不执行" />
 
    在 `backend` 目录打开终端，执行以下命令启动 celery 相关服务
 
@@ -165,12 +165,8 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 11. 启动 fastapi 服务
 
-    ::: info
-    此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 `run.py` 文件
-    :::
-
     ::: warning
-    如果你在项目中安装了 [应用级插件](../../plugin/dev.md#插件分类)，请务必使用 `run.py`
+    如果你在项目中安装了 [应用级插件](../../plugin/market.md)，请务必使用 `run.py`
     文件启动项目，否则，您将收到启动错误
 
     详情：[fastapi/fastapi#13372 (comment)](https://github.com/fastapi/fastapi/discussions/13372#discussioncomment-12211232)

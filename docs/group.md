@@ -1,5 +1,5 @@
 ---
-title: 社区
+title: 互动
 ---
 
 您可以通过此链接 [null](https://wu-clan.github.io/homepage/) 中的任意联系方式与 fba 作者互动

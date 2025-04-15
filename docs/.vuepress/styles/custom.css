@@ -18,24 +18,6 @@
     --vp-c-brand-3: rgba(0, 148, 133, 1);
 }
 
-/* 文档式首页 name */
-.vp-home-doc-hero .container .main .heading .name {
-    font-size: 48px !important;
-}
-
-
-/* 文档式首页 text */
-.vp-home-doc-hero .container .main .heading .text {
-    font-size: 48px !important;
-}
-
-.vp-repo-card,
-.vp-link-card,
-.vp-card-wrapper {
-    /* 卡片阴影效果 */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27), 0 1px 2px rgba(255, 255, 255, 0.22) !important;
-}
-
 .vp-swiper .swiper-slide-img {
     /* 轮播图图片拉伸效果 */
     object-fit: fill;

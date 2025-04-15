@@ -6,47 +6,22 @@ title: 插件开发
 
 :::: steps
 
-1. clone 最新 fba 项目到本地并配置好开发环境
-2. 根据 [插件目录结构](#插件目录结构)
-   开发插件，在开始前，开发者还需了解 [插件分类](#插件分类)、[插件路由结构](#插件路由结构)、[插件配置](#插件配置)
-3. 完成插件开发
-4. 插件分享 <Badge type="warning" text="可选" />
+1. 拉取最新的 fba 项目到本地并配置好开发环境
+2. 通过 [插件分类](#插件分类)、[插件路由结构](#插件路由结构)、[插件配置](#插件配置) 了解插件系统的运作机制
+3. 根据 [插件目录结构](#插件目录结构) 进行插件开发
+4. 完成插件开发
+5. 插件分享 <Badge type="warning" text="可选" />
 
    使用插件模板仓库 [fba_plugin_template](https://github.com/fastapi-practices/fba_plugin_template)
    创建个人仓库，并将插件代码上传到个人仓库
 
    ::: warning
-   请不要将插件代码以 PR 的方式进行提交！它永远不会被接受！
+   请不要将插件代码以 PR 的方式进行提交！
    :::
 
-5. [申请发布插件](publish.md) <Badge type="warning" text="可选" />
+6. [申请发布插件](publish.md) <Badge type="warning" text="可选" />
 
 ::::
-
-### 插件目录结构
-
-::: file-tree
-
-- backend 固定目录 <Badge type="danger" text="必须" />
-    - plugin 固定目录 <Badge type="danger" text="必须" />
-        - xxx 插件名 <Badge type="danger" text="必须" />
-            - api/ 接口 <Badge type="danger" text="必须" />
-            - crud/ CRUD <Badge type="warning" text="非必须" />
-            - model/ 模型 <Badge type="warning" text="非必须" />
-                - \_\_init__.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
-                - …
-            - schema/ 数据传输 <Badge type="warning" text="非必须" />
-            - service/ 服务 <Badge type="warning" text="非必须" />
-            - utils/ 工具包 <Badge type="warning" text="非必须" />
-            - \_\_init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
-            - ...
-            - conf.py 常量配置 <Badge type="warning" text="非必须" />
-            - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
-            - README.md 插件使用说明 <Badge type="danger" text="必须" />
-            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；
-              如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
-
-:::
 
 ### 插件分类
 
@@ -107,6 +82,31 @@ prefix = ''
 # 标签，用于 FastAPI 接口文档
 tags = ''
 ```
+
+:::
+
+### 插件目录结构
+
+::: file-tree
+
+- backend 固定目录 <Badge type="danger" text="必须" />
+  - plugin 固定目录 <Badge type="danger" text="必须" />
+    - xxx 插件名 <Badge type="danger" text="必须" />
+      - api/ 接口 <Badge type="danger" text="必须" />
+      - crud/ CRUD <Badge type="warning" text="非必须" />
+      - model/ 模型 <Badge type="warning" text="非必须" />
+        - \_\_init\_\_.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
+        - …
+      - schema/ 数据传输 <Badge type="warning" text="非必须" />
+      - service/ 服务 <Badge type="warning" text="非必须" />
+      - utils/ 工具包 <Badge type="warning" text="非必须" />
+      - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
+      - ...
+      - conf.py 插件配置 <Badge type="warning" text="非必须" />
+      - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
+      - README.md 插件使用说明 <Badge type="danger" text="必须" />
+      - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；
+        如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
 
 :::
 
