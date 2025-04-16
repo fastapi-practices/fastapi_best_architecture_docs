@@ -3,17 +3,21 @@ title: 知识星球
 ---
 
 <div align="center">
+
 星球内容为非公开内容，扫码加入知识星球，即可获取独家内容
 
 附：星球用于 [有偿赞助](../../sponsors.md#有偿赞助)，加入 Discord
 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
+
 </div>
 
 ::: details 如果您觉得还不错，欢迎正式加入订阅
+
 <div align="center">
   <p style="color: #fd7600">我们在节假日会在 Discord 社区统一发送大额优惠券，敬请关注</p>
   <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" alt="知识星球">
 </div>
+
 :::
 
 ## 文章
@@ -21,10 +25,10 @@ title: 知识星球
 - <Icon name="fluent-color:receipt-16" /> 纯文字文章
 - <Icon name="fluent-color:video-16" /> 带有视频讲解的文章
 
-### fba 专属
+### fba
 
 ::: note
-此分类下的文章主要应用于 fba 架构，可能无法应用于其他三方架构方案
+此分类下的文章可用于 fba 架构，可能无法应用于其他三方架构方案
 :::
 
 <CardGrid>
@@ -66,10 +70,10 @@ title: 知识星球
     />
 </CardGrid>
 
-### FastAPI 通用
+### FastAPI
 
 ::: note
-此分类下的文章可应用于任何基于 FastAPI 框架开发的架构
+此分类下的文章可用于任何基于 FastAPI 框架开发的架构
 :::
 
 <CardGrid>
@@ -90,12 +94,13 @@ title: 知识星球
 ## 插件
 
 ::: note
-此分类下的插件仅可应用于 fba 架构的 [插件系统](./plugin/market.md)
+此分类下的文章可用于 fba 架构的 [插件系统](./plugin/market.md)
 :::
 
 <CardGrid>
   <LinkCard
-    title="空"
-    description="..."
+    title="SSO（制作中...）"
+    icon="fluent-color:receipt-16"
+    description="通过 casdoor 实现 SSO 集成"
     />
 </CardGrid>

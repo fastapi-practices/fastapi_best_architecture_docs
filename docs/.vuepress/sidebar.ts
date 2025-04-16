@@ -40,6 +40,8 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '切换数据库', link: 'db' },
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
+                { text: 'OAuth 2.0', link: 'oauth2' },
+                { text: 'SSO', link: 'sso' },
                 { text: '数据规则', link: '/planet', icon: 'fluent-color:video-16' },
                 { text: '代码生成', link: 'code-generation' },
                 { text: '跨域', link: 'CORS' },

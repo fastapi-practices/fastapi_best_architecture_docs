@@ -2,10 +2,8 @@
 title: JWT
 ---
 
-我们编写了自定义的 JWT 授权中间件，使其可以在每次请求发起时，自动调用此中间件实现自动授权，并且，通过 Redis 和 Rust
+我们编写了 JWT 授权中间件，使其可以在每次请求发起时，能够实现自动授权，并且还使用 Redis 和 Rust
 库对用户信息进行缓存和解析，使其性能影响尽可能降到最低
-
-@[code python](../../code/jwt.py)
 
 ## 接口鉴权
 
@@ -26,8 +24,14 @@ async def hello():
 
 ## Token
 
-内置 token 授权方式遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750)，如果您想通过自定义请求头添加 token
-进行授权，可以查看文章 [Header Token](../../planet.md#fastapi)
+内置 token 授权方式遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750)
+
+如果您想通过自定义请求头添加 token 进行授权，可查看文章：
+[<Icon name="fluent-color:receipt-16" />Header Token](../../planet.md)
+
+## Swagger 登录
+
+这是一种快捷的授权方式，仅用于调试目的，在服务启动后，进入 Swagger 文档，可通过此调试接口快速获取 token（无需验证码）
 
 ## 验证码登录
 
@@ -53,16 +57,3 @@ fast_captcha ->> Redis: 缓存验证码
 路由 ->> Token: 生成 Token
 Token -->> 客户端: 成功
 ```
-
-## Swagger 登录
-
-这是一种快捷的授权方式，仅用于调试目的，在服务启动后，进入 Swagger 文档，可通过此调试接口快速获取 token（无需验证码）
-
-## OAuth 2.0
-
-这种授权方式通常适用于第三方平台认证登录，第三方授权成功后，将依据第三方平台信息自动创建本地用户并自动授权登录，这一切都是用户无感知的
-
-但是，想要使用此方式进行授权，你需要先了解 OAuth 2.0 相关知识，并遵循第三方平台认证要求，获取平台应用相关密钥，最终，手动编码完成集成
-
-我们在 fba 中使用 [fastapi-oauth20](https://github.com/fastapi-practices/fastapi-oauth20) 集成 OAuth 2.0，您可以在代码路径
-`backend/app/admin/api/v1/oauth2` 中查看我们的官方实现示例
