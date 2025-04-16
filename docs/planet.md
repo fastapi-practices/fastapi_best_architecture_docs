@@ -11,7 +11,7 @@ title: 知识星球
 
 </div>
 
-::: details 如果您觉得还不错，欢迎正式加入订阅
+::: details 扫码订阅
 
 <div align="center">
   <p style="color: #fd7600">我们在节假日会在 Discord 社区统一发送大额优惠券，敬请关注</p>
