@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-const sponsorUrl: string = window.location.origin + '/fastapi_best_architecture_docs/sponsors.html';
+const sponsorUrl: string = typeof window !== 'undefined' ? window.location.origin + '/fastapi_best_architecture_docs/sponsors.html' : 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/sponsors.html';
 
 export const goldSponsors = ref([
     {
