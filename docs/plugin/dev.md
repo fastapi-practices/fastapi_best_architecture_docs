@@ -100,7 +100,7 @@ tags = ''
       - utils/ 工具包 <Badge type="warning" text="非必须" />
       - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
       - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
-      - ... 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
+      - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
       - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
       - README.md 插件使用说明 <Badge type="danger" text="必须" />
       - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；

@@ -182,12 +182,12 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 ## 开发流程
 
 ::: tip
-仅供参考，实际以个人习惯为准
+仅供参考，实际以个人开发习惯为准
 :::
 
 ::: steps
 
-1. 定义数据库模型（model）
+1. 定义数据库模型（[model](../reference/model.md)）
 
 2. 定义数据验证模型（[schema](../reference/schema.md)）
 

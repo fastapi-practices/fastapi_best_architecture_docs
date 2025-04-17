@@ -1,4 +1,4 @@
-import {defineClientConfig} from 'vuepress/client'
+import { defineClientConfig } from 'vuepress/client'
 import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 import Layout from './layouts/Layout.vue'
 
@@ -7,7 +7,7 @@ import Swiper from "./components/Swiper.vue";
 import SponsorPanel from "./components/SponsorPanel.vue";
 
 export default defineClientConfig({
-    enhance({app}) {
+    enhance({ app }) {
         app.component('RepoCard', RepoCard)
         app.component('Swiper', Swiper)
         app.component('SponsorPanel', SponsorPanel)

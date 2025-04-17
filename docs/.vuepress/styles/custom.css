@@ -1,12 +1,13 @@
 :root {
     /* 公告宽度 */
-    /*--vp-bulletin-width: 385px;*/
+    /*--vp-bulletin-width: 333px;*/
     /* 链接颜色、强调色 */
     --vp-c-brand-1: rgba(0, 148, 133, 1);
     /* 链接、按钮 hover 颜色 */
     --vp-c-brand-2: rgba(0, 148, 133, 1);
     /* 背景色、边框色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1);
+
     /* 导航栏分组 */
     .vp-menu-group {
         .title {
@@ -22,6 +23,7 @@
     --vp-c-brand-2: rgba(0, 148, 133, 1);
     /* 背景色、边框色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1);
+
     /* 导航栏分组 */
     .vp-menu-group {
         .title {
@@ -30,7 +32,10 @@
     }
 }
 
-
+/* 首页文字说明 */
+.hero-text {
+    margin: 24px 0 40px !important;
+}
 
 .vp-swiper .swiper-slide-img {
     /* 轮播图图片拉伸效果 */
