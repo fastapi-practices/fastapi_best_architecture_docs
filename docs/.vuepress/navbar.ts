@@ -2,15 +2,10 @@ import { defineNavbarConfig } from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: '后端',
-        link: '/backend/summary/quick-start.md'
-    },
-    {
         text: '前端',
         items: [
             {
                 text: '线上演示',
-                icon: 'mdi:web',
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
@@ -20,7 +15,6 @@ export const myNavbar = defineNavbarConfig([
             },
             {
                 text: '文档',
-                icon: 'material-symbols:docs',
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
@@ -34,7 +28,6 @@ export const myNavbar = defineNavbarConfig([
             },
             {
                 text: 'GitHub',
-                icon: 'mdi:git',
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
@@ -52,29 +45,59 @@ export const myNavbar = defineNavbarConfig([
         text: 'v1.0.5',
         items: [
             {
-                text: '常见问题',
-                icon: 'healthicons:question',
-                link: '/questions.md'
+                text: '线上演示',
+                items: [
+                    {
+                        text: '服务状态',
+                        icon: 'simple-icons:uptimekuma',
+                        link: 'https://status.wu-clan.site/status/services'
+                    }
+                ]
             },
             {
-                text: '技术支持',
-                icon: 'fluent-emoji-high-contrast:unicorn',
-                link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+                text: '文档',
+                items: [
+                    {
+                        text: '快速开始',
+                        icon: 'material-symbols:start',
+                        link: '/backend/summary/quick-start.md'
+                    },
+                    {
+                        text: 'Apifox',
+                        icon: 'simple-icons:apifox',
+                        link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
+                    },
+                ]
             },
             {
-                text: '参与贡献',
-                icon: 'mdi:people-add',
-                link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
-            },
-            {
-                text: '更新记录',
-                icon: 'stash:last-updates-duotone',
-                link: '/changelog.md'
-            },
-            {
-                text: '我要催更',
-                icon: 'material-symbols:update-rounded',
-                link: 'https://discord.gg/JyedBeHXkn'
+                text: '更多',
+                items: [
+                    {
+                        text: '常见问题',
+                        icon: 'healthicons:question',
+                        link: '/questions.md'
+                    },
+                    {
+                        text: '技术支持',
+                        icon: 'fluent-emoji-high-contrast:unicorn',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+                    },
+                    {
+                        text: '参与贡献',
+                        icon: 'mdi:people-add',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
+                    },
+                    {
+                        text: '我要催更',
+                        icon: 'material-symbols:update-rounded',
+                        link: 'https://discord.gg/JyedBeHXkn'
+                    },
+                    {
+                        text: '更新记录',
+                        icon: 'stash:last-updates-duotone',
+                        link: '/changelog.md'
+                    },
+                ]
             },
         ]
     },
@@ -121,11 +144,6 @@ export const myNavbar = defineNavbarConfig([
                 text: '知识星球',
                 icon: 'ph:planet-fill',
                 link: '/planet'
-            },
-            {
-                text: '服务状态',
-                icon: 'simple-icons:uptimekuma',
-                link: 'https://status.wu-clan.site/status/services'
             },
         ],
     }

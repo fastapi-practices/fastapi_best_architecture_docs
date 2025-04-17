@@ -25,8 +25,6 @@ title: 插件开发
 
 ### 插件分类
 
-与插件相关的部分文档中，可能高频次出现以下两个词
-
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
 在 [项目结构](../backend/summary/intro.md#项目结构) 中，app
@@ -52,7 +50,7 @@ fba 会在启动前对所有插件进行解析
 
 ### 插件配置
 
-`plugin.toml` 是插件的配置文件，它必须存在，此配置文件需根据插件的属性进行定义
+`plugin.toml` 是插件的配置文件，每个插件都必须包含此文件
 
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
@@ -60,8 +58,8 @@ fba 会在启动前对所有插件进行解析
 ```toml
 # 应用配置
 [app]
-# 插件路由器实例，默认为 v1，可参考源码：backend/app/admin/api/router.py
-router = ['v1']
+# 插件路由器实例，可参考源码：backend/app/admin/api/router.py，通常默认命名为 v1
+router = ['']
 ```
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
@@ -77,7 +75,7 @@ include = ''
 # 例如接口文件名为 notice.py，则 xxx 应该为 notice
 # 如果包含多个接口文件，则应存在多个相应的 api 配置
 [api.xxx]
-# 路由前缀，必须以 '/' 开头
+# xxx 路由前缀，必须以 '/' 开头
 prefix = ''
 # 标签，用于 FastAPI 接口文档
 tags = ''
@@ -101,8 +99,8 @@ tags = ''
       - service/ 服务 <Badge type="warning" text="非必须" />
       - utils/ 工具包 <Badge type="warning" text="非必须" />
       - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
-      - ...
-      - conf.py 插件配置 <Badge type="warning" text="非必须" />
+      - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
+      - ... 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
       - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
       - README.md 插件使用说明 <Badge type="danger" text="必须" />
       - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；

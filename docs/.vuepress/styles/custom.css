@@ -7,6 +7,12 @@
     --vp-c-brand-2: rgba(0, 148, 133, 1);
     /* 背景色、边框色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1);
+    /* 导航栏分组 */
+    .vp-menu-group {
+        .title {
+            color: rgba(60, 60, 60, .33);
+        }
+    }
 }
 
 [data-theme="dark"] {
@@ -16,7 +22,15 @@
     --vp-c-brand-2: rgba(0, 148, 133, 1);
     /* 背景色、边框色 */
     --vp-c-brand-3: rgba(0, 148, 133, 1);
+    /* 导航栏分组 */
+    .vp-menu-group {
+        .title {
+            color: rgba(235, 235, 235, .38);
+        }
+    }
 }
+
+
 
 .vp-swiper .swiper-slide-img {
     /* 轮播图图片拉伸效果 */
@@ -26,5 +40,4 @@
 .swiper-slide-custom-container {
     /* 轮播图边框 */
     border: 1px solid rgb(177 177 177 / 66%) !important;
-    color: #ed00b2;
 }

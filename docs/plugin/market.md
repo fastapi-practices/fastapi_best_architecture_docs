@@ -18,14 +18,6 @@ title: 插件市场
 这些插件由 fba 内置
 
 <CardGrid>
-  <Card icon="fe:notice-active" title="通知公告">
-    <p style="color: #898989;">发布系统内部通知、公告</p>
-    <span>
-    <Badge type="info" text="free" />
-    <Badge type="tip" text="fba" />
-    <Badge text="extra" color="#11aa00"/>
-    </span>
-  </Card>
   <Card icon="charm:shield-keyhole" title="Casbin-RBAC">
     <p style="color: #898989;">基于 Casbin 实现的 RBAC 权限</p>
     <span>
@@ -34,8 +26,16 @@ title: 插件市场
     <Badge text="extra" color="#11aa00"/>
     </span>
   </Card>
-  <Card icon="icon-park-outline:config" title="参数配置">
-    <p style="color: #898989;">通常用于前端工程数据展示</p>
+  <Card icon="fa6-regular:file-code" title="代码生成">
+    <p style="color: #898989;">生成通用业务代码（目前仅包含后端工程）</p>
+    <span>
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
+    <Badge text="app" color="#ff9900"/>
+    </span>
+  </Card>
+  <Card icon="fe:notice-active" title="通知公告">
+    <p style="color: #898989;">发布系统内部通知、公告</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />
@@ -43,6 +43,14 @@ title: 插件市场
     </span>
   </Card>
   <Card icon="fluent-mdl2:dictionary" title="数据字典">
+    <p style="color: #898989;">通常用于约束前端工程数据展示</p>
+    <span>
+    <Badge type="info" text="free" />
+    <Badge type="tip" text="fba" />
+    <Badge text="extra" color="#11aa00"/>
+    </span>
+  </Card>
+  <Card icon="icon-park-outline:config" title="参数配置">
     <p style="color: #898989;">通常用于前端工程数据展示</p>
     <span>
     <Badge type="info" text="free" />
@@ -66,7 +74,7 @@ title: 插件市场
     </span>
   </LinkCard>
   <LinkCard icon="streamline:ai-prompt-spark" title="MCP ChatGPT" href="https://github.com/fastapi-practices/fba_mcp">
-    <p style="color: #898989;">调用 MCP 服务器的进行 AI 聊天</p>
+    <p style="color: #898989;">带有 MCP 服务器调用的 AI 对话</p>
     <span>
     <Badge type="info" text="free" />
     <Badge type="tip" text="fba" />

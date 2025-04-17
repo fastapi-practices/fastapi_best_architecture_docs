@@ -71,7 +71,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '插件开发', link: 'dev' },
                 { text: '插件发布', link: 'publish' },
                 { text: '安装使用', link: 'install' },
-                { text: '插件市场', link: 'market' },
+                { text: '插件市场', icon: 'mdi:marketplace', link: 'market' },
             ]
         }
     ],

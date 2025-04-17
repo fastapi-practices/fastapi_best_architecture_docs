@@ -143,5 +143,4 @@ fba 中默认使用此鉴权方式
 
 ### Casbin
 
-- 删除 `backend/plugin/casbin` 文件夹
-- 删除 `backend/common/security/rbac.py` 文件中的 `casbin_verify` 相关代码
+删除 `backend/plugin/casbin` 文件夹
