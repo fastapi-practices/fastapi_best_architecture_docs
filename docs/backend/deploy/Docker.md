@@ -31,21 +31,43 @@ title: Docker 部署
 
    在项目根目录中打开终端，执行以下命令
 
-   ::: note
+   ::: warning
    如果容器要在本地启动，需要将 `.env` 中的 `127.0.0.1` 更改为 `host.docker.internal`
    :::
+
+   ::: tabs#dockerfile
+   @tab fba
 
    ```shell:no-line-numbers
    docker build -f Dockerfile -t fba_backend_independent .
    ```
 
+   @tab celery
+
+   ```shell:no-line-numbers
+   docker build --build-arg SERVER_TYPE=celery -t fba_celery_independent .
+   ```
+
+   :::
+
 4. 启动容器
 
    由于构建不包含数据库，请确保本地已安装并启动相关数据库（mysql / postgresql、redis）
 
+   ::: tabs#dockerfile
+   @tab fba
+
    ```shell:no-line-numbers
    docker run -d -p 8000:8000 --name fba_server fba_backend_independent
    ```
+
+   @tab celery
+
+   ```shell:no-line-numbers
+   docker run -d -p 8555:8555 --name fba_celery fba_celery_independent
+   ```
+
+   :::
 
 ::::
 
@@ -56,7 +78,7 @@ title: Docker 部署
 :::
 
 ::: info
-免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL 
+免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
 证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
 :::
 
