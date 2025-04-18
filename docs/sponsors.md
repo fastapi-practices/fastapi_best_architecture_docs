@@ -53,7 +53,7 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 
 ::: info 访问统计
 
-[点击查看](https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io)，我们还可向赞助商提供【谷歌统计】和【百度统计】
+[点击查看](https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io)，我们还可向展位赞助商提供【百度统计】
 
 :::
 

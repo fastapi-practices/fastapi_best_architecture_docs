@@ -42,7 +42,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.1.0',
+        text: 'v1.1.1',
         items: [
             {
                 text: '线上演示',
@@ -80,12 +80,12 @@ export const myNavbar = defineNavbarConfig([
                     {
                         text: '技术支持',
                         icon: 'fluent-emoji-high-contrast:unicorn',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+                        link: '/group.md'
                     },
                     {
                         text: '参与贡献',
                         icon: 'mdi:people-add',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#readme'
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing'
                     },
                     {
                         text: '我要催更',

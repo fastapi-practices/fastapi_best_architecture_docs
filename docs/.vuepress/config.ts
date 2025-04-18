@@ -5,7 +5,6 @@ import plumeTheme from "vuepress-theme-plume";
 import { viteBundler } from '@vuepress/bundler-vite'
 import { myBulletin } from "./bulletin";
 import { baiduAnalyticsPlugin } from "@vuepress/plugin-baidu-analytics";
-import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { umamiAnalyticsPlugin } from "@vuepress/plugin-umami-analytics";
 
 
@@ -19,9 +18,6 @@ export default defineUserConfig({
     plugins: [
         baiduAnalyticsPlugin({
             id: '6202e3701ae5a932577a1cf195084e9e'
-        }),
-        googleAnalyticsPlugin({
-            id: 'G-WVH2LQEPKY'
         }),
         umamiAnalyticsPlugin({
             id: '62984e7c-ec95-459a-9a2f-553766c6b3d4'
@@ -57,6 +53,7 @@ export default defineUserConfig({
         navbarSocialInclude: ['github', 'gitee'],
         editLinkText: '编辑此页面',
         contributors: false,
+        lastUpdated: false,
         footer: {
             copyright: 'Copyright © 2024-present FastAPI Practices'
         },
