@@ -10,7 +10,7 @@ export const goldSponsors = ref([
         alt: 'wu-clan',
     },
     {
-        link: 'https://img13.360buyimg.com/ddimg/jfs/t1/275679/7/22994/37075/68020854Fd08000a0/74e3ddf58989dc45.jpg',
+        link: 'https://img14.360buyimg.com/ddimg/jfs/t1/284966/5/22913/37242/68023351Faddd8304/6337ad52ea02ad10.jpg',
         text: '302.AI',
         href: 'https://share.302.ai/LJojhb',
         alt: 'wu-clan',
