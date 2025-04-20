@@ -25,9 +25,9 @@ export const goldSponsors = ref([
 
 export const generalSponsors = ref([
     {
-        link: 'https://dscache.tencent-cloud.cn/upload//345_200-013e419e2b86ff48a531fabce2694bd3bb27f844.png',
-        text: '【腾讯云】云服务器、云数据库、COS、CDN、短信等云产品特惠热卖中',
-        href: 'https://curl.qcloud.com/s5LIubk6',
+        link: 'https://user.by.ltd/templates/lagom/assets/img/logo/logo_big.png',
+        text: 'Bywave',
+        href: 'https://user.by.ltd/aff.php?aff=12215',
         alt: 'wu-clan',
     },
     {
