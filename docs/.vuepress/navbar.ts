@@ -104,6 +104,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '插件系统',
         icon: 'unjs:unplugin',
+        badge: { text: 'New' },
         link: '/plugin/before'
     },
     {
@@ -119,6 +120,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '互动',
         icon: 'game-icons:talk',
+        badge: { text: 'Hot', type: 'danger' },
         link: '/group'
     },
     {
