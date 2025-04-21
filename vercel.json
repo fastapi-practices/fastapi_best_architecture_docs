@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/fastapi_best_architecture_docs/$1"
+    }
+  ]
+}
