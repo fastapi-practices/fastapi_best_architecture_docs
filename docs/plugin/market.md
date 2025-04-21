@@ -127,4 +127,14 @@ title: 插件市场
     <Badge text="extra" color="var(--vp-c-text-2)" bg-color="rgb(17 170 0 / 38%)"/>
     </span>
   </LinkCard>
+  <LinkCard icon="ant-design:wechat-work-outlined" title="配置下发" href="https://github.com/dividduang/wecom-task">
+    <p style="color: #898989;">企业微信群聊机器人定时发送消息</p>
+    <span>
+    <Icon name="logos:mysql" size="1.5em" />
+    ·
+    <Badge type="tip" text="fba" />
+    ·
+    <Badge text="extra" color="var(--vp-c-text-2)" bg-color="rgb(17 170 0 / 38%)"/>
+    </span>
+  </LinkCard>
 </CardGrid>
