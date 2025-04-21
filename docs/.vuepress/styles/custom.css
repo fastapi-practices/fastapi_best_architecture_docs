@@ -32,6 +32,11 @@
     }
 }
 
+/* 首页副标题 */
+.hero-tagline {
+    color: unset !important;
+}
+
 /* 首页文字说明 */
 .hero-text {
     margin: 24px 0 40px !important;

@@ -49,8 +49,9 @@ export default defineUserConfig({
                 },
                 link: 'https://gitee.com/wu_clan/fastapi_best_architecture'
             },
+            {icon: 'bilibili', link: 'https://space.bilibili.com/284237214'}
         ],
-        navbarSocialInclude: ['github', 'gitee'],
+        navbarSocialInclude: ['github', 'gitee', 'bilibili'],
         editLinkText: '编辑此页面',
         contributors: false,
         lastUpdated: false,
