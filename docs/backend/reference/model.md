@@ -23,7 +23,7 @@ id_key = Annotated[
 
 ### 操作人
 
-用于集成操作人信息到数据库表，使用方法请查看：[<Icon name="fluent-color:receipt-16" />操作人信息](../../planet.md)
+用于集成操作人信息到数据库表，使用方法请查看[<Icon name="fluent-color:receipt-16" />操作人信息](../../planet.md)
 
 ```python
 class UserMixin(MappedAsDataclass):
