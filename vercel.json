@@ -1,8 +1,19 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/fastapi_best_architecture_docs/$1"
+      "source": "/fastapi_best_architecture_docs/(.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/fastapi_best_architecture_docs",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/fastapi_best_architecture_docs",
+      "destination": "/fastapi_best_architecture_docs/",
+      "permanent": true
     }
   ]
 }
