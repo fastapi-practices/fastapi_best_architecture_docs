@@ -1,5 +1,8 @@
 ---
 title: Arco Design Pro 实验性实施
+badge: 
+  text: 已弃用
+  type: danger
 ---
 
 此版本已停止更新维护！
@@ -9,7 +12,10 @@ title: Arco Design Pro 实验性实施
 
 至此，承蒙每一位大佬的厚爱，请与我们携手共进，打开 [Vben Admin Antd](./intro.md) 新篇章吧
 
+::: note
+此实施内部通过硬编码实现了 Casbin RBAC 鉴权，解耦较为复杂，需手动删除 casbin、API 管理及其所有调用
+:::
+
 ::: caution
-「Arco Design Pro 实验性实施」自 fba [v1.0.4](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.0.4)
-版本起，正式宣告其使命完结，fba 后续版本将不再对此进行适配！
+此实施自 fba [v1.0.4](../changelog.md) 版本起，正式宣告其使命完结，fba 后续版本将不再对此进行适配，请不要将其用于生产！
 :::

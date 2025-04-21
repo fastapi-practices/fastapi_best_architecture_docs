@@ -18,7 +18,8 @@ export const myNavbar = defineNavbarConfig([
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
-                        link: '/frontend/arco'
+                        link: '/frontend/arco',
+                        badge: { text: '已弃用', type: 'danger' }
                     },
                     {
                         text: 'Vben Admin Antd 完整版实施',
@@ -31,7 +32,8 @@ export const myNavbar = defineNavbarConfig([
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco'
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco',
+                        badge: { text: '已弃用', type: 'danger' }
                     },
                     {
                         text: 'Vben Admin Antd 完整版实施',
