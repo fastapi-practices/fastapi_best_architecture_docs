@@ -17,6 +17,7 @@ config:
         - theme: alt
           text: 为什么选择我们?
           link: /backend/summary/why
+  - type: SponsorHome
   - type: features
     features:
       - title: 最新技术栈
@@ -53,10 +54,9 @@ config:
 import { goldSponsors, generalSponsors } from '@source/.vuepress/data/sponsors'
 </script>
 
-<h1 v-if="goldSponsors.length" align="center">特别赞助商</h1>
+<h1 align="center">特别赞助商</h1>
 
 <Swiper
-v-if="goldSponsors.length"
 :items="goldSponsors"
 mode="broadcast"
 :loop="false"
@@ -66,10 +66,9 @@ mode="broadcast"
 mousewheel
 />
 
-<h2 v-if="generalSponsors.length" align="center">赞助商</h2>
+<h2 align="center">赞助商</h2>
 
 <Swiper
-v-if="generalSponsors.length"
 :items="generalSponsors"
 mode="carousel"
 :height="156"

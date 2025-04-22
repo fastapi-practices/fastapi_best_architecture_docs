@@ -3,17 +3,12 @@
     <!-- Gold Sponsors -->
     <div class="gold-sponsors">
       <div
-          v-for="(sponsor, index) in goldSponsors"
-          :key="'gold-' + index"
-          class="sponsor-item gold"
-          @click="openSponsorLink(sponsor.href)"
+        v-for="(sponsor, index) in goldSponsors"
+        :key="'gold-' + index"
+        class="sponsor-item gold"
+        @click="openSponsorLink(sponsor.href)"
       >
-        <img
-            v-if="sponsor.link"
-            :src="sponsor.link"
-            :alt="sponsor.alt"
-            class="sponsor-image"
-        />
+        <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
         <span v-else class="sponsor-text">{{ sponsor.text }}</span>
       </div>
     </div>
@@ -21,17 +16,12 @@
     <!-- General Sponsors -->
     <div class="general-sponsors">
       <div
-          v-for="(sponsor, index) in generalSponsors"
-          :key="'general-' + index"
-          class="sponsor-item"
-          @click="openSponsorLink(sponsor.href)"
+        v-for="(sponsor, index) in generalSponsors"
+        :key="'general-' + index"
+        class="sponsor-item"
+        @click="openSponsorLink(sponsor.href)"
       >
-        <img
-            v-if="sponsor.link"
-            :src="sponsor.link"
-            :alt="sponsor.alt"
-            class="sponsor-image"
-        />
+        <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
         <span v-else class="sponsor-text">{{ sponsor.text }}</span>
       </div>
     </div>
@@ -39,11 +29,11 @@
 </template>
 
 <script setup>
-import {goldSponsors, generalSponsors} from "../data/sponsors";
+import { goldSponsors, generalSponsors } from "../data/sponsors";
 
 const openSponsorLink = (href) => {
-  window.open(href, '_blank')
-}
+  window.open(href, "_blank");
+};
 </script>
 
 <style scoped>

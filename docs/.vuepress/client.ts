@@ -5,12 +5,14 @@ import Layout from './layouts/Layout.vue'
 import './styles/custom.css'
 import Swiper from "./components/Swiper.vue";
 import SponsorPanel from "./components/SponsorPanel.vue";
+import SponsorHome from './components/SponsorHome.vue';
 
 export default defineClientConfig({
     enhance({ app }) {
         app.component('RepoCard', RepoCard)
         app.component('Swiper', Swiper)
         app.component('SponsorPanel', SponsorPanel)
+        app.component('SponsorHome', SponsorHome)
     },
     layouts: {
         Layout,

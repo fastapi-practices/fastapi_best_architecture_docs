@@ -2,6 +2,15 @@ import { ref } from "vue";
 
 const sponsorUrl: string = typeof window !== 'undefined' ? window.location.origin + '/fastapi_best_architecture_docs/sponsors.html' : 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/sponsors.html';
 
+export const homeSponsor = ref(
+    {
+        link: '',
+        text: 'fba 官方合作伙伴',
+        href: '',
+        alt: 'wu-clan',
+    }
+)
+
 export const goldSponsors = ref([
     {
         link: 'https://dscache.tencent-cloud.cn/upload//rhino-design-800x450-fea2ea55b7b63624628bf9bb22454cb8f91b7d69.png',
