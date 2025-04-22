@@ -6,6 +6,7 @@ import './styles/custom.css'
 import Swiper from "./components/Swiper.vue";
 import SponsorPanel from "./components/SponsorPanel.vue";
 import SponsorHome from './components/SponsorHome.vue';
+import SponsorSidebar from './components/SponsorSidebar.vue';
 
 export default defineClientConfig({
     enhance({ app }) {
@@ -13,6 +14,7 @@ export default defineClientConfig({
         app.component('Swiper', Swiper)
         app.component('SponsorPanel', SponsorPanel)
         app.component('SponsorHome', SponsorHome)
+        app.component('SponsorSidebar', SponsorSidebar)
     },
     layouts: {
         Layout,

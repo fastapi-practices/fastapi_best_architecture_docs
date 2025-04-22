@@ -5,9 +5,10 @@ const sponsorUrl: string = typeof window !== 'undefined' ? window.location.origi
 export const homeSponsor = ref(
     {
         link: '',
-        text: 'fba 官方合作伙伴',
+        text: '成为赞助商',
         href: '',
         alt: 'wu-clan',
+        description: 'fba 官方合作伙伴',
     }
 )
 

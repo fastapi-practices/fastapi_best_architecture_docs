@@ -60,7 +60,7 @@ import { goldSponsors, generalSponsors } from '@source/.vuepress/data/sponsors'
 :items="goldSponsors"
 mode="broadcast"
 :loop="false"
-:height="212"
+:height="162"
 :slides-per-view="3"
 :space-between="10"
 mousewheel
@@ -71,7 +71,7 @@ mousewheel
 <Swiper
 :items="generalSponsors"
 mode="carousel"
-:height="156"
+:height="168"
 :slides-per-view="4"
 :space-between="10"
 :speed="5000"

@@ -179,7 +179,7 @@ onMounted(() => {
       v-bind="$attrs"
       @swiper="onSwiper"
     >
-      <SwiperSlide v-for="(item, index) in slideList" :key="index">
+      <SwiperSlide v-for="(item, index) in slideList" :key="'general-' + index">
         <a
           v-if="item.href && item.link"
           :href="item.href"

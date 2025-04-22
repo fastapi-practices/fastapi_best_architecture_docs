@@ -54,49 +54,58 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
       <th>名额</th>
       <th>费用</th>
       <th>展示位置</th>
-      <th>素材要求（统一）</th>
+      <th>素材要求</th>
     </tr>
   </thead>
   <tbody>
     <!-- 独家展位 -->
     <tr>
-      <td rowspan="2"><strong>独家展位</strong></td>
-      <td rowspan="2">1</td>
-      <td rowspan="2">联系作者</td>
-      <td>1. 首页独家展示位</td>
-      <td rowspan="6">
-        1. 赞助商名称<br>
-        2. 跳转链接<br>
-        3. 图片链接（图片无像素要求，<br>
-        &nbsp;&nbsp;&nbsp;建议 16:9 + 大 LOGO / 大字体）
+      <td><strong>独家展位</strong></td>
+      <td>1</td>
+      <td>联系作者</td>
+      <td>
+        - 首页独家展示位<br>
+        - 文档左侧边栏独家展示位<br>
+        - 不可折叠<br>
+        - 移动端可见
+      </td>
+      <td rowspan="2">
+        - 赞助商名称<br>
+        - 跳转链接<br>
+        - 图片链接<br>
+          （7:3，大 LOGO / 大字体）
       </td>
     </tr>
     <tr>
-      <td>2. 文档左侧边栏独家展示位</td>
+      <td><strong>特别展位</strong></td>
+      <td>3</td>
+      <td>联系作者</td>
+      <td>
+        - 首页信息展播展示位<br>
+        - 文档右侧边栏大号展示位<br>
+        - 不可折叠
+    </td>
     </tr>
     <tr>
-      <td rowspan="2"><strong>特别展位</strong></td>
-      <td rowspan="2">3</td>
-      <td rowspan="2">联系作者</td>
-      <td>1. 首页信息展播展示位</td>
+      <td><strong>普通展位</strong></td>
+      <td>6</td>
+      <td>联系作者</td>
+      <td>
+        - 首页滚动展示位<br>
+        - 文档右侧边栏小号展示位
+      </td>
+      <td>
+        - 赞助商名称<br>
+        - 跳转链接<br>
+        - 图片链接<br>
+          （5:3，大 LOGO / 大字体）
+      </td>
     </tr>
     <tr>
-      <td>2. 文档右侧边栏大号展示位</td>
-    </tr>
-    <tr>
-      <td rowspan="2"><strong>普通展位</strong></td>
-      <td rowspan="2">6</td>
-      <td rowspan="2">联系作者</td>
-      <td>1. 首页滚动展示位</td>
-    </tr>
-    <tr>
-      <td>2. 文档右侧边栏小号展示位</td>
-    </tr>
-    <tr>
-      <td colspan="5" style="text-align: center; background-color: #f5f5f5;">
+      <td colspan="5" style="text-align: center">
         <strong>访问统计：</strong>
         <a href="https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io">点击查看</a>
-        （我们还可向您提供“百度统计”）
+        （我们可以向您提供“百度统计”）
       </td>
     </tr>
 

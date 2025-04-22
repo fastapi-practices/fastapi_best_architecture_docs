@@ -1,6 +1,9 @@
 <template>
-  <div class="sponsor-container">
-    <!-- Gold Sponsors -->
+  <div class="sponsor-header" @click="toggleCollapse">
+    <span>倾情赞助</span>
+    <span class="toggle-icon">{{ isCollapsed ? "<" : ">" }}</span>
+  </div>
+  <div class="sponsor-container" v-if="!isCollapsed">
     <div class="gold-sponsors">
       <div
         v-for="(sponsor, index) in goldSponsors"
@@ -12,8 +15,6 @@
         <span v-else class="sponsor-text">{{ sponsor.text }}</span>
       </div>
     </div>
-
-    <!-- General Sponsors -->
     <div class="general-sponsors">
       <div
         v-for="(sponsor, index) in generalSponsors"
@@ -29,7 +30,14 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { goldSponsors, generalSponsors } from "../data/sponsors";
+
+const isCollapsed = ref(false);
+
+const toggleCollapse = () => {
+  isCollapsed.value = !isCollapsed.value;
+};
 
 const openSponsorLink = (href) => {
   window.open(href, "_blank");
@@ -37,23 +45,38 @@ const openSponsorLink = (href) => {
 </script>
 
 <style scoped>
+.sponsor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  margin: 3px 0 2px;
+}
+
+.toggle-icon {
+  font-size: 10px;
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
 .sponsor-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin: 10px 0;
+  gap: 3px;
 }
 
 .gold-sponsors {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 .general-sponsors {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
+  gap: 3px;
 }
 
 .sponsor-item {
@@ -85,6 +108,6 @@ const openSponsorLink = (href) => {
 }
 
 .sponsor-item.gold .sponsor-text {
-  font-size: 14px;
+  font-size: 12px;
 }
 </style>
