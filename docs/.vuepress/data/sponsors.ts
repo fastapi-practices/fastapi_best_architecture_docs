@@ -6,7 +6,7 @@ export const homeSponsor = ref(
     {
         link: '',
         text: '成为赞助商',
-        href: '',
+        href: sponsorUrl,
         alt: 'wu-clan',
         description: 'fba 官方合作伙伴',
     }

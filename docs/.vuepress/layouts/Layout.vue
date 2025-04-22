@@ -1,13 +1,14 @@
 <script setup>
 import { Layout } from "vuepress-theme-plume/client";
 import SponsorPanel from "../components/SponsorPanel.vue";
+import AsideNavAfter from "../components/AsideNavAfter.vue";
 </script>
 
 <template>
   <Layout>
-    <template #aside-outline-after>
+    <template #layout-top>
       <div class="custom-content">
-        <SponsorPanel />
+        <BannerTop />
       </div>
     </template>
     <template #sidebar-nav-before>
@@ -15,9 +16,10 @@ import SponsorPanel from "../components/SponsorPanel.vue";
         <SponsorSidebar />
       </div>
     </template>
-    <template #layout-top>
+    <template #aside-outline-after>
       <div class="custom-content">
-        <BannerTop />
+        <SponsorPanel />
+        <AsideNavAfter />
       </div>
     </template>
   </Layout>

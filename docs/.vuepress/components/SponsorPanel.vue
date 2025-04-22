@@ -2,8 +2,8 @@
   <div class="sponsor-header" @click="toggleCollapse">
     <span>倾情赞助</span>
     <span class="toggle-icon">
-       <Icon v-if="isCollapsed" name="iconamoon:arrow-right-2"/>
-       <Icon v-else name="iconamoon:arrow-down-2"/>
+      <Icon v-if="isCollapsed" name="iconamoon:arrow-right-2" />
+      <Icon v-else name="iconamoon:arrow-down-2" />
     </span>
   </div>
   <div class="sponsor-container" v-if="!isCollapsed">
@@ -33,18 +33,26 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { goldSponsors, generalSponsors } from "../data/sponsors";
 
-const isCollapsed = ref(false);
+const isCollapsed = ref(sessionStorage.getItem("sponsorCollapsed") === "true");
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
+  sessionStorage.setItem("sponsorCollapsed", isCollapsed.value);
 };
 
 const openSponsorLink = (href) => {
   window.open(href, "_blank");
 };
+
+onMounted(() => {
+  const savedState = sessionStorage.getItem("sponsorCollapsed");
+  if (savedState !== null) {
+    isCollapsed.value = savedState === "true";
+  }
+});
 </script>
 
 <style scoped>
