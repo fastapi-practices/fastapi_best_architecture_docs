@@ -3,7 +3,7 @@
     <span>独家赞助</span>
   </div>
   <div class="sponsor-container">
-    <div class="sidebar-sponsors">
+    <div class="sidebar-sponsor">
       <div class="sponsor" @click="openSponsorLink(homeSponsor.href)">
         <img v-if="homeSponsor.link" :src="homeSponsor.link" :alt="homeSponsor.alt" class="sponsor-image" />
         <span v-else class="sponsor-text">{{ homeSponsor.text }}</span>
@@ -24,7 +24,6 @@ const openSponsorLink = (href) => {
 .sponsor-header {
   font-size: 11px;
   color: var(--vp-c-text-3);
-  margin-top: 3px;
 }
 
 .sponsor-container {
@@ -33,7 +32,7 @@ const openSponsorLink = (href) => {
   gap: 5px;
 }
 
-.sidebar-sponsors {
+.sidebar-sponsor {
   display: flex;
   flex-direction: column;
   gap: 5px;

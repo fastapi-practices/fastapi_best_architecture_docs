@@ -15,6 +15,11 @@ import SponsorPanel from "../components/SponsorPanel.vue";
         <SponsorSidebar />
       </div>
     </template>
+    <template #layout-top>
+      <div class="custom-content">
+        <BannerTop />
+      </div>
+    </template>
   </Layout>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="sponsor-header" @click="toggleCollapse">
     <span>倾情赞助</span>
-    <span class="toggle-icon">{{ isCollapsed ? "<" : ">" }}</span>
+    <span class="toggle-icon">
+       <Icon v-if="isCollapsed" name="iconamoon:arrow-right-2"/>
+       <Icon v-else name="iconamoon:arrow-down-2"/>
+    </span>
   </div>
   <div class="sponsor-container" v-if="!isCollapsed">
     <div class="gold-sponsors">

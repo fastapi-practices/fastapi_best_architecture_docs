@@ -66,7 +66,7 @@ import { homeSponsor } from "../data/sponsors";
   filter: grayscale(1) invert(1);
 }
 
-@media (max-width: 576px) {
+@media (max-width: 579px) {
   #special-spsr {
     flex-direction: column;
   }

@@ -7,6 +7,9 @@ import Swiper from "./components/Swiper.vue";
 import SponsorPanel from "./components/SponsorPanel.vue";
 import SponsorHome from './components/SponsorHome.vue';
 import SponsorSidebar from './components/SponsorSidebar.vue';
+import BannerTop from './components/BannerTop.vue';
+import { NotFound } from 'vuepress-theme-plume/client';
+import { h } from 'vue';
 
 export default defineClientConfig({
     enhance({ app }) {
@@ -15,8 +18,12 @@ export default defineClientConfig({
         app.component('SponsorPanel', SponsorPanel)
         app.component('SponsorHome', SponsorHome)
         app.component('SponsorSidebar', SponsorSidebar)
+        app.component('BannerTop', BannerTop)
     },
     layouts: {
         Layout,
+        NotFound: () => h(NotFound, null, {
+            'layout-top': () => h(BannerTop),
+          }),
     }
 })
