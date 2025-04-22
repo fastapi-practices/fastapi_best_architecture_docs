@@ -50,7 +50,7 @@ html:not(.banner-dismissed) {
 
 <style scoped>
 .banner {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
