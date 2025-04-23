@@ -41,7 +41,6 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
                 { text: 'OAuth 2.0', link: 'oauth2' },
-                { text: 'SSO', link: 'sso' },
                 { text: '数据规则', link: '/planet', icon: 'fluent-color:video-16' },
                 { text: '代码生成', link: 'code-generation' },
                 { text: '跨域', link: 'CORS' },
@@ -50,6 +49,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'APScheduler', link: 'apscheduler' },
                 // {text: '日志分析', link: '/planet', icon: 'fluent-color:receipt-16'},
                 { text: 'SocketIo', link: '/planet', icon: 'fluent-color:receipt-16' },
+                { text: 'SSO', link: 'sso' },
             ]
         },
         {

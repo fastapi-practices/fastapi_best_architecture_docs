@@ -60,10 +60,12 @@ fba
 
 <CardGrid>
   <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
-  <RepoCard repo="fastapi-practices/fastapi_scheduler" />
   <RepoCard repo="fastapi-practices/fastapi-oauth20" />
-  <RepoCard repo="wu-clan/fast-captcha" />
 </CardGrid>
+
+<div align="center">
+  <a href="https://github.com/orgs/fastapi-practices/repositories?" target="_blank">more...</a>
+</div>
 
 ## 精简版
 
