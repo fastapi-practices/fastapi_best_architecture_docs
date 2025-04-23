@@ -14,11 +14,14 @@
         class="sponsor-item gold"
         :class="{ 'collapsed-mode': isCollapsed }"
         @click="openSponsorLink(sponsor.href)"
-        v-show="!isCollapsed || (isCollapsed && hasValidText(sponsor))"
+        v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
       >
         <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
-        <span v-if="hasText(sponsor)" class="sponsor-text" :class="{ 'collapsed-text': isCollapsed }">
-          {{ sponsor.text || sponsor.alt }}
+        <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
+          {{ sponsor.alt }}
+        </span>
+        <span v-if="isCollapsed" class="sponsor-text collapsed-text">
+          {{ sponsor.alt }}
         </span>
       </div>
     </div>
@@ -29,31 +32,28 @@
         class="sponsor-item"
         :class="{ 'collapsed-mode': isCollapsed }"
         @click="openSponsorLink(sponsor.href)"
-        v-show="!isCollapsed || (isCollapsed && hasValidText(sponsor))"
+        v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
       >
         <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
-        <span v-if="hasText(sponsor)" class="sponsor-text" :class="{ 'collapsed-text': isCollapsed }">
-          {{ sponsor.text || sponsor.alt }}
+        <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
+          {{ sponsor.alt }}
+        </span>
+        <span v-if="isCollapsed" class="sponsor-text collapsed-text">
+          {{ sponsor.alt }}
         </span>
       </div>
+    </div>
+    <div v-if="isCollapsed" class="sponsor-item become-sponsor" @click="openSponsorLink(sponsorUrl)">
+      <span class="sponsor-text">成为赞助商</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { goldSponsors, generalSponsors } from "../data/sponsors";
+import { sponsorUrl, goldSponsors, generalSponsors } from "../data/sponsors";
 
 const isCollapsed = ref(sessionStorage.getItem("sponsorCollapsed") === "true");
-
-const hasText = (sponsor) => {
-  return !!sponsor.text || !!sponsor.alt;
-};
-
-const hasValidText = (sponsor) => {
-  const text = sponsor.text || sponsor.alt || '';
-  return hasText(sponsor) && !text.includes('成为赞助商');
-};
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
@@ -145,15 +145,11 @@ onMounted(() => {
 }
 
 .sponsor-item.gold .sponsor-text {
-  font-size: 12px;
+  font-size: 13px;
 }
 
-.sponsor-item.collapsed-mode {
-  height: 28px;
-}
-
-.sponsor-item.gold.collapsed-mode {
-  height: 32px;
+.collapsed-mode {
+  height: 32px !important;
 }
 
 .collapsed-mode .sponsor-image {
@@ -168,5 +164,10 @@ onMounted(() => {
 
 .collapsed-mode:hover .collapsed-text {
   color: var(--vp-c-text-1) !important;
+}
+
+.become-sponsor {
+  height: 32px;
+  background-color: unset;
 }
 </style>

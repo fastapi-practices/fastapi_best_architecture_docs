@@ -31,7 +31,7 @@ interface Locale {
   display: flex;
   flex-direction: column;
   padding: 8px 0;
-  margin: 8px 8px 0;
+  margin: 6px 8px 0;
   border-top: solid 1px var(--vp-c-divider);
 }
 

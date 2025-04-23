@@ -6,7 +6,7 @@
     <div class="sidebar-sponsor">
       <div class="sponsor" @click="openSponsorLink(homeSponsor.href)">
         <img v-if="homeSponsor.link" :src="homeSponsor.link" :alt="homeSponsor.alt" class="sponsor-image" />
-        <span v-else class="sponsor-text">{{ homeSponsor.text }}</span>
+        <span v-else class="sponsor-text">成为赞助商</span>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ const openSponsorLink = (href) => {
 
 .sponsor-text {
   color: var(--vp-c-text-3);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 @media (max-width: 576px) {

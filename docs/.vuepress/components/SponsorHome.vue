@@ -8,7 +8,7 @@ import { homeSponsor } from "../data/sponsors";
     <a :href="homeSponsor.href" target="_blank">
       <img width="121" :src="homeSponsor.link" :alt="homeSponsor.alt" />
     </a>
-    <span>{{ homeSponsor.text || homeSponsor.alt }}</span>
+    <span>fba 官方合作伙伴</span>
   </section>
   <section v-else id="special-spsr">
     <span class="no-sponsor">

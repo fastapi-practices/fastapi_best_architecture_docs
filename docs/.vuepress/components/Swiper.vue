@@ -32,10 +32,6 @@ interface SlideItem {
    */
   link?: string;
   /**
-   * 文字内容（当没有图片时使用）
-   */
-  text?: string;
-  /**
    * 跳转链接
    */
   href?: string;
@@ -189,7 +185,7 @@ onMounted(() => {
         >
           <img class="swiper-slide-custom-container swiper-slide-img" :src="item.link" :alt="item.alt" />
         </a>
-        <div v-else-if="item.text" class="swiper-slide-custom-container">
+        <div v-else-if="item.alt" class="swiper-slide-custom-container">
           <a
             v-if="item.href"
             :href="item.href"
@@ -197,9 +193,9 @@ onMounted(() => {
             rel="noopener noreferrer"
             class="swiper-slide-text-link"
           >
-            <div class="swiper-slide-text">{{ item.text }}</div>
+            <div class="swiper-slide-text">{{ item.alt }}</div>
           </a>
-          <div v-else class="swiper-slide-text">{{ item.text }}</div>
+          <div v-else class="swiper-slide-text">{{ item.alt }}</div>
         </div>
       </SwiperSlide>
     </Swiper>
