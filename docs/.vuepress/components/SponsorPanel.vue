@@ -6,16 +6,20 @@
       <Icon v-else name="iconamoon:arrow-down-2" />
     </span>
   </div>
-  <div class="sponsor-container" v-if="!isCollapsed">
+  <div class="sponsor-container">
     <div class="gold-sponsors">
       <div
         v-for="(sponsor, index) in goldSponsors"
         :key="'gold-' + index"
         class="sponsor-item gold"
+        :class="{ 'collapsed-mode': isCollapsed }"
         @click="openSponsorLink(sponsor.href)"
+        v-show="!isCollapsed || (isCollapsed && hasValidText(sponsor))"
       >
         <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
-        <span v-else class="sponsor-text">{{ sponsor.text }}</span>
+        <span v-if="hasText(sponsor)" class="sponsor-text" :class="{ 'collapsed-text': isCollapsed }">
+          {{ sponsor.text || sponsor.alt }}
+        </span>
       </div>
     </div>
     <div class="general-sponsors">
@@ -23,10 +27,14 @@
         v-for="(sponsor, index) in generalSponsors"
         :key="'general-' + index"
         class="sponsor-item"
+        :class="{ 'collapsed-mode': isCollapsed }"
         @click="openSponsorLink(sponsor.href)"
+        v-show="!isCollapsed || (isCollapsed && hasValidText(sponsor))"
       >
         <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
-        <span v-else class="sponsor-text">{{ sponsor.text }}</span>
+        <span v-if="hasText(sponsor)" class="sponsor-text" :class="{ 'collapsed-text': isCollapsed }">
+          {{ sponsor.text || sponsor.alt }}
+        </span>
       </div>
     </div>
   </div>
@@ -37,6 +45,15 @@ import { ref, onMounted } from "vue";
 import { goldSponsors, generalSponsors } from "../data/sponsors";
 
 const isCollapsed = ref(sessionStorage.getItem("sponsorCollapsed") === "true");
+
+const hasText = (sponsor) => {
+  return !!sponsor.text || !!sponsor.alt;
+};
+
+const hasValidText = (sponsor) => {
+  const text = sponsor.text || sponsor.alt || '';
+  return hasText(sponsor) && !text.includes('成为赞助商');
+};
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
@@ -97,6 +114,8 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   height: 66px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .sponsor-item:hover {
@@ -108,17 +127,46 @@ onMounted(() => {
 }
 
 .sponsor-image {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: fill;
+  transition: opacity 0.3s ease;
 }
 
 .sponsor-text {
   color: var(--vp-c-text-3);
   font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  padding: 0 8px;
 }
 
 .sponsor-item.gold .sponsor-text {
   font-size: 12px;
+}
+
+.sponsor-item.collapsed-mode {
+  height: 28px;
+}
+
+.sponsor-item.gold.collapsed-mode {
+  height: 32px;
+}
+
+.collapsed-mode .sponsor-image {
+  opacity: 0;
+}
+
+.collapsed-text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+.collapsed-mode:hover .collapsed-text {
+  color: var(--vp-c-text-1) !important;
 }
 </style>

@@ -8,11 +8,11 @@ import { homeSponsor } from "../data/sponsors";
     <a :href="homeSponsor.href" target="_blank">
       <img width="121" :src="homeSponsor.link" :alt="homeSponsor.alt" />
     </a>
-    <span>{{ homeSponsor.description }}</span>
+    <span>{{ homeSponsor.text || homeSponsor.alt }}</span>
   </section>
   <section v-else id="special-spsr">
     <span class="no-sponsor">
-      <a href="/fastapi_best_architecture_docs/sponsors#展位赞助商">特别赞助位目前空缺 - 现在咨询 💬</a>
+      <a href="/fastapi_best_architecture_docs/sponsors">特别赞助位目前空缺 - 现在咨询 💬</a>
     </span>
   </section>
 </template>
@@ -42,8 +42,6 @@ import { homeSponsor } from "../data/sponsors";
   padding: 12px;
   display: flex;
   align-items: center;
-  margin: 0 -9999px;
-  padding: 1 9999px;
 }
 
 #special-spsr span {
@@ -55,6 +53,10 @@ import { homeSponsor } from "../data/sponsors";
 
 #special-spsr span:first-child {
   text-align: right;
+}
+
+#special-spsr a {
+  padding: 0 24px;
 }
 
 #special-spsr img {
