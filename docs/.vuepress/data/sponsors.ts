@@ -28,7 +28,7 @@ export const goldSponsors: Sponsor[] = [
         link: 'https://img14.360buyimg.com/ddimg/jfs/t1/284966/5/22913/37242/68023351Faddd8304/6337ad52ea02ad10.jpg',
         href: 'https://share.302.ai/LJojhb',
         alt: '302.AI',
-        expiryTime: '2099-12-31T23:59:59',
+        expiryTime: '2025-05-18T16:35:00',
     },
     { ...defaultSponsor }
 ]
