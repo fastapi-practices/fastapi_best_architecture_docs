@@ -10,6 +10,7 @@ FastAPI + APScheduler 现已作为独立仓库发行，它的优势在于其灵�
 <RepoCard repo="fastapi-practices/fastapi_scheduler" />
 
 ::: warning
-我们计划将 APScheduler 制作为 fba 插件，但需要等待 [4.0](https://github.com/agronholm/apscheduler/issues/465#issuecomment-2818889743)
+我们计划将 APScheduler 制作为 fba
+插件，但需要等待 [4.0](https://github.com/agronholm/apscheduler/issues/465#issuecomment-2818889743)
 版本发布
 :::

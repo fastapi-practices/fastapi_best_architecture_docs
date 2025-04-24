@@ -5,7 +5,7 @@
   <div class="sponsor-container">
     <div class="sidebar-sponsor">
       <div class="sponsor" @click="openSponsorLink(homeSponsor.href)">
-        <img v-if="homeSponsor.link" :src="homeSponsor.link" :alt="homeSponsor.alt" class="sponsor-image" />
+        <img v-if="homeSponsor.link" :alt="homeSponsor.alt" :src="homeSponsor.link" class="sponsor-image" />
         <span v-else class="sponsor-text">成为赞助商</span>
       </div>
     </div>

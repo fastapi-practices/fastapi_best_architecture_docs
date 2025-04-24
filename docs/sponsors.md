@@ -11,18 +11,18 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 
 ## 荣誉赞助
 
-<a href="https://wu-clan.github.io/sponsor/" 
-   target="_blank" 
-   rel="noopener noreferrer"
-   style="
-    padding: 10px 20px;
-    background: #2F1B05;
-    color: white;
-    border-radius: 5px 20px;
-    font-family: sans-serif;
-    text-decoration: none;
-    border: 1px solid #5D3408;
-    display: inline-block;
+<a href="https://wu-clan.github.io/sponsor/"
+target="_blank"
+rel="noopener noreferrer"
+style="
+padding: 10px 20px;
+background: #2F1B05;
+color: white;
+border-radius: 5px 20px;
+font-family: sans-serif;
+text-decoration: none;
+border: 1px solid #5D3408;
+display: inline-block;
 ">☕ 来份美式吃苦套餐</a>
 
 ::: info

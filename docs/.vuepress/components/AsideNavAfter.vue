@@ -1,24 +1,15 @@
-<script setup lang="ts">
-import { computed } from 'vue'
+<script lang="ts" setup>
 import { VPLink } from 'vuepress-theme-plume/client'
-import { useRouteLocale } from 'vuepress/client'
-
-interface Locale {
-  star: string
-  issue: string
-  sponsor: string
-}
-
 </script>
 
 <template>
   <div class="aside-nav-wrapper">
-    <VPLink class="link" no-icon href="https://github.com/fastapi-practices/fastapi_best_architecture">
+    <VPLink class="link" href="https://github.com/fastapi-practices/fastapi_best_architecture" no-icon>
       <span class="vpi-github-star" />
       <span class="link-text">在 GitHub 上 Star</span>
       <span class="vpi-arrow-right" />
     </VPLink>
-    <VPLink class="link" no-icon href="/questions.html">
+    <VPLink class="link" href="/questions.html" no-icon>
       <span class="vpi-github-issue" />
       <span class="link-text">遇到问题？</span>
       <span class="vpi-arrow-right" />

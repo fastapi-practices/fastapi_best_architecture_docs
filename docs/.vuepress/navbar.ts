@@ -44,7 +44,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.1.1',
+        text: 'v1.1.2',
         items: [
             {
                 text: '线上演示',

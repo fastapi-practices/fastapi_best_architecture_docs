@@ -24,6 +24,6 @@ export default defineClientConfig({
         Layout,
         NotFound: () => h(NotFound, null, {
             'layout-top': () => h(BannerTop),
-          }),
+        }),
     }
 })

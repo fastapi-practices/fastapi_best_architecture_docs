@@ -20,9 +20,9 @@ title: cursor
 此规则仅限用于 fba 项目
 :::
 
-| 反馈 | 反应 |
-| :--: | :--: |
-![cursor](/images/cursor.png) | 我被调成啥了 <Icon name="openmoji:new-moon-face" size="2em" />
+|              反馈               |                            反应                            |
+|:-----------------------------:|:--------------------------------------------------------:|
+ ![cursor](/images/cursor.png) | 我被调成啥了 <Icon name="openmoji:new-moon-face" size="2em" /> 
 
 @[code mdc](../../code/fastapi.mdc)
 

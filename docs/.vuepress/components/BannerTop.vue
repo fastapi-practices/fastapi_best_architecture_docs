@@ -1,30 +1,32 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 const isDismissed = ref(false);
 
 function dismiss() {
   isDismissed.value = true;
-  sessionStorage.setItem("fba-docs-banner-top", "true");
+  if (typeof window !== 'undefined') {
+    localStorage.setItem("fba-docs-banner-top", "true");
+  }
   updateDocumentClass();
 }
 
 function updateDocumentClass() {
-  if (isDismissed.value) {
-    document.documentElement.classList.add("banner-dismissed");
-  } else {
-    document.documentElement.classList.remove("banner-dismissed");
+  if (typeof window !== 'undefined') {
+    document.documentElement.classList.toggle("banner-dismissed", isDismissed.value);
   }
 }
 
 onMounted(() => {
-  isDismissed.value = sessionStorage.getItem("fba-docs-banner-top") === "true";
-  updateDocumentClass();
+  if (typeof window !== 'undefined') {
+    isDismissed.value = localStorage.getItem("fba-docs-banner-top") === "true";
+    updateDocumentClass();
+  }
 });
 </script>
 
 <template>
-  <div class="banner" v-if="!isDismissed">
+  <div v-if="!isDismissed" class="banner">
     <p class="vp-banner-text">
       <span class="vp-text-primary">FBA </span>
       <span class="vp-tagline">· FasAPI</span>
@@ -117,6 +119,7 @@ button {
   .vp-tagline {
     display: none;
   }
+
   .vp-primary-action {
     padding: 5px 5px;
   }
@@ -130,6 +133,7 @@ button {
   .vp-place {
     display: none;
   }
+
   .vp-date {
     display: none;
   }

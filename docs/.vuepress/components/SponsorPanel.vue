@@ -9,14 +9,14 @@
   <div class="sponsor-container">
     <div class="gold-sponsors">
       <div
-        v-for="(sponsor, index) in goldSponsors"
-        :key="'gold-' + index"
-        class="sponsor-item gold"
-        :class="{ 'collapsed-mode': isCollapsed }"
-        @click="openSponsorLink(sponsor.href)"
-        v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          v-for="(sponsor, index) in goldSponsors"
+          v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          :key="'gold-' + index"
+          :class="{ 'collapsed-mode': isCollapsed }"
+          class="sponsor-item gold"
+          @click="openSponsorLink(sponsor.href)"
       >
-        <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
+        <img v-if="sponsor.link" :alt="sponsor.alt" :src="sponsor.link" class="sponsor-image" />
         <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
           {{ sponsor.alt }}
         </span>
@@ -27,14 +27,14 @@
     </div>
     <div class="general-sponsors">
       <div
-        v-for="(sponsor, index) in generalSponsors"
-        :key="'general-' + index"
-        class="sponsor-item"
-        :class="{ 'collapsed-mode': isCollapsed }"
-        @click="openSponsorLink(sponsor.href)"
-        v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          v-for="(sponsor, index) in generalSponsors"
+          v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          :key="'general-' + index"
+          :class="{ 'collapsed-mode': isCollapsed }"
+          class="sponsor-item"
+          @click="openSponsorLink(sponsor.href)"
       >
-        <img v-if="sponsor.link" :src="sponsor.link" :alt="sponsor.alt" class="sponsor-image" />
+        <img v-if="sponsor.link" :alt="sponsor.alt" :src="sponsor.link" class="sponsor-image" />
         <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
           {{ sponsor.alt }}
         </span>
@@ -50,27 +50,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { sponsorUrl, goldSponsors, generalSponsors } from "../data/sponsors";
+import { onMounted, ref } from "vue";
+import { generalSponsors, goldSponsors, sponsorUrl } from "../data/sponsors";
 
-const isCollapsed = ref(sessionStorage.getItem("sponsorCollapsed") === "true");
+const isCollapsed = ref(false);
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
-  sessionStorage.setItem("sponsorCollapsed", isCollapsed.value);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem("sponsorCollapsed", isCollapsed.value);
+  }
 };
 
 const openSponsorLink = (href) => {
-  window.open(href, "_blank");
+  if (typeof window !== 'undefined') {
+    window.open(href, "_blank");
+  }
 };
 
 onMounted(() => {
-  const savedState = sessionStorage.getItem("sponsorCollapsed");
-  if (savedState !== null) {
-    isCollapsed.value = savedState === "true";
+  if (typeof window !== 'undefined') {
+    const savedState = localStorage.getItem("sponsorCollapsed");
+    isCollapsed.value = savedState ? savedState === "true" : false;
   }
 });
 </script>
+
 
 <style scoped>
 .sponsor-header {

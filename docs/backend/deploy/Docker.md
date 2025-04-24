@@ -104,8 +104,8 @@ title: Docker 部署
    进入 `deploy/backend/docker-compose` 目录，按需修改 `.env.server` 文件
 
    ::: tip
-   我们在 docker-compose 脚本内通过挂载的方式使用 `.env.server` 文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至 docker
-   容器，这意味着，修改环境变量将无需重新 build
+   我们在 docker-compose 脚本内通过挂载的方式使用 `.env.server` 文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至
+   docker 容器，这意味着，修改环境变量将无需重新 build
    :::
 
    ::: warning

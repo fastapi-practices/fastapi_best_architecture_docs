@@ -7,7 +7,8 @@ title: 插件开发
 :::: steps
 
 1. 拉取最新的 fba 项目到本地并配置好开发环境
-2. 通过 [插件分类](#插件分类)、[插件路由结构](#插件路由结构)、[插件配置](#插件配置)、[数据库兼容性](#数据库兼容性) 了解插件系统的运作机制
+2. 通过 [插件分类](#插件分类)、[插件路由结构](#插件路由结构)、[插件配置](#插件配置)、[数据库兼容性](#数据库兼容性)
+   了解插件系统的运作机制
 3. 根据 [插件目录结构](#插件目录结构) 进行插件开发
 4. 完成插件开发
 5. 插件分享 <Badge type="warning" text="可选" />
@@ -85,7 +86,8 @@ tags = ''
 
 ### 数据库兼容性
 
-fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对第三方插件进行强制要求，如果您对此感兴趣，请查看 SQLAlchemy 2.0 官方文档:
+fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对第三方插件进行强制要求，如果您对此感兴趣，请查看 SQLAlchemy 2.0
+官方文档:
 [with_variant](https://docs.sqlalchemy.org/en/20/core/type_api.html#sqlalchemy.types.TypeEngine.with_variant)
 
 ### 插件目录结构
@@ -93,23 +95,23 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
 ::: file-tree
 
 - backend 固定目录 <Badge type="danger" text="必须" />
-  - plugin 固定目录 <Badge type="danger" text="必须" />
-    - xxx 插件名 <Badge type="danger" text="必须" />
-      - api/ 接口 <Badge type="danger" text="必须" />
-      - crud/ CRUD <Badge type="warning" text="非必须" />
-      - model/ 模型 <Badge type="warning" text="非必须" />
-        - \_\_init\_\_.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
-        - …
-      - schema/ 数据传输 <Badge type="warning" text="非必须" />
-      - service/ 服务 <Badge type="warning" text="非必须" />
-      - utils/ 工具包 <Badge type="warning" text="非必须" />
-      - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
-      - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
-      - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
-      - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
-      - README.md 插件使用说明 <Badge type="danger" text="必须" />
-      - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；
-        如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
+    - plugin 固定目录 <Badge type="danger" text="必须" />
+        - xxx 插件名 <Badge type="danger" text="必须" />
+            - api/ 接口 <Badge type="danger" text="必须" />
+            - crud/ CRUD <Badge type="warning" text="非必须" />
+            - model/ 模型 <Badge type="warning" text="非必须" />
+                - \_\_init\_\_.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
+                - …
+            - schema/ 数据传输 <Badge type="warning" text="非必须" />
+            - service/ 服务 <Badge type="warning" text="非必须" />
+            - utils/ 工具包 <Badge type="warning" text="非必须" />
+            - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
+            - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
+            - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
+            - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
+            - README.md 插件使用说明 <Badge type="danger" text="必须" />
+            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；
+              如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
 
 :::
 

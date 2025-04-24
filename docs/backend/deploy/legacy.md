@@ -14,7 +14,7 @@ title: 传统部署
 ::: note
 远程支持开始前，请准备:
 
-- [x] >= 2c2g 云服务器一台
+- [x] 大于等于 2C2G 云服务器一台
 - [x] 已安装 Docker 和 docker-compose
 - [x] 可正常 ssh
 - [x] 提供 root 权限

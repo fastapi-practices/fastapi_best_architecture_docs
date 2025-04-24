@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { homeSponsor } from "../data/sponsors";
 </script>
 
@@ -6,7 +6,7 @@ import { homeSponsor } from "../data/sponsors";
   <section v-if="homeSponsor.href && homeSponsor.link" id="special-spsr">
     <span>特别赞助商</span>
     <a :href="homeSponsor.href" target="_blank">
-      <img width="121" :src="homeSponsor.link" :alt="homeSponsor.alt" />
+      <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="121" />
     </a>
     <span>fba 官方合作伙伴</span>
   </section>

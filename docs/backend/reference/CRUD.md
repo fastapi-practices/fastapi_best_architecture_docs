@@ -15,7 +15,7 @@ fba 遵循以下命名规范：
 - 通过 xxx 获取/查询详情：`get_by_xxx()`
 - 获取/查询列表：`get_list()`
 - 获取/查询所有：`get_all()`
-- 字查询：`get_children()`
+- 子查询：`get_children()`
 - 关系查询：`get_with_relation()`
 - 创建：`create()`
 - 更新：`update()`

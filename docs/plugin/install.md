@@ -27,13 +27,13 @@ title: 安装使用
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
 
-   - 下载插件 GitHub 仓库为 zip 压缩包
+    - 下载插件 GitHub 仓库为 zip 压缩包
 
-     ::: details 示例
-     ![cg1](/images/plugin_zip.png)
-     :::
+      ::: details 示例
+      ![cg1](/images/plugin_zip.png)
+      :::
 
-   - 通过 fba 插件打包接口创建的 zip 压缩包
+    - 通过 fba 插件打包接口创建的 zip 压缩包
 
 2. 将压缩包通过 fba 插件安装接口进行安装
 3. 根据插件使用说明完成安装
@@ -48,4 +48,5 @@ title: 安装使用
 1. 实时热重载是非线程安全模式，它会影响正在处理中的任务
 2. 插件可能包含环境变量配置，增加安全风险
 3. 频繁热重载可能引发内存泄漏
+
 :::

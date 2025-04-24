@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import type { AutoplayOptions, SwiperModule, Swiper as SwiperType } from "swiper/types";
+<script lang="ts" setup>
+import type { AutoplayOptions, Swiper as SwiperType, SwiperModule } from "swiper/types";
 import { useMutationObserver } from "@vueuse/core";
 import {
   Autoplay,
@@ -67,16 +67,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 const slideList = computed<SlideItem[]>(() => {
   return (
-    props.items?.map((link) => {
-      if (typeof link === "string") return { link };
-      return link;
-    }) ?? []
+      props.items?.map((link) => {
+        if (typeof link === "string") return { link };
+        return link;
+      }) ?? []
   );
 });
 
 function parseSize(size: number | string) {
   if (typeof size === "number") {
-    return `${size}px`;
+    return `${ size }px`;
   }
   return size;
 }
@@ -123,7 +123,7 @@ const autoplay = computed<AutoplayOptions | boolean>(() => {
 });
 
 const hasNavigation = computed(() =>
-  props.mode === "banner" || props.mode === "broadcast" ? props.navigation : false
+    props.mode === "banner" || props.mode === "broadcast" ? props.navigation : false
 );
 
 let swiper: SwiperType;
@@ -139,13 +139,13 @@ function onSwiper(_swiper: SwiperType) {
 onMounted(() => {
   if (props.mode === "carousel" && !props.pauseOnMouseEnter) {
     useMutationObserver(
-      () => document.documentElement,
-      () => {
-        if (!swiper) return;
-        swiper.wrapperEl.style.transform = "translate3d(0px, 0px, 0px)";
-        setTimeout(() => swiper.update(), 350);
-      },
-      { attributeFilter: ["data-theme"] }
+        () => document.documentElement,
+        () => {
+          if (!swiper) return;
+          swiper.wrapperEl.style.transform = "translate3d(0px, 0px, 0px)";
+          setTimeout(() => swiper.update(), 350);
+        },
+        { attributeFilter: ["data-theme"] }
     );
   }
 });
@@ -154,13 +154,13 @@ onMounted(() => {
 <template>
   <ClientOnly>
     <Swiper
-      class="vp-swiper"
-      :class="{ 'swiper-no-swiping': mode === 'banner' ? !swipe : mode === 'carousel' }"
-      :style="styles"
-      :modules="modules"
-      :autoplay="autoplay"
-      :navigation="hasNavigation"
-      :pagination="
+        :autoplay="autoplay"
+        :class="{ 'swiper-no-swiping': mode === 'banner' ? !swipe : mode === 'carousel' }"
+        :effect="mode === 'banner' ? effect : 'slide'"
+        :loop="loop"
+        :modules="modules"
+        :navigation="hasNavigation"
+        :pagination="
         props.mode !== 'carousel'
           ? {
               dynamicBullets: true,
@@ -168,30 +168,30 @@ onMounted(() => {
             }
           : false
       "
-      :speed="speed"
-      :loop="loop"
-      :effect="mode === 'banner' ? effect : 'slide'"
-      lazy
-      v-bind="$attrs"
-      @swiper="onSwiper"
+        :speed="speed"
+        :style="styles"
+        class="vp-swiper"
+        lazy
+        v-bind="$attrs"
+        @swiper="onSwiper"
     >
       <SwiperSlide v-for="(item, index) in slideList" :key="'general-' + index">
         <a
-          v-if="item.href && item.link"
-          :href="item.href"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="swiper-slide-link no-icon"
+            v-if="item.href && item.link"
+            :href="item.href"
+            class="swiper-slide-link no-icon"
+            rel="noopener noreferrer"
+            target="_blank"
         >
-          <img class="swiper-slide-custom-container swiper-slide-img" :src="item.link" :alt="item.alt" />
+          <img :alt="item.alt" :src="item.link" class="swiper-slide-custom-container swiper-slide-img" />
         </a>
         <div v-else-if="item.alt" class="swiper-slide-custom-container">
           <a
-            v-if="item.href"
-            :href="item.href"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="swiper-slide-text-link"
+              v-if="item.href"
+              :href="item.href"
+              class="swiper-slide-text-link"
+              rel="noopener noreferrer"
+              target="_blank"
           >
             <div class="swiper-slide-text">{{ item.alt }}</div>
           </a>
