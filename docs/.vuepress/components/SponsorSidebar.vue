@@ -1,12 +1,12 @@
 <template>
-  <div class="sponsor-header">
+  <div class="brand-header">
     <span>独家赞助</span>
   </div>
-  <div class="sponsor-container">
-    <div class="sidebar-sponsor">
-      <div class="sponsor" @click="openSponsorLink(homeSponsor.href)">
-        <img v-if="homeSponsor.link" :alt="homeSponsor.alt" :src="homeSponsor.link" class="sponsor-image" />
-        <span v-else class="sponsor-text">成为赞助商</span>
+  <div class="brand-container">
+    <div class="sidebar-brand">
+      <div class="brand" @click="openSponsorLink(homeSponsor.href)">
+        <img v-if="homeSponsor.link" :alt="homeSponsor.alt" :src="homeSponsor.link" class="brand-image" />
+        <span v-else class="brand-text">成为赞助商</span>
       </div>
     </div>
   </div>
@@ -21,24 +21,24 @@ const openSponsorLink = (href) => {
 </script>
 
 <style scoped>
-.sponsor-header {
+.brand-header {
   font-size: 11px;
   color: var(--vp-c-text-3);
 }
 
-.sponsor-container {
+.brand-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.sidebar-sponsor {
+.sidebar-brand {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.sponsor {
+.brand {
   background-color: var(--vp-c-bg-safe);
   cursor: pointer;
   display: flex;
@@ -47,23 +47,23 @@ const openSponsorLink = (href) => {
   height: 89px;
 }
 
-.sponsor:hover {
+.brand:hover {
   border: 1px solid var(--vp-c-brand);
 }
 
-.sponsor-image {
+.brand-image {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 
-.sponsor-text {
+.brand-text {
   color: var(--vp-c-text-3);
   font-size: 13px;
 }
 
 @media (max-width: 576px) {
-  .sponsor {
+  .brand {
     height: 110px;
   }
 }

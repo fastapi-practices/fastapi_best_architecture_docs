@@ -11,22 +11,22 @@ import { homeSponsor } from "../data/sponsors";
     <span>fba 官方合作伙伴</span>
   </section>
   <section v-else id="special-spsr">
-    <span class="no-sponsor">
+    <span class="no-brand">
       <a href="/fastapi_best_architecture_docs/sponsors">特别赞助位目前空缺 - 现在咨询 💬</a>
     </span>
   </section>
 </template>
 
 <style scoped>
-.no-sponsor {
-  animation: no-sponsor 2s ease-in-out infinite;
+.no-brand {
+  animation: no-brand 2s ease-in-out infinite;
   display: flex;
   justify-content: center;
   padding: 0 24px;
   color: var(--vp-c-brand-1) !important;
 }
 
-@keyframes no-sponsor {
+@keyframes no-brand {
   0%,
   100% {
     opacity: 1;

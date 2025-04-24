@@ -1,56 +1,56 @@
 <template>
-  <div class="sponsor-header" @click="toggleCollapse">
+  <div class="brand-header" @click="toggleCollapse">
     <span>倾情赞助</span>
     <span class="toggle-icon">
       <Icon v-if="isCollapsed" name="iconamoon:arrow-right-2" />
       <Icon v-else name="iconamoon:arrow-down-2" />
     </span>
   </div>
-  <div class="sponsor-container">
+  <div class="brand-container">
     <div class="gold-sponsors">
       <div
-          v-for="(sponsor, index) in goldSponsors"
-          v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          v-for="(brand, index) in goldSponsors"
+          v-show="!isCollapsed || (isCollapsed && !brand.alt.includes('成为赞助商'))"
           :key="'gold-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
-          class="sponsor-item gold"
-          @click="openSponsorLink(sponsor.href)"
+          class="brand-item gold"
+          @click="openSponsorLink(brand.href)"
       >
-        <img v-if="sponsor.link" :alt="sponsor.alt" :src="sponsor.link" class="sponsor-image" />
-        <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
-          {{ sponsor.alt }}
+        <img v-if="brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
+          {{ brand.alt }}
         </span>
-        <span v-if="isCollapsed" class="sponsor-text collapsed-text">
-          {{ sponsor.alt }}
+        <span v-if="isCollapsed" class="brand-text collapsed-text">
+          {{ brand.alt }}
         </span>
       </div>
     </div>
     <div class="general-sponsors">
       <div
-          v-for="(sponsor, index) in generalSponsors"
-          v-show="!isCollapsed || (isCollapsed && !sponsor.alt.includes('成为赞助商'))"
+          v-for="(brand, index) in generalSponsors"
+          v-show="!isCollapsed || (isCollapsed && !brand.alt.includes('成为赞助商'))"
           :key="'general-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
-          class="sponsor-item"
-          @click="openSponsorLink(sponsor.href)"
+          class="brand-item"
+          @click="openSponsorLink(brand.href)"
       >
-        <img v-if="sponsor.link" :alt="sponsor.alt" :src="sponsor.link" class="sponsor-image" />
-        <span v-if="!isCollapsed && sponsor.alt.includes('成为赞助商')" class="sponsor-text">
-          {{ sponsor.alt }}
+        <img v-if="brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
+          {{ brand.alt }}
         </span>
-        <span v-if="isCollapsed" class="sponsor-text collapsed-text">
-          {{ sponsor.alt }}
+        <span v-if="isCollapsed" class="brand-text collapsed-text">
+          {{ brand.alt }}
         </span>
       </div>
     </div>
-    <div v-if="isCollapsed" class="sponsor-item become-sponsor" @click="openSponsorLink(sponsorUrl)">
-      <span class="sponsor-text">成为赞助商</span>
+    <div v-if="isCollapsed && brandNum() < 9" class="brand-item become-brand" @click="openSponsorLink(sponsorUrl)">
+      <span class="brand-text">成为赞助商</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { generalSponsors, goldSponsors, sponsorUrl } from "../data/sponsors";
 
 const isCollapsed = ref(false);
@@ -68,6 +68,11 @@ const openSponsorLink = (href) => {
   }
 };
 
+const brandNum = () => {
+  return goldSponsors.value.filter(item => item.link?.trim() !== '').length +
+      generalSponsors.value.filter(item => item.link?.trim() !== '').length;
+}
+
 onMounted(() => {
   if (typeof window !== 'undefined') {
     const savedState = localStorage.getItem("sponsorCollapsed");
@@ -78,7 +83,7 @@ onMounted(() => {
 
 
 <style scoped>
-.sponsor-header {
+.brand-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,7 +99,7 @@ onMounted(() => {
   opacity: 0.7;
 }
 
-.sponsor-container {
+.brand-container {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -112,7 +117,7 @@ onMounted(() => {
   gap: 3px;
 }
 
-.sponsor-item {
+.brand-item {
   background-color: var(--vp-c-bg-soft);
   cursor: pointer;
   display: flex;
@@ -123,15 +128,15 @@ onMounted(() => {
   position: relative;
 }
 
-.sponsor-item:hover {
+.brand-item:hover {
   border: 1px solid var(--vp-c-brand);
 }
 
-.sponsor-item.gold {
+.brand-item.gold {
   height: 96px;
 }
 
-.sponsor-image {
+.brand-image {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -139,7 +144,7 @@ onMounted(() => {
   transition: opacity 0.3s ease;
 }
 
-.sponsor-text {
+.brand-text {
   color: var(--vp-c-text-3);
   font-size: 10px;
   white-space: nowrap;
@@ -149,7 +154,7 @@ onMounted(() => {
   padding: 0 8px;
 }
 
-.sponsor-item.gold .sponsor-text {
+.brand-item.gold .brand-text {
   font-size: 13px;
 }
 
@@ -157,7 +162,7 @@ onMounted(() => {
   height: 32px !important;
 }
 
-.collapsed-mode .sponsor-image {
+.collapsed-mode .brand-image {
   opacity: 0;
 }
 
@@ -171,7 +176,7 @@ onMounted(() => {
   color: var(--vp-c-text-1) !important;
 }
 
-.become-sponsor {
+.become-brand {
   height: 32px;
   background-color: unset;
 }
