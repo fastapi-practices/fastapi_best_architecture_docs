@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { homeSponsor } from "../data/sponsors";
+import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
 </script>
 
 <template>
-  <section v-if="homeSponsor.href && homeSponsor.link" id="special-spsr">
+  <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
     <span>特别赞助商</span>
     <a :href="homeSponsor.href" target="_blank">
       <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="121" />
@@ -12,7 +12,7 @@ import { homeSponsor } from "../data/sponsors";
   </section>
   <section v-else id="special-spsr">
     <span class="no-brand">
-      <a href="/fastapi_best_architecture_docs/sponsors">特别赞助位目前空缺 - 现在咨询 💬</a>
+      <a href="/fastapi_best_architecture_docs/sponsors" target="_blank">特别赞助位目前空缺 - 现在咨询 💬</a>
     </span>
   </section>
 </template>

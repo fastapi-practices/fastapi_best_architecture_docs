@@ -9,8 +9,8 @@
   <div class="brand-container">
     <div class="gold-sponsors">
       <div
-          v-for="(brand, index) in goldSponsors"
-          v-show="!isCollapsed || (isCollapsed && !brand.alt.includes('成为赞助商'))"
+          v-for="(brand, index) in processedGoldSponsors"
+          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'gold-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
@@ -27,8 +27,8 @@
     </div>
     <div class="general-sponsors">
       <div
-          v-for="(brand, index) in generalSponsors"
-          v-show="!isCollapsed || (isCollapsed && !brand.alt.includes('成为赞助商'))"
+          v-for="(brand, index) in processedGeneralSponsors"
+          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'general-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
@@ -43,7 +43,11 @@
         </span>
       </div>
     </div>
-    <div v-if="isCollapsed && brandNum() < 9" class="brand-item become-brand" @click="openSponsorLink(sponsorUrl)">
+    <div
+        v-if="isCollapsed && shouldShowExtraBecomeSponsor"
+        class="brand-item become-brand"
+        @click="openSponsorLink(sponsorUrl)"
+    >
       <span class="brand-text">成为赞助商</span>
     </div>
   </div>
@@ -51,9 +55,33 @@
 
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import { generalSponsors, goldSponsors, sponsorUrl } from "../data/sponsors";
+import {
+  defaultSponsor,
+  generalSponsors,
+  goldSponsors,
+  openSponsorLink,
+  shouldShowSponsor,
+  sponsorUrl
+} from "../data/sponsors";
 
 const isCollapsed = ref(false);
+
+const processedGoldSponsors = computed(() => {
+  return goldSponsors.map(brand => {
+    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+  });
+});
+
+const processedGeneralSponsors = computed(() => {
+  return generalSponsors.map(brand => {
+    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+  });
+});
+
+const shouldShowExtraBecomeSponsor = computed(() => {
+  return (goldSponsors.filter(brand => brand.link && shouldShowSponsor(brand)).length +
+      generalSponsors.filter(brand => brand.link && shouldShowSponsor(brand)).length) < 9;
+});
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
@@ -62,17 +90,6 @@ const toggleCollapse = () => {
   }
 };
 
-const openSponsorLink = (href) => {
-  if (typeof window !== 'undefined') {
-    window.open(href, "_blank");
-  }
-};
-
-const brandNum = () => {
-  return goldSponsors.value.filter(item => item.link?.trim() !== '').length +
-      generalSponsors.value.filter(item => item.link?.trim() !== '').length;
-}
-
 onMounted(() => {
   if (typeof window !== 'undefined') {
     const savedState = localStorage.getItem("sponsorCollapsed");
@@ -80,7 +97,6 @@ onMounted(() => {
   }
 });
 </script>
-
 
 <style scoped>
 .brand-header {
