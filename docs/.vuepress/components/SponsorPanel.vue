@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted } from "vue";
 import {
   defaultSponsor,
   generalSponsors,
@@ -63,8 +63,9 @@ import {
   shouldShowSponsor,
   sponsorUrl
 } from "../data/sponsors";
+import { useStorage } from "@vueuse/core";
 
-const isCollapsed = ref(false);
+const isCollapsed = useStorage('fba-docs-sponsor-collapsed', false);
 
 const processedGoldSponsors = computed(() => {
   return goldSponsors.map(brand => {
@@ -86,16 +87,9 @@ const shouldShowExtraBecomeSponsor = computed(() => {
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
   if (typeof window !== 'undefined') {
-    localStorage.setItem("sponsorCollapsed", isCollapsed.value);
+    localStorage.setItem("fba-docs-sponsor-collapsed", isCollapsed.value);
   }
 };
-
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    const savedState = localStorage.getItem("sponsorCollapsed");
-    isCollapsed.value = savedState ? savedState === "true" : false;
-  }
-});
 </script>
 
 <style scoped>

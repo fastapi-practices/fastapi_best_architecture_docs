@@ -1,32 +1,28 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { useStorage } from "@vueuse/core";
 
-const isDismissed = ref(false);
+const isDismissed = useStorage("fba-docs-banner-top", true);
 
 function dismiss() {
-  isDismissed.value = true;
+  isDismissed.value = false;
   if (typeof window !== 'undefined') {
-    localStorage.setItem("fba-docs-banner-top", "true");
+    localStorage.setItem("fba-docs-banner-top", false);
   }
   updateDocumentClass();
 }
 
 function updateDocumentClass() {
+  console.log(isDismissed.value);
   if (typeof window !== 'undefined') {
-    document.documentElement.classList.toggle("banner-dismissed", isDismissed.value);
+    document.documentElement.classList.toggle("banner-dismissed", !isDismissed.value);
   }
 }
 
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    isDismissed.value = localStorage.getItem("fba-docs-banner-top") === "true";
-    updateDocumentClass();
-  }
-});
+updateDocumentClass();
 </script>
 
 <template>
-  <div v-if="!isDismissed" class="banner">
+  <div class="banner">
     <p class="vp-banner-text">
       <span class="vp-text-primary">FBA </span>
       <span class="vp-tagline">· FasAPI</span>

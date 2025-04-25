@@ -44,6 +44,12 @@
     margin: 24px 0 40px !important;
 }
 
+/* 首页 box */
+.vp-home-feature:hover {
+    border: 1px solid var(--vp-c-brand-1);
+    background-color: rgba(0, 148, 133, 0.1);
+}
+
 .vp-swiper .swiper-slide-img {
     /* 轮播图图片拉伸效果 */
     object-fit: fill;

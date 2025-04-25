@@ -1,11 +1,11 @@
 ---
-title: 安装使用
+title: 快速开始
 ---
 
-插件安装方式包含以下两种：
+您可以将 [插件市场](./market.md) 中的插件通过以下方式进行安装：
 
 :::: tabs
-@tab 1. 手动
+@tab 手动
 
 1. 获取插件仓库源码并下载
 2. 将源码中的插件目录直接拷贝到 fba 项目对应的目录下
@@ -23,7 +23,7 @@ title: 安装使用
 3. 如果插件包含依赖（requirements.txt），执行 `backend/scripts/init_plugin.py` 文件安装依赖
 4. 根据插件使用说明完成安装
 
-@tab 2. 自动
+@tab 半自动
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
 

@@ -32,8 +32,8 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'Schema', link: 'schema' },
                 { text: '路由', link: 'router' },
                 { text: 'CRUD', link: 'CRUD' },
-                { text: '分页', link: 'pagination' },
                 { text: '接口响应', link: 'response' },
+                { text: '分页', link: 'pagination' },
                 { text: '自定义异常', link: '/planet', icon: 'fluent-color:receipt-16' },
                 { text: '节流', link: 'limit' },
                 { text: '切换数据库', link: 'db' },
@@ -63,13 +63,25 @@ export const mySidebar: ThemeSidebarMulti = {
     ],
     '/plugin/': [
         {
-            text: '插件',
+            text: '介绍',
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
+                { text: '快速开始', link: 'install' },
+            ]
+        },
+        {
+            text: '开发',
+            collapsed: true,
+            items: [
                 { text: '插件开发', link: 'dev' },
                 { text: '插件发布', link: 'publish' },
-                { text: '安装使用', link: 'install' },
+            ]
+        },
+        {
+            text: '市场',
+            collapsed: false,
+            items: [
                 { text: '插件市场', badge: { text: 'New' }, link: 'market' },
             ]
         }

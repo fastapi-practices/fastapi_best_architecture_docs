@@ -16,8 +16,6 @@ title: 插件市场
 
 ## 内置
 
-这些插件由 fba 内置
-
 <CardGrid>
   <Card icon="charm:shield-keyhole" title="Casbin-RBAC">
     <p style="color: #898989;">基于 Casbin 实现的 RBAC 权限</p>
