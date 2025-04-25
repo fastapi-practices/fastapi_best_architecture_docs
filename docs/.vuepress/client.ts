@@ -10,6 +10,7 @@ import SponsorSidebar from './components/SponsorSidebar.vue';
 import BannerTop from './components/BannerTop.vue';
 import { NotFound } from 'vuepress-theme-plume/client';
 import { h } from 'vue';
+import Price from "./components/Price.vue";
 
 export default defineClientConfig({
     enhance({ app }) {
@@ -19,6 +20,7 @@ export default defineClientConfig({
         app.component('SponsorHome', SponsorHome)
         app.component('SponsorSidebar', SponsorSidebar)
         app.component('BannerTop', BannerTop)
+        app.component('Price', Price)
     },
     layouts: {
         Layout,

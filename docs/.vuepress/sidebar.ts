@@ -72,7 +72,7 @@ export const mySidebar: ThemeSidebarMulti = {
         },
         {
             text: '开发',
-            collapsed: true,
+            collapsed: false,
             items: [
                 { text: '插件开发', link: 'dev' },
                 { text: '插件发布', link: 'publish' },

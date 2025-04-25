@@ -1,13 +1,13 @@
 ---
 title: 知识星球
+aside: false
 ---
 
 <div align="center">
 
 星球内容为非公开内容，扫码加入知识星球，即可获取独家内容
 
-附：星球用于 [有偿赞助](../../sponsors.md#有偿赞助)，加入 Discord
-社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
+加入 Discord 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
 
 </div>
 

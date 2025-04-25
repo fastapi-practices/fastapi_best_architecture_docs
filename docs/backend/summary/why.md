@@ -21,12 +21,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 承诺
 
-<div style="text-align: center">
-  <h1>「永久免授权」</h1>
-  <p>如果可以，请您给此项目一个 <NpmBadge repo="fastapi-practices/fastapi_best_architecture" type="stars" />，此仓库作为模板库公开，任何个人或企业均可免费使用！</p>
-  <p style="float: right">--- <a href="https://github.com/fastapi-practices">fastapi-practices</a>对此拥有所有解释权</p>
-  <br>
-</div>
+此仓库作为模板库公开，任何个人或企业均可免费使用！您可以通过 [购买授权](../../price.md) 查看我们的授权方案
 
 ## 架构
 

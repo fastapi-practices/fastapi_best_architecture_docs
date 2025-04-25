@@ -3,8 +3,6 @@ title: 成为 fba 的赞助者
 ---
 
 ::: note 用爱发电，回馈开源
-fba 基于 MIT 开源协议，您可以查看我们的 [授权方式](/backend/summary/why.md#承诺)
-
 fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。自 2023/04/07
 启，我们一直致力于持续更新和维护，为此，我们投入了大量的时间和无限的热爱
 :::
@@ -23,7 +21,7 @@ font-family: sans-serif;
 text-decoration: none;
 border: 1px solid #5D3408;
 display: inline-block;
-">☕ 来份美式吃苦套餐</a>
+">☕ 来杯小瑞幸</a>
 
 ::: info
 我在 Linux Do 发了一篇主题：[FastAPI 最佳架构](https://linux.do/t/topic/470425?u=wu-clan)
@@ -33,8 +31,9 @@ display: inline-block;
 
 ## 有偿赞助
 
-您可以加入我们创建的 [知识星球](https://t.zsxq.com/PDk8b)，获取星球内提供的 [独家内容](./planet.md)，另外，
-我们会为您添加 Discord 身份标签，以便您可以查看专属频道，针对标签用户，我们还可以提供一对一线上指导，远程支持
+您可以加入我们创建的 [知识星球](https://t.zsxq.com/PDk8b)，获取星球内提供的 [独家内容](./planet.md)
+
+此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以查看专属频道
 
 我们鼓励大家 [参与贡献](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing)
 ，如果您能为 fba 提供 PR，并且被审核通过，我们可以向您发送大额优惠券或免费邀请（基于 PR 质量）
@@ -43,7 +42,7 @@ display: inline-block;
 我们不保证星球内容的更新频率，您可以依据 [知识星球退款规则](https://support.zsxq.com/refundRules.html) 进行全额退款
 :::
 
-## 展位赞助商
+## 展位赞助商 <Badge text="New"/>
 
 您可以通过 [作者主页](https://wu-clan.github.io/homepage/) 内任意联系方式就展位的详细事宜与 fba 作者进行沟通
 
@@ -53,6 +52,7 @@ display: inline-block;
       <th>展位类型</th>
       <th>名额</th>
       <th>费用</th>
+      <th>活动</th>
       <th>展示位置</th>
       <th>素材要求</th>
     </tr>
@@ -63,6 +63,7 @@ display: inline-block;
       <td><strong>独家展位</strong></td>
       <td>1</td>
       <td>联系作者</td>
+      <td>买一送一</td>
       <td>
         - 首页独家展示位<br>
         - 文档左侧边栏独家展示位<br>
@@ -80,6 +81,7 @@ display: inline-block;
       <td><strong>特别展位</strong></td>
       <td>3</td>
       <td>联系作者</td>
+      <td>买一送一</td>
       <td>
         - 首页信息展播展示位<br>
         - 文档右侧边栏大号展示位<br>
@@ -90,6 +92,7 @@ display: inline-block;
       <td><strong>普通展位</strong></td>
       <td>6</td>
       <td>联系作者</td>
+      <td>无</td>
       <td>
         - 首页滚动展示位<br>
         - 文档右侧边栏小号展示位<br>
@@ -103,7 +106,7 @@ display: inline-block;
       </td>
     </tr>
     <tr>
-      <td colspan="5" style="text-align: center">
+      <td colspan="6" style="text-align: center">
         <strong>访问统计：</strong>
         <a href="https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io">点击查看</a>
         （我们可以向您提供“百度统计”）
