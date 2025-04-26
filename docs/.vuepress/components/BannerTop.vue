@@ -12,7 +12,6 @@ function dismiss() {
 }
 
 function updateDocumentClass() {
-  console.log(isDismissed.value);
   if (typeof window !== 'undefined') {
     document.documentElement.classList.toggle("banner-dismissed", !isDismissed.value);
   }

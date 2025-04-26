@@ -7,7 +7,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 </script>
 
 > [!TIP]
-> 此仓库作为模板库公开，任何个人或企业均可免费使用！
+> 此仓库作为模板库公开，任何个人或企业均可自由使用！
 
 ::: note
 我们不会去对比任何其他架构，我们认为每个架构都有自己的特点，适用于不同的场景。
@@ -21,7 +21,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 承诺
 
-此仓库作为模板库公开，任何个人或企业均可免费使用！您可以通过 [购买授权](../../price.md) 查看我们的授权方案
+此仓库作为模板库公开，任何个人或企业均可自由使用！您可以通过 [购买授权](../../price.md) 查看我们的授权方案
 
 ## 架构
 

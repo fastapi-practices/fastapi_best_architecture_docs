@@ -1,6 +1,10 @@
 <template>
   <div class="pricing-container">
     <h1 class="pricing-title">选择适合您的版本</h1>
+    <p class="pricing-subtitle">
+      此仓库作为模板库公开，任何个人或企业均可自由使用！<br>
+      专业版是社区共建计划的一部分，您的支持将加速功能升级，推动全社区技术架构演进
+    </p>
     <div class="pricing-cards">
       <!-- 开源版 -->
       <div class="pricing-card">
@@ -10,7 +14,8 @@
             <p class="card-description">{{ plans.openSource.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.openSource.price.current }}</div>
+            <div class="current-price">{{ plans.openSource.price.current }} <span class="billing-cycle">/ 年</span>
+            </div>
             <div v-if="plans.openSource.price.original" class="original-price">
               <del>{{ plans.openSource.price.original }}</del>
             </div>
@@ -22,7 +27,10 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button">立即使用</button>
+        <button class="cta-button"
+                @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
+          立即使用
+        </button>
       </div>
 
       <!-- 专业版 -->
@@ -34,7 +42,8 @@
             <p class="card-description">{{ plans.professional.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.professional.price.current }} <span class="billing-cycle">/ 年</span></div>
+            <div class="current-price">{{ plans.professional.price.current }} <span class="billing-cycle">/ 年</span>
+            </div>
             <div v-if="plans.professional.price.original" class="original-price">
               <del>{{ plans.professional.price.original }}</del>
             </div>
@@ -46,7 +55,7 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button primary" @click="goSponsor">立即购买</button>
+        <button class="cta-button primary" @click="openSponsorLink(sponsorUrl + '#有偿赞助')">立即购买</button>
       </div>
 
       <!-- 企业版 -->
@@ -57,7 +66,8 @@
             <p class="card-description">{{ plans.enterprise.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.enterprise.price.current }} <span class="billing-cycle">/ 年</span></div>
+            <div class="current-price">{{ plans.enterprise.price.current }} <span class="billing-cycle">/ 年</span>
+            </div>
             <div v-if="plans.enterprise.price.original" class="original-price">
               <del>{{ plans.enterprise.price.original }}</del>
             </div>
@@ -69,7 +79,7 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button" @click="goSponsor">立即购买</button>
+        <button class="cta-button">无此方案</button>
       </div>
     </div>
   </div>
@@ -78,15 +88,16 @@
 <script setup>
 import { plans } from "../data/price";
 import { openSponsorLink, sponsorUrl } from "../data/sponsors";
-
-const goSponsor = () => {
-  openSponsorLink(sponsorUrl + '#有偿赞助')
-}
 </script>
 
 <style scoped>
+.pricing-subtitle {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--vp-c-text-2);
+}
+
 .pricing-container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -94,7 +105,7 @@ const goSponsor = () => {
 
 .pricing-title {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .pricing-cards {
@@ -134,13 +145,8 @@ const goSponsor = () => {
 }
 
 .card-header {
-  margin-bottom: 1.5rem;
+  margin: -1rem 0 1.5rem;
   text-align: center;
-}
-
-.card-header h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .card-description {
