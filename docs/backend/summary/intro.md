@@ -27,8 +27,7 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 - [x] 遵循 RESTful API 规范
 - [x] 使用 SQLAlchemy 2.0 全新语法
 - [x] 使用 Pydantic v2 版本
-- [x] 实现角色菜单 RBAC 访问控制
-- [x] 集成 Casbin RBAC 访问控制
+- [x] 角色菜单 RBAC 访问控制
 - [x] 支持 Celery 异步任务
 - [x] 自研 JWT 认证中间件
 - [x] 支持全局自定义时间时区

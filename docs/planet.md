@@ -45,7 +45,7 @@ aside: false
     description="优雅的使用 Celery" 
     />
   <LinkCard 
-    title="数据规则" 
+    title="数据权限" 
     icon="fluent-color:video-16" 
     href="https://t.zsxq.com/qlZyT"
     description="超灵活的行级数据权限"

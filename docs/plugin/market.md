@@ -18,18 +18,6 @@ aside: false
 ## 内置
 
 <CardGrid>
-  <Card icon="charm:shield-keyhole" title="Casbin-RBAC">
-    <p style="color: #898989;">基于 Casbin 实现的 RBAC 权限</p>
-    <span>
-    <Icon name="logos:mysql" size="1.5em" />
-    ·
-    <Icon name="vscode-icons:file-type-pgsql" size="1.5em" />
-    ·
-    <Badge type="tip" text="fba" />
-    ·
-    <Badge text="extra" color="var(--vp-c-text-2)" bg-color="rgb(17 170 0 / 38%)"/>
-    </span>
-  </Card>
   <Card icon="fa6-regular:file-code" title="代码生成">
     <p style="color: #898989;">生成通用业务代码（目前仅包含后端工程）</p>
     <span>
@@ -85,6 +73,18 @@ aside: false
 这些插件由 fba 开发人员提供和维护
 
 <CardGrid>
+  <LinkCard icon="charm:shield-keyhole" title="Casbin-RBAC" href="https://github.com/fastapi-practices/fba_casbin">
+    <p style="color: #898989;">基于 Casbin 实现的 RBAC 权限</p>
+    <span>
+    <Icon name="logos:mysql" size="1.5em" />
+    ·
+    <Icon name="vscode-icons:file-type-pgsql" size="1.5em" />
+    ·
+    <Badge type="tip" text="fba" />
+    ·
+    <Badge text="extra" color="var(--vp-c-text-2)" bg-color="rgb(17 170 0 / 38%)"/>
+    </span>
+  </LinkCard>
   <LinkCard icon="ant-design:aliyun-outlined" title="阿里云 oss" href="https://github.com/fastapi-practices/fba_aliyun_oss">
     <p style="color: #898989;">阿里云 oss 文件上传</p>
     <span>

@@ -15,8 +15,7 @@ badge:
 - [ ] 用户管理 <Badge text="优先" />
 - [ ] 角色管理
 - [ ] 菜单管理 <Badge text="优先" />
-- [ ] 数据规则
-- [ ] Casbin RBAC <Badge text="延迟" type="warning" />
+- [ ] 数据权限
 - [x] 登录日志
 - [x] 操作日志
 - [x] 系统监控

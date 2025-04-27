@@ -32,9 +32,9 @@ config:
       - title: JWT
         icon: 🔏
         details: 带有缓存和白名单的 JWT 授权中间件
-      - title: RBAC
+      - title: 权限管理
         icon: 🛠️
-        details: 提供 Casbin、Role-Menu 两种 RBAC 方案
+        details: RBAC 解决方案和十分高级的数据权限
       - title: 代码生成
         icon: ⚙️
         details: 内置代码自动生成，告别通用代码频繁 cv

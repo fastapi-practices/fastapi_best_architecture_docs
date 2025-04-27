@@ -8,12 +8,12 @@ title: schema
 
 fba 遵循以下命名规范：
 
-- 基础 schema: `XxxSchemaBase(SchemaBase)`
-- 接口入参：`XxxParam(XxxSchemaBase)`
-- 新增入参：`CreateXxxParam(XxxSchemaBase)`
-- 更新入参：`UpdateXxxParam(XxxSchemaBase)`
-- 查询详情：`GetXxxDetail(XxxSchemaBase)`
-- 查询详情（包含关系）：`GetXxxWithRelationDetail(XxxSchemaBase)`
+- 基础 schema: `(SchemaBase)`
+- 接口入参：`XxxParam()`
+- 新增入参：`CreateXxxParam()`
+- 更新入参：`UpdateXxxParam()`
+- 查询详情：`GetXxxDetail()`
+- 查询详情（包含关系）：`GetXxxWithRelationDetail()`
 
 ## Field
 

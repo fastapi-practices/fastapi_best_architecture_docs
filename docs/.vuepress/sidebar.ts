@@ -40,7 +40,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
                 { text: 'OAuth 2.0', link: 'oauth2' },
-                { text: '数据规则', link: '/planet', icon: 'fluent-color:video-16' },
+                { text: '数据权限', link: '/planet', icon: 'fluent-color:video-16' },
                 { text: '代码生成', link: 'code-generation' },
                 { text: '跨域', link: 'CORS' },
                 { text: '事务', link: 'transaction' },

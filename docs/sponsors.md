@@ -21,7 +21,7 @@ font-family: sans-serif;
 text-decoration: none;
 border: 1px solid #5D3408;
 display: inline-block;
-">☕ 来杯小瑞幸</a>
+">来杯 ☕</a>
 
 ::: info
 我在 Linux Do 发了一篇主题：[FastAPI 最佳架构](https://linux.do/t/topic/470425?u=wu-clan)
