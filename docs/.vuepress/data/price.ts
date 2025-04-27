@@ -3,10 +3,6 @@ export const plans = {
     openSource: {
         title: '开源版',
         description: '适合个人开发者和小型项目',
-        price: {
-            current: '￥0',
-            original: '￥0'
-        },
         features: [
             '全部基础功能',
             '全量架构源码',

@@ -14,11 +14,7 @@
             <p class="card-description">{{ plans.openSource.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.openSource.price.current }} <span class="billing-cycle">/ 年</span>
-            </div>
-            <div v-if="plans.openSource.price.original" class="original-price">
-              <del>{{ plans.openSource.price.original }}</del>
-            </div>
+            <div class="current-price" style="margin-bottom: 59px">免费</div>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in plans.openSource.features" :key="index">
