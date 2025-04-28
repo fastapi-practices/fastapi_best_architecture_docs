@@ -89,11 +89,11 @@ const toggleCollapse = () => {
 };
 
 const brandItemGoldHeight = computed(() => {
-  return isCollapsed ? '32px' : '96px'
+  return isCollapsed.value ? '32px' : '96px'
 })
 
 const brandItemHeight = computed(() => {
-  return isCollapsed ? '32px' : '66px'
+  return isCollapsed.value ? '32px' : '66px'
 })
 </script>
 
