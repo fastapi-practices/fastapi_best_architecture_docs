@@ -12,7 +12,7 @@
           v-for="(brand, index) in processedGoldSponsors"
           v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'gold-' + index"
-          :class="{ 'brand-item-gold-mode collapsed-mode': isCollapsed }"
+          :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
           @click="openSponsorLink(brand.href)"
       >
@@ -30,7 +30,7 @@
           v-for="(brand, index) in processedGeneralSponsors"
           v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'general-' + index"
-          :class="{ 'brand-item-mode collapsed-mode': isCollapsed }"
+          :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
           @click="openSponsorLink(brand.href)"
       >
@@ -87,6 +87,14 @@ const shouldShowExtraBecomeSponsor = computed(() => {
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
 };
+
+const brandItemGoldHeight = computed(() => {
+  return isCollapsed ? '32px' : '96px'
+})
+
+const brandItemHeight = computed(() => {
+  return isCollapsed ? '32px' : '66px'
+})
 </script>
 
 <style scoped>
@@ -130,20 +138,17 @@ const toggleCollapse = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: v-bind(brandItemHeight);
   transition: all 0.3s ease;
   position: relative;
-}
-
-.brand-item-mode {
-  height: 66px;
 }
 
 .brand-item:hover {
   border: 1px solid var(--vp-c-brand);
 }
 
-.brand-item-gold-mode {
-  height: 96px;
+.brand-item.gold {
+  height: v-bind(brandItemGoldHeight);
 }
 
 .brand-image {
@@ -169,7 +174,7 @@ const toggleCollapse = () => {
 }
 
 .collapsed-mode {
-  height: 32px;
+  height: 32px !important;
 }
 
 .collapsed-mode .brand-image {
