@@ -12,7 +12,7 @@
           v-for="(brand, index) in processedGoldSponsors"
           v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'gold-' + index"
-          :class="{ 'collapsed-mode': isCollapsed }"
+          :class="{ 'brand-item-gold-mode collapsed-mode': isCollapsed }"
           class="brand-item gold"
           @click="openSponsorLink(brand.href)"
       >
@@ -30,7 +30,7 @@
           v-for="(brand, index) in processedGeneralSponsors"
           v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
           :key="'general-' + index"
-          :class="{ 'collapsed-mode': isCollapsed }"
+          :class="{ 'brand-item-mode collapsed-mode': isCollapsed }"
           class="brand-item"
           @click="openSponsorLink(brand.href)"
       >
@@ -86,9 +86,6 @@ const shouldShowExtraBecomeSponsor = computed(() => {
 
 const toggleCollapse = () => {
   isCollapsed.value = !isCollapsed.value;
-  if (typeof window !== 'undefined') {
-    localStorage.setItem("fba-docs-sponsor-collapsed", isCollapsed.value);
-  }
 };
 </script>
 
@@ -133,16 +130,19 @@ const toggleCollapse = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 66px;
   transition: all 0.3s ease;
   position: relative;
+}
+
+.brand-item-mode {
+  height: 66px;
 }
 
 .brand-item:hover {
   border: 1px solid var(--vp-c-brand);
 }
 
-.brand-item.gold {
+.brand-item-gold-mode {
   height: 96px;
 }
 
@@ -169,7 +169,7 @@ const toggleCollapse = () => {
 }
 
 .collapsed-mode {
-  height: 32px !important;
+  height: 32px;
 }
 
 .collapsed-mode .brand-image {
