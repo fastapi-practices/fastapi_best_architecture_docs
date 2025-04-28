@@ -16,7 +16,7 @@
           class="brand-item gold"
           @click="openSponsorLink(brand.href)"
       >
-        <img v-if="brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <img v-if="!isCollapsed && brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
         <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
           {{ brand.alt }}
         </span>
@@ -34,7 +34,7 @@
           class="brand-item"
           @click="openSponsorLink(brand.href)"
       >
-        <img v-if="brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <img v-if="!isCollapsed && brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
         <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
           {{ brand.alt }}
         </span>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import {
   defaultSponsor,
   generalSponsors,

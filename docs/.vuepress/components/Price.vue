@@ -89,8 +89,8 @@ import { openSponsorLink, sponsorUrl } from "../data/sponsors";
 <style scoped>
 .pricing-subtitle {
   text-align: center;
-  margin-bottom: 2.5rem;
-  color: var(--vp-c-text-2);
+  margin-bottom: 3rem;
+  color: #fd7600;
 }
 
 .pricing-container {
@@ -101,7 +101,7 @@ import { openSponsorLink, sponsorUrl } from "../data/sponsors";
 
 .pricing-title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .pricing-cards {

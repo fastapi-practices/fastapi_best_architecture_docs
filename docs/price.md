@@ -7,6 +7,10 @@ editLink: false
 <Price />
 
 <style setup>
+.vp-doc-title {
+  display: none !important;
+}
+
 .vp-doc-meta {
   display: none !important;
 }

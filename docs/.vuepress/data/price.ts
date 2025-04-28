@@ -2,7 +2,7 @@
 export const plans = {
     openSource: {
         title: '开源版',
-        description: '适合个人开发者和小型项目',
+        description: ' 个人开发者与独立项目之选',
         features: [
             '全部基础功能',
             '全量架构源码',
@@ -17,7 +17,7 @@ export const plans = {
     },
     professional: {
         title: '专业版',
-        description: '适合中小企业和专业开发者',
+        description: '专业开发者的得力助手',
         price: {
             current: '￥99',
             original: '￥1999'
@@ -33,7 +33,7 @@ export const plans = {
     },
     enterprise: {
         title: '企业版',
-        description: '适合大型企业和关键业务',
+        description: '为团队与大规模项目而生',
         price: {
             current: '￥xxxx',
             original: '￥xxxx'
