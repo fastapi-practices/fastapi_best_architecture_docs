@@ -51,7 +51,7 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button primary" @click="openSponsorLink(sponsorUrl + '#有偿赞助')">立即购买</button>
+        <button class="cta-button primary" @click="openSponsorLink(sponsorUrl)">立即购买</button>
       </div>
 
       <!-- 企业版 -->

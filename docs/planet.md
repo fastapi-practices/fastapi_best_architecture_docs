@@ -99,8 +99,9 @@ aside: false
 
 <CardGrid>
   <LinkCard
-    title="SSO（制作中...）"
+    title="SSO"
     icon="fluent-color:receipt-16"
-    description="通过 casdoor 实现 SSO 集成"
+    href="https://t.zsxq.com/xTvTi"
+    description="通过 Casdoor 实现 SSO 单点登录集成"
     />
 </CardGrid>
