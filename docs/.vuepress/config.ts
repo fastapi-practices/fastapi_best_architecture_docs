@@ -56,7 +56,7 @@ export default defineUserConfig({
         contributors: false,
         lastUpdated: false,
         footer: {
-            copyright: 'Copyright © 2024-present FastAPI Practices'
+            copyright: 'Copyright © 2023-present FastAPI Practices'
         },
         //watermark: true,
         markdown: {

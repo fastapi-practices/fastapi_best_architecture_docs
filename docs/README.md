@@ -17,6 +17,9 @@ config:
         - theme: alt
           text: 为什么选择我们?
           link: /backend/summary/why
+        - theme: alt
+          text: DeepWiki 文档
+          link: https://deepwiki.com/fastapi-practices/fastapi_best_architecture
   - type: SponsorHome
   - type: features
     features:
