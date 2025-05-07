@@ -31,7 +31,7 @@ display: inline-block;
 
 ## 有偿赞助
 
-您可以加入我们创建的 [知识星球](https://t.zsxq.com/PDk8b)，获取星球内提供的 [独家内容](./planet.md)
+您可以加入我们创建的【知识星球】，获取星球内提供的 [独家内容](./planet.md)
 
 此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以查看专属频道
 

@@ -5,13 +5,13 @@ aside: false
 
 <div align="center">
 
-星球内容为非公开内容，扫码加入知识星球，即可获取独家内容
+[星球内容](https://t.zsxq.com/PDk8b) 为非公开内容，扫码加入知识星球，即可获取独家内容
 
 加入 Discord 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
 
 </div>
 
-::: details 扫码订阅
+::: details 展开【扫码订阅】
 
 <div align="center">
   <p style="color: #fd7600">我们在节假日会在 Discord 社区统一发送大额优惠券，敬请关注</p>
