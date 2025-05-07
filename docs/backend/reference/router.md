@@ -18,20 +18,20 @@ fba 中的路由遵循 Restful API 规范
             - api 接口
                 - v1
                     - xxx 子包
-                        - __init\_\_.py 在此文件内注册子包内 xxx.py 文件中的路由
+                        - __init__.py 在此文件内注册子包内 xxx.py 文件中的路由
                         - xxx.py
                         - ...
-                - __init\_\_.py
-                - router.py 在此文件内注册所有子包 __init\_\_.py 文件中的路由
+                - __init__.py
+                - router.py 在此文件内注册所有子包 __init__.py 文件中的路由
         - xxx 自定义应用 <Badge type="warning" text="不包含子包" />
             - api 接口
                 - v1
-                    - _\_init\_\_.py 不做任何操作
+                    - __init__.py 不做任何操作
                     - xxx.py
                     - ...
-                - __init\_\_.py
+                - __init__.py
                 - router.py 在此文件内注册所有 xxx.py 文件中的路由
-    - __init\_\_.py
+    - __init__.py
     - router.py 在此文件内注册所有 app 目录下 router.py 文件中的路由
 
 :::

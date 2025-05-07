@@ -99,13 +99,13 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
         - xxx 插件名 <Badge type="danger" text="必须" />
             - api/ 接口 <Badge type="danger" text="必须" />
             - crud/ CRUD <Badge type="warning" text="非必须" />
-            - model/ 模型 <Badge type="warning" text="非必须" />
-                - \_\_init\_\_.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
+            - model 模型 <Badge type="warning" text="非必须" />
+                - __init__.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
                 - …
             - schema/ 数据传输 <Badge type="warning" text="非必须" />
             - service/ 服务 <Badge type="warning" text="非必须" />
             - utils/ 工具包 <Badge type="warning" text="非必须" />
-            - \_\_init\_\_.py 作为 python 包保留 <Badge type="danger" text="必须" />
+            - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
             - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
             - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
             - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />

@@ -4,8 +4,8 @@ title: RBAC
 
 我们通过自定义依赖组件，实现了 RBAC 的轻松集成，它可以通过 FastAPI Depends 轻松集成
 
-::: warning
-自 fba `v1.1.2` 版本起，开始使用【角色菜单】作为默认 RBAC 鉴权，Casbin 将作为外置插件进行分发
+::: caution
+自 fba [v1.2.0](../../changelog.md) 版本起，开始将【角色菜单】作为默认 RBAC 鉴权，Casbin 作为外置插件进行分发
 :::
 
 ## 角色菜单
@@ -37,8 +37,19 @@ title: RBAC
 
 ## Casbin
 
-此方案是 Go 语言中比较流行的解决方案，它非常灵活，可以通过模型定义多种控制规则，要想实现此 RBAC
-鉴权，请通过 [插件市场](../../plugin/market.md) 获取
+此方案是 Go 语言中比较流行的解决方案，它非常灵活，可以通过模型定义多种控制规则
+
+要想实现此 RBAC 鉴权，请先 [获取插件](../../plugin/market.md)，然后执行以下操作
+
+::: steps
+
+1. 安装插件
+
+2. 启用鉴权
+
+   修改 `backend/core/conf.py` 文件中的 `RBAC_ROLE_MENU_MODE` 为 `False`
+
+:::
 
 ## 解耦
 

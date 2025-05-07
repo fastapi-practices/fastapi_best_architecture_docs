@@ -66,7 +66,7 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
             - api/ 接口
             - crud/ CRUD
             - model 模型
-                - \_\_init\_\_.py 必须在此文件内导入所有模型类
+                - __init__.py 必须在此文件内导入所有模型类
                 - …
             - schema/ 数据传输
             - service/ 服务

@@ -67,7 +67,6 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
-                { text: '快速开始', link: 'install' },
             ]
         },
         {
@@ -76,6 +75,13 @@ export const mySidebar: ThemeSidebarMulti = {
             items: [
                 { text: '插件开发', link: 'dev' },
                 { text: '插件发布', link: 'publish' },
+            ]
+        },
+        {
+            text: '使用',
+            collapsed: false,
+            items: [
+                { text: '插件安装', link: 'install' }
             ]
         },
         {
