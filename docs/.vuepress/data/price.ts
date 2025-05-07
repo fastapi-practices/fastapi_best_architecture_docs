@@ -7,7 +7,7 @@ export const plans = {
             '全部基础功能',
             '全量架构源码',
             '社区支持',
-            'MIT许可证',
+            'MIT 许可证',
             '自由商用',
             '无需保留版权',
             '无需保留许可声明',
@@ -25,6 +25,8 @@ export const plans = {
         },
         features: [
             '所有开源版功能',
+            'Discord 身份标签',
+            'Discord 专属频道',
             '优先支持',
             '一对一指导',
             '远程支持',
@@ -41,6 +43,7 @@ export const plans = {
         },
         features: [
             '所有专业版功能',
+            '专属企业群组'
         ]
     }
 }

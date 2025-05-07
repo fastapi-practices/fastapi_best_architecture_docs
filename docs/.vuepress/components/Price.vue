@@ -3,7 +3,9 @@
     <h1 class="pricing-title">选择适合您的版本</h1>
     <p class="pricing-subtitle">
       此仓库作为模板库公开，任何个人或企业均可自由使用！<br>
-      专业版是社区共建计划的一部分，您的支持将加速功能升级，推动全社区技术架构演进
+      <span style="color: #fd7600;">
+        专业版是社区共建计划的一部分，您的支持将加速功能升级，推动全社区技术架构演进
+      </span>
     </p>
     <div class="pricing-cards">
       <!-- 开源版 -->
@@ -24,8 +26,7 @@
           </ul>
         </div>
         <button class="cta-button"
-                @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
-          立即使用
+                @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">立即使用
         </button>
       </div>
 
@@ -51,7 +52,9 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button primary" @click="openSponsorLink(sponsorUrl)">立即购买</button>
+        <button class="cta-button primary"
+                @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
+        </button>
       </div>
 
       <!-- 企业版 -->
@@ -83,14 +86,13 @@
 
 <script setup>
 import { plans } from "../data/price";
-import { openSponsorLink, sponsorUrl } from "../data/sponsors";
+import { openSponsorLink } from "../data/sponsors";
 </script>
 
 <style scoped>
 .pricing-subtitle {
   text-align: center;
   margin-bottom: 3rem;
-  color: #fd7600;
 }
 
 .pricing-container {
