@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
-</script>
-
 <template>
   <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
     <span>特别赞助商</span>
@@ -16,6 +12,10 @@ import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
     </span>
   </section>
 </template>
+
+<script lang="ts" setup>
+import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
+</script>
 
 <style scoped>
 .no-brand {

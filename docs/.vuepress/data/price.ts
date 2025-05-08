@@ -1,4 +1,3 @@
-
 export const plans = {
     openSource: {
         title: '开源版',

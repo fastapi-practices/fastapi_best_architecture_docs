@@ -21,7 +21,7 @@ title: 快速开始
    :::
 
 3. 如果插件包含依赖（requirements.txt），执行 `backend/scripts/init_plugin.py` 文件安装依赖
-4. 根据插件使用说明完成安装
+4. 根据插件使用说明（README.md）完成安装
 
 @tab 半自动
 
@@ -36,7 +36,7 @@ title: 快速开始
     - 通过 fba 插件打包接口创建的 zip 压缩包
 
 2. 将压缩包通过 fba 插件安装接口进行安装
-3. 根据插件使用说明完成安装
+3. 根据插件使用说明（README.md）完成安装
 
 ::::
 

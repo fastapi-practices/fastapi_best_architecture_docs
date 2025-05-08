@@ -110,8 +110,7 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
             - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
             - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
             - README.md 插件使用说明 <Badge type="danger" text="必须" />
-            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />；
-              如果插件需要安装依赖，则为 <Badge type="danger" text="必须" />
+            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />
 
 :::
 

@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-import { VPLink } from 'vuepress-theme-plume/client'
-</script>
-
 <template>
   <div class="aside-nav-wrapper">
     <VPLink class="link" href="https://github.com/fastapi-practices/fastapi_best_architecture" no-icon>
@@ -16,6 +12,10 @@ import { VPLink } from 'vuepress-theme-plume/client'
     </VPLink>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { VPLink } from 'vuepress-theme-plume/client'
+</script>
 
 <style scoped>
 .aside-nav-wrapper {

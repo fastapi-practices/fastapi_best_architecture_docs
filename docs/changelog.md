@@ -26,8 +26,6 @@ title: 更新日志
 * Update the SQL script for creat tables by [@wu-clan](https://github.com/wu-clan)
   in [#597](https://github.com/fastapi-practices/fastapi_best_architecture/pull/597)
 
-## 完整日志
-
 ::: demo-wrapper title="Full Changelog"
 完整日志请查看：[CHANGELOG.md](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
 :::

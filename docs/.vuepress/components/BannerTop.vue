@@ -1,3 +1,22 @@
+<template>
+  <div class="banner">
+    <p class="vp-banner-text">
+      <span class="vp-text-primary">FBA </span>
+      <span class="vp-tagline">· FasAPI</span>
+      <span class="vp-place"> 最佳架构</span>
+      <span class="vp-date"> · 插件系统已发布</span>
+      <a class="vp-primary-action" href="/fastapi_best_architecture_docs/plugin/before.html"> 甩起来 </a>
+    </p>
+    <button @click="dismiss">
+      <Icon name="mingcute:close-fill" />
+    </button>
+    <p class="vp-banner-text vp-coupon">
+      <span class="vp-text-primary">代码</span> 有 BUG？
+      <span class="vp-text-primary"> 请通过互动与我们反馈！</span>
+    </p>
+  </div>
+</template>
+
 <script setup>
 import { useStorage } from "@vueuse/core";
 
@@ -19,25 +38,6 @@ function updateDocumentClass() {
 
 updateDocumentClass();
 </script>
-
-<template>
-  <div class="banner">
-    <p class="vp-banner-text">
-      <span class="vp-text-primary">FBA </span>
-      <span class="vp-tagline">· FasAPI</span>
-      <span class="vp-place"> 最佳架构</span>
-      <span class="vp-date"> · 插件系统已发布</span>
-      <a class="vp-primary-action" href="/fastapi_best_architecture_docs/plugin/before.html"> 甩起来 </a>
-    </p>
-    <button @click="dismiss">
-      <Icon name="mingcute:close-fill" />
-    </button>
-    <p class="vp-banner-text vp-coupon">
-      <span class="vp-text-primary">代码</span> 有 BUG？
-      <span class="vp-text-primary"> 请通过互动与我们反馈！</span>
-    </p>
-  </div>
-</template>
 
 <style>
 html:not(.banner-dismissed) {
