@@ -17,19 +17,12 @@
         <div v-else class="image-placeholder">
           <Icon :name="item.icon" size="3em" color="var(--vp-c-brand)" />
         </div>
+        <div v-if="item.priceLabel" class="price-corner-tag">
+          <span class="price-corner-text">{{ item.priceLabel }}</span>
+        </div>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{{ item.title }}</h3>
-        <p class="card-description">{{ item.description }}</p>
-        <div class="card-tags">
-          <span
-              v-for="(tag, tagIndex) in item.tags"
-              :key="tagIndex"
-              class="badge"
-              :style="getTagColors(tag)"
-          >{{ tag }}</span>
-        </div>
-        <div class="card-footer">
+        <div class="card-header">
           <div class="item-developer-info">
             <img
                 :src="getGithubAvatarUrl(item.githubUser)"
@@ -40,9 +33,8 @@
               {{ item.githubUser }}
             </span>
           </div>
-          <div v-if="!item.link" class="built-in-label">内置</div>
           <a
-              v-else
+              v-if="item.link"
               :href="item.link"
               class="github-link no-external-icon"
               target="_blank"
@@ -50,8 +42,19 @@
               aria-label="GitHub仓库"
               @click.stop
           >
-            <Icon name="mdi:github" size="1.5em" color="var(--vp-c-text-2)" />
+            <Icon name="mdi:github" size="1.1em" color="var(--vp-c-text-2)" />
           </a>
+          <span v-else class="built-in-label-inline">内置</span>
+        </div>
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-description">{{ item.description }}</p>
+        <div class="card-tags">
+          <span
+              v-for="(tag, tagIndex) in item.tags"
+              :key="tagIndex"
+              class="badge"
+              :style="getTagColors(tag)"
+          >{{ tag }}</span>
         </div>
       </div>
     </div>
@@ -59,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import type { CSSProperties } from 'vue';
 
 export interface PluginItem {
   icon: string
@@ -68,6 +72,7 @@ export interface PluginItem {
   link?: string
   image?: string
   githubUser: string
+  priceLabel?: '免费' | '付费'
 }
 
 const props = withDefaults(
@@ -80,32 +85,31 @@ const props = withDefaults(
     }
 )
 
-interface TagColors {
-  color?: string
-  backgroundColor?: string
-  borderColor?: string
+interface TagColors extends CSSProperties {
 }
 
 const getTagColors = (tag: string): TagColors => {
   const colors: Record<string, TagColors> = {
     'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
-    'PostgreSQL': { color: '#336699', backgroundColor: 'rgba(51, 102, 153, 0.1)', borderColor: 'rgba(51, 102, 153, 0.2)' },
+    'PostgreSQL': {
+      color: '#336699',
+      backgroundColor: 'rgba(51, 102, 153, 0.1)',
+      borderColor: 'rgba(51, 102, 153, 0.2)'
+    },
     'fba': { color: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', borderColor: 'rgba(139, 92, 246, 0.2)' },
     'fba_ui': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
     'app': { color: '#f97316', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderColor: 'rgba(249, 115, 22, 0.2)' },
     'extra': { color: '#64748b', backgroundColor: 'rgba(100, 116, 139, 0.1)', borderColor: 'rgba(100, 116, 139, 0.2)' },
-    'pay': { color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderColor: 'rgba(239, 68, 68, 0.2)' },
-    'free': { color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderColor: 'rgba(16, 185, 129, 0.2)' }
   };
   return colors[tag] || {
     color: 'var(--vp-c-text-2)',
     backgroundColor: 'var(--vp-c-bg-soft)',
-    borderColor: 'var(--vp-c-divider-light)'
+    borderColor: 'var(--vp-c-divider)'
   };
 }
 
 const getGithubAvatarUrl = (username: string) => {
-  return `https://github.com/${username}.png?size=32`;
+  return `https://github.com/${ username }.png?size=32`;
 };
 
 const handleCardClick = (item: PluginItem) => {
@@ -183,51 +187,13 @@ const handleCardClick = (item: PluginItem) => {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.card-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 0.4rem 0;
-  line-height: 1.4;
-}
-
-.card-description {
-  color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  margin: 0 0 0.8rem 0;
-  flex-grow: 1;
-}
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.8rem;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  line-height: 1;
-  font-weight: 500;
-  white-space: nowrap;
-  border: 1px solid transparent;
-}
-
-.card-footer {
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
+  margin-bottom: 0.8rem; /* Space below the header */
 }
 
 .item-developer-info {
@@ -256,23 +222,72 @@ const handleCardClick = (item: PluginItem) => {
 }
 
 .github-link {
-  transition: all 0.2s ease;
-  pointer-events: none;
+  color: var(--vp-c-text-2);
+  transition: color 0.2s ease;
+  pointer-events: auto; /* Allow clicks on the icon */
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem; /* Space between developer info and icon */
+}
+
+.github-link:hover {
+  color: var(--vp-c-brand);
 }
 
 .no-external-icon::after {
   content: none !important;
 }
 
-.built-in-label {
-  font-size: 0.85rem;
+.built-in-label-inline {
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  padding: 0;
-  border-radius: 0;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
   flex-shrink: 0;
-  margin-left: auto;
+  margin-left: 0.5rem; /* Space between developer info and label */
   white-space: nowrap;
   font-weight: 500;
+}
+
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin: 0 0 0.4rem 0;
+  line-height: 1.4;
+}
+
+.card-description {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 0.8rem 0;
+  flex-grow: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
 }
 
 @media (min-width: 768px) {

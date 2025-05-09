@@ -6,28 +6,32 @@ export const pluginItems: PluginItem[] = [
         title: "代码生成",
         description: "生成通用业务代码（仅后端工程）",
         tags: ["MySQL", "PostgreSQL", "fba", "app"],
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "fe:notice-active",
         title: "通知公告",
         description: "发布系统内部通知、公告",
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "fluent-mdl2:dictionary",
         title: "数据字典",
         description: "通常用于约束前端工程数据展示",
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "icon-park-outline:config",
         title: "参数配置",
         description: "通常用于前端工程数据展示",
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "charm:shield-keyhole",
@@ -36,7 +40,8 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
         link: "https://github.com/fastapi-practices/fba_casbin",
         image: "https://avatars.githubusercontent.com/u/27810343?s=200&v=4",
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "streamline:ai-prompt-spark",
@@ -45,7 +50,8 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
         link: "https://github.com/fastapi-practices/fba_mcp",
         image: "https://github.com/modelcontextprotocol/.github/raw/main/profile/assets/light.png",
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "ant-design:aliyun-outlined",
@@ -54,7 +60,8 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "fba", "extra"],
         link: "https://github.com/fastapi-practices/fba_aliyun_oss",
         image: "https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png",
-        githubUser: 'wu-clan'
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
     },
     {
         icon: "material-symbols:token-outline",
@@ -62,7 +69,8 @@ export const pluginItems: PluginItem[] = [
         description: "将 env 等配置信息通过数据库进行管理",
         tags: ["MySQL", "fba", "extra"],
         link: "https://github.com/dividduang/option",
-        githubUser: 'dividduang'
+        githubUser: 'dividduang',
+        priceLabel: "免费"
     },
     {
         icon: "ant-design:wechat-work-outlined",
@@ -71,6 +79,7 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "fba", "extra"],
         link: "https://github.com/dividduang/wecom-task",
         image: "https://rescdn.qqmail.com/node/wework/images/Slice.d2258f37eb.png",
-        githubUser: 'dividduang'
+        githubUser: 'dividduang',
+        priceLabel: "免费"
     }
 ]

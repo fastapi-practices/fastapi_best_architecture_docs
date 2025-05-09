@@ -5,7 +5,6 @@ aside: false
 
 ::: info 标签说明
 
-<Badge text="pay" color="#ef4444" bg-color="rgba(239, 68, 68, 0.1)" border-color="rgba(239, 68, 68, 0.2)" /> [+pay] | 
 <Badge text="MySQL" color="#006484" bg-color="rgba(0, 100, 132, 0.1)" border-color="rgba(0, 100, 132, 0.2)" /> [+MySQL] | 
 <Badge text="PostgreSQL" color="#336699" bg-color="rgba(51, 102, 153, 0.1)" border-color="rgba(51, 102, 153, 0.2)" /> [+PostgreSQL] | 
 <Badge text="fba" color="#8b5cf6" bg-color="rgba(139, 92, 246, 0.1)" border-color="rgba(139, 92, 246, 0.2)" /> [+fba] | 
@@ -15,7 +14,6 @@ aside: false
 
 :::
 
-[+pay]: 付费插件
 [+MySQL]: 支持 MySQL
 [+PostgreSQL]: 支持 PostgreSQL
 [+fba]: 仅后端代码插件
