@@ -1,6 +1,7 @@
 ---
 title: 插件市场
 aside: false
+watermark: true
 ---
 
 ::: info 标签说明

@@ -17,12 +17,10 @@
         <div v-else class="image-placeholder">
           <Icon :name="item.icon" size="3em" color="var(--vp-c-brand)" />
         </div>
-        <div v-if="item.priceLabel" class="price-corner-tag">
+        <div v-if="item.priceLabel" class="price-corner-tag" :class="{ 'paid': item.priceLabel === '付费' }">
           <span class="price-corner-text">{{ item.priceLabel }}</span>
         </div>
-      </div>
-      <div class="card-content">
-        <div class="card-header">
+        <div class="image-footer">
           <div class="item-developer-info">
             <img
                 :src="getGithubAvatarUrl(item.githubUser)"
@@ -36,7 +34,7 @@
           <a
               v-if="item.link"
               :href="item.link"
-              class="github-link no-external-icon"
+              class="no-external-icon"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub仓库"
@@ -46,6 +44,8 @@
           </a>
           <span v-else class="built-in-label-inline">内置</span>
         </div>
+      </div>
+      <div class="card-content">
         <h3 class="card-title">{{ item.title }}</h3>
         <p class="card-description">{{ item.description }}</p>
         <div class="card-tags">
@@ -135,6 +135,7 @@ const handleCardClick = (item: PluginItem) => {
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   height: 100%;
+  max-height: 360px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -150,7 +151,7 @@ const handleCardClick = (item: PluginItem) => {
 
 .card-image {
   width: 100%;
-  height: 160px;
+  height: 180px;
   overflow: hidden;
   background: var(--vp-c-bg-soft);
   position: relative;
@@ -182,18 +183,17 @@ const handleCardClick = (item: PluginItem) => {
   background: var(--vp-c-bg-soft);
 }
 
-.card-content {
-  padding: 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-header {
+.image-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem; /* Space below the header */
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
 }
 
 .item-developer-info {
@@ -221,51 +221,43 @@ const handleCardClick = (item: PluginItem) => {
   white-space: nowrap;
 }
 
-.github-link {
-  color: var(--vp-c-text-2);
-  transition: color 0.2s ease;
-  pointer-events: auto; /* Allow clicks on the icon */
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.5rem; /* Space between developer info and icon */
-}
-
-.github-link:hover {
-  color: var(--vp-c-brand);
-}
-
 .no-external-icon::after {
   content: none !important;
 }
 
 .built-in-label-inline {
   font-size: 0.75rem;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-3);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  border: 1px solid var(--vp-c-divider);
-  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-border);
+  background: rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
-  margin-left: 0.5rem; /* Space between developer info and label */
+  margin-left: 0.5rem;
   white-space: nowrap;
   font-weight: 500;
 }
 
+.card-content {
+  padding: 0.75rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .card-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.4;
 }
 
 .card-description {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   line-height: 1.5;
-  margin: 0 0 0.8rem 0;
+  margin: 0 0 0.75rem 0;
   flex-grow: 1;
 }
 
@@ -274,7 +266,7 @@ const handleCardClick = (item: PluginItem) => {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-  margin-top: auto;
+  margin-bottom: 0.5rem;
 }
 
 .badge {
@@ -283,11 +275,38 @@ const handleCardClick = (item: PluginItem) => {
   justify-content: center;
   padding: 0.1rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   line-height: 1;
   font-weight: 500;
   white-space: nowrap;
   border: 1px solid transparent;
+}
+
+.price-corner-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #17bf63;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  border-bottom-left-radius: 4px;
+  transform: translate(1px, -1px);
+  z-index: 1;
+}
+
+.price-corner-tag {
+  background: #17bf63;
+}
+
+.price-corner-tag.paid {
+  background: #ff5733;
+}
+
+.price-corner-text {
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
@@ -297,7 +316,11 @@ const handleCardClick = (item: PluginItem) => {
   }
 
   .card-image {
-    height: 160px;
+    height: 200px;
+  }
+
+  .card-content {
+    padding: 0.75rem;
   }
 }
 
@@ -308,7 +331,11 @@ const handleCardClick = (item: PluginItem) => {
   }
 
   .card-image {
-    height: 180px;
+    height: 220px;
+  }
+
+  .card-content {
+    padding: 0.75rem;
   }
 }
 </style>

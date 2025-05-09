@@ -81,5 +81,15 @@ export const pluginItems: PluginItem[] = [
         image: "https://rescdn.qqmail.com/node/wework/images/Slice.d2258f37eb.png",
         githubUser: 'dividduang',
         priceLabel: "免费"
+    },
+    {
+        icon: "ant-design:wechat-work-outlined",
+        title: "SSO",
+        description: "通过 Casdoor 实现 SSO 单点登录集成",
+        tags: ["MySQL", "PostgreSQL", "fba", "extra"],
+        link: "/fastapi_best_architecture_docs/planet.html",
+        image: "https://casdoor.org/zh/img/casdoor.png",
+        githubUser: 'wu-clan',
+        priceLabel: "付费"
     }
 ]
