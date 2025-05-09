@@ -56,6 +56,7 @@ export default defineUserConfig({
         contributors: false,
         lastUpdated: false,
         footer: {
+            message: 'FastAPI 最佳架构 & MIT LICENCE',
             copyright: 'Copyright © 2023-present FastAPI Practices'
         },
         //watermark: true,

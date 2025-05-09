@@ -15,7 +15,7 @@
             class="image-content"
         />
         <div v-else class="image-placeholder">
-          <Icon :name="item.icon" size="3em" color="var(--vp-c-brand)" />
+          <Icon :name="item.icon" size="3em" color="var(--vp-c-text-1)" />
         </div>
         <div v-if="item.priceLabel" class="price-corner-tag" :class="{ 'paid': item.priceLabel === '付费' }">
           <span class="price-corner-text">{{ item.priceLabel }}</span>
@@ -49,12 +49,12 @@
         <h3 class="card-title">{{ item.title }}</h3>
         <p class="card-description">{{ item.description }}</p>
         <div class="card-tags">
-          <span
+          <Badge
               v-for="(tag, tagIndex) in item.tags"
               :key="tagIndex"
-              class="badge"
-              :style="getTagColors(tag)"
-          >{{ tag }}</span>
+              :text="tag"
+              :style="colors[tag]"
+          />
         </div>
       </div>
     </div>
@@ -62,8 +62,6 @@
 </template>
 
 <script setup lang="ts">
-import type { CSSProperties } from 'vue';
-
 export interface PluginItem {
   icon: string
   title: string
@@ -85,28 +83,16 @@ const props = withDefaults(
     }
 )
 
-interface TagColors extends CSSProperties {
-}
-
-const getTagColors = (tag: string): TagColors => {
-  const colors: Record<string, TagColors> = {
-    'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
-    'PostgreSQL': {
-      color: '#336699',
-      backgroundColor: 'rgba(51, 102, 153, 0.1)',
-      borderColor: 'rgba(51, 102, 153, 0.2)'
-    },
-    'fba': { color: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', borderColor: 'rgba(139, 92, 246, 0.2)' },
-    'fba_ui': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
-    'app': { color: '#f97316', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderColor: 'rgba(249, 115, 22, 0.2)' },
-    'extra': { color: '#64748b', backgroundColor: 'rgba(100, 116, 139, 0.1)', borderColor: 'rgba(100, 116, 139, 0.2)' },
-  };
-  return colors[tag] || {
-    color: 'var(--vp-c-text-2)',
-    backgroundColor: 'var(--vp-c-bg-soft)',
-    borderColor: 'var(--vp-c-divider)'
-  };
-}
+const colors: Record<string, TagColors> = {
+  'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
+  'PostgreSQL': {
+    color: '#336699',
+    backgroundColor: 'rgba(51, 102, 153, 0.1)',
+    borderColor: 'rgba(51, 102, 153, 0.2)'
+  },
+  '后端': { color: '#009485', backgroundColor: 'rgba(0,148,133,0.1)', borderColor: 'rgba(0,148,133,0.2)' },
+  '前端': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
+};
 
 const getGithubAvatarUrl = (username: string) => {
   return `https://github.com/${ username }.png?size=32`;
@@ -269,24 +255,10 @@ const handleCardClick = (item: PluginItem) => {
   margin-bottom: 0.5rem;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  line-height: 1;
-  font-weight: 500;
-  white-space: nowrap;
-  border: 1px solid transparent;
-}
-
 .price-corner-tag {
   position: absolute;
   top: 0;
   right: 0;
-  background: #17bf63;
   color: #fff;
   padding: 0.3rem 0.6rem;
   font-size: 0.75rem;

@@ -103,9 +103,11 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 [![Stargazers over time](https://starchart.cc/fastapi-practices/fastapi_best_architecture.svg?variant=adaptive)](https://starchart.cc/fastapi-practices/fastapi_best_architecture)
 
-## 相关
+## 特别鸣谢
 
-> [!IMPORTANT]
-> 特此感谢 [无名](https://github.com/lvright) 为此架构无偿设计的 LOGO
->
-> LOGO 寓意：包含了 FBA 三个字母抽象结合，形成了一个类似从地面扩散投影上来的闪电
+- [downdawn](https://github.com/downdawn) 为此项目的创建提供大力支持
+- [无名](https://github.com/lvright) 精心设计的 LOGO（包含了 FBA 三个字母抽象结合，形成了一个类似从地面扩散投影上来的闪电）
+- [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume) 为官网文档提供驱动支持
+- FastAPI、SQLAlchemy、Pydantic 等开源先行者
+- 此项目的所有贡献者、参与者和使用者
+- 赞助商们（包含所有渠道）的现金流支持

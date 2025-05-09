@@ -10,7 +10,7 @@ config:
       actions:
         - theme: brand
           text: 快速开始 ->
-          link: /backend/summary/quick-start
+          link: /backend/summary/intro
         - theme: alt
           text: 伪三层架构?
           link: /backend/summary/intro#伪三层架构
