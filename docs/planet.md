@@ -20,6 +20,10 @@ aside: false
 
 :::
 
+[[toc]]
+
+---
+
 ## 文章
 
 - <Icon name="fluent-color:receipt-16" /> 纯文字文章
@@ -105,3 +109,10 @@ aside: false
     description="通过 Casdoor 实现 SSO 单点登录集成"
     />
 </CardGrid>
+
+
+<style scoped>
+.vp-doc h2 {
+  margin: 0 0 16px !important;
+}
+</style>
