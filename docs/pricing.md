@@ -1,10 +1,10 @@
 ---
-title: 购买授权
 aside: false
 editLink: false
+title: pricing
 ---
 
-<Price />
+<Pricing />
 
 <style setup>
 .vp-doc-title {

@@ -10,7 +10,7 @@ import SponsorSidebar from './components/SponsorSidebar.vue';
 import BannerTop from './components/BannerTop.vue';
 import { NotFound } from 'vuepress-theme-plume/client';
 import { h } from 'vue';
-import Price from "./components/Price.vue";
+import Pricing from "./components/Pricing.vue";
 import PluginMarket from "./components/PluginMarket.vue";
 
 export default defineClientConfig({
@@ -21,7 +21,7 @@ export default defineClientConfig({
         app.component('SponsorHome', SponsorHome)
         app.component('SponsorSidebar', SponsorSidebar)
         app.component('BannerTop', BannerTop)
-        app.component('Price', Price)
+        app.component('Pricing', Pricing)
         app.component('PluginMarket', PluginMarket)
     },
     layouts: {

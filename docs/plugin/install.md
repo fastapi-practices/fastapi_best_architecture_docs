@@ -13,7 +13,7 @@ title: 快速开始
    ::: tabs
    @tab 后端
 
-   将插件源码 `backend/plugin/` 目录下的一级文件夹拷贝到 fba 项目 `backend/plugin/` 目录下
+   将插件源码 `backend/plugin/` 目录下的插件文件夹拷贝到 fba 项目 `backend/plugin/` 目录下
 
    @tab 前端
 

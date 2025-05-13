@@ -13,15 +13,15 @@
   "author": "wu-clan",
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.22",
-    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.99",
-    "@vuepress/plugin-umami-analytics": "2.0.0-rc.99",
+    "@vuepress/bundler-vite": "2.0.0-rc.23",
+    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.103",
+    "@vuepress/plugin-umami-analytics": "2.0.0-rc.103",
     "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.22",
-    "vuepress-theme-plume": "1.0.0-rc.146"
+    "vuepress": "2.0.0-rc.23",
+    "vuepress-theme-plume": "1.0.0-rc.148"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.335",
+    "@iconify/json": "^2.2.337",
     "@vueuse/core": "^12.8.2",
     "mermaid": "^11.6.0",
     "swiper": "^11.2.6"

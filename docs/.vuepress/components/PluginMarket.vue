@@ -15,7 +15,7 @@
             class="image-content"
         />
         <div v-else class="image-placeholder">
-          <Icon :name="item.icon" size="3em" color="var(--vp-c-text-1)" />
+          <Icon :name="item.icon" size="5em" color="var(--vp-c-text-1)" />
         </div>
         <div v-if="item.priceLabel" class="price-corner-tag" :class="{ 'paid': item.priceLabel === '付费' }">
           <span class="price-corner-text">{{ item.priceLabel }}</span>
@@ -40,7 +40,7 @@
               aria-label="GitHub仓库"
               @click.stop
           >
-            <Icon name="mdi:github" size="1.1em" color="var(--vp-c-text-2)" />
+            <Icon name="mdi:github" color="var(--vp-c-text-2)" />
           </a>
           <span v-else class="built-in-label-inline">内置</span>
         </div>
@@ -122,7 +122,7 @@ const handleCardClick = (item: PluginItem) => {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   height: 100%;
   max-height: 360px;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid var(--vp-c-border);
 }
 
 .plugin-card.clickable:hover {
@@ -178,7 +178,7 @@ const handleCardClick = (item: PluginItem) => {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   color: #fff;
 }
 
@@ -213,7 +213,7 @@ const handleCardClick = (item: PluginItem) => {
 
 .built-in-label-inline {
   font-size: 0.75rem;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
   border: 1px solid var(--vp-c-border);

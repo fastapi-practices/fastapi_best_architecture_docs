@@ -112,7 +112,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '购买授权',
         icon: 'fluent:person-key-20-filled',
-        link: '/price'
+        link: '/pricing'
     },
     {
         text: '赞助',

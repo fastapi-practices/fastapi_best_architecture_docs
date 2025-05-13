@@ -1,6 +1,6 @@
 ---
 title: 知识星球
-aside: false
+pageLayout: friends
 ---
 
 <div align="center">
