@@ -49,6 +49,17 @@ fba 会在启动前对所有插件进行解析
 @tab <Icon name="carbon:app" />应用级插件
 
 ```toml
+# 插件信息
+[plugin]
+# 插件名
+name = ''
+# 插件版本号
+version = ''
+# 插件描述
+description = ''
+# 插件作者
+author = ''
+
 # 应用配置
 [app]
 # 插件路由器实例，可参考源码：backend/app/admin/api/router.py，通常默认命名为 v1
@@ -58,6 +69,17 @@ router = ['']
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 
 ```toml
+# 插件信息
+[plugin]
+# 插件名
+name = ''
+# 插件版本号
+version = ''
+# 插件描述
+description = ''
+# 插件作者
+author = ''
+
 # 应用配置
 [app]
 # 此插件属于哪个 app
@@ -98,9 +120,7 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
     - service/ 服务 <Badge type="warning" text="非必须" />
     - utils/ 工具包 <Badge type="warning" text="非必须" />
     - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
-    - .env.example 插件环境变量配置示例 <Badge type="warning" text="非必须" />
-    - conf.py.example 插件独立配置示例 <Badge type="warning" text="非必须" />
-    - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
+    - … 更多内容，例如 enums.py... <Badge type="warning" text="非必须" />
     - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
     - README.md 插件使用说明和您的联系方式 <Badge type="danger" text="必须" />
     - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />
