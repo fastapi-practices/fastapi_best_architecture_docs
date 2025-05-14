@@ -51,8 +51,6 @@ fba 会在启动前对所有插件进行解析
 ```toml
 # 插件信息
 [plugin]
-# 插件名
-name = ''
 # 插件版本号
 version = ''
 # 插件描述
@@ -71,8 +69,6 @@ router = ['']
 ```toml
 # 插件信息
 [plugin]
-# 插件名
-name = ''
 # 插件版本号
 version = ''
 # 插件描述
