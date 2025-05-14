@@ -84,7 +84,7 @@ export const pluginItems: PluginItem[] = [
     },
     {
         icon: "ant-design:wechat-work-outlined",
-        title: "SSO",
+        title: "Casdoor SSO",
         description: "通过 Casdoor 实现 SSO 单点登录集成",
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "/fastapi_best_architecture_docs/planet.html",
