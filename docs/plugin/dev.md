@@ -4,25 +4,17 @@ title: 插件开发
 
 ## 后端
 
-:::: steps
+::: steps
 
 1. 拉取最新的 fba 项目到本地并配置好开发环境
 2. 通过 [插件分类](#插件分类)、[插件路由结构](#插件路由结构)、[插件配置](#插件配置)、[数据库兼容性](#数据库兼容性)
    了解插件系统的运作机制
 3. 根据 [插件目录结构](#插件目录结构) 进行插件开发
 4. 完成插件开发
-5. 插件分享 <Badge type="warning" text="可选" />
 
-   使用插件模板仓库 [fba_plugin_template](https://github.com/fastapi-practices/fba_plugin_template)
-   创建个人仓库，并将插件代码上传到个人仓库
+5. [插件分享](./share.md) <Badge type="warning" text="可选" />
 
-   ::: warning
-   请不要将插件代码以 PR 的方式进行提交！
-   :::
-
-6. [申请发布插件](publish.md) <Badge type="warning" text="可选" />
-
-::::
+:::
 
 ### 插件分类
 
@@ -92,25 +84,26 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
 
 ### 插件目录结构
 
+插件统一放置在 `backend/plugin` 目录下，以下是插件的目录结构
+
 ::: file-tree
 
-- backend 固定目录 <Badge type="danger" text="必须" />
-    - plugin 固定目录 <Badge type="danger" text="必须" />
-        - xxx 插件名 <Badge type="danger" text="必须" />
-            - api/ 接口 <Badge type="danger" text="必须" />
-            - crud/ CRUD <Badge type="warning" text="非必须" />
-            - model 模型 <Badge type="warning" text="非必须" />
-                - __init__.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
-                - …
-            - schema/ 数据传输 <Badge type="warning" text="非必须" />
-            - service/ 服务 <Badge type="warning" text="非必须" />
-            - utils/ 工具包 <Badge type="warning" text="非必须" />
-            - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
-            - conf.py 插件独立配置 <Badge type="warning" text="非必须" />
-            - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
-            - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
-            - README.md 插件使用说明 <Badge type="danger" text="必须" />
-            - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />
+- xxx 插件名 <Badge type="danger" text="必须" />
+    - api/ 接口 <Badge type="danger" text="必须" />
+    - crud/ CRUD <Badge type="warning" text="非必须" />
+    - model 模型 <Badge type="warning" text="非必须" />
+        - __init__.py 在此文件内导入所有模型类 <Badge type="danger" text="必须" />
+        - …
+    - schema/ 数据传输 <Badge type="warning" text="非必须" />
+    - service/ 服务 <Badge type="warning" text="非必须" />
+    - utils/ 工具包 <Badge type="warning" text="非必须" />
+    - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
+    - .env.example 插件环境变量配置示例 <Badge type="warning" text="非必须" />
+    - conf.py.example 插件独立配置示例 <Badge type="warning" text="非必须" />
+    - … 更多其他配置，例如 enums.py... <Badge type="warning" text="非必须" />
+    - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
+    - README.md 插件使用说明和您的联系方式 <Badge type="danger" text="必须" />
+    - requirements.txt 依赖包文件 <Badge type="warning" text="非必须" />
 
 :::
 

@@ -74,7 +74,7 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '插件开发', link: 'dev' },
-                { text: '插件发布', link: 'publish' },
+                { text: '插件分享', link: 'share' },
             ]
         },
         {

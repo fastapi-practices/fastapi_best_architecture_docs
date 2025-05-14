@@ -8,12 +8,12 @@ title: 快速开始
 @tab 手动
 
 1. 获取插件仓库源码并下载
-2. 将源码中的插件目录直接拷贝到 fba 项目对应的目录下
+2. 拷贝插件代码
 
    ::: tabs
    @tab 后端
 
-   将插件源码 `backend/plugin/` 目录下的插件文件夹拷贝到 fba 项目 `backend/plugin/` 目录下
+   将下载的源码直接拷贝到 `backend/plugin` 目录下
 
    @tab 前端
 
@@ -21,22 +21,29 @@ title: 快速开始
    :::
 
 3. 如果插件包含依赖（requirements.txt），执行 `backend/scripts/init_plugin.py` 文件安装依赖
-4. 根据插件使用说明（README.md）完成安装
+4. 根据插件说明（README.md）进行相关配置
+5. 重启服务
 
-@tab 半自动
+@tab ZIP
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
 
-    - 下载插件 GitHub 仓库为 zip 压缩包
+    - 下载插件仓库为 zip 压缩包，例如 GitHub
 
-      ::: details 示例
-      ![cg1](/images/plugin_zip.png)
-      :::
+      ![zip](/images/plugin_zip.png)
 
-    - 通过 fba 插件打包接口创建的 zip 压缩包
+    - 通过 fba 插件打包接口下载的 zip 压缩包
 
-2. 将压缩包通过 fba 插件安装接口进行安装
-3. 根据插件使用说明（README.md）完成安装
+2. 将 zip 压缩包通过 zip 插件安装接口进行安装
+3. 根据插件说明（README.md）进行相关配置
+4. 重启服务
+
+@tab GIT
+
+1. 获取插件 git 仓库地址，理论上支持任何平台（GitHub、Gitlab、Gitee、Gitea...）
+2. 通过 git 插件安装接口进行安装
+3. 根据插件说明（README.md）进行相关配置
+4. 重启服务
 
 ::::
 
