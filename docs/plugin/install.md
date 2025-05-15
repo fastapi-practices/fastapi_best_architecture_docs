@@ -13,7 +13,7 @@ title: 快速开始
    ::: tabs
    @tab 后端
 
-   将下载的源码直接拷贝到 `backend/plugin` 目录下
+   将下载的源码文件夹直接拷贝到 `backend/plugin` 目录下
 
    @tab 前端
 
