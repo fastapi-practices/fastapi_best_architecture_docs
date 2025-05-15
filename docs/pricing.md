@@ -6,7 +6,7 @@ title: pricing
 
 <Pricing />
 
-<style setup>
+<style>
 .vp-doc-title {
   display: none !important;
 }
