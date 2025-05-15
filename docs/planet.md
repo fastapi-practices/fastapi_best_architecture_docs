@@ -1,6 +1,5 @@
 ---
 title: 知识星球
-pageLayout: friends
 ---
 
 <div align="center">
@@ -19,10 +18,6 @@ pageLayout: friends
 </div>
 
 :::
-
-[[toc]]
-
----
 
 ## 文章
 
@@ -109,10 +104,3 @@ pageLayout: friends
     description="通过 Casdoor 实现 SSO 单点登录集成"
     />
 </CardGrid>
-
-
-<style scoped>
-.vp-doc h2 {
-  margin: 0 0 16px !important;
-}
-</style>
