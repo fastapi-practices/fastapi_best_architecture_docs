@@ -1,9 +1,7 @@
 ---
 aside: false
-title: market
+title: 插件市场
 ---
-
-<h1 class="custom-title">插件市场</h1>
 
 ::: info 标签说明
 
@@ -19,22 +17,3 @@ title: market
 <script setup lang="ts">
 import { pluginItems } from '@source/.vuepress/data/plugin'
 </script>
-
-<style setup>
-.custom-title {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.vp-breadcrumb {
-  display: none !important;
-}
-
-.vp-doc-title {
-  display: none !important;
-}
-
-.vp-doc-meta {
-  display: none !important;
-}
-</style>
