@@ -35,6 +35,12 @@ title: 快速开始
     - 通过 fba 插件打包接口下载的 zip 压缩包
 
 2. 将 zip 压缩包通过 zip 插件安装接口进行安装
+
+   ::: warning
+   通过插件仓库下载的 zip 压缩包可能带有分支名，例如：`aliyun_oss-master.zip`，目前 fba 仅自动处理 master、main、dev 分支名，如果
+   zip 压缩包名中包含其他分支名，请自行手动删除
+   :::
+
 3. 根据插件说明（README.md）进行相关配置
 4. 重启服务
 
