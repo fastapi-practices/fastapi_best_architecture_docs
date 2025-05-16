@@ -9,22 +9,22 @@ title: 更新日志
 的成熟与稳定，更意味着它已完全通过验证，可以安心投入生产环境使用。在未来的版本迭代中，我们将持续为开发者带来更优质的产品体验。敬请期待！🤗
 :::
 
-## [v1.2.0](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.2.0) - 2025-05-01
+## [v1.3.0](https://github.com/fastapi-practices/fastapi_best_architecture/releases/tag/v1.3.0) - 2025-05-16
 
 ### What's Changed
 
-* Update changelog for v1.1.2 by [@wu-clan](https://github.com/wu-clan)
-  in [#589](https://github.com/fastapi-practices/fastapi_best_architecture/pull/589)
-* Update code generator table columns by [@wu-clan](https://github.com/wu-clan)
-  in [#590](https://github.com/fastapi-practices/fastapi_best_architecture/pull/590)
-* Update the default RBAC solution by [@wu-clan](https://github.com/wu-clan)
-  in [#593](https://github.com/fastapi-practices/fastapi_best_architecture/pull/593)
-* Optimize the server information retrieval by [@wu-clan](https://github.com/wu-clan)
-  in [#595](https://github.com/fastapi-practices/fastapi_best_architecture/pull/595)
-* Refactor the data rule to scope rule by [@wu-clan](https://github.com/wu-clan)
-  in [#596](https://github.com/fastapi-practices/fastapi_best_architecture/pull/596)
-* Update the SQL script for creat tables by [@wu-clan](https://github.com/wu-clan)
-  in [#597](https://github.com/fastapi-practices/fastapi_best_architecture/pull/597)
+* Update changelog for v1.2.0 by [@wu-clan](https://github.com/wu-clan)
+  in [#598](https://github.com/fastapi-practices/fastapi_best_architecture/pull/598)
+* Simplify apps and plugins config method by [@wu-clan](https://github.com/wu-clan)
+  in [#600](https://github.com/fastapi-practices/fastapi_best_architecture/pull/600)
+* Add plugin info config and interfaces by [@wu-clan](https://github.com/wu-clan)
+  in [#601](https://github.com/fastapi-practices/fastapi_best_architecture/pull/601)
+* Fix the fastapi cli startup event loop by [@wu-clan](https://github.com/wu-clan)
+  in [#602](https://github.com/fastapi-practices/fastapi_best_architecture/pull/602)
+* Optimize the zip plugin install logic by [@wu-clan](https://github.com/wu-clan)
+  in [#603](https://github.com/fastapi-practices/fastapi_best_architecture/pull/603)
+* Update the casbin RBAC module path by [@wu-clan](https://github.com/wu-clan)
+  in [#604](https://github.com/fastapi-practices/fastapi_best_architecture/pull/604)
 
 ::: demo-wrapper title="Full Changelog"
 完整日志请查看：[CHANGELOG.md](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
