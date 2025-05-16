@@ -45,6 +45,10 @@ fba 会在启动前对所有插件进行解析
 
 `plugin.toml` 是插件的配置文件，每个插件都必须包含此文件
 
+::: caution
+此配置文件自 fba v1.3.0 版本起发生重大变更，仅向后兼容（低于此版本开发的插件将不可用）
+:::
+
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
 
