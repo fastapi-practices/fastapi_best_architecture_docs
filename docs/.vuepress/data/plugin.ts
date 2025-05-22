@@ -34,6 +34,14 @@ export const pluginItems: PluginItem[] = [
         priceLabel: "免费"
     },
     {
+        icon: "logos:oauth",
+        title: "OAuth 2.0",
+        description: "通过 OAuth 2.0 的方式登录系统",
+        tags: ["MySQL", "PostgreSQL", "后端"],
+        githubUser: 'wu-clan',
+        priceLabel: "免费"
+    },
+    {
         icon: "charm:shield-keyhole",
         title: "Casbin-RBAC",
         description: "基于 Casbin 实现的 RBAC 权限",
@@ -46,7 +54,7 @@ export const pluginItems: PluginItem[] = [
     {
         icon: "streamline:ai-prompt-spark",
         title: "MCP ChatGPT",
-        description: "带有 MCP 服务器调用的 AI 对话",
+        description: "提供了 MCP 服务器管理功能，并支持调用 MCP 进行 AI 聊天",
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "https://github.com/fastapi-practices/fba_mcp",
         image: "https://github.com/modelcontextprotocol/.github/raw/main/profile/assets/light.png",

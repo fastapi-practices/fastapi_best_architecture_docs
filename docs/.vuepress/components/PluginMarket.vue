@@ -232,7 +232,7 @@ const handleCardClick = (item: PluginItem) => {
 }
 
 .card-title {
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
   margin: 0 0 0.5rem 0;
@@ -241,9 +241,9 @@ const handleCardClick = (item: PluginItem) => {
 
 .card-description {
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1.5;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 1rem;
   flex-grow: 1;
 }
 
@@ -252,7 +252,6 @@ const handleCardClick = (item: PluginItem) => {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 0.5rem;
 }
 
 .price-corner-tag {
