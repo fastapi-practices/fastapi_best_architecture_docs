@@ -50,8 +50,7 @@ stmt = (  # [!code word:noload]
    select(self.model)
    .options(
          selectinload(self.model.dept).options(noload(Dept.parent), noload(Dept.children), noload(Dept.users)),
-         noload(self.model.socials),
-         selectinload(self.model.roles).options(noload(Role.users), noload(Role.menus), noload(Role.rules)),
+         selectinload(self.model.roles).options(noload(Role.users), noload(Role.menus), noload(Role.scopes)),
    )
    .order_by(desc(self.model.join_time))
 )
