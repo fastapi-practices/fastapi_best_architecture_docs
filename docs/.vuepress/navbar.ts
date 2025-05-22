@@ -8,7 +8,7 @@ export const myNavbar = defineNavbarConfig([
                 text: '线上演示',
                 items: [
                     {
-                        text: 'Arco Design Pro 实验性实施',
+                        text: 'Vben Admin Antd 完整版实施',
                         link: 'https://fba.wu-clan.site/'
                     }
                 ]
@@ -44,7 +44,7 @@ export const myNavbar = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.3.0',
+        text: 'v1.4.0',
         items: [
             {
                 text: '线上演示',
