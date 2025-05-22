@@ -26,7 +26,8 @@
           </ul>
         </div>
         <button class="cta-button"
-                @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">立即使用
+          @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
+          立即使用
         </button>
       </div>
 
@@ -52,8 +53,7 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button primary"
-                @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
+        <button class="cta-button primary" @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
         </button>
       </div>
 
@@ -109,6 +109,7 @@ import { openSponsorLink } from "../data/sponsors";
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 3rem 2em 6em;
   gap: 2rem;
 }
 
@@ -210,5 +211,11 @@ import { openSponsorLink } from "../data/sponsors";
 .cta-button.primary {
   background-color: var(--vp-c-brand-1);
   color: white;
+}
+
+@media (min-width: 1440px) {
+  .pricing-cards {
+    padding: 3em 10em 6em;
+  }
 }
 </style>
