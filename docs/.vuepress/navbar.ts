@@ -2,7 +2,7 @@ import { defineNavbarConfig } from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: '前端',
+        text: '前端（在线体验）',
         items: [
             {
                 text: '线上演示',
