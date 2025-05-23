@@ -106,7 +106,6 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '插件系统',
         icon: 'unjs:unplugin',
-        badge: { text: 'NEW' },
         link: '/plugin/before'
     },
     {

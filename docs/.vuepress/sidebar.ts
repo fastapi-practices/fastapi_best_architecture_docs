@@ -88,7 +88,7 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '市场',
             collapsed: false,
             items: [
-                { text: '插件市场', badge: { text: 'NEW' }, link: 'market' },
+                { text: '插件市场', link: 'market' },
             ]
         }
     ],
