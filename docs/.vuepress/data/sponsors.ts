@@ -35,7 +35,7 @@ export const goldSponsors: Sponsor[] = [
 
 export const generalSponsors: Sponsor[] = [
     {
-        link: 'https://user.by.ltd/templates/lagom/assets/img/logo/logo_big.png',
+        link: 'https://user.by.ltd/templates/lagom2/assets/img/logo/logo_big_inverse.1753622506.png',
         href: 'https://user.by.ltd/aff.php?aff=12215',
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',

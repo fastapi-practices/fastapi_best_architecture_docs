@@ -218,4 +218,10 @@ import { openSponsorLink } from "../data/sponsors";
     padding: 3em 10em 6em;
   }
 }
+
+@media (min-width: 1900px) {
+  .pricing-cards {
+    padding: 3em 20em 6em;
+  }
+}
 </style>
