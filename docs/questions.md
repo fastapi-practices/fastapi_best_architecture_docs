@@ -55,3 +55,10 @@ stmt = (  # [!code word:noload]
    .order_by(desc(self.model.join_time))
 )
 ```
+
+## PostgreSQL 主键自增失败
+
+当通过 sql 脚本执行插入数据后，由于 pg 特性，序列值不会与表中最大值同步，此时如果通过代码执行写入操作，可能触发
+`DETAIL: Key (id)=(x) already exists` 的错误
+
+解决方案请自行搜索：如何重置 pg 主键序列？
