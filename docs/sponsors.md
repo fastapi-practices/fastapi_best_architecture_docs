@@ -35,9 +35,6 @@ display: inline-block;
 
 此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以查看专属频道
 
-我们鼓励大家 [参与贡献](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing)
-，如果您能为 fba 提供 PR，并且被审核通过，我们可以向您发送大额优惠券或免费邀请（基于 PR 质量）
-
 ::: caution
 我们不保证星球内容的更新频率，您可以依据 [知识星球退款规则](https://support.zsxq.com/refundRules.html) 进行全额退款
 :::
