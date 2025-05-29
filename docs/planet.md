@@ -1,5 +1,6 @@
 ---
 title: 知识星球
+aside: false
 ---
 
 <div align="center">

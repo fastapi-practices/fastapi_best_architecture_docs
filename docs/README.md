@@ -9,7 +9,7 @@ config:
       text: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
       actions:
         - theme: brand
-          text: 快速开始 ->
+          text: 快速上手 ->
           link: /backend/summary/intro
         - theme: alt
           text: 伪三层架构?

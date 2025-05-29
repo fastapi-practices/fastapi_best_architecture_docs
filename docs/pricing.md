@@ -1,8 +1,6 @@
 ---
-title: pricing
-aside: false
-editLink: false
 pageLayout: page
+title: pricing
 ---
 
 <Pricing />

@@ -103,7 +103,7 @@ import { openSponsorLink } from "../data/sponsors";
 
 .pricing-title {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin: 3rem 0 2rem;
 }
 
 .pricing-cards {

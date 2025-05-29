@@ -100,6 +100,14 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '介绍', link: 'intro' },
                 { text: '快速开始', link: 'quick-start' },
             ]
+        },
+        {
+            text: '部署',
+            collapsed: false,
+            items: [
+                { text: 'Docker', link: 'docker' },
+                { text: '传统', link: 'legacy' },
+            ]
         }
     ]
 }

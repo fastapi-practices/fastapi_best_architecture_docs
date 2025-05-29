@@ -99,7 +99,7 @@ services:
   # 如果你选择单独构建，务必注释或删除此容器脚本
   fba_ui: # [!code warning:30]
     build:
-      context: /root/fastapi_best_architecture_ui  # 根据 Arco Desgin Pro 项目存放目录修改此路径
+      context: /root/fastapi_best_architecture_ui  # 根据 Vben Admin Antd 项目存放目录修改此路径
       dockerfile: Dockerfile
     image: fba_ui:latest
     ports:
