@@ -91,7 +91,7 @@ export const pluginItems: PluginItem[] = [
         priceLabel: "免费"
     },
     {
-        icon: "ant-design:wechat-work-outlined",
+        icon: "arcticons:sso-plus",
         title: "Casdoor SSO",
         description: "通过 Casdoor 实现 SSO 单点登录集成",
         tags: ["MySQL", "PostgreSQL", "后端"],
@@ -99,5 +99,15 @@ export const pluginItems: PluginItem[] = [
         image: "https://casdoor.org/zh/img/casdoor.png",
         githubUser: 'wu-clan',
         priceLabel: "付费"
-    }
+    },
+    {
+        icon: "material-icon-theme:authors",
+        title: "LDAP",
+        description: "通过 ladp 登录系统并授权",
+        tags: ["MySQL", "PostgreSQL", "后端"],
+        link: "https://github.com/dividduang/fba_plugin_ldap",
+        image: "https://i0.wp.com/ldap.com/wp-content/uploads/2018/04/ldapdotcom-white-background-with-text-1024x341.png",
+        githubUser: 'dividduang',
+        priceLabel: "免费"
+    },
 ]
