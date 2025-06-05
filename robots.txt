@@ -1,0 +1,3 @@
+Sitemap: https://fastapi-practices.github.io/fastapi_best_architecture_docs/fastapi_best_architecture_docs/sitemap.xml
+User-agent:*
+Disallow:
