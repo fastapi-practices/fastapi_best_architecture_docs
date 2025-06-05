@@ -60,4 +60,4 @@ title: RBAC
 - 删除 `backend/common/security/rbac.py` 文件中 `rbac_verify` 方法里面的 `if settings.RBAC_ROLE_MENU_MODE:`
   条件及相关代码
 - 删除菜单 `perms` 列及其相关的 schema 字段和 SQL 脚本
-- 删除菜单 `type` 列中的按钮类型及相关代码逻辑
+- 删除菜单 `type` 列中的按钮类型及其按钮类型相关的代码逻辑和 SQL 脚本
