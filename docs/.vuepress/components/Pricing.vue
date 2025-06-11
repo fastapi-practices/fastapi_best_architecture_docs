@@ -2,9 +2,9 @@
   <div class="pricing-container">
     <h1 class="pricing-title">选择适合您的版本</h1>
     <p class="pricing-subtitle">
-      此仓库作为模板库公开，任何个人或企业均可自由使用！<br>
+      授权版本均无商业性质<br>
       <span style="color: #fd7600;">
-        专业版是社区共建计划的一部分，您的支持将加速功能升级，推动全社区技术架构演进
+        此仓库作为模板库公开，任何个人或企业均可自由使用！
       </span>
     </p>
     <div class="pricing-cards">

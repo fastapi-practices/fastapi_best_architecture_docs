@@ -5,7 +5,7 @@ aside: false
 
 <div align="center">
 
-[星球内容](https://t.zsxq.com/PDk8b) 为非公开内容，扫码加入知识星球，即可获取独家内容
+<p style="color: #fd7600;">您正在浏览非公开内容，扫码加入知识星球，即可获取独家内容</p>
 
 加入 Discord 社区，即可 [领取免费体验资格](https://discord.gg/Sdg6dT5kjz)
 
