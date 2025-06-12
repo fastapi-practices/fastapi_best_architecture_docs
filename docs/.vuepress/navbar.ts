@@ -109,7 +109,7 @@ export const myNavbar = defineNavbarConfig([
         link: '/plugin/before'
     },
     {
-        text: '购买授权',
+        text: '购买特权',
         icon: 'fluent:person-key-20-filled',
         link: '/pricing'
     },
@@ -121,7 +121,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '互动',
         icon: 'game-icons:talk',
-        badge: { text: 'HOT', type: 'danger' },
+        badge: { text: 'HOT', type: 'warning' },
         link: '/group'
     },
     {
