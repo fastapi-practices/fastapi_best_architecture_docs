@@ -304,22 +304,72 @@ const handleCardClick = (item: PluginItem) => {
   border-color: var(--vp-c-brand);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px){
   .plugin-card-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
   }
 
   .card-image {
-    height: 200px;
+    height: 140px;
+  }
+
+  .search-container {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 768px) {
+  .plugin-card-container {
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .market-title {
+    margin: 3rem 0 2rem;
+  }
+
+  .card-image {
+    height: 160px;
   }
 
   .card-content {
     padding: 0.75rem;
   }
+
+  .search-container {
+    margin: 0 auto 1.5rem;
+  }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 768px) and (max-width: 959px) {
+  .plugin-card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .card-image {
+    height: 180px;
+  }
+
+  .search-container {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1200px) {
+  .plugin-card-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .search-container {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1201px) {
   .plugin-card-container {
     grid-template-columns: repeat(v-bind('props.columns'), 1fr);
     gap: 1.5rem;
