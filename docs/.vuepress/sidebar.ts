@@ -36,19 +36,20 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '分页', link: 'pagination' },
                 { text: '自定义异常', link: '/planet', badge: { text: '专业版', type: 'warning' } },
                 { text: '节流', link: 'limit' },
-                { text: '切换数据库', link: 'db' },
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
                 { text: 'OAuth 2.0', link: 'oauth2' },
                 { text: '数据权限', link: '/planet', badge: { text: '专业版', type: 'warning' } },
                 { text: '代码生成', link: 'code-generation' },
-                { text: '跨域', link: 'CORS' },
-                { text: '事务', link: 'transaction' },
+                { text: 'SocketIo', link: '/planet', badge: { text: '专业版', type: 'warning' } },
                 { text: 'Celery', link: '/planet', badge: { text: '专业版', type: 'warning' } },
                 { text: 'APScheduler', link: 'apscheduler' },
                 // {text: '日志分析', link: '/planet', badge: { text: '专业版', type: 'warning' } },
-                { text: 'SocketIo', link: '/planet', badge: { text: '专业版', type: 'warning' } },
-                { text: 'SSO', link: 'sso' },
+                { text: '切换主键', link: 'pk' },
+                { text: '切换数据库', link: 'db' },
+                { text: '跨域', link: 'CORS' },
+                { text: '事务', link: 'transaction' },
+                { text: 'SSO', link: 'sso', badge: { text: '专业版', type: 'warning' } },
             ]
         },
         {
@@ -88,7 +89,7 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '市场',
             collapsed: false,
             items: [
-                { text: '插件市场', link: 'market' },
+                { text: '插件市场', link: '/market' },
             ]
         }
     ],

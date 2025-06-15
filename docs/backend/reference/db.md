@@ -14,7 +14,7 @@ fba 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
 docker run -d --name fba_postgres --restart always -e POSTGRES_DB='fba' -e POSTGRES_PASSWORD='123456' -e TZ='Asia/Shanghai' -v fba_postgres:/var/lib/postgresql/data -p 5432:5432 postgres:16
 ```
 
-## 默认配置
+## 环境配置
 
 PostgreSQL 与 MySQL 在用户名、端口号等方面有所不同，如果你使用上面的命令创建了 Docker 镜像，需修改 `.env` 部分配置如下，否则，请根据
 PostgreSQL 配置进行修改

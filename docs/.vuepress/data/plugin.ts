@@ -6,7 +6,6 @@ export const pluginItems: PluginItem[] = [
         title: "代码生成",
         description: "生成通用业务代码（仅后端工程）",
         tags: ["MySQL", "PostgreSQL", "后端"],
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -14,7 +13,6 @@ export const pluginItems: PluginItem[] = [
         title: "通知公告",
         description: "发布系统内部通知、公告",
         tags: ["MySQL", "PostgreSQL", "后端"],
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -22,7 +20,6 @@ export const pluginItems: PluginItem[] = [
         title: "数据字典",
         description: "通常用于约束前端工程数据展示",
         tags: ["MySQL", "PostgreSQL", "后端"],
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -30,7 +27,6 @@ export const pluginItems: PluginItem[] = [
         title: "参数配置",
         description: "通常用于前端工程数据展示",
         tags: ["MySQL", "PostgreSQL", "后端"],
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -38,7 +34,6 @@ export const pluginItems: PluginItem[] = [
         title: "OAuth 2.0",
         description: "通过 OAuth 2.0 的方式登录系统",
         tags: ["MySQL", "PostgreSQL", "后端"],
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -48,7 +43,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "https://github.com/fastapi-practices/fba_casbin",
         image: "https://avatars.githubusercontent.com/u/27810343?s=200&v=4",
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -58,7 +52,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "https://github.com/fastapi-practices/fba_mcp",
         image: "https://github.com/modelcontextprotocol/.github/raw/main/profile/assets/light.png",
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
@@ -68,16 +61,14 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "https://github.com/fastapi-practices/fba_aliyun_oss",
         image: "https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png",
-        githubUser: 'wu-clan',
         priceLabel: "免费"
     },
     {
         icon: "material-symbols:token-outline",
         title: "配置下发",
         description: "将 env 等配置信息通过数据库进行管理",
-        tags: ["MySQL", "后端"],
+        tags: ["MySQL", "后端", "前端"],
         link: "https://github.com/dividduang/option",
-        githubUser: 'dividduang',
         priceLabel: "免费"
     },
     {
@@ -87,7 +78,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "后端"],
         link: "https://github.com/dividduang/wecom-task",
         image: "https://rescdn.qqmail.com/node/wework/images/Slice.d2258f37eb.png",
-        githubUser: 'dividduang',
         priceLabel: "免费"
     },
     {
@@ -97,7 +87,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "/fastapi_best_architecture_docs/planet.html",
         image: "https://casdoor.org/zh/img/casdoor.png",
-        githubUser: 'wu-clan',
         priceLabel: "付费"
     },
     {
@@ -107,7 +96,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["MySQL", "PostgreSQL", "后端"],
         link: "https://github.com/dividduang/fba_plugin_ldap",
         image: "https://i0.wp.com/ldap.com/wp-content/uploads/2018/04/ldapdotcom-white-background-with-text-1024x341.png",
-        githubUser: 'dividduang',
         priceLabel: "免费"
     },
 ]

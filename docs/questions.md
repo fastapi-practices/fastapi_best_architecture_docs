@@ -6,7 +6,7 @@ title: 常见问题
 如果以下解决方案未能帮助到您，请通过 [互动](./group.md) 与我们联系
 :::
 
-## 接口未返回手动修改的数据
+## 未返回数据库手动修改的数据
 
 由于缓存机制的特性，非接口操作对数据的更改可能无法实时反映到结果中。以下是两种常见场景：
 
@@ -26,7 +26,7 @@ title: 常见问题
    缓存，而通过数据库直接修改的操作不会触发缓存的自动更新。因此，返回数据看似未受影响。解决方法是手动清理 Redis
    中的相关缓存，之后数据将正确反映修改结果
 
-## can't call await_only() here.
+## Can't call await_only() here.
 
 ```json
 {
@@ -46,13 +46,14 @@ title: 常见问题
 可用的解决方案有多种，请阅读 SQLA 官方文档，fba 默认使用 `noload()` 对此进行处理，例如：
 
 ```python
-stmt = (  # [!code word:noload]
-   select(self.model)
-   .options(
-         selectinload(self.model.dept).options(noload(Dept.parent), noload(Dept.children), noload(Dept.users)),
-         selectinload(self.model.roles).options(noload(Role.users), noload(Role.menus), noload(Role.scopes)),
-   )
-   .order_by(desc(self.model.join_time))
+return await self.select_order(  # [!code word:noload]
+   'id',
+   'desc',
+   load_options=[
+       selectinload(self.model.dept).options(noload(Dept.parent), noload(Dept.children), noload(Dept.users)),
+       selectinload(self.model.roles).options(noload(Role.users), noload(Role.menus), noload(Role.scopes)),
+   ],
+   **filters,
 )
 ```
 
@@ -61,4 +62,4 @@ stmt = (  # [!code word:noload]
 当通过 sql 脚本执行插入数据后，由于 pg 特性，序列值不会与表中最大值同步，此时如果通过代码执行写入操作，可能触发
 `DETAIL: Key (id)=(x) already exists` 的错误
 
-解决方案请自行搜索：如何重置 pg 主键序列？
+解决方案请自行浏览器搜索：如何重置 pg 主键序列？

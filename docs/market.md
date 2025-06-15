@@ -1,6 +1,6 @@
 ---
-title: 插件市场
-aside: false
+pageLayout: page
+title: '插件市场'
 ---
 
 <PluginMarket :items="pluginItems" />

@@ -1,7 +1,17 @@
 <template>
+  <h1 class="market-title">插件市场</h1>
+  <div class="search-container">
+    <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="🔍 搜索插件..."
+        class="search-input"
+        @input="filterPlugins"
+    />
+  </div>
   <div class="plugin-card-container">
     <div
-        v-for="(item, index) in items"
+        v-for="(item, index) in filteredItems"
         :key="index"
         class="plugin-card"
         :class="{ 'clickable': item.link }"
@@ -20,33 +30,25 @@
         <div v-if="item.priceLabel" class="price-corner-tag" :class="{ 'paid': item.priceLabel === '付费' }">
           <span class="price-corner-text">{{ item.priceLabel }}</span>
         </div>
-        <div class="image-footer">
-          <div class="item-developer-info">
-            <img
-                :src="getGithubAvatarUrl(item.githubUser)"
-                alt="Developer Avatar"
-                class="developer-avatar"
-            />
-            <span class="developer-name">
-              {{ item.githubUser }}
-            </span>
-          </div>
-          <a
-              v-if="item.link"
-              :href="item.link"
-              class="no-external-icon"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub仓库"
-              @click.stop
-          >
-            <Icon name="mdi:github" color="var(--vp-c-text-2)" />
-          </a>
-          <span v-else class="built-in-label-inline">内置</span>
-        </div>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{{ item.title }}</h3>
+        <div class="card-title-row">
+          <h3 class="card-title">{{ item.title }}</h3>
+          <div class="card-title-link">
+            <a
+                v-if="item.link"
+                :href="item.link"
+                class="no-external-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub仓库"
+                @click.stop
+            >
+              <Icon name="mdi:github" color="var(--vp-c-text-2)" />
+            </a>
+            <span v-else class="built-in-label-inline">内置</span>
+          </div>
+        </div>
         <p class="card-description">{{ item.description }}</p>
         <div class="card-tags">
           <Badge
@@ -62,6 +64,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
 export interface PluginItem {
   icon: string
   title: string
@@ -69,7 +73,6 @@ export interface PluginItem {
   tags: string[]
   link?: string
   image?: string
-  githubUser: string
   priceLabel?: '免费' | '付费'
 }
 
@@ -79,9 +82,22 @@ const props = withDefaults(
       columns?: number
     }>(),
     {
-      columns: 3
+      columns: 5
     }
 )
+
+const searchQuery = ref('')
+const filteredItems = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return props.items
+  }
+  const query = searchQuery.value.toLowerCase().trim()
+  return props.items.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query) ||
+      item.tags.some(tag => tag.toLowerCase().includes(query))
+  )
+})
 
 const colors: Record<string, TagColors> = {
   'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
@@ -92,24 +108,31 @@ const colors: Record<string, TagColors> = {
   },
   '后端': { color: '#009485', backgroundColor: 'rgba(0,148,133,0.1)', borderColor: 'rgba(0,148,133,0.2)' },
   '前端': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
-};
+}
 
 const getGithubAvatarUrl = (username: string) => {
-  return `https://github.com/${ username }.png?size=32`;
-};
+  return `https://github.com/${username}.png?size=32`
+}
 
 const handleCardClick = (item: PluginItem) => {
   if (item.link) {
-    window.open(item.link, '_blank');
+    window.open(item.link, '_blank')
   }
-};
+}
 </script>
 
 <style scoped>
+/* 保留所有原始样式 */
 .plugin-card-container {
   display: grid;
-  gap: 1rem;
+  padding: 2rem 3rem;
   grid-template-columns: repeat(1, 1fr);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.market-title {
+  text-align: center;
+  margin: 5rem 0 3rem;
 }
 
 .plugin-card {
@@ -169,42 +192,38 @@ const handleCardClick = (item: PluginItem) => {
   background: var(--vp-c-bg-soft);
 }
 
-.image-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.05);
-  color: #fff;
-}
-
-.item-developer-info {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+.card-content {
+  padding: 0.75rem;
   flex-grow: 1;
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.developer-avatar {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: default;
-  pointer-events: none;
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
-.developer-name {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin: 0;
+  line-height: 1.4;
+  flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.card-title-link {
+  flex-shrink: 0;
+  display: flex;
+  font-size: 1.5rem
 }
 
 .no-external-icon::after {
@@ -218,31 +237,14 @@ const handleCardClick = (item: PluginItem) => {
   border-radius: 4px;
   border: 1px solid var(--vp-c-border);
   background: rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
-  margin-left: 0.5rem;
   white-space: nowrap;
   font-weight: 500;
-}
-
-.card-content {
-  padding: 0.75rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.4;
 }
 
 .card-description {
   color: var(--vp-c-text-2);
   font-size: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.8;
   margin: 0 0 1rem;
   flex-grow: 1;
 }
@@ -278,6 +280,28 @@ const handleCardClick = (item: PluginItem) => {
 
 .price-corner-text {
   text-transform: uppercase;
+}
+
+.search-container {
+  position: relative;
+  max-width: 30%;
+  margin: 0 auto 2rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
 }
 
 @media (min-width: 768px) {
