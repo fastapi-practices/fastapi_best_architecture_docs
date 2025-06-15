@@ -45,10 +45,10 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'Celery', link: '/planet', badge: { text: '专业版', type: 'warning' } },
                 { text: 'APScheduler', link: 'apscheduler' },
                 // {text: '日志分析', link: '/planet', badge: { text: '专业版', type: 'warning' } },
-                { text: '切换主键', link: 'pk' },
-                { text: '切换数据库', link: 'db' },
                 { text: '跨域', link: 'CORS' },
                 { text: '事务', link: 'transaction' },
+                { text: '切换主键', link: 'pk' },
+                { text: '切换数据库', link: 'db' },
                 { text: 'SSO', link: 'sso', badge: { text: '专业版', type: 'warning' } },
             ]
         },
