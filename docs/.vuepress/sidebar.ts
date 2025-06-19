@@ -58,7 +58,7 @@ export const mySidebar: ThemeSidebarMulti = {
             prefix: 'deploy/',
             items: [
                 { text: 'Docker', link: 'Docker' },
-                { text: '传统', link: 'legacy' },
+                { text: '传统', link: 'legacy', badge: { text: '专业版', type: 'warning' } },
             ]
         },
     ],

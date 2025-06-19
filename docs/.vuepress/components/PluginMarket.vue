@@ -27,7 +27,11 @@
         <div v-else class="image-placeholder">
           <Icon :name="item.icon" size="5em" color="var(--vp-c-text-1)" />
         </div>
-        <div v-if="item.priceLabel" class="price-corner-tag" :class="{ 'paid': item.priceLabel === '付费' }">
+        <div
+            v-if="item.priceLabel"
+            class="price-corner-tag"
+            :class="{ 'paid': item.priceLabel === '付费' }"
+        >
           <span class="price-corner-text">{{ item.priceLabel }}</span>
         </div>
       </div>
@@ -82,7 +86,7 @@ const props = withDefaults(
       columns?: number
     }>(),
     {
-      columns: 5
+      columns: 4
     }
 )
 
@@ -99,7 +103,7 @@ const filteredItems = computed(() => {
   )
 })
 
-const colors: Record<string, TagColors> = {
+const colors = {
   'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
   'PostgreSQL': {
     color: '#336699',
@@ -110,10 +114,6 @@ const colors: Record<string, TagColors> = {
   '前端': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
 }
 
-const getGithubAvatarUrl = (username: string) => {
-  return `https://github.com/${username}.png?size=32`
-}
-
 const handleCardClick = (item: PluginItem) => {
   if (item.link) {
     window.open(item.link, '_blank')
@@ -122,12 +122,11 @@ const handleCardClick = (item: PluginItem) => {
 </script>
 
 <style scoped>
-/* 保留所有原始样式 */
 .plugin-card-container {
   display: grid;
-  padding: 2rem 3rem;
-  grid-template-columns: repeat(1, 1fr);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem;
 }
 
 .market-title {
@@ -160,7 +159,7 @@ const handleCardClick = (item: PluginItem) => {
 
 .card-image {
   width: 100%;
-  height: 180px;
+  height: 140px;
   overflow: hidden;
   background: var(--vp-c-bg-soft);
   position: relative;
@@ -284,7 +283,8 @@ const handleCardClick = (item: PluginItem) => {
 
 .search-container {
   position: relative;
-  max-width: 30%;
+  width: 50%;
+  max-width: 600px;
   margin: 0 auto 2rem;
 }
 
@@ -304,49 +304,50 @@ const handleCardClick = (item: PluginItem) => {
   border-color: var(--vp-c-brand);
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px) {
   .plugin-card-container {
     grid-template-columns: repeat(1, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 0.5rem;
   }
 
   .card-image {
-    height: 140px;
+    height: 120px;
   }
 
   .search-container {
-    max-width: 60%;
-  }
-}
-
-@media (min-width: 768px) {
-  .plugin-card-container {
-    padding: 2rem;
-    gap: 1rem;
+    width: 80%;
+    max-width: none;
+    margin-bottom: 1.5rem;
   }
 
   .market-title {
-    margin: 3rem 0 2rem;
-  }
-
-  .card-image {
-    height: 160px;
-  }
-
-  .card-content {
-    padding: 0.75rem;
-  }
-
-  .search-container {
-    margin: 0 auto 1.5rem;
+    margin: 2rem 0 1rem;
   }
 }
 
 @media (min-width: 768px) and (max-width: 959px) {
   .plugin-card-container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .card-image {
+    height: 160px;
+  }
+
+  .search-container {
+    width: 50%;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 960px) {
+  .plugin-card-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.2rem;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
   }
 
   .card-image {
@@ -354,33 +355,14 @@ const handleCardClick = (item: PluginItem) => {
   }
 
   .search-container {
-    max-width: 60%;
+    width: 50%;
+    max-width: 600px;
   }
 }
 
-@media (min-width: 960px) and (max-width: 1200px) {
-  .plugin-card-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .search-container {
-    max-width: 60%;
-  }
-}
-
-@media (min-width: 1201px) {
+@media (min-width: 1200px) {
   .plugin-card-container {
     grid-template-columns: repeat(v-bind('props.columns'), 1fr);
-    gap: 1.5rem;
-  }
-
-  .card-image {
-    height: 220px;
-  }
-
-  .card-content {
-    padding: 0.75rem;
   }
 }
 </style>

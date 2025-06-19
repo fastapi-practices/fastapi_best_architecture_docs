@@ -121,7 +121,7 @@ export const myNavbar = defineNavbarConfig([
     {
         text: '互动',
         icon: 'game-icons:talk',
-        badge: { text: 'HOT', type: 'warning' },
+        badge: { text: 'HOT', type: 'danger' },
         link: '/group'
     },
     {

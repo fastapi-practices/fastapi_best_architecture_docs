@@ -8,7 +8,6 @@
       </span>
     </p>
     <div class="pricing-cards">
-      <!-- 开源版 -->
       <div class="pricing-card">
         <div class="card-content">
           <div class="card-header">
@@ -26,12 +25,11 @@
           </ul>
         </div>
         <button class="cta-button"
-          @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
+                @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
           立即使用
         </button>
       </div>
 
-      <!-- 专业版 -->
       <div class="pricing-card highlighted">
         <div class="popular-tag">最受欢迎</div>
         <div class="card-content">
@@ -57,7 +55,6 @@
         </button>
       </div>
 
-      <!-- 企业版 -->
       <div class="pricing-card">
         <div class="card-content">
           <div class="card-header">
@@ -98,12 +95,13 @@ import { openSponsorLink } from "../data/sponsors";
 .pricing-container {
   margin: 0 auto;
   padding: 2rem 0;
+  max-width: 1200px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .pricing-title {
   text-align: center;
-  margin: 3rem 0 2rem;
+  margin: 3rem 0 3rem;
 }
 
 .pricing-cards {
@@ -213,15 +211,35 @@ import { openSponsorLink } from "../data/sponsors";
   color: white;
 }
 
-@media (min-width: 1440px) {
+@media (max-width: 767px) {
   .pricing-cards {
-    padding: 3em 10em 6em;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 2rem 1rem 4rem;
+  }
+
+  .pricing-card {
+    padding: 1.5rem;
+  }
+
+  .pricing-title {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .pricing-subtitle {
+    margin-bottom: 2rem;
   }
 }
 
-@media (min-width: 1900px) {
+@media (min-width: 768px) and (max-width: 959px) {
   .pricing-cards {
-    padding: 3em 20em 6em;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 2rem 5rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .pricing-cards {
+    padding: 3rem 2em 6em;
   }
 }
 </style>
