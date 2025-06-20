@@ -12,6 +12,7 @@ fba 遵循以下命名规范：
 - 接口入参：`XxxParam()`
 - 新增入参：`CreateXxxParam()`
 - 更新入参：`UpdateXxxParam()`
+- 批量删除入参：`DeleteXxxParam()`
 - 查询详情：`GetXxxDetail()`
 - 查询详情（包含关系）：`GetXxxWithRelationDetail()`
 

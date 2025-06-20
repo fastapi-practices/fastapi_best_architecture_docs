@@ -2,24 +2,13 @@
 title: 快速开始
 ---
 
-您可以将 [插件市场](./market.md) 中的插件通过以下方式进行安装：
+您可以将 [插件市场](../market.md) 中的插件通过以下方式进行安装：
 
 :::: tabs
 @tab 手动
 
 1. 获取插件仓库源码并下载
-2. 拷贝插件代码
-
-   ::: tabs
-   @tab 后端
-
-   将下载的源码文件夹直接拷贝到 `backend/plugin` 目录下
-
-   @tab 前端
-
-   暂无此计划...
-   :::
-
+2. 将下载的源码文件夹直接拷贝到 `backend/plugin` 目录下
 3. 如果插件包含依赖（requirements.txt），执行 `backend/scripts/init_plugin.py` 文件安装依赖
 4. 根据插件说明（README.md）进行相关配置
 5. 重启服务
@@ -28,11 +17,13 @@ title: 快速开始
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
 
-    - 下载插件仓库为 zip 压缩包，例如 GitHub
+    - 下载插件仓库为 zip 压缩包
 
+      ::: details GitHub 示例
       ![zip](/images/plugin_zip.png)
+      :::
 
-    - 通过 fba 插件打包接口下载的 zip 压缩包
+    - 通过 fba 插件下载接口下载的 zip 压缩包
 
 2. 将 zip 压缩包通过 zip 插件安装接口进行安装
 3. 根据插件说明（README.md）进行相关配置

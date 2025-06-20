@@ -57,11 +57,11 @@ fba 会在启动前对所有插件进行解析
 [plugin]
 # 摘要（简短描述）
 summary = ''
-# 插件版本号
+# 版本号
 version = ''
-# 插件描述
+# 描述
 description = ''
-# 插件作者
+# 作者
 author = ''
 
 # 应用配置
@@ -77,11 +77,11 @@ router = ['']
 [plugin]
 # 摘要（简短描述）
 summary = ''
-# 插件版本号
+# 版本号
 version = ''
-# 插件描述
+# 描述
 description = ''
-# 插件作者
+# 作者
 author = ''
 
 # 应用配置

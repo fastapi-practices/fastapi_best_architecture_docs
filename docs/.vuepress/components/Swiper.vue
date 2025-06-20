@@ -25,6 +25,7 @@ import "swiper/css/effect-flip";
 import "swiper/css/effect-coverflow";
 import "swiper/css/effect-cards";
 import "swiper/css/effect-creative";
+import { defaultSponsor, shouldShowSponsor } from "../data/sponsors";
 
 interface SlideItem {
   /**
@@ -39,7 +40,7 @@ interface SlideItem {
 }
 
 interface Props {
-  items?: (string | SlideItem)[];
+  items?: SlideItem[];
   width?: number | string; // 轮播区域宽度，单位 px
   height?: number | string; // 轮播区域高度，单位 px
   mode?: "banner" | "carousel" | "broadcast"; // banner: 轮播图模式; carousel: 走马灯模式; broadcast: 信息展播模式
@@ -65,9 +66,15 @@ const props = withDefaults(defineProps<Props>(), {
   swipe: true
 });
 
+const sponsors = computed(() => {
+  return props.items.map(brand => {
+    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+  });
+});
+
 const slideList = computed<SlideItem[]>(() => {
   return (
-      props.items?.map((link) => {
+      sponsors.value?.map((link) => {
         if (typeof link === "string") return { link };
         return link;
       }) ?? []
