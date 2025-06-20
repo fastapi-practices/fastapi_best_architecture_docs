@@ -114,7 +114,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ```
 
 7. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
-8. 创建数据库表 <Badge type="warning" text="三选一" />
+8. 创建数据库表 <Badge type="warning" text="二选一" />
 
    ::: tabs
    @tab 自动创建
