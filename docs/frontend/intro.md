@@ -4,9 +4,7 @@ title: 介绍
 
 基于 Vben Admin Antd 构建的 fastapi_best_architecture 前端完整版实施
 
-::: warning
-
-==此版本计划于第二季度结束前完成=={.note}
+::: info 施工进度
 
 - [x] 验证码登录
 - [x] 菜单对接
