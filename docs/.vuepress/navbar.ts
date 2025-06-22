@@ -97,7 +97,7 @@ export const myNavbar = defineNavbarConfig([
                     {
                         text: '更新记录',
                         icon: 'stash:last-updates-duotone',
-                        link: '/changelog.md'
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md'
                     },
                 ]
             },
