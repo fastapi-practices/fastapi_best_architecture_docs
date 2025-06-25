@@ -6,7 +6,6 @@
         type="text"
         placeholder="🔍 搜索插件..."
         class="search-input"
-        @input="filterPlugins"
     />
   </div>
   <div class="plugin-card-container">
@@ -28,11 +27,10 @@
           <Icon :name="item.icon" size="5em" color="var(--vp-c-text-1)" />
         </div>
         <div
-            v-if="item.priceLabel"
-            class="price-corner-tag"
-            :class="{ 'paid': item.priceLabel === '付费' }"
+            v-if="item.free?.valueOf() === false"
+            class="price-corner-tag paid"
         >
-          <span class="price-corner-text">{{ item.priceLabel }}</span>
+          <span class="price-corner-text">付费</span>
         </div>
       </div>
       <div class="card-content">
@@ -47,9 +45,7 @@
                 rel="noopener noreferrer"
                 aria-label="GitHub仓库"
                 @click.stop
-            >
-              <Icon name="mdi:github" color="var(--vp-c-text-2)" />
-            </a>
+            />
             <span v-else class="built-in-label-inline">内置</span>
           </div>
         </div>
@@ -77,7 +73,7 @@ export interface PluginItem {
   tags: string[]
   link?: string
   image?: string
-  priceLabel?: '免费' | '付费'
+  free?: boolean
 }
 
 const props = withDefaults(
@@ -104,8 +100,8 @@ const filteredItems = computed(() => {
 })
 
 const colors = {
-  'MySQL': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
-  'PostgreSQL': {
+  'mysql': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
+  'pgsql': {
     color: '#336699',
     backgroundColor: 'rgba(51, 102, 153, 0.1)',
     borderColor: 'rgba(51, 102, 153, 0.2)'
@@ -149,7 +145,6 @@ const handleCardClick = (item: PluginItem) => {
 
 .plugin-card.clickable:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   border-color: var(--vp-c-brand);
 }
 
@@ -166,7 +161,6 @@ const handleCardClick = (item: PluginItem) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .image-content {
@@ -225,10 +219,6 @@ const handleCardClick = (item: PluginItem) => {
   font-size: 1.5rem
 }
 
-.no-external-icon::after {
-  content: none !important;
-}
-
 .built-in-label-inline {
   font-size: 0.75rem;
   color: var(--vp-c-text-2);
@@ -251,8 +241,7 @@ const handleCardClick = (item: PluginItem) => {
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
+  gap: 0.2rem;
 }
 
 .price-corner-tag {
@@ -267,10 +256,6 @@ const handleCardClick = (item: PluginItem) => {
   border-bottom-left-radius: 4px;
   transform: translate(1px, -1px);
   z-index: 1;
-}
-
-.price-corner-tag {
-  background: #17bf63;
 }
 
 .price-corner-tag.paid {

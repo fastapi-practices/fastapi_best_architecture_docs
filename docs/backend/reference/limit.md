@@ -5,8 +5,6 @@ title: 节流
 fba 内部使用 [fastapi-limit](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/70)
 实现后端接口节流
 
-使用方法如下：
-
 ```python{1,6,11-17,25,29}
 @app.get("/", dependencies=[Depends(RateLimiter(times=2, seconds=5))])
 async def index_get():

@@ -44,12 +44,14 @@ CORS_ALLOWED_ORIGINS: list[str] = [
 CORS_ALLOWED_ORIGINS: list[str] = ['*']
 ```
 
-## 温馨提示
+## 注意事项
 
+::: warning
 当将 `CORS_ALLOWED_ORIGINS` 配置为 `['*']` 时，socketio 将无法正常工作，这是由于它们的配置方式不同所导致的
 
 这里有一个相关 PR: [python-engineio/pull/410](https://github.com/miguelgrinberg/python-engineio/pull/410)
 
-如果此 PR 不被接受，请在 `backend/common/socketio/server.py` 文件中修改以下内容：
+虽然它已被合并，但是并没有发布新版本，截至目前，您需要在 `backend/common/socketio/server.py` 文件中修改以下内容：
 
 `cors_allowed_origins=settings.CORS_ALLOWED_ORIGINS` -> `cors_allowed_origins='*'`
+:::
