@@ -3,6 +3,8 @@ home: true
 watermark: false
 config:
   - type: hero
+    background: tint-plate
+    tintPlate:  240
     hero:
       name: FastAPI Best Architecture
       tagline: 企业级后端架构解决方案

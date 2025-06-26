@@ -2,7 +2,7 @@
   <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
     <span>特别赞助商</span>
     <a :href="homeSponsor.href" target="_blank">
-      <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="121" />
+      <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="208" />
     </a>
     <span>fba 官方合作伙伴</span>
   </section>
@@ -19,7 +19,6 @@ import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
 
 <style scoped>
 .no-brand {
-  animation: no-brand 2s ease-in-out infinite;
   display: flex;
   justify-content: center;
   padding: 0 24px;
@@ -60,7 +59,7 @@ import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
 }
 
 #special-spsr img {
-  height: 52px;
+  height: 89px;
   margin: -6px 0;
 }
 
