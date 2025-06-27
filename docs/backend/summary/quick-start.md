@@ -41,61 +41,29 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ![use_this_template](/images/use_this_template.png)
    :::
 
-3. 安装依赖包
+3. 安装依赖
 
-    1. 架构依赖
+   ::: warning
+   此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
+   如果您本地已经存在 uv, 建议将其升级至最新版本
+   :::
 
-       ::: warning
-       此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
-       如果您本地已经存在 uv, 建议将其升级至最新版本
-       :::
+   拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
 
-       拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
+   ::: code-tabs
+   @tab <Icon name="material-icon-theme:uv" />uv - sync
 
-       ::: code-tabs
-       @tab <Icon name="material-icon-theme:uv" />uv - sync
+   ```shell:no-line-numbers
+   uv sync --frozen
+   ```
 
-       ```shell:no-line-numbers
-       uv sync --frozen
-       ```
+   @tab <Icon name="material-icon-theme:uv" />uv - pip
 
-       @tab <Icon name="material-icon-theme:uv" />uv - pip
+   ```shell:no-line-numbers
+   uv pip install -r requirements.txt
+   ```
 
-       ```shell:no-line-numbers
-       uv pip install -r requirements.txt
-       ```
-
-       :::
-
-    2. 插件依赖
-
-       执行 `backend/scripts/init_plugin.py` 文件安装插件依赖
-
-       ::: details 报错：ModuleNotFoundError: No module named 'backend'
-
-        1. 自行搜索：将源根到添加到 PYTHONPATH
-        2. 执行以下命令：
-
-           Linux/Mac:
-
-           ```sh
-           # 修改 /path/to/fba 为您本地 fba 项目路径
-           export PYTHONPATH=$PYTHONPATH:/path/to/fba
-           ```
-
-           Windows:
-
-           ```sh
-           # 修改 D:\path\to\fba 为您本地 fba 项目路径
-           set PYTHONPATH=%PYTHONPATH%;D:\path\to\fba
-           ```
-
-       :::
-
-       ::: caution
-       为了实现插件 0 耦合，插件依赖未使用 uv 进行管理。执行上面脚本文件后，如果后期您仍需同步环境依赖，请务必使用命令：
-       `uv sync --frozen --inexact`，否则插件依赖将被 uv 自动清理！
-       :::
+   :::
 
 4. 创建数据库：`fba`，选择 utf8mb4 编码（PostgreSQL 用户可忽略编码）
 5. 启动 Redis
@@ -163,12 +131,38 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
     在 `backend` 目录打开终端，执行以下命令启动 FastAPI 服务
 
     ```shell:no-line-numbers
-    fastapi dev main.py
+    fba run
     ```
 
-    ::: note
-    此项目默认使用 CLI 启动服务，为了方便本地调试，你仍然可以选择在 IDE 中右键运行 `run.py` 文件
+    :::: details 附加说明
+    此项目默认使用 CLI 启动服务，为了方便 Debug，你可以在 IDE 中直接右键运行 `run.py` 文件
+
+    需要注意的是，为了实现插件 0 耦合，插件依赖未使用 uv 进行管理。Debug 前请务必使用 `fba run` 命令启动一次服务，
+    以便自动安装插件依赖
+
+    您也可以执行 `backend/scripts/init_plugin.py` 文件手动安装插件依赖
+
+    ::: warning ModuleNotFoundError: No module named 'backend'
+
+    1. 自行搜索：将源根到添加到 PYTHONPATH
+    2. 执行以下命令：
+
+       Linux/Mac:
+
+       ```sh
+       # 修改 /path/to/fba 为本地 fba 项目根路径
+       export PYTHONPATH=$PYTHONPATH:/path/to/fba
+       ```
+
+       Windows（cmd）:
+
+       ```sh
+       # 修改 D:\path\to\fba 为本地 fba 项目根路径
+       set PYTHONPATH=%PYTHONPATH%;D:\path\to\fba
+       ```
+
     :::
+    ::::
 
 11. 初始化测试数据
 

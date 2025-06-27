@@ -13,9 +13,8 @@ title: 插件安装
 
 1. 获取插件仓库源码并下载
 2. 将下载的源码文件夹直接拷贝到 `backend/plugin` 目录下
-3. 如果插件包含依赖（requirements.txt），执行 `backend/scripts/init_plugin.py` 文件安装依赖
-4. 根据插件说明（README.md）进行相关配置
-5. 重启服务
+3. 根据插件说明（README.md）进行相关配置
+4. 通过 CLI 重启服务
 
 @tab ZIP
 
