@@ -1,7 +1,7 @@
 import { BulletinOptions } from "vuepress-theme-plume";
 
 export const myBulletin: BulletinOptions = {
-    enablePage: true,
+    enablePage: false,
     lifetime: 'session',
     contentType: 'markdown',
     title: '公告',
