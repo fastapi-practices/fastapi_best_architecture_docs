@@ -49,11 +49,11 @@ ID 作为主键的默认声明方式=={.note}
     2. 更新所有 `id_key` 导入为 `snowflake_id_key`
     3. 执行 `backend/sql/init_snowflake_test_data.sql` 脚本初始化测试数据
 
-::: caution Windows 平台警告
-如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为
-`mysql+aiomysql`，否则，您将无法在本地正常新增数据。相关
-issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
-:::
+  ::: caution Windows 平台警告
+  如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为
+  `mysql+aiomysql`，否则，您将无法在本地正常新增数据。相关
+  issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
+  :::
 
 ## 注意事项
 

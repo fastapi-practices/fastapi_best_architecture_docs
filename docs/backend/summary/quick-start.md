@@ -102,7 +102,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ```
    :::
 
-9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，三个都可以不执行" />
+9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，可直接跳过" />
 
    在 `backend` 目录打开终端，执行以下命令启动 celery 相关服务
 
@@ -133,35 +133,6 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
     ```shell:no-line-numbers
     fba run
     ```
-
-    :::: details 附加说明
-    此项目默认使用 CLI 启动服务，为了方便 Debug，你可以在 IDE 中直接右键运行 `run.py` 文件
-
-    需要注意的是，为了实现插件 0 耦合，插件依赖未使用 uv 进行管理。Debug 前请务必使用 `fba run` 命令启动一次服务，
-    以便自动安装插件依赖
-
-    你也可以选择执行 `backend/scripts/init_plugin.py` 文件手动安装插件依赖
-
-    ::: warning ModuleNotFoundError: No module named 'backend'
-
-    1. 自行搜索：将源根到添加到 PYTHONPATH
-    2. 执行以下命令：
-
-       Linux/Mac:
-
-       ```sh
-       # 修改 /path/to/fba 为本地 fba 项目根路径
-       export PYTHONPATH=$PYTHONPATH:/path/to/fba
-       ```
-
-       Windows（cmd）:
-
-       ```sh
-       # 修改 D:\path\to\fba 为本地 fba 项目根路径
-       set PYTHONPATH=%PYTHONPATH%;D:\path\to\fba
-       ```
-
-    :::
     ::::
 
 11. 初始化测试数据
