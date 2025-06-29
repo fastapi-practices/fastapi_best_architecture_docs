@@ -157,14 +157,18 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
 ::: file-tree
 
 - xxx 插件名
-    - api/ 接口
+    - api 接口
+        - index.ts
     - langs 多语言
         - en-US
             - 插件名.json
         - zh-CN
             - 插件名.json
-    - routes/ 路由
-    - views/ 视图
+    - routes 路由
+        - index.ts
+    - views 视图
+        - index.vue
+        - …
     - … 更多内容
 
 :::
