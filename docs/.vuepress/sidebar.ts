@@ -28,6 +28,7 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
+                { text: 'CLI', link: 'cli'},
                 { text: '模型', link: 'model' },
                 { text: 'Schema', link: 'schema' },
                 { text: '路由', link: 'router' },

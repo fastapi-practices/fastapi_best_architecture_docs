@@ -105,28 +105,24 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '插件系统',
-        icon: 'unjs:unplugin',
+        badge: { text: 'NEW' },
         link: '/plugin/before'
     },
     {
         text: '购买特权',
-        icon: 'fluent:person-key-20-filled',
         link: '/pricing'
     },
     {
         text: '赞助',
-        icon: 'ph:coffee-fill',
         link: '/sponsors'
     },
     {
         text: '互动',
-        icon: 'game-icons:talk',
         badge: { text: 'HOT', type: 'danger' },
         link: '/group'
     },
     {
         text: '关于',
-        icon: 'mingcute:more-4-fill',
         items: [
             {
                 text: '谁在使用',

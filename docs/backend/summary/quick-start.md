@@ -140,7 +140,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
     需要注意的是，为了实现插件 0 耦合，插件依赖未使用 uv 进行管理。Debug 前请务必使用 `fba run` 命令启动一次服务，
     以便自动安装插件依赖
 
-    您也可以执行 `backend/scripts/init_plugin.py` 文件手动安装插件依赖
+    你也可以选择执行 `backend/scripts/init_plugin.py` 文件手动安装插件依赖
 
     ::: warning ModuleNotFoundError: No module named 'backend'
 
