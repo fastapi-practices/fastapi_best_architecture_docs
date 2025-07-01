@@ -22,8 +22,9 @@ title: Docker 部署
 
 4. 更新脚本文件
 
-   ::: warning
-   如果你已通过后端 docker-compose 构建前端项目，此步骤和后面的剩余步骤直接跳过即可
+   ::: caution 前端独立 docker-compose 构建条件
+   1. 注释了 fba 后端 docker-compose 脚本中的 fba_ui 容器
+   2. 已经通过 docker-compose 构建 fba 后端
    :::
 
    ```yaml :collapsed-lines=12
