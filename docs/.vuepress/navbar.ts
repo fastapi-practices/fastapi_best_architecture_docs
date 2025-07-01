@@ -2,7 +2,7 @@ import { defineNavbarConfig } from "vuepress-theme-plume";
 
 export const myNavbar = defineNavbarConfig([
     {
-        text: '前端（在线体验）',
+        text: '前端',
         items: [
             {
                 text: '线上演示',
@@ -120,6 +120,19 @@ export const myNavbar = defineNavbarConfig([
         text: '互动',
         badge: { text: 'HOT', type: 'danger' },
         link: '/group'
+    },
+    {
+        text: '战略合作',
+        items: [
+            {
+                text: 'Kinit',
+                link: 'https://gitee.com/ktianc/kinit'
+            },
+            // {
+            //     text: 'dvadmin3',
+            //     link: 'https://django-vue-admin.com/'
+            // },
+        ]
     },
     {
         text: '关于',

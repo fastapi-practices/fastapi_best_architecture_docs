@@ -3,8 +3,9 @@ title: 成为 fba 的赞助者
 ---
 
 ::: note 用爱发电，回馈开源
-fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。自 2023/04/07
-启，我们一直致力于持续更新和维护，为此，我们投入了大量的时间和无限的热爱
+fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。
+
+自 2023/04/07 启，我们一直致力于持续更新和维护，为此，我们投入了大量的时间和无限的热爱
 :::
 
 ## 荣誉赞助
@@ -21,25 +22,19 @@ font-family: sans-serif;
 text-decoration: none;
 border: 1px solid #5D3408;
 display: inline-block;
-">来杯 ☕</a>
-
-::: info
-我在 Linux Do 发了一篇主题：[FastAPI 最佳架构](https://linux.do/t/topic/470425?u=wu-clan)
-
-欢迎社区大佬们进行点评，如果您觉得项目还不错，请赞助主题一颗小心心吧 <Icon name="twemoji:sparkling-heart" />
-:::
+">来杯卡布奇诺 ☕</a>
 
 ## 有偿赞助
 
 您可以加入我们创建的【知识星球】，获取星球内提供的 [独家内容](./planet.md)
 
-此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以查看专属频道
+此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以获得优先支持
 
 ::: caution
 我们不保证星球内容的更新频率，您可以依据 [知识星球退款规则](https://support.zsxq.com/refundRules.html) 进行全额退款
 :::
 
-## 展位赞助商 <Badge text="New"/>
+## 展位赞助商
 
 您可以通过 [作者主页](https://wu-clan.github.io/homepage/) 内任意联系方式就展位的详细事宜与 fba 作者进行沟通
 
@@ -59,7 +54,7 @@ display: inline-block;
     <tr>
       <td><strong>独家展位</strong></td>
       <td>1</td>
-      <td>联系作者</td>
+      <td>199 / 月</td>
       <td>买一送一</td>
       <td>
         - 首页独家展示位<br>
@@ -77,7 +72,7 @@ display: inline-block;
     <tr>
       <td><strong>特别展位</strong></td>
       <td>3</td>
-      <td>联系作者</td>
+      <td>99 / 月</td>
       <td>买一送一</td>
       <td>
         - 首页信息展播展示位<br>
@@ -88,7 +83,7 @@ display: inline-block;
     <tr>
       <td><strong>普通展位</strong></td>
       <td>6</td>
-      <td>联系作者</td>
+      <td>39 / 月</td>
       <td>无</td>
       <td>
         - 首页滚动展示位<br>
@@ -106,14 +101,13 @@ display: inline-block;
       <td colspan="6" style="text-align: center">
         <strong>访问统计：</strong>
         <a href="https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io">点击查看</a>
-        （我们可以向您提供“百度统计”）
       </td>
     </tr>
 
   </tbody>
 </table>
 
-::: tip
+::: caution
 展位转化效果可能因市场环境、受众行为等多种因素影响，我们无法保证确切的转化结果
 :::
 
@@ -138,5 +132,6 @@ xxx 商品名称
 ## 注意事项
 
 > [!CAUTION]
-> 感谢您对我们的支持与慷慨赞助！由于当前所有赞助均为自愿支持性质，我们暂时无法为您提供发票开具服务，对此带来的不便深表歉意。您的每一份支持都是我们持续前进的动力，
-> 期待未来能以更完善的方式回馈您的信任。若需进一步沟通，欢迎随时联系
+> 由于当前所有赞助均为自愿支持性质，我们暂时无法为您提供发票开具服务，对此带来的不便深表歉意。
+>
+> 您的每一份支持都是我们持续前进的动力，期待未来能以更完善的方式回馈您的信任。若需进一步沟通，欢迎随时联系

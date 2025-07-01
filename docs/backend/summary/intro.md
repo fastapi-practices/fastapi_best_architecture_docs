@@ -20,16 +20,6 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 | 数据访问 | dao / mapper   | crud                      |
 | 模型   | entity         | model                     |
 
-## 微服务架构
-
-fba 不提供且永不提供此架构模式，fba 将所有服务整合在 [backend/app](#项目结构)
-目录下，以不同的文件夹进行区分。如果您是一名微服务架构粉丝，我们推荐您使用 [kinit](https://gitee.com/ktianc/kinit)
-，它完全遵循微服务架构理念进行设计，并且拥有大量的社区用户
-
-::: note
-此推荐无任何商业性质，一切都基于我们对 kinit 的欣赏，希望作者能尽快发行新版本，让我们一起期待吧 🤗
-:::
-
 ## 特性
 
 - [x] 全局 FastAPI PEP 593 Annotated 参数风格

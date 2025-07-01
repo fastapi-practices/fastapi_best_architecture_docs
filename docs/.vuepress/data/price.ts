@@ -5,12 +5,12 @@ export const plans = {
         features: [
             '全部基础功能',
             '全量架构源码',
-            '社区支持',
             'MIT 许可证',
+            'Discord 社区',
             '自由商用',
+            '自主部署',
             '无需保留版权',
             '无需保留许可声明',
-            '自主部署',
             '部分文档访问',
             '部分插件源码'
         ]
@@ -20,7 +20,7 @@ export const plans = {
         description: '专业开发者的得力助手',
         price: {
             current: '￥99',
-            original: '￥1999'
+            original: '￥999'
         },
         features: [
             '所有开源版功能',
@@ -28,9 +28,8 @@ export const plans = {
             '所有官方插件源码',
             'Discord 身份标签',
             'Discord 专属频道',
-            '一对一指导',
+            '部署指导',
             '优先支持',
-            '远程支持'
         ]
     },
     enterprise: {
@@ -38,11 +37,12 @@ export const plans = {
         description: '为团队与大规模项目而生',
         price: {
             current: '￥xxxx',
-            original: '￥xxxx'
+            original: '￥1999'
         },
         features: [
             '所有专业版功能',
-            '专属企业群组'
+            '专属企业群组',
+            '远程支持'
         ]
     }
 }
