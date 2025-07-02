@@ -121,6 +121,13 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
         - …
     - schema/ 数据传输
     - service/ 服务
+    - sql 如果插件需要执行 SQL 则建议
+        - mysql
+            - init.sql 自增 id 模式
+            - init_snowflake.sql 雪花 id 模式
+        - postgresql
+            - init.sql 自增 id 模式
+            - init_snowflake.sql 雪花 id 模式
     - utils/ 工具包
     - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
     - … 更多内容，例如 enums.py...
