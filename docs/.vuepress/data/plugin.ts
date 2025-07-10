@@ -86,4 +86,12 @@ export const pluginItems: PluginItem[] = [
         link: "https://github.com/dividduang/ldap_auth",
         image: "https://www.cleo.com/sites/default/files/2023-12/ldap-integration.png"
     },
+    {
+        icon: "fa-solid:sms",
+        title: "腾讯云 sms",
+        description: "通过腾讯云短信服务发送短信验证码",
+        tags: ["mysql", "pgsql", "后端"],
+        link: "https://github.com/RanY-Luck/fba_plugin_sms",
+        image: "https://zhangzifan.com/uploads/2017/08/Tencent-Cloud-SMS.png"
+    },
 ]
