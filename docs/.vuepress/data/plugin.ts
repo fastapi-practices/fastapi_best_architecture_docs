@@ -52,7 +52,7 @@ export const pluginItems: PluginItem[] = [
         description: "阿里云 oss 文件上传",
         tags: ["mysql", "pgsql", "后端"],
         link: "https://github.com/fastapi-practices/aliyun_oss",
-        image: "https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png"
+        image: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/alibabacloud-color.png"
     },
     {
         icon: "material-symbols:token-outline",
@@ -67,7 +67,7 @@ export const pluginItems: PluginItem[] = [
         description: "定时调用企业微信群聊机器人发送消息",
         tags: ["mysql", "后端"],
         link: "https://github.com/dividduang/wecom-task",
-        image: "https://rescdn.qqmail.com/node/wework/images/Slice.d2258f37eb.png"
+        image: "https://wwcdn.weixin.qq.com/node/wework/images/202201062104.366e5ee28e.png"
     },
     {
         icon: "arcticons:sso-plus",
@@ -92,6 +92,6 @@ export const pluginItems: PluginItem[] = [
         description: "通过腾讯云短信服务发送短信验证码",
         tags: ["mysql", "pgsql", "后端"],
         link: "https://github.com/RanY-Luck/fba_plugin_sms",
-        image: "https://zhangzifan.com/uploads/2017/08/Tencent-Cloud-SMS.png"
+        image: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/tencentcloud-color.png"
     },
 ]
