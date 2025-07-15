@@ -104,36 +104,35 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，可直接跳过" />
 
-   在 `backend` 目录打开终端，执行以下命令启动 celery 相关服务
+   在 `根目录` 或 `backend 目录` 打开终端，执行以下命令启动 celery 相关服务
 
    ::: code-tabs
    @tab Worker
 
     ```shell:no-line-numbers
-    celery -A app.task.celery worker -l info
+    fba celery worker
     ```
 
    @tab Beat
 
     ```shell:no-line-numbers
-    celery -A app.task.celery beat -l info
+    fba celery beat
     ```
 
    @tab Flower
 
     ```shell:no-line-numbers
-    celery -A app.task.celery flower --port=8555 --basic-auth=admin:123456
+    fba celery flower
     ```
    :::
 
 10. 启动
 
-    在 `backend` 目录打开终端，执行以下命令启动 FastAPI 服务
+    在 `根目录` 或 `backend 目录` 打开终端，执行以下命令启动 FastAPI 服务
 
     ```shell:no-line-numbers
     fba run
     ```
-    ::::
 
 11. 初始化测试数据
 
