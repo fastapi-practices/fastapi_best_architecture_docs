@@ -2,6 +2,8 @@
 title: 简介
 ---
 
+FastAPI Best Architecture 是使用 FastAPI 构建的企业级后端架构解决方案
+
 ## 伪三层架构
 
 mvc 架构作为常规设计模式，在 python web 中很常见，但是三层架构更令人着迷
