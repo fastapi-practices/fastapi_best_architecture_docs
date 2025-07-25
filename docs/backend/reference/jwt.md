@@ -11,7 +11,7 @@ title: JWT
 
 ```python
 # JWT authorizes dependency injection
-DependsJwtAuth = Depends(HTTPBearer())
+DependsJwtAuth = Depends(CustomHTTPBearer())
 ```
 
 我们通过在接口函数中添加此依赖实现 JWT 快速校验，它可以帮助我们检查请求头中是否包含 Bearer Token，使用方式参考如下：

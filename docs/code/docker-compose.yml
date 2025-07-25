@@ -14,6 +14,7 @@ services:
     volumes:
       - ./deploy/backend/docker-compose/.env.server:/fba/backend/.env
       - fba_static:/fba/backend/app/static
+      - fba_static_upload:/fba/backend/static/upload
     networks:
       - fba_network
     # 如果你是 postgres 用户，应将 fba_mysql:3306 修改为 fba_postgres:5432
@@ -22,9 +23,8 @@ services:
       - -c
       - |
         wait-for-it -s fba_mysql:3306 -s fba_redis:6379 -t 300
-        mkdir -p /var/log/supervisor/
-        supervisord -c /fba/deploy/backend/supervisor.conf
-        supervisorctl restart fastapi_server
+        supervisord -c /etc/supervisor/supervisord.conf
+        supervisorctl restart
 
   fba_mysql:
     image: mysql:8.0.41
@@ -51,7 +51,7 @@ services:
   fba_postgres: # [!code warning:14]
     image: postgres:16
     ports:
-      - "${DOCKER_MYSQL_MAP_PORT:-5432}:5432"
+      - "${DOCKER_POSTGRES_MAP_PORT:-5432}:5432"
     container_name: fba_postgres
     restart: always
     environment:
@@ -59,7 +59,7 @@ services:
       POSTGRES_PASSWORD: 123456
       TZ: Asia/Shanghai
     volumes:
-      - fba_mysql:/var/lib/postgresql/data
+      - fba_postgres:/var/lib/postgresql/data
     networks:
       - fba_network
 
@@ -90,9 +90,10 @@ services:
     volumes:
       - ./deploy/backend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - fba_static:/www/fba_server/backend/static
+      - fba_static_upload:/www/fba_server/backend/static/upload
     networks:
       - fba_network
-  
+
   # 如果服务器内存小于 4GB，CPU 小于四个内核
   # 建议进入 fba_ui 项目单独构建这个容器（参考下方前端部署教程）
   # 如果你不选择单独构建，务必在执行下面步骤前根据前端部署教程更新前端配置文件
@@ -125,6 +126,7 @@ services:
       - local_ssl_pem_path:/etc/ssl/xxx.pem
       - local_ssl_key_path:/etc/ssl/xxx.key
       - fba_static:/www/fba_server/backend/static
+      - fba_static_upload:/www/fba_server/backend/static/upload
     networks:
       - fba_network
 
@@ -166,11 +168,8 @@ services:
       - -c
       - |
         wait-for-it -s fba_rabbitmq:5672 -t 300
-        mkdir -p /var/log/supervisor/
-        supervisord -c /fba/deploy/backend/supervisor.conf
-        supervisorctl restart celery_worker
-        supervisorctl restart celery_beat
-        supervisorctl restart celery_flower
+        supervisord -c /etc/supervisor/supervisord.conf
+        supervisorctl restart
 
 networks:
   fba_network:
