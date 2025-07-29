@@ -55,7 +55,10 @@ display: inline-block;
       <td><strong>独家展位</strong></td>
       <td>1</td>
       <td>199 / 月</td>
-      <td>买一送一</td>
+      <td>
+        - 买一送一
+        - 立减 30 / 月
+      </td>
       <td>
         - 首页独家展示位<br>
         - 文档左侧边栏独家展示位<br>
@@ -73,7 +76,7 @@ display: inline-block;
       <td><strong>特别展位</strong></td>
       <td>3</td>
       <td>99 / 月</td>
-      <td>买一送一</td>
+      <td>立减 10 / 月</td>
       <td>
         - 首页信息展播展示位<br>
         - 文档右侧边栏大号展示位<br>
@@ -83,7 +86,7 @@ display: inline-block;
     <tr>
       <td><strong>普通展位</strong></td>
       <td>6</td>
-      <td>39 / 月</td>
+      <td>59 / 月</td>
       <td>无</td>
       <td>
         - 首页滚动展示位<br>
