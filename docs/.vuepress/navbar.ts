@@ -118,7 +118,6 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '互动',
-        badge: { text: 'HOT', type: 'danger' },
         link: '/group'
     },
     {

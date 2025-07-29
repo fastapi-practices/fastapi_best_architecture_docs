@@ -1,7 +1,6 @@
 <script setup>
 import { Layout } from "vuepress-theme-plume/client";
 import SponsorPanel from "../components/SponsorPanel.vue";
-import AsideNavAfter from "../components/AsideNavAfter.vue";
 </script>
 
 <template>
@@ -19,7 +18,6 @@ import AsideNavAfter from "../components/AsideNavAfter.vue";
     <template #aside-outline-after>
       <div class="custom-content">
         <SponsorPanel />
-        <AsideNavAfter />
       </div>
     </template>
   </Layout>

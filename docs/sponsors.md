@@ -22,7 +22,7 @@ font-family: sans-serif;
 text-decoration: none;
 border: 1px solid #5D3408;
 display: inline-block;
-">来杯卡布奇诺 ☕</a>
+">来杯 Coffee ☕</a>
 
 ## 有偿赞助
 
