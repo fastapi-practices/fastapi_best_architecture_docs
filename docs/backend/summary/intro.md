@@ -2,7 +2,7 @@
 title: 简介
 ---
 
-FastAPI Best Architecture 是使用 FastAPI 构建的企业级后端架构解决方案
+基于 FastAPI 构建的企业级后端架构解决方案
 
 ## 伪三层架构
 
