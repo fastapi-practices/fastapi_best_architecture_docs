@@ -70,4 +70,13 @@ groups:
         socials: [
           { icon: 'github', link: 'https://github.com/chenansheng' }
         ]
+      - name: imba
+        link: https://github.com/imbalich
+        avatar: https://avatars.githubusercontent.com/u/49424658?v=4
+        desc: 苦哈哈的全干工程师
+        location: 西安，陕西
+        organization: --
+        socials: [
+          { icon: 'github', link: 'https://github.com/imbalich' }
+        ]
 ---
