@@ -75,7 +75,7 @@ title: Docker 部署
 
 ### 前端
 
-[点击跳转](../../frontend/quick-start.md)
+[请移步至 **前端快速开始**](../../frontend/summary/quick-start.md){.read-more}
 
 ## 服务器部署
 
@@ -151,7 +151,7 @@ title: Docker 部署
 
 ### 前端
 
-[点击跳转](../../frontend/docker.md)
+[请移步至 **前端快速开始**](../../frontend/deploy/docker.md){.read-more}
 
 ## 注意事项
 
@@ -159,9 +159,7 @@ title: Docker 部署
 不建议频繁使用 `docker-compose up -d --build` 命令，此命令每次执行都会重新构建容器，并将原容器自动本地备份保留，这会导致硬盘空间迅速锐减
 :::
 
-::: info
-[15 个 Docker 容器自动化管理的脚本](https://www.yuque.com/fcant/devops/itkfyytisf9z84y6)
-:::
+[15 个 Docker 容器自动化管理的脚本](https://www.yuque.com/fcant/devops/itkfyytisf9z84y6){.read-more}
 
 清理未使用的镜像
 

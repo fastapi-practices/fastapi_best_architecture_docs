@@ -6,9 +6,9 @@ title: schema
 
 ## 类命名
 
-fba 遵循以下命名规范：
+遵循以下命名规范：
 
-- 基础 schema: `(SchemaBase)`
+- 基础 schema: `XxxSchemaBase(SchemaBase)`
 - 接口入参：`XxxParam()`
 - 新增入参：`CreateXxxParam()`
 - 更新入参：`UpdateXxxParam()`
@@ -16,11 +16,11 @@ fba 遵循以下命名规范：
 - 查询详情：`GetXxxDetail()`
 - 查询详情（包含关系）：`GetXxxWithRelationDetail()`
 
-## Field
+## Field 定义
 
 - 不建议将必填字段默认值设置为 `...`，参考：[必填字段](https://docs.pydantic.dev/latest/concepts/models/#required-fields)
-- 建议为所有字段至少添加 `description`，这对于 API 文档来说非常有用
+- 建议为所有字段添加 `description` 参数，这对于 API 文档来说非常有用
 
 ## 驼峰返回
 
-详见：[接口响应](response.md#驼峰返回)
+[请移步至 **接口响应**](response.md#驼峰返回){.read-more}

@@ -8,19 +8,14 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 ## 本地开发
 
-::: tip
-
-- 雪花主键 ID 用户，请先移步到 [切换主键](../reference/pk.md)
-- PostgreSQL 用户，请先移步到 [切换数据库](../reference/db.md)
-
-:::
-
 :::: steps
 
 1. 准备本地环境
 
     - Python 3.10+
     - MySQL 8.0+ 或 PostgreSQL 16.0 +
+      [雪花主键 ID 用户，请先移步到 **切换主键**](../reference/pk.md){.read-more}
+      [PostgreSQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
     - <p>Redis 推荐最新稳定版</p>
 
 2. 准备 Git 仓库 <Badge type="warning" text="二选一" />
@@ -149,7 +144,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 ## 开发流程
 
-::: tip
+::: note
 仅供参考，实际以个人开发习惯为准
 :::
 

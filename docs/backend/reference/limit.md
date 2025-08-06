@@ -2,11 +2,16 @@
 title: 节流
 ---
 
-fba 内部使用 [fastapi-limit](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/70)
-实现后端接口节流
+我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#70](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/70)
+
+[**fastapi-limiter** GitHub 仓库地址](https://github.com/long2ice/fastapi-limiter){.read-more}
+
+## 使用
+
+更多使用方法请查看官方仓库 [README](https://github.com/long2ice/fastapi-limiter/blob/master/README.md#quick-start)
 
 ```python{1,6,11-17,25,29}
-@app.get("/", dependencies=[Depends(RateLimiter(times=2, seconds=5))])
+@app.get("/", dependencies=[Depends(RateLimiter(times=1, seconds=5))])
 async def index_get():
     return {"msg": "Hello World"}
 
@@ -39,6 +44,3 @@ async def websocket_endpoint(websocket: WebSocket):
         except HTTPException:
             await websocket.send_text("Hello again")
 ```
-
-更多使用方法请查看官方仓库 [示例](https://github.com/long2ice/fastapi-limiter/blob/master/examples/main.py)
-或 [源码](https://github.com/long2ice/fastapi-limiter/blob/master/fastapi_limiter/depends.py)

@@ -23,7 +23,9 @@ id_key = Annotated[
 
 ### 操作人
 
-用于集成操作人信息到数据库表，使用方法请查看[<Icon name="fluent-color:receipt-16" />操作人信息](../../planet.md)
+用于集成操作人信息到数据库表
+
+[使用方法请移步至 **<Icon name="fluent-color:receipt-16" />操作人信息**](../../planet.md){.read-more}
 
 ```python
 class UserMixin(MappedAsDataclass):
@@ -51,9 +53,9 @@ class DateTimeMixin(MappedAsDataclass):
 
 ## 数据类基类
 
-[MappedAsDataclass](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses)
+声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==但未集成日期时间=={.note}
 
-声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==不包含日期时间=={.note}
+[什么是数据类基类 **MappedAsDataclass**](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses){.read-more}
 
 ```python
 class DataClassBase(MappedAsDataclass, MappedBase):
@@ -63,7 +65,7 @@ class DataClassBase(MappedAsDataclass, MappedBase):
 
 ## Base 基类
 
-声明性数据类基类, 带有数据类集成, 并包含日期时间
+声明性数据类基类，带有数据类和日期时间集成
 
 ```python
 class Base(DataClassBase, DateTimeMixin):

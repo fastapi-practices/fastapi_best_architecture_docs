@@ -8,7 +8,7 @@
   </section>
   <section v-else id="special-spsr">
     <span class="no-brand">
-      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_blank">特别赞助位目前空缺 - 现在咨询 💬</a>
+      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_blank">特别赞助位目前空缺 - 立即咨询 💬</a>
     </span>
   </section>
 </template>

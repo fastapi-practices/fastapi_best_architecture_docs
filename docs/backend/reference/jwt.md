@@ -26,8 +26,7 @@ async def hello():
 
 内置 token 授权方式遵循 [rfc6750](https://datatracker.ietf.org/doc/html/rfc6750)
 
-如果您想通过自定义请求头添加 token 进行授权，可查看文章：
-[<Icon name="fluent-color:receipt-16" />Header Token](../../planet.md)
+[自定义请求头 token 授权，请移步至 **<Icon name="fluent-color:receipt-16" />Header Token**](../../planet.md){.read-more}
 
 ## Swagger 登录
 

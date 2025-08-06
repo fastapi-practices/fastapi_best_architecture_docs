@@ -28,8 +28,8 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
-                { text: '配置', link: 'config'},
-                { text: 'CLI', link: 'cli'},
+                { text: '配置', link: 'config' },
+                { text: 'CLI', link: 'cli' },
                 { text: '模型', link: 'model' },
                 { text: 'Schema', link: 'schema' },
                 { text: '路由', link: 'router' },
@@ -91,22 +91,24 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '市场',
             collapsed: false,
             items: [
-                { text: '插件市场', link: '/market' },
+                { text: '插件市场', badge: { text: 'HOT', type: 'danger' }, link: '/market' },
             ]
         }
     ],
     '/frontend/': [
         {
-            text: '参考',
+            text: '介绍',
             collapsed: false,
+            prefix: 'summary/',
             items: [
-                { text: '介绍', link: 'intro' },
+                { text: '简介', link: 'intro' },
                 { text: '快速开始', link: 'quick-start' },
             ]
         },
         {
             text: '部署',
             collapsed: false,
+            prefix: 'deploy/',
             items: [
                 { text: 'Docker', link: 'docker' },
                 { text: '传统', link: 'legacy' },

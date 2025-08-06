@@ -2,7 +2,7 @@
 title: vscode
 ---
 
-官网地址：[visualstudio](https://code.visualstudio.com/)
+[**Visual Studio Code** 官网地址](https://code.visualstudio.com/){.read-more}
 
 ## DEBUG
 

@@ -31,4 +31,4 @@ title: 快速开始
 
 ## 帮助
 
-请参考 [vben Admin 官方文档](https://doc.vben.pro/)
+[请移步至 **vben Admin 官方文档**](https://doc.vben.pro/){.read-more}

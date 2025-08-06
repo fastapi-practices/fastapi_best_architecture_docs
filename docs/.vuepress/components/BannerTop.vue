@@ -41,7 +41,7 @@ updateDocumentClass();
 
 <style>
 html:not(.banner-dismissed) {
-  --vp-layout-top-height: 60px;
+  --vp-layout-top-height: 50px;
 }
 </style>
 

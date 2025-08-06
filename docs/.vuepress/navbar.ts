@@ -18,12 +18,12 @@ export const myNavbar = defineNavbarConfig([
                 items: [
                     {
                         text: 'Arco Design Pro 实验性实施',
-                        link: '/frontend/arco',
+                        link: '/frontend/summary/arco',
                         badge: { text: '已弃用', type: 'danger' }
                     },
                     {
                         text: 'Vben Admin Antd 完整版实施',
-                        link: '/frontend/intro'
+                        link: '/frontend/summary/intro'
                     }
                 ]
             },
@@ -105,7 +105,7 @@ export const myNavbar = defineNavbarConfig([
     },
     {
         text: '插件系统',
-        badge: { text: 'NEW' },
+        badge: { text: 'HOT', type: 'danger' },
         link: '/plugin/before'
     },
     {
@@ -117,31 +117,83 @@ export const myNavbar = defineNavbarConfig([
         link: '/sponsors'
     },
     {
-        text: '互动',
-        link: '/group'
+        text: '生态系统',
+        items: [
+            {
+                text: '资源',
+                items: [
+                    {
+                        text: '开源项目',
+                        icon: 'mdi:github',
+                        link: '/opensource'
+                    },
+                    {
+                        text: '技术栈',
+                        icon: 'material-symbols:stack',
+                        link: '/stack'
+                    },
+                    {
+                        text: '用户登记',
+                        icon: 'mdi:user-check',
+                        link: '/users'
+                    },
+                ]
+            },
+            {
+                text: '互动',
+                items: [
+                    {
+                        text: '交流群',
+                        icon: 'ic:baseline-wechat',
+                        link: '/group'
+                    },
+                    {
+                        text: '作者主页',
+                        icon: 'streamline-plump:browser-website-1-remix',
+                        link: 'https://wu-clan.github.io/homepage'
+                    },
+                    {
+                        text: 'Github 问题',
+                        icon: 'codicon:issues',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+                    },
+                    {
+                        text: 'Github 讨论',
+                        icon: 'mdi:discussion',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/discussions'
+                    },
+                ]
+            },
+            {
+                text: '特权',
+                items: [
+                    {
+                        text: '知识星球',
+                        icon: 'ph:planet-fill',
+                        link: '/planet'
+                    },
+                    {
+                        text: '视频课程',
+                        badge: { text: '限时开放', type: 'warning' },
+                        icon: 'ri:bilibili-fill',
+                        link: 'https://space.bilibili.com/284237214/lists'
+                    },
+                ]
+            }
+        ]
     },
     {
         text: '关于',
         items: [
             {
-                text: '谁在使用',
-                icon: 'mdi:user-check',
-                link: '/who'
+                text: '常见问题',
+                icon: 'healthicons:question',
+                link: '/questions.md'
             },
             {
                 text: '维护团队',
                 icon: 'fa-solid:user-friends',
                 link: '/team'
-            },
-            {
-                text: '加入团队',
-                icon: 'mingcute:user-add-2-fill',
-                link: '/join'
-            },
-            {
-                text: '知识星球',
-                icon: 'ph:planet-fill',
-                link: '/planet'
             },
         ],
     }

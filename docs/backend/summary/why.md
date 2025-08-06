@@ -20,7 +20,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 承诺
 
-此仓库作为模板库公开，任何个人或企业均可自由使用！您可以通过 [购买授权](../../price.md) 查看我们的授权方案
+此仓库作为模板库公开，任何个人或企业均可自由使用！您可以通过 [购买特权](../../price.md) 选择不同版本
 
 ## 架构
 
@@ -57,13 +57,23 @@ fba
 在创建和迭代 fba 的同时，我们创建了很多与之相关的套件，且他们非常实用，并且我们做到了 0 耦合，您完全可以将它们用到其他与之相关的项目中去
 
 <CardGrid>
-  <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
-  <RepoCard repo="fastapi-practices/fastapi-oauth20" />
+  <LinkCard 
+    title="sqlalchemy-crud-plus" 
+    description="基于 SQLAlchemy 2.0 构建的高级异步 CRUD SDK" 
+    href="https://github.com/fastapi-practices/sqlalchemy-crud-plus" 
+    icon="https://wu-clan.github.io/picx-images-hosting/logo/fba.png" 
+  />
+  <LinkCard 
+    title="fastapi-oauth20" 
+    description="在 FastAPI 中异步授权 OAuth 2.0 客户端" 
+    href="https://github.com/fastapi-practices/fastapi-oauth20"
+    icon="https://wu-clan.github.io/picx-images-hosting/logo/fba.png" 
+  />
 </CardGrid>
 
-<div align="center">
-  <a href="https://github.com/orgs/fastapi-practices/repositories?" target="_blank">more...</a>
-</div>
+::: center
+[more...](https://github.com/orgs/fastapi-practices/repositories?)
+:::
 
 ## 精简版
 

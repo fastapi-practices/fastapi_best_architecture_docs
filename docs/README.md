@@ -4,7 +4,7 @@ watermark: false
 config:
   - type: hero
     background: tint-plate
-    tintPlate:  240
+    tintPlate: 240
     hero:
       name: FastAPI Best Architecture
       tagline: 企业级后端架构解决方案
@@ -12,7 +12,7 @@ config:
       actions:
         - theme: brand
           text: 快速上手 ->
-          link: /backend/summary/intro
+          link: /backend/summary/quick-start
         - theme: alt
           text: 伪三层架构?
           link: /backend/summary/intro#伪三层架构

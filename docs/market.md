@@ -3,7 +3,7 @@ pageLayout: page
 title: '插件市场'
 ---
 
-<PluginMarket :items="pluginItems" />
+<PluginMarket :items="pluginItems" :columns="3"/>
 
 <script setup lang="ts">
 import { pluginItems } from '@source/.vuepress/data/plugin'

@@ -56,7 +56,7 @@ display: inline-block;
       <td>1</td>
       <td>199 / 月</td>
       <td>
-        - 买一送一
+        - 买一送一<br>
         - 立减 30 / 月
       </td>
       <td>

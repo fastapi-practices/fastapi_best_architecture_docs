@@ -30,23 +30,21 @@
             v-if="item.free?.valueOf() === false"
             class="price-corner-tag paid"
         >
-          <span class="price-corner-text">付费</span>
+          <span class="price-corner-text">Not Free</span>
         </div>
       </div>
       <div class="card-content">
         <div class="card-title-row">
+          <img v-if="item.logo" :src="item.logo" class="logo" />
           <h3 class="card-title">{{ item.title }}</h3>
           <div class="card-title-link">
             <a
-                v-if="item.link"
                 :href="item.link"
-                class="no-external-icon"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub仓库"
                 @click.stop
             />
-            <span v-else class="built-in-label-inline">内置</span>
+            <span class="label-inline">{{ item.label || '内置' }}</span>
           </div>
         </div>
         <p class="card-description">{{ item.description }}</p>
@@ -70,9 +68,11 @@ export interface PluginItem {
   icon: string
   title: string
   description: string
+  label?: string
   tags: string[]
   link?: string
   image?: string
+  logo: string
   free?: boolean
 }
 
@@ -219,23 +219,20 @@ const handleCardClick = (item: PluginItem) => {
   font-size: 1.5rem
 }
 
-.built-in-label-inline {
+.label-inline {
   font-size: 0.75rem;
-  color: var(--vp-c-text-2);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
   border: 1px solid var(--vp-c-border);
-  background: rgba(255, 255, 255, 0.1);
+  background-color: var(--vp-c-bg-soft);
   white-space: nowrap;
-  font-weight: 500;
 }
 
 .card-description {
   color: var(--vp-c-text-2);
-  font-size: 0.75rem;
-  line-height: 1.8;
-  margin: 0 0 1rem;
-  flex-grow: 1;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  flex: 1
 }
 
 .card-tags {
@@ -244,15 +241,21 @@ const handleCardClick = (item: PluginItem) => {
   gap: 0.2rem;
 }
 
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-border);
+}
+
 .price-corner-tag {
   position: absolute;
   top: 0;
   right: 0;
-  color: #fff;
-  padding: 0.3rem 0.6rem;
+  color: white;
+  padding: 0 0.6rem;
   font-size: 0.75rem;
   font-weight: 500;
-  line-height: 1;
   border-bottom-left-radius: 4px;
   transform: translate(1px, -1px);
   z-index: 1;

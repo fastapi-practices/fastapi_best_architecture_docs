@@ -18,7 +18,7 @@ title: Docker 部署
 
    进入 `/scripts/deploy/nginx.conf` 目录，修改 `nginx.conf` 文件
 
-   @[code nginx :collapsed-lines=12](../code/nginx.conf)
+   @[code nginx :collapsed-lines=12](../../code/nginx.conf)
 
 4. 更新脚本文件
 

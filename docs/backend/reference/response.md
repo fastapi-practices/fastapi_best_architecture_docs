@@ -37,13 +37,12 @@ def test() -> ResponseModel:
 
 ## Schema 模式
 
-上面我们已经讲解了统一返回模型，但是，FastAPI 中的优势之一好包括，完全自动的 openAPI 以及文档，如果我们全局使用
+上面我们已经讲解了统一返回模型，但是，FastAPI 中的优势之一还包括完全自动的 OpenAPI 和文档，如果我们全局使用
 ResponseModel 做为统一响应模型，你会在 Swagger 文档得到（如图所示）
 
 ![response_model](/images/response_model.png)
 
-显然，我们无法获取响应 Schema 中的 data 数据结构，前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面是我们创建的用于
-Schema 模式的统一返回模型
+显然，我们无法获取响应中的 data 数据结构。此时前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面是我们创建的用于 Schema 模式的统一返回模型
 
 ```python
 class ResponseSchemaModel(ResponseModel, Generic[SchemaT]):

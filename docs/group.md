@@ -1,8 +1,8 @@
 ---
-title: 互动
+title: 交流群
 ---
 
-您可以通过此链接 [null](https://wu-clan.github.io/homepage/) 中的任意联系方式与 fba 作者互动
+[通过 fba 作者主页与他互动](https://wu-clan.github.io/homepage/){.read-more}
 
 ## Discord
 
@@ -21,7 +21,7 @@ Discord 社区是我们的开发技术交流平台，这是一个充满活力的
 此群组由于功能和管理受限，不会发布公告，优惠券，动态等相关信息
 
 ::: caution
-对于需要提供源码或大量截图的问题，请通过 Discord 进行提问，因为 Discord 对代码输入格式化更加友好
+对于需要提供大量源码或截图的问题，请通过 Discord 进行提问，因为 Discord 对代码输入格式化更加友好
 :::
 
 <div align="center">
