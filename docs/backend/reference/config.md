@@ -48,12 +48,20 @@ title: 配置
 
 ### `TOKEN_SECRET_KEY` <Badge type="info" text="str" />
 
-token 生成和解析密钥，用于防止 token 被恶意篡改，请妥善保管此配置内容，密钥生成：`secrets.token_urlsafe(32)`
+token 生成和解析密钥，用于防止 token 被恶意篡改，密钥生成：`secrets.token_urlsafe(32)`
+
+::: danger
+请妥善保管此值，以免遭受恶意攻击
+:::
 
 ### `OPERA_LOG_ENCRYPT_SECRET_KEY` <Badge type="info" text="" />
 
-操作日志指定字段加密密钥，当使用对称加密算法对指定字段进行加密时，这将十分重要，请妥善保管此配置内容，密钥生成：
+操作日志加密密钥，当使用对称加密算法加密操作日志时，将十分重要，密钥生成：
 `os.urandom(32).hex()`
+
+::: danger
+请妥善保管此值，以免遭受恶意攻击
+:::
 
 ## FastAPI 配置
 
@@ -164,7 +172,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## RBAC 配置
 
-更多详情：[RBAC](./RBAC.md)
+[更多详情](./RBAC.md){.read-more}
 
 ### `RBAC_ROLE_MENU_MODE` <Badge type="info" text="bool" />
 
@@ -172,7 +180,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `RBAC_ROLE_MENU_EXCLUDE` <Badge type="info" text="list[str]" />
 
-开启 RBAC 角色菜单模式时，跳过 RBAC 鉴权（当接口权限标识和菜单权限标识相同时）
+开启 RBAC 角色菜单模式时，跳过 RBAC 鉴权的标识（当接口权限标识和用户菜单权限标识相同时）
 
 ## Cookie 配置
 
@@ -186,7 +194,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## 数据权限配置
 
-更多详情：[数据权限](../../planet)
+[更多详情](../../planet){.read-more}
 
 ### `DATA_PERMISSION_MODELS` <Badge type="info" text="dict[str, str]" />
 
@@ -200,13 +208,17 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `WS_NO_AUTH_MARKER` <Badge type="info" text="str" />
 
-连接 socket.io 服务时跳过验证的标记，应将其直接定义为 token 值进行传输，请妥善保管此值，以免遭受恶意攻击
+连接 socket.io 服务时跳过用户验证的标记，应将其直接定义为 token 值进行传输
+
+::: danger
+请妥善保管此值，以免遭受恶意攻击
+:::
 
 ## CORS 配置
 
 ### `CORS_ALLOWED_ORIGINS` <Badge type="info" text="list[str]" />
 
-跨域请求时允许的来源，末尾不带 `/`，例如：`http <Badge type="info" text="" />//127.0.0.1 <Badge type="info" text="" />8000`
+跨域请求时允许的来源，末尾不带 `/`，例如：`http//127.0.0.1:8000`
 
 ### `CORS_EXPOSE_HEADERS` <Badge type="info" text="list[str]" />
 
@@ -228,11 +240,11 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `DATETIME_TIMEZONE` <Badge type="info" text="str" />
 
-全局时区配置，这将影响所有应用的时区设置
+全局时区
 
 ### `DATETIME_FORMAT` <Badge type="info" text="str" />
 
-接口返回时，将时间字段转为指定字符串格式
+将时间转为时间字符串的格式
 
 ## 文件上传配置
 
@@ -250,7 +262,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `UPLOAD_IMAGE_SIZE_MAX` <Badge type="info" text="int" />
 
-允许上传的图片文件大小
+允许上传的图片文件最大尺寸
 
 ### `UPLOAD_VIDEO_EXT_INCLUDE` <Badge type="info" text="list[str]" />
 
@@ -258,7 +270,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `UPLOAD_VIDEO_SIZE_MAX` <Badge type="info" text="int" />
 
-允许上传的视频文件大小
+允许上传的视频文件最大尺寸
 
 ## 演示模式配置
 
@@ -274,7 +286,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `IP_LOCATION_PARSE` <Badge type="info" text="Literal['online', 'offline', 'false']" />
 
-定位信息获取模式
+请求发起者的定位信息获取模式
 
 ### `IP_LOCATION_REDIS_PREFIX` <Badge type="info" text="str" />
 
@@ -284,19 +296,25 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 定位信息缓存时长
 
-## 日志（Trace ID)
+## Trace ID
 
 ### `TRACE_ID_REQUEST_HEADER_KEY` <Badge type="info" text="str" />
 
 跟踪 ID 请求头键名
 
+### `TRACE_ID_LOG_LENGTH` <Badge type="info" text="int" />
+
+跟踪 ID 日志长度，必须小于等于 32
+
 ### `TRACE_ID_LOG_DEFAULT_VALUE` <Badge type="info" text="str" />
 
-跟踪 ID 未生成时的默认值
+跟踪 ID 日志默认值
 
-### `TRACE_ID_LOG_UUID_LENGTH` <Badge type="info" text="int" />
+## 日志
 
-跟踪 ID 长度，必须小于等于 32
+### `LOG_FORMAT` <Badge type="info" text="str" />
+
+日志内容格式（控制台和文件同享）
 
 ## 日志（控制台）
 
@@ -304,17 +322,13 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 日志记录级别
 
-### `LOG_STD_FORMAT` <Badge type="info" text="str" />
-
-日志内容格式化
-
 ## 日志（文件）
 
-### `LOG_ACCESS_FILE_LEVEL` <Badge type="info" text="str" />
+### `LOG_FILE_ACCESS_LEVEL` <Badge type="info" text="str" />
 
 访问日志记录级别
 
-### `LOG_ERROR_FILE_LEVEL` <Badge type="info" text="str" />
+### `LOG_FILE_ERROR_LEVEL` <Badge type="info" text="str" />
 
 错误日志记录级别
 
@@ -326,10 +340,6 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 错误日志文件名
 
-### `LOG_FILE_FORMAT` <Badge type="info" text="str" />
-
-日志内容格式化
-
 ## 操作日志
 
 ### `OPERA_LOG_PATH_EXCLUDE` <Badge type="info" text="list[str]" />
@@ -338,7 +348,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `OPERA_LOG_ENCRYPT_TYPE` <Badge type="info" text="int" />
 
-操作日志加密类型
+操作日志中的接口请求参数加密类型
 
 - 0：AES (性能损耗)
 - 1：md5
@@ -348,17 +358,25 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `OPERA_LOG_ENCRYPT_KEY_INCLUDE` <Badge type="info" text="list[str]" />
 
-将操作日志中的指定字段值进行加密
+加密操作日志中的接口请求参数
+
+### `OPERA_LOG_QUEUE_BATCH_CONSUME_SIZE` <Badge type="info" text="int" />
+
+操作日志队列批量消费大小，达到上限后，操作日志将批量写入数据库
+
+### `OPERA_LOG_QUEUE_TIMEOUT` <Badge type="info" text="int" />
+
+操作日志队列超时时长，达到上限后，操作日志将批量写入数据库
 
 ## 插件配置
 
 ### `PLUGIN_PIP_CHINA` <Badge type="info" text="bool" />
 
-是否开启 pip 下载插件依赖国内加速
+通过 pip 下载插件依赖时，是否使用国内源
 
 ### `PLUGIN_PIP_INDEX_URL` <Badge type="info" text="str" />
 
-通过 pip 下载插件依赖时的索引地址，与 `PLUGIN_PIP_CHINA` 配置相辅相成
+通过 pip 下载插件依赖时的索引地址
 
 ### `PLUGIN_REDIS_PREFIX` <Badge type="info" text="str" />
 
@@ -368,7 +386,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `CAPTCHA_LOGIN_REDIS_PREFIX` <Badge type="info" text="str" />
 
-验证码登录时，验证码存储到 Redis 数据库时的前缀
+验证码登录时，验证码存储到 Redis 时的前缀
 
 ### `CAPTCHA_LOGIN_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
@@ -380,37 +398,37 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 #### `CELERY_BROKER_REDIS_DATABASE` <Badge type="info" text="int" />
 
-celery 代理使用的 Redis 逻辑数据库
+Celery 代理使用的 Redis 逻辑数据库
 
 #### `CELERY_RABBITMQ_HOST` <Badge type="info" text="str" />
 
-连接 RabbitMQ 服务的主机地址
+Celery 连接 RabbitMQ 服务的主机地址
 
 #### `CELERY_RABBITMQ_PORT` <Badge type="info" text="int" />
 
-连接 RabbitMQ 服务的主机端口号
+Celery 连接 RabbitMQ 服务的主机端口号
 
 #### `CELERY_RABBITMQ_USERNAME` <Badge type="info" text="str" />
 
-连接 RabbitMQ 服务的用户名
+Celery 连接 RabbitMQ 服务的用户名
 
 #### `CELERY_RABBITMQ_PASSWORD` <Badge type="info" text="str" />
 
-连接 RabbitMQ 服务的密码
+Celery 连接 RabbitMQ 服务的密码
 
 ### 基础配置
 
 #### `CELERY_BROKER` <Badge type="info" text="Literal['rabbitmq', 'redis']" />
 
-代理模式，开发模式默认使用 redis，线上模式强制切换为 rabbitmq
+Celery 代理模式（开发模式默认使用 Redis，线上模式强制切换为 Rabbitmq）
 
 #### `CELERY_REDIS_PREFIX` <Badge type="info" text="str" />
 
-任务应用默认使用的 Redis 逻辑数据库
+Celery 数据存储到 Redis 时的前缀
 
 #### `CELERY_TASK_MAX_RETRIES` <Badge type="info" text="int" />
 
-任务执行失败时的最大重试次数
+Celery 任务执行失败时的最大重试次数
 
 ## 插件：OAuth2
 
@@ -444,4 +462,4 @@ Linux Do 客户端密钥
 
 #### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
 
-下载代码压缩包时的文件名称
+下载代码时的 ZIP 压缩包文件名
