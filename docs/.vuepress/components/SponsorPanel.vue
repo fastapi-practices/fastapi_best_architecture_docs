@@ -10,7 +10,7 @@
     <div class="gold-sponsors">
       <div
           v-for="(brand, index) in processedGoldSponsors"
-          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
+          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand.expiryTime))"
           :key="'gold-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
@@ -28,7 +28,7 @@
     <div class="general-sponsors">
       <div
           v-for="(brand, index) in processedGeneralSponsors"
-          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand))"
+          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand.expiryTime))"
           :key="'general-' + index"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
@@ -69,19 +69,19 @@ const isCollapsed = useStorage('fba-docs-sponsor-collapsed', false);
 
 const processedGoldSponsors = computed(() => {
   return goldSponsors.map(brand => {
-    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
   });
 });
 
 const processedGeneralSponsors = computed(() => {
   return generalSponsors.map(brand => {
-    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
   });
 });
 
 const shouldShowExtraBecomeSponsor = computed(() => {
-  return (goldSponsors.filter(brand => brand.link && shouldShowSponsor(brand)).length +
-      generalSponsors.filter(brand => brand.link && shouldShowSponsor(brand)).length) < 9;
+  return (goldSponsors.filter(brand => brand.link && shouldShowSponsor(brand.expiryTime)).length +
+      generalSponsors.filter(brand => brand.link && shouldShowSponsor(brand.expiryTime)).length) < 9;
 });
 
 const toggleCollapse = () => {

@@ -2,10 +2,12 @@
   <div class="banner">
     <p class="vp-banner-text">
       <span class="vp-text-primary">FBA </span>
-      <span class="vp-tagline">· FasAPI</span>
-      <span class="vp-place"> 最佳架构</span>
-      <span class="vp-date"> · 插件系统已发布</span>
-      <a class="vp-primary-action" href="/fastapi_best_architecture_docs/plugin/before.html"> 甩起来 </a>
+      <span class="vp-tagline">企业级</span>
+      <span class="vp-place"> 后端架构解决方案</span>
+      <span class="vp-date"> · 架构源码全量开源</span>
+      <a class="vp-primary-action"
+         href="/fastapi_best_architecture_docs/backend/summary/quick-start.html"
+      >体验反馈</a>
     </p>
     <button @click="dismiss">
       <Icon name="mingcute:close-fill" />

@@ -25,22 +25,10 @@ import "swiper/css/effect-flip";
 import "swiper/css/effect-coverflow";
 import "swiper/css/effect-cards";
 import "swiper/css/effect-creative";
-import { defaultSponsor, shouldShowSponsor } from "../data/sponsors";
-
-interface SlideItem {
-  /**
-   * 图片地址
-   */
-  link?: string;
-  /**
-   * 跳转链接
-   */
-  href?: string;
-  alt?: string;
-}
+import { defaultSponsor, shouldShowSponsor, Sponsor } from "../data/sponsors";
 
 interface Props {
-  items?: SlideItem[];
+  items?: Sponsor[];
   width?: number | string; // 轮播区域宽度，单位 px
   height?: number | string; // 轮播区域高度，单位 px
   mode?: "banner" | "carousel" | "broadcast"; // banner: 轮播图模式; carousel: 走马灯模式; broadcast: 信息展播模式
@@ -68,17 +56,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const sponsors = computed(() => {
   return props.items.map(brand => {
-    return shouldShowSponsor(brand) ? brand : defaultSponsor;
+    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
   });
-});
-
-const slideList = computed<SlideItem[]>(() => {
-  return (
-      sponsors.value?.map((link) => {
-        if (typeof link === "string") return { link };
-        return link;
-      }) ?? []
-  );
 });
 
 function parseSize(size: number | string) {
@@ -182,7 +161,7 @@ onMounted(() => {
         v-bind="$attrs"
         @swiper="onSwiper"
     >
-      <SwiperSlide v-for="(item, index) in slideList" :key="'general-' + index">
+      <SwiperSlide v-for="(item, index) in sponsors" :key="'general-' + index">
         <a
             v-if="item.href && item.link"
             :href="item.href"

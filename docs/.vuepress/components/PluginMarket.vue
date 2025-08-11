@@ -3,28 +3,28 @@
   <div class="search-container">
     <input
         v-model="searchQuery"
-        type="text"
-        placeholder="🔍 搜索插件..."
         class="search-input"
+        placeholder="🔍 搜索插件..."
+        type="text"
     />
   </div>
   <div class="plugin-card-container">
     <div
         v-for="(item, index) in filteredItems"
         :key="index"
-        class="plugin-card"
         :class="{ 'clickable': item.link }"
+        class="plugin-card"
         @click="handleCardClick(item)"
     >
       <div class="card-image">
         <img
             v-if="item.image"
-            :src="item.image"
             :alt="item.title"
+            :src="item.image"
             class="image-content"
         />
         <div v-else class="image-placeholder">
-          <Icon :name="item.icon" size="5em" color="var(--vp-c-text-1)" />
+          <Icon :name="item.icon" color="var(--vp-c-text-1)" size="5em" />
         </div>
         <div
             v-if="item.free?.valueOf() === false"
@@ -40,8 +40,8 @@
           <div class="card-title-link">
             <a
                 :href="item.link"
-                target="_blank"
                 rel="noopener noreferrer"
+                target="_blank"
                 @click.stop
             />
             <span class="label-inline">{{ item.label || '内置' }}</span>
@@ -52,8 +52,8 @@
           <Badge
               v-for="(tag, tagIndex) in item.tags"
               :key="tagIndex"
-              :text="tag"
               :style="colors[tag]"
+              :text="tag"
           />
         </div>
       </div>
@@ -61,8 +61,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
 
 export interface PluginItem {
   icon: string

@@ -6,7 +6,7 @@
 
     <div class="qr-section">
       <button class="qr-toggle" @click="toggleQrOpen">
-        <span class="qr-toggle-icon" :class="{ 'open': qrOpen }"></span>
+        <span :class="{ 'open': qrOpen }" class="qr-toggle-icon"></span>
         扫码订阅
         <span v-if="qrOpen">收起</span>
         <span v-else>展开</span>
@@ -15,7 +15,7 @@
         <p>
           加入 <a href="https://discord.gg/Sdg6dT5kjz" target="_blank">Discord</a> 社区，可领取免费体验资格
         </p>
-        <img src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" alt="知识星球" class="qr-image" />
+        <img alt="知识星球" class="qr-image" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" />
       </div>
     </div>
 
@@ -27,8 +27,8 @@
       <button
           v-for="tab in tabs"
           :key="tab.id"
-          @click="activeTab = tab.id"
           :class="{ active: activeTab === tab.id }"
+          @click="activeTab = tab.id"
       >
         {{ tab.label }}
       </button>
@@ -49,17 +49,17 @@
         <LinkCard
             v-for="card in tabs.find((tab) => tab.id === activeTab)!.cards"
             :key="card.href"
-            :title="card.title"
-            :icon="card.icon"
-            :href="card.href"
             :description="card.description"
+            :href="card.href"
+            :icon="card.icon"
+            :title="card.title"
         />
       </CardGrid>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue';
 import { Card, fastapiCards, fbaCards, pluginCards } from "../data/planet";
 
