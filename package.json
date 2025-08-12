@@ -19,6 +19,7 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.24",
     "@vuepress/plugin-baidu-analytics": "2.0.0-rc.112",
+    "@vuepress/plugin-llms": "2.0.0-rc.112",
     "@vuepress/plugin-umami-analytics": "2.0.0-rc.112",
     "vue": "^3.5.18",
     "vuepress": "2.0.0-rc.24",

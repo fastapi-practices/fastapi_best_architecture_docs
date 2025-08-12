@@ -1,6 +1,6 @@
-import { defineNavbarConfig } from "vuepress-theme-plume";
+import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
-export const myNavbar = defineNavbarConfig([
+export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: '前端（在线体验）',
         items: [
@@ -120,7 +120,7 @@ export const myNavbar = defineNavbarConfig([
         text: '生态系统',
         items: [
             {
-                text: '资源',
+                text: '生态',
                 items: [
                     {
                         text: '开源项目',
