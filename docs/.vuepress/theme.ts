@@ -44,6 +44,7 @@ export const myTheme: Theme = plumeTheme({
     markdown: {
         abbr: true,
         annotation: true,
+        chat: true,
         mermaid: true,
     },
     codeHighlighter: {
