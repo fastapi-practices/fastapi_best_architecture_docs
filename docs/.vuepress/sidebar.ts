@@ -70,6 +70,7 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
+                { text: '插件市场', badge: { text: 'HOT', type: 'danger' }, link: '/market' },
             ]
         },
         {
@@ -85,13 +86,6 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '插件安装', link: 'install' }
-            ]
-        },
-        {
-            text: '市场',
-            collapsed: false,
-            items: [
-                { text: '插件市场', badge: { text: 'HOT', type: 'danger' }, link: '/market' },
             ]
         }
     ],

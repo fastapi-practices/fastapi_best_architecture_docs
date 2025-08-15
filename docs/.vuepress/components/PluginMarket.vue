@@ -121,7 +121,7 @@ const handleCardClick = (item: PluginItem) => {
 .plugin-card-container {
   display: grid;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1500px;
   padding: 1rem;
 }
 
