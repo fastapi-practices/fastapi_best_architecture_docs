@@ -42,7 +42,8 @@ ResponseModel 做为统一响应模型，你会在 Swagger 文档得到（如图
 
 ![response_model](/images/response_model.png)
 
-显然，我们无法获取响应中的 data 数据结构。此时前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面是我们创建的用于 Schema 模式的统一返回模型
+显然，我们无法获取响应中的 data 数据结构。此时前端同事找到你，你会告诉他们，你请求一下不就行了？（没毛病，但显然不太友好），下面是我们创建的用于
+Schema 模式的统一返回模型
 
 ```python
 class ResponseSchemaModel(ResponseModel, Generic[SchemaT]):
@@ -170,3 +171,7 @@ class SchemaBase(BaseModel):
 pydantic，详情：[pydantic.alias_generators](https://docs.pydantic.dev/latest/api/config/#pydantic.alias_generators)
 
 完成以上修改后，Schema 模式和返回数据将自动转为小驼峰命名
+
+## 国际化
+
+[请移步至 **国际化**](./i18n.md){.read-more}

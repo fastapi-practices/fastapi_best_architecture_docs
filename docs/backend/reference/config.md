@@ -4,64 +4,11 @@ title: 配置
 
 配置文件位于 `backend/core/conf.py`，fba 内的所有应用和插件配置都应统一放置在此文件内
 
-## 环境变量配置
+## 环境配置
 
-### `ENVIRONMENT` <Badge type="info" text="Literal['dev', 'pro']" />
+### `ENVIRONMENT` <Badge type="info" text="Literal['dev', 'pro']" /> <Badge type="warning" text="env" />
 
-指定环境模式，仅允许 `dev` 和 `pro`。当设置为 `pro` 时，openapi 相关在线文档将被禁止访问
-
-### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" />
-
-指定数据库类型，仅支持 `mysql` 和 `postgresql`，需注意第三方插件兼容性
-
-### `DATABASE_HOST` <Badge type="info" text="str" />
-
-提供数据库的主机地址
-
-### `DATABASE_PORT` <Badge type="info" text="int" />
-
-提供数据库的主机端口号
-
-### `DATABASE_USER` <Badge type="info" text="str" />
-
-连接数据库所使用的用户名
-
-### `DATABASE_PASSWORD` <Badge type="info" text="str" />
-
-连接数据库所使用的密码
-
-### `REDIS_HOST` <Badge type="info" text="int" />
-
-连接 Redis 数据库的主机地址
-
-### `REDIS_PORT` <Badge type="info" text="str" />
-
-连接 Redis 数据库的主机端口号
-
-### `REDIS_PASSWORD` <Badge type="info" text="int" />
-
-连接 Redis 数据库的密码
-
-### `REDIS_DATABASE` <Badge type="info" text="str" />
-
-全局默认使用的 Redis 逻辑数据库（0 - 15）
-
-### `TOKEN_SECRET_KEY` <Badge type="info" text="str" />
-
-token 生成和解析密钥，用于防止 token 被恶意篡改，密钥生成：`secrets.token_urlsafe(32)`
-
-::: danger
-请妥善保管此值，以免遭受恶意攻击
-:::
-
-### `OPERA_LOG_ENCRYPT_SECRET_KEY` <Badge type="info" text="" />
-
-操作日志加密密钥，当使用对称加密算法加密操作日志时，将十分重要，密钥生成：
-`os.urandom(32).hex()`
-
-::: danger
-请妥善保管此值，以免遭受恶意攻击
-:::
+指定环境模式，当设置为 `pro` 时，openapi 相关在线文档将被禁止访问
 
 ## FastAPI 配置
 
@@ -97,7 +44,27 @@ openapi JSON 数据在线地址
 
 是否开启 FastAPI 静态文件服务
 
-## 数据库基础配置
+## 数据库配置
+
+### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" /> <Badge type="warning" text="env" />
+
+指定数据库类型，仅支持 `mysql` 和 `postgresql`，需注意第三方插件兼容性
+
+### `DATABASE_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+提供数据库的主机地址
+
+### `DATABASE_PORT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
+
+提供数据库的主机端口号
+
+### `DATABASE_USER` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+连接数据库所使用的用户名
+
+### `DATABASE_PASSWORD` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+连接数据库所使用的密码
 
 ### `DATABASE_ECHO` <Badge type="info" text="bool | Literal['debug']" />
 
@@ -115,13 +82,37 @@ openapi JSON 数据在线地址
 
 数据库字符集，仅用于 mysql
 
-## Redis 基础配置
+## Redis 配置
 
-### `REDIS_TIMEOUT` <Badge type="info" text="int" />
+### `REDIS_TIMEOUT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 连接 Redis 数据库超时时长
 
-## Token 基础配置
+### `REDIS_HOST` <Badge type="info" text="int" />
+
+连接 Redis 数据库的主机地址
+
+### `REDIS_PORT` <Badge type="info" text="str" />
+
+连接 Redis 数据库的主机端口号
+
+### `REDIS_PASSWORD` <Badge type="info" text="int" />
+
+连接 Redis 数据库的密码
+
+### `REDIS_DATABASE` <Badge type="info" text="str" />
+
+全局默认使用的 Redis 逻辑数据库（0 - 15）
+
+## Token 配置
+
+### `TOKEN_SECRET_KEY` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+token 生成和解析密钥，用于防止 token 被恶意篡改，密钥生成：`secrets.token_urlsafe(32)`
+
+::: danger
+请妥善保管此值，以免遭受恶意攻击
+:::
 
 ### `TOKEN_ALGORITHM` <Badge type="info" text="str" />
 
@@ -129,11 +120,11 @@ token 加密算法
 
 ### `TOKEN_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-token 过期秒数
+token 过期时长
 
 ### `TOKEN_REFRESH_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-刷新 token 过期秒数
+刷新 token 过期时长
 
 ### `TOKEN_REDIS_PREFIX` <Badge type="info" text="str" />
 
@@ -190,7 +181,17 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `COOKIE_REFRESH_TOKEN_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-将刷新 token 存储到 cookie 时的过期时间
+将刷新 token 存储到 cookie 时的过期时长
+
+## 验证码配置
+
+### `CAPTCHA_LOGIN_REDIS_PREFIX` <Badge type="info" text="str" />
+
+验证码登录时，验证码存储到 Redis 时的前缀
+
+### `CAPTCHA_LOGIN_EXPIRE_SECONDS` <Badge type="info" text="int" />
+
+验证码登录时，验证码过期时长
 
 ## 数据权限配置
 
@@ -342,6 +343,15 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## 操作日志
 
+### `OPERA_LOG_ENCRYPT_SECRET_KEY` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+操作日志加密密钥，当使用对称加密算法加密操作日志时，将十分重要，密钥生成：
+`os.urandom(32).hex()`
+
+::: danger
+请妥善保管此值，以免遭受恶意攻击
+:::
+
 ### `OPERA_LOG_PATH_EXCLUDE` <Badge type="info" text="list[str]" />
 
 操作日志路径排除，在此配置内的请求地址不会记录操作日志
@@ -382,84 +392,94 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 插件信息存储到 Redis 时的前缀
 
-## 验证码配置
-
-### `CAPTCHA_LOGIN_REDIS_PREFIX` <Badge type="info" text="str" />
-
-验证码登录时，验证码存储到 Redis 时的前缀
-
-### `CAPTCHA_LOGIN_EXPIRE_SECONDS` <Badge type="info" text="int" />
-
-验证码登录时，验证码过期时间
-
 ## 应用：Task
 
-### 环境变量配置
-
-#### `CELERY_BROKER_REDIS_DATABASE` <Badge type="info" text="int" />
+### `CELERY_BROKER_REDIS_DATABASE` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 Celery 代理使用的 Redis 逻辑数据库
 
-#### `CELERY_RABBITMQ_HOST` <Badge type="info" text="str" />
+### `CELERY_RABBITMQ_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Celery 连接 RabbitMQ 服务的主机地址
 
-#### `CELERY_RABBITMQ_PORT` <Badge type="info" text="int" />
+### `CELERY_RABBITMQ_PORT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 Celery 连接 RabbitMQ 服务的主机端口号
 
-#### `CELERY_RABBITMQ_USERNAME` <Badge type="info" text="str" />
+### `CELERY_RABBITMQ_USERNAME` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Celery 连接 RabbitMQ 服务的用户名
 
-#### `CELERY_RABBITMQ_PASSWORD` <Badge type="info" text="str" />
+### `CELERY_RABBITMQ_PASSWORD` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Celery 连接 RabbitMQ 服务的密码
 
-### 基础配置
-
-#### `CELERY_BROKER` <Badge type="info" text="Literal['rabbitmq', 'redis']" />
+### `CELERY_BROKER` <Badge type="info" text="Literal['rabbitmq', 'redis']" />
 
 Celery 代理模式（开发模式默认使用 Redis，线上模式强制切换为 Rabbitmq）
 
-#### `CELERY_REDIS_PREFIX` <Badge type="info" text="str" />
+### `CELERY_REDIS_PREFIX` <Badge type="info" text="str" />
 
 Celery 数据存储到 Redis 时的前缀
 
-#### `CELERY_TASK_MAX_RETRIES` <Badge type="info" text="int" />
+### `CELERY_TASK_MAX_RETRIES` <Badge type="info" text="int" />
 
 Celery 任务执行失败时的最大重试次数
 
-## 插件：OAuth2
-
-### 环境变量配置
-
-#### `OAUTH2_GITHUB_CLIENT_ID` <Badge type="info" text="str" />
-
-GitHub 客户端 ID
-
-#### `OAUTH2_GITHUB_CLIENT_SECRET` <Badge type="info" text="str" />
-
-GitHub 客户端密钥
-
-#### `OAUTH2_LINUX_DO_CLIENT_ID` <Badge type="info" text="str" />
-
-Linux Do 客户端 ID
-
-#### `OAUTH2_LINUX_DO_CLIENT_SECRET` <Badge type="info" text="str" />
-
-Linux Do 客户端密钥
-
-### 基础配置
-
-#### `OAUTH2_FRONTEND_REDIRECT_URI` <Badge type="info" text="str" />
-
-登陆成功后，重定向到前端的地址
-
 ## 插件：Code Generator
-
-### 基础配置
 
 #### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
 
 下载代码时的 ZIP 压缩包文件名
+
+## 插件：OAuth2
+
+### `OAUTH2_GITHUB_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+GitHub 客户端 ID
+
+### `OAUTH2_GITHUB_CLIENT_SECRET` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+GitHub 客户端密钥
+
+### `OAUTH2_LINUX_DO_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+Linux Do 客户端 ID
+
+### `OAUTH2_LINUX_DO_CLIENT_SECRET` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+Linux Do 客户端密钥
+
+### `OAUTH2_FRONTEND_REDIRECT_URI` <Badge type="info" text="str" />
+
+登陆成功后，重定向到前端的地址
+
+## 插件：Email
+
+### `EMAIL_USERNAME` <Badge type="info" text="str" />
+
+电子邮箱发件用户
+
+### `EMAIL_PASSWORD` <Badge type="info" text="str" />
+
+电子邮箱发件用户密码
+
+### `EMAIL_HOST` <Badge type="info" text="str" />
+
+电子邮箱服务主机地址
+
+### `EMAIL_PORT` <Badge type="info" text="int" />
+
+电子邮箱服务主机端口号
+
+### `EMAIL_SSL` <Badge type="info" text="bool" />
+
+发送电子邮件时，是否开启 SSL
+
+### `EMAIL_CAPTCHA_REDIS_PREFIX` <Badge type="info" text="str" />
+
+电子邮件验证码存储到 Redis 时的前缀
+
+### `EMAIL_CAPTCHA_EXPIRE_SECONDS` <Badge type="info" text="int" />
+
+电子邮件验证码缓存时长

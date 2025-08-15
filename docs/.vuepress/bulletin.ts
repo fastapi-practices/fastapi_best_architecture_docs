@@ -1,7 +1,7 @@
 import { BulletinOptions } from "vuepress-theme-plume";
 
 export const myBulletin: BulletinOptions = {
-    layout: 'center',
+    // layout: 'center',
     border: true,
     enablePage: true,
     lifetime: 'session',
@@ -9,32 +9,19 @@ export const myBulletin: BulletinOptions = {
     title: '公告',
     content: `\
 ::: center
-📣📣📣 号外号外 📣📣📣
+🎉 v1.8.0 已发布 🎉
 :::
 
-我们正在为 ==v1.8.0=={.tip} 做最后的准备，为后端响应信息提供 ==i18n=={.important} 支持
+此版本为==重大更新=={.warning}，我们为大家带来了：
 
-此功能向后兼容并已准备就绪：[PR #753](https://github.com/fastapi-practices/fastapi_best_architecture/pull/753) 
+- 计划任务分布式锁
+- 身份验证白名单正则表达式配置
+- 优化树节点的数据排序逻辑
+- 通过队列优化 Opera 日志存储逻辑
+- 优化时区日期时间返回编码器
+- 为响应消息添加 i18n 支持
+- ...
 
-::: chat title="群聊"
-{:2025-08-14 22:53:00}
-
-{.}
-i18n ==PR== 已经准备好了，如果没有问题，让我们合并它
-
-{downdawn}
-这个改版有点大，我们是否要考虑一下做分支，或者发起投票征求一下意见
-
-{.}
-这个 PR 目前是向后兼容的，理论上没有什么问题，我的想法是在本周的 v1.8.0 版本中提供，稍后我在 discord 上面发个投票看看
-
-{.}
-我们暂时先不要合并，等待社区反馈结果
-
-{.}
-==欢迎参与=={.important}：[投票链接](https://discord.com/channels/1185035164577972344/1322545989239832617/1405572816363065536)
-:::
-
-这是一个重大变更，非常期待大家的参与 🤗🤗🤗
+为大家带来以上惊喜的同时，前端实施也在悄悄推进中，==代码生成页面已完成=={.important}，快快[本地部署](https://fastapi-practices.github.io/fastapi_best_architecture_docs/frontend/summary/quick-start.html)尝鲜吧~
 `,
 }
