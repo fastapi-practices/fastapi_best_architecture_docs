@@ -2,9 +2,9 @@
   <div class="pricing-container">
     <h1 class="pricing-title">选择适合您的版本</h1>
     <p class="pricing-subtitle">
-      所有版本均无需商业授权<br>
+      以下所有版本仅用于赞助支持<br>
       <span style="color: #fd7600;">
-        此仓库作为模板库公开，任何个人或企业均可自由使用！
+        ✨此架构无需商业授权，任何个人或企业均可自由使用✨
       </span>
     </p>
     <div class="pricing-cards">

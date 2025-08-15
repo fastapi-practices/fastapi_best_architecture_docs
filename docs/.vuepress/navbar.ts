@@ -166,7 +166,8 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '特权',
                 items: [
                     {
-                        text: '购买特权',
+                        text: 'Pricing',
+                        icon: 'solar:tag-price-bold',
                         link: '/pricing'
                     },
                     {
