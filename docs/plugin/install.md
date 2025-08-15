@@ -28,14 +28,14 @@ title: 插件安装
 
     - 通过 fba 插件下载接口下载的 zip 压缩包
 
-2. 将 zip 压缩包通过 zip 插件安装接口进行安装
+2. 将 zip 压缩包通过 fba zip 插件安装接口进行安装
 3. 根据插件说明（README.md）进行相关配置
 4. 重启服务
 
 @tab GIT
 
 1. 获取插件 git 仓库地址，理论上支持任何平台（GitHub、Gitlab、Gitee、Gitea...）
-2. 通过 git 插件安装接口进行安装
+2. 通过 fba git 插件安装接口进行安装
 3. 根据插件说明（README.md）进行相关配置
 4. 重启服务
 

@@ -8,7 +8,8 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '线上演示',
                 items: [
                     {
-                        text: 'Vben Admin Antd 完整版实施',
+                        text: 'Vben Admin Antd',
+                        icon: 'iconoir:www',
                         link: 'https://fba.wu-clan.site/'
                     },
                     {
@@ -22,26 +23,30 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '文档',
                 items: [
                     {
-                        text: 'Arco Design Pro 实验性实施',
+                        text: 'Arco Design Pro',
+                        icon: 'material-symbols:docs',
                         link: '/frontend/summary/arco',
                         badge: { text: '已弃用', type: 'danger' }
                     },
                     {
-                        text: 'Vben Admin Antd 完整版实施',
+                        text: 'Vben Admin Antd',
+                        icon: 'material-symbols:docs',
                         link: '/frontend/summary/intro'
                     }
                 ]
             },
             {
-                text: 'GitHub',
+                text: '仓库地址',
                 items: [
                     {
-                        text: 'Arco Design Pro 实验性实施',
+                        text: 'Arco Design Pro',
+                        icon: 'mdi:github',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco',
                         badge: { text: '已弃用', type: 'danger' }
                     },
                     {
-                        text: 'Vben Admin Antd 完整版实施',
+                        text: 'Vben Admin Antd',
+                        icon: 'mdi:github',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
                     }
                 ]
@@ -100,15 +105,12 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     },
     {
         text: '插件系统',
-        badge: { text: 'HOT', type: 'danger' },
+        icon: 'unjs:unplugin',
         link: '/plugin/before'
     },
     {
-        text: '购买特权',
-        link: '/pricing'
-    },
-    {
         text: '赞助',
+        icon: 'material-icon-theme:github-sponsors',
         link: '/sponsors'
     },
     {
@@ -163,6 +165,10 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
             {
                 text: '特权',
                 items: [
+                    {
+                        text: '购买特权',
+                        link: '/pricing'
+                    },
                     {
                         text: '知识星球',
                         icon: 'ph:planet-fill',
