@@ -4,7 +4,7 @@ export const pluginItems: PluginItem[] = [
     {
         icon: "fa6-regular:file-code",
         title: "代码生成",
-        description: "生成通用业务代码（仅后端工程）",
+        description: "生成通用业务代码",
         tags: ["mysql", "pgsql", "后端"],
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png'
     },
@@ -18,14 +18,14 @@ export const pluginItems: PluginItem[] = [
     {
         icon: "fluent-mdl2:dictionary",
         title: "数据字典",
-        description: "通常用于约束前端工程数据展示",
+        description: "通常用于约束前端工程数据传输/展示",
         tags: ["mysql", "pgsql", "后端"],
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png'
     },
     {
         icon: "icon-park-outline:config",
         title: "参数配置",
-        description: "通常用于前端工程数据展示",
+        description: "通常用于动态配置系统参数/前端工程数据展示",
         tags: ["mysql", "pgsql", "后端"],
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png'
     },
