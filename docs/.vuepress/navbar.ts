@@ -2,7 +2,7 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
-        text: '前端（在线体验）',
+        text: '在线体验',
         items: [
             {
                 text: '线上演示',
@@ -10,6 +10,11 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: 'Vben Admin Antd 完整版实施',
                         link: 'https://fba.wu-clan.site/'
+                    },
+                    {
+                        text: '服务状态',
+                        icon: 'simple-icons:uptimekuma',
+                        link: 'https://status.wu-clan.site/status/services'
                     }
                 ]
             },
@@ -46,16 +51,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: 'v1.7.0',
         items: [
-            {
-                text: '线上演示',
-                items: [
-                    {
-                        text: '服务状态',
-                        icon: 'simple-icons:uptimekuma',
-                        link: 'https://status.wu-clan.site/status/services'
-                    }
-                ]
-            },
             {
                 text: '文档',
                 items: [
@@ -134,6 +129,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     },
                     {
                         text: '用户登记',
+                        badge: { text: '欢迎投稿', type: 'warning' },
                         icon: 'mdi:user-check',
                         link: '/users'
                     },
@@ -191,7 +187,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 link: '/questions.md'
             },
             {
-                text: '维护团队',
+                text: '社区团队',
                 icon: 'fa-solid:user-friends',
                 link: '/team'
             },

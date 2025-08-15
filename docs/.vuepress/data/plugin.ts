@@ -37,6 +37,13 @@ export const pluginItems: PluginItem[] = [
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png'
     },
     {
+        icon: "ic:twotone-email",
+        title: "Email",
+        description: "发送电子邮件，例如验证码、通知等",
+        tags: ["mysql", "pgsql", "后端"],
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png'
+    },
+    {
         icon: "charm:shield-keyhole",
         title: "Casbin-RBAC",
         description: "基于 Casbin 实现的 RBAC 权限",

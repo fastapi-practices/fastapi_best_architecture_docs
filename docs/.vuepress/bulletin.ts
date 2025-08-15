@@ -4,7 +4,7 @@ export const myBulletin: BulletinOptions = {
     layout: 'center',
     border: true,
     enablePage: true,
-    lifetime: 'always',
+    lifetime: 'session',
     contentType: 'markdown',
     title: '公告',
     content: `\
