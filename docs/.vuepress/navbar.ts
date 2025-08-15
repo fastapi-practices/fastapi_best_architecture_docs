@@ -117,7 +117,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: '生态系统',
         items: [
             {
-                text: '生态',
+                text: '开发',
                 items: [
                     {
                         text: '开源项目',
