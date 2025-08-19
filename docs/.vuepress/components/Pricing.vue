@@ -82,7 +82,7 @@
 </template>
 
 <script setup>
-import { plans } from "../data/price";
+import { plans } from "../data/pricing";
 import { openSponsorLink } from "../data/sponsors";
 </script>
 

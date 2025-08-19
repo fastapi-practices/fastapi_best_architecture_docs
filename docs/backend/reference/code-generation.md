@@ -43,12 +43,6 @@ title: 代码生成
 
 ## 效果预览
 
-::: note
-以下效果展示来自于前端项目：Arco Desgin Pro
-:::
-
 ![cg1](/images/code-generator1.png)
 
 ![cg2](/images/code-generator2.png)
-
-![cg3](/images/code-generator3.png)

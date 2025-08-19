@@ -14,9 +14,10 @@ title: 技术栈
   <LinkCard title="Pydantic" icon="https://avatars.githubusercontent.com/u/110818415?s=200&v=4" href="https://docs.pydantic.dev/latest/" />
   <LinkCard title="Python-Socketio" icon="https://avatars.githubusercontent.com/u/2715854?v=4" href="https://python-socketio.readthedocs.io/en/stable/" />
   <LinkCard title="Celery" icon="https://avatars.githubusercontent.com/u/319983?s=200&v=4" href="https://docs.celeryq.dev/en/stable/" />
-  <LinkCard title="Granian" icon="https://avatars.githubusercontent.com/u/46401492?s=200&v=4" href="https://github.com/emmett-framework/granian" />
+  <LinkCard title="Loguru" icon="https://raw.githubusercontent.com/Delgan/loguru/master/docs/_static/img/logo.png" href="https://loguru.readthedocs.io/en/stable/" />
   <LinkCard title="Uv" icon="https://docs.astral.sh/uv/assets/logo-letter.svg" href="https://docs.astral.sh/uv/" />
   <LinkCard title="Ruff" icon="https://docs.astral.sh/ruff/assets/bolt.svg" href="https://docs.astral.sh/ruff/" />
+  <LinkCard title="Granian" icon="https://avatars.githubusercontent.com/u/46401492?s=200&v=4" href="https://github.com/emmett-framework/granian" />
   <LinkCard title="Docker" icon="logos:docker-icon" href="https://www.docker.com/" />
 </CardGrid>
 

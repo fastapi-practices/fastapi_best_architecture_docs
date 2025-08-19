@@ -10,7 +10,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: 'Vben Admin Antd',
                         icon: 'iconoir:www',
-                        link: 'https://fba.wu-clan.site/'
+                        link: 'https://fba.wu-clan.site/',
                     },
                     {
                         text: '服务状态',
@@ -54,7 +54,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         ]
     },
     {
-        text: 'v1.7.0',
+        text: 'v1.8.0',
         items: [
             {
                 text: '文档',
@@ -177,7 +177,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     },
                     {
                         text: '视频课程',
-                        badge: { text: '限时开放', type: 'warning' },
+                        badge: { text: '重制中', type: 'warning' },
                         icon: 'ri:bilibili-fill',
                         link: 'https://space.bilibili.com/284237214/lists'
                     },
