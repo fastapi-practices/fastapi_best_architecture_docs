@@ -25,7 +25,7 @@ import "swiper/css/effect-flip";
 import "swiper/css/effect-coverflow";
 import "swiper/css/effect-cards";
 import "swiper/css/effect-creative";
-import { defaultSponsor, shouldShowSponsor, Sponsor } from "../data/sponsors";
+import { shouldShowSponsor, Sponsor } from "../data/sponsors";
 
 interface Props {
   items?: Sponsor[];
@@ -52,12 +52,6 @@ const props = withDefaults(defineProps<Props>(), {
   loop: true,
   pauseOnMouseEnter: false,
   swipe: true
-});
-
-const sponsors = computed(() => {
-  return props.items.map(brand => {
-    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
-  });
 });
 
 function parseSize(size: number | string) {
@@ -161,9 +155,9 @@ onMounted(() => {
         v-bind="$attrs"
         @swiper="onSwiper"
     >
-      <SwiperSlide v-for="(item, index) in sponsors" :key="'general-' + index">
+      <SwiperSlide v-for="item in props.items">
         <a
-            v-if="item.href && item.link"
+            v-if="shouldShowSponsor(item)"
             :href="item.href"
             class="swiper-slide-link no-icon"
             rel="noopener noreferrer"
@@ -171,18 +165,6 @@ onMounted(() => {
         >
           <img :alt="item.alt" :src="item.link" class="swiper-slide-custom-container swiper-slide-img" />
         </a>
-        <div v-else-if="item.alt" class="swiper-slide-custom-container">
-          <a
-              v-if="item.href"
-              :href="item.href"
-              class="swiper-slide-text-link"
-              rel="noopener noreferrer"
-              target="_blank"
-          >
-            <div class="swiper-slide-text">{{ item.alt }}</div>
-          </a>
-          <div v-else class="swiper-slide-text">{{ item.alt }}</div>
-        </div>
       </SwiperSlide>
     </Swiper>
   </ClientOnly>

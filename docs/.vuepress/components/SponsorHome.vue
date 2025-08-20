@@ -1,5 +1,5 @@
 <template>
-  <section v-if="shouldShowSponsor(homeSponsor.expiryTime)" id="special-spsr">
+  <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
     <span>特别赞助商</span>
     <a :href="homeSponsor.href" target="_blank">
       <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="208" />

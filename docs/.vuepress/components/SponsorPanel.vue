@@ -9,42 +9,34 @@
   <div class="brand-container">
     <div class="gold-sponsors">
       <div
-          v-for="(brand, index) in processedGoldSponsors"
-          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand.expiryTime))"
-          :key="'gold-' + index"
+          v-for="brand in goldSponsors"
+          v-show="shouldShowSponsor(brand)"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
           @click="openSponsorLink(brand.href)"
       >
-        <img v-if="!isCollapsed && brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
-        <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
-          {{ brand.alt }}
-        </span>
-        <span v-if="isCollapsed" class="brand-text collapsed-text">
+        <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <span v-else class="brand-text collapsed-text">
           {{ brand.alt }}
         </span>
       </div>
     </div>
     <div class="general-sponsors">
       <div
-          v-for="(brand, index) in processedGeneralSponsors"
-          v-show="!isCollapsed || (isCollapsed && shouldShowSponsor(brand.expiryTime))"
-          :key="'general-' + index"
+          v-for="brand in generalSponsors"
+          v-show="shouldShowSponsor(brand)"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
           @click="openSponsorLink(brand.href)"
       >
-        <img v-if="!isCollapsed && brand.link" :alt="brand.alt" :src="brand.link" class="brand-image" />
-        <span v-if="!isCollapsed && brand.alt.includes('成为赞助商')" class="brand-text">
-          {{ brand.alt }}
-        </span>
-        <span v-if="isCollapsed" class="brand-text collapsed-text">
+        <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <span v-else class="brand-text collapsed-text">
           {{ brand.alt }}
         </span>
       </div>
     </div>
     <div
-        v-if="isCollapsed && shouldShowExtraBecomeSponsor"
+        v-if="shouldShowExtraBecomeSponsor"
         class="brand-item become-brand"
         @click="openSponsorLink(sponsorUrl)"
     >
@@ -56,7 +48,6 @@
 <script setup>
 import { computed } from "vue";
 import {
-  defaultSponsor,
   generalSponsors,
   goldSponsors,
   openSponsorLink,
@@ -67,21 +58,9 @@ import { useStorage } from "@vueuse/core";
 
 const isCollapsed = useStorage('fba-docs-sponsor-collapsed', false);
 
-const processedGoldSponsors = computed(() => {
-  return goldSponsors.map(brand => {
-    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
-  });
-});
-
-const processedGeneralSponsors = computed(() => {
-  return generalSponsors.map(brand => {
-    return shouldShowSponsor(brand.expiryTime) ? brand : defaultSponsor;
-  });
-});
-
 const shouldShowExtraBecomeSponsor = computed(() => {
-  return (goldSponsors.filter(brand => brand.link && shouldShowSponsor(brand.expiryTime)).length +
-      generalSponsors.filter(brand => brand.link && shouldShowSponsor(brand.expiryTime)).length) < 9;
+  return (goldSponsors.filter(brand => shouldShowSponsor(brand)).length +
+      generalSponsors.filter(brand => shouldShowSponsor(brand)).length) < 9;
 });
 
 const toggleCollapse = () => {

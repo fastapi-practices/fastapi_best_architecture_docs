@@ -9,7 +9,7 @@
           @click="openSponsorLink(homeSponsor.href)"
       >
         <img
-            v-if="shouldShowSponsor(homeSponsor.expiryTime)"
+            v-if="shouldShowSponsor(homeSponsor)"
             :alt="homeSponsor.alt"
             :src="homeSponsor.link"
             class="brand-image"

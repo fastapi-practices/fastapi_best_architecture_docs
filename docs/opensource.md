@@ -7,15 +7,15 @@ title: 开源项目
 ## 官方
 
 <CardGrid>
-  <RepoCard repo="fastapi-practices/fastapi_best_architecture" />
-  <RepoCard repo="fastapi-practices/fastapi_best_architecture_ui" />
-  <RepoCard repo="fastapi-practices/fast-captcha" />
-  <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" />
-  <RepoCard repo="fastapi-practices/fastapi-oauth20" />
-  <RepoCard repo="fastapi-practices/fastapi_sqlalchemy_mysql" />
-  <RepoCard repo="fastapi-practices/fastapi_tortoise_mysql" />
-  <RepoCard repo="fastapi-practices/fastapi_scheduler" />
-  <RepoCard repo="fastapi-practices/fastapi_best_architecture_ui_arco" />
+  <RepoCard repo="fastapi-practices/fastapi_best_architecture" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi_best_architecture_ui" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fast-captcha" :fullname="false" />
+  <RepoCard repo="fastapi-practices/sqlalchemy-crud-plus" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi-oauth20" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi_sqlalchemy_mysql" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi_tortoise_mysql" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi_scheduler" :fullname="false" />
+  <RepoCard repo="fastapi-practices/fastapi_best_architecture_ui_arco" :fullname="false" />
 </CardGrid>
 
 ## 第三方

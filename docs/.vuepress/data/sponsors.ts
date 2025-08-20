@@ -11,7 +11,7 @@ export const defaultSponsor: Sponsor = {
     link: '',
     href: sponsorUrl,
     alt: '成为赞助商',
-    expiryTime: '',
+    expiryTime: '2099-12-31T23:59:59',
 };
 
 export const homeSponsor: Sponsor = { ...defaultSponsor };
@@ -19,11 +19,12 @@ export const homeSponsor: Sponsor = { ...defaultSponsor };
 
 export const goldSponsors: Sponsor[] = [
     {
-        link: 'https://img14.360buyimg.com/ddimg/jfs/t1/284966/5/22913/37242/68023351Faddd8304/6337ad52ea02ad10.jpg',
-        href: 'https://share.302.ai/LJojhb',
-        alt: '302.AI',
-        expiryTime: '2025-06-18T16:35:00',
-    }
+        link: '',
+        href: 'https://www.serpshot.com',
+        alt: 'Serpshot',
+        expiryTime: '2099-12-31T23:59:59',
+    },
+    { ...defaultSponsor }
 ]
 
 export const generalSponsors: Sponsor[] = [
@@ -40,10 +41,10 @@ export const openSponsorLink = (href: string) => {
     window.open(href);
 };
 
-export function shouldShowSponsor(expiryTime?: string): boolean {
-    if (expiryTime) {
+export function shouldShowSponsor(sponsor: Sponsor): boolean {
+    if (!sponsor.alt.includes('成为赞助商') && sponsor.expiryTime) {
         const now = new Date();
-        const expiryDate = new Date(expiryTime);
+        const expiryDate = new Date(sponsor.expiryTime);
         return now < expiryDate;
     }
     return false;
