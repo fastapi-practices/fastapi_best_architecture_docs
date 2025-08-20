@@ -19,7 +19,7 @@ export const homeSponsor: Sponsor = { ...defaultSponsor };
 
 export const goldSponsors: Sponsor[] = [
     {
-        link: '',
+        link: 'https://www.serpshot.com/logo.png',
         href: 'https://www.serpshot.com',
         alt: 'Serpshot',
         expiryTime: '2099-12-31T23:59:59',
