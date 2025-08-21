@@ -84,6 +84,8 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    跳过此步骤，启动 fba 后将自动创建
 
    @tab Alembic 迁移
+   在 `backend` 目录 打开终端
+
    生成迁移文件
 
    ```shell:no-line-numbers
