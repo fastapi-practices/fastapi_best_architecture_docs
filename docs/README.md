@@ -26,7 +26,7 @@ config:
   - type: features
     features:
       - title: 最新技术栈
-        icon: 🚀
+        icon: ✨
         details: 基于 FastAPI、SQLAlchemy 2.0、Pydantic-v2、Celery 等技术栈
       - title: 自研架构
         icon: 🧠

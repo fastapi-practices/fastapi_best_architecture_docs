@@ -8,7 +8,7 @@
   </section>
   <section v-else id="special-spsr">
     <span class="no-brand">
-      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_blank">特别赞助位目前空缺 - 立即咨询 💬</a>
+      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_blank">独家赞助商席位现已空缺 - 立即咨询</a>
     </span>
   </section>
 </template>
@@ -22,7 +22,7 @@ import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
   display: flex;
   justify-content: center;
   padding: 0 24px;
-  color: var(--vp-c-brand-1) !important;
+  color: var(--vp-c-text-2) !important;
 }
 
 @keyframes no-brand {

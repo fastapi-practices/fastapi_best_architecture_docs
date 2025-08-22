@@ -30,14 +30,19 @@
     }
 }
 
+.vp-home-hero:not(.full) .container {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+
 /* 公告板 */
 .vp-bulletin {
-    width: 20%
+    width: 380px;
 }
 
 /* 首页文字说明 */
 .hero-text {
-    margin: 24px 0 40px !important;
+    margin: 24px 0 49px !important;
 }
 
 /* 首页按钮 */
