@@ -2,13 +2,13 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
-        text: '在线体验',
+        text: 'v1.8.0',
         items: [
             {
-                text: '线上演示',
+                text: '在线体验',
                 items: [
                     {
-                        text: 'Vben Admin Antd',
+                        text: 'Vben Admin',
                         icon: 'iconoir:www',
                         link: 'https://fba.wu-clan.site/',
                     },
@@ -23,43 +23,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '文档',
                 items: [
                     {
-                        text: 'Arco Design Pro',
-                        icon: 'material-symbols:docs',
-                        link: '/frontend/summary/arco',
-                        badge: { text: '已弃用', type: 'danger' }
-                    },
-                    {
-                        text: 'Vben Admin Antd',
-                        icon: 'material-symbols:docs',
-                        link: '/frontend/summary/intro'
-                    }
-                ]
-            },
-            {
-                text: '仓库地址',
-                items: [
-                    {
-                        text: 'Arco Design Pro',
-                        icon: 'mdi:github',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui_arco',
-                        badge: { text: '已弃用', type: 'danger' }
-                    },
-                    {
-                        text: 'Vben Admin Antd',
-                        icon: 'mdi:github',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture_ui'
-                    }
-                ]
-            },
-        ]
-    },
-    {
-        text: 'v1.8.0',
-        items: [
-            {
-                text: '文档',
-                items: [
-                    {
                         text: '快速开始',
                         icon: 'material-symbols:start',
                         link: '/backend/summary/quick-start.md'
@@ -69,6 +32,16 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'simple-icons:apifox',
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
+                    {
+                        text: 'Arco Admin',
+                        icon: 'material-symbols:docs',
+                        link: '/frontend/summary/arco',
+                    },
+                    {
+                        text: 'Vben Admin',
+                        icon: 'material-symbols:docs',
+                        link: '/frontend/summary/intro'
+                    }
                 ]
             },
             {
@@ -78,11 +51,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: '常见问题',
                         icon: 'healthicons:question',
                         link: '/questions.md'
-                    },
-                    {
-                        text: '技术支持',
-                        icon: 'fluent-emoji-high-contrast:unicorn',
-                        link: '/group.md'
                     },
                     {
                         text: '参与贡献',
@@ -102,16 +70,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
         ]
-    },
-    {
-        text: '插件系统',
-        icon: 'unjs:unplugin',
-        link: '/plugin/before'
-    },
-    {
-        text: '赞助',
-        icon: 'material-icon-theme:github-sponsors',
-        link: '/sponsors'
     },
     {
         text: '生态系统',
@@ -166,11 +124,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '特权',
                 items: [
                     {
-                        text: 'Pricing',
-                        icon: 'solar:tag-price-bold',
-                        link: '/pricing'
-                    },
-                    {
                         text: '知识星球',
                         icon: 'ph:planet-fill',
                         link: '/planet'
@@ -184,6 +137,21 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             }
         ]
+    },
+    {
+        text: '插件系统',
+        icon: 'unjs:unplugin',
+        link: '/plugin/before'
+    },
+    {
+        text: 'Pricing',
+        icon: 'streamline-color:bag-dollar',
+        link: '/pricing'
+    },
+    {
+        text: '赞助',
+        icon: 'material-icon-theme:github-sponsors',
+        link: '/sponsors'
     },
     {
         text: '关于',

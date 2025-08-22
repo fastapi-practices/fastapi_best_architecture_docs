@@ -1,14 +1,14 @@
 <template>
   <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
     <span>特别赞助商</span>
-    <a :href="homeSponsor.href" target="_blank">
+    <a :href="homeSponsor.href" target="_self">
       <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="208" />
     </a>
     <span>fba 官方合作伙伴</span>
   </section>
   <section v-else id="special-spsr">
     <span class="no-brand">
-      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_blank">独家赞助商席位现已空缺 - 立即咨询</a>
+      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_self">独家赞助商席位现已空缺 - 立即咨询</a>
     </span>
   </section>
 </template>

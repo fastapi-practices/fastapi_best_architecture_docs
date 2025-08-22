@@ -37,8 +37,8 @@ export const generalSponsors: Sponsor[] = [
     { ...defaultSponsor }
 ]
 
-export const openSponsorLink = (href: string) => {
-    window.open(href);
+export const openSponsorLink = (href: string, target?: string) => {
+    window.open(href, target || '_self');
 };
 
 export function shouldShowSponsor(sponsor: Sponsor): boolean {

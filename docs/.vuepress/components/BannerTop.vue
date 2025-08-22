@@ -7,6 +7,7 @@
       <span class="vp-date"> · 架构源码全量开源</span>
       <a class="vp-primary-action"
          href="/fastapi_best_architecture_docs/backend/summary/quick-start.html"
+         target="_self"
       >体验反馈</a>
     </p>
     <button @click="dismiss">

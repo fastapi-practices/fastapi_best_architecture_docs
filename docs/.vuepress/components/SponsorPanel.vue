@@ -13,7 +13,7 @@
           v-show="shouldShowSponsor(brand)"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
-          @click="openSponsorLink(brand.href)"
+          @click="openSponsorLink(brand.href, '_blank')"
       >
         <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
         <span v-else class="brand-text collapsed-text">
@@ -27,7 +27,7 @@
           v-show="shouldShowSponsor(brand)"
           :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
-          @click="openSponsorLink(brand.href)"
+          @click="openSponsorLink(brand.href, '_blank')"
       >
         <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
         <span v-else class="brand-text collapsed-text">

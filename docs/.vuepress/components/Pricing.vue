@@ -1,10 +1,10 @@
 <template>
   <div class="pricing-container">
-    <h1 class="pricing-title">选择适合您的版本</h1>
+    <h1 class="pricing-title">欢乐 0 元购</h1>
     <p class="pricing-subtitle">
-      以下所有版本仅用于赞助支持<br>
-      <span style="color: #fd7600;">
-        ✨此架构无需商业授权，任何个人或企业均可自由使用✨
+      ✨此架构无需商业授权，任何个人或企业均可自由使用✨<br>
+      <span style="color: var(--vp-c-text-2)">
+        以下付费版本仅用于赞助支持，非必须购买
       </span>
     </p>
     <div class="pricing-cards">
@@ -51,7 +51,8 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button primary" @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
+        <button class="cta-button primary"
+                @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
         </button>
       </div>
 
@@ -75,7 +76,7 @@
             </li>
           </ul>
         </div>
-        <button class="cta-button" style="color: #fd7600 !important;">无此方案</button>
+        <button class="cta-button">无此方案</button>
       </div>
     </div>
   </div>
@@ -87,11 +88,6 @@ import { openSponsorLink } from "../data/sponsors";
 </script>
 
 <style scoped>
-.pricing-subtitle {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
 .pricing-container {
   margin: 0 auto;
   padding: 2rem 0;
@@ -101,7 +97,14 @@ import { openSponsorLink } from "../data/sponsors";
 
 .pricing-title {
   text-align: center;
+  color: #fd7600;
   margin: 3rem 0 3rem;
+}
+
+.pricing-subtitle {
+  text-align: center;
+  color: #fd7600;
+  margin-bottom: 3rem;
 }
 
 .pricing-cards {
