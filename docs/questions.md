@@ -60,3 +60,33 @@ return await self.select_order(  # [!code word:noload]
 `DETAIL: Key (id)=(x) already exists` 的错误
 
 解决方案请自行浏览器搜索：如何重置 pg 主键序列？
+
+## 数据库时区陷阱
+
+MySQL 不支持时区类型（数据库驱动设计便是如此），而 PostgreSQL 拥有完美的时区类型，以下是一个时区相关的经典案例
+
+::: chat title="群聊"
+{:2025-08-26 12:44:00}
+
+{王}
+请教大佬，为啥我查询的时间用的不同的时区和时间戳，返回的数据却是一样的？
+
+![question_db_timezone](/images/question_db_timezone.png)
+
+数据库用的是 mysql，原则上这两个 datetime 的时间戳是不一样的，但是查出来的数据是一样的结果；
+
+{王}
+我直接写sql查询，这个两个是符合预期结果的，第一个有数据，第二个查不到；
+
+![question_sql_timezone](/images/question_sql_timezone.png)
+
+这个切换到pg数据库后查询符合预期结果的；
+
+{.}
+**timezone**: not used by the MySQL dialect.
+
+sqla 不处理 mysql 时区，即便换成 TIMESTAMP
+
+{.}
+更具体的：[sqlalchemy/1985](https://github.com/sqlalchemy/sqlalchemy/issues/1985)
+:::
