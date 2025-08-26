@@ -2,10 +2,8 @@
 title: 切换数据库
 ---
 
-::: warning
+::: tip
 此教程仅适用于 PostgreSQL 用户
-
-PostgreSQL 严格遵循 SQL 标准，很多类型实现和设计上都已远超 MySQL，后期我们将变更默认配置为 PostgreSQL
 :::
 
 fba 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
