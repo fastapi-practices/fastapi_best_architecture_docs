@@ -125,6 +125,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 items: [
                     {
                         text: '知识星球',
+                        badge: { text: '重制中', type: 'warning' },
                         icon: 'ph:planet-fill',
                         link: '/planet'
                     },
