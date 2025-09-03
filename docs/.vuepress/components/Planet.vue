@@ -13,7 +13,7 @@
       </button>
       <div v-if="qrOpen" class="qr-content">
         <p>
-          加入 <a href="https://discord.gg/Sdg6dT5kjz" target="_blank">Discord</a> 社区，可领取免费体验资格
+          我们正在逐步公开全部内容，敬请期待
         </p>
         <img alt="知识星球" class="qr-image" src="https://wu-clan.github.io/picx-images-hosting/知识星球.png" />
       </div>
