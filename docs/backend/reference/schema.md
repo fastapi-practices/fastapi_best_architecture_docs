@@ -15,6 +15,7 @@ title: schema
 - 批量删除入参：`DeleteXxxParam()`
 - 查询详情：`GetXxxDetail()`
 - 查询详情（包含关系）：`GetXxxWithRelationDetail()`
+- 查询树：`GetXxxTree()`
 
 ## Field 定义
 
