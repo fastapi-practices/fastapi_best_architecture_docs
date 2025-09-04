@@ -61,13 +61,23 @@ ID 作为主键的默认声明方式=={.note}
 - 传统自增 ID 在数据迁移或合并时需特别注意冲突问题
 - ==前端渲染长整数偏移=={.danger}
 
-  当后端 api 返回长整数时，返回结果是没有问题的，但是通过前端组件渲染为 table 等数据之后，可能导致长整数渲染错误。
+  当后端 api 返回长整数时，返回结果是没有问题的，但是通过前端渲染数据后，可能导致长整数渲染错误。
 
-  通过浏览器控制台打印可以发现，前端渲染后的数据 id 与返回数据不一致，最佳解决方法是：后端将长整数序列化为字符串之后再返回，例如：
+  通过浏览器控制台可以发现，前端渲染后的数据 id 与返回数据不一致，最佳解决方法是：后端将长整数序列化为字符串之后再返回
+
+  ::: tabs
+  @tab schemaBase
 
   ```python
-  # 在 schemaBase 或返回数据 schema 中添加以下字段序列化器
-  @field_serializer("id")
+  @field_serializer('id', check_fields=False)
+  def serialize_id(self, value) -> str:
+      return str(value)
+  ```
+
+  @tab GetXxxDetail / GetXxxTree
+
+  ```python
+  @field_serializer('id')
   def serialize_id(self, value) -> str:
       return str(value)
   ```
