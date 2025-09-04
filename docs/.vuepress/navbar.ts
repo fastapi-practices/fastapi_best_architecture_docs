@@ -8,7 +8,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '在线体验',
                 items: [
                     {
-                        text: 'Vben Admin',
+                        text: 'Vben Admin UI',
                         icon: 'iconoir:www',
                         link: 'https://fba.wu-clan.site/',
                     },
@@ -33,12 +33,12 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
                     {
-                        text: 'Arco Admin',
+                        text: 'Arco Admin UI',
                         icon: 'material-symbols:docs',
                         link: '/frontend/summary/arco',
                     },
                     {
-                        text: 'Vben Admin',
+                        text: 'Vben Admin UI',
                         icon: 'material-symbols:docs',
                         link: '/frontend/summary/intro'
                     }
