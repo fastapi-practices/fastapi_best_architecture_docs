@@ -16,7 +16,6 @@ export const myBulletin: BulletinOptions = {
 
 - Google OAuth2
 - 代码生成 CLI
-- 项目精简 CLI
 - 优化架构、bug 修复
 
 为大家带来以上惊喜的同时，前端实施也在悄悄推进中，==代码生成页面已完成=={.important}，快快[本地部署](https://fastapi-practices.github.io/fastapi_best_architecture_docs/frontend/summary/quick-start.html)尝鲜吧~
