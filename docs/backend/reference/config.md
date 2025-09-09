@@ -20,10 +20,6 @@ API 版本号配置
 
 openapi 相关在线文档标头配置
 
-### `FASTAPI_VERSION` <Badge type="info" text="str" />
-
-openapi 相关在线文档版本号配置
-
 ### `FASTAPI_DESCRIPTION` <Badge type="info" text="str" />
 
 openapi 相关在线文档描述信息
