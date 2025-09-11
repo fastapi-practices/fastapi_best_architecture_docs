@@ -26,14 +26,8 @@
         <div v-else class="image-placeholder">
           <Icon :name="item.icon" color="var(--vp-c-text-1)" size="5em" />
         </div>
-        <div
-            v-if="item.free?.valueOf() === false"
-            class="price-corner-tag paid"
-        >
-          <span class="price-corner-text">Not Free</span>
-        </div>
         <div v-if="item.expired" class="expired-overlay">
-          <span class="expired-text">已过期</span>
+          <span class="expired-text">已过期，不适用</span>
         </div>
       </div>
       <div class="card-content">
@@ -105,14 +99,31 @@ const filteredItems = computed(() => {
 })
 
 const colors = {
-  'mysql': { color: '#006484', backgroundColor: 'rgba(0, 100, 132, 0.1)', borderColor: 'rgba(0, 100, 132, 0.2)' },
+  'unfree': {
+    color: '#ff5733',
+    backgroundColor: 'rgba(255, 87, 51, 0.1)',
+    borderColor: 'rgba(255, 87, 51, 0.2)',
+  },
+  'mysql': {
+    color: '#006484',
+    backgroundColor: 'rgba(0, 100, 132, 0.1)',
+    borderColor: 'rgba(0, 100, 132, 0.2)'
+  },
   'pgsql': {
     color: '#336699',
     backgroundColor: 'rgba(51, 102, 153, 0.1)',
     borderColor: 'rgba(51, 102, 153, 0.2)'
   },
-  '后端': { color: '#009485', backgroundColor: 'rgba(0,148,133,0.1)', borderColor: 'rgba(0,148,133,0.2)' },
-  '前端': { color: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.2)' },
+  '后端': {
+    color: '#009485',
+    backgroundColor: 'rgba(0,148,133,0.1)',
+    borderColor: 'rgba(0,148,133,0.2)'
+  },
+  '前端': {
+    color: '#a855f7',
+    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+    borderColor: 'rgba(168, 85, 247, 0.2)'
+  },
 }
 
 const handleCardClick = (item: PluginItem) => {
@@ -254,27 +265,6 @@ const handleCardClick = (item: PluginItem) => {
   border: 1px solid var(--vp-c-border);
 }
 
-.price-corner-tag {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: white;
-  padding: 0 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-bottom-left-radius: 4px;
-  transform: translate(1px, -1px);
-  z-index: 1;
-}
-
-.price-corner-tag.paid {
-  background: #ff5733;
-}
-
-.price-corner-text {
-  text-transform: uppercase;
-}
-
 .search-container {
   position: relative;
   width: 50%;
@@ -304,10 +294,11 @@ const handleCardClick = (item: PluginItem) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .expired-overlay-card {
@@ -316,7 +307,7 @@ const handleCardClick = (item: PluginItem) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
   pointer-events: none;
 }
@@ -325,6 +316,7 @@ const handleCardClick = (item: PluginItem) => {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
+  text-shadow: 0 0 5px black;
 }
 
 @media (max-width: 767px) {
