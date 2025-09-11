@@ -12,7 +12,7 @@
     <div
         v-for="(item, index) in filteredItems"
         :key="index"
-        :class="{ 'clickable': item.link }"
+        :class="{ 'clickable': item.link, 'expired': item.expired }"
         class="plugin-card"
         @click="handleCardClick(item)"
     >
@@ -31,6 +31,9 @@
             class="price-corner-tag paid"
         >
           <span class="price-corner-text">Not Free</span>
+        </div>
+        <div v-if="item.expired" class="expired-overlay">
+          <span class="expired-text">已过期</span>
         </div>
       </div>
       <div class="card-content">
@@ -57,6 +60,7 @@
           />
         </div>
       </div>
+      <div v-if="item.expired" class="expired-overlay-card"></div>
     </div>
   </div>
 </template>
@@ -74,6 +78,7 @@ export interface PluginItem {
   image?: string
   logo: string
   free?: boolean
+  expired?: boolean
 }
 
 const props = withDefaults(
@@ -141,6 +146,7 @@ const handleCardClick = (item: PluginItem) => {
   height: 100%;
   max-height: 360px;
   border: 1px solid var(--vp-c-border);
+  position: relative;
 }
 
 .plugin-card.clickable:hover {
@@ -290,6 +296,35 @@ const handleCardClick = (item: PluginItem) => {
 .search-input:focus {
   outline: none;
   border-color: var(--vp-c-brand);
+}
+
+.expired-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expired-overlay-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.expired-text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @media (max-width: 767px) {
