@@ -1,8 +1,8 @@
 <template>
   <div class="pricing-container">
-    <h1 class="pricing-title">欢乐 0 元购</h1>
+    <h1 class="pricing-title">🎁 欢乐 0 元购 🎁</h1>
     <p class="pricing-subtitle">
-      ✨此架构无需商业授权，任何个人或企业均可自由使用✨<br>
+      此架构无需商业授权，任何个人或企业均可自由使用<br>
       <span style="color: var(--vp-c-text-2)">
         以下付费版本仅用于赞助支持，非必须购买
       </span>
@@ -38,8 +38,7 @@
             <p class="card-description">{{ plans.professional.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.professional.price.current }} <span class="billing-cycle">/ 年</span>
-            </div>
+            <div class="current-price">{{ plans.professional.price.current }}</div>
             <div v-if="plans.professional.price.original" class="original-price">
               <del>{{ plans.professional.price.original }}</del>
             </div>
@@ -52,7 +51,7 @@
           </ul>
         </div>
         <button class="cta-button primary"
-                @click="openSponsorLink('/fastapi_best_architecture_docs/planet.html')">立即购买
+                @click="openSponsorLink('/fastapi_best_architecture_docs/sponsors.html')">立即购买
         </button>
       </div>
 
@@ -63,8 +62,7 @@
             <p class="card-description">{{ plans.enterprise.description }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.enterprise.price.current }} <span class="billing-cycle"></span>
-            </div>
+            <div class="current-price">{{ plans.enterprise.price.current }}</div>
             <div v-if="plans.enterprise.price.original" class="original-price">
               <del>{{ plans.enterprise.price.original }}</del>
             </div>
@@ -166,14 +164,10 @@ import { openSponsorLink } from "../data/sponsors";
   margin-bottom: 0.25rem;
 }
 
-.billing-cycle {
-  font-size: 1rem;
-  color: var(--vp-c-text-3);
-}
-
 .original-price {
   color: var(--vp-c-text-3);
   font-size: 1rem;
+  margin-top: 10px;
 }
 
 .features-list {

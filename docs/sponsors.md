@@ -32,16 +32,6 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
     </table>
 </div>
 
-## 星球赞助
-
-您可以加入我们创建的【知识星球】，获取星球内提供的 [独家内容](./planet.md)
-
-此外，加入 Discord 社区，我们会为您添加 Discord 身份标签，以便您可以获得优先支持
-
-::: caution
-我们不保证星球内容的更新频率，您可以依据 [知识星球退款规则](https://support.zsxq.com/refundRules.html) 进行全额退款
-:::
-
 ## 展位赞助商
 
 您可以通过 [作者主页](https://wu-clan.github.io/homepage/) 内任意联系方式就展位的详细事宜与 fba 作者进行沟通

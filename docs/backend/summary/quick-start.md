@@ -16,12 +16,6 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
     - MySQL 8.0+ 或 PostgreSQL 16.0 +
       [雪花主键 ID 用户，请先移步到 **切换主键**](../reference/pk.md){.read-more}
       [PostgreSQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
-      ::: warning 特此通知
-      PostgreSQL 严格遵循 SQL 标准，很多类型实现和设计上比 MySQL 更加健壮，随着 pg 的高速发展和社区壮大，其流行度已遥遥领先！我们即将应用
-      pg 为架构默认配置 🚀
-
-      MySQL 用户无需担心，我们仍将全面适配与兼容 👏
-      :::
     - <p>Redis 推荐最新稳定版</p>
 
 2. 准备 Git 仓库 <Badge type="warning" text="二选一" />

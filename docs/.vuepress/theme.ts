@@ -11,7 +11,18 @@ export const myTheme: Theme = plumeTheme({
     docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
     docsBranch: 'master',
     docsDir: 'docs',
-    blog: false,
+    blog: {
+        include: ['blog/**/*.md'],
+    },
+    profile: {
+        name: 'null',
+        description: 'An open-source enthusiast, creator and contributor',
+        avatar: 'https://wu-clan.github.io/picx-images-hosting/avatar.gif',
+        location: '郑州，河南',
+        organization: 'FastAPI Practices',
+        circle: true,
+        layout: 'right',
+    },
     notes: false,
     bulletin: myBulletin,
     sidebar: mySidebar,
@@ -32,7 +43,7 @@ export const myTheme: Theme = plumeTheme({
             link: 'https://gitee.com/wu_clan/fastapi_best_architecture'
         },
     ],
-    navbarSocialInclude: ['github', 'bilibili'],
+    navbarSocialInclude: ['github', 'gitee'],
     editLinkText: '编辑此页面',
     contributors: false,
     footer: {

@@ -25,7 +25,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: '快速开始',
                         icon: 'material-symbols:start',
-                        link: '/backend/summary/quick-start.md'
+                        link: '/backend/summary/quick-start'
                     },
                     {
                         text: 'Apifox',
@@ -75,7 +75,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: '生态系统',
         items: [
             {
-                text: '开发',
+                text: '资源',
                 items: [
                     {
                         text: '开源项目',
@@ -92,6 +92,17 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         badge: { text: '欢迎投稿', type: 'warning' },
                         icon: 'mdi:user-check',
                         link: '/users'
+                    },
+                ]
+            },
+            {
+                text: '视频课程',
+                items: [
+                    {
+                        text: '视频课程',
+                        badge: { text: '重制中', type: 'warning' },
+                        icon: 'ri:bilibili-fill',
+                        link: 'https://space.bilibili.com/284237214/lists'
                     },
                 ]
             },
@@ -121,20 +132,13 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
             {
-                text: '特权',
+                text: '动态',
                 items: [
                     {
-                        text: '知识星球',
-                        badge: { text: '重制中', type: 'warning' },
-                        icon: 'ph:planet-fill',
-                        link: '/planet'
-                    },
-                    {
-                        text: '视频课程',
-                        badge: { text: '重制中', type: 'warning' },
-                        icon: 'ri:bilibili-fill',
-                        link: 'https://space.bilibili.com/284237214/lists'
-                    },
+                        text: '博客',
+                        icon: 'fa7-solid:blog',
+                        link: '/blog/'
+                    }
                 ]
             }
         ]
@@ -160,7 +164,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
             {
                 text: '常见问题',
                 icon: 'healthicons:question',
-                link: '/questions.md'
+                link: '/questions'
             },
             {
                 text: '社区团队',

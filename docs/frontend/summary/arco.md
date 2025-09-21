@@ -1,6 +1,6 @@
 ---
 title: Arco Design Pro 实验性实施
-badge: 
+badge:
   text: 已弃用
   type: danger
 ---

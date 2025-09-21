@@ -98,7 +98,7 @@ export const pluginItems: PluginItem[] = [
         description: "通过 Casdoor 实现 SSO 单点登录集成",
         label: '官方',
         tags: ["unfree", "mysql", "pgsql", "后端"],
-        link: "/fastapi_best_architecture_docs/planet.html",
+        link: "https://github.com/fastapi-practices/casdoor_sso",
         image: "https://casdoor.org/zh/img/casdoor.png",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
     },

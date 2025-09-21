@@ -14,7 +14,6 @@ SSO（单点登录，Single Sign-On）是一种身份验证机制，允许用户
 
 ## 集成
 
-我们将通过 [casdoor](https://casdoor.org/) 实现 SSO 集成，并将其作为<Icon name="fluent-color:receipt-16" />
-[SSO 插件](../../planet.md) 发布
+我们将通过 [casdoor](https://casdoor.org/) 实现 SSO 集成，并将其作为 [SSO 插件](../../market.md) 发布
 
 有关 SSO 的实现细节和更多用法请访问 casdoor 官方文档

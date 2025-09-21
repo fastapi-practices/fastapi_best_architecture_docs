@@ -46,12 +46,12 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '切换数据库', link: 'db' },
                 { text: '事务', link: 'transaction' },
                 { text: 'OAuth 2.0', link: 'oauth2' },
-                { text: '数据权限', link: '/planet', badge: { text: '专业版', type: 'warning' } },
+                { text: '数据权限', link: 'data-permission' },
                 { text: '代码生成', link: 'code-generation' },
-                { text: 'SocketIo', link: '/planet', badge: { text: '专业版', type: 'warning' } },
-                { text: 'Celery', link: '/planet', badge: { text: '专业版', type: 'warning' } },
+                { text: 'SocketIo', link: 'socketio' },
+                { text: 'Celery', link: 'celery' },
                 { text: 'APScheduler', link: 'apscheduler' },
-                { text: 'SSO', link: 'sso', badge: { text: '专业版', type: 'warning' } },
+                { text: 'SSO', link: 'sso' },
             ]
         },
         {
@@ -60,7 +60,7 @@ export const mySidebar: ThemeSidebarMulti = {
             prefix: 'deploy/',
             items: [
                 { text: 'Docker', link: 'Docker' },
-                { text: '传统', link: 'legacy', badge: { text: '专业版', type: 'warning' } },
+                { text: '传统', link: 'legacy' },
             ]
         },
     ],

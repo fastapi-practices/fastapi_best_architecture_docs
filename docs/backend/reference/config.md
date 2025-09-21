@@ -191,8 +191,6 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## 数据权限配置
 
-[更多详情](../../planet){.read-more}
-
 ### `DATA_PERMISSION_MODELS` <Badge type="info" text="dict[str, str]" />
 
 允许进行数据过滤的 SQLA 模型，模型值必须以模块字符串的方式定义

@@ -3,29 +3,26 @@ export const plans = {
         title: '开源版',
         description: ' 个人开发者与独立项目之选',
         features: [
-            '全部基础功能',
-            '全量架构源码',
-            'MIT 许可证',
-            'Discord 社区',
+            '所有基础功能',
+            '所有架构源码',
+            '所有官方插件',
+            '所有文档访问',
             '自由使用',
             '自主部署',
+            'MIT 许可证',
             '无需保留版权',
             '无需保留许可声明',
-            '部分文档访问',
-            '部分插件源码'
         ]
     },
     professional: {
         title: '专业版',
         description: '专业开发者的得力助手',
         price: {
-            current: '￥99',
+            current: '随意打赏',
             original: '￥1999'
         },
         features: [
             '所有开源版功能',
-            '所有文档访问',
-            '所有官方插件源码',
             'Discord 身份标签',
             'Discord 专属频道',
             '优先支持',

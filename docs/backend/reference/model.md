@@ -13,7 +13,16 @@ title: 模型
 # MappedBase -> id: Mapped[id_key]
 # DataClassBase && Base -> id: Mapped[id_key] = mapped_column(init=False)
 id_key = Annotated[
-    int, mapped_column(primary_key=True, index=True, autoincrement=True, sort_order=-999, comment='主键id')
+    int,
+    mapped_column(
+        BigInteger,
+        primary_key=True,
+        unique=True,
+        index=True,
+        autoincrement=True,
+        sort_order=-999,
+        comment='主键 ID',
+    ),
 ]
 ```
 
@@ -25,15 +34,7 @@ id_key = Annotated[
 
 用于集成操作人信息到数据库表
 
-[使用方法请移步至 **<Icon name="fluent-color:receipt-16" />操作人信息**](../../planet.md){.read-more}
-
-```python
-class UserMixin(MappedAsDataclass):
-    """用户 Mixin 数据类"""
-
-    created_by: Mapped[int] = mapped_column(sort_order=998, comment='创建者')
-    updated_by: Mapped[int | None] = mapped_column(init=False, default=None, sort_order=998, comment='修改者')
-```
+[使用方法请移步至 **操作人**](operator.md){.read-more}
 
 ### 日期时间
 
@@ -53,9 +54,9 @@ class DateTimeMixin(MappedAsDataclass):
 
 ## 数据类基类
 
-声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==但未集成日期时间=={.note}
+[MappedAsDataclass](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses)
 
-[什么是数据类基类 **MappedAsDataclass**](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses){.read-more}
+声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==但未集成日期时间=={.note}
 
 ```python
 class DataClassBase(MappedAsDataclass, MappedBase):
