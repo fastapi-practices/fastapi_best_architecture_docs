@@ -18,7 +18,7 @@ export const plans = {
         title: '专业版',
         description: '专业开发者的得力助手',
         price: {
-            current: '随意打赏',
+            current: '任意打赏',
             original: '￥1999'
         },
         features: [

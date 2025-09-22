@@ -1,10 +1,10 @@
 <template>
   <div class="banner">
     <p class="vp-banner-text">
-      <span class="vp-text-primary">FBA </span>
+      <span class="vp-text-primary">fba </span>
       <span class="vp-tagline"> · 企业级</span>
       <span class="vp-place">后端架构解决方案</span>
-      <span class="vp-date"> · 架构源码全量开源</span>
+      <span class="vp-date"> · 完全开源</span>
       <a class="vp-primary-action"
          href="/fastapi_best_architecture_docs/backend/summary/quick-start.html"
          target="_self"
@@ -15,7 +15,7 @@
     </button>
     <p class="vp-banner-text vp-coupon">
       <span class="vp-text-primary">代码有 BUG？</span>
-      <span> 请通过【生态系统-互动】与我们反馈！</span>
+      <span> 快通过互动与我们反馈吧</span>
     </p>
   </div>
 </template>

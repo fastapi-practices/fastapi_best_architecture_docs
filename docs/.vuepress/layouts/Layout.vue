@@ -15,8 +15,13 @@ const characters = text.split("");
         <BannerTop />
       </div>
     </template>
-    <template #nav-bar-menu-before>
-      <div style="margin-right: 88px">
+    <template #sidebar-nav-before>
+      <div class="custom-content">
+        <SponsorSidebar />
+      </div>
+    </template>
+    <template #aside-top>
+      <div style="text-align: center; margin-bottom: 1rem;">
         <span
             v-for="(char, index) in characters"
             :key="index"
@@ -25,11 +30,6 @@ const characters = text.split("");
         >
           {{ char }}
         </span>
-      </div>
-    </template>
-    <template #sidebar-nav-before>
-      <div class="custom-content">
-        <SponsorSidebar />
       </div>
     </template>
     <template #aside-outline-after>
