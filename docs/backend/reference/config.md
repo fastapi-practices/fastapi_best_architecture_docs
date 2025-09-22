@@ -6,9 +6,9 @@ title: 配置
 
 ## 环境配置
 
-### `ENVIRONMENT` <Badge type="info" text="Literal['dev', 'pro']" /> <Badge type="warning" text="env" />
+### `ENVIRONMENT` <Badge type="info" text="Literal['dev', 'prod']" /> <Badge type="warning" text="env" />
 
-指定环境模式，当设置为 `pro` 时，openapi 相关在线文档将被禁止访问
+指定环境模式，当设置为 `prod` 时，openapi 相关在线文档将被禁止访问
 
 ## FastAPI 配置
 
