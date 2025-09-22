@@ -136,6 +136,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 items: [
                     {
                         text: '博客',
+                        badge: { text: '充电站', type: 'tip' },
                         icon: 'fa7-solid:blog',
                         link: '/blog/'
                     }
