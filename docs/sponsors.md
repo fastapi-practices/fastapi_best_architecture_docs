@@ -32,6 +32,10 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
     </table>
 </div>
 
+::: tip
+请通过 [Discord](./group.md) 与我联系并发送赞助截图，以获取专属身份标签
+:::
+
 ## 展位赞助商
 
 您可以通过 [作者主页](https://wu-clan.github.io/homepage/) 内任意联系方式就展位的详细事宜与 fba 作者进行沟通
