@@ -26,5 +26,5 @@ title: 技术栈
 <CardGrid>
   <LinkCard title="Vben Admin" icon="https://unpkg.com/@vbenjs/static-source@0.1.7/source/logo-v1.webp" href="https://doc.vben.pro/" />
   <LinkCard title="Vue.js" icon="logos:vue" href="https://cn.vuejs.org" />
-  <LinkCard title="Ant Design vue" icon="https://next.antdv.com/assets/logo.1ef800a8.svg" href="https://antdv.com/components/overview-cn" />
+  <LinkCard title="Ant Design vue" icon="https://antdv.com/assets/logo.1ef800a8.svg" href="https://antdv.com/components/overview-cn" />
 </CardGrid>

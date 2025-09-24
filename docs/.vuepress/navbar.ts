@@ -8,7 +8,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '在线体验',
                 items: [
                     {
-                        text: 'Vben Admin UI',
+                        text: 'Vben UI',
                         icon: 'iconoir:www',
                         link: 'https://fba.wu-clan.site/',
                     },
@@ -20,7 +20,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
             {
-                text: '文档',
+                text: '文档 - 后端',
                 items: [
                     {
                         text: '快速开始',
@@ -32,13 +32,19 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'simple-icons:apifox',
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
+                ]
+            },
+            {
+                text: '文档 - 前端',
+                items: [
                     {
-                        text: 'Arco Admin UI',
+                        text: 'Arco UI',
+                        badge: { text: '已弃用', type: 'danger' },
                         icon: 'material-symbols:docs',
                         link: '/frontend/summary/arco',
                     },
                     {
-                        text: 'Vben Admin UI',
+                        text: 'Vben UI',
                         icon: 'material-symbols:docs',
                         link: '/frontend/summary/intro'
                     }
@@ -89,7 +95,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     },
                     {
                         text: '用户登记',
-                        badge: { text: '欢迎投稿', type: 'warning' },
+                        badge: { text: '欢迎投稿', type: 'tip' },
                         icon: 'mdi:user-check',
                         link: '/users'
                     },
