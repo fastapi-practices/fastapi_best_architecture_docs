@@ -3,13 +3,13 @@ import { BulletinOptions } from "vuepress-theme-plume";
 export const myBulletin: BulletinOptions = {
     // layout: 'center',
     border: true,
-    enablePage: true,
+    enablePage: false,
     lifetime: 'session',
     contentType: 'markdown',
     title: '公告',
     content: `\
 ::: center
-🎉 v1.8.1 已发布 🎉
+v1.8.2 已发布
 :::
 
 针对此版本，我们为大家带来了：
