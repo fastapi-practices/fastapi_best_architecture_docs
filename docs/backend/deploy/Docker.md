@@ -79,8 +79,8 @@ title: Docker 部署
 
 ## 服务器部署
 
-::: tip
-此教程以 https 为例，如果你没有相关经验，请自行 Google 进行了解
+::: warning
+此教程以 https 为例
 :::
 
 ::: info
@@ -94,10 +94,7 @@ title: Docker 部署
 
 1. 拉取代码到服务器
 
-   将代码拉取到服务器通常采用 ssh 方式（更安全），但是你也可以选择使用 https 方式，具体方式请根据个人自行决定，如果使用 ssh
-   方式拉取代码，请自行 Google 拉取教程
-
-   如果使用 https 方式，你可以查看 [后端步骤 2](../summary/quick-start.md#后端)
+   将代码拉取到服务器通常采用 ssh 方式（更安全），当然你也可以选择使用 https 方式，具体方式请根据个人自行决定
 
 2. env
 
@@ -109,7 +106,7 @@ title: Docker 部署
 
    进入 `deploy/backend/docker-compose` 目录，按需修改 `.env.server` 文件
 
-   ::: tip
+   ::: info
    我们在 docker-compose 脚本内通过挂载的方式使用 `.env.server` 文件作为 fba 环境变量文件，因此，本地修改此文件，将同步更新至
    docker 容器，这意味着，修改环境变量将无需重新 build
    :::
@@ -130,9 +127,9 @@ title: Docker 部署
 
 3. 按需修改配置文件 `backend/core/conf.py`
 
-4. 更新脚本文件
+4. 更新 docker-compose 脚本
 
-   @[code yml :collapsed-lines=6](../../code/docker-compose.yml)
+   脚本 `docker-compose.yml` 中有相关注释说明，根据需要进行修改即可
 
 5. 执行一键启动命令
 

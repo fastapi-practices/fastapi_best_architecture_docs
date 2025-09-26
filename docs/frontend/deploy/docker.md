@@ -2,13 +2,15 @@
 title: Docker 部署
 ---
 
+::: warning
+此教程以 https 为例
+:::
+
 :::: steps
 
 1. 拉取代码到服务器
 
-   ```shell:no-line-numbers
-   git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui.git
-   ```
+   将代码拉取到服务器通常采用 ssh 方式（更安全），当然你也可以选择使用 https 方式，具体方式请根据个人自行决定
 
 2. env
 
@@ -16,78 +18,25 @@ title: Docker 部署
 
 3. 更新 nginx 配置
 
-   进入 `/scripts/deploy/nginx.conf` 目录，修改 `nginx.conf` 文件
+   文件 `/scripts/deploy/nginx.conf` 中有相关注释说明，根据需要进行修改即可
 
-   @[code nginx :collapsed-lines=12](../../code/nginx.conf)
+4. 更新 `docker-compose` 脚本
 
-4. 更新脚本文件
+   ::: caution 构建条件（不满足不要继续）
 
-   ::: caution 前端独立 docker-compose 构建条件
-   1. 注释了 fba 后端 docker-compose 脚本中的 fba_ui 容器
-   2. 已经通过 docker-compose 构建 fba 后端
+    - 注释了 fba 后端 docker-compose 脚本中的 fba_ui 容器
+    - 已经通过 docker-compose 构建 fba 后端
+
    :::
 
-   ```yaml :collapsed-lines=12
-   networks:
-     fba_network:
-       # name: fba_network
-       # driver: bridge
-       external: true
+   脚本 `docker-compose.yml` 中有相关注释说明，根据需要进行修改即可
 
-   volumes:
-     fba_static:
-       external: true
-     fba_static_upload:
-       external: true
+5. 执行一键启动命令
 
-   services:
-     fba_ui:
-       build:
-         context: .
-         dockerfile: Dockerfile
-       image: fba_ui:latest
-       ports:
-         - "80:80"
-         - "443:443"
-       container_name: fba_ui
-       restart: always
-       command:
-         - nginx
-         - -g
-         - daemon off;
-       volumes:
-          # nginx https conf
-          # 通过 docker 进行部署时，需要打开此配置项并确保<挂载到容器内的证书文件路径>配置
-          # 与 nginx conf 中的 ssl 证书文件路径配置一致，如果你直接将 ssl 证书文件 cp
-          # 到了 docker 容器内，则无需挂载证书文件，直接将它们注释或删除即可
-          # local_ssl_pem_path：你在服务器存放 ssl pem 证书文件的路径，自行修改
-          # local_ssl_key_path: 你在服务器存放 ssl key 证书文件的路径，自行修改
-          # /etc/ssl/xxx.pem：挂载到容器内 ssl pem 证书文件的路径，自行修改
-          # /etc/ssl/xxx.key：挂载到容器内 ssl key 证书文件的路径，自行修改
-         - local_ssl_pem_path:/etc/ssl/xxx.pem # [!code warning:2]
-         - local_ssl_key_path:/etc/ssl/xxx.key
-         - fba_static:/www/fba_server/backend/static
-       networks:
-         - fba_network
-   ```
-
-5. 构建并启动容器
-
-   创建网络
+   在项目根目录中打开终端，执行以下命令
 
    ```shell:no-line-numbers
-   docker network create fba_network
+   docker-compose up -d --build
    ```
 
-   构建
-
-   ```shell:no-line-numbers
-   docker-compose build fba_ui
-   ```
-
-   启动
-
-   ```shell:no-line-numbers
-   docker-compose run fba_ui
-   ```
 ::::
