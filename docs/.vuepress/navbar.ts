@@ -178,6 +178,11 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 icon: 'fa-solid:user-friends',
                 link: '/team'
             },
+            {
+                text: '隐私政策',
+                icon: 'iconoir:privacy-policy',
+                link: '/privacy-policy'
+            },
         ],
     }
 ])
