@@ -18,7 +18,12 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
       [PostgreSQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
     - <p>Redis 推荐最新稳定版</p>
 
-2. 准备 Git 仓库 <Badge type="warning" text="二选一" />
+2. 创建数据库：`fba`
+
+   MySQL 用户请选择 utf8mb4 编码，PostgreSQL 用户直接创建即可
+
+3. 启动 Redis
+4. 准备源码 <Badge type="warning" text="二选一" />
 
    ::: tabs
    @tab 拉取源代码
@@ -36,20 +41,17 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ![use_this_template](/images/use_this_template.png)
    :::
 
-3. 安装依赖
+5. 安装依赖
 
-   ::: warning
-   此项目使用 uv 作为项目管理器，您需要先 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，
-   如果您本地已经存在 uv, 建议将其升级至最新版本
-   :::
+   此项目使用 uv 作为项目管理器，建议您 [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-   拉取项目到本地后，在项目根目录打开终端，执行以下命令安装架构依赖
+   如果您本地已经存在 uv，建议通过 `uv self update` 升级至最新版本
 
    ::: code-tabs
    @tab <Icon name="material-icon-theme:uv" />uv - sync
 
    ```shell:no-line-numbers
-   uv sync --frozen
+   uv sync
    ```
 
    @tab <Icon name="material-icon-theme:uv" />uv - pip
@@ -57,26 +59,17 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ```shell:no-line-numbers
    uv pip install -r requirements.txt
    ```
-
    :::
 
-4. 创建数据库：`fba`，选择 utf8mb4 编码（PostgreSQL 用户可忽略编码）
-5. 启动 Redis
 6. env
 
    在 `backend` 目录打开终端，执行以下命令创建环境变量文件
 
    ```shell:no-line-numbers
-   touch .env
-   ```
-
-   将初始化环境变量配置拷贝到环境变量文件中
-
-   ```shell:no-line-numbers
    cp .env.example .env
    ```
 
-7. 按需修改配置文件 `backend/core/conf.py` 和 `.env`
+7. 按需修改配置文件：`backend/core/conf.py` 和 `.env`
 8. 创建数据库表 <Badge type="warning" text="二选一" />
 
    ::: tabs
@@ -101,7 +94,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，可直接跳过" />
 
-   在 `根目录` 或 `backend 目录` 打开终端，执行以下命令启动 celery 相关服务
+   在 `根目录` 打开终端，执行以下命令启动 celery 相关服务
 
    ::: code-tabs
    @tab Worker
@@ -130,7 +123,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 10. 启动
 
-    在 `根目录` 或 `backend 目录` 打开终端，执行以下命令启动 FastAPI 服务
+    在 `根目录` 打开终端，执行以下命令启动 FastAPI 服务
 
     ```shell:no-line-numbers
     fba run
@@ -143,7 +136,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
     插件：执行 `插件/sql/` 目录下对应主键模式的脚本
 
     ::: info
-    你可以选择通过 [CLI](../reference/cli.md) 快速执行这些脚本
+    你也可以选择通过 [CLI](../reference/cli.md) 快速执行这些脚本
     :::
 
 12. 打开浏览器访问：[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
