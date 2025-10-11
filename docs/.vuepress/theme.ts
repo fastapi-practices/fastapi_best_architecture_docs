@@ -11,11 +11,16 @@ export const myTheme: Theme = plumeTheme({
     docsRepo: 'https://github.com/fastapi-practices/fastapi_best_architecture_docs',
     docsBranch: 'master',
     docsDir: 'docs',
-    blog: {
-        include: ['blog/**/*.md'],
-    },
+    collections: [
+        {
+            type: 'post',
+            dir: 'blog',
+            title: '博客',
+            include: ['**/*.md'],
+        }
+    ],
     profile: {
-        name: 'null',
+        name: 'wu-clan',
         description: 'An open-source enthusiast, creator and contributor',
         avatar: 'https://wu-clan.github.io/picx-images-hosting/avatar.gif',
         location: '郑州，河南',
@@ -23,7 +28,6 @@ export const myTheme: Theme = plumeTheme({
         circle: true,
         layout: 'right',
     },
-    notes: false,
     bulletin: myBulletin,
     sidebar: mySidebar,
     sidebarScrollbar: false,
