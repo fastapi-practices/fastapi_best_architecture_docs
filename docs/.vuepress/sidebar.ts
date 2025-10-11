@@ -6,7 +6,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '介绍',
             collapsed: false,
-            prefix: 'summary/',
+            prefix: '/backend/summary/',
             items: [
                 { text: '简介', link: 'intro' },
                 { text: '快速开始', link: 'quick-start' },
@@ -17,7 +17,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '编辑器',
             collapsed: false,
-            prefix: 'ide/',
+            prefix: '/backend/ide/',
             items: [
                 { text: 'Visual Studio Code', link: 'vscode' },
                 { text: 'Cursor', link: 'cursor' },
@@ -26,7 +26,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '参考',
             collapsed: false,
-            prefix: 'reference/',
+            prefix: '/backend/reference/',
             items: [
                 { text: '配置', link: 'config' },
                 { text: 'CLI', link: 'cli' },
@@ -57,7 +57,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '部署',
             collapsed: false,
-            prefix: 'deploy/',
+            prefix: '/backend/deploy/',
             items: [
                 { text: 'Docker', link: 'Docker' },
                 { text: '传统', link: 'legacy' },
@@ -69,7 +69,7 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '介绍',
             collapsed: false,
             items: [
-                { text: '前言', link: 'before' },
+                { text: '前言', link: '/plugin/before' },
                 { text: '插件市场', badge: { text: 'HOT', type: 'danger' }, link: '/market' },
             ]
         },
@@ -77,15 +77,15 @@ export const mySidebar: ThemeSidebarMulti = {
             text: '开发',
             collapsed: false,
             items: [
-                { text: '插件开发', link: 'dev' },
-                { text: '插件分享', link: 'share' },
+                { text: '插件开发', link: '/plugin/dev' },
+                { text: '插件分享', link: '/plugin/share' },
             ]
         },
         {
             text: '使用',
             collapsed: false,
             items: [
-                { text: '插件安装', link: 'install' }
+                { text: '插件安装', link: '/plugin/install' }
             ]
         }
     ],
@@ -93,7 +93,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '介绍',
             collapsed: false,
-            prefix: 'summary/',
+            prefix: '/frontend/summary/',
             items: [
                 { text: '简介', link: 'intro' },
                 { text: '快速开始', link: 'quick-start' },
@@ -102,7 +102,7 @@ export const mySidebar: ThemeSidebarMulti = {
         {
             text: '部署',
             collapsed: false,
-            prefix: 'deploy/',
+            prefix: '/frontend/deploy/',
             items: [
                 { text: 'Docker', link: 'docker' },
                 { text: '传统', link: 'legacy' },

@@ -1,5 +1,6 @@
 ---
 home: true
+title: fba | FastAPI Best Architecture
 watermark: false
 config:
   - type: hero
@@ -53,7 +54,6 @@ config:
         icon: 🐳
         details: 提供 Docker compose 一键部署方案
   - type: custom
-title: .
 ---
 
 <script setup lang="ts">
