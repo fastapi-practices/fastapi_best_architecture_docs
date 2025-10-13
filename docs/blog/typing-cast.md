@@ -2,6 +2,7 @@
 title: Typing Cast：静态类型安全的“逃生舱”?
 createTime: 2025-9-11 12:30
 tags:
+  - Python
   - Typing
 ---
 
