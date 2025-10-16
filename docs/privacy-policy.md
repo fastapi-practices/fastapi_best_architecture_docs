@@ -3,6 +3,7 @@ title: 隐私政策
 pageLayout: page
 ---
 
+<div style="max-width: 1200px; margin: 0 auto; padding: 2rem 0;">
 <div>更新日期：<strong>2025/9/26</strong></div>
 <div>生效日期：<strong>2025/9/26</strong></div>
 <h2>导言</h2>
@@ -101,3 +102,4 @@ pageLayout: page
 <p>
 我们鼓励父母或监护人指导未满十八岁的未成年人使用我们的服务。我们建议未成年人鼓励他们的父母或监护人阅读本《隐私政策》，并建议未成年人在提交的个人信息之前寻求父母或监护人的同意和指导。
 </p>
+</div>
