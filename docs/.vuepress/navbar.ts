@@ -2,7 +2,7 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
-        text: 'v1.8.3',
+        text: 'v1.9.0',
         items: [
             {
                 text: '在线体验',
