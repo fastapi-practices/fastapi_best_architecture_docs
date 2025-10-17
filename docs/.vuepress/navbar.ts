@@ -102,17 +102,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
             {
-                text: '视频课程',
-                items: [
-                    {
-                        text: '视频课程',
-                        badge: { text: '重制中', type: 'warning' },
-                        icon: 'ri:bilibili-fill',
-                        link: 'https://space.bilibili.com/284237214/lists'
-                    },
-                ]
-            },
-            {
                 text: '互动',
                 items: [
                     {
@@ -134,6 +123,17 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: 'Github 讨论',
                         icon: 'mdi:discussion',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/discussions'
+                    },
+                ]
+            },
+            {
+                text: '视频课程',
+                items: [
+                    {
+                        text: '视频课程',
+                        badge: { text: '重制中', type: 'warning' },
+                        icon: 'ri:bilibili-fill',
+                        link: 'https://space.bilibili.com/284237214/lists'
                     },
                 ]
             },
