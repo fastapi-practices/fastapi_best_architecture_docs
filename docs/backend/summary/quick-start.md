@@ -13,14 +13,15 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 1. 准备本地环境
 
     - Python 3.10+
-    - MySQL 8.0+ 或 PostgreSQL 16.0 +
+    - PostgreSQL 16.0 + 或 MySQL 8.0+
       [雪花主键 ID 用户，请先移步到 **切换主键**](../reference/pk.md){.read-more}
-      [PostgreSQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
+      [MySQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
     - <p>Redis 推荐最新稳定版</p>
 
 2. 创建数据库：`fba`
 
-   MySQL 用户请选择 utf8mb4 编码，PostgreSQL 用户直接创建即可
+   - PostgreSQL 用户直接创建
+   - MySQL 用户创建时需选择 utf8mb4 编码
 
 3. 启动 Redis
 4. 准备源码 <Badge type="warning" text="二选一" />
@@ -171,7 +172,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 ::: steps
 
-1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，postgresql 用户可忽略编码
+1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，PostgreSQL 用户可忽略编码
 2. 创建数据库表，利用工具创建 `fba` 库所有表的 DDL 脚本，再通过 `fba_test` 库执行
 3. 初始化测试数据，通过 `backend/sql/` 目录下对应主键模式的脚本初始化测试数据
 4. 在项目根目录打开终端，执行以下单元测试命令

@@ -2,22 +2,54 @@
 title: 切换数据库
 ---
 
-::: tip
-此教程仅适用于 PostgreSQL 用户
+::: caution
+fba 自 v1.10.0 开始，已将默认数据库由 MySQL 替换为 PostgreSQL
 :::
 
-fba 支持 MySQL、PostgreSQL 两种数据库，默认配置使用 MySQL
+fba 支持 PostgreSQL、MySQL 两种数据库，默认配置使用 PostgreSQL
 
-如果本地未安装 PostgreSQL，你可以使用以下命令创建 Docker 镜像
+## Docker 镜像
+
+如果你未在本地安装或习惯使用 Docker 镜像，
+
+### PostgreSQL
 
 ```shell:no-line-numbers
-docker run -d --name fba_postgres --restart always -e POSTGRES_DB='fba' -e POSTGRES_PASSWORD='123456' -e TZ='Asia/Shanghai' -v fba_postgres:/var/lib/postgresql/data -p 5432:5432 postgres:16
+docker run -d \
+  --name fba_postgres \
+  --restart always \
+  -e POSTGRES_DB='fba' \
+  -e POSTGRES_PASSWORD='123456' \
+  -e TZ='Asia/Shanghai' \
+  -v fba_postgres:/var/lib/postgresql/data \ 
+  -p 5432:5432 \
+  postgres:16
+```
+
+### MySQL
+
+```shell:no-line-numbers
+docker run -d \
+  --name fba_mysql \
+  --restart always \
+  -e MYSQL_DATABASE=fba \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -e TZ=Asia/Shanghai \
+  -v fba_mysql:/var/lib/mysql \
+  -p 3306 \
+  mysql:8.0.41 \
+  --default-authentication-plugin=mysql_native_password \
+  --character-set-server=utf8mb4 \
+  --collation-server=utf8mb4_general_ci \
+  --lower_case_table_names=1
 ```
 
 ## 环境配置
 
-PostgreSQL 与 MySQL 在用户名、端口号等方面有所不同，如果你使用上面的命令创建了 Docker 镜像，需修改 `.env` 部分配置如下，否则，请根据
-PostgreSQL 配置进行修改
+PostgreSQL 与 MySQL 在用户名、端口号等方面有所不同，如果你使用上面的命令创建了 Docker 镜像，需修改 `.env`
+部分配置如下，否则，请根据实际配置进行修改
+
+### PostgreSQL
 
 ```dotenv:no-line-numbers
 # Database
@@ -28,18 +60,31 @@ DATABASE_USER='postgres'
 DATABASE_PASSWORD='123456'
 ```
 
+### MySQL
+
+```dotenv:no-line-numbers
+# Database
+DATABASE_TYPE='mysql'
+DATABASE_HOST='127.0.0.1'
+DATABASE_PORT=3306
+DATABASE_USER='root'
+DATABASE_PASSWORD='123456'
+```
+
 ## 解耦
 
-在实际项目开发中，几乎不会存在同时兼容多种数据库的情况，我们在模型中使用 `with_variant` 尽可能的兼容 MySQL 和
-PostgreSQL，例如：
+在实际项目开发中，几乎不会存在同时兼容多种数据库的情况，我们在模型中使用 `with_variant` 尽可能的兼容 PostgreSQL 和
+MySQL，例如：
 
 ```python:no-line-numbers
-remark: Mapped[str | None] = mapped_column(LONGTEXT().with_variant(TEXT, 'postgresql'))  # [!code word:with_variant]
+remark: Mapped[str | None] = mapped_column(sa.TEXT().with_variant(LONGTEXT, 'mysql'))  # [!code word:with_variant]
 ```
+
+解耦步骤如下：
 
 - 删除 `with_variant` 相关代码并且仅保留数据库对应的类型
 - 删除 `backend/core/conf.py` 文件中的 `DATABASE_TYPE` 及其相关的调用代码
 - 删除 `.env_example` 和 `.env` 文件中的 `DATABASE_TYPE`
 - 更新 `backend/templates/py/model.jinja` 文件中的 `database_type` 相关代码
-- 删除 `backend/sql` 目录中的 `mysql` 或 `postgresql` 文件夹
-- 删除 `docker-compose.yml` 文件中的 `fba_mysql` 或 `fba_postgres` 容器脚本
+- 删除 `backend/sql` 目录中的 `postgresql` 或 `mysql` 文件夹
+- 删除 `docker-compose.yml` 文件中的 `fba_postgres` 或 `fba_mysql` 容器脚本

@@ -42,9 +42,9 @@ openapi JSON 数据在线地址
 
 ## 数据库配置
 
-### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" /> <Badge type="warning" text="env" />
+### `DATABASE_TYPE` <Badge type="info" text="Literal['postgresql', 'mysql']" /> <Badge type="warning" text="env" />
 
-指定数据库类型，仅支持 `mysql` 和 `postgresql`，需注意第三方插件兼容性
+指定数据库类型，仅支持 `postgresql` 和 `mysql`，需注意第三方插件兼容性
 
 ### `DATABASE_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 

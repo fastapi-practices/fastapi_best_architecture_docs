@@ -54,7 +54,7 @@ title: Docker 部署
 
 4. 启动容器
 
-   由于构建不包含数据库，请确保本地已安装并启动相关数据库（mysql / postgresql、redis）
+   由于构建不包含数据库，请确保本地已安装并启动相关数据库（postgresql / mysql、redis）
 
    ::: tabs#dockerfile
    @tab fba
@@ -112,14 +112,14 @@ title: Docker 部署
    :::
 
    ::: warning
-   如果您正在使用 PostgreSQL 数据库，需修改 `.env.server` 部分配置如下：
+   如果您正在使用 MySQL 数据库，需修改 `.env.server` 部分配置如下：
 
    ```dotenv:no-line-numbers
    # Database
-   DATABASE_TYPE='postgresql'
-   DATABASE_HOST='fba_postgres'
-   DATABASE_PORT=5432
-   DATABASE_USER='postgres'
+   DATABASE_TYPE='mysql'
+   DATABASE_HOST='fba_mysql'
+   DATABASE_PORT=3306
+   DATABASE_USER='root'
    DATABASE_PASSWORD='123456'
    ```
 
