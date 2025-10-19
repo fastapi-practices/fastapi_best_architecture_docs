@@ -88,6 +88,5 @@ mode="carousel"
 <div align="center">
   <a href="https://github.com/fastapi-practices/fastapi_best_architecture/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi_best_architecture"/>
-  </a><br>
-  <a href="/fastapi_best_architecture_docs/join.html" style="font-size: 13px">加入我们</a>
+  </a>
 </div>

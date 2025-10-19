@@ -50,10 +50,6 @@ export const myTheme: Theme = plumeTheme({
     navbarSocialInclude: ['github', 'gitee'],
     editLinkText: '编辑此页面',
     contributors: false,
-    footer: {
-        message: 'FastAPI 最佳架构 & MIT LICENCE',
-        copyright: 'Copyright © 2023-present FastAPI Practices'
-    },
     //watermark: true,
     markdown: {
         abbr: true,

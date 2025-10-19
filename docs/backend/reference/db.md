@@ -73,16 +73,7 @@ DATABASE_PASSWORD='123456'
 
 ## 解耦
 
-在实际项目开发中，几乎不会存在同时兼容多种数据库的情况，我们在模型中使用 `with_variant` 尽可能的兼容 PostgreSQL 和
-MySQL，例如：
-
-```python:no-line-numbers
-remark: Mapped[str | None] = mapped_column(sa.TEXT().with_variant(LONGTEXT, 'mysql'))  # [!code word:with_variant]
-```
-
-解耦步骤如下：
-
-- 删除 `with_variant` 相关代码并且仅保留数据库对应的类型
+- 删除 `with_variant` 相关代码（如果存在），仅保留数据库对应的类型
 - 删除 `backend/core/conf.py` 文件中的 `DATABASE_TYPE` 及其相关的调用代码
 - 删除 `.env_example` 和 `.env` 文件中的 `DATABASE_TYPE`
 - 更新 `backend/templates/py/model.jinja` 文件中的 `database_type` 相关代码

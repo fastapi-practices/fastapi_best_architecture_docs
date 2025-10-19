@@ -3,6 +3,7 @@ import { Layout } from "vuepress-theme-plume/client";
 import SponsorPanel from "../components/SponsorPanel.vue";
 import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
+import Footer from "../components/Footer.vue";
 
 const text = "完全开源";
 const characters = text.split("");
@@ -35,6 +36,11 @@ const characters = text.split("");
     <template #aside-outline-after>
       <div class="custom-content">
         <SponsorPanel />
+      </div>
+    </template>
+    <template #footer-content>
+      <div class="custom-content">
+        <Footer />
       </div>
     </template>
   </Layout>

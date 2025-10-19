@@ -7,6 +7,7 @@
     --vp-c-brand-3: rgba(0, 148, 133, 1);
 
     /* 导航栏分组 */
+
     .vp-menu-group {
         .title {
             color: rgba(60, 60, 60, 0.33);
@@ -23,6 +24,7 @@
     --vp-c-brand-3: rgba(0, 148, 133, 1);
 
     /* 导航栏分组 */
+
     .vp-menu-group {
         .title {
             color: rgba(235, 235, 235, 0.38);
@@ -76,4 +78,9 @@
     @media (max-width: 959px) {
         top: -32px;
     }
+}
+
+/* 页脚 */
+.vp-footer {
+    padding: unset !important;
 }
