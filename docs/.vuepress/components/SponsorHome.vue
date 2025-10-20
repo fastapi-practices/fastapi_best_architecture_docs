@@ -8,13 +8,20 @@
   </section>
   <section v-else id="special-spsr">
     <span class="no-brand">
-      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_self">独家赞助商席位现已空缺 - 立即咨询</a>
+      <a href="/fastapi_best_architecture_docs/sponsors.html" target="_self">
+        <GradientText
+            text="独家赞助商席位现已空缺 - 立即咨询"
+            :colors="['#009485', 'rgba(162,84,240)']"
+            :animation-speed="3"
+        />
+      </a>
     </span>
   </section>
 </template>
 
 <script lang="ts" setup>
 import { homeSponsor, shouldShowSponsor } from "../data/sponsors";
+import GradientText from "./bits/GradientText.vue";
 </script>
 
 <style scoped>

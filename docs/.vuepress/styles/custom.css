@@ -39,7 +39,7 @@
 
 /* 公告板 */
 .vp-bulletin {
-    width: 380px;
+    width: 380px !important;
 }
 
 /* 首页文字说明 */

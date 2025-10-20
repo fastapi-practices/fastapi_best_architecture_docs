@@ -11,10 +11,16 @@
           <a
               href="https://github.com/fastapi-practices/fastapi_best_architecture"
               target="_blank"
-              rel="noopener noreferrer"
               class="social-link"
           >
             <Icon name="line-md:github" size="2rem" />
+          </a>
+          <a
+              href="https://discord.com/invite/yNN3wTbVAC"
+              target="_blank"
+              class="social-link"
+          >
+            <Icon name="line-md:discord" size="2rem" />
           </a>
           <a href="/fastapi_best_architecture_docs/blog/" class="social-link">
             <Icon name="la:blog" size="2rem" />
