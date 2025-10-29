@@ -8,4 +8,4 @@
 
 我们预计在 v1.11.0 版本中将物理外键重构为逻辑外键，敬请期待...
 
-![df4cef7d56ec63f76e389989b6bd9a7f.png](https://i.mij.rip/2025/10/24/df4cef7d56ec63f76e389989b6bd9a7f.png)
+![BigmodelPoster.png](https://wu-clan.github.io/picx-images-hosting/BigmodelPoster.png)
