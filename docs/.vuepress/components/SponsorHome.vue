@@ -11,7 +11,7 @@
       <a href="/fastapi_best_architecture_docs/sponsors.html" target="_self">
         <GradientText
             text="独家赞助商席位现已空缺 - 立即咨询"
-            :colors="['#009485', 'rgba(162,84,240)']"
+            :colors="['#009485', '#c8abfa']"
             :animation-speed="3"
         />
       </a>

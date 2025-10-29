@@ -4,9 +4,7 @@ import SponsorPanel from "../components/SponsorPanel.vue";
 import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 import Footer from "../components/Footer.vue";
-
-const text = "完全开源";
-const characters = text.split("");
+import GradientText from "../components/bits/GradientText.vue";
 </script>
 
 <template>
@@ -19,18 +17,6 @@ const characters = text.split("");
     <template #sidebar-nav-before>
       <div class="custom-content">
         <SponsorSidebar />
-      </div>
-    </template>
-    <template #aside-top>
-      <div style="text-align: center; margin-bottom: 1rem;">
-        <span
-            v-for="(char, index) in characters"
-            :key="index"
-            class="colorful-char"
-            :style="{ animationDelay: `${index * 0.2}s` }"
-        >
-          {{ char }}
-        </span>
       </div>
     </template>
     <template #aside-outline-after>

@@ -32,14 +32,9 @@
     }
 }
 
-.vp-home-hero:not(.full) .container {
-    padding-top: 96px !important;
+.vp-home-hero:not(.full) .hero-container {
+    padding-top: 166px !important;
     padding-bottom: 96px !important;
-}
-
-/* 公告板 */
-.vp-bulletin {
-    width: 380px !important;
 }
 
 /* 首页文字说明 */
@@ -50,6 +45,11 @@
 /* 首页按钮 */
 .vp-button.medium {
     border-radius: 10px !important;
+}
+
+/* 公告板 */
+.vp-bulletin {
+    width: 380px !important;
 }
 
 /* 首页 box */

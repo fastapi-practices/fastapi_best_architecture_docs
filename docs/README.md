@@ -1,11 +1,11 @@
 ---
-home: true
+pageLayout: home
 title: fba | FastAPI Best Architecture
 watermark: false
+signDown: true
 config:
   - type: hero
-    background: tint-plate
-    tintPlate: 240
+    effect: prism
     hero:
       name: FastAPI Best Architecture
       tagline: 企业级后端架构解决方案
