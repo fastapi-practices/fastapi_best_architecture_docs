@@ -436,6 +436,14 @@ GitHub 客户端 ID
 
 GitHub 客户端密钥
 
+### `OAUTH2_GOOGLE_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+Google 客户端 ID
+
+### `OAUTH2_GOOGLE_CLIENT_SECRET` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
+
+Google 客户端密钥
+
 ### `OAUTH2_LINUX_DO_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Linux Do 客户端 ID
@@ -443,6 +451,18 @@ Linux Do 客户端 ID
 ### `OAUTH2_LINUX_DO_CLIENT_SECRET` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Linux Do 客户端密钥
+
+### `OAUTH2_GITHUB_REDIRECT_URI` <Badge type="info" text="str" />
+
+GitHub 重定向地址，必须与 GitHub OAuth Apps 配置保持一致
+
+### `OAUTH2_GOOGLE_REDIRECT_URI` <Badge type="info" text="str" />
+
+Google 重定向地址，必须与 Google OAuth 2.0 客户端配置保持一致
+
+### `OAUTH2_LINUX_DO_REDIRECT_URI` <Badge type="info" text="str" />
+
+Linux Do 重定向地址，必须与 Linux Do Connect 配置保持一致
 
 ### `OAUTH2_FRONTEND_REDIRECT_URI` <Badge type="info" text="str" />
 

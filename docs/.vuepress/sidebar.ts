@@ -28,7 +28,7 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             prefix: 'reference/',
             items: [
-                { text: '配置', link: 'config' },
+                { text: '配置', link: 'conf' },
                 { text: 'CLI', link: 'cli' },
                 { text: '模型', link: 'model' },
                 { text: 'Schema', link: 'schema' },
