@@ -1,5 +1,5 @@
 ---
-title: SQLA 事务
+title: 事务
 ---
 
 默认情况下，如果将数据库引擎参数 `echo` 设置为 True，你将会看到事务总是被开启，即便那是一个查询语句。但这并不是因为我们错误的使用了
@@ -13,10 +13,9 @@ SQLAlchemy，你可以查看 [#6921](https://github.com/sqlalchemy/sqlalchemy/di
 ，详情请查看: [了解 DBAPI 级别的 Autocommit 隔离级别](https://docs.sqlalchemy.org.cn/en/20/core/connections.html#understanding-the-dbapi-level-autocommit-isolation-level)
 :::
 
-## Session 生成器
+## CurrentSession
 
-这是一种类似于官方文档的使用方法，但这种方法并没有真正达到事务的目的，因为它不会自动执行提交，所以，你可以将它理解为仅适用于查询，否则，必须手动执行
-`commit()` 方法
+这是一种类似于官方文档的使用方法，但这种方法并没有真正开启事务，它通常仅用于查询操作
 
 ```python
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
@@ -36,19 +35,35 @@ async def get_pagination_apis(db: CurrentSession) -> ResponseModel:
     ...
 ```
 
+## CurrentSessionTransaction
+
+与 `CurrentSession` 不同，此方法将直接自动开启事务，你可以将它用于增删改操作
+
+```python
+async def get_db_transaction() -> AsyncGenerator[AsyncSession, None]:
+    """获取带有事务的数据库会话"""
+    async with async_db_session.begin() as session:
+        yield session
+
+# Session Annotated
+CurrentSessionTransaction = Annotated[AsyncSession, Depends(get_db_transaction)]
+```
+
+使用方法与 `CurrentSession` 相同
+
+```python
+@router.post('')
+async def get_pagination_apis(db: CurrentSession) -> ResponseModel:
+    ...
+```
+
 ## `begin()`
 
-这种方式由 SQLAlchemy 官方实现，在线程安全方面，由于在同一个函数中，可能存在多次调用，所以没有 Session 生成器严谨
+这种方式由 SQLAlchemy 官方实现，在线程安全方面，由于在同一个函数中，可能存在多次调用，所以没有 `CurrentSession` 和
+`CurrentSessionTransaction` 更加严谨，但此方式可以在任意地方使用
 
 ```python{2}
 async def create(*, obj: CreateIns) -> None:
     async with async_db_session.begin() as db:
         await xxx_dao.create(db, obj)
 ```
-
-## 如何选择？
-
-以上两种方法，我们更推荐使用 `begin()`，理由如下：
-
-1. 对于 fba 来说，它更加符合架构风格，并且也能减少千篇一律的接口参数（纯作者强迫症）
-2. 而对于无需使用自动提交的事务，我们只需将 `begin()` 方法去掉，直接使用 `async_db_session()` 即可

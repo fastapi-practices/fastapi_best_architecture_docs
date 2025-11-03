@@ -6,6 +6,10 @@ FastAPI 最佳架构精简版的目标是仅保留最最最简单的架构代码
 
 ## SQLAlchemy
 
+::: caution
+此版本的更新速度并不同步，我们目前正在积极寻找维护人员
+:::
+
 <LinkCard
 title="fastapi_sqlalchemy_mysql"
 description="fastapi + pydantic-v2 + sqlalchemy 2.0 + alembic + mysql + redis"

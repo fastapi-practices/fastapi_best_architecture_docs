@@ -20,8 +20,8 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
 
 2. 创建数据库：`fba`
 
-   - PostgreSQL 用户直接创建
-   - MySQL 用户创建时需选择 utf8mb4 编码
+    - PostgreSQL 用户直接创建
+    - MySQL 用户创建时需选择 utf8mb4 编码
 
 3. 启动 Redis
 4. 准备源码 <Badge type="warning" text="二选一" />
@@ -93,42 +93,42 @@ fba 仅适用于资深 Python 后端开发人员，如果您是非资深用户�
    ```
    :::
 
-9. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，可直接跳过" />
+9. 启动
 
-   在 `根目录` 打开终端，执行以下命令启动 celery 相关服务
+   在 `根目录` 打开终端，执行以下命令启动 FastAPI 服务
 
-   ::: code-tabs
-   @tab Worker
+   ```shell:no-line-numbers
+   fba run
+   ```
 
-    ```shell:no-line-numbers
-    fba celery worker
-    ```
+10. 启动 celery worker, beat 和 flower <Badge type="warning" text="此步骤为可选，可直接跳过" />
 
-   @tab Beat
+    在 `根目录` 打开终端，执行以下命令启动 celery 相关服务
 
-    ```shell:no-line-numbers
-    fba celery beat
-    ```
+    ::: code-tabs
+    @tab Worker
 
-   @tab Flower
+     ```shell:no-line-numbers
+     fba celery worker
+     ```
 
-    ```shell:no-line-numbers
-    fba celery flower
-    ```
-   :::
+    @tab Beat
 
-   ::: warning
-   如果从未执行过以上命令，任务结果表将缺失，此时，无论从何处调用任务结果相关接口都会直接报错，直到至少启动一次 worker 和
-   beat 服务，相关接口将自动恢复正常
-   :::
+     ```shell:no-line-numbers
+     fba celery beat
+     ```
 
-10. 启动
+    @tab Flower
 
-    在 `根目录` 打开终端，执行以下命令启动 FastAPI 服务
+     ```shell:no-line-numbers
+     fba celery flower
+     ```
+    :::
 
-    ```shell:no-line-numbers
-    fba run
-    ```
+    ::: warning
+    如果从未执行过以上命令，任务结果表将缺失，此时，无论从何处调用任务结果相关接口都会直接报错，直到至少启动一次 worker 和
+    beat 服务，相关接口将自动恢复正常
+    :::
 
 11. 初始化测试数据
 

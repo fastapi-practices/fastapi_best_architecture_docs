@@ -20,7 +20,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 承诺
 
-此仓库作为模板库公开，任何个人或企业均可自由使用！您可以通过 [购买特权](../../price.md) 选择不同版本
+此仓库作为模板库公开，任何个人或企业均可自由使用！您可以通过 [定价页面](../../pricing.md) 选择不同版本
 
 ## 架构
 

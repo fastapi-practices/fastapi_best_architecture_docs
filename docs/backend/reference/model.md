@@ -8,6 +8,8 @@ title: 模型
 
 我们未提供自动主键模式，而是必须通过手动定义的方式进行主键声明
 
+### 自增 ID
+
 ```python
 # 通用 Mapped 类型主键, 需手动添加，参考以下使用方式
 # MappedBase -> id: Mapped[id_key]
@@ -26,6 +28,10 @@ id_key = Annotated[
 ]
 ```
 
+### 雪花 ID
+
+[请移步至 **切换主键**](pk.md){.read-more}
+
 ## Mixin 类
 
 [Mixin](https://en.wikipedia.org/wiki/Mixin) 是一种面向对象编程概念, 使结构变得更加清晰
@@ -34,7 +40,7 @@ id_key = Annotated[
 
 用于集成操作人信息到数据库表
 
-[使用方法请移步至 **操作人**](operator.md){.read-more}
+[请移步至 **操作人**](operator.md){.read-more}
 
 ### 日期时间
 

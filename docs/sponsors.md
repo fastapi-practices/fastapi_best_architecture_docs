@@ -38,30 +38,24 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
 
 ## 展位赞助商
 
-您可以通过 [fba 作者主页](https://wu-clan.github.io/homepage/) 内任意联系方式就展位的详细事宜与他进行沟通
+您可以 [联系作者](./group.md) 就展位的详细事宜与他进行沟通
 
-<div style="display: flex; align-items: center; justify-content: center;">
+<div style="display: flex; align-items: center; justify-content: center; width: 100%; margin: 0 auto;">
     <table>
         <thead>
         <tr>
             <th>展位类型</th>
             <th>名额</th>
-            <th>费用</th>
-            <th>活动</th>
+            <th>赞助金额</th>
             <th>展示位置</th>
             <th>素材要求</th>
         </tr>
         </thead>
         <tbody>
-        <!-- 独家展位 -->
         <tr>
             <td><strong>独家展位</strong></td>
-            <td>1</td>
-            <td>199 / 月</td>
-            <td>
-                - 买一送一<br>
-                - 立减 30 / 月
-            </td>
+            <td style="color: orangered">（目前空缺）</td>
+            <td>与作者沟通 / 月</td>
             <td>
                 - 首页独家展示位<br>
                 - 文档左侧边栏独家展示位<br>
@@ -77,9 +71,8 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
         </tr>
         <tr>
             <td><strong>特别展位</strong></td>
-            <td>3</td>
-            <td>99 / 月</td>
-            <td>立减 10 / 月</td>
+            <td style="color: orangered">（目前空缺）</td>
+            <td>与作者沟通 / 月</td>
             <td>
                 - 首页信息轮播展示位<br>
                 - 文档右侧边栏大号展示位<br>
@@ -88,9 +81,8 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
         </tr>
         <tr>
             <td><strong>普通展位</strong></td>
-            <td>6</td>
-            <td>59 / 月</td>
-            <td>无</td>
+            <td style="color: orangered">（目前空缺）</td>
+            <td>与作者沟通 / 月</td>
             <td>
                 - 首页滚动展示位<br>
                 - 文档右侧边栏小号展示位<br>
@@ -114,17 +106,13 @@ fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层�
     </table>
 </div>
 
-::: caution
-展位转化效果可能因市场环境、受众行为等多种因素影响，我们无法保证确切的转化结果
-:::
-
-::: warning 展位赞助说明
-选择【独家展位、特别展位】赞助，可帮助您的产品在 Discord 社区以公告的形式进行推广一次
+::: warning 推广
+选择【独家展位、特别展位】赞助，可帮助您的产品在 ==Discord社区== 和 ==微信交流群== 以公告的形式进行推广一次
 
 - 优先推广和程序员相关的互联网产品，比如：低代码开发平台、网课、开发软件、云服务器、个人博客等等，实体产品如键盘、显示器、耳机等等，如果是和程序员无关的产品，可酌情考虑是否推广
-- 拒绝接受违反法律法规、灰色相关的产品推广（GPT 相关不包含在内）
+- 拒绝接受违反法律法规、灰色相关的产品推广
 
-公告消息如下：
+公告消息如下：（您也可以提供自定义非政治、法律法规敏感推广词/图片）
 
 ```
 感谢 xxx 老板对 fba 项目的慷慨赞助，以下是老板的产品，大家感兴趣的可以关注一下：
@@ -132,8 +120,10 @@ xxx 商品名称
 链接：https://xxx.xx
 ```
 
-您也可以提供自定义非政治、法律法规敏感推广词/图片
+:::
 
+::: caution
+展位转化效果可能因市场环境、受众行为等多种因素影响，我们无法保证确切的转化结果
 :::
 
 ## 注意事项
