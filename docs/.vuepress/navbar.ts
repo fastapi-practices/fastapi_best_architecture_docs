@@ -20,7 +20,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
             {
-                text: '文档 - 后端',
+                text: '后端',
                 items: [
                     {
                         text: '快速开始',
@@ -32,21 +32,31 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'simple-icons:apifox',
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
+                    {
+                        text: '开发计划',
+                        icon: 'icon-park-twotone:plan',
+                        link: '/backend/summary/plan'
+                    },
                 ]
             },
             {
-                text: '文档 - 前端',
+                text: '前端',
                 items: [
                     {
                         text: 'Arco UI',
                         badge: { text: '已弃用', type: 'danger' },
-                        icon: 'material-symbols:docs',
+                        icon: 'icon-park-outline:new-lark',
                         link: '/frontend/summary/arco',
                     },
                     {
                         text: 'Vben UI',
-                        icon: 'material-symbols:docs',
+                        icon: 'simple-icons:antdesign',
                         link: '/frontend/summary/intro'
+                    },
+                    {
+                        text: '开发计划',
+                        icon: 'icon-park-twotone:plan',
+                        link: '/frontend/summary/plan'
                     }
                 ]
             },
@@ -127,7 +137,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 ]
             },
             {
-                text: '视频课程',
+                text: '课程',
                 items: [
                     {
                         text: '视频课程',
@@ -153,7 +163,43 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: '插件系统',
         icon: 'unjs:unplugin',
-        link: '/plugin/before'
+        items: [
+            {
+                text: '文档',
+                items: [
+                    {
+                        text: '前言',
+                        icon: 'bi:chat-text',
+                        link: '/plugin/before'
+                    },
+                    {
+                        text: '插件开发',
+                        icon: 'la:dev',
+                        link: '/plugin/dev'
+                    },
+                    {
+                        text: '插件分享',
+                        icon: 'material-symbols:share',
+                        link: '/plugin/share'
+                    },
+                    {
+                        text: '插件安装',
+                        icon: 'icon-park-outline:install',
+                        link: '/plugin/install'
+                    }
+                ]
+            },
+            {
+                text: '更多',
+                items: [
+                    {
+                        text: '插件市场',
+                        icon: 'lsicon:marketing-outline',
+                        link: '/market'
+                    },
+                ]
+            }
+        ]
     },
     {
         text: 'Pricing',

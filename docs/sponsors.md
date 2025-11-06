@@ -2,10 +2,12 @@
 title: 成为 fba 的赞助者
 ---
 
-::: note 用爱发电，回馈开源
-fba 是一款基于 FastAPI 框架的后端架构解决方案，遵循伪三层架构设计，支持 Python 3.10 及以上版本。
+::: note ⚡
+自 fba
+创建以来，我们一直致力于 [持续更新](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
+和 [积极维护](./backend/summary/why.md#长期维护)，为此，我们投入了大量的时间和无限的热爱
 
-自 2023/04/07 启，我们一直致力于[持续更新和维护](./backend/summary/why.md#长期维护)，为此，我们投入了大量的时间和无限的热爱
+感谢您为 fba 给予的大力支持，您的每份鼓励都将成为我们继续前进的动力，愿我们一起携手，共建美好未来
 :::
 
 ## 荣誉赞助

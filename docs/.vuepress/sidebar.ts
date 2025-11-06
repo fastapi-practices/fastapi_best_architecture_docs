@@ -70,24 +70,17 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
-                { text: '插件市场', badge: { text: 'HOT', type: 'danger' }, link: '/market' },
             ]
         },
         {
-            text: '开发',
+            text: '参考',
             collapsed: false,
             items: [
                 { text: '插件开发', link: 'dev' },
                 { text: '插件分享', link: 'share' },
+                { text: '插件安装', link: 'install' },
             ]
         },
-        {
-            text: '使用',
-            collapsed: false,
-            items: [
-                { text: '插件安装', link: 'install' }
-            ]
-        }
     ],
     '/frontend/': [
         {
