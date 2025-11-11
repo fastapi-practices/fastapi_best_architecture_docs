@@ -32,11 +32,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'simple-icons:apifox',
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
-                    {
-                        text: '开发计划',
-                        icon: 'icon-park-twotone:plan',
-                        link: '/backend/summary/plan'
-                    },
                 ]
             },
             {
@@ -53,11 +48,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'simple-icons:antdesign',
                         link: '/frontend/summary/intro'
                     },
-                    {
-                        text: '开发计划',
-                        icon: 'icon-park-twotone:plan',
-                        link: '/frontend/summary/plan'
-                    }
                 ]
             },
             {

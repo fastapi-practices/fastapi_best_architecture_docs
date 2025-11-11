@@ -39,7 +39,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '国际化', link: 'i18n' },
                 { text: 'JWT', link: 'jwt' },
                 { text: 'RBAC', link: 'RBAC' },
-                { text: '跨域', link: 'CORS' },
+                { text: 'CORS', link: 'CORS' },
                 { text: '时区', link: 'timezone' },
                 { text: '节流', link: 'limit' },
                 { text: '切换主键', link: 'pk' },
