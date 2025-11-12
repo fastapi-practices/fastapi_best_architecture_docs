@@ -1,11 +1,13 @@
 ::: center
-🚀 v1.10.3 已发布 🚀
+🎉 v1.11.0 已发布 🎉
 :::
 
-🟨 此版本已将 `postgresql` 作为主数据库使用
+**重大变化**
 
-🀄 `mysql` 用户无需担心，fba 仍完全兼容
+- 🚀 重构外键约束为逻辑外键
 
-我们预计在 v1.11.0 版本中将物理外键重构为逻辑外键，敬请期待...
+**cc 推荐**
 
-![BigmodelPoster.png](https://wu-clan.github.io/picx-images-hosting/BigmodelPoster.png)
+<a href="https://www.bigmodel.cn/claude-code?ic=SDTNNES9ZD">
+  <img src="https://wu-clan.github.io/picx-images-hosting/BigmodelPoster.png">
+</a>
