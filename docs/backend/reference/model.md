@@ -40,7 +40,11 @@ id_key = Annotated[
 
 用于集成操作人信息到数据库表
 
+::: warning
+在 fba 中，并没有默认集成操作人员信息到各个数据库表，但是我们提供了非常简易的集成方式
+
 [请移步至 **操作人**](operator.md){.read-more}
+:::
 
 ### 日期时间
 
@@ -60,9 +64,9 @@ class DateTimeMixin(MappedAsDataclass):
 
 ## 数据类基类
 
-[MappedAsDataclass](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses)
-
 声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==但未集成日期时间=={.note}
+
+了解 [MappedAsDataclass](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html#orm-declarative-native-dataclasses)
 
 ```python
 class DataClassBase(MappedAsDataclass, MappedBase):

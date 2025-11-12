@@ -5,8 +5,6 @@ title: 操作人
 我们常见的后台管理系统中，经常会有一些比如创建人，更新人这类的信息，那这些信息是如何做的呢？下面我们就来讲一讲我们在 fba
 中应该如何集成操作人信息
 
-在 fba 中，并没有默认集成操作人员信息到各个数据库表，但是我们提供了非常简易的集成方式：Mixin 类
-
 ## 如何集成？
 
 打开 fba 项目 backend 目录，进入 `common/model.py` 文件中，你会看到 `UserMixin` 类就冰冷冷的站在那里，因为 fba
@@ -25,16 +23,36 @@ class UserMixin(MappedAsDataclass):
 首先，`UserMixin` 类所存储的信息只是用户的 id ，这也是一种常见的做法，那么问题来了：我该如何获取用户 id 并存储？
 我在后台展示的时候，肯定不能展示 id 吧？容我一一解答
 
-### 如何获取用户 id 并存储
+## 如何获取用户 ID？
 
-我们 fba 的绝明之处，就是充分利用了请求上下文功能，我们通过 JWT 中间件将用户信息存储到了每个请求的上下文中，后面我们会展开详细讲解
-JWT 中间件，然后，我们就可以很轻松的通过 request 对象读取用户信息，在 Django，flask 等 Web 框架中， request 都是常驻嘉宾
+fba 通过 JWT 中间件将用户信息存储到了每个请求的上下文中，我们可以很轻松的通过 request 对象读取用户信息（在 Django，Flask
+等 Web 框架中， request 都是常驻嘉宾）
 
-首先，在接口函数中，我们要像 Django/flask 一样，第一个参数写为 request，最好，我们加上参数类型：`request: Request`
-，然后我们可以在接口函数中通过 `request.user.id` 轻松获取当前操作人员 id ，这样，在存储的时候，此 id 就可以作为存储数据被添加到
-schema 或字典中
+## 如何存储？
 
-### 我在后台展示的时候，肯定不能展示 id 吧
+### 手动
+
+首先，在接口函数中，像 Django/Flask 一样，传入一个 `request` 参数，最好，我们加上参数类型：`request: Request`
+，然后我们可以在接口函数中通过 `request.user.id` 轻松获取当前操作人员 id ，这样，在存储的时候，就可以传递此 id 进行存储
+
+### 自动
+
+利用 SQLAlchemy 的事件监听，我们可以轻松做到这一点
+
+```python
+@event.listens_for(UserMixin, 'before_insert', propagate=True)
+def set_created_by(mapper, connection, target) -> None:  # noqa: ANN001
+    if hasattr(target, 'created_by'):
+        target.created_by = ctx.user_id
+
+
+@event.listens_for(UserMixin, 'before_update', propagate=True)
+def set_updated_by(mapper, connection, target) -> None:  # noqa: ANN001
+    if hasattr(target, 'updated_by'):
+        target.created_by = ctx.user_id
+```
+
+## 如何展示？
 
 当然不能，那该怎么办呢？虽然我们只存储了用户 id 到数据库，但当我们单查询或列表查询的时候，我们需要进行数据拦截，将 id 替换为
 username；
