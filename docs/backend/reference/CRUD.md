@@ -21,8 +21,9 @@ fba 遵循以下命名规范：
 - 获取/查询列表表达式：`get_select()`
 - 获取/查询列表：`get_list()`
 - 获取/查询所有：`get_all()`
+- 连接查询（join）：`get_with_join()`
+- 关系查询（relationship）：`get_with_relation()`
 - 子查询：`get_children()`
-- 关系查询：`get_with_relation()`
 - 创建：`create()`
 - 更新：`update()`
 - 删除：`delete()`
