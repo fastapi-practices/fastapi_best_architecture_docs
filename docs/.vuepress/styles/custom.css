@@ -32,6 +32,7 @@
     }
 }
 
+/* 首页非全屏样式 */
 .vp-home-hero:not(.full) .hero-container {
     padding-top: 166px !important;
     padding-bottom: 96px !important;
@@ -68,7 +69,7 @@
     border: 1px solid rgb(177 177 177 / 66%) !important;
 }
 
-/* 文档页左侧边栏赞助位，如果提供 top 插槽，则更新 */
+/* 文档页左侧边栏赞助位，如果提供 top 插槽，则删除 */
 #SidebarNav > div.custom-content {
     position: sticky;
     top: 0;

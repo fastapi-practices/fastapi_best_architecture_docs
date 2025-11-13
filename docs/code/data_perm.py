@@ -1,25 +1,23 @@
-def filter_data_permission(request: Request, model: Any) -> ColumnElement[bool]:
+def filter_data_permission(request_user: GetUserInfoWithRelationDetail, model: Any) -> ColumnElement[bool]:
     """
-    过滤用户数据权限
+    过滤数据权限，控制用户可见数据范围
 
-    :param request: 接口请求对象
+    使用场景：
+        - 控制用户能看到哪些数据
+
+    :param request_user: 请求用户
     :param model: 需要进行数据过滤的 sqlalchemy 模型
     :return:
     """
-    user = request.user
-
     # 超级管理员可查看所有数据
-    if user.is_superuser:
+    if request_user.is_superuser:
         return or_(1 == 1)
 
-    user_id = user.id
-    user_roles = user.roles
-
     # 无角色只能查看自己数据
-    if not user_roles:
-        return or_(getattr(model, 'created_by') == user_id if hasattr(model, 'created_by') else 1 == 0)
+    if not request_user.roles:
+        return or_(getattr(model, 'created_by') == request_user.id if hasattr(model, 'created_by') else 1 == 0)
 
-    data_scope = min(role.data_scope for role in user_roles if role.status == 1)
+    data_scope = min(role.data_scope for role in request_user.roles if role.status == 1)
     user_dept_id = user.dept_id
 
     # 全部数据权限
@@ -28,8 +26,8 @@ def filter_data_permission(request: Request, model: Any) -> ColumnElement[bool]:
 
     # 自定义数据权限
     elif data_scope == 1:
-        dept_ids = select(sys_role_dept.c.dept_id).where(
-            sys_role_dept.c.role_id.in_(role.id for role in user_roles if role.status == 1)
+        dept_ids = select(role_dept.c.dept_id).where(
+            role_dept.c.role_id.in_(role.id for role in request_user.roles if role.status == 1)
         )
         return or_(getattr(model, 'dept_id').in_(dept_ids) if hasattr(model, 'dept_id') else 1 == 0)
 
@@ -44,7 +42,7 @@ def filter_data_permission(request: Request, model: Any) -> ColumnElement[bool]:
 
     # 仅本人数据权限
     elif data_scope == 4:
-        return or_(getattr(model, 'created_by') == user_id if hasattr(model, 'created_by') else 1 == 0)
+        return or_(getattr(model, 'created_by') == request_user.id if hasattr(model, 'created_by') else 1 == 0)
 
     # 默认
     else:

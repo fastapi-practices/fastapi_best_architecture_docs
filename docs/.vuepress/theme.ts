@@ -49,6 +49,7 @@ export const myTheme: Theme = plumeTheme({
     ],
     navbarSocialInclude: ['github', 'gitee'],
     editLinkText: '编辑此页面',
+    lastUpdated: false,
     contributors: false,
     //watermark: true,
     markdown: {

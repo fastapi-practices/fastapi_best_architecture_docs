@@ -5,7 +5,6 @@ watermark: false
 signDown: true
 config:
   - type: hero
-    effect: prism
     hero:
       name: FastAPI Best Architecture
       tagline: 企业级后端架构解决方案
