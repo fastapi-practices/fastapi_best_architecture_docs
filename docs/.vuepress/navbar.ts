@@ -84,18 +84,22 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '资源',
                 items: [
                     {
-                        text: '开源项目',
-                        icon: 'mdi:github',
-                        link: '/opensource'
-                    },
-                    {
                         text: '技术栈',
                         icon: 'material-symbols:stack',
                         link: '/stack'
                     },
                     {
+                        text: '官方开源',
+                        icon: 'mdi:github',
+                        link: '/open-source'
+                    },
+                    {
+                        text: '社区开源',
+                        icon: 'mdi:github',
+                        link: '/open-source-community'
+                    },
+                    {
                         text: '用户登记',
-                        badge: { text: '欢迎投稿', type: 'tip' },
                         icon: 'mdi:user-check',
                         link: '/users'
                     },

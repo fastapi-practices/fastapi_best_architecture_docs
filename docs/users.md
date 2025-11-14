@@ -10,7 +10,9 @@ title: 用户登记
 > 如果您/您所在的企业/组织使用了 fba 进行项目开发，我们诚挚的邀请您参与：
 > [用户登记](https://github.com/fastapi-practices/fastapi_best_architecture/issues/477)
 
-## 公司 / 组织
+::: center
+（排名没有先后）
+:::
 
 <CardGrid>
   <ImageCard
@@ -18,16 +20,5 @@ title: 用户登记
     description="基于 FastAPI 框架的企业级后端架构解决方案，遵循伪三层架构设计， 支持 Python 3.10 及以上版本"
     href="https://fastapi-practices.github.io/fastapi_best_architecture_docs/"
     image="https://wu-clan.github.io/picx-images-hosting/fba.png"
-  />
-</CardGrid>
-
-## 开源项目
-
-<CardGrid>
-  <LinkCard 
-    title="fastapi_sqlalchemy_mysql" 
-    description="fastapi + pydantic-v2 + sqlalchemy 2.0 + alembic + mysql + redis" 
-    href="https://github.com/wu-clan/fastapi_sqlalchemy_mysql" 
-    icon="https://wu-clan.github.io/picx-images-hosting/logo/fba.png" 
   />
 </CardGrid>
