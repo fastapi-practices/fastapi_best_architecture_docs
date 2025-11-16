@@ -1,14 +1,9 @@
-::: warning 重大变化
+- 🛡️ 增强用户安全性
+- ✨ 可控登录验证码
 
-- 🚀 重构外键约束为逻辑外键
+::: warning 升级须知
 
-:::
-
-::: tip 升级须知
-
-* 重建数据库表（因为外键约束已删除）
-* 清理 Redis 缓存（因为不兼容脏数据）
-* 升级依赖（因为使用依赖最新特性）
+- 数据库迁移/重建（因为用户表变更）
 
 <a href="https://www.bigmodel.cn/claude-code?ic=SDTNNES9ZD">
   <img src="https://wu-clan.github.io/picx-images-hosting/BigmodelPoster.png">
