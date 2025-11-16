@@ -116,11 +116,11 @@ token 加密算法
 
 ### `TOKEN_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-token 过期时长
+token 过期时长（秒）
 
 ### `TOKEN_REFRESH_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-刷新 token 过期时长
+刷新 token 过期时长（秒）
 
 ### `TOKEN_REDIS_PREFIX` <Badge type="info" text="str" />
 
@@ -151,6 +151,62 @@ fba 内通过 JWT 中间件解析 token 获取用户信息，并将用户信息�
 
 JWT / RBAC 路由白名单正则模式，从路由头部开始匹配，与之匹配的请求地址将不会校验 token 真伪性，注意项同上
 
+## 用户安全配置
+
+### `USER_LOCK_REDIS_PREFIX` <Badge type="info" text="str" />
+
+用户锁定存储到 Redis 时的前缀
+
+### `USER_LOCK_THRESHOLD` <Badge type="info" text="int" />
+
+用户密码错误锁定阈值，0 表示禁用锁定
+
+### `USER_LOCK_SECONDS` <Badge type="info" text="int" />
+
+用户锁定时长（秒）
+
+### `USER_PASSWORD_EXPIRY_DAYS` <Badge type="info" text="int" />
+
+用户密码有效期，0 表示永不过期
+
+### `USER_PASSWORD_REMINDER_DAYS` <Badge type="info" text="int" />
+
+用户密码到期提醒，0 表示不提醒
+
+### `USER_PASSWORD_HISTORY_CHECK_COUNT` <Badge type="info" text="int" />
+
+用户密码历史检查数量，避免重复使用历史密码
+
+### `USER_PASSWORD_MIN_LENGTH` <Badge type="info" text="int" />
+
+用户密码最小长度
+
+### `USER_PASSWORD_MAX_LENGTH` <Badge type="info" text="int" />
+
+用户密码最大长度
+
+### `USER_PASSWORD_REQUIRE_SPECIAL_CHAR` <Badge type="info" text="bool" />
+
+用户密码需要特殊字符
+
+## 登录配置
+
+### `LOGIN_CAPTCHA_REDIS_PREFIX` <Badge type="info" text="str" />
+
+登录验证码存储到 Redis 时的前缀
+
+### `LOGIN_CAPTCHA_EXPIRE_SECONDS` <Badge type="info" text="int" />
+
+登录验证码过期时长（秒）
+
+### `LOGIN_CAPTCHA_ENABLED` <Badge type="info" text="bool" />
+
+是否开始登录验证码
+
+### `LOGIN_FAILURE_PREFIX` <Badge type="info" text="str" />
+
+登录失败存储到 Redis 时的前缀
+
 ## JWT 配置
 
 ### `JWT_USER_REDIS_PREFIX` <Badge type="info" text="str" />
@@ -177,17 +233,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `COOKIE_REFRESH_TOKEN_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-将刷新 token 存储到 cookie 时的过期时长
-
-## 验证码配置
-
-### `CAPTCHA_LOGIN_REDIS_PREFIX` <Badge type="info" text="str" />
-
-验证码登录时，验证码存储到 Redis 时的前缀
-
-### `CAPTCHA_LOGIN_EXPIRE_SECONDS` <Badge type="info" text="int" />
-
-验证码登录时，验证码过期时长
+将刷新 token 存储到 cookie 时的过期时长（秒）
 
 ## 数据权限配置
 
@@ -203,7 +249,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `WS_NO_AUTH_MARKER` <Badge type="info" text="str" />
 
-连接 socket.io 服务时跳过用户验证的标记，应将其直接定义为 token 值进行传输
+连接 socket.io 服务时跳过用户验证的标记
 
 ::: danger
 请妥善保管此值，以免遭受恶意攻击
@@ -289,7 +335,7 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ### `IP_LOCATION_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-定位信息缓存时长
+定位信息缓存时长（秒）
 
 ## Trace ID
 
@@ -382,9 +428,19 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 通过 pip 下载插件依赖时的索引地址
 
+### `PLUGIN_PIP_MAX_RETRY` <Badge type="info" text="int" />
+
+pip 下载最大重试次数
+
 ### `PLUGIN_REDIS_PREFIX` <Badge type="info" text="str" />
 
 插件信息存储到 Redis 时的前缀
+
+## I18n 配置
+
+### `I18N_DEFAULT_LANGUAGE` <Badge type="info" text="str" />
+
+国际化响应的默认语言
 
 ## 应用：Task
 
@@ -412,6 +468,10 @@ Celery 连接 RabbitMQ 服务的密码
 
 Celery 代理模式（开发模式默认使用 Redis，线上模式强制切换为 Rabbitmq）
 
+### `CELERY_RABBITMQ_VHOST` <Badge type="info" text="str" />
+
+Celery 连接 RabbitMQ 服务的 vhost
+
 ### `CELERY_REDIS_PREFIX` <Badge type="info" text="str" />
 
 Celery 数据存储到 Redis 时的前缀
@@ -422,7 +482,7 @@ Celery 任务执行失败时的最大重试次数
 
 ## 插件：Code Generator
 
-#### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
+### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
 
 下载代码时的 ZIP 压缩包文件名
 
@@ -452,6 +512,14 @@ Linux Do 客户端 ID
 
 Linux Do 客户端密钥
 
+### `OAUTH2_STATE_REDIS_PREFIX` <Badge type="info" text="str" />
+
+OAuth2 状态信息存储到 Redis 时的前缀
+
+### `OAUTH2_STATE_EXPIRE_SECONDS` <Badge type="info" text="str" />
+
+OAuth2 状态信息存储到 Redis 时的过期时间（秒）
+
 ### `OAUTH2_GITHUB_REDIRECT_URI` <Badge type="info" text="str" />
 
 GitHub 重定向地址，必须与 GitHub OAuth Apps 配置保持一致
@@ -464,9 +532,13 @@ Google 重定向地址，必须与 Google OAuth 2.0 客户端配置保持一致
 
 Linux Do 重定向地址，必须与 Linux Do Connect 配置保持一致
 
-### `OAUTH2_FRONTEND_REDIRECT_URI` <Badge type="info" text="str" />
+### `OAUTH2_FRONTEND_LOGIN_REDIRECT_URI` <Badge type="info" text="str" />
 
 登陆成功后，重定向到前端的地址
+
+### `OAUTH2_FRONTEND_BINDING_REDIRECT_URI` <Badge type="info" text="str" />
+
+绑定成功后，重定向到前端的地址
 
 ## 插件：Email
 
@@ -496,4 +568,4 @@ Linux Do 重定向地址，必须与 Linux Do Connect 配置保持一致
 
 ### `EMAIL_CAPTCHA_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
-电子邮件验证码缓存时长
+电子邮件验证码缓存时长（秒）
