@@ -13,5 +13,5 @@ title: 社区开源
 ## Go
 
 <CardGrid>
-  <RepoCard repo="eginner01/fastapi_best_architecture_go" :fullname="false" />
+  <RepoCard repo="eginner01/gFBA" :fullname="false" />
 </CardGrid>
