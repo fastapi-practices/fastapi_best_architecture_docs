@@ -7,7 +7,7 @@ title: 社区开源
 ## Rust
 
 <CardGrid>
-  <RepoCard repo="eginner01/fastapi_best_architecture_rust" :fullname="false" />
+  <RepoCard repo="eginner01/rFBA" :fullname="false" />
 </CardGrid>
 
 ## Go

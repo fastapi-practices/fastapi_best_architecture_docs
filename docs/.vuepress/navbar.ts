@@ -96,7 +96,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: '社区开源',
                         icon: 'mdi:github',
-                        link: '/open-source-community'
+                        link: '/community-open-source'
                     },
                 ]
             },
