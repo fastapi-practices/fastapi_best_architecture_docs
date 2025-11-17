@@ -98,11 +98,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'mdi:github',
                         link: '/open-source-community'
                     },
-                    {
-                        text: '用户登记',
-                        icon: 'mdi:user-check',
-                        link: '/users'
-                    },
                 ]
             },
             {
@@ -212,6 +207,11 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '常见问题',
                 icon: 'healthicons:question',
                 link: '/questions'
+            },
+            {
+                text: '用户登记',
+                icon: 'mdi:user-check',
+                link: '/users'
             },
             {
                 text: '社区团队',
