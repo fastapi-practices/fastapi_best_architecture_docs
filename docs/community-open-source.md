@@ -15,3 +15,9 @@ title: 社区开源
 <CardGrid>
   <RepoCard repo="eginner01/gFBA" :fullname="false" />
 </CardGrid>
+
+## React
+
+<CardGrid>
+  <RepoCard repo="eginner01/uFBA-shadcn-ui" :fullname="false" />
+</CardGrid>
