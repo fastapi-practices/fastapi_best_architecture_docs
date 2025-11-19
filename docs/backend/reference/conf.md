@@ -100,6 +100,40 @@ openapi JSON 数据在线地址
 
 全局默认使用的 Redis 逻辑数据库（0 - 15）
 
+## Snowflake（雪花算法）
+
+### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int" />
+
+雪花算法数据中心 ID
+
+### `SNOWFLAKE_WORKER_ID` <Badge type="info" text="int" />
+
+雪花算法工作机器 ID
+
+::: warning
+`SNOWFLAKE_DATACENTER_ID` 和 `SNOWFLAKE_WORKER_ID` 仅允许同时非 None 或同时为 None
+
+同时非 None 时，雪花算法将应用此配置（仅适用于单机单进程场景）
+
+同时为 None 时，雪花算法将自动分配此配置（适用于多线程，多进程，分布式等场景）
+:::
+
+### `SNOWFLAKE_REDIS_PREFIX` <Badge type="info" text="str" />
+
+雪花算法配置存储到 Redis 时的前缀
+
+### `SNOWFLAKE_HEARTBEAT_INTERVAL_SECONDS` <Badge type="info" text="int" />
+
+雪花算法配置存储到 Redis 后的心跳检测间隔时间（秒）
+
+::: warning
+此配置不应大于 `SNOWFLAKE_NODE_TTL_SECONDS`
+:::
+
+### `SNOWFLAKE_NODE_TTL_SECONDS` <Badge type="info" text="int" />
+
+雪花算法配置存储到 Redis 时的生存时间（秒）
+
 ## Token 配置
 
 ### `TOKEN_SECRET_KEY` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
