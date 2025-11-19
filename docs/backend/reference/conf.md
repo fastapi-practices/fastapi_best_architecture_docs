@@ -2,7 +2,8 @@
 title: 配置
 ---
 
-配置文件位于 `backend/core/conf.py`，fba 内的所有应用和插件配置都应统一放置在此文件内
+fba 配置文件位于 `backend/core/conf.py`
+，所有应用和插件的配置都应统一放置在此文件内，包含  <Badge type="warning" text="env" /> 标签的配置默认为环境变量配置
 
 ## 环境配置
 
@@ -102,18 +103,18 @@ openapi JSON 数据在线地址
 
 ## Snowflake（雪花算法）
 
-### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int" />
+### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 雪花算法数据中心 ID
 
-### `SNOWFLAKE_WORKER_ID` <Badge type="info" text="int" />
+### `SNOWFLAKE_WORKER_ID` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 雪花算法工作机器 ID
 
 ::: warning
 `SNOWFLAKE_DATACENTER_ID` 和 `SNOWFLAKE_WORKER_ID` 仅允许同时非 None 或同时为 None
 
-同时非 None 时，雪花算法将应用此配置（仅适用于单机单进程场景）
+同时非 None 时，雪花算法将应用此配置（适用于单机单进程场景）
 
 同时为 None 时，雪花算法将自动分配此配置（适用于多线程，多进程，分布式等场景）
 :::
