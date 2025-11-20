@@ -151,7 +151,6 @@
 
       <div class="plugin-section">
         <div class="results-header">
-          <h2 class="results-title">插件列表</h2>
           <div class="results-count">
             找到 <strong>{{ filteredItems.length }}</strong> 个插件
           </div>
@@ -575,27 +574,15 @@ const handleCardClick = (item: PluginItem) => {
 
 .results-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-border);
-}
-
-.results-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
+  margin-bottom: 1rem;
 }
 
 .results-count {
   font-size: 0.9rem;
   color: var(--vp-c-text-2);
-  background: var(--vp-c-bg-soft);
   padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-border);
 }
 
 .results-count strong {
