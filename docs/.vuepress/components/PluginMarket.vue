@@ -272,7 +272,25 @@ onUnmounted(() => {
   }
 })
 
-const pluginCategories = ['前端', '后端']
+const mixedAlphabeticalCompare = (a: string, b: string): number => {
+  return a.localeCompare(b, 'zh-CN', {
+    sensitivity: 'base',
+    numeric: true,
+    ignorePunctuation: true
+  })
+}
+
+const pluginCategories = computed(() => {
+  const allTags = new Set<string>()
+  props.items.forEach(item => {
+    item.tags.forEach(tag => {
+      if (tag !== 'unfree') {
+        allTags.add(tag)
+      }
+    })
+  })
+  return Array.from(allTags).sort((a, b) => mixedAlphabeticalCompare(a, b))
+})
 
 const baseFilteredItems = computed(() => {
   let result = [...props.items]
@@ -314,14 +332,6 @@ const getTypeSortWeight = (item: PluginItem): number => {
   return 3
 }
 
-const mixedAlphabeticalCompare = (a: string, b: string): number => {
-  return a.localeCompare(b, 'zh-CN', {
-    sensitivity: 'base',
-    numeric: true,
-    ignorePunctuation: true
-  })
-}
-
 const filteredItems = computed(() => {
   const result = [...baseFilteredItems.value]
 
@@ -348,7 +358,12 @@ const resetFilters = () => {
   sortOption.value = 'category'
 }
 
-const colors = {
+const predefinedColors = {
+  'unfree': {
+    color: '#ff5733',
+    backgroundColor: 'rgba(255, 87, 51, 0.1)',
+    borderColor: 'rgba(255, 87, 51, 0.2)',
+  },
   'mysql': {
     color: '#006484',
     backgroundColor: 'rgba(0, 100, 132, 0.1)',
@@ -370,6 +385,22 @@ const colors = {
     borderColor: 'rgba(168, 85, 247, 0.2)'
   },
 }
+
+const colors = computed(() => {
+  const colorMap: Record<string, any> = { ...predefinedColors }
+  const allTags = [...new Set(props.items.flatMap(item => item.tags))]
+  allTags.forEach((tag, index) => {
+    if (!colorMap[tag]) {
+      const hue = (index * 137.5) % 360
+      colorMap[tag] = {
+        color: `hsl(${ hue }, 65%, 50%)`,
+        backgroundColor: `hsl(${ hue }, 65%, 50%, 0.1)`,
+        borderColor: `hsl(${ hue }, 65%, 50%, 0.2)`
+      }
+    }
+  })
+  return colorMap
+})
 
 const handleCardClick = (item: PluginItem) => {
   if (item.link) {
