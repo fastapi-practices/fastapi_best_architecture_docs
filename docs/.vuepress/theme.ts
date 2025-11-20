@@ -73,4 +73,5 @@ export const myTheme: Theme = plumeTheme({
         categoryId: 'DIC_kwDOMv5sMc4CmLp9',
         lazyLoading: true,
     },
+    llmstxt: true,
 })

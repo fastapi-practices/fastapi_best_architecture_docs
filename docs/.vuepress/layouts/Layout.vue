@@ -1,5 +1,6 @@
 <script setup>
 import { Layout } from "vuepress-theme-plume/client";
+import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 import SponsorPanel from "../components/SponsorPanel.vue";
 import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
@@ -19,6 +20,9 @@ import GradientText from "../components/bits/GradientText.vue";
         <SponsorSidebar />
       </div>
     </template>
+    <template #doc-title-after>
+        <PageContextMenu />
+    </template>
     <template #aside-outline-after>
       <div class="custom-content">
         <SponsorPanel />
@@ -35,27 +39,5 @@ import GradientText from "../components/bits/GradientText.vue";
 <style>
 .custom-content {
   width: 100%;
-}
-
-.colorful-char {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: hsl(0, 70%, 60%);
-  animation: colorful 6s infinite ease-in-out;
-}
-
-@keyframes colorful {
-  0% {
-    color: hsl(0, 70%, 60%);
-  }
-  33% {
-    color: hsl(120, 70%, 60%);
-  }
-  66% {
-    color: hsl(240, 70%, 60%);
-  }
-  100% {
-    color: hsl(0, 70%, 60%);
-  }
 }
 </style>

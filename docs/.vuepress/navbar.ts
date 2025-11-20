@@ -184,6 +184,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: '插件市场',
                         icon: 'lsicon:marketing-outline',
+                        badge: { text: 'HOT', type: 'danger' },
                         link: '/market'
                     },
                 ]

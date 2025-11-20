@@ -2,7 +2,6 @@ import { defineUserConfig } from "vuepress";
 import { viteBundler } from '@vuepress/bundler-vite'
 import { baiduAnalyticsPlugin } from "@vuepress/plugin-baidu-analytics";
 import { umamiAnalyticsPlugin } from "@vuepress/plugin-umami-analytics";
-import { llmsPlugin } from "@vuepress/plugin-llms";
 import { myTheme } from "./theme";
 
 
@@ -20,8 +19,7 @@ export default defineUserConfig({
         }),
         umamiAnalyticsPlugin({
             id: '62984e7c-ec95-459a-9a2f-553766c6b3d4'
-        }),
-        llmsPlugin({})
+        })
     ],
     bundler: viteBundler(),
     shouldPrefetch: false,
