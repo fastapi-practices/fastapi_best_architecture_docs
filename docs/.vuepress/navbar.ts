@@ -12,11 +12,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: 'iconoir:www',
                         link: 'https://fba.wu-clan.site/',
                     },
-                    {
-                        text: '服务状态',
-                        icon: 'simple-icons:uptimekuma',
-                        link: 'https://status.wu-clan.site/status/services'
-                    }
                 ]
             },
             {
@@ -28,7 +23,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         link: '/backend/summary/quick-start'
                     },
                     {
-                        text: 'Apifox',
+                        text: '接口文档',
                         icon: 'simple-icons:apifox',
                         link: 'https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0'
                     },
@@ -62,11 +57,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: '参与贡献',
                         icon: 'mdi:people-add',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing'
-                    },
-                    {
-                        text: '我要催更',
-                        icon: 'material-symbols:update-rounded',
-                        link: 'https://discord.gg/JyedBeHXkn'
                     },
                     {
                         text: '更新记录',
@@ -122,6 +112,16 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: 'Github 讨论',
                         icon: 'mdi:discussion',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/discussions'
+                    },
+                    {
+                        text: '想法和建议',
+                        icon: 'mdi:discussion',
+                        link: 'https://discord.gg/xp8M6nY4NA'
+                    },
+                    {
+                        text: '我要催更',
+                        icon: 'material-symbols:update-rounded',
+                        link: 'https://discord.gg/JyedBeHXkn'
                     },
                 ]
             },
@@ -204,11 +204,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: '关于',
         items: [
-            {
-                text: '常见问题',
-                icon: 'healthicons:question',
-                link: '/questions'
-            },
             {
                 text: '用户登记',
                 icon: 'mdi:user-check',

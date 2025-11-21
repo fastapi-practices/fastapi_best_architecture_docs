@@ -80,11 +80,9 @@ title: Docker 部署
 ## 服务器部署
 
 ::: warning
-此教程以 https 为例
-:::
+==此教程以 HTTPS 为例=={.warning}
 
-::: info
-免费 SSL 证书推荐使用 [httpsok-SSL 证书自动续期](https://httpsok.com/p/4Qjd)，一行命令，轻松搞定 SSL
+fba 正在使用免费 SSL 证书：[httpsok-SSL](https://httpsok.com/p/4Qjd)，证书自动续期，一行命令，轻松搞定 SSL
 证书自动续签，支持：nginx、通配符证书、七牛云、腾讯云、阿里云、CDN、OSS、LB（负载均衡）
 :::
 

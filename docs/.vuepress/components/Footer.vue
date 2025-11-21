@@ -127,7 +127,7 @@ const links = {
   product: [
     { name: "快速开始", href: "/fastapi_best_architecture_docs/backend/summary/quick-start" },
     { name: "Vben UI", href: "/fastapi_best_architecture_docs/frontend/summary/intro" },
-    { name: "Apifox", href: "https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0" },
+    { name: "接口文档", href: "https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0" },
     { name: "常见问题", href: "/fastapi_best_architecture_docs/questions" },
     {
       name: "更新记录",
@@ -135,11 +135,11 @@ const links = {
     },
   ],
   community: [
-    { name: "开源项目", href: "/fastapi_best_architecture_docs/opensource" },
+    { name: "交流群", href: "/fastapi_best_architecture_docs/group" },
     { name: "技术栈", href: "/fastapi_best_architecture_docs/stack" },
-    { name: "用户登记", href: "/fastapi_best_architecture_docs/users" },
     { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi_best_architecture/issues" },
     { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi_best_architecture/discussions" },
+    { name: "想法和建议", href: "https://discord.gg/xp8M6nY4NA" },
   ],
   resources: [
     { name: "插件开发", href: "/fastapi_best_architecture_docs/plugin/dev" },
@@ -151,6 +151,7 @@ const links = {
     { name: "视频教程", href: "https://space.bilibili.com/284237214/lists" },
     { name: "博客", href: "/fastapi_best_architecture_docs/blog/" },
     { name: "隐私政策", href: "/fastapi_best_architecture_docs/privacy-policy" },
+    { name: "服务状态", href: "https://status.wu-clan.site/status/services" },
   ],
 };
 </script>
