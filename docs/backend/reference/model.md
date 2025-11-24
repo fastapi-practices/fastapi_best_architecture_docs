@@ -83,3 +83,9 @@ class Base(DataClassBase, DateTimeMixin):
 
     __abstract__ = True
 ```
+
+## 字符串类型
+
+对于长文本，fba 提供了内置的 PostgreSQL 和 MySQL 兼容类型 `UniversalText`
+
+对于常见文本，fba 通常使用以下长度单位：`32`、`64`、`128`、`256`、`512`
