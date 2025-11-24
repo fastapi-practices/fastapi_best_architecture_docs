@@ -73,6 +73,11 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
             {
                 text: '资源',
                 items: [
+                    // {
+                    //     text: '架构',
+                    //     icon: 'carbon:ibm-deployable-architecture',
+                    //     link: '/architecture'
+                    // },
                     {
                         text: '技术栈',
                         icon: 'material-symbols:stack',
