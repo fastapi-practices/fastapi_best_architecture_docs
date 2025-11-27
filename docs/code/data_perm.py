@@ -2,9 +2,6 @@ def filter_data_permission(request_user: GetUserInfoWithRelationDetail, model: A
     """
     过滤数据权限，控制用户可见数据范围
 
-    使用场景：
-        - 控制用户能看到哪些数据
-
     :param request_user: 请求用户
     :param model: 需要进行数据过滤的 sqlalchemy 模型
     :return:
