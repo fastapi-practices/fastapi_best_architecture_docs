@@ -6,6 +6,6 @@ export const myBulletin: BulletinOptions = {
     border: true,
     enablePage: true,
     lifetime: 'session',
-    title: '🎉 v1.11.1 已发布 🎉',
+    title: '公告',
     contentFile: path.join(__dirname, '_bulletin.md'),
 }

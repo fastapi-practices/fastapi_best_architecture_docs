@@ -1,13 +1,20 @@
-- 🛡️ 增强用户安全性
-- ✨ 可控登录验证码
+::: center
+🎉 v1.11.2 已发布 🎉
+:::
+
+- 🧫 优化内部缓存场景
+- 🔧 修复已知问题
+- ♻️ 更新任务和代码生成 API 定义
 
 ::: warning 升级须知
+前端需同步更新（因为 API 定义变更）
+:::
 
-- 数据库迁移/重建（因为用户表变更）
-- 前端需同步更新（因为验证码逻辑变更）
+::: note
+下个 v1.12.0 版本，我们将带来
 
-<a href="https://www.bigmodel.cn/claude-code?ic=SDTNNES9ZD">
-  <img src="https://wu-clan.github.io/picx-images-hosting/BigmodelPoster.png">
-</a>
-
+- Celery worker 独立镜像
+- 数据权限升级改造
+- S3 存储插件
+- 日志收集方案
 :::
