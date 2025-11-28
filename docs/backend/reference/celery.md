@@ -43,10 +43,13 @@ def validate_celery_broker(cls, values):
 Worker 是调度任务的实际执行者，它从 Broker 中提取任务并执行，并且这是一种监听行为，当 Broker 接收调度信息后，Worker
 就会提取任务并执行
 
-Worker 可以同时运行多个以进行分布式处理，默认情况下，Celery 会为计算机的启动对应内核数量的 Worker，假如计算机有 16
-个内核，那么，将默认启动 16 个 Worker
+如果没有 Worker 运行，调度任务消息会在 Broker 中积压，直到有 Worker 接收并执行
 
-如果没有 Worker 运行，调度任务消息会在 Broker 中累积，直到有 Worker 接收并执行
+fba 支持通过 Docker 快捷的分布式扩容 Worker 数量：
+
+```bash
+docker-compose up -d --scale fba_celery_worker=3
+```
 
 ## Backend
 
@@ -65,8 +68,8 @@ Celery 用户指南中的 [任务页面](https://docs.celeryq.dev/en/v5.4.0/user
 收到请求后，触发 Celery 执行任务，此时，任务已经在 Celery 中执行，而不会阻塞 FastAPI 主应用，也不会占用 FastAPI
 主应用资源，等待任务执行完成后，FastAPI 将返回任务结果，然后前端再对返回结果进行处理
 
-在上述场景中，任务会将结果存储到 Backend，它不会存储未处理任务的状态，只有任务有结果后，才会进行存储；你可以在 Celery 状态文档
-中查看所有状态信息；Celery 执行任务并不强制要求使用 Backend，但是，如果你需要查看任务的结果，则必须使用 Backend
+在上述场景中，任务会将结果存储到 Backend，你可以在 Celery 状态文档中查看所有状态信息；Celery 执行任务并不强制要求使用
+Backend，但是，如果你需要查看任务的结果，我们则推荐你这么做
 
 ## 优雅的集成
 
@@ -78,9 +81,7 @@ Celery 用户指南中的 [任务页面](https://docs.celeryq.dev/en/v5.4.0/user
 进入 task 目录后，其中 `celery.py` 是 Celery 的初始化文件，包含了启动 Celery
 启动的参数配置，此文件无需进行任何修改，下面，我们将通过视频进行详细介绍：[Celery 集成](https://www.bilibili.com/video/BV1KjkmYdE7q/?share_source=copy_web\&vd_source=ccb2aae47e179a51460c20d165021cb7)
 
-## 高级用法
-
-### 执行池
+## 执行池
 
 我们要根据实际情况为 worker 选择不同的执行池，目前推荐以下几种类型：
 
@@ -112,13 +113,9 @@ celery -A app.task.celery worker -l info -P gevent
 
 :::
 
-### 并发数
+## 并发数
 
 celery 提供了 worker 并发数 `-c` 设置，参考如下：
-
-```bash
-celery -A app.task.celery worker -l info -P gevent -c 1000
-```
 
 ::: tabs
 
@@ -136,7 +133,11 @@ celery -A app.task.celery worker -l info -P gevent -c 1000
 
 :::
 
-### 队列
+```bash
+celery -A app.task.celery worker -l info -P gevent -c 1000
+```
+
+## 队列
 
 celery 提供了 `queue`（队列），我们可以在 celery 配置中添加如下代码：
 
