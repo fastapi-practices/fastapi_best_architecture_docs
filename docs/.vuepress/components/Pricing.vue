@@ -43,7 +43,7 @@
             </li>
           </ul>
         </div>
-        <p style="text-align: center; color: var(--vp-c-text-2);">此版本仅用于赞助支持，非必须购买</p>
+        <p style="text-align: center; color: var(--vp-c-text-2);">此版本用于赞助支持</p>
         <button class="cta-button primary"
                 @click="openSponsorLink('/fastapi_best_architecture_docs/sponsors.html')">立即购买
         </button>

@@ -84,7 +84,6 @@ groups:
         socials:
           - icon: github
             link: https://github.com/imbalich
-permalink: /article/85vk4vsd/
 ---
 
 [申请 **加入团队**](./join.md){.read-more}
