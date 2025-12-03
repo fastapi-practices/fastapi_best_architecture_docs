@@ -58,7 +58,7 @@ export const pluginItems: PluginItem[] = [
         title: "MCP 服务器管理",
         description: "提供了 MCP 服务器管理功能，并添加了可调用 MCP 的 AI 聊天接口",
         label: '官方',
-        tags: ["AI", "mcp", "pgsql", "mysql", "后端"],
+        tags: ["MCP", "pgsql", "mysql", "后端"],
         link: "https://github.com/fastapi-practices/mcp",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
     },

@@ -432,7 +432,7 @@ const handleCardClick = (item: PluginItem) => {
 
 .filter-card {
   position: sticky;
-  top: 9rem;
+  top: 6rem;
   background-color: var(--vp-c-bg);
   border: 1px solid var(--vp-c-border);
   border-radius: 8px;

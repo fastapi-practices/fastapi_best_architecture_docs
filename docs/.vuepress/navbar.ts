@@ -2,6 +2,11 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
+        text: '神秘事件',
+        icon: 'noto-v1:face-screaming-in-fear',
+        link: '/events',
+    },
+    {
         text: 'v1.11.2',
         items: [
             {
@@ -188,8 +193,8 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 items: [
                     {
                         text: '插件市场',
-                        icon: 'lsicon:marketing-outline',
-                        badge: { text: 'HOT', type: 'danger' },
+                        icon: 'noto-v1:shopping-cart',
+                        // badge: { text: 'HOT', type: 'danger' },
                         link: '/market'
                     },
                 ]
