@@ -2,11 +2,6 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
-        text: '神秘事件',
-        icon: 'noto-v1:face-screaming-in-fear',
-        link: '/events',
-    },
-    {
         text: 'v1.11.2',
         items: [
             {
