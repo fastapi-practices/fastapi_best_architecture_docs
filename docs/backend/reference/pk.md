@@ -49,15 +49,34 @@ title: 主键
 
 ## 切换选择
 
+::: warning
+在切换选择之前，请确认以下事项
+
+- 未启动过项目
+- 未通过 SQL 脚本创建过表
+- `backend/conf.py` 文件中的 `DATABASE_SCHEMA` 配置符合预期
+
+如果存在以上操作，在切换选择前，必须删除所有数据库表
+:::
+
+::: caution
+不要随意切换选择！！！自增 ID 是数据库表级物理绑定，随意切换将导致致命问题！！！
+:::
+
 ### 自增 ID
 
 无需切换，这是 fba 内的全局默认声明方式
 
 ### 雪花 ID
 
-1. 更新 fba 内所有 sqlalchemy model 中的 `id: Mapped[id_key]` 为 `id: Mapped[snowflake_id_key]`
-2. 更新所有 `id_key` 导入为 `snowflake_id_key`
-3. 执行 `backend/sql/init_snowflake_test_data.sql` 脚本初始化测试数据
+1. 务必仔细查看本章节警告内容，确保数据库环境整洁
+2. 更新 fba 内所有 sqlalchemy model 中的 `id: Mapped[id_key]` 为 `id: Mapped[snowflake_id_key]`
+
+   温馨提示：合理利用 IDE 一键替换功能，可避免繁琐操作和遗漏
+
+3. 更新所有 `id_key` 导入为 `snowflake_id_key`
+4. 执行 `backend/sql/xxx/init_snowflake_test_data.sql` 脚本初始化测试数据
+5. 阅读 [注意事项](#注意事项)
 
 ::: caution Windows 平台警告
 如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为

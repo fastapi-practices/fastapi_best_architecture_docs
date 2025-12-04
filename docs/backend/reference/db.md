@@ -73,6 +73,8 @@ DATABASE_PASSWORD='123456'
 
 ## 解耦
 
+如果你只想保留一种数据库兼容性，请参考以下内容：
+
 - 删除 `with_variant` 相关代码（如果存在），仅保留数据库对应的类型
 - 删除 `backend/core/conf.py` 文件中的 `DATABASE_TYPE` 及其相关的调用代码
 - 删除 `.env_example` 和 `.env` 文件中的 `DATABASE_TYPE`
