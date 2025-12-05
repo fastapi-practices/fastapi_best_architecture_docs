@@ -79,6 +79,14 @@ openapi JSON 数据在线地址
 
 数据库字符集，仅用于 mysql
 
+### `DATABASE_PK_MODE` <Badge type="info" text="str" />
+
+数据库主键模式，更多详情：[切换主键](./pk.md)
+
+::: caution
+不要随意更新此配置！！！否则将导致致命问题！！！
+:::
+
 ## Redis 配置
 
 ### `REDIS_TIMEOUT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
@@ -271,10 +279,6 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 将刷新 token 存储到 cookie 时的过期时长（秒）
 
 ## 数据权限配置
-
-### `DATA_PERMISSION_MODELS` <Badge type="info" text="dict[str, str]" />
-
-允许进行数据过滤的 SQLA 模型，模型值必须以模块字符串的方式定义
 
 ### `DATA_PERMISSION_COLUMN_EXCLUDE` <Badge type="info" text="list[str]" />
 

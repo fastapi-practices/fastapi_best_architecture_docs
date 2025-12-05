@@ -53,14 +53,14 @@ title: 主键
 在切换选择之前，请确认以下事项
 
 - 未启动过项目
-- 未通过 SQL 脚本创建过表
-- `backend/conf.py` 文件中的 `DATABASE_SCHEMA` 配置符合预期
+- 未执行过 alembic 迁移
+- `backend/core/conf.py` 文件中的 `DATABASE_SCHEMA` 配置符合预期
 
 如果存在以上操作，在切换选择前，必须删除所有数据库表
 :::
 
 ::: caution
-不要随意切换选择！！！自增 ID 是数据库表级物理绑定，随意切换将导致致命问题！！！
+不要随意切换选择！自增 ID 会创建数据库物理绑定，随意切换将导致致命问题！！！
 :::
 
 ### 自增 ID
@@ -70,13 +70,9 @@ title: 主键
 ### 雪花 ID
 
 1. 务必仔细查看本章节警告内容，确保数据库环境整洁
-2. 更新 fba 内所有 sqlalchemy model 中的 `id: Mapped[id_key]` 为 `id: Mapped[snowflake_id_key]`
-
-   温馨提示：合理利用 IDE 一键替换功能，可避免繁琐操作和遗漏
-
-3. 更新所有 `id_key` 导入为 `snowflake_id_key`
-4. 执行 `backend/sql/xxx/init_snowflake_test_data.sql` 脚本初始化测试数据
-5. 阅读 [注意事项](#注意事项)
+2. 更新 `backend/core/conf.py` 中的 `DATABASE_PK_MODE` 配置为 `snowflake`
+3. 执行 `backend/sql/xxx/init_snowflake_test_data.sql` 脚本初始化测试数据
+4. 阅读 [注意事项](#注意事项)
 
 ::: caution Windows 平台警告
 如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为
@@ -92,7 +88,8 @@ issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
 
   当后端 api 返回长整数时，返回结果是没有问题的，但是通过前端渲染数据后，可能导致长整数渲染错误。
 
-  通过浏览器控制台可以发现，前端渲染后的数据 id 与返回数据不一致，最佳解决方法是：后端将长整数序列化为字符串之后再返回
+  通过浏览器控制台可以发现，前端渲染后的数据 id 与返回数据不一致，最佳解决方法是：后端将长整数序列化为字符串之后再返回；以下提供两种方案，
+  仅供参考：
 
   ::: tabs
   @tab schemaBase

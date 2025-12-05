@@ -2,7 +2,7 @@
 title: 切换数据库
 ---
 
-::: caution
+::: warning
 fba 自 v1.10.0 开始，已将默认数据库由 MySQL 替换为 PostgreSQL
 :::
 
@@ -73,11 +73,11 @@ DATABASE_PASSWORD='123456'
 
 ## 解耦
 
-如果你只想保留一种数据库兼容性，请参考以下内容：
+如果你只想保留一种数据库，请参考以下内容进行解耦：
 
 - 删除 `with_variant` 相关代码（如果存在），仅保留数据库对应的类型
 - 删除 `backend/core/conf.py` 文件中的 `DATABASE_TYPE` 及其相关的调用代码
 - 删除 `.env_example` 和 `.env` 文件中的 `DATABASE_TYPE`
 - 更新 `backend/templates/py/model.jinja` 文件中的 `database_type` 相关代码
-- 删除 `backend/sql` 目录中的 `postgresql` 或 `mysql` 文件夹
-- 删除 `docker-compose.yml` 文件中的 `fba_postgres` 或 `fba_mysql` 容器脚本
+- 删除 `backend/sql` 目录中不需要的文件夹
+- 删除 `docker-compose.yml` 文件中不需要的容器脚本
