@@ -19,15 +19,21 @@ export const homeSponsor: Sponsor = { ...defaultSponsor };
 
 export const goldSponsors: Sponsor[] = [
     {
-        link: 'https://www.serpshot.com/logo.png',
-        href: 'https://www.serpshot.com',
-        alt: 'Serpshot',
+        link: 'https://ss-id.com/images/logo.png',
+        href: 'https://ss-id.com/#/register?code=K64cODZr',
+        alt: 'SS-ID',
         expiryTime: '2099-12-31T23:59:59',
     },
     { ...defaultSponsor }
 ]
 
 export const generalSponsors: Sponsor[] = [
+    {
+        link: 'https://www.serpshot.com/logo.png',
+        href: 'https://www.serpshot.com',
+        alt: 'Serpshot',
+        expiryTime: '2099-12-31T23:59:59',
+    },
     {
         link: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQImbvY5S8IbJ1iL6yHfExtHiAhUtLIoi7AQ&s',
         href: 'https://user.by.ltd/aff.php?aff=12215',

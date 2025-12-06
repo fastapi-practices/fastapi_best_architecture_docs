@@ -71,8 +71,7 @@ title: 主键
 
 1. 务必仔细查看本章节警告内容，确保数据库环境整洁
 2. 更新 `backend/core/conf.py` 中的 `DATABASE_PK_MODE` 配置为 `snowflake`
-3. 执行 `backend/sql/xxx/init_snowflake_test_data.sql` 脚本初始化测试数据
-4. 阅读 [注意事项](#注意事项)
+3. 阅读 [注意事项](#注意事项)
 
 ::: caution Windows 平台警告
 如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为

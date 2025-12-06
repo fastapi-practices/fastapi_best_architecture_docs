@@ -110,6 +110,15 @@
                   />
                   <span>可用</span>
                 </label>
+                <label class="filter-badge" :class="{ active: selectedStatus === 'wip' }">
+                  <input
+                      type="radio"
+                      value="wip"
+                      v-model="selectedStatus"
+                      name="status"
+                  />
+                  <span>开发中</span>
+                </label>
                 <label class="filter-badge" :class="{ active: selectedStatus === 'expired' }">
                   <input
                       type="radio"
@@ -166,7 +175,7 @@
           <div
               v-for="(item, index) in filteredItems"
               :key="index"
-              :class="{ 'clickable': item.link, 'expired': item.expired }"
+              :class="{ 'clickable': item.link, 'expired': item.expired || item.wip }"
               class="plugin-card"
               @click="handleCardClick(item)"
           >
@@ -182,6 +191,9 @@
               </div>
               <div v-if="item.expired" class="expired-overlay">
                 <span class="expired-text">已过期，不适用</span>
+              </div>
+              <div v-if="item.wip" class="expired-overlay">
+                <span class="expired-text">正在开发中</span>
               </div>
             </div>
             <div class="card-content">
@@ -208,7 +220,7 @@
                 />
               </div>
             </div>
-            <div v-if="item.expired" class="expired-overlay-card"></div>
+            <div v-if="item.expired || item.wip" class="expired-overlay-card"></div>
           </div>
         </div>
       </div>
@@ -230,6 +242,7 @@ export interface PluginItem {
   logo: string
   free?: boolean
   expired?: boolean
+  wip?: boolean
 }
 
 const props = withDefaults(
@@ -317,9 +330,11 @@ const baseFilteredItems = computed(() => {
   }
 
   if (selectedStatus.value === 'active') {
-    result = result.filter(item => !item.expired)
+    result = result.filter(item => !item.expired && !item.wip)
   } else if (selectedStatus.value === 'expired') {
     result = result.filter(item => item.expired)
+  } else if (selectedStatus.value === 'wip') {
+    result = result.filter(item => item.wip)
   }
 
   return result
@@ -479,18 +494,6 @@ const handleCardClick = (item: PluginItem) => {
 
 .filter-content {
   overflow: hidden;
-}
-
-.filter-content-enter-active,
-.filter-content-leave-active {
-  transition: all 0.3s ease;
-  max-height: 1000px;
-}
-
-.filter-content-enter-from,
-.filter-content-leave-to {
-  max-height: 0;
-  opacity: 0;
 }
 
 @media (max-width: 767px) {
