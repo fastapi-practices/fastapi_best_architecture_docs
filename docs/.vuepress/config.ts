@@ -2,6 +2,7 @@ import { defineUserConfig } from "vuepress";
 import { viteBundler } from '@vuepress/bundler-vite'
 import { baiduAnalyticsPlugin } from "@vuepress/plugin-baidu-analytics";
 import { umamiAnalyticsPlugin } from "@vuepress/plugin-umami-analytics";
+import { clarityAnalyticsPlugin } from "@vuepress/plugin-clarity-analytics";
 import { myTheme } from "./theme";
 
 
@@ -19,6 +20,9 @@ export default defineUserConfig({
         }),
         umamiAnalyticsPlugin({
             id: '62984e7c-ec95-459a-9a2f-553766c6b3d4'
+        }),
+        clarityAnalyticsPlugin({
+            id: 'uhawbqsmxt'
         })
     ],
     bundler: viteBundler(),

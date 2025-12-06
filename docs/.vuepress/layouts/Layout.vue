@@ -5,7 +5,6 @@ import SponsorPanel from "../components/SponsorPanel.vue";
 import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 import Footer from "../components/Footer.vue";
-import GradientText from "../components/bits/GradientText.vue";
 </script>
 
 <template>
