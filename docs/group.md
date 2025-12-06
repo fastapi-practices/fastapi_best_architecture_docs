@@ -1,5 +1,6 @@
 ---
 title: 交流群
+sponsor_sidebar: true
 ---
 
 [通过 fba 作者主页与他互动](https://wu-clan.github.io/homepage/){.read-more}

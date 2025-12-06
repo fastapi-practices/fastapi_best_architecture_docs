@@ -5,6 +5,12 @@ import SponsorPanel from "../components/SponsorPanel.vue";
 import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 import Footer from "../components/Footer.vue";
+import { useData } from 'vuepress-theme-plume/composables'
+import { computed } from "vue";
+
+const { frontmatter } = useData()
+const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_sidebar)
+
 </script>
 
 <template>
@@ -16,6 +22,16 @@ import Footer from "../components/Footer.vue";
     </template>
     <template #sidebar-nav-before>
       <div class="custom-content">
+        <SponsorSidebar />
+      </div>
+    </template>
+    <template #aside-top>
+      <div v-if="showSidebarSponsorOnAsideTop" style="margin-bottom: 8px">
+        <SponsorSidebar />
+      </div>
+    </template>
+    <template #posts-aside-top>
+      <div style="margin-bottom: 8px">
         <SponsorSidebar />
       </div>
     </template>

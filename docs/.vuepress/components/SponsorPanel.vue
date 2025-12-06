@@ -1,38 +1,26 @@
 <template>
-  <div class="brand-header" @click="toggleCollapse">
+  <div class="brand-header">
     <span>倾情赞助</span>
-    <span class="toggle-icon">
-      <Icon v-if="isCollapsed" name="iconamoon:arrow-right-2" />
-      <Icon v-else name="iconamoon:arrow-down-2" />
-    </span>
   </div>
   <div class="brand-container">
     <div class="gold-sponsors">
       <div
           v-for="brand in goldSponsors"
           v-show="shouldShowSponsor(brand)"
-          :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item gold"
           @click="openSponsorLink(brand.href, '_blank')"
       >
-        <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
-        <span v-else class="brand-text collapsed-text">
-          {{ brand.alt }}
-        </span>
+        <img :alt="brand.alt" :src="brand.link" class="brand-image" />
       </div>
     </div>
     <div class="general-sponsors">
       <div
           v-for="brand in generalSponsors"
           v-show="shouldShowSponsor(brand)"
-          :class="{ 'collapsed-mode': isCollapsed }"
           class="brand-item"
           @click="openSponsorLink(brand.href, '_blank')"
       >
-        <img v-if="!isCollapsed" :alt="brand.alt" :src="brand.link" class="brand-image" />
-        <span v-else class="brand-text collapsed-text">
-          {{ brand.alt }}
-        </span>
+        <img :alt="brand.alt" :src="brand.link" class="brand-image" />
       </div>
     </div>
     <div
@@ -54,26 +42,11 @@ import {
   shouldShowSponsor,
   sponsorUrl
 } from "../data/sponsors";
-import { useStorage } from "@vueuse/core";
-
-const isCollapsed = useStorage('fba-docs-sponsor-collapsed', false);
 
 const shouldShowExtraBecomeSponsor = computed(() => {
   return (goldSponsors.filter(brand => shouldShowSponsor(brand)).length +
       generalSponsors.filter(brand => shouldShowSponsor(brand)).length) < 9;
 });
-
-const toggleCollapse = () => {
-  isCollapsed.value = !isCollapsed.value;
-};
-
-const brandItemGoldHeight = computed(() => {
-  return isCollapsed.value ? '32px' : '96px'
-})
-
-const brandItemHeight = computed(() => {
-  return isCollapsed.value ? '32px' : '66px'
-})
 </script>
 
 <style scoped>
@@ -85,12 +58,6 @@ const brandItemHeight = computed(() => {
   font-size: 11px;
   color: var(--vp-c-text-3);
   margin: 3px 0 2px;
-}
-
-.toggle-icon {
-  font-size: 10px;
-  transform: scale(1.2);
-  opacity: 0.7;
 }
 
 .brand-container {
@@ -117,7 +84,7 @@ const brandItemHeight = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: v-bind(brandItemHeight);
+  height: 66px;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -127,7 +94,7 @@ const brandItemHeight = computed(() => {
 }
 
 .brand-item.gold {
-  height: v-bind(brandItemGoldHeight);
+  height: 96px;
 }
 
 .brand-image {
@@ -150,24 +117,6 @@ const brandItemHeight = computed(() => {
 
 .brand-item.gold .brand-text {
   font-size: 13px;
-}
-
-.collapsed-mode {
-  height: 32px !important;
-}
-
-.collapsed-mode .brand-image {
-  opacity: 0;
-}
-
-.collapsed-text {
-  color: var(--vp-c-brand-1) !important;
-  font-weight: 600;
-  transform: scale(1.05);
-}
-
-.collapsed-mode:hover .collapsed-text {
-  color: var(--vp-c-text-1) !important;
 }
 
 .become-brand {

@@ -1,5 +1,6 @@
 ---
 title: 常见问题
+sponsor_sidebar: true
 ---
 
 ::: tip

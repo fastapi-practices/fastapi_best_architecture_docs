@@ -26,6 +26,7 @@ import { homeSponsor, openSponsorLink, shouldShowSponsor } from "../data/sponsor
 
 <style scoped>
 .brand-header {
+  text-align: left;
   font-size: 11px;
   color: var(--vp-c-text-3);
 }
