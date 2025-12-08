@@ -135,11 +135,10 @@ export const pluginItems: PluginItem[] = [
     {
         icon: "logos:aws-s3",
         title: "S3",
-        description: "提供兼容 S3 协议的对象存储能力",
+        description: "提供基于 S3 协议的文件上传能力",
         label: '官方',
         tags: ["S3", "pgsql", "mysql", "后端"],
         link: "https://github.com/fastapi-practices/s3",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
-        wip: true,
     },
 ]

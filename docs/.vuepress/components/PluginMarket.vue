@@ -514,7 +514,6 @@ const handleCardClick = (item: PluginItem) => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-border);
   border-radius: 8px;
-  color: white;
   font-size: 0.875rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
