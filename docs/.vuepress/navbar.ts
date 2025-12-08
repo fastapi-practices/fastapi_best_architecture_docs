@@ -188,7 +188,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 items: [
                     {
                         text: '插件市场',
-                        icon: 'noto-v1:shopping-cart',
+                        icon: 'mdi:marketplace-outline',
                         // badge: { text: 'HOT', type: 'danger' },
                         link: '/market'
                     },

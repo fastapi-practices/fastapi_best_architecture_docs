@@ -3,9 +3,13 @@ title: 常见问题
 sponsor_sidebar: true
 ---
 
-::: tip
-如果以下解决方案未能帮助到您，请通过 [交流群](./group.md) 与我们联系
-:::
+## 2025.12 项目 Star 为何猛增
+
+刷星？完全不存在，无论是何项目，我们坚决抵制这种无耻行为
+
+原因？X 上面一位博主分享了此项目，原帖：[@tom_doerr](https://x.com/tom_doerr/status/1995998190768648296?s=20)
+
+![x_visitors.png](/images/x_visitors.png)
 
 ## 返回数据跟数据库对不上
 
@@ -64,5 +68,5 @@ return await self.select_order(  # [!code word:noload]
 
 ## 数据库时区陷阱
 
-MySQL 不支持时区存储类型，而 PostgreSQL 拥有完美的时区类型，所以在数据库中存储时间列确实是一件令人头疼的事情，不过我们已经实现完美方案，兼容
-pgsql 和 mysql，[查看详情](./backend/reference/timezone.md)
+MySQL 不支持时区存储类型，而 PostgreSQL 拥有完美的时区类型，所以在数据库中存储时间列确实是一件令人头疼的事情，不过我们已为此实现完美方案，兼容
+mysql 和 pgsql，[查看详情](./backend/reference/timezone.md#数据库)

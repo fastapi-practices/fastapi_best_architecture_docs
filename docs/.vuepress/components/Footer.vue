@@ -92,7 +92,16 @@
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        <span>Copyright © 2023-{{ currentYear }} FastAPI Practices and contributors.</span>
+        <span>Copyright © 2023-{{ currentYear }} FastAPI Practices and
+          <a
+              href="https://github.com/fastapi-practices/fastapi_best_architecture/graphs/contributors"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+          >
+            contributors.
+          </a>
+        </span>
         <span>
           Released under the
           <a
