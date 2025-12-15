@@ -18,15 +18,15 @@
   "license": "MIT",
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.120",
-    "@vuepress/plugin-clarity-analytics": "2.0.0-rc.120",
-    "@vuepress/plugin-umami-analytics": "2.0.0-rc.120",
+    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.121",
+    "@vuepress/plugin-clarity-analytics": "2.0.0-rc.121",
+    "@vuepress/plugin-umami-analytics": "2.0.0-rc.121",
     "vue": "^3.5.25",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-theme-plume": "1.0.0-rc.181"
+    "vuepress-theme-plume": "1.0.0-rc.183"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.415",
+    "@iconify/json": "^2.2.418",
     "@vueuse/core": "^12.8.2",
     "mermaid": "^11.12.2",
     "swiper": "^12.0.3"
