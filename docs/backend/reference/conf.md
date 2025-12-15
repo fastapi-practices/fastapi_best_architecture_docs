@@ -481,6 +481,24 @@ pip 下载最大重试次数
 
 国际化响应的默认语言
 
+## Grafana 配置
+
+### `GRAFANA_METRICS` <Badge type="info" text="bool" />
+
+是否启用 Grafana 套件
+
+::: warning
+如果不需要可观测性集成，不建议启用此功能
+:::
+
+### `GRAFANA_APP_NAME` <Badge type="info" text="str" />
+
+Grafana 应用名称，通常情况下，不建议修改
+
+### `GRAFANA_OTLP_GRPC_ENDPOINT` <Badge type="info" text="str" />
+
+Grafana OTLP 协议 grpc 地址，用于发送遥测数据
+
 ## 应用：Task
 
 ### `CELERY_BROKER_REDIS_DATABASE` <Badge type="info" text="int" /> <Badge type="warning" text="env" />

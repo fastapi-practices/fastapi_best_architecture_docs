@@ -1,12 +1,13 @@
 <script setup>
-import { Layout } from "vuepress-theme-plume/client";
+import BannerTop from "../components/BannerTop.vue";
+import Footer from "../components/Footer.vue";
 import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 import SponsorPanel from "../components/SponsorPanel.vue";
-import BannerTop from "../components/BannerTop.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
-import Footer from "../components/Footer.vue";
+
 import { useData } from 'vuepress-theme-plume/composables'
 import { computed } from "vue";
+import { Layout } from "vuepress-theme-plume/client";
 
 const { frontmatter } = useData()
 const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_sidebar)
@@ -36,7 +37,7 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
       </div>
     </template>
     <template #doc-title-after>
-        <PageContextMenu />
+      <PageContextMenu />
     </template>
     <template #aside-outline-after>
       <div class="custom-content">
