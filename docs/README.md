@@ -30,10 +30,10 @@ config:
       - title: 现代技术栈
         icon: ✨
         details: FastAPI + SQLAlchemy 2.0 + Pydantic v2 + Celery 全栈异步
-      - title: 自研伪三层架构
+      - title: 伪三层架构
         icon: 🧠
         details: 极简设计，所有开发者都能轻松上手与扩展
-      - title: 自研插件系统
+      - title: 插件系统
         icon: unjs:unplugin
         details: 零耦合功能扩展，支持随意拼装
       - title: 高性能 JWT
