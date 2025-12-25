@@ -130,7 +130,6 @@ export const pluginItems: PluginItem[] = [
         tags: ["AI", "pgsql", "mysql", "后端"],
         link: "https://github.com/fastapi-practices/ai",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
-        wip: true,
     },
     {
         icon: "logos:aws-s3",
