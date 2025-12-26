@@ -20,7 +20,6 @@ export const mySidebar: ThemeSidebarMulti = {
             prefix: 'ide/',
             items: [
                 { text: 'Visual Studio Code', link: 'vscode' },
-                { text: 'Cursor', link: 'cursor' },
             ]
         },
         {
