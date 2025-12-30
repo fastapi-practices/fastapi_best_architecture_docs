@@ -11,7 +11,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '简介', link: 'intro' },
                 { text: '快速开始', link: 'quick-start' },
                 { text: '为什么选择我们？', link: 'why' },
-                { text: '精简版', link: 'fsm' },
+                { text: '精简版', link: 'slim' },
             ]
         },
         {
