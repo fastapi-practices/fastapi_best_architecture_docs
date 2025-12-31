@@ -74,7 +74,7 @@ sponsor_sidebar: true
             </td>
         </tr>
         <tr>
-            <td><strong>特别展位</strong></td>
+            <td><strong>金牌展位</strong></td>
             <td style="color: orangered">（目前空缺）</td>
             <td>与作者沟通 / 月</td>
             <td>
@@ -83,7 +83,7 @@ sponsor_sidebar: true
             </td>
         </tr>
         <tr>
-            <td><strong>普通展位</strong></td>
+            <td><strong>银牌展位</strong></td>
             <td style="color: orangered">（目前空缺）</td>
             <td>与作者沟通 / 月</td>
             <td>

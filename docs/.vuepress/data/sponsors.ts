@@ -42,6 +42,7 @@ export const openSponsorLink = (href: string, target?: string) => {
 };
 
 export function shouldShowSponsor(sponsor: Sponsor): boolean {
+    // @ts-ignore
     if (!sponsor.alt.includes('成为赞助商') && sponsor.expiryTime) {
         const now = new Date();
         const expiryDate = new Date(sponsor.expiryTime);

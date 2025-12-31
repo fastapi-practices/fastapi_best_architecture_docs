@@ -58,13 +58,50 @@ config:
 ---
 
 <script setup lang="ts">
-import { goldSponsors, generalSponsors } from '@source/.vuepress/data/sponsors'
+import { computed } from 'vue'
+import { goldSponsors, generalSponsors, shouldShowSponsor } from '@source/.vuepress/data/sponsors'
+
+const processedGoldSponsors = computed(() =>
+  goldSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
+)
+
+const processedGeneralSponsors = computed(() =>
+  generalSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
+)
+
+const showGoldPlaceholder = computed(() =>
+  goldSponsors.some(s => s.alt?.includes('成为赞助商') && !s.link)
+)
+
+const showGeneralPlaceholder = computed(() =>
+  generalSponsors.some(s => s.alt?.includes('成为赞助商') && !s.link)
+)
 </script>
 
-<h1 align="center">特别赞助商</h1>
+<style scoped>
+:deep(.swiper-slide-link) {
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+:deep(.swiper-slide-link:hover) {
+  border: 1px solid var(--vp-c-brand);
+}
+
+:deep(.swiper-slide) {
+  background-color: var(--vp-c-bg-soft);
+}
+</style>
+
+::: center
+
+# 金牌赞助商
+
+:::
 
 <Swiper
-:items="goldSponsors"
+v-if="processedGoldSponsors.length > 0"
+:items="processedGoldSponsors"
 mode="broadcast"
 :loop="false"
 :height="162"
@@ -73,10 +110,15 @@ mode="broadcast"
 mousewheel
 />
 
-<h2 align="center">赞助商</h2>
+::: center
+
+## 银牌赞助商
+
+:::
 
 <Swiper
-:items="generalSponsors"
+v-if="processedGeneralSponsors.length > 0"
+:items="processedGeneralSponsors"
 mode="carousel"
 :height="168"
 :slides-per-view="4"
@@ -84,7 +126,11 @@ mode="carousel"
 :speed="5000"
 />
 
-<h2 align="center" style="border-top: none; margin-bottom: 24px">贡献者</h2>
+::: center
+
+## 贡献者
+
+:::
 
 <div align="center">
   <a href="https://github.com/fastapi-practices/fastapi_best_architecture/graphs/contributors">

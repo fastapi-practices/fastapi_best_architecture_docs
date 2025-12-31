@@ -1,6 +1,7 @@
 ---
 title: ContextVar：异步编程中的上下文管理利器
 createTime: 2025-10-13 18:30
+sticky: true
 tags:
   - Python
 ---

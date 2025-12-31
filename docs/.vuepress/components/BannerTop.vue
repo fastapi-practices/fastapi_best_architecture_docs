@@ -1,5 +1,5 @@
 <template>
-  <div class="banner">
+  <div v-if="isDismissed" class="banner">
     <p class="vp-banner-text">
       <span class="vp-text-primary">fba </span>
       <span class="vp-tagline"> · 企业级</span>
@@ -46,6 +46,14 @@ updateDocumentClass();
 html:not(.banner-dismissed) {
   --vp-layout-top-height: 50px;
 }
+
+.banner {
+  display: none;
+}
+
+html:not(.banner-dismissed) .banner {
+  display: flex;
+}
 </style>
 
 <style scoped>
@@ -61,15 +69,10 @@ html:not(.banner-dismissed) {
   font-weight: 600;
   color: #fff;
   background: #161618;
-  display: flex;
   justify-content: center;
   align-items: center;
   max-width: 100%;
   max-height: 100%;
-}
-
-.banner-dismissed .banner {
-  display: none;
 }
 
 a:hover {

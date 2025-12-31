@@ -1,6 +1,6 @@
 <template>
   <section v-if="shouldShowSponsor(homeSponsor)" id="special-spsr">
-    <span>特别赞助商</span>
+    <span>独家赞助商</span>
     <a :href="homeSponsor.href" target="_self">
       <img :alt="homeSponsor.alt" :src="homeSponsor.link" width="208" />
     </a>
