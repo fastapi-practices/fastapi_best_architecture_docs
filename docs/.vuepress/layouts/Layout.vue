@@ -21,6 +21,9 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
         <BannerTop />
       </div>
     </template>
+    <template #nav-bar-menu-before>
+      <p class="neon-text">🧨 新年快乐 🧨</p>
+    </template>
     <template #sidebar-nav-before>
       <div class="custom-content">
         <SponsorSidebar />
@@ -55,5 +58,34 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
 <style>
 .custom-content {
   width: 100%;
+}
+
+.neon-text {
+  margin-right: 66px;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff3366;
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.1), rgba(255, 51, 102, 0.05));
+  border: 1px solid rgba(255, 51, 102, 0.3);
+  border-radius: 8px;
+  text-shadow: 0 0 8px rgba(255, 51, 102, 0.8),
+  0 0 15px rgba(255, 51, 102, 0.5),
+  0 0 25px rgba(255, 51, 102, 0.3);
+  animation: neon-flicker 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(255, 51, 102, 0.8),
+    0 0 15px rgba(255, 51, 102, 0.5),
+    0 0 25px rgba(255, 51, 102, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 5px rgba(255, 51, 102, 0.6),
+    0 0 10px rgba(255, 51, 102, 0.4),
+    0 0 15px rgba(255, 51, 102, 0.2);
+  }
 }
 </style>
