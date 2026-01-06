@@ -422,28 +422,9 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## 操作日志
 
-### `OPERA_LOG_ENCRYPT_SECRET_KEY` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
-
-操作日志加密密钥，当使用对称加密算法加密操作日志时，将十分重要，密钥生成：
-`os.urandom(32).hex()`
-
-::: danger
-请妥善保管此值，以免遭受恶意攻击
-:::
-
 ### `OPERA_LOG_PATH_EXCLUDE` <Badge type="info" text="list[str]" />
 
 操作日志路径排除，在此配置内的请求地址不会记录操作日志
-
-### `OPERA_LOG_ENCRYPT_TYPE` <Badge type="info" text="int" />
-
-操作日志中的接口请求参数加密类型
-
-- 0：AES (性能损耗)
-- 1：md5
-- 2：ItsDangerous
-- 3：不加密
-- others：直接将内容替换为 ******
 
 ### `OPERA_LOG_ENCRYPT_KEY_INCLUDE` <Badge type="info" text="list[str]" />
 

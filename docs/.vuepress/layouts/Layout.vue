@@ -22,7 +22,7 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
       </div>
     </template>
     <template #nav-bar-menu-before>
-      <p class="neon-text">🧨 新年快乐 🧨</p>
+      <p class="neon-text">优雅～ 永不过时</p>
     </template>
     <template #sidebar-nav-before>
       <div class="custom-content">
@@ -61,7 +61,7 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
 }
 
 .neon-text {
-  margin-right: 66px;
+  margin-right: 38px;
   padding: 4px 12px;
   font-size: 14px;
   font-weight: 600;
