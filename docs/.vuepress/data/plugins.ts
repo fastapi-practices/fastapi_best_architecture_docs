@@ -140,4 +140,13 @@ export const pluginItems: PluginItem[] = [
         link: "https://github.com/fastapi-practices/s3",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
     },
+    {
+        icon: "fluent-mdl2:task-list",
+        title: "Task",
+        description: "基于 taskiq 的异步任务队列",
+        label: '官方',
+        tags: ["task", "pgsql", "mysql", "后端"],
+        link: "https://github.com/fastapi-practices/task",
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
+    },
 ]
