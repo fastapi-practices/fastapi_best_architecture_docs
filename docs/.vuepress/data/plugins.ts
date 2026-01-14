@@ -149,4 +149,13 @@ export const pluginItems: PluginItem[] = [
         link: "https://github.com/fastapi-practices/task",
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
     },
+    {
+        icon: "carbon:api-key",
+        title: "API Key",
+        description: "支持使用用户自定义 API Key 进行接口认证",
+        label: '官方',
+        tags: ["auth", "pgsql", "mysql", "后端"],
+        link: "https://github.com/fastapi-practices/api_key",
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
+    },
 ]
