@@ -86,4 +86,4 @@ groups:
             link: https://github.com/imbalich
 ---
 
-[申请 **加入团队**](./join.md){.read-more}
+[**申请加入团队**](./join.md){.read-more}

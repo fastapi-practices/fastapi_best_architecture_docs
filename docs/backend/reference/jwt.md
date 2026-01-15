@@ -10,8 +10,8 @@ title: JWT
 在文件 `backend/common/security/jwt.py` 中，包含以下代码
 
 ```python
-# JWT authorizes dependency injection
-DependsJwtAuth = Depends(CustomHTTPBearer())
+# JWT dependency injection
+DependsJwtAuth = Depends(HTTPBearer())
 ```
 
 我们通过在接口函数中添加此依赖实现 JWT 快速校验，它可以帮助我们检查请求头中是否包含 Bearer Token，使用方式参考如下：
@@ -35,7 +35,9 @@ async def hello():
 你可以通过此方式获取 token，在大多数情况下，这更适用于配合前端实现登录授权
 
 我们在 fba 中使用 [fast_captcha](https://github.com/wu-clan/fast-captcha) 生成 base64 验证码，然后通过接口进行数据返回；您可以通过在线
-base64 转图片或配合前端项目将其转为图片进行预览，以下使其工作流程：
+base64 转图片或配合前端项目将其转为图片进行预览
+
+### 授权流程
 
 ```sequence 验证码登录逻辑
 actor 客户端
