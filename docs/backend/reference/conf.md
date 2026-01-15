@@ -45,23 +45,23 @@ openapi JSON 数据在线地址
 
 ### `DATABASE_TYPE` <Badge type="info" text="Literal['postgresql', 'mysql']" /> <Badge type="warning" text="env" />
 
-指定数据库类型，仅支持 `postgresql` 和 `mysql`，需注意第三方插件兼容性
+数据库类型，仅支持 `postgresql` 和 `mysql`，需注意第三方插件兼容性
 
 ### `DATABASE_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
-提供数据库的主机地址
+数据库的主机地址
 
 ### `DATABASE_PORT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
-提供数据库的主机端口号
+数据库的端口号
 
 ### `DATABASE_USER` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
-连接数据库所使用的用户名
+数据库用户名
 
 ### `DATABASE_PASSWORD` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
-连接数据库所使用的密码
+数据库认证密码
 
 ### `DATABASE_ECHO` <Badge type="info" text="bool | Literal['debug']" />
 
@@ -91,23 +91,23 @@ openapi JSON 数据在线地址
 
 ### `REDIS_TIMEOUT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
-连接 Redis 数据库超时时长
+Socket 读写操作的超时时间和 Redis 建立 TCP 连接时的超时时间
 
 ### `REDIS_HOST` <Badge type="info" text="int" />
 
-连接 Redis 数据库的主机地址
+Redis 服务器的主机地址
 
 ### `REDIS_PORT` <Badge type="info" text="str" />
 
-连接 Redis 数据库的主机端口号
+Redis 服务器的端口号
 
 ### `REDIS_PASSWORD` <Badge type="info" text="int" />
 
-连接 Redis 数据库的密码
+Redis 认证密码
 
 ### `REDIS_DATABASE` <Badge type="info" text="str" />
 
-全局默认使用的 Redis 逻辑数据库（0 - 15）
+全局默认使用的 Redis 逻辑数据库索引（0 - 15）
 
 ## Snowflake（雪花算法）
 

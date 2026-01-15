@@ -41,7 +41,7 @@ title: Docker 部署
    @tab fba
 
    ```shell:no-line-numbers
-   docker build -f Dockerfile -t fba_backend_independent .
+   docker build -f Dockerfile -t fba_server_independent .
    ```
 
    @tab celery
@@ -60,7 +60,7 @@ title: Docker 部署
    @tab fba
 
    ```shell:no-line-numbers
-   docker run -d -p 8000:8000 --name fba_server fba_backend_independent
+   docker run -d -p 8000:8000 --name fba_server fba_server_independent
    ```
 
    @tab celery
