@@ -3,6 +3,8 @@ import { defineClientConfig } from 'vuepress/client'
 import { h } from 'vue';
 // @ts-ignore
 import { NotFound } from "vuepress-theme-plume/client";
+// @ts-ignore
+import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 
 // @ts-ignore
 import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
@@ -27,7 +29,9 @@ export default defineClientConfig({
         app.component('Swiper', Swiper)
     },
     layouts: {
-        Layout,
+        Layout: h(Layout, null, {
+            'doc-title-after': () => h(PageContextMenu),
+        }),
         NotFound: () => h(NotFound, null, {
             'layout-top': () => h(BannerTop),
         }),
