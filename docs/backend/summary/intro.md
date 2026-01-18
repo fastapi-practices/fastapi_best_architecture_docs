@@ -81,6 +81,7 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
     - common/ 公共资源
     - core/ 核心配置
     - database/ 数据库连接
+    - langs/ 国际化语言包
     - log/ 日志
     - middleware/ 中间件
     - plugin 插件
