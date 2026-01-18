@@ -95,8 +95,10 @@ issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
 
   ```python
   @field_serializer('id', check_fields=False)
-  def serialize_id(self, value) -> str:
-      return str(value)
+  def serialize_id(self, value: int) -> str | int:
+      if self.model_config.get('from_attributes'):
+          return str(value)
+      return value
   ```
 
   @tab GetXxxDetail / GetXxxTree
