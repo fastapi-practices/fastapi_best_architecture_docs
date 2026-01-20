@@ -21,6 +21,13 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
         <BannerTop />
       </div>
     </template>
+    <template #nav-bar-content-after>
+      <div>
+        <button class="login-button">
+          <a href="https://fba.wu-clan.site/">登录</a>
+        </button>
+      </div>
+    </template>
     <template #sidebar-nav-before>
       <div class="custom-content">
         <SponsorSidebar />
@@ -55,5 +62,25 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
 <style>
 .custom-content {
   width: 100%;
+}
+
+.login-button {
+  height: 32px;
+  padding: 0 12px;
+  margin-left: 16px;
+  font-weight: 500;
+  color: #FFFFF5DB;
+  background-color: var(--vp-c-brand-1);
+  border: none;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .login-button {
+    height: 28px;
+    padding: 0 10px;
+    margin-left: 8px;
+    font-size: 13px;
+  }
 }
 </style>

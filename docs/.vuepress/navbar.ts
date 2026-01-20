@@ -5,16 +5,6 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: 'v1.12.3',
         items: [
             {
-                text: '在线体验',
-                items: [
-                    {
-                        text: 'Vben UI',
-                        icon: 'iconoir:www',
-                        link: 'https://fba.wu-clan.site/',
-                    },
-                ]
-            },
-            {
                 text: '后端',
                 items: [
                     {
