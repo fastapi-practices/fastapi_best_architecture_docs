@@ -3,13 +3,10 @@ title: 成为 fba 的赞助者
 sponsor_sidebar: true
 ---
 
-::: note ⚡
 自 fba
 创建以来，我们一直致力于 [持续更新](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
-和 [积极维护](./backend/summary/why.md#长期维护)，为此，我们投入了大量的时间和无限的热爱
-
-感谢您为 fba 给予的大力支持，您的每份鼓励都将成为我们继续前进的动力，愿我们一起携手，共建美好未来
-:::
+和 [积极维护](./backend/summary/why.md#长期维护)，为此，我们投入了大量的时间和无限的热爱。感谢您为 fba
+给予的大力支持，您的每份鼓励都将成为我们继续前进的动力
 
 ## 荣誉赞助
 
@@ -36,7 +33,7 @@ sponsor_sidebar: true
 </div>
 
 ::: tip
-请通过 [Discord](./group.md) 与我联系并发送赞助截图，以获取专属身份标签
+请通过 [Discord](./group.md) 与作者联系并发送赞助截图，以获取专属身份标签
 :::
 
 ## 展位赞助商
