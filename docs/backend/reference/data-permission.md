@@ -25,4 +25,6 @@ SQL 语句拼接进行实现的，而这些固定权限，直接写死了数据�
 有没有一种更加灵活的方案呢，答案是，当然有，目前，我们在 fba 中实现的正是超灵活方案，但相比于常见方案来讲，配置会更加复杂
 
 你可以直接查看代码源文件 `backend/common/security/permission.py`
-，它与常规方案使用近乎相同的方式实现数据过滤，但由于其复杂性，下面，我们将通过视频进行讲解： [数据权限管理](https://www.bilibili.com/video/BV13hioY1EQU/?share_source=copy_web\&vd_source=ccb2aae47e179a51460c20d165021cb7)
+，它与常规方案使用近乎相同的方式实现数据过滤，但由于其复杂性，下面，我们将通过视频进行讲解：
+
+@[bilibili](BV13hioY1EQU)

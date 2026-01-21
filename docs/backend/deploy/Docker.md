@@ -75,7 +75,7 @@ title: Docker 部署
 
 ### 前端
 
-[请移步至 **前端快速开始**](../../frontend/summary/quick-start.md){.read-more}
+[**快速开始**](../../frontend/summary/quick-start.md){.read-more}
 
 ## 服务器部署
 
@@ -146,7 +146,7 @@ fba 正在使用免费 SSL 证书：[httpsok-SSL](https://httpsok.com/p/4Qjd)，
 
 ### 前端
 
-[请移步至 **前端快速开始**](../../frontend/deploy/docker.md){.read-more}
+[**快速开始**](../../frontend/deploy/docker.md){.read-more}
 
 ## 注意事项
 

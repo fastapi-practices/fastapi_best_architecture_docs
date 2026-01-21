@@ -1,5 +1,5 @@
 ---
-title: 如何编写自定义中间件?
+title: FastAPI 如何编写自定义中间件
 createTime: 2024-10-31 18:30
 tags:
   - FastAPI
@@ -68,7 +68,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ## 如何使用
 
-进入 fba 项目 backend 目录下，找到 `core/registrar.py`，在此文件中找到 `register_middleware()` 函数，这是 fba 的中间件注册函数
+进入 fba 项目，找到 `backend/core/registrar.py`，在此文件中找到 `register_middleware()` 函数，这是 fba 的中间件注册函数
 
 在此函数中，==中间件按照从上往下的顺序依次执行==，因此，中间件的顺序非常重要
 

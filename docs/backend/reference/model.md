@@ -30,7 +30,7 @@ id_key = Annotated[
 
 ### 雪花 ID
 
-[请移步至 **切换主键**](pk.md){.read-more}
+[**切换主键**](pk.md){.read-more}
 
 ## Mixin 类
 
@@ -43,7 +43,7 @@ id_key = Annotated[
 ::: warning
 在 fba 中，并没有默认集成操作人员信息到各个数据库表，但是我们提供了非常简易的集成方式
 
-[请移步至 **操作人**](operator.md){.read-more}
+[**操作人**博客](../../blog/operator.md){.read-more}
 :::
 
 ### 日期时间

@@ -2,7 +2,7 @@
 title: schema
 ---
 
-在 fba 中，我们为 Schema 进行了大量量身定制，详情请查看源代码：`backend\common\schema.py`
+在 fba 中，我们为 Schema 进行了大量量身定制，详情请查看：`backend\common\schema.py`
 
 ## 类命名
 
@@ -25,4 +25,4 @@ title: schema
 
 ## 驼峰返回
 
-[请移步至 **接口响应**](response.md#驼峰返回){.read-more}
+[**接口响应**](response.md#驼峰返回){.read-more}

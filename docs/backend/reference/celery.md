@@ -79,7 +79,9 @@ Backend，但是，如果你需要查看任务的结果，我们则推荐你这�
 进入源码 `backend/app` 目录，其中，task 目录就是我们的 Celery 应用程序，如果你不想使用它，而是使用其他任务应用，可以直接删除此文件夹
 
 进入 task 目录后，其中 `celery.py` 是 Celery 的初始化文件，包含了启动 Celery
-启动的参数配置，此文件无需进行任何修改，下面，我们将通过视频进行详细介绍：[Celery 集成](https://www.bilibili.com/video/BV1KjkmYdE7q/?share_source=copy_web\&vd_source=ccb2aae47e179a51460c20d165021cb7)
+启动的参数配置，此文件无需进行任何修改，下面，我们将通过视频进行详细介绍：
+
+@[bilibili](BV1KjkmYdE7q)
 
 ## 执行池
 

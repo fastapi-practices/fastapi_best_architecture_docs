@@ -15,8 +15,8 @@ fba 仅适用于资深 Python 后端开发人员，如果您是小白用户，�
     - Python 3.10+
     - [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)（推荐最新稳定版）
     - PostgreSQL 16.0 + 或 MySQL 8.0+
-      [雪花主键 ID 用户，请先移步到 **切换主键**](../reference/pk.md){.read-more}
-      [MySQL 用户，请先移步到 **切换数据库**](../reference/db.md){.read-more}
+      [使用**雪花主键 ID**](../reference/pk.md){.read-more}
+      [使用 **MySQL**](../reference/db.md){.read-more}
     - <p>Redis（推荐最新稳定版）</p>
 
 2. 准备源码 <Badge type="warning" text="二选一" />

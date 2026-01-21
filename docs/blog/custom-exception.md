@@ -1,5 +1,5 @@
 ---
-title: 如何自定义异常？
+title: FastAPI 如何自定义异常
 createTime: 2025-01-26 16:43
 tags:
   - FastAPI
@@ -34,7 +34,7 @@ def _get_exception_code(status_code: int) -> int:
         return StandardResponseCode.HTTP_400
 ```
 
-异常拦截器还包含：fastapi 数据校验异常，pydantic 数据校验异常，python assert 断言异常，全局未知（未定义）异常，跨域异常，自定义异常，详情请查看源代码：
+异常拦截器还包含：fastapi 数据校验异常，pydantic 数据校验异常，python assert 断言异常，全局未知（未定义）异常，跨域异常，自定义异常，详情请查看：
 `backend/common/exception/exception_handler.py`
 
 ## 后台任务

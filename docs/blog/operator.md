@@ -1,5 +1,8 @@
 ---
-title: 操作人
+title: FastAPI 如何添加操作人信息
+createTime: 2024-12-13 12:15
+tags:
+  - FastAPI
 ---
 
 我们常见的后台管理系统中，经常会有一些比如创建人，更新人这类的信息，那这些信息是如何做的呢？下面我们就来讲一讲我们在 fba
@@ -7,7 +10,7 @@ title: 操作人
 
 ## 如何集成？
 
-打开 fba 项目 backend 目录，进入 `common/model.py` 文件中，你会看到 `UserMixin` 类就冰冷冷的站在那里，因为 fba
+打开 fba 项目，进入 `backend/common/model.py` 文件中，你会看到 `UserMixin` 类就冰冷冷的站在那里，因为 fba
 没有使用它，而只是保留它；
 
 ```python

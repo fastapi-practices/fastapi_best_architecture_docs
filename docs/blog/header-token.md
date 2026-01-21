@@ -1,7 +1,6 @@
 ---
-title: 如何使用自定义 header token 实现授权？
+title: FastAPI 如何使用自定义 header token 实现授权
 createTime: 2025-03-09 18:00
-sticky: true
 tags:
   - FastAPI
 ---

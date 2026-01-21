@@ -48,5 +48,27 @@ sqlalchemy 和所有 python mysql 驱动默认都不处理 mysql 时区信息，
 更具体的：[sqlalchemy/1985](https://github.com/sqlalchemy/sqlalchemy/issues/1985)
 :::
 
-为此，我们使用了第 2 种解决方案，并创建了自定义 TimeZone 类型，位于 `backend/common/model.py` 文件中，我们可以通过 IDE
-点击类名快捷查看使用方式
+为此，我们使用了第 2 种解决方案，并创建了自定义 TimeZone 类型
+
+```python
+class TimeZone(TypeDecorator[datetime]):
+    """PostgreSQL、MySQL 兼容性时区感知类型"""
+
+    impl = DateTime(timezone=True)
+    cache_ok = True
+
+    @property
+    def python_type(self) -> type[datetime]:
+        return datetime
+
+    def process_bind_param(self, value: datetime | None, dialect) -> datetime | None:  # noqa: ANN001
+        if value is not None and value.utcoffset() != timezone.now().utcoffset():
+            # TODO 处理夏令时偏移
+            value = timezone.from_datetime(value)
+        return value
+
+    def process_result_value(self, value: datetime | None, dialect) -> datetime | None:  # noqa: ANN001
+        if value is not None and value.tzinfo is None:
+            value = value.replace(tzinfo=timezone.tz_info)
+        return value
+```

@@ -174,4 +174,4 @@ pydantic，详情：[pydantic.alias_generators](https://docs.pydantic.dev/latest
 
 ## 国际化
 
-[请移步至 **国际化**](./i18n.md){.read-more}
+[**国际化**](./i18n.md){.read-more}

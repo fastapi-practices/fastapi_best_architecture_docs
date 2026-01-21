@@ -69,6 +69,7 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
+                { text: '视频讲解', link: 'video' },
             ]
         },
         {

@@ -125,7 +125,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 items: [
                     {
                         text: '视频课程',
-                        badge: { text: '重制中', type: 'warning' },
+                        badge: { text: '已过时', type: 'danger' },
                         icon: 'ri:bilibili-fill',
                         link: 'https://space.bilibili.com/284237214/lists'
                     },

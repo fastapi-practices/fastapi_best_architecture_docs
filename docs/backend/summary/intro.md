@@ -26,9 +26,8 @@ mvc 架构作为常规设计模式，在 python web 中很常见，但是三层�
 
 ## 特性
 
-- [x] 全局 PEP 593 Annotated 参数注入
 - [x] 全异步设计（async/await + asgiref）
-- [x] 遵循 RESTful API 规范
+- [x] 遵循 RESTful API 设计规范
 - [x] SQLAlchemy 2.0 现代语法
 - [x] Pydantic v2 全栈数据验证
 - [x] 角色菜单 RBAC 权限控制

@@ -1,9 +1,8 @@
 ---
-title: Typing Cast：静态类型安全的“逃生舱”?
+title: Typing Cast：静态类型安全的“逃生舱”
 createTime: 2025-9-11 12:30
 tags:
   - Python
-  - Typing
 ---
 
 在 Python 3.5 引入类型提示以来，渐进式类型系统让我们的代码更易维护、更易协作。但类型检查器有时太“聪明”了，会因为动态数据或第三方库而迷失方向。
