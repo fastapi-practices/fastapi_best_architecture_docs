@@ -1,7 +1,6 @@
 <script setup>
 import BannerTop from "../components/BannerTop.vue";
 import Footer from "../components/Footer.vue";
-import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 import SponsorPanel from "../components/SponsorPanel.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 
@@ -42,9 +41,6 @@ const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_si
       <div style="margin-bottom: 8px">
         <SponsorSidebar />
       </div>
-    </template>
-    <template #doc-title-after>
-      <PageContextMenu />
     </template>
     <template #aside-outline-after>
       <div class="custom-content">

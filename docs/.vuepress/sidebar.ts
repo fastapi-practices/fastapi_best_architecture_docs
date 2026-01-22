@@ -69,13 +69,13 @@ export const mySidebar: ThemeSidebarMulti = {
             collapsed: false,
             items: [
                 { text: '前言', link: 'before' },
-                { text: '视频讲解', link: 'video' },
             ]
         },
         {
             text: '参考',
             collapsed: false,
             items: [
+                { text: '视频讲解', link: 'video' },
                 { text: '插件开发', link: 'dev' },
                 { text: '插件分享', link: 'share' },
                 { text: '插件安装', link: 'install' },

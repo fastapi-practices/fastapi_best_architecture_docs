@@ -115,10 +115,6 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
 
 插件统一放置在 `backend/plugin` 目录下，以下是插件的目录结构
 
-::: warning
-请严格按照此结构进行插件开发，否则插件将无法完美适配 fba 内置功能
-:::
-
 ::: file-tree
 
 - xxx 插件名 <Badge type="danger" text="必须" />

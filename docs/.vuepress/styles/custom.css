@@ -92,6 +92,11 @@
     border-radius: 10px !important;
 }
 
+/* 首页全屏时向下的箭头 */
+.vp-sign-down {
+    color: var(--vp-c-brand-1) !important;
+}
+
 /* 公告板 */
 .vp-bulletin {
     width: 380px !important;
