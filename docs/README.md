@@ -21,6 +21,9 @@ config:
           text: 在线体验
           link: https://fba.wu-clan.site/
         - theme: alt
+          text: 伪三层架构?
+          link: /backend/summary/intro#伪三层架构
+        - theme: alt
           text: 为什么选择我们?
           link: /backend/summary/why
         - theme: alt
