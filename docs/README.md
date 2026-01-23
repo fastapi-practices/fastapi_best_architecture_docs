@@ -17,9 +17,9 @@ config:
         - theme: brand
           text: 快速上手 ->
           link: /backend/summary/quick-start
-        - theme: alt
-          text: 伪三层架构?
-          link: /backend/summary/intro#伪三层架构
+        - theme: sponsor
+          text: 在线体验
+          link: https://fba.wu-clan.site/
         - theme: alt
           text: 为什么选择我们?
           link: /backend/summary/why

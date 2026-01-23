@@ -1,4 +1,4 @@
-import { PluginItem } from '../components/PluginMarket.vue'
+import { PluginItem } from '../components/PluginMarketplace.vue'
 
 export const pluginItems: PluginItem[] = [
     {
