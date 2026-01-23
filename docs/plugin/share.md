@@ -9,7 +9,7 @@ title: 插件分享
 ::: warning 插件仓库命名规则
 `插件仓库名 == 插件名`
 
-假如你的插件仓库命名为 `sms`，安装此插件后，`backend/plugin` 目录下就会新增一个 `sms` 文件夹
+假如插件仓库命名为 `sms`，安装此插件后，`backend/plugin` 目录下就会新增一个 `sms` 文件夹
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性，否则将导致插件冲突
 :::
@@ -35,9 +35,12 @@ title: 插件分享
 ## 前端
 
 ::: warning 插件仓库命名规则
-`插件仓库名 == 插件名`
 
-假如你的个人插件仓库命名为 `sms`，安装此插件后，`apps/web-antd/src/plugins` 目录下就会新增一个 `sms` 文件夹
+==为了区分 UI 插件，我们需要为插件仓库名添加 `_ui` 后缀=={.important}
+
+`插件仓库名_ui == 插件名_ui`
+
+假如插件仓库命名为 `sms_ui`，安装此插件后，`apps/web-antd/src/plugins` 目录下就会新增一个 `sms_ui` 文件夹
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性，否则将导致插件冲突
 :::
@@ -58,7 +61,9 @@ title: 插件分享
 
 ::::
 
-## 发布
+## 发布插件
+
+要想发布插件，你需要为 fba 插件 github 仓库创建一个 PR.
 
 :::: steps
 
@@ -77,7 +82,7 @@ title: 插件分享
 
    ```shell
    # 注意替换 add-your-plugin
-   git checkout -b add-your-plugin
+   git checkout -b add-your-plugin-branch
    ```
 
 4. 扩展子模块
@@ -97,7 +102,11 @@ title: 插件分享
    ```shell
    # 注意替换 your-plugin-name
    git commit -m "Add your-plugin-name plugin"
-   git push
+   ```
+
+   ```shell
+   # 注意替换 add-your-plugin-branch
+   git push --set-upstream origin add-your-plugin-branch
    ```
 
 6. PR
@@ -109,3 +118,15 @@ title: 插件分享
    fba 团队将尽快完成检查，一旦您的 PR 合并，插件将被发布到 [插件市场](../market.md)
 
 ::::
+
+## 更新插件
+
+要想更新插件，你需要为 fba 插件 github 仓库创建一个 PR.
+
+执行发布相同的步骤，只需将步骤 4 中的 `git submodule` 命令换成以下命令：
+
+```shell
+git submodule update --remote plugins/your-plugin-name
+```
+
+如果你想自动执行此过程，可以使用 [GitHub Action](https://github.com/fastapi-practices/plugin-release)
