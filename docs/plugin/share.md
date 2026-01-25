@@ -81,7 +81,7 @@ title: 插件分享
 3. 创建分支
 
    ```shell
-   # 注意替换 add-your-plugin
+   # 注意替换 add-your-plugin-branch
    git checkout -b add-your-plugin-branch
    ```
 
@@ -123,10 +123,17 @@ title: 插件分享
 
 要想更新插件，你需要为 fba 插件 github 仓库创建一个 PR.
 
-执行发布相同的步骤，只需将步骤 4 中的 `git submodule` 命令换成以下命令：
+执行与发布相同的步骤，并更新以下行为：
 
-```shell
-git submodule update --remote plugins/your-plugin-name
-```
+- 更新步骤 4 中的命令
 
+  ```shell
+  git submodule update --remote plugins/your-plugin-name
+  git add plugins/your-plugin-name
+  ```
+
+- 更新步骤 5 中的提交信息，现在已不再是新增，而是更新
+
+::: info
 如果你想自动执行此过程，可以使用 [GitHub Action](https://github.com/fastapi-practices/plugin-release)
+:::

@@ -11,8 +11,7 @@ title: 插件开发
 ::: steps
 
 1. 拉取最新的 fba 项目到本地并配置好开发环境
-2. 通过 [插件类型](#插件类型)、[插件路由](#插件路由)、[插件配置](#插件配置)、[数据库兼容性](#数据库兼容性)
-   了解插件系统的运作机制
+2. 通过 [插件类型](#插件类型)、[插件路由](#插件路由)、[数据库兼容性](#数据库兼容性) 了解插件系统的运作机制
 3. 根据 [插件目录结构](#插件目录结构) 进行插件开发
 4. 完成插件开发
 
@@ -45,6 +44,43 @@ fba 会在每次启动前对所有插件进行实时解析
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 必须将应用中的 api 目录结构进行 1:1 复制，可参考 fba
 中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
+:::
+
+### 数据库兼容性
+
+fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对第三方插件进行强制要求，如果您对此感兴趣，请查看 SQLAlchemy 2.0
+官方文档：[TypeDecorator](https://docs.sqlalchemy.org/en/20/core/custom_types.html#typedecorator-recipes)、
+[with_variant](https://docs.sqlalchemy.org/en/20/core/type_api.html#sqlalchemy.types.TypeEngine.with_variant)
+
+### 插件目录结构
+
+插件统一放置在 `backend/plugin` 目录下，以下是插件的目录结构
+
+::: file-tree
+
+- xxx 插件名 <Badge type="danger" text="必须" />
+    - api/ 接口 <Badge type="danger" text="必须" />
+    - crud/ CRUD
+    - model 模型
+        - __init__.py 在此文件内导入所有模型类 <Badge type="danger" text="目录存在则必须" />
+        - …
+    - schema/ 数据传输
+    - service/ 服务
+    - sql 如果插件需要执行 SQL 则建议
+        - mysql
+            - init.sql 自增 id 模式
+            - init_snowflake.sql 雪花 id 模式
+        - postgresql
+            - init.sql 自增 id 模式
+            - init_snowflake.sql 雪花 id 模式
+    - utils/ 工具包
+    - .env.example 环境变量
+    - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
+    - … 更多内容，例如 enums.py...
+    - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
+    - README.md 插件使用说明和您的联系方式 <Badge type="danger" text="必须" />
+    - requirements.txt 依赖包文件
+
 :::
 
 ### 插件配置
@@ -133,43 +169,6 @@ XXX = X
 
 :::
 
-### 数据库兼容性
-
-fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对第三方插件进行强制要求，如果您对此感兴趣，请查看 SQLAlchemy 2.0
-官方文档：[TypeDecorator](https://docs.sqlalchemy.org/en/20/core/custom_types.html#typedecorator-recipes)、
-[with_variant](https://docs.sqlalchemy.org/en/20/core/type_api.html#sqlalchemy.types.TypeEngine.with_variant)
-
-### 插件目录结构
-
-插件统一放置在 `backend/plugin` 目录下，以下是插件的目录结构
-
-::: file-tree
-
-- xxx 插件名 <Badge type="danger" text="必须" />
-    - api/ 接口 <Badge type="danger" text="必须" />
-    - crud/ CRUD
-    - model 模型
-        - __init__.py 在此文件内导入所有模型类 <Badge type="danger" text="目录存在则必须" />
-        - …
-    - schema/ 数据传输
-    - service/ 服务
-    - sql 如果插件需要执行 SQL 则建议
-        - mysql
-            - init.sql 自增 id 模式
-            - init_snowflake.sql 雪花 id 模式
-        - postgresql
-            - init.sql 自增 id 模式
-            - init_snowflake.sql 雪花 id 模式
-    - utils/ 工具包
-    - .env.example 环境变量
-    - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
-    - … 更多内容，例如 enums.py...
-    - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
-    - README.md 插件使用说明和您的联系方式 <Badge type="danger" text="必须" />
-    - requirements.txt 依赖包文件
-
-:::
-
 ### 全局配置
 
 fba 采用全局单配置文件（类似 Django），我们的标准做法是在 `backend/core/conf.py` 中统一添加插件的全局配置，示例如下：
@@ -191,7 +190,7 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int
 ```
 
 整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】，但是，在发布的插件中，我们无法添加这些配置，只能通过
-`README` 进行说明，提醒用户如何完成插件配置，可参考 fba 官方插件：[oss](https://github.com/fastapi-practices/oss)
+`README` 进行说明，提醒用户如何完成插件全局配置，可参考 fba 官方插件：[oss](https://github.com/fastapi-practices/oss)
 
 ::: caution
 全局配置默认使用最高优先级赋值，优先级如下：
@@ -239,8 +238,8 @@ graph LR
 完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件后，将无损适配热插拔
 
 ::: tip
-除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 README 中添加全局配置说明，因为全局配置会为
-IDE 提供键入提示
+除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 README 中添加全局配置说明，如果你和你的插件用户想通过
+IDE 获取全局配置键入提示，这是必需的，相反，你们将无法获取 IDE 键入提示
 :::
 
 ## 前端

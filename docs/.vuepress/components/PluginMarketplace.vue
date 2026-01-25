@@ -1,896 +1,612 @@
 <template>
-  <div class="market-layout">
-    <h1 class="market-title">插件市场</h1>
+  <div class="plugin-marketplace">
+    <header class="marketplace-header">
+      <h1 class="header-title">插件市场</h1>
+      <p class="header-subtitle">
+        发现由
+        <a href="https://github.com/fastapi-practices/plugins" target="_blank">fastapi-practices/plugins</a>
+        维护的插件，扩展你的应用能力
+      </p>
+      <div class="header-actions">
+        <a href="/fastapi_best_architecture_docs/plugin/dev" class="action-link">创建插件</a>
+        <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">申请插件</a>
+        <a href="/fastapi_best_architecture_docs/plugin/share" class="action-link">发布插件</a>
+      </div>
+    </header>
 
-    <div class="content-wrapper">
-      <div class="filter-card">
-        <div class="filter-header">
-          <h2>筛选条件</h2>
-          <div class="header-buttons">
-            <button v-if="isMobile" class="toggle-button" @click="isFilterExpanded = !isFilterExpanded">
-              {{ isFilterExpanded ? '收起' : '展开' }}
-            </button>
-            <button class="reset-button" @click="resetFilters">
-              重置
-            </button>
-          </div>
-        </div>
-
-        <transition name="filter-content">
-          <div v-show="!isMobile || isFilterExpanded" class="filter-content">
-            <div class="filter-search">
-              <input
-                  v-model="searchQuery"
-                  class="search-input"
-                  placeholder="🔍 搜索插件..."
-                  type="text"
-              />
-            </div>
-
-            <div class="filter-section">
-              <h3 class="filter-title">插件类型</h3>
-              <div class="filter-badges">
-                <label class="filter-badge" :class="{ active: selectedCategory === '' }">
-                  <input
-                      type="radio"
-                      :value="''"
-                      v-model="selectedCategory"
-                      name="category"
-                  />
-                  <span>全部类型</span>
-                </label>
-                <label
-                    v-for="category in pluginCategories"
-                    :key="category"
-                    class="filter-badge"
-                    :class="{ active: selectedCategory === category }"
-                >
-                  <input
-                      type="radio"
-                      :value="category"
-                      v-model="selectedCategory"
-                      name="category"
-                  />
-                  <span>{{ category }}</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="filter-section">
-              <h3 class="filter-title">价格区间</h3>
-              <div class="filter-badges">
-                <label class="filter-badge" :class="{ active: selectedPriceRange === '' }">
-                  <input
-                      type="radio"
-                      :value="''"
-                      v-model="selectedPriceRange"
-                      name="price"
-                  />
-                  <span>全部价格</span>
-                </label>
-                <label class="filter-badge" :class="{ active: selectedPriceRange === 'free' }">
-                  <input
-                      type="radio"
-                      value="free"
-                      v-model="selectedPriceRange"
-                      name="price"
-                  />
-                  <span>免费</span>
-                </label>
-                <label class="filter-badge" :class="{ active: selectedPriceRange === 'paid' }">
-                  <input
-                      type="radio"
-                      value="paid"
-                      v-model="selectedPriceRange"
-                      name="price"
-                  />
-                  <span>付费</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="filter-section">
-              <h3 class="filter-title">插件状态</h3>
-              <div class="filter-badges">
-                <label class="filter-badge" :class="{ active: selectedStatus === '' }">
-                  <input
-                      type="radio"
-                      :value="''"
-                      v-model="selectedStatus"
-                      name="status"
-                  />
-                  <span>全部状态</span>
-                </label>
-                <label class="filter-badge" :class="{ active: selectedStatus === 'active' }">
-                  <input
-                      type="radio"
-                      value="active"
-                      v-model="selectedStatus"
-                      name="status"
-                  />
-                  <span>可用</span>
-                </label>
-                <label class="filter-badge" :class="{ active: selectedStatus === 'wip' }">
-                  <input
-                      type="radio"
-                      value="wip"
-                      v-model="selectedStatus"
-                      name="status"
-                  />
-                  <span>开发中</span>
-                </label>
-                <label class="filter-badge" :class="{ active: selectedStatus === 'expired' }">
-                  <input
-                      type="radio"
-                      value="expired"
-                      v-model="selectedStatus"
-                      name="status"
-                  />
-                  <span>已过期</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="filter-section">
-              <h3 class="filter-title">排序方式</h3>
-              <div class="filter-badges">
-                <label class="filter-badge" :class="{ active: sortOption === 'category' }">
-                  <input
-                      type="radio"
-                      value="category"
-                      v-model="sortOption"
-                      name="sort"
-                  />
-                  <span>按类型排序</span>
-                </label>
-                <label class="filter-badge" :class="{ active: sortOption === 'title' }">
-                  <input
-                      type="radio"
-                      value="title"
-                      v-model="sortOption"
-                      name="sort"
-                  />
-                  <span>按名称排序</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </transition>
+    <div class="marketplace-controls">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="搜索插件名称、作者或描述..."
+            class="search-input"
+        />
       </div>
 
-      <div class="plugin-section">
-        <div class="results-header">
-          <div class="results-count">
-            找到 <strong>{{ filteredItems.length }}</strong> 个插件
-          </div>
-        </div>
+      <div class="filter-tabs">
+        <button
+            class="filter-tab"
+            :class="{ active: currentTag === 'all' }"
+            @click="currentTag = 'all'"
+        >
+          全部
+        </button>
+        <button
+            v-for="tag in validTags"
+            :key="tag"
+            class="filter-tab"
+            :class="{ active: currentTag === tag }"
+            @click="currentTag = tag"
+        >
+          {{ getTagLabel(tag) }}
+        </button>
+      </div>
+    </div>
 
-        <div class="plugin-card-container">
-          <div v-if="filteredItems.length === 0" class="no-results">
-            <div class="no-results-icon">🔍</div>
-            <h3>未找到匹配的插件</h3>
-            <p>请尝试调整筛选条件或搜索关键词</p>
-          </div>
+    <div class="marketplace-content">
+      <div v-if="loading" class="loading-state">
+        <div class="loading-spinner"></div>
+        <span>正在加载插件列表...</span>
+      </div>
 
-          <div
-              v-for="(item, index) in filteredItems"
-              :key="index"
-              :class="{ 'clickable': item.link, 'expired': item.expired || item.wip }"
-              class="plugin-card"
-              @click="handleCardClick(item)"
-          >
-            <div class="card-image">
+      <div v-else-if="error" class="error-state">
+        <span>{{ error }}</span>
+        <button @click="fetchPlugins" class="retry-btn">重试</button>
+      </div>
+
+      <div v-else-if="filteredPlugins.length === 0" class="empty-state">
+        <span>未找到匹配的插件</span>
+        <button @click="resetFilters" class="reset-btn">清除筛选</button>
+      </div>
+
+      <div v-else class="plugin-grid">
+        <a
+            v-for="plugin in filteredPlugins"
+            :key="plugin.git.path"
+            :href="plugin.git.url"
+            target="_blank"
+            class="plugin-card"
+        >
+          <div class="card-top">
+            <div class="card-icon">
               <img
-                  v-if="item.image"
-                  :alt="item.title"
-                  :src="item.image"
-                  class="image-content"
+                  v-if="plugin.plugin.icon && !failedIcons.has(plugin.git.path)"
+                  :src="plugin.plugin.icon"
+                  :alt="plugin.plugin.summary"
+                  @error="failedIcons.add(plugin.git.path)"
               />
-              <div v-else class="image-placeholder">
-                <Icon :name="item.icon" color="var(--vp-c-text-1)" size="5em" />
-              </div>
-              <div v-if="item.expired" class="expired-overlay">
-                <span class="expired-text">已过期，不适用</span>
-              </div>
-              <div v-if="item.wip" class="expired-overlay">
-                <span class="expired-text">正在开发中</span>
+              <div v-else class="icon-fallback" :style="{ background: getColor(plugin.git.path) }">
+                {{ getInitial(plugin.git.path) }}
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-title-row">
-                <img v-if="item.logo" :src="item.logo" class="logo" />
-                <h3 class="card-title">{{ item.title }}</h3>
-                <div class="card-title-link">
-                  <a
-                      :href="item.link"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      @click.stop
-                  />
-                  <span class="label-inline">{{ item.label || '内置' }}</span>
-                </div>
+            <div class="card-meta">
+              <div class="card-header">
+                <span class="card-title">{{ plugin.plugin.summary }}</span>
+                <span class="card-version">v{{ plugin.plugin.version }}</span>
               </div>
-              <p class="card-description">{{ item.description }}</p>
-              <div class="card-tags">
-                <Badge
-                    v-for="(tag, tagIndex) in item.tags"
-                    :key="tagIndex"
-                    :style="colors[tag]"
-                    :text="tag"
-                />
-              </div>
+              <p class="card-author">{{ plugin.plugin.author }} / {{ getName(plugin.git.path) }}</p>
             </div>
-            <div v-if="item.expired || item.wip" class="expired-overlay-card"></div>
           </div>
-        </div>
+          <p class="card-desc">{{ plugin.plugin.description }}</p>
+          <div class="card-tags" v-if="plugin.plugin.database?.length || plugin.plugin.tags?.length">
+            <span v-for="db in (plugin.plugin.database || [])" :key="'db-' + db" class="tag tag-db">#{{ db }}</span>
+            <span v-for="tag in (plugin.plugin.tags || []).slice(0, 3)" :key="tag"
+                  class="tag">#{{ getTagLabel(tag) }}</span>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+<script setup lang="ts">
+import { ref, computed, onMounted, reactive } from 'vue'
 
-export interface PluginItem {
-  icon: string
-  title: string
-  description: string
-  label?: string
-  tags: string[]
-  link?: string
-  image?: string
-  logo: string
-  free?: boolean
-  expired?: boolean
-  wip?: boolean
+const TAG_LABELS: Record<string, string> = {
+  ai: 'AI',
+  mcp: 'MCP',
+  agent: 'Agent',
+  rag: 'RAG',
+  permission: '权限',
+  sso: 'SSO',
+  rbac: 'RBAC',
+  auth: '认证',
+  ldap: 'LDAP',
+  storage: '存储',
+  notification: '通知',
+  task: '任务',
+  other: '其他'
 }
 
-const props = withDefaults(
-    defineProps<{
-      items: PluginItem[]
-      columns?: number
-    }>(),
-    {
-      columns: 4
-    }
-)
+const CACHE_KEY = 'fba_plugins_cache'
+const CACHE_DURATION = 10 * 60 * 1000
 
+const DATA_SOURCES = [
+  'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
+  'https://fastly.jsdelivr.net/gh/fastapi-practices/plugins@master/plugins-data.ts',
+  'https://cdn.jsdelivr.net/gh/fastapi-practices/plugins@master/plugins-data.ts'
+]
+
+const loading = ref(true)
+const error = ref('')
+const plugins = ref<any[]>([])
+const validTags = ref<string[]>([])
+const currentTag = ref('all')
 const searchQuery = ref('')
-const selectedCategory = ref('')
-const selectedPriceRange = ref('')
-const selectedStatus = ref('')
-const sortOption = ref('category')
+const failedIcons = reactive(new Set<string>())
 
-const isFilterExpanded = ref(true)
+const filteredPlugins = computed(() => {
+  let result = plugins.value
 
-const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1024)
-
-const isMobile = computed(() => {
-  return windowWidth.value < 768
-})
-
-const handleResize = () => {
-  windowWidth.value = window.innerWidth
-}
-
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    window.addEventListener('resize', handleResize)
+  if (currentTag.value !== 'all') {
+    result = result.filter(p => p.plugin?.tags?.includes(currentTag.value))
   }
-})
-
-onUnmounted(() => {
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('resize', handleResize)
-  }
-})
-
-const mixedAlphabeticalCompare = (a: string, b: string): number => {
-  return a.localeCompare(b, 'zh-CN', {
-    sensitivity: 'base',
-    numeric: true,
-    ignorePunctuation: true
-  })
-}
-
-const pluginCategories = computed(() => {
-  const allTags = new Set<string>()
-  props.items.forEach(item => {
-    item.tags.forEach(tag => {
-      if (tag !== 'unfree') {
-        allTags.add(tag)
-      }
-    })
-  })
-  return Array.from(allTags).sort((a, b) => mixedAlphabeticalCompare(a, b))
-})
-
-const baseFilteredItems = computed(() => {
-  let result = [...props.items]
 
   if (searchQuery.value.trim()) {
     const query = searchQuery.value.toLowerCase().trim()
-    result = result.filter(item =>
-        item.title.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query) ||
-        item.tags.some(tag => tag.toLowerCase().includes(query))
+    result = result.filter(p =>
+        p.plugin?.summary?.toLowerCase().includes(query) ||
+        p.plugin?.description?.toLowerCase().includes(query) ||
+        p.plugin?.author?.toLowerCase().includes(query) ||
+        p.git?.path?.toLowerCase().includes(query)
     )
-  }
-
-  if (selectedCategory.value) {
-    result = result.filter(item =>
-        item.tags.includes(selectedCategory.value)
-    )
-  }
-
-  if (selectedPriceRange.value === 'free') {
-    result = result.filter(item => !item.tags.includes('unfree'))
-  } else if (selectedPriceRange.value === 'paid') {
-    result = result.filter(item => item.tags.includes('unfree'))
-  }
-
-  if (selectedStatus.value === 'active') {
-    result = result.filter(item => !item.expired && !item.wip)
-  } else if (selectedStatus.value === 'expired') {
-    result = result.filter(item => item.expired)
-  } else if (selectedStatus.value === 'wip') {
-    result = result.filter(item => item.wip)
   }
 
   return result
 })
 
-const getTypeSortWeight = (item: PluginItem): number => {
-  const label = item.label || '内置'
-  if (label === '内置') return 1
-  if (label === '官方') return 2
-  return 3
+const getName = (path: string): string => {
+  if (!path) return 'unknown'
+  const parts = path.split('/')
+  return parts[parts.length - 1] || 'unknown'
 }
 
-const filteredItems = computed(() => {
-  const result = [...baseFilteredItems.value]
+const getInitial = (path: string): string => {
+  return getName(path).charAt(0).toUpperCase()
+}
 
-  return result.sort((a, b) => {
-    switch (sortOption.value) {
-      case 'title':
-        return mixedAlphabeticalCompare(a.title, b.title)
-      case 'category':
-        const aWeight = getTypeSortWeight(a)
-        const bWeight = getTypeSortWeight(b)
-        if (aWeight !== bWeight) return aWeight - bWeight
-        return mixedAlphabeticalCompare(a.title, b.title)
-      default:
-        return 0
-    }
-  })
-})
+const getColor = (str: string): string => {
+  const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#06b6d4', '#3b82f6']
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash)
+  }
+  return colors[Math.abs(hash) % colors.length]
+}
+
+const getTagLabel = (tag: string): string => {
+  return TAG_LABELS[tag] || tag
+}
 
 const resetFilters = () => {
   searchQuery.value = ''
-  selectedCategory.value = ''
-  selectedPriceRange.value = ''
-  selectedStatus.value = ''
-  sortOption.value = 'category'
+  currentTag.value = 'all'
 }
 
-const predefinedColors = {
-  'unfree': {
-    color: '#ff5733',
-    backgroundColor: 'rgba(255, 87, 51, 0.1)',
-    borderColor: 'rgba(255, 87, 51, 0.2)',
-  },
-  'mysql': {
-    color: '#006484',
-    backgroundColor: 'rgba(0, 100, 132, 0.1)',
-    borderColor: 'rgba(0, 100, 132, 0.2)'
-  },
-  'pgsql': {
-    color: '#336699',
-    backgroundColor: 'rgba(51, 102, 153, 0.1)',
-    borderColor: 'rgba(51, 102, 153, 0.2)'
-  },
-  '后端': {
-    color: '#009485',
-    backgroundColor: 'rgba(0,148,133,0.1)',
-    borderColor: 'rgba(0,148,133,0.2)'
-  },
-  '前端': {
-    color: '#a855f7',
-    backgroundColor: 'rgba(168, 85, 247, 0.1)',
-    borderColor: 'rgba(168, 85, 247, 0.2)'
-  },
+const parseTypeScriptData = (text: string): { tags: string[], plugins: any[] } => {
+  const tags: string[] = []
+  const pluginList: any[] = []
+
+  const tagsMatch = text.match(/export\s+const\s+validTags\s*=\s*\[([\s\S]*?)\]\s*as\s+const/)
+  if (tagsMatch) {
+    const tagMatches = tagsMatch[1].match(/"([^"]+)"/g)
+    if (tagMatches) {
+      tagMatches.forEach(t => tags.push(t.replace(/"/g, '')))
+    }
+  }
+
+  const pluginsMatch = text.match(/export\s+const\s+pluginDataList[\s\S]*?=\s*(\[[\s\S]*\])/)
+  if (pluginsMatch) {
+    try {
+      const jsonStr = pluginsMatch[1].replace(/,(\s*[}\]])/g, '$1')
+      const parsed = JSON.parse(jsonStr)
+      if (Array.isArray(parsed)) {
+        pluginList.push(...parsed)
+      }
+    } catch (e) {
+      console.error('JSON parse error:', e)
+    }
+  }
+
+  return { tags, plugins: pluginList }
 }
 
-const colors = computed(() => {
-  const colorMap: Record<string, any> = { ...predefinedColors }
-  const allTags = [...new Set(props.items.flatMap(item => item.tags))]
-  allTags.forEach((tag, index) => {
-    if (!colorMap[tag]) {
-      const hue = (index * 137.5) % 360
-      colorMap[tag] = {
-        color: `hsl(${ hue }, 65%, 50%)`,
-        backgroundColor: `hsl(${ hue }, 65%, 50%, 0.1)`,
-        borderColor: `hsl(${ hue }, 65%, 50%, 0.2)`
+const loadFromCache = (): { tags: string[], plugins: any[] } | null => {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY)
+    if (cached) {
+      const { data, timestamp } = JSON.parse(cached)
+      if (Date.now() - timestamp < CACHE_DURATION) {
+        return data
       }
     }
-  })
-  return colorMap
-})
+  } catch (e) {
+    console.warn('Cache read error:', e)
+  }
+  return null
+}
 
-const handleCardClick = (item: PluginItem) => {
-  if (item.link) {
-    window.open(item.link, '_blank')
+const saveToCache = (data: { tags: string[], plugins: any[] }) => {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      data,
+      timestamp: Date.now()
+    }))
+  } catch (e) {
+    console.warn('Cache write error:', e)
   }
 }
+
+const fetchWithFallback = async (): Promise<string> => {
+  for (const url of DATA_SOURCES) {
+    try {
+      const response = await fetch(url, { cache: 'no-cache' })
+      if (response.ok) {
+        return await response.text()
+      }
+    } catch (e) {
+      console.warn(`Failed to fetch from ${ url }:`, e)
+    }
+  }
+  throw new Error('All data sources failed')
+}
+
+const fetchPlugins = async () => {
+  loading.value = true
+  error.value = ''
+
+  const cached = loadFromCache()
+  if (cached) {
+    validTags.value = cached.tags
+    plugins.value = cached.plugins
+    loading.value = false
+
+    fetchWithFallback()
+    .then(text => {
+      const data = parseTypeScriptData(text)
+      validTags.value = data.tags
+      plugins.value = data.plugins
+      saveToCache(data)
+    })
+    .catch(() => {
+    })
+    return
+  }
+
+  try {
+    const text = await fetchWithFallback()
+    const data = parseTypeScriptData(text)
+    validTags.value = data.tags
+    plugins.value = data.plugins
+    saveToCache(data)
+  } catch (e) {
+    console.error('Fetch error:', e)
+    error.value = '加载失败，请检查网络连接'
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(fetchPlugins)
 </script>
 
 <style scoped>
-.market-layout {
-  padding: 3rem 1rem;
-  max-width: 1600px;
+.plugin-marketplace {
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 48px 24px;
 }
 
-.market-title {
+.marketplace-header {
   text-align: center;
-  margin: 0 0 3rem 0;
-  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  font-size: 32px;
   font-weight: 700;
+  margin: 0 0 12px 0;
   color: var(--vp-c-text-1);
 }
 
-.content-wrapper {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.filter-card {
-  position: sticky;
-  top: 6rem;
-  background-color: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  z-index: 10;
-  width: 320px;
-  height: fit-content;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
-  flex-shrink: 0;
-}
-
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-border);
-}
-
-.header-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.toggle-button {
-  padding: 0.4rem 0.8rem;
-  background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.toggle-button:hover {
-  background-color: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
-}
-
-.filter-content {
-  overflow: hidden;
-}
-
-@media (max-width: 767px) {
-  .filter-card.collapsed {
-    margin-bottom: 0;
-  }
-}
-
-.filter-header h2 {
+.header-subtitle {
+  font-size: 15px;
+  color: var(--vp-c-text-2);
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+}
+
+.header-subtitle a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.header-subtitle a:hover {
+  text-decoration: underline;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.action-link {
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.action-link:hover {
   color: var(--vp-c-text-1);
-}
-
-.reset-button {
-  padding: 0.4rem 0.8rem;
   background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.reset-button:hover {
-  background-color: var(--vp-c-brand);
+.marketplace-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
 }
 
-.filter-search {
-  margin-bottom: 1.5rem;
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--vp-c-text-3);
+  pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  background: var(--vp-c-bg-soft);
+  height: 40px;
+  padding: 0 14px 0 42px;
+  font-size: 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 0 0 2px rgba(var(--vp-c-brand), 0.1);
-  background: var(--vp-c-bg);
+  border-color: var(--vp-c-brand-1);
 }
 
-.filter-section {
-  margin-bottom: 1.5rem;
+.search-input::placeholder {
+  color: var(--vp-c-text-3);
 }
 
-.filter-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 0.75rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.filter-badges {
+.filter-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 8px;
 }
 
-.filter-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.4rem 0.8rem;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
+.filter-tab {
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  user-select: none;
+  transition: all 0.15s;
 }
 
-.filter-badge:hover {
-  background: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
-  transform: translateY(-1px);
-}
-
-.filter-badge.active {
-  background: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 2px 8px rgba(var(--vp-c-brand), 0.3);
-}
-
-.filter-badge input[type="radio"] {
-  display: none;
-}
-
-.filter-badge span {
-  font-weight: 500;
-}
-
-.plugin-section {
-  flex: 1;
-  min-width: 0;
-}
-
-.results-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.results-count {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  padding: 0.4rem 0.8rem;
-}
-
-.results-count strong {
-  color: var(--vp-c-brand);
-  font-weight: 600;
-}
-
-.plugin-card-container {
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
-
-.no-results {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--vp-c-text-2);
-}
-
-.no-results-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  opacity: 0.6;
-}
-
-.no-results h3 {
-  margin: 0 0 0.5rem 0;
+.filter-tab:hover {
   color: var(--vp-c-text-1);
-  font-size: 1.1rem;
-  font-weight: 500;
+  background: var(--vp-c-bg-soft);
 }
 
-.no-results p {
-  margin: 0;
+.filter-tab.active {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+}
+
+.marketplace-content {
+  min-height: 300px;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 20px;
   color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  font-size: 14px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--vp-c-divider);
+  border-top-color: var(--vp-c-brand-1);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.retry-btn,
+.reset-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retry-btn:hover,
+.reset-btn:hover {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+}
+
+.plugin-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .plugin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .plugin-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .plugin-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .plugin-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--vp-c-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  height: 100%;
-  border: 1px solid var(--vp-c-border);
-  position: relative;
-}
-
-.plugin-card.clickable:hover {
-  transform: translateY(-2px);
-  border-color: var(--vp-c-brand);
-}
-
-.plugin-card.clickable {
-  cursor: pointer;
-}
-
-.card-image {
-  width: 100%;
-  height: 160px;
-  overflow: hidden;
+  padding: 16px 18px;
   background: var(--vp-c-bg-soft);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.image-content {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
+.plugin-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-top {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  flex-shrink: 0;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  transition: transform 0.5s ease;
-  pointer-events: none;
+  padding: 6px;
 }
 
-.plugin-card.clickable:hover .image-content {
-  transform: scale(1.02);
-}
-
-.image-placeholder {
+.icon-fallback {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--vp-c-bg-soft);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
 }
 
-.card-content {
-  padding: 0.75rem;
-  flex-grow: 1;
+.card-meta {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.card-title-row {
+.card-header {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  flex-wrap: nowrap;
-  width: 100%;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 15px;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  margin: 0;
-  line-height: 1.4;
-  flex-grow: 1;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
-.card-title-link {
+.card-version {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
   flex-shrink: 0;
-  display: flex;
-  font-size: 1.5rem
 }
 
-.label-inline {
-  font-size: 0.75rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-border);
-  background-color: var(--vp-c-bg-soft);
-  white-space: nowrap;
+.card-author {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+  margin: 0;
+  line-height: 1.2;
 }
 
-.card-description {
+.card-desc {
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  flex: 1
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.2rem;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-border);
-}
-
-.search-container {
-  position: relative;
-  width: 50%;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--vp-c-brand);
-}
-
-.expired-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.expired-overlay-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.expired-text {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 0 0 5px black;
-}
-
-@media (max-width: 1024px) {
-  .content-wrapper {
-    flex-direction: column;
-  }
-
-  .filter-card {
-    position: static;
-    width: 100%;
-    max-height: none;
-    margin-bottom: 1.5rem;
-  }
-
-  .plugin-section {
-    width: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .market-layout {
-    padding: 1rem 0.5rem;
-  }
-
-  .market-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .filter-card {
-    padding: 1rem;
-    margin-bottom: -2rem;
-    border-radius: 8px;
-  }
-
-  .filter-badges {
-    gap: 0.4rem;
-  }
-
-  .filter-badge {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  .plugin-card-container {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-  }
-
-  .results-header {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .plugin-card-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .plugin-card-container {
-    grid-template-columns: repeat(v-bind('props.columns'), 1fr);
-  }
+.tag {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
 }
 </style>

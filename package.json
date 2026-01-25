@@ -1,6 +1,6 @@
 {
   "name": "fastapi_best_architecture_docs",
-  "version": "1.8.2",
+  "version": "1.0.0",
   "description": "fastapi_best_architecture 官方文档",
   "main": "index.js",
   "scripts": {
