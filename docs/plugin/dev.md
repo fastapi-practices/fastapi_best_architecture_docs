@@ -183,23 +183,35 @@ EMAIL_USERNAME: str
 EMAIL_PASSWORD: str
 
 # 基础配置
-EMAIL_HOST: str = 'smtp.qq.com'
-EMAIL_PORT: int = 465
-EMAIL_SSL: bool = True
-EMAIL_CAPTCHA_REDIS_PREFIX: str = 'fba:email:captcha'
-EMAIL_CAPTCHA_EXPIRE_SECONDS: int = 60 * 3  # 3 分钟
+EMAIL_HOST: str
+EMAIL_PORT: int
+EMAIL_SSL: bool
+EMAIL_CAPTCHA_REDIS_PREFIX: str
+EMAIL_CAPTCHA_EXPIRE_SECONDS: int
 ```
 
 整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】，但是，在发布的插件中，我们无法添加这些配置，只能通过
 `README` 进行说明，提醒用户如何完成插件配置，可参考 fba 官方插件：[oss](https://github.com/fastapi-practices/oss)
 
+::: caution
+全局配置默认使用最高优先级赋值，优先级如下：
+
+```mermaid
+graph LR
+    System("系统环境变量") --> DotEnv[".env"]
+    DotEnv --> Settings["conf.py"]
+    Settings --> Plugin["插件 settings 配置项"]
+```
+
+:::
+
 ### 热插拔
 
-从 ==v1.13.0=={.warning} 开始，按以下要求进行全局配置，将自动适配热插拔特性
+从 ==v1.13.0=={.warning} 开始，按以下要求进行配置，将自动适配热插拔特性
 
-1. 插件环境变量
+- 插件环境变量
 
-   如果插件需要添加环境变量，则需在插件根目录添加 `.env.example` 文件，并添加环境变量配置，参考如下：
+  如果插件需要添加环境变量，则需在插件根目录添加 `.env.example` 文件，并添加环境变量配置，参考如下：
 
     ```dotenv:no-line-numbers
     # [ Plugin ] email
@@ -207,13 +219,13 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int = 60 * 3  # 3 分钟
     EMAIL_PASSWORD: str
     ```
 
-2. 插件基础配置
+- 插件基础配置
 
-   如果插件需要添加基础配置，则需在 [插件配置](#插件配置) 中的 `settings` 配置项中添加基础配置，参考如下：
+  如果插件需要添加基础配置，则需在 [插件配置](#插件配置) 中的 `settings` 配置项中添加基础配置，参考如下：
 
-   ::: warning
-   `plugin.toml` 和 `backend/core/conf.py` 中的配置方式完全不同。请格外注意，避免混淆
-   :::
+  ::: warning
+  `plugin.toml` 和 `backend/core/conf.py` 中的配置方式完全不同。请格外注意，避免混淆
+  :::
 
     ```toml:no-line-numbers
     [settings]
@@ -226,8 +238,10 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int = 60 * 3  # 3 分钟
 
 完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件后，将无损适配热插拔
 
-除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 `README` 中添加全局配置说明，因为全局配置会为
+::: tip
+除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 README 中添加全局配置说明，因为全局配置会为
 IDE 提供键入提示
+:::
 
 ## 前端
 
