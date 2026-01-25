@@ -180,7 +180,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: '插件市场',
                         icon: 'mdi:marketplace-outline',
                         // badge: { text: 'HOT', type: 'danger' },
-                        link: '/market'
+                        link: '/marketplace'
                     },
                 ]
             }

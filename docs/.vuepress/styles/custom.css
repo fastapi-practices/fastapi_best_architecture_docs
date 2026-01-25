@@ -45,35 +45,11 @@
     transform: translateX(-50%);
     font-size: 16px;
     font-weight: bold;
-    color: #d91a7a;
+    color: #ff6b9d;
     white-space: nowrap;
     padding: 6px 12px;
-    filter: drop-shadow(0 0 3px rgba(217, 26, 122, 0.4)) drop-shadow(0 0 8px rgba(217, 26, 122, 0.7)) drop-shadow(0 0 15px rgba(217, 26, 122, 1));
-    animation: neon-glow-flicker-light 3s ease-in-out infinite;
-}
-
-[data-theme="dark"] .hero-content::before {
-    color: #ff6b9d;
     filter: drop-shadow(0 0 3px rgba(255, 107, 157, 0.4)) drop-shadow(0 0 8px rgba(255, 107, 157, 0.7)) drop-shadow(0 0 15px rgba(255, 107, 157, 1));
-    animation: neon-glow-flicker-dark 3s ease-in-out infinite;
-}
-
-@keyframes neon-glow-flicker-light {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        filter: drop-shadow(0 0 3px rgba(217, 26, 122, 0.4)) drop-shadow(0 0 8px rgba(217, 26, 122, 0.7)) drop-shadow(0 0 15px rgba(217, 26, 122, 1));
-    }
-    20%, 24%, 55% {
-        filter: drop-shadow(0 0 2px rgba(217, 26, 122, 0.3)) drop-shadow(0 0 5px rgba(217, 26, 122, 0.6)) drop-shadow(0 0 10px rgba(217, 26, 122, 0.9));
-    }
-}
-
-@keyframes neon-glow-flicker-dark {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        filter: drop-shadow(0 0 3px rgba(255, 107, 157, 0.4)) drop-shadow(0 0 8px rgba(255, 107, 157, 0.7)) drop-shadow(0 0 15px rgba(255, 107, 157, 1));
-    }
-    20%, 24%, 55% {
-        filter: drop-shadow(0 0 2px rgba(255, 107, 157, 0.3)) drop-shadow(0 0 5px rgba(255, 107, 157, 0.6)) drop-shadow(0 0 10px rgba(255, 107, 157, 0.9));
-    }
+    animation: neon-glow-flicker-light 3s ease-in-out infinite;
 }
 
 /* 首页非全屏样式 */
@@ -90,6 +66,11 @@
 /* 首页按钮 */
 .vp-button.medium {
     border-radius: 10px !important;
+}
+
+.vp-button.sponsor {
+    background-color: var(--vp-button-alt-bg) !important;
+    border: 2px solid var(--vp-c-brand-1) !important;
 }
 
 /* 首页全屏时向下的箭头 */

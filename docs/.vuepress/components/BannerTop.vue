@@ -15,7 +15,7 @@
     </button>
     <p class="vp-banner-text vp-coupon">
       <span class="vp-text-primary">代码有 BUG？</span>
-      <span> 快通过互动与我们反馈吧</span>
+      <span> 快通过交流群与我们反馈吧</span>
     </p>
   </div>
 </template>

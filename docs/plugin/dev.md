@@ -57,6 +57,8 @@ fba 会在每次启动前对所有插件进行实时解析
 ```toml
 # 插件信息
 [plugin]
+# 图标（插件仓库内的图标路径或图标链接地址）
+icon = 'assets/icon.svg'
 # 摘要（简短描述）
 summary = ''
 # 版本号
@@ -65,12 +67,24 @@ version = ''
 description = ''
 # 作者
 author = ''
+# 标签
+# 当前支持：ai、mcp、agent、rag、permission、sso、rbac、auth、ldap、
+# storage、notification、task、other
+tags = ['']
+# 数据库支持
+# 当前支持：mysql、pgsql、postgresql
+database = ['']
 
 # 应用配置
 [app]
 # 路由器最终实例
 # 可参考源码：backend/app/admin/api/router.py，通常默认命名为 v1
 router = ['v1']
+
+# 代码中的配置项（全大写）
+# 该配置项为可选，详情请查看：热插拔
+[settings]
+XXX = X
 ```
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
@@ -78,6 +92,8 @@ router = ['v1']
 ```toml
 # 插件信息
 [plugin]
+# 图标（插件仓库内的图标路径或图标链接地址）
+icon = 'assets/icon.svg'
 # 摘要（简短描述）
 summary = ''
 # 版本号
@@ -86,6 +102,13 @@ version = ''
 description = ''
 # 作者
 author = ''
+# 标签
+# 当前支持：ai、mcp、agent、rag、permission、sso、rbac、auth、ldap、
+# storage、notification、task、other
+tags = ['']
+# 数据库支持
+# 当前支持：mysql、pgsql、postgresql
+database = ['']
 
 # 应用配置
 [app]
@@ -101,6 +124,11 @@ extend = '应用文件夹名称'
 prefix = ''
 # 标签，用于 Swagger 文档
 tags = ''
+
+# 代码中的配置项（全大写）
+# 该配置项为可选，详情请查看：热插拔
+[settings]
+XXX = X
 ```
 
 :::
@@ -133,6 +161,7 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
             - init.sql 自增 id 模式
             - init_snowflake.sql 雪花 id 模式
     - utils/ 工具包
+    - .env.example 环境变量
     - __init__.py 作为 python 包保留 <Badge type="danger" text="必须" />
     - … 更多内容，例如 enums.py...
     - plugin.toml 插件配置文件 <Badge type="danger" text="必须" />
@@ -140,6 +169,62 @@ fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对�
     - requirements.txt 依赖包文件
 
 :::
+
+### 全局配置
+
+fba 采用全局单配置文件（类似 Django），我们的标准做法是在 `backend/core/conf.py` 中统一添加插件的全局配置，示例如下：
+
+```python
+##################################################
+# [ Plugin ] email
+##################################################
+# .env
+EMAIL_USERNAME: str
+EMAIL_PASSWORD: str
+
+# 基础配置
+EMAIL_HOST: str = 'smtp.qq.com'
+EMAIL_PORT: int = 465
+EMAIL_SSL: bool = True
+EMAIL_CAPTCHA_REDIS_PREFIX: str = 'fba:email:captcha'
+EMAIL_CAPTCHA_EXPIRE_SECONDS: int = 60 * 3  # 3 分钟
+```
+
+整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】，但是，在发布的插件中，我们无法添加这些配置，只能通过
+`README` 进行说明，提醒用户如何完成插件配置，可参考 fba 官方插件：[oss](https://github.com/fastapi-practices/oss)
+
+### 热插拔
+
+从 ==v1.13.0=={.warning} 开始，按以下要求进行全局配置，将自动适配热插拔特性
+
+1. 插件环境变量
+
+   如果插件需要添加环境变量，则需在插件根目录添加 `.env.example` 文件，并添加环境变量配置，参考如下：
+
+    ```dotenv:no-line-numbers
+    # [ Plugin ] email
+    EMAIL_USERNAME: str
+    EMAIL_PASSWORD: str
+    ```
+
+2. 插件基础配置
+
+   如果插件需要添加基础配置，则需在 [插件配置](#插件配置) 中的 `settings` 配置项中添加基础配置，参考如下：
+
+   ::: warning
+   `plugin.toml` 和 `backend/core/conf.py` 中的配置方式完全不同。请格外注意，避免混淆
+   :::
+
+    ```toml:no-line-numbers
+    [settings]
+    EMAIL_HOST = 'smtp.qq.com'
+    EMAIL_PORT = 465
+    EMAIL_SSL = true
+    EMAIL_CAPTCHA_REDIS_PREFIX = 'fba:email:captcha'
+    EMAIL_CAPTCHA_EXPIRE_SECONDS = 180  # 3 分钟
+    ```
+
+完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件后，将无损适配热插拔
 
 ## 前端
 
