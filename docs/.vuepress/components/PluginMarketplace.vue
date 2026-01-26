@@ -109,6 +109,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, reactive } from 'vue'
 
+// Data sync from: https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/plugin/validator.py
 const TAG_LABELS: Record<string, string> = {
   ai: 'AI',
   mcp: 'MCP',
