@@ -610,7 +610,7 @@ onMounted(fetchPlugins)
 }
 
 .card-desc {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--vp-c-text-2);
   margin: 0;
@@ -624,7 +624,8 @@ onMounted(fetchPlugins)
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .tag {
