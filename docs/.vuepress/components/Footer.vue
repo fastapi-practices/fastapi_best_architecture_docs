@@ -154,11 +154,9 @@ const links = {
     { name: "插件开发", href: "/fastapi_best_architecture_docs/plugin/dev" },
     { name: "插件分享", href: "/fastapi_best_architecture_docs/plugin/share" },
     { name: "插件安装", href: "/fastapi_best_architecture_docs/plugin/install" },
-    { name: "插件市场", href: "/fastapi_best_architecture_docs/market" },
+    { name: "插件市场", href: "/fastapi_best_architecture_docs/marketplace" },
   ],
   friendlyLinks: [
-    { name: "视频教程", href: "https://space.bilibili.com/284237214/lists" },
-    { name: "博客", href: "/fastapi_best_architecture_docs/blog/" },
     { name: "隐私政策", href: "/fastapi_best_architecture_docs/privacy-policy" },
     { name: "服务状态", href: "https://status.wu-clan.site/status/services" },
   ],
