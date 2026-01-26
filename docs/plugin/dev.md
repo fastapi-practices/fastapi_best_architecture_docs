@@ -107,7 +107,7 @@ author = ''
 # 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
 # 数据库支持
-# 当前支持：mysql、pgsql、postgresql
+# 当前支持：mysql、postgresql
 database = ['']
 
 # 应用配置
@@ -141,7 +141,7 @@ author = ''
 # 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
 # 数据库支持
-# 当前支持：mysql、pgsql、postgresql
+# 当前支持：mysql、postgresql
 database = ['']
 
 # 应用配置

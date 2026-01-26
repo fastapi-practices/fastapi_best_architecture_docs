@@ -69,4 +69,4 @@ return await self.select_order(  # [!code word:noload]
 ## 数据库时区陷阱
 
 MySQL 不支持时区存储类型，而 PostgreSQL 拥有完美的时区类型，所以在数据库中存储时间列确实是一件令人头疼的事情，不过我们已为此实现完美方案，兼容
-mysql 和 pgsql，[查看详情](./backend/reference/timezone.md#数据库)
+mysql 和 postgresql，[查看详情](./backend/reference/timezone.md#数据库)
