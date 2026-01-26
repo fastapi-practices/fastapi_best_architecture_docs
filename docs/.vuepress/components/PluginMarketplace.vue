@@ -37,7 +37,7 @@
           全部
         </button>
         <button
-            v-for="tag in validTags"
+            v-for="tag in filteredValidTags"
             :key="tag"
             class="filter-tab"
             :class="{ active: currentTag === tag }"
@@ -93,9 +93,11 @@
             </div>
           </div>
           <p class="card-desc">{{ plugin.plugin.description }}</p>
-          <div class="card-tags" v-if="plugin.plugin.database?.length || plugin.plugin.tags?.length">
-            <span v-for="db in (plugin.plugin.database || [])" :key="'db-' + db" class="tag tag-db">#{{ db }}</span>
-            <span v-for="tag in (plugin.plugin.tags || []).slice(0, 3)" :key="tag"
+          <div class="card-tags"
+               v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
+            <span v-for="db in getValidDatabases(plugin.plugin.database)" :key="'db-' + db"
+                  class="tag tag-db">#{{ getDbLabel(db) }}</span>
+            <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
                   class="tag">#{{ getTagLabel(tag) }}</span>
           </div>
         </a>
@@ -111,16 +113,17 @@ const TAG_LABELS: Record<string, string> = {
   ai: 'AI',
   mcp: 'MCP',
   agent: 'Agent',
-  rag: 'RAG',
-  permission: '权限',
-  sso: 'SSO',
-  rbac: 'RBAC',
   auth: '认证',
-  ldap: 'LDAP',
   storage: '存储',
   notification: '通知',
   task: '任务',
+  payment: '支付',
   other: '其他'
+}
+
+const DB_TABLES: Record<string, string> = {
+  mysql: 'MySQL',
+  postgresql: 'PostgreSQL'
 }
 
 const CACHE_KEY = 'fba_plugins_cache'
@@ -181,6 +184,24 @@ const getColor = (str: string): string => {
 
 const getTagLabel = (tag: string): string => {
   return TAG_LABELS[tag] || tag
+}
+
+const getDbLabel = (db: string): string => {
+  return DB_TABLES[db] || db
+}
+
+const filteredValidTags = computed(() => {
+  return validTags.value.filter(tag => tag in TAG_LABELS)
+})
+
+const getValidTags = (tags: string[] | undefined): string[] => {
+  if (!tags) return []
+  return tags.filter(tag => tag in TAG_LABELS)
+}
+
+const getValidDatabases = (databases: string[] | undefined): string[] => {
+  if (!databases) return []
+  return databases.filter(db => db in DB_TABLES)
 }
 
 const resetFilters = () => {
