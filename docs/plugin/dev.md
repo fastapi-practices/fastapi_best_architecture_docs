@@ -104,8 +104,7 @@ description = ''
 # 作者
 author = ''
 # 标签
-# 当前支持：ai、mcp、agent、rag、permission、sso、rbac、auth、ldap、
-# storage、notification、task、other
+# 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
 # 数据库支持
 # 当前支持：mysql、pgsql、postgresql
@@ -139,8 +138,7 @@ description = ''
 # 作者
 author = ''
 # 标签
-# 当前支持：ai、mcp、agent、rag、permission、sso、rbac、auth、ldap、
-# storage、notification、task、other
+# 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
 # 数据库支持
 # 当前支持：mysql、pgsql、postgresql
