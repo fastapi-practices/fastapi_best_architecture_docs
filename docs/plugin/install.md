@@ -44,6 +44,10 @@ title: 插件安装
 
 ::::
 
+::: warning 私有仓库
+对于私有仓库，需要将 Token 嵌入 URL 中进行认证：`https://<TOKEN>@github.com/username/private-repo.git`
+:::
+
 ## 前端
 
 1. 获取插件仓库源码并下载

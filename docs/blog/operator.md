@@ -55,6 +55,10 @@ def set_updated_by(mapper, connection, target) -> None:  # noqa: ANN001
         target.created_by = ctx.user_id
 ```
 
+::: warning
+只有特定方法才会进行监听，详情请查看：[sqlalchemy#12724](https://github.com/sqlalchemy/sqlalchemy/discussions/12724)
+:::
+
 ## 如何展示？
 
 当然不能，那该怎么办呢？虽然我们只存储了用户 id 到数据库，但当我们单查询或列表查询的时候，我们需要进行数据拦截，将 id 替换为
