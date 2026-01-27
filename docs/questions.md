@@ -1,6 +1,5 @@
 ---
 title: 常见问题
-sponsor_sidebar: true
 ---
 
 ## 2025.12 项目 Star 为何猛增

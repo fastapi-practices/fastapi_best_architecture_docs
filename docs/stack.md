@@ -1,6 +1,5 @@
 ---
 title: 技术栈
-sponsor_sidebar: true
 ---
 
 fba 采用当前主流技术框架，我们追求新事物，拥抱新事物，并且积极更新与跟进

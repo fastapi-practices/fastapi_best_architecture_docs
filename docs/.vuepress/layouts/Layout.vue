@@ -4,12 +4,12 @@ import Footer from "../components/Footer.vue";
 import SponsorPanel from "../components/SponsorPanel.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 
-import { useData } from 'vuepress-theme-plume/composables'
+import { useSidebar } from 'vuepress-theme-plume/composables'
 import { computed } from "vue";
 import { Layout } from "vuepress-theme-plume/client";
 
-const { frontmatter } = useData()
-const showSidebarSponsorOnAsideTop = computed(() => frontmatter.value.sponsor_sidebar)
+const { hasSidebar, hasAside } = useSidebar()
+const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAside.value)
 
 </script>
 

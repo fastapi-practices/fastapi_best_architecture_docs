@@ -1,6 +1,5 @@
 ---
 title: 成为 fba 的赞助者
-sponsor_sidebar: true
 ---
 
 自 fba
