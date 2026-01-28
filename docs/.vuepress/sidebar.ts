@@ -23,6 +23,16 @@ export const mySidebar: ThemeSidebarMulti = {
             ]
         },
         {
+            text: 'AI',
+            collapsed: false,
+            prefix: 'ai/',
+            items: [
+                { text: 'Skills', link: 'skills' },
+                { text: 'Mcp', link: 'mcp' },
+                { text: 'Prompt', link: 'prompt' },
+            ]
+        },
+        {
             text: '参考',
             collapsed: false,
             prefix: 'reference/',
