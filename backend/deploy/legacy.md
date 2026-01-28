@@ -1,0 +1,10 @@
+---
+url: /fastapi_best_architecture_docs/backend/deploy/legacy.md
+---
+::: note
+由于传统部署涉及修改的地方较多且较为复杂，因此无法提供此部署教程
+
+您可以选择我们的 [专业版](../../pricing.md)，以获取作者一对一部署指导
+:::
+
+@[bilibili](BV1q1KVe3E82)
