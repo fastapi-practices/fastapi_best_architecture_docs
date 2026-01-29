@@ -2,7 +2,7 @@
 title: MCP
 ---
 
-[MCP 介绍](../../blog/claude-ai-ecosystem.md){.read-more}
+[MCP 介绍](../blog/claude-ai-ecosystem.md){.read-more}
 
 ## ace (Augment Context Engine)
 

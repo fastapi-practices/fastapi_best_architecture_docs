@@ -144,8 +144,8 @@ const links = {
     },
   ],
   community: [
-    { name: "交流群", href: "/fastapi_best_architecture_docs/group" },
     { name: "技术栈", href: "/fastapi_best_architecture_docs/stack" },
+    { name: "交流群", href: "/fastapi_best_architecture_docs/group" },
     { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi_best_architecture/issues" },
     { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi_best_architecture/discussions" },
     { name: "想法和建议", href: "https://discord.gg/xp8M6nY4NA" },

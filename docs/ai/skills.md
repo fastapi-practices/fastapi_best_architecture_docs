@@ -4,7 +4,7 @@ title: Skills
 
 开放代理技能生态系统：[skills.sh](https://skills.sh/)
 
-[Skills 介绍](../../blog/claude-ai-ecosystem.md){.read-more}
+[Skills 介绍](../blog/claude-ai-ecosystem.md){.read-more}
 
 ## fba
 

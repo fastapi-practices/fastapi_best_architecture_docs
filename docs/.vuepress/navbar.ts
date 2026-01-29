@@ -2,7 +2,7 @@ import { defineNavbarConfig, ThemeNavItem } from "vuepress-theme-plume";
 
 export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
-        text: 'v1.12.3',
+        text: 'Guide',
         items: [
             {
                 text: '后端',
@@ -39,21 +39,36 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                 text: '更多',
                 items: [
                     {
-                        text: '常见问题',
-                        icon: 'healthicons:question',
-                        link: '/questions.md'
+                        text: '更新记录',
+                        icon: 'stash:last-updates-duotone',
+                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md'
                     },
                     {
                         text: '参与贡献',
                         icon: 'mdi:people-add',
                         link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing'
                     },
-                    {
-                        text: '更新记录',
-                        icon: 'stash:last-updates-duotone',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md'
-                    },
                 ]
+            },
+        ]
+    },
+    {
+        text: 'AI 赋能',
+        items: [
+            {
+                text: 'Skills',
+                icon: 'hugeicons:language-skill',
+                link: '/ai/skills',
+            },
+            {
+                text: 'MCP',
+                icon: 'gravity-ui:logo-mcp',
+                link: '/ai/mcp',
+            },
+            {
+                text: 'Prompt',
+                icon: 'streamline:ai-prompt-spark-remix',
+                link: '/ai/prompt',
             },
         ]
     },
@@ -199,6 +214,11 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: '关于',
         items: [
+            {
+                text: '常见问题',
+                icon: 'healthicons:question',
+                link: '/questions.md'
+            },
             {
                 text: '用户登记',
                 icon: 'mdi:user-check',

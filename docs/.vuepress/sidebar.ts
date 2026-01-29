@@ -23,16 +23,6 @@ export const mySidebar: ThemeSidebarMulti = {
             ]
         },
         {
-            text: 'AI',
-            collapsed: false,
-            prefix: 'ai/',
-            items: [
-                { text: 'Skills', link: 'skills' },
-                { text: 'Mcp', link: 'mcp' },
-                { text: 'Prompt', link: 'prompt' },
-            ]
-        },
-        {
             text: '参考',
             collapsed: false,
             prefix: 'reference/',
@@ -111,5 +101,16 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: '传统', link: 'legacy' },
             ]
         }
+    ],
+    '/ai/': [
+        {
+            text: 'AI 赋能',
+            collapsed: false,
+            items: [
+                { text: 'Skills', link: 'skills' },
+                { text: 'MCP', link: 'mcp' },
+                { text: 'Prompt', link: 'prompt' },
+            ]
+        },
     ]
 }
