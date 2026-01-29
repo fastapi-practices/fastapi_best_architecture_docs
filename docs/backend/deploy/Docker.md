@@ -137,9 +137,19 @@ fba 正在使用免费 SSL 证书：[httpsok-SSL](https://httpsok.com/p/4Qjd)，
    命令执行期间遇到镜像拉取问题请自行 Google
    :::
 
+   ::: tabs
+   @tab 默认端口映射
+
    ```shell:no-line-numbers
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
+
+   @tab 自定义端口映射
+
+   ```shell:no-line-numbers
+   docker compose --env-file deploy/backend/docker-compose/.env.docker up -d --build
+   ```
+   :::
 
 6. 等待命令执行完成
    ::::
@@ -151,7 +161,7 @@ fba 正在使用免费 SSL 证书：[httpsok-SSL](https://httpsok.com/p/4Qjd)，
 ## 注意事项
 
 ::: warning
-不建议频繁使用 `docker-compose up -d --build` 命令，此命令每次执行都会重新构建容器，并将原容器自动本地备份保留，这会导致硬盘空间迅速锐减
+不建议频繁使用 `docker compose up -d --build` 命令，此命令每次执行都会重新构建容器，并将原容器自动本地备份保留，这会导致硬盘空间迅速锐减
 :::
 
 [15 个 Docker 容器自动化管理的脚本](https://www.yuque.com/fcant/devops/itkfyytisf9z84y6){.read-more}

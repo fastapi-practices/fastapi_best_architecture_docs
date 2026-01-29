@@ -36,7 +36,7 @@ title: Docker 部署
    在项目根目录中打开终端，执行以下命令
 
    ```shell:no-line-numbers
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 
 ::::
