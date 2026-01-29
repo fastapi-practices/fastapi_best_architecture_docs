@@ -17,6 +17,7 @@ import GitEmoji from "./components/GitEmoji.vue";
 import PluginMarketplace from "./components/PluginMarketplace.vue";
 import Pricing from "./components/Pricing.vue";
 import SponsorHome from './components/SponsorHome.vue';
+import AiNeuralBadge from './components/AiNeuralBadge.vue';
 import './styles/custom.css'
 
 export default defineClientConfig({
@@ -35,5 +36,6 @@ export default defineClientConfig({
         NotFound: () => h(NotFound, null, {
             'layout-top': () => h(BannerTop),
         }),
-    }
+    },
+    rootComponents: [AiNeuralBadge],
 })
