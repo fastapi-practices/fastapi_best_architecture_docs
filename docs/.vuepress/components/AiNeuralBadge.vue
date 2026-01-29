@@ -16,7 +16,7 @@ const bubbleTexts = [
   "fba skills 已发布，AI 赋能，效率倍增 ⚡",
   "Hello！我是 fba 小助手，嘻嘻 😺",
   "fba + AI = 无限可能 💪",
-  "有问题？查看文档或加入社区 💬",
+  "有问题？查看文档或加入社区吧 💬",
   "感谢使用 FastAPI Best Architecture ❤️",
 ]
 
@@ -51,10 +51,10 @@ function handleClick() {
     typeText(currentFullText.value)
   }, 100)
 
-  // 重置跳跃动画
+  // 重置动画
   setTimeout(() => {
     isClicked.value = false
-  }, 600)
+  }, 800)
 }
 
 function checkHome() {
@@ -145,10 +145,11 @@ watch(() => route.path, () => {
               <animate attributeName="cx" values="32;34;32;30;32" dur="4s" repeatCount="indefinite" />
             </circle>
             <circle cx="34" cy="32" r="1.5" fill="#fff" />
-            <!-- 眨眼 -->
-            <ellipse cx="32" cy="34" rx="7" ry="8" fill="url(#face-grad)">
-              <animate attributeName="ry" values="0;0;0;0;0;0;0;0;8;0;0;0" dur="3s" repeatCount="indefinite" />
-            </ellipse>
+            <!-- 笑眼遮罩 -->
+            <ellipse class="eye-lid" cx="32" cy="34" rx="7" ry="8" fill="url(#face-grad)" />
+            <!-- 笑眼 ◡ -->
+            <path class="happy-eye" d="M26 32 Q32 40 38 32" stroke="#1e1b4b" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
           </g>
 
           <!-- 右眼 -->
@@ -158,15 +159,16 @@ watch(() => route.path, () => {
               <animate attributeName="cx" values="48;50;48;46;48" dur="4s" repeatCount="indefinite" />
             </circle>
             <circle cx="50" cy="32" r="1.5" fill="#fff" />
-            <!-- 眨眼 -->
-            <ellipse cx="48" cy="34" rx="7" ry="8" fill="url(#face-grad)">
-              <animate attributeName="ry" values="0;0;0;0;0;0;0;0;8;0;0;0" dur="3s" repeatCount="indefinite" />
-            </ellipse>
+            <!-- 笑眼遮罩 -->
+            <ellipse class="eye-lid" cx="48" cy="34" rx="7" ry="8" fill="url(#face-grad)" />
+            <!-- 笑眼 ◡ -->
+            <path class="happy-eye" d="M42 32 Q48 40 54 32" stroke="#1e1b4b" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
           </g>
 
           <!-- 腮红 -->
-          <ellipse cx="22" cy="42" rx="5" ry="3" fill="#fda4af" opacity="0.6" />
-          <ellipse cx="58" cy="42" rx="5" ry="3" fill="#fda4af" opacity="0.6" />
+          <ellipse class="blush blush-left" cx="22" cy="42" rx="5" ry="3" fill="#fda4af" opacity="0.6" />
+          <ellipse class="blush blush-right" cx="58" cy="42" rx="5" ry="3" fill="#fda4af" opacity="0.6" />
 
           <!-- 嘴巴 -->
           <path d="M32 46 Q40 54 48 46" stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round">
@@ -252,9 +254,117 @@ watch(() => route.path, () => {
   transform: scale(1.1);
 }
 
-/* 点击动画 */
-.ai-float-bot.is-clicked .ai-robot {
-  animation: click-jump 0.6s ease;
+/* 眼睛遮罩默认隐藏 */
+.eye-lid {
+  transform-origin: center;
+  transform: scaleY(0);
+}
+
+/* 笑眼弧线默认隐藏 */
+.happy-eye {
+  opacity: 0;
+}
+
+/* 点击时显示笑眼 */
+.ai-float-bot.is-clicked .eye-lid {
+  animation: smile-lid 0.8s ease forwards;
+}
+
+.ai-float-bot.is-clicked .happy-eye {
+  animation: smile-eye 0.8s ease forwards;
+}
+
+/* 点击时腮红变红变大 */
+.ai-float-bot.is-clicked .blush {
+  animation: blush-glow 0.8s ease forwards;
+}
+
+/* 遮罩动画 - 盖住原来的眼睛 */
+@keyframes smile-lid {
+  0% {
+    transform: scaleY(0);
+  }
+  15%, 85% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+/* 笑眼弧线淡入淡出 */
+@keyframes smile-eye {
+  0% {
+    opacity: 0;
+  }
+  15%, 85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 腮红默认状态 */
+.blush {
+  transform-origin: center;
+}
+
+/* 腮红变亮动画 */
+@keyframes blush-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  20%, 70% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.ai-float-bot.is-clicked .right-arm {
+  animation: click-wave 0.6s ease;
+  transform-origin: 62px 62px;
+}
+
+.ai-float-bot.is-clicked .left-arm {
+  animation: click-wave-left 0.6s ease;
+  transform-origin: 18px 62px;
+}
+
+/* 右手挥动动画 */
+@keyframes click-wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-40deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-35deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+}
+
+/* 左手摆动动画 */
+@keyframes click-wave-left {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
 }
 
 .ai-float-bot svg {
@@ -363,28 +473,6 @@ watch(() => route.path, () => {
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(124, 58, 237, 0.15);
-}
-
-/* 点击跳跃动画 */
-@keyframes click-jump {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  20% {
-    transform: translateY(-20px) scale(1.1);
-  }
-  40% {
-    transform: translateY(0) scale(0.95);
-  }
-  60% {
-    transform: translateY(-10px) scale(1.05);
-  }
-  80% {
-    transform: translateY(0) scale(0.98);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
 }
 
 /* 气泡展开动画 */
