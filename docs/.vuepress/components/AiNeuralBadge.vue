@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, watch, nextTick, computed } from 'vue'
-// @ts-ignore
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vuepress/client'
 
 const route = useRoute()
 const isVisible = ref(false)
