@@ -6,8 +6,14 @@ title: Prompt
 
 [Prompt 介绍](../blog/claude-ai-ecosystem.md){.read-more}
 
-## 语言
+## 语言规范
 
-名称：Language
+名称：Language norms
 
 内容：Thinking and executing are always in English, but replies are always in Chinese.
+
+## 文件写入
+
+名称：File write
+
+内容：When writing too much file content at one time, always write in batches.
