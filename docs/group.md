@@ -27,12 +27,8 @@ border-radius: 8px;">
 
 ## 微信群
 
-二维码不定期更新，如遇过期，请通过 Discord 与我们联系
-
-::: tip
 对于需要提供大量源码或截图的问题，建议通过 Discord 进行提问
-:::
 
 <div align="center">
-  <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/fba_wx.jpg" alt="微信群">
+  <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/fba.jpg" alt="微信群">
 </div>
