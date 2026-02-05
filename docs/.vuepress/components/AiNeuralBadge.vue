@@ -514,13 +514,13 @@ watch(() => route.path, () => {
     transform: translateY(0) rotate(-2deg);
   }
   25% {
-    transform: translateY(-12px) rotate(2deg);
+    transform: translateY(-7px) rotate(2deg);
   }
   50% {
     transform: translateY(-5px) rotate(-1deg);
   }
   75% {
-    transform: translateY(-15px) rotate(1deg);
+    transform: translateY(-9px) rotate(1deg);
   }
 }
 

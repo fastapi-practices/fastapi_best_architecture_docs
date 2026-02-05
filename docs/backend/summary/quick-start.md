@@ -97,13 +97,13 @@ fba 仅适用于资深 Python 后端开发人员，如果您是小白用户，�
            生成迁移文件
 
            ```shell:no-line-numbers
-           alembic revision --autogenerate
+           fba alembic revision
            ```
 
            执行迁移
 
            ```shell:no-line-numbers
-           alembic upgrade head
+           fba alembic upgrade
            ```
 
         2. 初始化测试数据
@@ -113,7 +113,7 @@ fba 仅适用于资深 Python 后端开发人员，如果您是小白用户，�
            插件：执行 `backend/plugin/sql/` 目录下对应主键模式的脚本
 
            ```shell:no-line-numbers
-           fba --sql xxx.sql
+           fba --sql 脚本文件路径
            ```
        :::
 
