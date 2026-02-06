@@ -21,13 +21,13 @@ const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAsid
         <BannerTop />
       </div>
     </template>
-    <template #nav-bar-content-after>
-      <div>
-        <button class="login-button">
-          <a href="https://fba.wu-clan.site/">登录</a>
-        </button>
-      </div>
-    </template>
+    <!-- <template #nav-bar-content-after> -->
+    <!--   <div> -->
+    <!--     <button class="login-button"> -->
+    <!--       <a href="https://fba.wu-clan.site/">登录</a> -->
+    <!--     </button> -->
+    <!--   </div> -->
+    <!-- </template> -->
     <template #sidebar-nav-before>
       <div class="custom-content">
         <SponsorSidebar />
