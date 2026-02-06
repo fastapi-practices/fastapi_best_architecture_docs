@@ -75,6 +75,8 @@ def set_updated_by(orm_statement: ORMExecuteState) -> None:
 ```
 
 ::: warning
+before_insert 事件需配合 `flush()` 才能触发！
+
 事件监听条件要求严格，如果监听事件未按预期执行，参考：[sqlalchemy#12724](https://github.com/sqlalchemy/sqlalchemy/discussions/12724)
 :::
 
