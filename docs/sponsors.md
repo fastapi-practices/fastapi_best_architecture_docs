@@ -93,13 +93,6 @@ title: 成为 fba 的赞助者
                 （5:3，大 LOGO / 大字体）
             </td>
         </tr>
-        <tr>
-            <td colspan="6" style="text-align: center">
-                <strong>访问统计：</strong>
-                <a href="https://eu.umami.is/share/Qr55K5Uczo4dKwdQ/fastapi-practices.github.io"
-                   style="text-decoration: none;">点击查看</a>
-            </td>
-        </tr>
         </tbody>
     </table>
 </div>
