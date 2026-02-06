@@ -35,14 +35,26 @@ fba 通过 JWT 中间件将用户信息存储到了每个请求的上下文中�
 
 ### 手动
 
-首先，在接口函数中，像 Django/Flask 一样，传入一个 `request` 参数，最好，我们加上参数类型：`request: Request`
-，然后我们可以在接口函数中通过 `request.user.id` 获取当前操作人员 id ，这样，在存储的时候，就可以传递此 id 进行存储
+首先，在接口函数中，传入一个 `request` 参数，最好，我们加上参数类型：`request: Request`，然后我们可以在接口函数中通过
+`request.user.id` 获取当前操作人员 id ，然后传递此 id 进行存储
 
-除此之外，我们还可以通过 `ctx.user_id` 更便捷的获取操作人员 id，尽情享受吧
+除此之外，为了简化代码，我们还可以通过 `ctx.user_id` 直接获取操作人员 id 进行存储
 
 ### 自动
 
 利用 SQLAlchemy 的事件监听，我们可以轻松做到这一点
+
+首先，我们需要对 UserMixin 做些调整：
+
+```python{4}
+class UserMixin(MappedAsDataclass):
+    """用户 Mixin 数据类"""
+
+    created_by: Mapped[int] = mapped_column(init=False, sort_order=998, comment='创建者')
+    updated_by: Mapped[int | None] = mapped_column(init=False, default=None, sort_order=998, comment='修改者')
+```
+
+然后在 `backend/common/model.py` 底部添加添加以下监听事件：
 
 ```python
 @event.listens_for(UserMixin, 'before_insert', propagate=True)
@@ -51,14 +63,19 @@ def set_created_by(mapper, connection, target) -> None:  # noqa: ANN001
         target.created_by = ctx.user_id
 
 
-@event.listens_for(UserMixin, 'before_update', propagate=True)
-def set_updated_by(mapper, connection, target) -> None:  # noqa: ANN001
-    if hasattr(target, 'updated_by'):
-        target.created_by = ctx.user_id
+@event.listens_for(Session, 'do_orm_execute', propagate=True)
+def set_updated_by(orm_statement: ORMExecuteState) -> None:
+    if (
+        orm_statement.is_update
+        and orm_statement.is_orm_statement
+        and orm_statement.statement.is_update
+        and orm_statement.bind_mapper.c.get('updated_by') is not None
+    ):
+        orm_statement.statement = orm_statement.statement.values(updated_by=ctx.user_id)
 ```
 
 ::: warning
-只有特定方法才会进行监听，详情请查看：[sqlalchemy#12724](https://github.com/sqlalchemy/sqlalchemy/discussions/12724)
+事件监听条件要求严格，如果监听事件未按预期执行，参考：[sqlalchemy#12724](https://github.com/sqlalchemy/sqlalchemy/discussions/12724)
 :::
 
 ## 如何展示？

@@ -43,7 +43,7 @@ id_key = Annotated[
 ::: warning
 在 fba 中，并没有默认集成操作人员信息到各个数据库表，但是我们提供了非常简易的集成方式
 
-[**操作人**博客](../../blog/operator.md){.read-more}
+[**操作人博客**](../../blog/operator.md){.read-more}
 :::
 
 ### 日期时间

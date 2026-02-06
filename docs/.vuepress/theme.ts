@@ -53,8 +53,6 @@ export const myTheme: Theme = plumeTheme({
     contributors: false,
     //watermark: true,
     markdown: {
-        abbr: true,
-        annotation: true,
         chat: true,
         mermaid: true,
         bilibili: true,
@@ -76,10 +74,5 @@ export const myTheme: Theme = plumeTheme({
     },
     llmstxt: {
         locale: 'all'
-    },
-    encrypt: {
-        rules: {
-            '/ai/nothing.html': '123456',
-        },
     },
 })
