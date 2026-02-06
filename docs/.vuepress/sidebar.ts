@@ -110,6 +110,7 @@ export const mySidebar: ThemeSidebarMulti = {
                 { text: 'Skills', link: 'skills' },
                 { text: 'MCP', link: 'mcp' },
                 { text: 'Prompt', link: 'prompt' },
+                { text: 'Nothing', link: 'nothing' },
             ]
         },
     ]

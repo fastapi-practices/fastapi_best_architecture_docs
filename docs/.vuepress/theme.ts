@@ -77,4 +77,9 @@ export const myTheme: Theme = plumeTheme({
     llmstxt: {
         locale: 'all'
     },
+    encrypt: {
+        rules: {
+            '/ai/nothing.html': '123456',
+        },
+    },
 })
