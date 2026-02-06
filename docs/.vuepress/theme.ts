@@ -73,6 +73,6 @@ export const myTheme: Theme = plumeTheme({
         lazyLoading: true,
     },
     llmstxt: {
-        locale: 'all'
+        locale: '/'
     },
 })
