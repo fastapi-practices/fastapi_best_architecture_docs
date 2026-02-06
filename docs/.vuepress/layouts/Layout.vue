@@ -1,12 +1,13 @@
 <script setup>
+import { computed } from "vue";
+import { Layout } from "vuepress-theme-plume/client";
+import { useSidebar } from 'vuepress-theme-plume/composables'
+import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
+
 import BannerTop from "../components/BannerTop.vue";
 import Footer from "../components/Footer.vue";
 import SponsorPanel from "../components/SponsorPanel.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
-
-import { useSidebar } from 'vuepress-theme-plume/composables'
-import { computed } from "vue";
-import { Layout } from "vuepress-theme-plume/client";
 
 const { hasSidebar, hasAside } = useSidebar()
 const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAside.value)
@@ -31,6 +32,9 @@ const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAsid
       <div class="custom-content">
         <SponsorSidebar />
       </div>
+    </template>
+    <template #doc-title-after>
+      <PageContextMenu />
     </template>
     <template #aside-top>
       <div v-if="showSidebarSponsorOnAsideTop" style="margin-bottom: 8px">
