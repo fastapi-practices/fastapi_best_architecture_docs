@@ -16,10 +16,10 @@ export default defineUserConfig({
     theme: myTheme,
     plugins: [
         baiduAnalyticsPlugin({
-            id: '6202e3701ae5a932577a1cf195084e9e'
+            id: '3fac49b26d8f26702c22aad4381c0641'
         }),
         umamiAnalyticsPlugin({
-            id: '62984e7c-ec95-459a-9a2f-553766c6b3d4'
+            id: '3f4c3f0b-51e4-4c78-a331-33e4e63796a9'
         }),
         clarityAnalyticsPlugin({
             id: 'uhawbqsmxt'
