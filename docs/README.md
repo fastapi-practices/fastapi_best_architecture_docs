@@ -19,7 +19,7 @@ config:
           link: /backend/summary/quick-start
         - theme: sponsor
           text: 在线体验 ->
-          link: https://wu-clan.github.io/fba_offline/
+          link: https://fastapi-practices.github.io/fba_offline/
         - theme: alt
           text: 伪三层架构?
           link: /backend/summary/intro#伪三层架构
