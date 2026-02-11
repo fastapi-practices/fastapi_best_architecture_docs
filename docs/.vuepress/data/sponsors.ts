@@ -20,7 +20,7 @@ export const homeSponsor: Sponsor = { ...defaultSponsor };
 export const goldSponsors: Sponsor[] = [
     {
         link: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQImbvY5S8IbJ1iL6yHfExtHiAhUtLIoi7AQ&s',
-        href: 'https://user.by.ltd/aff.php?aff=12215',
+        href: 'https://u.bws.lol/aff.php?aff=12215',
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',
     },

@@ -2,45 +2,76 @@
 title: 节流
 ---
 
-我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#70](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/70)
+在现代 Web 开发中，API 限流（Rate
+Limiting）是保护后端服务、防止资源滥用、保证服务稳定性的重要机制，我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#70](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/70)
 
-[**fastapi-limiter** GitHub 仓库地址](https://github.com/long2ice/fastapi-limiter){.read-more}
+## 处理流程
 
-## 使用
+以下是 RateLimiter 处理一次请求的完整流程：
 
-更多使用方法请查看官方仓库 [README](https://github.com/long2ice/fastapi-limiter/blob/master/README.md#quick-start)
+```mermaid
+graph TD
+    A[请求进入路由依赖] --> B[初始化 Bucket 和 Limiter]
+    B --> C[获取 Identifier]
+    C --> D[异步尝试获取]
+    D -->|获取成功| E[放行请求，继续业务处理]
+    D -->|获取失败| F[计算 Retry-After]
+    F --> G[执行 Callback<br>（默认抛出 429 异常）]
+```
 
-```python{1,6,11-17,25,29}
-@app.get("/", dependencies=[Depends(RateLimiter(times=1, seconds=5))])
-async def index_get():
-    return {"msg": "Hello World"}
+## 使用方法
 
+RateLimiter 设计为 FastAPI 的依赖项，直接在路由中使用 `Depends` 注入
 
-@app.post("/", dependencies=[Depends(RateLimiter(times=1, seconds=5))])
-async def index_post():
-    return {"msg": "Hello World"}
+### 单规则限流
+
+```python
+# 每分钟最多 60 次
+@app.get(
+    "/api/example", 
+    dependencies=[Depends(RateLimiter(Rate(5, Duration.MINUTE)))]
+)
+async def example():
+    return {"message": "success"}
+```
+
+### 多规则复合限流
+
+```python
+# 每秒 10 次 + 每分钟 100 次
+@app.post(
+    "/api/heavy", 
+    dependencies=[
+        Depends(
+            RateLimiter(
+                Rate(10, Duration.SECOND),
+                Rate(100, Duration.MINUTE),
+            )
+        )
+    ]
+)
+async def heavy_endpoint():
+    return {"status": "ok"}
+```
+
+### 自定义 Identifier
+
+```python
+async def user_identifier(request: Request) -> str:
+    return f"user:{request.user.id}"
 
 
 @app.get(
-    "/multiple",
+    "/api/user-data",
     dependencies=[
-        Depends(RateLimiter(times=1, seconds=5)),
-        Depends(RateLimiter(times=2, seconds=15)),
-    ],
+        Depends(
+            RateLimiter(
+                Rate(50, Duration.MINUTE),
+                identifier=user_identifier,
+            )
+        )
+    ]    
 )
-async def multiple():
-    return {"msg": "Hello World"}
-
-
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    ratelimit = WebSocketRateLimiter(times=1, seconds=5)
-    while True:
-        try:
-            data = await websocket.receive_text()
-            await ratelimit(websocket, context_key=data)
-            await websocket.send_text("Hello, world")
-        except HTTPException:
-            await websocket.send_text("Hello again")
+async def user_data():
+    return {"data": "protected"}
 ```
