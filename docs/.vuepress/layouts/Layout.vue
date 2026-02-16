@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { Layout } from "vuepress-theme-plume/client";
-import { useSidebar } from 'vuepress-theme-plume/composables'
+import { useLayout, useSidebarControl } from 'vuepress-theme-plume/composables'
 import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 
 import BannerTop from "../components/BannerTop.vue";
@@ -9,8 +9,9 @@ import Footer from "../components/Footer.vue";
 import SponsorPanel from "../components/SponsorPanel.vue";
 import SponsorSidebar from "../components/SponsorSidebar.vue";
 
-const { hasSidebar, hasAside } = useSidebar()
-const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAside.value)
+const { hasSidebar, hasAside } = useLayout()
+const { isSidebarCollapsed } = useSidebarControl()
+const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAside.value || isSidebarCollapsed.value)
 
 </script>
 

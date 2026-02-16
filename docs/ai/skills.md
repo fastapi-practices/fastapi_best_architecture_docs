@@ -7,3 +7,7 @@ title: Skills
 ## fba
 
 [fba skill](https://skills.sh/fastapi-practices/skills/fba) 提供完整的架构规范、编码风格、插件开发指导
+
+## antdv-next
+
+[antdv-next skill](https://skills.sh/antdv-next/skills/antdv-next) Antdv Next Vue 3 组件库技能
