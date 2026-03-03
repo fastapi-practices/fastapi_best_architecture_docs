@@ -134,8 +134,6 @@ title: 插件分享
 
 - 更新步骤 5 中的提交信息，现在已不再是新增，而是更新
 
-[//]: # (::: info)
-
-[//]: # (如果你想自动执行此过程，可以使用 [GitHub Action]&#40;https://github.com/fastapi-practices/plugin-release&#41;)
-
-[//]: # (:::)
+::: info
+如果你想自动执行此过程，可以使用 [GitHub Action](https://github.com/fastapi-practices/plugin-release)
+:::
