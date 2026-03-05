@@ -20,6 +20,10 @@ title: Skills
 
 [executing-plans skill](https://skills.sh/obra/superpowers/executing-plans) 制定计划，严格审查，分批执行任务，并在批次之间提交审查报告
 
+## drawio
+
+[drawio](https://skills.sh/bahayonghang/drawio-skills/drawio) 使用 Draw.io XML 和 Design System 2.0 创建、编辑和导出架构图、流程图和技术图
+
 ## excalidraw-diagram
 
 [excalidraw-diagram skill]() 根据语言描述生成 Excalidraw 格式的图表
