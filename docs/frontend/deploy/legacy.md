@@ -17,7 +17,7 @@ title: 传统部署
 
 2. 更新配置
 
-   将 [nginx.conf](https://github.com/fastapi-practices/fastapi_best_architecture_ui/blob/master/scripts/deploy/nginx.conf)
+   将 [nginx.conf](https://github.com/fastapi-practices/fastapi-best-architecture-ui/blob/master/scripts/deploy/nginx.conf)
    替换到 `/etc/nginx/nginx.conf`
 
 ## 本地

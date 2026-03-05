@@ -41,12 +41,12 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: '更新记录',
                         icon: 'stash:last-updates-duotone',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md'
+                        link: 'https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md'
                     },
                     {
                         text: '参与贡献',
                         icon: 'mdi:people-add',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend#contributing'
+                        link: 'https://github.com/fastapi-practices/fastapi-best-architecture/tree/master/backend#contributing'
                     },
                 ]
             },
@@ -121,12 +121,12 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
                     {
                         text: 'Github 问题',
                         icon: 'codicon:issues',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/issues'
+                        link: 'https://github.com/fastapi-practices/fastapi-best-architecture/issues'
                     },
                     {
                         text: 'Github 讨论',
                         icon: 'mdi:discussion',
-                        link: 'https://github.com/fastapi-practices/fastapi_best_architecture/discussions'
+                        link: 'https://github.com/fastapi-practices/fastapi-best-architecture/discussions'
                     },
                     {
                         text: '想法和建议',

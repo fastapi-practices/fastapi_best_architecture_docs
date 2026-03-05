@@ -43,7 +43,7 @@ fba 会在每次启动前对所有插件进行实时解析
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 必须将应用中的 api 目录结构进行 1:1 复制，可参考 fba
-中的内置插件 [notice](https://github.com/fastapi-practices/fastapi_best_architecture/tree/master/backend/plugin/notice/api)
+中的内置插件 [notice](https://github.com/fastapi-practices/fastapi-best-architecture/tree/master/backend/plugin/notice/api)
 :::
 
 ### 数据库兼容性

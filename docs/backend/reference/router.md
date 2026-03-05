@@ -6,7 +6,7 @@ fba 中的路由遵循 Restful API 规范
 
 ## 路由结构
 
-我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#4](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/4)
+我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#4](https://github.com/fastapi-practices/fastapi-best-architecture/discussions/4)
 
 当前路由结构如下所示：
 

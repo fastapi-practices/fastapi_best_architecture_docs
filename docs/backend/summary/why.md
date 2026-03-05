@@ -93,7 +93,7 @@ fba
 - 严格的代码质量
 
   我们有十分严格的 CI
-  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/backend/.ruff.toml)
+  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/.ruff.toml)
   ，使用非常流行且强大的 Ruff 作为支撑，为每次 PR 的代码质量做到严格把控
 
 - 持续的认可

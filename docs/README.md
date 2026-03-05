@@ -19,7 +19,7 @@ config:
           link: /backend/summary/quick-start
         - theme: sponsor
           text: 在线体验 ->
-          link: https://fastapi-practices.github.io/fba_offline/
+          link: https://fastapi-practices.github.io/fba-offline/
         - theme: alt
           text: 伪三层架构?
           link: /backend/summary/intro#伪三层架构
@@ -28,7 +28,7 @@ config:
           link: /backend/summary/why
         - theme: alt
           text: DeepWiki 文档
-          link: https://deepwiki.com/fastapi-practices/fastapi_best_architecture
+          link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
   - type: SponsorHome
   - type: features
     features:
@@ -138,7 +138,7 @@ mode="carousel"
 :::
 
 <div align="center">
-  <a href="https://github.com/fastapi-practices/fastapi_best_architecture/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi_best_architecture"/>
+  <a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
   </a>
 </div>

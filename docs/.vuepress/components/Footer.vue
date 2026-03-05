@@ -9,7 +9,7 @@
         </div>
         <div class="social-links">
           <a
-              href="https://github.com/fastapi-practices/fastapi_best_architecture"
+              href="https://github.com/fastapi-practices/fastapi-best-architecture"
               target="_blank"
               class="social-link"
           >
@@ -94,7 +94,7 @@
       <div class="footer-bottom-left">
         <span>Copyright © 2023-{{ currentYear }} FastAPI Practices and
           <a
-              href="https://github.com/fastapi-practices/fastapi_best_architecture/graphs/contributors"
+              href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors"
               target="_blank"
               rel="noopener noreferrer"
               class="footer-link"
@@ -105,7 +105,7 @@
         <span>
           Released under the
           <a
-              href="https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/LICENSE"
+              href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               class="footer-link"
@@ -140,14 +140,14 @@ const links = {
     { name: "常见问题", href: "/fastapi_best_architecture_docs/questions" },
     {
       name: "更新记录",
-      href: "https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md"
+      href: "https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md"
     },
   ],
   community: [
     { name: "技术栈", href: "/fastapi_best_architecture_docs/stack" },
     { name: "交流群", href: "/fastapi_best_architecture_docs/group" },
-    { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi_best_architecture/issues" },
-    { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi_best_architecture/discussions" },
+    { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi-best-architecture/issues" },
+    { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi-best-architecture/discussions" },
     { name: "想法和建议", href: "https://discord.gg/xp8M6nY4NA" },
   ],
   resources: [

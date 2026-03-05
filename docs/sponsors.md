@@ -3,7 +3,7 @@ title: 成为 fba 的赞助者
 ---
 
 自 fba
-创建以来，我们一直致力于 [持续更新](https://github.com/fastapi-practices/fastapi_best_architecture/blob/master/CHANGELOG.md)
+创建以来，我们一直致力于 [持续更新](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md)
 和 [积极维护](./backend/summary/why.md#长期维护)，为此，我们投入了大量的时间和无限的热爱。感谢您为 fba
 给予的大力支持，您的每份鼓励都将成为我们继续前进的动力
 

@@ -9,7 +9,7 @@ celery
 
 Celery 是一个基于 Python
 开发的分布式任务队列系统，它在处理繁重计算或复杂任务具备极好的优势，因为它不会和主线程应用共享进程，而是在一个独立的进程中运行，这意味着，这些任务将被异步处理，而不会占用主线程应用的资源，这可以大大提高主应用程序的响应速度和吞吐量；你可以在我们的项目中找到迁移到
-Celery 的相关讨论，请查看：[#225](https://github.com/fastapi-practices/fastapi_best_architecture/discussions/225)
+Celery 的相关讨论，请查看：[#225](https://github.com/fastapi-practices/fastapi-best-architecture/discussions/225)
 
 ## Broker（消息代理/中间件）
 

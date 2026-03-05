@@ -16,7 +16,7 @@ title: 快速开始
 2. 拉取 Git 仓库
 
    ```shell
-   git clone https://github.com/fastapi-practices/fastapi_best_architecture_ui.git
+   git clone https://github.com/fastapi-practices/fastapi-best-architecture-ui.git
    ```
 
 3. 安装依赖
