@@ -43,7 +43,7 @@ openapi JSON 数据在线地址
 
 ## 数据库配置
 
-### `DATABASE_TYPE` <Badge type="info" text="Literal['postgresql', 'mysql']" /> <Badge type="warning" text="env" />
+### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" /> <Badge type="warning" text="env" />
 
 数据库类型，仅支持 `postgresql` 和 `mysql`，需注意第三方插件兼容性
 
@@ -79,7 +79,7 @@ openapi JSON 数据在线地址
 
 数据库字符集，仅用于 mysql
 
-### `DATABASE_PK_MODE` <Badge type="info" text="str" />
+### `DATABASE_PK_MODE` <Badge type="info" text="Literal['autoincrement', 'snowflake']" />
 
 数据库主键模式，更多详情：[切换主键](./pk.md)
 
@@ -89,25 +89,63 @@ openapi JSON 数据在线地址
 
 ## Redis 配置
 
-### `REDIS_TIMEOUT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
-
-Socket 读写操作的超时时间和 Redis 建立 TCP 连接时的超时时间
-
-### `REDIS_HOST` <Badge type="info" text="int" />
+### `REDIS_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Redis 服务器的主机地址
 
-### `REDIS_PORT` <Badge type="info" text="str" />
+### `REDIS_PORT` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 Redis 服务器的端口号
 
-### `REDIS_PASSWORD` <Badge type="info" text="int" />
+### `REDIS_PASSWORD` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 Redis 认证密码
 
-### `REDIS_DATABASE` <Badge type="info" text="str" />
+### `REDIS_DATABASE` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 全局默认使用的 Redis 逻辑数据库索引（0 - 15）
+
+### `REDIS_TIMEOUT` <Badge type="info" text="int" />
+
+Socket 读写操作的超时时间和 Redis 建立 TCP 连接时的超时时间
+
+## 缓存配置
+
+### `CACHE_LOCAL_ENABLED` <Badge type="info" text="bool" />
+
+是否启用本地缓存
+
+### `CACHE_LOCAL_MAXSIZE` <Badge type="info" text="int" />
+
+本地缓存最大容量
+
+### `CACHE_LOCAL_TTL` <Badge type="info" text="int" />
+
+本地缓存过期时长（秒）
+
+### `CACHE_REDIS_TTL` <Badge type="info" text="int" />
+
+Redis 缓存过期时长（秒）
+
+### `CACHE_CONFIG_REDIS_PREFIX` <Badge type="info" text="str" />
+
+系统配置缓存存储到 Redis 时的前缀
+
+### `CACHE_DICT_REDIS_PREFIX` <Badge type="info" text="str" />
+
+字典缓存存储到 Redis 时的前缀
+
+### `CACHE_PUBSUB_CHANNEL` <Badge type="info" text="str" />
+
+缓存失效发布订阅频道
+
+### `CACHE_PUBSUB_RECONNECT_DELAY` <Badge type="info" text="int" />
+
+缓存发布订阅重连延迟（秒）
+
+### `CACHE_PUBSUB_MAX_RECONNECT_ATTEMPTS` <Badge type="info" text="int" />
+
+缓存发布订阅最大重连次数
 
 ## Snowflake（雪花算法）
 
@@ -234,6 +272,10 @@ JWT / RBAC 路由白名单正则模式，从路由头部开始匹配，与之匹
 
 ## 登录配置
 
+### `LOGIN_CAPTCHA_ENABLED` <Badge type="info" text="bool" />
+
+是否开启登录验证码
+
 ### `LOGIN_CAPTCHA_REDIS_PREFIX` <Badge type="info" text="str" />
 
 登录验证码存储到 Redis 时的前缀
@@ -241,10 +283,6 @@ JWT / RBAC 路由白名单正则模式，从路由头部开始匹配，与之匹
 ### `LOGIN_CAPTCHA_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
 登录验证码过期时长（秒）
-
-### `LOGIN_CAPTCHA_ENABLED` <Badge type="info" text="bool" />
-
-是否开始登录验证码
 
 ### `LOGIN_FAILURE_PREFIX` <Badge type="info" text="str" />
 
@@ -280,9 +318,25 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 ## 数据权限配置
 
+### `DATA_PERMISSION_MODEL_EXCLUDE` <Badge type="info" text="list[str]" />
+
+排除允许进行数据过滤的 SQLA 模型
+
 ### `DATA_PERMISSION_COLUMN_EXCLUDE` <Badge type="info" text="list[str]" />
 
 排除允许进行数据过滤的 SQLA 模型列，例如 id, password 等
+
+### `DATA_PERMISSION_MODEL_TEMPLATE_VARIABLES` <Badge type="info" text="list[dict[str, str]]" />
+
+数据规则模型可用模板变量
+
+### `DATA_PERMISSION_COLUMN_TEMPLATE_VARIABLES` <Badge type="info" text="list[dict[str, str]]" />
+
+数据规则字段可用模板变量
+
+### `DATA_PERMISSION_TEMPLATE_VARIABLES` <Badge type="info" text="list[dict[str, str]]" />
+
+数据规则值可用模板变量
 
 ## Socket.IO 配置
 
@@ -426,9 +480,13 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 操作日志路径排除，在此配置内的请求地址不会记录操作日志
 
-### `OPERA_LOG_ENCRYPT_KEY_INCLUDE` <Badge type="info" text="list[str]" />
+### `OPERA_LOG_REDACT_KEYS` <Badge type="info" text="list[str]" />
 
-加密操作日志中的接口请求参数
+脱敏操作日志中的接口请求参数
+
+### `OPERA_LOG_QUEUE_MAXSIZE` <Badge type="info" text="int" />
+
+操作日志队列最大容量
 
 ### `OPERA_LOG_QUEUE_BATCH_CONSUME_SIZE` <Badge type="info" text="int" />
 
@@ -464,17 +522,13 @@ pip 下载最大重试次数
 
 ## Grafana 配置
 
-### `GRAFANA_METRICS` <Badge type="info" text="bool" />
+### `GRAFANA_METRICS_ENABLE` <Badge type="info" text="bool" />
 
 是否启用 Grafana 套件
 
 ::: warning
 如果不需要可观测性集成，不建议启用此功能
 :::
-
-### `GRAFANA_APP_NAME` <Badge type="info" text="str" />
-
-Grafana 应用名称，通常情况下，不建议修改
 
 ### `GRAFANA_OTLP_GRPC_ENDPOINT` <Badge type="info" text="str" />
 
@@ -542,19 +596,11 @@ Google 客户端 ID
 
 Google 客户端密钥
 
-### `OAUTH2_LINUX_DO_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
-
-Linux Do 客户端 ID
-
-### `OAUTH2_LINUX_DO_CLIENT_SECRET` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
-
-Linux Do 客户端密钥
-
 ### `OAUTH2_STATE_REDIS_PREFIX` <Badge type="info" text="str" />
 
 OAuth2 状态信息存储到 Redis 时的前缀
 
-### `OAUTH2_STATE_EXPIRE_SECONDS` <Badge type="info" text="str" />
+### `OAUTH2_STATE_EXPIRE_SECONDS` <Badge type="info" text="int" />
 
 OAuth2 状态信息存储到 Redis 时的过期时间（秒）
 
@@ -566,10 +612,6 @@ GitHub 重定向地址，必须与 GitHub OAuth Apps 配置保持一致
 
 Google 重定向地址，必须与 Google OAuth 2.0 客户端配置保持一致
 
-### `OAUTH2_LINUX_DO_REDIRECT_URI` <Badge type="info" text="str" />
-
-Linux Do 重定向地址，必须与 Linux Do Connect 配置保持一致
-
 ### `OAUTH2_FRONTEND_LOGIN_REDIRECT_URI` <Badge type="info" text="str" />
 
 登陆成功后，重定向到前端的地址
@@ -580,11 +622,11 @@ Linux Do 重定向地址，必须与 Linux Do Connect 配置保持一致
 
 ## 插件：Email
 
-### `EMAIL_USERNAME` <Badge type="info" text="str" />
+### `EMAIL_USERNAME` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 电子邮箱发件用户
 
-### `EMAIL_PASSWORD` <Badge type="info" text="str" />
+### `EMAIL_PASSWORD` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
 电子邮箱发件用户密码
 
