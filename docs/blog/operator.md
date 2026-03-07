@@ -58,20 +58,23 @@ class UserMixin(MappedAsDataclass):
 
 ```python
 @event.listens_for(UserMixin, 'before_insert', propagate=True)
-def set_created_by(mapper, connection, target) -> None:  # noqa: ANN001
-    if hasattr(target, 'created_by'):
+def _inject_created_by(mapper, connection, target) -> None:  # noqa: ANN001
+    user_id = ctx.user_id
+    if user_id is None:
+        return
+    if hasattr(target, 'created_by') and target.created_by is None:
         target.created_by = ctx.user_id
 
 
 @event.listens_for(Session, 'do_orm_execute', propagate=True)
-def set_updated_by(orm_statement: ORMExecuteState) -> None:
+def _inject_updated_by(orm_execute_state: ORMExecuteState) -> None:
     if (
-        orm_statement.is_update
-        and orm_statement.is_orm_statement
-        and orm_statement.statement.is_update
-        and orm_statement.bind_mapper.c.get('updated_by') is not None
+        orm_execute_state.is_update
+        and orm_execute_state.is_orm_statement
+        and orm_execute_state.statement.is_update
+        and orm_execute_state.bind_mapper.c.get('updated_by') is not None
     ):
-        orm_statement.statement = orm_statement.statement.values(updated_by=ctx.user_id)
+        orm_execute_state.statement = orm_execute_state.statement.values(updated_by=ctx.user_id)
 ```
 
 ::: warning
