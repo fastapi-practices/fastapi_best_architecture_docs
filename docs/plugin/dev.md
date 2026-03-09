@@ -188,23 +188,12 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int
 ```
 
 整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】，但是，在发布的插件中，我们无法添加这些配置，只能通过
-`README` 进行说明，提醒用户如何完成插件全局配置，可参考 fba 官方插件：[oss](https://github.com/fastapi-practices/oss)
-
-::: caution
-全局配置默认使用最高优先级赋值，优先级如下：
-
-```mermaid
-graph LR
-    System("系统环境变量") --> DotEnv[".env"]
-    DotEnv --> Settings["conf.py"]
-    Settings --> Plugin["插件 settings 配置项"]
-```
-
-:::
+`README` 进行说明，提醒用户如何完成插件全局配置
 
 ### 热插拔
 
-从 ==v1.13.0=={.warning} 开始，按以下要求进行配置，将自动适配热插拔特性
+从 ==v1.13.0=={.note} 开始，按以下要求进行配置，将自动适配热插拔特性，可参考 fba
+官方插件：[oss](https://github.com/fastapi-practices/oss)
 
 - 插件环境变量
 
@@ -234,6 +223,17 @@ graph LR
     ```
 
 完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件后，将无损适配热插拔
+
+::: important 全局配置应用优先级
+
+```mermaid
+graph LR
+    System("系统环境变量") --> DotEnv[".env"]
+    DotEnv --> Settings["conf.py"]
+    Settings --> Plugin["插件 settings 配置项"]
+```
+
+:::
 
 ::: tip
 除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 README 中添加全局配置说明，如果你和你的插件用户想通过

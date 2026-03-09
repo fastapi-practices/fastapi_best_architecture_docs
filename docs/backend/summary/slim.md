@@ -7,7 +7,7 @@ FastAPI 最佳架构精简版的目标是仅保留最最最简单的架构代码
 ## SQLAlchemy
 
 ::: caution
-此版本的更新非实时不同步，我们目前正在寻找维护人员
+此版本的更新非实时同步，我们目前正在寻找维护人员
 :::
 
 <LinkCard
@@ -20,7 +20,7 @@ icon="https://wu-clan.github.io/picx-images-hosting/logo/fba.png"
 ## Tortoise-ORM
 
 ::: caution
-此版本的更新非实时不同步，我们目前正在寻找维护人员
+此版本的更新非实时同步，我们目前正在寻找维护人员
 :::
 
 <LinkCard
