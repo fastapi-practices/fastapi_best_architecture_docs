@@ -12,7 +12,7 @@ config:
     hero:
       name: FastAPI Best Architecture
       tagline: 企业级后端架构解决方案
-      text: 基于 FastAPI 框架，前后端分离，遵循「伪三层架构」设计，支持 Python 3.10+ 版本
+      text: 基于 FastAPI 框架，前后端分离，遵循「三层架构」设计，支持 Python 3.10+ 版本
       actions:
         - theme: brand
           text: 快速上手 ->
@@ -21,8 +21,8 @@ config:
           text: 在线体验 ->
           link: https://fastapi-practices.github.io/fba-offline/
         - theme: alt
-          text: 伪三层架构?
-          link: /backend/summary/intro#伪三层架构
+          text: 三层架构?
+          link: /backend/summary/intro#三层架构
         - theme: alt
           text: 为什么选择我们?
           link: /backend/summary/why
@@ -35,7 +35,7 @@ config:
       - title: 现代技术栈
         icon: ✨
         details: FastAPI + SQLAlchemy 2.0 + Pydantic v2 + Celery 全栈异步
-      - title: 伪三层架构
+      - title: 三层架构
         icon: 🧠
         details: 极简设计，所有开发者都能轻松上手与扩展
       - title: 插件系统

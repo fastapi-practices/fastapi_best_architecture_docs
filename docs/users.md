@@ -13,7 +13,7 @@ pageLayout: friends
 <CardGrid>
   <ImageCard
     title="fba"
-    description="基于 FastAPI 框架的企业级后端架构解决方案，遵循伪三层架构设计， 支持 Python 3.10 及以上版本"
+    description="基于 FastAPI 框架的企业级后端架构解决方案，遵循三层架构设计， 支持 Python 3.10 及以上版本"
     href="https://fastapi-practices.github.io/fastapi_best_architecture_docs/"
     image="https://wu-clan.github.io/picx-images-hosting/fba.png"
   />
