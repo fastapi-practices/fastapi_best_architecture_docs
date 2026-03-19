@@ -16,14 +16,29 @@
 
     <div class="marketplace-controls">
       <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+          <path
+              d="M11.5 3.5l1.15 2.85 2.85 1.15-2.85 1.15-1.15 2.85-1.15-2.85-2.85-1.15 2.85-1.15L11.5 3.5z"
+          ></path>
+          <path
+              d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"
+          ></path>
+          <path
+              d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"
+          ></path>
         </svg>
         <input
             v-model="searchQuery"
             type="text"
-            placeholder="搜索插件名称、作者或描述..."
+            placeholder="让 AI 帮你找插件：名称、作者、描述或仓库名..."
             class="search-input"
         />
       </div>
@@ -65,49 +80,129 @@
       </div>
 
       <div v-else class="plugin-grid">
-        <a
+        <article
             v-for="plugin in filteredPlugins"
             :key="plugin.git.path"
-            :href="plugin.git.url"
-            target="_blank"
             class="plugin-card"
+            :class="`plugin-card-${getPluginType(plugin.git.path)}`"
         >
           <div class="card-top">
-            <div class="card-icon">
-              <img
-                  v-if="plugin.plugin.icon && !failedIcons.has(plugin.git.path)"
-                  :src="plugin.plugin.icon"
-                  :alt="plugin.plugin.summary"
-                  @error="failedIcons.add(plugin.git.path)"
-              />
-              <div v-else class="icon-fallback" :style="{ background: getColor(plugin.git.path) }">
-                {{ getInitial(plugin.git.path) }}
+            <a
+                :href="plugin.git.url"
+                target="_blank"
+                rel="noreferrer"
+                class="card-main-link card-main-link-top"
+            >
+              <div class="card-icon" :class="`card-icon-${getPluginType(plugin.git.path)}`">
+                <img
+                    v-if="plugin.plugin.icon && !failedIcons.has(plugin.git.path)"
+                    :src="plugin.plugin.icon"
+                    :alt="plugin.plugin.summary"
+                    @error="failedIcons.add(plugin.git.path)"
+                />
+                <div v-else class="icon-fallback" :style="{ background: getColor(plugin.git.path) }">
+                  {{ getInitial(plugin.git.path) }}
+                </div>
               </div>
-            </div>
-            <div class="card-meta">
-              <div class="card-header">
-                <span class="card-title">{{ plugin.plugin.summary }}</span>
-                <span class="card-version">v{{ plugin.plugin.version }}</span>
+              <div class="card-meta">
+                <div class="card-header">
+                  <span class="card-title">{{ plugin.plugin.summary }}</span>
+                  <span class="card-version">v{{ plugin.plugin.version }}</span>
+                </div>
+                <p class="card-author">{{ plugin.plugin.author }} / {{ getName(plugin.git.path) }}</p>
               </div>
-              <p class="card-author">{{ plugin.plugin.author }} / {{ getName(plugin.git.path) }}</p>
+            </a>
+          </div>
+
+          <a
+              :href="plugin.git.url"
+              target="_blank"
+              rel="noreferrer"
+              class="card-main-link card-main-link-body"
+          >
+            <p class="card-desc">{{ plugin.plugin.description }}</p>
+            <div class="card-tags"
+                 v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
+              <span v-for="db in getValidDatabases(plugin.plugin.database)" :key="'db-' + db"
+                    class="tag">#{{ getDbLabel(db) }}</span>
+              <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
+                    class="tag">#{{ getTagLabel(tag) }}</span>
             </div>
+          </a>
+
+          <div class="card-footer-actions">
+            <a
+                :href="getInstallUrl(plugin.git.path)"
+                class="card-action-btn card-action-install"
+            >
+              <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   aria-hidden="true">
+                <path d="M12 3v12"></path>
+                <path d="M7 10l5 5 5-5"></path>
+                <path d="M5 21h14"></path>
+              </svg>
+              <span>安装</span>
+            </a>
+
+            <a
+                :href="getStarUrl(plugin.git.url)"
+                target="_blank"
+                rel="noreferrer"
+                class="card-action-btn card-action-like"
+            >
+              <svg class="card-action-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                    d="M12 3.75l2.56 5.19 5.73.83-4.14 4.04.98 5.7L12 16.78l-5.13 2.73.98-5.7-4.14-4.04 5.73-.83L12 3.75z"></path>
+              </svg>
+              <span>{{ getStarLabel(plugin) }}</span>
+            </a>
+
+            <button
+                type="button"
+                class="card-action-btn card-action-share"
+                :class="{ copied: copiedPluginPath === plugin.git.path }"
+                :aria-label="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
+                :title="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
+                @click="sharePlugin(plugin)"
+            >
+              <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   aria-hidden="true">
+                <path d="M8.59 13.51l6.83 3.98"></path>
+                <path d="M15.41 6.51L8.59 10.49"></path>
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+              </svg>
+              <span>{{ copiedPluginPath === plugin.git.path ? '已复制' : '分享' }}</span>
+            </button>
           </div>
-          <p class="card-desc">{{ plugin.plugin.description }}</p>
-          <div class="card-tags"
-               v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
-            <span v-for="db in getValidDatabases(plugin.plugin.database)" :key="'db-' + db"
-                  class="tag tag-db">#{{ getDbLabel(db) }}</span>
-            <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
-                  class="tag">#{{ getTagLabel(tag) }}</span>
-          </div>
-        </a>
+        </article>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, reactive } from 'vue'
+import { useClipboard } from '@vueuse/core'
+import { ref, computed, onMounted, onBeforeUnmount, reactive } from 'vue'
+
+type PluginType = 'backend' | 'frontend'
+
+interface PluginItem {
+  git: {
+    path: string
+    url: string
+  }
+  plugin: {
+    icon?: string
+    summary: string
+    version: string
+    author: string
+    description: string
+    database?: string[]
+    tags?: string[]
+  }
+}
 
 // Data sync from: https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/plugin/validator.py
 const TAG_LABELS: Record<string, string> = {
@@ -128,7 +223,11 @@ const DB_TABLES: Record<string, string> = {
 }
 
 const CACHE_KEY = 'fba_plugins_cache'
-const CACHE_DURATION = 10 * 60 * 1000
+const CACHE_DURATION = 24 * 60 * 60 * 1000
+const STAR_CACHE_KEY = 'fba_plugins_stars_cache'
+const STAR_CACHE_DURATION = 24 * 60 * 60 * 1000
+const FRONTEND_REPO_SUFFIX = '_ui'
+const INSTALL_DOC_BASE = '/fastapi_best_architecture_docs/plugin/install'
 
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
@@ -138,11 +237,15 @@ const DATA_SOURCES = [
 
 const loading = ref(true)
 const error = ref('')
-const plugins = ref<any[]>([])
+const plugins = ref<PluginItem[]>([])
 const validTags = ref<string[]>([])
 const currentTag = ref('all')
 const searchQuery = ref('')
 const failedIcons = reactive(new Set<string>())
+const starCounts = reactive<Record<string, number>>({})
+const copiedPluginPath = ref('')
+const { copy: copyToClipboard } = useClipboard({ legacy: true })
+let copiedTimer: ReturnType<typeof setTimeout> | null = null
 
 const filteredPlugins = computed(() => {
   let result = plugins.value
@@ -172,6 +275,63 @@ const getName = (path: string): string => {
 
 const getInitial = (path: string): string => {
   return getName(path).charAt(0).toUpperCase()
+}
+
+const getPluginType = (path: string): PluginType => {
+  return getName(path).endsWith(FRONTEND_REPO_SUFFIX) ? 'frontend' : 'backend'
+}
+
+const getInstallUrl = (path: string): string => {
+  return `${ INSTALL_DOC_BASE }${ getPluginType(path) === 'frontend' ? '#前端' : '#后端' }`
+}
+
+const getRepoFullName = (url: string): string => {
+  const match = url.match(/github\.com\/([^/]+)\/([^/?#]+)/i)
+  if (!match) return ''
+  return `${ match[1] }/${ match[2].replace(/\.git$/i, '') }`
+}
+
+const getStarUrl = (url: string): string => {
+  const repo = getRepoFullName(url)
+  return repo ? `https://github.com/${ repo }/stargazers` : url
+}
+
+const formatStarCount = (count: number): string => {
+  if (count >= 1000000) return `${ (count / 1000000).toFixed(1).replace(/\.0$/, '') }M`
+  if (count >= 1000) return `${ (count / 1000).toFixed(1).replace(/\.0$/, '') }k`
+  return String(count)
+}
+
+const getStarLabel = (plugin: PluginItem): string => {
+  const repo = getRepoFullName(plugin.git.url)
+  const count = starCounts[repo]
+  return typeof count === 'number' ? formatStarCount(count) : '点赞'
+}
+
+const buildShareText = (plugin: PluginItem): string => {
+  const summary = plugin.plugin.summary.trim()
+  const description = plugin.plugin.description?.replace(/\s+/g, ' ').trim()
+
+  return [
+    `发现一个不错的 fba 插件「${ summary }」`,
+    description || '值得放进你的项目里试一试。',
+    `仓库地址：${ plugin.git.url }`
+  ].join('\n')
+}
+
+const sharePlugin = async (plugin: PluginItem) => {
+  try {
+    await copyToClipboard(buildShareText(plugin))
+    copiedPluginPath.value = plugin.git.path
+
+    if (copiedTimer) clearTimeout(copiedTimer)
+    copiedTimer = setTimeout(() => {
+      copiedPluginPath.value = ''
+      copiedTimer = null
+    }, 1800)
+  } catch (e) {
+    console.warn('Share copy failed:', e)
+  }
 }
 
 const getColor = (str: string): string => {
@@ -210,9 +370,71 @@ const resetFilters = () => {
   currentTag.value = 'all'
 }
 
-const parseTypeScriptData = (text: string): { tags: string[], plugins: any[] } => {
+const loadStarCache = (): Record<string, { count: number, timestamp: number }> => {
+  try {
+    const cached = localStorage.getItem(STAR_CACHE_KEY)
+    return cached ? JSON.parse(cached) : {}
+  } catch (e) {
+    console.warn('Star cache read error:', e)
+    return {}
+  }
+}
+
+const saveStarCache = (cache: Record<string, { count: number, timestamp: number }>) => {
+  try {
+    localStorage.setItem(STAR_CACHE_KEY, JSON.stringify(cache))
+  } catch (e) {
+    console.warn('Star cache write error:', e)
+  }
+}
+
+const syncPluginStars = async (pluginList: PluginItem[]) => {
+  const now = Date.now()
+  const starCache = loadStarCache()
+  const repoNames = Array.from(new Set(pluginList.map(plugin => getRepoFullName(plugin.git.url)).filter(Boolean)))
+
+  repoNames.forEach(repo => {
+    const cached = starCache[repo]
+    if (cached) {
+      starCounts[repo] = cached.count
+    }
+  })
+
+  for (const repo of repoNames) {
+    const cached = starCache[repo]
+    if (cached && now - cached.timestamp < STAR_CACHE_DURATION) continue
+
+    try {
+      const response = await fetch(`https://api.github.com/repos/${ repo }`, {
+        headers: {
+          Accept: 'application/vnd.github+json'
+        }
+      })
+
+      if (!response.ok) {
+        if (response.status === 403 || response.status === 429) break
+        continue
+      }
+
+      const data = await response.json()
+      if (typeof data.stargazers_count === 'number') {
+        starCounts[repo] = data.stargazers_count
+        starCache[repo] = {
+          count: data.stargazers_count,
+          timestamp: Date.now()
+        }
+      }
+    } catch (e) {
+      console.warn(`Failed to fetch stars for ${ repo }:`, e)
+    }
+  }
+
+  saveStarCache(starCache)
+}
+
+const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginItem[] } => {
   const tags: string[] = []
-  const pluginList: any[] = []
+  const pluginList: PluginItem[] = []
 
   const tagsMatch = text.match(/export\s+const\s+validTags\s*=\s*\[([\s\S]*?)\]\s*as\s+const/)
   if (tagsMatch) {
@@ -238,7 +460,7 @@ const parseTypeScriptData = (text: string): { tags: string[], plugins: any[] } =
   return { tags, plugins: pluginList }
 }
 
-const loadFromCache = (): { tags: string[], plugins: any[] } | null => {
+const loadFromCache = (): { tags: string[], plugins: PluginItem[] } | null => {
   try {
     const cached = localStorage.getItem(CACHE_KEY)
     if (cached) {
@@ -253,7 +475,7 @@ const loadFromCache = (): { tags: string[], plugins: any[] } | null => {
   return null
 }
 
-const saveToCache = (data: { tags: string[], plugins: any[] }) => {
+const saveToCache = (data: { tags: string[], plugins: PluginItem[] }) => {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify({
       data,
@@ -286,6 +508,7 @@ const fetchPlugins = async () => {
   if (cached) {
     validTags.value = cached.tags
     plugins.value = cached.plugins
+    syncPluginStars(cached.plugins)
     loading.value = false
 
     fetchWithFallback()
@@ -294,6 +517,7 @@ const fetchPlugins = async () => {
       validTags.value = data.tags
       plugins.value = data.plugins
       saveToCache(data)
+      syncPluginStars(data.plugins)
     })
     .catch(() => {
     })
@@ -306,6 +530,7 @@ const fetchPlugins = async () => {
     validTags.value = data.tags
     plugins.value = data.plugins
     saveToCache(data)
+    syncPluginStars(data.plugins)
   } catch (e) {
     console.error('Fetch error:', e)
     error.value = '加载失败，请检查网络连接'
@@ -315,10 +540,18 @@ const fetchPlugins = async () => {
 }
 
 onMounted(fetchPlugins)
+
+onBeforeUnmount(() => {
+  if (copiedTimer) clearTimeout(copiedTimer)
+})
 </script>
 
 <style scoped>
 .plugin-marketplace {
+  --backend-accent: var(--vp-c-brand-1);
+  --backend-soft: var(--vp-c-brand-soft);
+  --frontend-accent: #7c3aed;
+  --frontend-soft: rgba(124, 58, 237, 0.12);
   max-width: 1400px;
   margin: 0 auto;
   padding: 48px 24px;
@@ -523,6 +756,7 @@ onMounted(fetchPlugins)
 }
 
 .plugin-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 16px 18px;
@@ -533,14 +767,62 @@ onMounted(fetchPlugins)
   transition: all 0.2s ease;
 }
 
+.card-main-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-main-link-top {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.card-main-link-body {
+  flex: 1;
+}
+
 .plugin-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: var(--vp-c-bg);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.plugin-card-backend {
+  border-color: color-mix(in srgb, var(--backend-accent) 10%, var(--vp-c-divider));
+  background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--backend-accent) 4%, transparent),
+      transparent 78px
+  ),
+  var(--vp-c-bg-soft);
+}
+
+.plugin-card-backend:hover {
+  border-color: color-mix(in srgb, var(--backend-accent) 18%, var(--vp-c-divider));
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.plugin-card-frontend {
+  border-color: color-mix(in srgb, var(--frontend-accent) 12%, var(--vp-c-divider));
+  background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--frontend-accent) 8%, transparent),
+      transparent 58%
+  ),
+  var(--vp-c-bg-soft);
+}
+
+.plugin-card-frontend:hover {
+  border-color: color-mix(in srgb, var(--frontend-accent) 18%, var(--vp-c-divider));
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
 
 .card-top {
-  display: flex;
-  gap: 12px;
   margin-bottom: 12px;
 }
 
@@ -552,6 +834,14 @@ onMounted(fetchPlugins)
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   flex-shrink: 0;
+}
+
+.card-icon-backend {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--backend-accent) 10%, transparent), transparent), var(--vp-c-bg);
+}
+
+.card-icon-frontend {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--frontend-accent) 14%, transparent), transparent), var(--vp-c-bg);
 }
 
 .card-icon img {
@@ -598,15 +888,19 @@ onMounted(fetchPlugins)
 
 .card-version {
   font-size: 11px;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   flex-shrink: 0;
 }
 
 .card-author {
   font-size: 12px;
   color: var(--vp-c-text-3);
-  margin: 0;
+  margin: 6px 0 0;
   line-height: 1.2;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-desc {
@@ -625,11 +919,82 @@ onMounted(fetchPlugins)
   flex-wrap: wrap;
   gap: 10px;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 10px;
+}
+
+.card-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-action-btn:hover {
+  color: var(--vp-c-text-1);
+}
+
+.card-action-like:hover {
+  border-color: color-mix(in srgb, var(--backend-accent) 24%, var(--vp-c-divider));
+  color: var(--backend-accent);
+}
+
+.card-action-share:hover,
+.card-action-share.copied {
+  border-color: color-mix(in srgb, var(--frontend-accent) 24%, var(--vp-c-divider));
+  color: var(--frontend-accent);
+}
+
+.card-action-install:hover {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 24%, var(--vp-c-divider));
+  color: var(--vp-c-brand-1);
+}
+
+.card-action-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .tag {
   font-size: 12px;
   color: var(--vp-c-text-3);
+}
+
+@media (max-width: 768px) {
+  .plugin-marketplace {
+    padding: 36px 18px;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .card-author {
+    white-space: normal;
+  }
+
+  .card-footer-actions {
+    margin-top: 10px;
+  }
 }
 </style>

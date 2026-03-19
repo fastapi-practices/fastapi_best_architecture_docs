@@ -33,6 +33,15 @@ groups:
         socials:
           - icon: github
             link: https://github.com/downdawn
+      - name: Davidduang
+        link: https://github.com/dividduang
+        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
+        desc: 一个平平无奇的网管
+        location: 深圳，广东
+        organization: '--'
+        socials:
+          - icon: github
+            link: https://github.com/dividduang
   - title: 名誉核心团队
     desc: 名誉核心团队成员在过去曾为项目做出过突出贡献，我们在此向他们致敬
     list:
@@ -45,15 +54,6 @@ groups:
         socials:
           - icon: github
             link: https://github.com/Meepoljdx
-      - name: Davidduang
-        link: https://github.com/dividduang
-        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
-        desc: 一个平平无奇的网管
-        location: 深圳，广东
-        organization: '--'
-        socials:
-          - icon: github
-            link: https://github.com/dividduang
   - title: 社区伙伴
     desc: 社区成员让这里变得更加丰富多彩，有必要在此特别提及。我们与这些合作伙伴建立了更加亲密的关系，经常与他们就即将到来的功能和新闻展开协作
     list:
