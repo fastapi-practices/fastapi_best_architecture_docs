@@ -38,7 +38,7 @@
         <input
             v-model="searchQuery"
             type="text"
-            placeholder="让 AI 帮你找插件：名称、作者、描述或仓库名..."
+            placeholder="探索符合你需求的插件：名称、作者、描述..."
             class="search-input"
         />
       </div>
