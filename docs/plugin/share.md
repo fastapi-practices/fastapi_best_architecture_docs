@@ -7,26 +7,27 @@ title: 插件分享
 ## 后端
 
 ::: warning 插件仓库命名规则
-`插件仓库名 == 插件名`
-
-假如插件仓库命名为 `sms`，安装此插件后，`backend/plugin` 目录下就会新增一个 `sms` 文件夹
-
-后端插件文件夹命名==不可随意修改==，这将对整个插件内的代码造成影响
+`仓库名 == 插件名`
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性
 :::
 
+假如仓库名为 `sms`，安装此插件后，`backend/plugin` 目录下就会新增一个 `sms` 文件夹
+
+后端插件文件夹命名==不可=={.warning}随意修改，这将对整个插件内的代码造成影响
+
 :::: steps
 
-1. 创建个人插件仓库
+1. 创建插件 Github 仓库
 
-   ::: details 使用 [fba_plugin_template](https://github.com/fastapi-practices/fba_plugin_template) 创建个人插件仓库
+   推荐通过 [fba_plugin_template](https://github.com/fastapi-practices/fba_plugin_template)
+   创建。模板仓库内当前没有实质性内容，只是为了能够更好的将插件与 fba 关联起来
+
    ![repo](/images/plugin_template.png)
-   :::
 
 2. 上传代码
 
-   将在 fba 中开发好的所有插件代码拷贝到个人插件仓库中
+   将在 fba 中开发好的所有插件代码提交到刚刚创建的插件 Github 仓库中
 
    ::: important
    应拷贝插件目录中的所有文件，而不是拷贝插件目录
@@ -37,26 +38,27 @@ title: 插件分享
 ## 前端
 
 ::: warning 插件仓库命名规则
-`插件仓库名_ui == 插件名_ui`
+`仓库名_ui == 插件名_ui`
 
-为了更好的与后端插件进行区分，建议为前端插件仓库名添加 `_ui` 后缀
-
-假如插件仓库命名为 `sms_ui`，安装此插件后，`apps/web-antd/src/plugins` 目录下就会新增一个 `sms_ui` 文件夹
-
-前端插件文件夹命名==可随意修改==，这不会对插件内的代码造成影响
+为了更好的与后端插件进行区分，需要为前端插件仓库名添加 `_ui` 后缀
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性
 :::
+
+假如仓库名为 `sms_ui`，安装此插件后，`apps/web-antd/src/plugins` 目录下就会新增一个 `sms_ui` 文件夹
+
+前端插件文件夹命名==可=={.warning}随意修改，这不会对插件内的代码造成影响
 
 :::: steps
 
 1. 创建个人插件仓库
 
-   使用 [fba_ui_plugin_template](https://github.com/fastapi-practices/fba_ui_plugin_template) 创建个人插件仓库
+   推荐通过 [fba_ui_plugin_template](https://github.com/fastapi-practices/fba_ui_plugin_template) 创建，原因与后端相同
 
 2. 上传代码
 
-   将在 fba_ui 中开发好的所有插件代码拷贝到个人插件仓库中，仅限 [Vben Admin Antd](../frontend/summary/intro.md) 工程
+   将在 fba_ui 中开发好的所有插件代码提交到刚刚创建的插件 Github
+   仓库中，仅限 [Vben Admin Antd](../frontend/summary/intro.md) 工程
 
    ::: important
    应拷贝插件目录中的所有文件，而不是拷贝插件目录
