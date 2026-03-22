@@ -70,7 +70,7 @@ async def add_process_time_header(request: Request, call_next):
 
 进入 fba 项目，找到 `backend/core/registrar.py`，在此文件中找到 `register_middleware()` 函数，这是 fba 的中间件注册函数
 
-在此函数中，==中间件按照从上往下的顺序依次执行==，因此，中间件的顺序非常重要
+在此函数中，==中间件按照从下往上的顺序依次执行=={.note}，因此，中间件的顺序非常重要
 
 上面我们提到过使用装饰器编写中间件，但不适用于 fba，经过查看 fastapi 源码，我们发现，此装饰器的本质就是在内部调用了
 `add_middleware()` 函数，所以，我们可以直接通过 `app.add_middleware()` 将中间件类添加到应用程序中，这种方式也更符合 fba
