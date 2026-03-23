@@ -5,6 +5,16 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: 'Guide',
         items: [
             {
+                text: '工程化',
+                items: [
+                    {
+                        text: 'CLI',
+                        icon: 'glyphs:cli-bold',
+                        link: '/cli'
+                    }
+                ]
+            },
+            {
                 text: '后端',
                 items: [
                     {
