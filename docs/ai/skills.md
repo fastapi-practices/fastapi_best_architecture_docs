@@ -12,13 +12,17 @@ title: Skills
 
 [antdv-next skill](https://skills.sh/antdv-next/skills/antdv-next) Antdv Next Vue 3 组件库技能
 
+## brainstorming
+
+[]() 苏格拉底式设计改进
+
 ## writing-plans
 
-[writing-plans skill](https://skills.sh/obra/superpowers/writing-plans) 编写全面的实施计划
+[writing-plans skill](https://skills.sh/obra/superpowers/writing-plans) 编写详细的实施计划
 
 ## executing-plans
 
-[executing-plans skill](https://skills.sh/obra/superpowers/executing-plans) 制定计划，严格审查，分批执行任务，并在批次之间提交审查报告
+[executing-plans skill](https://skills.sh/obra/superpowers/executing-plans) 带检查点的批处理执行
 
 ## excalidraw-diagram
 
