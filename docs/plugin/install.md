@@ -7,22 +7,22 @@ title: 插件安装
 :::: tabs
 @tab CLI
 
-1. 通过在终端输入 `fba add -h` 获取相关信息
-2. 通过 `fba add` 命令进行安装
-3. 根据插件说明（README.md）进行相关配置
-4. 重启服务
+1. 在 `根目录` 打开终端（确保已激活虚拟环境）
+2. 输入 `fba add -h` 获取相关信息
+3. 通过 `fba add` 命令进行安装
+4. 根据插件说明（README.md）进行相关配置
+5. 重启服务
 
 @tab ZIP
 
 1. 获取打包好的插件 zip 压缩包 <Badge type="warning" text="二选一" />
+   - 下载插件仓库为 zip 压缩包
 
-    - 下载插件仓库为 zip 压缩包
+     ::: details GitHub 示例
+     ![zip](/images/plugin_zip.png)
+     :::
 
-      ::: details GitHub 示例
-      ![zip](/images/plugin_zip.png)
-      :::
-
-    - 通过 fba 插件下载接口下载的 zip 压缩包
+   - 通过 fba 插件下载接口下载的 zip 压缩包
 
 2. 将 zip 压缩包通过 fba zip 插件安装接口进行安装
 3. 根据插件说明（README.md）进行相关配置
@@ -43,24 +43,7 @@ title: 插件安装
 
 ## 前端
 
-::: tabs
-@tab CLI
-
-1. 安装 fba-cli
-
-   ```bash
-   npm install -g @fba/cli
-   ```
-
-2. 通过在终端输入 `fba-cli add -h` 获取相关信息
-3. 通过 `fba-cli add` 命令进行安装
-4. 根据插件说明（README.md）进行相关配置
-5. 重启服务
-
-@tab 手动
-
 1. 获取插件仓库源码并下载
 2. 将下载的源码文件夹拷贝到 `apps/web-antd/src/plugins` 目录下（插件文件夹需要删除 `_ui` 后缀）
-3. 重启服务
-
-:::
+3. 根据插件说明（README.md）进行相关配置
+4. 重启服务
