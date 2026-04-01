@@ -19,7 +19,7 @@ title: 成为 fba 的赞助者
         </thead>
         <tbody>
         <tr>
-            <td><img src="https://wu-clan.github.io/picx-images-hosting/pay/weixin.jpg" /></td>
+            <td><img src="https://github.com/wu-clan/picx-images-hosting/raw/master/pay/weixin_zs.jpg" /></td>
             <td><img src="https://wu-clan.github.io/picx-images-hosting/pay/zfb.jpg" /></td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@ title: 成为 fba 的赞助者
 </div>
 
 ::: tip
-请通过 [Discord](./group.md) 与作者联系并发送赞助截图，以获取专属身份标签
+如果您已加入 [Discord](./group.md) 社区，请私信作者并发送赞助截图，以获取专属身份标签
 :::
 
 ## 展位赞助商
