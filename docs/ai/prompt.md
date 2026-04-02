@@ -6,6 +6,14 @@ title: Prompt
 
 [Prompt 介绍](../blog/claude-ai-ecosystem.md){.read-more}
 
+## Git 操作
+
+```markdown
+## Git
+
+Disable any automatic git save related actions (add, commit...).
+```
+
 ## 语言规范
 
 ```markdown
