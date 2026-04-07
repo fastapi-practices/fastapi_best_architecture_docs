@@ -17,18 +17,18 @@
   "author": "wu-clan",
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.123",
-    "@vuepress/plugin-clarity-analytics": "2.0.0-rc.123",
-    "@vuepress/plugin-umami-analytics": "2.0.0-rc.123",
-    "vue": "^3.5.29",
-    "vuepress": "2.0.0-rc.26",
-    "vuepress-theme-plume": "1.0.0-rc.191"
+    "@vuepress/bundler-vite": "2.0.0-rc.28",
+    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.128",
+    "@vuepress/plugin-clarity-analytics": "2.0.0-rc.128",
+    "@vuepress/plugin-umami-analytics": "2.0.0-rc.128",
+    "vue": "^3.5.32",
+    "vuepress": "2.0.0-rc.28",
+    "vuepress-theme-plume": "1.0.0-rc.193"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.444",
+    "@iconify/json": "^2.2.460",
     "@vueuse/core": "^12.8.2",
-    "mermaid": "^11.12.3",
-    "swiper": "^12.1.2"
+    "mermaid": "^11.14.0",
+    "swiper": "^12.1.3"
   }
 }
