@@ -241,6 +241,21 @@ graph LR
 IDE 获取全局配置键入提示，这是必需的，相反，你们将无法获取 IDE 键入提示
 :::
 
+### 钩子函数
+
+从 ==v1.13.3=={.note} 开始，插件支持钩子函数，它们将提供更灵活的配置，以减少插件手动适配。同时，我们还会在
+`backend/plugin/patching.py` 中提供一些辅助函数，来帮助大家更好的进行配置
+
+钩子函数必须在插件根目录 `hooks.py` 文件中定义，目前支持如下：
+
+#### lifespan
+
+[生命周期函数](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan)，在应用启动前自动注册
+
+#### setup
+
+启动函数，支持同步和异步，在应用启动前自动执行
+
 ## 前端
 
 ::: steps
