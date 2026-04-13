@@ -22,3 +22,7 @@ title: CLI
    ```
 
 2. 通过在终端输入 `fba-cli -h` 获取相关信息
+
+::: warning
+fba-cli 是严格的工程级 CLI 工具，在使用前，必须将前后端定义为 [通用项目或后端为主的项目结构](./architecture.md#项目结构)
+:::
