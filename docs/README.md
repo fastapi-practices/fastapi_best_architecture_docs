@@ -6,7 +6,6 @@ watermark: false
 signDown: true
 config:
   - type: hero
-    full: true
     background: tint-plate
     tintPlate: 240
     hero:

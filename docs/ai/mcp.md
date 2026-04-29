@@ -14,13 +14,6 @@ title: MCP
 
 但其存在国内账号注册难，订阅开通难，费用昂贵，易封号等多重机制，只能说是且用且珍惜
 
-## fetch
-
-源码：[fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
-
-MCP 官方实现，使 LLM 能够从网页中检索和处理内容，并将 HTML 转换为 Markdown 以便于阅读和使用，虽然目前很多 LLM 已经内置 web
-搜索引擎，但 fetch 仍可作为本级支持的一部分（免费）
-
 ## chrome-devtools
 
 相关文章：[chrome-devtools-mcp](https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session?hl=zh-cn)
