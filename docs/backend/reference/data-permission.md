@@ -125,7 +125,3 @@ filter_data_permission() 执行
     ↓
 CRUD 层使用过滤条件查询数据库
 ```
-
-### 视频讲解
-
-@[bilibili](BV13hioY1EQU)
