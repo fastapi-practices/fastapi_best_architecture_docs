@@ -4,7 +4,7 @@ title: 多租户
 
 fba 已新增多租户模式适配，但==当前主仓库提供的是“多租户运行模式支持”而不是完整的租户业务系统=={.note}
 
-完整租户能力需安装 [tenant 插件](https://github.com/fastapi-practices/tenant)，该插件当前提供：
+完整租户能力需安装 [tenant 插件](../../marketplace.md)，该插件当前提供：
 
 - 租户管理
 - 套餐管理
