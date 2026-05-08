@@ -20,7 +20,7 @@ background-color: #5865F2;
 border: none;
 border-radius: 8px;">
 <a href="https://discord.com/invite/yNN3wTbVAC" style="color: white; text-decoration: none;">
-点击加入
+点击加入服务器
 </a>
 </button>
 :::
