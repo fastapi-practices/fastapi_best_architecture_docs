@@ -14,6 +14,7 @@ import GitEmoji from "./components/GitEmoji.vue";
 import PluginMarketplace from "./components/PluginMarketplace.vue";
 import Pricing from "./components/Pricing.vue";
 import SponsorHome from './components/SponsorHome.vue';
+import SponsorPage from './components/SponsorPage.vue';
 import AiNeuralBadge from './components/AiNeuralBadge.vue';
 import './styles/custom.css'
 
@@ -24,6 +25,7 @@ export default defineClientConfig({
         app.component('PluginMarketplace', PluginMarketplace)
         app.component('Pricing', Pricing)
         app.component('SponsorHome', SponsorHome)
+        app.component('SponsorPage', SponsorPage)
         app.component('Swiper', Swiper)
     },
     layouts: {

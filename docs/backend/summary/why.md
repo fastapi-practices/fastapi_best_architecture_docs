@@ -40,7 +40,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 自创建此项目以来，我们已为此项目付出了大量的时间，并且，这仍然在继续！
 
-![Alt](https://repobeats.axiom.co/api/embed/b2174ef1abbebaea309091f1c998fc97d0c1536a.svg "Repo beats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/02a11c703a7caab24af2dd935ce4223fbae59178.svg "Repobeats analytics image")
 
 ## 框架由来
 
