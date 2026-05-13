@@ -38,7 +38,7 @@
 }
 
 .hero-content::before {
-    content: "好框架，无需多言";
+    content: "正确的选择，无需多言";
     position: absolute;
     top: -50px;
     left: 50%;
