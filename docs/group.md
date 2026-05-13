@@ -14,21 +14,13 @@ Discord 社区是我们的开发技术交流平台，这是一个充满活力的
 </div>
 
 :::center
+<a href="https://discord.com/invite/yNN3wTbVAC" style="color: white; text-decoration: none;">
+点击加入服务器
+</a>
 <button style="
 padding: 6px 12px;
 background-color: #5865F2;
 border: none;
 border-radius: 8px;">
-<a href="https://discord.com/invite/yNN3wTbVAC" style="color: white; text-decoration: none;">
-点击加入服务器
-</a>
 </button>
 :::
-
-## 微信群
-
-对于需要提供大量源码或截图的问题，建议通过 Discord 进行提问
-
-<div align="center">
-  <img height="349" width="415" src="https://wu-clan.github.io/picx-images-hosting/fba.jpg" alt="微信群">
-</div>
