@@ -16,14 +16,6 @@ title: Skills
 
 [brainstorming skills](https://skills.sh/obra/superpowers/brainstorming) 苏格拉底式设计改进
 
-## writing-plans
-
-[writing-plans skills](https://skills.sh/obra/superpowers/writing-plans) 编写详细的实施计划
-
-## executing-plans
-
-[executing-plans skills](https://skills.sh/obra/superpowers/executing-plans) 带检查点的批处理执行
-
 ## excalidraw-diagram
 
 [excalidraw-diagram skills](https://skills.sh/axtonliu/axton-obsidian-visual-skills/excalidraw-diagram) 根据语言描述生成 Excalidraw 格式的图表
