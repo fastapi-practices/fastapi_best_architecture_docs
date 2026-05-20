@@ -6,6 +6,7 @@ watermark: false
 signDown: true
 config:
   - type: hero
+    full: true
     background: tint-plate
     tintPlate: 240
     hero:
@@ -29,115 +30,97 @@ config:
           text: DeepWiki 文档
           link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
   - type: SponsorHome
-  - type: features
-    features:
-      - title: 现代技术栈
-        icon: ✨
-        details: FastAPI + SQLAlchemy 2.0 + Pydantic v2 + Celery 全栈异步
-      - title: 三层架构
-        icon: 🧠
-        details: 极简设计，所有开发者都能轻松上手与扩展
-      - title: 插件系统
-        icon: unjs:unplugin
-        details: 零耦合功能扩展，支持随意拼装
-      - title: 高性能 JWT
-        icon: 🔏
-        details: 内置缓存 + 白名单机制的自研认证中间件
-      - title: 高级权限控制
-        icon: 🛠️
-        details: 完整 RBAC + 精细化数据权限方案
-      - title: 内置代码生成器
-        icon: ⚙️
-        details: 一键生成代码，预览、写入、下载，告别重复 CV
-      - title: 全局时区支持
-        icon: ⌛
-        details: 开箱即用的时区配置，彻底解决时间处理痛点
-      - title: 全链路日志追踪
-        icon: 📝
-        details: Trace ID + 丰富日志，快速定位任何问题
-      - title: 一键容器部署
-        icon: 🐳
-        details: 完整 Docker Compose 方案，极速上线
+  - type: ProjectStats
+  - type: SponsorSwiper
+  - type: FeatureBento
+  - type: image-text
+    title: 三层架构，极简而强大
+    description: API → Service → CRUD/DAO 三层划分，边界清晰，协作天然分工
+    image: https://api.iconify.design/ph:squares-four-duotone.svg?color=%23009485&width=320
+    list:
+      - title: 层次边界清晰
+        description: 协议、业务、数据三层各司其职，一目了然
+      - title: 业务与数据解耦
+        description: 切换数据库、替换 ORM 都不再牵一发动全身
+      - title: 配套代码生成
+        description: 一键生成三层模板，新人 30 分钟即可上手
+  - type: text-image
+    title: 插件生态，零耦合扩展
+    description: 富含 AI、Auth、Storage、Notification 等多种分类，社区共建，装即用、卸即净
+    image: https://api.iconify.design/ph:puzzle-piece-duotone.svg?color=%237c3aed&width=320
+    list:
+      - title: 装即用，卸即净
+        description: 插件物理隔离，独立维护、独立升级
+      - title: 官方插件市场
+        description: 浏览、安装、分享，支持 MySQL / PostgreSQL
+      - title: 商业场景友好
+        description: 企业可自建私有插件仓库，复用 fba 全套基础设施
+  - type: image-text
+    title: AI 赋能，效率倍增
+    description: 借助 fba skills，让 AI 直接读懂你的项目结构与规范，效率倍增
+    image: https://api.iconify.design/ph:sparkle-duotone.svg?color=%23ec4899&width=320
+    list:
+      - title: 全平台兼容
+        description: Claude Code / Cursor / Trae / Codex / Continue 一键接入
+      - title: 项目知识一次配置
+        description: 团队共享 AI 上下文，新人入职即同步
+      - title: LLMs.txt
+        description: 官方 LLMs.txt，让 AI 轻松读取实时文档
+  - type: Testimonials
   - type: custom
+  - type: HomeSponsor
 ---
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { goldSponsors, generalSponsors, shouldShowSponsor } from '@source/.vuepress/data/sponsors'
-
-const processedGoldSponsors = computed(() =>
-  goldSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
-)
-
-const processedGeneralSponsors = computed(() =>
-  generalSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
-)
-
-const showGoldPlaceholder = computed(() =>
-  goldSponsors.some(s => s.alt?.includes('成为赞助商') && !s.link)
-)
-
-const showGeneralPlaceholder = computed(() =>
-  generalSponsors.some(s => s.alt?.includes('成为赞助商') && !s.link)
-)
-</script>
-
-<style scoped>
-:deep(.swiper-slide-link) {
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-:deep(.swiper-slide-link:hover) {
-  border: 1px solid var(--vp-c-brand);
-}
-
-:deep(.swiper-slide) {
-  background-color: var(--vp-c-bg-soft);
-}
-</style>
-
 ::: center
 
-# 金牌赞助商
+## 常见问题
+
+<p class="subtitle">也许，你正想问</p>
 
 :::
 
-<Swiper
-v-if="processedGoldSponsors.length > 0"
-:items="processedGoldSponsors"
-mode="broadcast"
-:loop="false"
-:height="162"
-:slides-per-view="3"
-:space-between="10"
-mousewheel
-/>
+::: collapse accordion
+- 与原生 FastAPI 项目相比，fba 多了什么？
 
-::: center
+  在 FastAPI 之上预置了三层架构、RBAC、JWT、缓存、全链路日志、时区、Docker、代码生成、插件系统等企业级必需件——开箱即用，不必从零搭脚手架
 
-## 银牌赞助商
+- 为什么选三层架构，而不是 DDD？
 
+  三层是 DDD 思想的轻量落地：上手门槛低，边界清晰，依然为未来向 DDD 演进留好空间
+
+- 支持多租户吗？
+
+  支持。实验性多租户已落地，详见 [PR #1101](https://github.com/fastapi-practices/fastapi-best-architecture/pull/1101)，咱不包含前端实施
+
+- 可以商用吗？
+
+  MIT 协议，永久免费商用，源码完全开放。如果项目对你有价值，欢迎成为赞助商或贡献者
+
+- 支持哪些数据库？
+
+  一等支持 MySQL 与 PostgreSQL；Redis 作为缓存与队列底座；其他数据库可通过 AI 轻松适配
+
+- AI 赋能怎么开启？
+
+  安装 [fba skills](/fastapi_best_architecture_docs/ai/skills.html) 即可在 Claude Code、Cursor、Trae 等 AI 工具中获取 fba 专属上下文与脚手架命令
 :::
-
-<Swiper
-v-if="processedGeneralSponsors.length > 0"
-:items="processedGeneralSponsors"
-mode="carousel"
-:height="168"
-:slides-per-view="4"
-:space-between="10"
-:speed="5000"
-/>
 
 ::: center
 
 ## 贡献者
 
+<p class="subtitle">每一次提交，都在让 fba 变得更好</p>
+
+<a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
+</a>
+
 :::
 
-<div align="center">
-  <a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
-  </a>
-</div>
+<style scoped>
+  :deep(.subtitle) {
+    font-size: 15px;
+    color: var(--vp-c-text-2);
+    margin-bottom: 36px;
+  }
+</style>

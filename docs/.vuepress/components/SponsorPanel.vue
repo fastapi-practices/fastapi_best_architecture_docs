@@ -4,30 +4,18 @@
   </div>
   <div class="brand-container">
     <div class="gold-sponsors">
-      <div
-          v-for="brand in goldSponsors"
-          v-show="shouldShowSponsor(brand)"
-          class="brand-item gold"
-          @click="openSponsorLink(brand.href, '_blank')"
-      >
+      <div v-for="brand in goldSponsors" v-show="shouldShowSponsor(brand)" class="brand-item gold"
+        @click="openSponsorLink(brand.href, '_blank')">
         <img :alt="brand.alt" :src="brand.link" class="brand-image" />
       </div>
     </div>
     <div class="general-sponsors">
-      <div
-          v-for="brand in generalSponsors"
-          v-show="shouldShowSponsor(brand)"
-          class="brand-item"
-          @click="openSponsorLink(brand.href, '_blank')"
-      >
+      <div v-for="brand in generalSponsors" v-show="shouldShowSponsor(brand)" class="brand-item"
+        @click="openSponsorLink(brand.href, '_blank')">
         <img :alt="brand.alt" :src="brand.link" class="brand-image" />
       </div>
     </div>
-    <div
-        v-if="shouldShowExtraBecomeSponsor"
-        class="brand-item become-brand"
-        @click="openSponsorLink(sponsorUrl)"
-    >
+    <div v-if="shouldShowExtraBecomeSponsor" class="brand-item become-brand" @click="openSponsorLink(sponsorUrl)">
       <span class="brand-text">成为赞助商</span>
     </div>
   </div>
@@ -45,7 +33,7 @@ import {
 
 const shouldShowExtraBecomeSponsor = computed(() => {
   return (goldSponsors.filter(brand => shouldShowSponsor(brand)).length +
-      generalSponsors.filter(brand => shouldShowSponsor(brand)).length) < 9;
+    generalSponsors.filter(brand => shouldShowSponsor(brand)).length) < 9;
 });
 </script>
 

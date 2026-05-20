@@ -110,14 +110,8 @@ const { copy, copied } = useClipboard({ legacy: true })
         <p>{{ item.code }}</p>
         <p>{{ item.desc }}</p>
       </div>
-      <button
-          type="button"
-          class="gitmoji-copy"
-          :class="{ copied }"
-          :aria-label="copied ? '已复制' : '复制'"
-          :title="copied ? '已复制' : '复制'"
-          @click="copy(item.code)"
-      >
+      <button type="button" class="gitmoji-copy" :class="{ copied }" :aria-label="copied ? '已复制' : '复制'"
+        :title="copied ? '已复制' : '复制'" @click="copy(item.code)">
         <span class="vpi-gitmoji-copy" />
         <span class="visually-hidden">复制</span>
       </button>

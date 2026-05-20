@@ -5,10 +5,7 @@
       <span class="vp-tagline"> · 企业级</span>
       <span class="vp-place">后端架构解决方案</span>
       <span class="vp-date"> · 完全开源</span>
-      <a class="vp-primary-action"
-         href="/fastapi_best_architecture_docs/backend/summary/quick-start.html"
-         target="_self"
-      >体验反馈</a>
+      <a class="vp-primary-action" href="/fastapi_best_architecture_docs/users.html" target="_self">用户登记</a>
     </p>
     <button @click="dismiss">
       <Icon name="mingcute:close-fill" />

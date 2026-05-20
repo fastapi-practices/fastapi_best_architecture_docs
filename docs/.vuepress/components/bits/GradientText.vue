@@ -18,10 +18,10 @@ const props = withDefaults(defineProps<GradientTextProps>(), {
 });
 
 const gradientStyle = computed(() => ({
-  backgroundImage: `linear-gradient(to right, ${ props.colors.join(', ') })`,
-  animationDuration: `${ props.animationSpeed }s`,
+  backgroundImage: `linear-gradient(to right, ${props.colors.join(', ')})`,
+  animationDuration: `${props.animationSpeed}s`,
   backgroundSize: '300% 100%',
-  '--animation-duration': `${ props.animationSpeed }s`
+  '--animation-duration': `${props.animationSpeed}s`
 }));
 
 const borderStyle = computed(() => ({
@@ -37,17 +37,11 @@ const textStyle = computed(() => ({
 
 <template>
   <div
-      :class="`relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`"
-  >
-    <div
-        v-if="showBorder"
-        class="absolute inset-0 bg-cover z-0 pointer-events-none animate-gradient"
-        :style="borderStyle"
-    >
-      <div
-          class="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
-          style="width: calc(100% - 2px); height: calc(100% - 2px); left: 50%; top: 50%; transform: translate(-50%, -50%)"
-      />
+    :class="`relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`">
+    <div v-if="showBorder" class="absolute inset-0 bg-cover z-0 pointer-events-none animate-gradient"
+      :style="borderStyle">
+      <div class="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
+        style="width: calc(100% - 2px); height: calc(100% - 2px); left: 50%; top: 50%; transform: translate(-50%, -50%)" />
     </div>
 
     <div class="inline-block relative z-2 text-transparent bg-cover animate-gradient" :style="textStyle">
@@ -61,9 +55,11 @@ const textStyle = computed(() => ({
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

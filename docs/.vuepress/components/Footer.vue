@@ -8,18 +8,10 @@
           基于 FastAPI 构建的企业级后端架构解决方案
         </div>
         <div class="social-links">
-          <a
-              href="https://github.com/fastapi-practices/fastapi-best-architecture"
-              target="_blank"
-              class="social-link"
-          >
+          <a href="https://github.com/fastapi-practices/fastapi-best-architecture" target="_blank" class="social-link">
             <Icon name="line-md:github" size="2rem" />
           </a>
-          <a
-              href="https://discord.com/invite/yNN3wTbVAC"
-              target="_blank"
-              class="social-link"
-          >
+          <a href="https://discord.com/invite/yNN3wTbVAC" target="_blank" class="social-link">
             <Icon name="line-md:discord" size="2rem" />
           </a>
           <a href="/fastapi_best_architecture_docs/blog/" class="social-link">
@@ -30,14 +22,8 @@
       <div class="footer-section">
         <div class="section-title">使用文档</div>
         <div class="link-list">
-          <a
-              v-for="link in links.product"
-              :key="link.name"
-              :href="link.href"
-              :target="link.href.startsWith('http') ? '_blank' : undefined"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a v-for="link in links.product" :key="link.name" :href="link.href"
+            :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
         </div>
@@ -45,14 +31,8 @@
       <div class="footer-section">
         <div class="section-title">生态系统</div>
         <div class="link-list">
-          <a
-              v-for="link in links.community"
-              :key="link.name"
-              :href="link.href"
-              :target="link.href.startsWith('http') ? '_blank' : undefined"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a v-for="link in links.community" :key="link.name" :href="link.href"
+            :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
         </div>
@@ -60,14 +40,8 @@
       <div class="footer-section">
         <div class="section-title">插件系统</div>
         <div class="link-list">
-          <a
-              v-for="link in links.resources"
-              :key="link.name"
-              :href="link.href"
-              :target="link.href.startsWith('http') ? '_blank' : undefined"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a v-for="link in links.resources" :key="link.name" :href="link.href"
+            :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
         </div>
@@ -75,13 +49,8 @@
       <div class="footer-section">
         <div class="section-title">更多</div>
         <div class="link-list">
-          <a
-              v-for="link in links.friendlyLinks"
-              :key="link.name"
-              :href="link.href"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a v-for="link in links.friendlyLinks" :key="link.name" :href="link.href" rel="noopener noreferrer"
+            class="footer-link">
             {{ link.name }}
           </a>
         </div>
@@ -93,35 +62,22 @@
     <div class="footer-bottom">
       <div class="footer-bottom-left">
         <span>Copyright © 2023-{{ currentYear }} FastAPI Practices and
-          <a
-              href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors" target="_blank"
+            rel="noopener noreferrer" class="footer-link">
             contributors.
           </a>
         </span>
         <span>
           Released under the
-          <a
-              href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/LICENSE"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-link"
-          >
+          <a href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/LICENSE" target="_blank"
+            rel="noopener noreferrer" class="footer-link">
             MIT License
           </a>
         </span>
       </div>
       <span>
         Made with ❤️ by
-        <a
-            href="https://wu-clan.github.io/homepage/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-link"
-        >
+        <a href="https://wu-clan.github.io/homepage/" target="_blank" rel="noopener noreferrer" class="footer-link">
           wu-clan
         </a>
       </span>

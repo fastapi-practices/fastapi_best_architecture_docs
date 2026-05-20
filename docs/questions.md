@@ -8,7 +8,9 @@ title: 常见问题
 
 原因？X 上面一位博主分享了此项目，原帖：[@tom_doerr](https://x.com/tom_doerr/status/1995998190768648296?s=20)
 
+::: details
 ![x_visitors.png](/images/x_visitors.png)
+:::
 
 ## 返回数据跟数据库对不上
 

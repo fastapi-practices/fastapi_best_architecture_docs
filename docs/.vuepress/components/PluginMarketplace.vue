@@ -16,48 +16,21 @@
 
     <div class="marketplace-controls">
       <div class="search-wrapper">
-        <svg
-            class="search-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-          <path
-              d="M11.5 3.5l1.15 2.85 2.85 1.15-2.85 1.15-1.15 2.85-1.15-2.85-2.85-1.15 2.85-1.15L11.5 3.5z"
-          ></path>
-          <path
-              d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"
-          ></path>
-          <path
-              d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"
-          ></path>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11.5 3.5l1.15 2.85 2.85 1.15-2.85 1.15-1.15 2.85-1.15-2.85-2.85-1.15 2.85-1.15L11.5 3.5z"></path>
+          <path d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"></path>
+          <path d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"></path>
         </svg>
-        <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="探索符合你需求的插件：名称、作者、描述..."
-            class="search-input"
-        />
+        <input v-model="searchQuery" type="text" placeholder="探索符合你需求的插件：名称、作者、描述..." class="search-input" />
       </div>
 
       <div class="filter-tabs">
-        <button
-            class="filter-tab"
-            :class="{ active: currentTag === 'all' }"
-            @click="currentTag = 'all'"
-        >
+        <button class="filter-tab" :class="{ active: currentTag === 'all' }" @click="currentTag = 'all'">
           全部
         </button>
-        <button
-            v-for="tag in filteredValidTags"
-            :key="tag"
-            class="filter-tab"
-            :class="{ active: currentTag === tag }"
-            @click="currentTag = tag"
-        >
+        <button v-for="tag in filteredValidTags" :key="tag" class="filter-tab" :class="{ active: currentTag === tag }"
+          @click="currentTag = tag">
           {{ getTagLabel(tag) }}
         </button>
       </div>
@@ -80,26 +53,13 @@
       </div>
 
       <div v-else class="plugin-grid">
-        <article
-            v-for="plugin in filteredPlugins"
-            :key="plugin.git.path"
-            class="plugin-card"
-            :class="`plugin-card-${getPluginType(plugin.git.path)}`"
-        >
+        <article v-for="plugin in filteredPlugins" :key="plugin.git.path" class="plugin-card"
+          :class="`plugin-card-${getPluginType(plugin.git.path)}`">
           <div class="card-top">
-            <a
-                :href="plugin.git.url"
-                target="_blank"
-                rel="noreferrer"
-                class="card-main-link card-main-link-top"
-            >
+            <a :href="plugin.git.url" target="_blank" rel="noreferrer" class="card-main-link card-main-link-top">
               <div class="card-icon" :class="`card-icon-${getPluginType(plugin.git.path)}`">
-                <img
-                    v-if="plugin.plugin.icon && !failedIcons.has(plugin.git.path)"
-                    :src="plugin.plugin.icon"
-                    :alt="plugin.plugin.summary"
-                    @error="failedIcons.add(plugin.git.path)"
-                />
+                <img v-if="plugin.plugin.icon && !failedIcons.has(plugin.git.path)" :src="plugin.plugin.icon"
+                  :alt="plugin.plugin.summary" @error="failedIcons.add(plugin.git.path)" />
                 <div v-else class="icon-fallback" :style="{ background: getColor(plugin.git.path) }">
                   {{ getInitial(plugin.git.path) }}
                 </div>
@@ -114,29 +74,21 @@
             </a>
           </div>
 
-          <a
-              :href="plugin.git.url"
-              target="_blank"
-              rel="noreferrer"
-              class="card-main-link card-main-link-body"
-          >
+          <a :href="plugin.git.url" target="_blank" rel="noreferrer" class="card-main-link card-main-link-body">
             <p class="card-desc">{{ plugin.plugin.description }}</p>
             <div class="card-tags"
-                 v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
+              v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
               <span v-for="db in getValidDatabases(plugin.plugin.database)" :key="'db-' + db"
-                    class="tag">#{{ getDbLabel(db) }}</span>
+                class="tag">#{{ getDbLabel(db) }}</span>
               <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
-                    class="tag">#{{ getTagLabel(tag) }}</span>
+                class="tag">#{{ getTagLabel(tag) }}</span>
             </div>
           </a>
 
           <div class="card-footer-actions">
-            <a
-                :href="getInstallUrl(plugin.git.path)"
-                class="card-action-btn card-action-install"
-            >
+            <a :href="getInstallUrl(plugin.git.path)" class="card-action-btn card-action-install">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   aria-hidden="true">
+                aria-hidden="true">
                 <path d="M12 3v12"></path>
                 <path d="M7 10l5 5 5-5"></path>
                 <path d="M5 21h14"></path>
@@ -144,29 +96,22 @@
               <span>安装</span>
             </a>
 
-            <a
-                :href="getStarUrl(plugin.git.url)"
-                target="_blank"
-                rel="noreferrer"
-                class="card-action-btn card-action-like"
-            >
+            <a :href="getStarUrl(plugin.git.url)" target="_blank" rel="noreferrer"
+              class="card-action-btn card-action-like">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path
-                    d="M12 3.75l2.56 5.19 5.73.83-4.14 4.04.98 5.7L12 16.78l-5.13 2.73.98-5.7-4.14-4.04 5.73-.83L12 3.75z"></path>
+                  d="M12 3.75l2.56 5.19 5.73.83-4.14 4.04.98 5.7L12 16.78l-5.13 2.73.98-5.7-4.14-4.04 5.73-.83L12 3.75z">
+                </path>
               </svg>
               <span>{{ getStarLabel(plugin) }}</span>
             </a>
 
-            <button
-                type="button"
-                class="card-action-btn card-action-share"
-                :class="{ copied: copiedPluginPath === plugin.git.path }"
-                :aria-label="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
-                :title="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
-                @click="sharePlugin(plugin)"
-            >
+            <button type="button" class="card-action-btn card-action-share"
+              :class="{ copied: copiedPluginPath === plugin.git.path }"
+              :aria-label="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
+              :title="copiedPluginPath === plugin.git.path ? '已复制' : '分享'" @click="sharePlugin(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   aria-hidden="true">
+                aria-hidden="true">
                 <path d="M8.59 13.51l6.83 3.98"></path>
                 <path d="M15.41 6.51L8.59 10.49"></path>
                 <circle cx="18" cy="5" r="3"></circle>
@@ -257,10 +202,10 @@ const filteredPlugins = computed(() => {
   if (searchQuery.value.trim()) {
     const query = searchQuery.value.toLowerCase().trim()
     result = result.filter(p =>
-        p.plugin?.summary?.toLowerCase().includes(query) ||
-        p.plugin?.description?.toLowerCase().includes(query) ||
-        p.plugin?.author?.toLowerCase().includes(query) ||
-        p.git?.path?.toLowerCase().includes(query)
+      p.plugin?.summary?.toLowerCase().includes(query) ||
+      p.plugin?.description?.toLowerCase().includes(query) ||
+      p.plugin?.author?.toLowerCase().includes(query) ||
+      p.git?.path?.toLowerCase().includes(query)
     )
   }
 
@@ -282,23 +227,23 @@ const getPluginType = (path: string): PluginType => {
 }
 
 const getInstallUrl = (path: string): string => {
-  return `${ INSTALL_DOC_BASE }${ getPluginType(path) === 'frontend' ? '#前端' : '#后端' }`
+  return `${INSTALL_DOC_BASE}${getPluginType(path) === 'frontend' ? '#前端' : '#后端'}`
 }
 
 const getRepoFullName = (url: string): string => {
   const match = url.match(/github\.com\/([^/]+)\/([^/?#]+)/i)
   if (!match) return ''
-  return `${ match[1] }/${ match[2].replace(/\.git$/i, '') }`
+  return `${match[1]}/${match[2].replace(/\.git$/i, '')}`
 }
 
 const getStarUrl = (url: string): string => {
   const repo = getRepoFullName(url)
-  return repo ? `https://github.com/${ repo }/stargazers` : url
+  return repo ? `https://github.com/${repo}/stargazers` : url
 }
 
 const formatStarCount = (count: number): string => {
-  if (count >= 1000000) return `${ (count / 1000000).toFixed(1).replace(/\.0$/, '') }M`
-  if (count >= 1000) return `${ (count / 1000).toFixed(1).replace(/\.0$/, '') }k`
+  if (count >= 1000000) return `${(count / 1000000).toFixed(1).replace(/\.0$/, '')}M`
+  if (count >= 1000) return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k`
   return String(count)
 }
 
@@ -313,9 +258,9 @@ const buildShareText = (plugin: PluginItem): string => {
   const description = plugin.plugin.description?.replace(/\s+/g, ' ').trim()
 
   return [
-    `发现一个不错的 fba 插件「${ summary }」`,
+    `发现一个不错的 fba 插件「${summary}」`,
     description || '值得放进你的项目里试一试。',
-    `仓库地址：${ plugin.git.url }`
+    `仓库地址：${plugin.git.url}`
   ].join('\n')
 }
 
@@ -405,7 +350,7 @@ const syncPluginStars = async (pluginList: PluginItem[]) => {
     if (cached && now - cached.timestamp < STAR_CACHE_DURATION) continue
 
     try {
-      const response = await fetch(`https://api.github.com/repos/${ repo }`, {
+      const response = await fetch(`https://api.github.com/repos/${repo}`, {
         headers: {
           Accept: 'application/vnd.github+json'
         }
@@ -425,7 +370,7 @@ const syncPluginStars = async (pluginList: PluginItem[]) => {
         }
       }
     } catch (e) {
-      console.warn(`Failed to fetch stars for ${ repo }:`, e)
+      console.warn(`Failed to fetch stars for ${repo}:`, e)
     }
   }
 
@@ -494,7 +439,7 @@ const fetchWithFallback = async (): Promise<string> => {
         return await response.text()
       }
     } catch (e) {
-      console.warn(`Failed to fetch from ${ url }:`, e)
+      console.warn(`Failed to fetch from ${url}:`, e)
     }
   }
   throw new Error('All data sources failed')
@@ -512,15 +457,15 @@ const fetchPlugins = async () => {
     loading.value = false
 
     fetchWithFallback()
-    .then(text => {
-      const data = parseTypeScriptData(text)
-      validTags.value = data.tags
-      plugins.value = data.plugins
-      saveToCache(data)
-      syncPluginStars(data.plugins)
-    })
-    .catch(() => {
-    })
+      .then(text => {
+        const data = parseTypeScriptData(text)
+        validTags.value = data.tags
+        plugins.value = data.plugins
+        saveToCache(data)
+        syncPluginStars(data.plugins)
+      })
+      .catch(() => {
+      })
     return
   }
 
@@ -794,12 +739,10 @@ onBeforeUnmount(() => {
 
 .plugin-card-backend {
   border-color: color-mix(in srgb, var(--backend-accent) 10%, var(--vp-c-divider));
-  background: linear-gradient(
-      180deg,
+  background: linear-gradient(180deg,
       color-mix(in srgb, var(--backend-accent) 4%, transparent),
-      transparent 78px
-  ),
-  var(--vp-c-bg-soft);
+      transparent 78px),
+    var(--vp-c-bg-soft);
 }
 
 .plugin-card-backend:hover {
@@ -809,12 +752,10 @@ onBeforeUnmount(() => {
 
 .plugin-card-frontend {
   border-color: color-mix(in srgb, var(--frontend-accent) 12%, var(--vp-c-divider));
-  background: linear-gradient(
-      135deg,
+  background: linear-gradient(135deg,
       color-mix(in srgb, var(--frontend-accent) 8%, transparent),
-      transparent 58%
-  ),
-  var(--vp-c-bg-soft);
+      transparent 58%),
+    var(--vp-c-bg-soft);
 }
 
 .plugin-card-frontend:hover {

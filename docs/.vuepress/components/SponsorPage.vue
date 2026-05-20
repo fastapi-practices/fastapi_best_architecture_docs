@@ -2,7 +2,7 @@
 import { h, ref } from 'vue'
 
 type SponsorTab = 'honor' | 'booth'
-type SponsorIconName = 'alipay' | 'arrow-right' | 'check' | 'wechat'
+type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'sponsor'
 
 const activeTab = ref<SponsorTab>('honor')
 
@@ -21,6 +21,12 @@ const paymentMethods = [
     name: '支付宝赞助',
     icon: 'alipay' as SponsorIconName,
     image: 'https://wu-clan.github.io/picx-images-hosting/pay/zfb.jpg',
+  },
+  {
+    name: '其他赞助',
+    icon: 'sponsor' as SponsorIconName,
+    link: 'https://wu-clan.github.io/sponsor/',
+    linkText: '其他赞助',
   },
 ]
 
@@ -65,9 +71,10 @@ const announcementLines = [
 
 const iconPaths: Record<SponsorIconName, string[]> = {
   alipay: ['M5 4h14v16H5z', 'M8 15c3.8-.4 6.8-2 8-5', 'M9 9h6', 'M12 7v8', 'M8 16c2.8 1.4 5.6 1.4 8 0'],
+  wechat: ['M10 6a6 5 0 0 0-6 5c0 1.7.9 3.2 2.4 4.1L6 18l2.8-1.5c.4.1.8.1 1.2.1a6 5 0 0 0 6-5 6 5 0 0 0-6-5.6Z', 'M14 10a5 4.2 0 0 1 5 4.2c0 1.4-.7 2.6-1.9 3.4l.3 2.4-2.3-1.2h-1.1a5 4.2 0 0 1-5-4.2'],
   'arrow-right': ['M5 12h14', 'm13 6 6 6-6 6'],
   check: ['m5 12 4 4L19 6'],
-  wechat: ['M10 6a6 5 0 0 0-6 5c0 1.7.9 3.2 2.4 4.1L6 18l2.8-1.5c.4.1.8.1 1.2.1a6 5 0 0 0 6-5 6 5 0 0 0-6-5.6Z', 'M14 10a5 4.2 0 0 1 5 4.2c0 1.4-.7 2.6-1.9 3.4l.3 2.4-2.3-1.2h-1.1a5 4.2 0 0 1-5-4.2'],
+  sponsor: ['M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z'],
 }
 
 const SponsorIcon = (props: { name: SponsorIconName }) => h(
@@ -94,21 +101,17 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
       <h1>赞助 fba</h1>
       <p>
         自 fba 创建以来，我们一直致力于
-        <a href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md" target="_blank" rel="noreferrer">持续更新</a>
+        <a href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md"
+          target="_blank" rel="noreferrer">持续更新</a>
         和
         <a href="./backend/summary/why.html#长期维护">积极维护</a>，为此，我们投入了大量的时间和无限的热爱。感谢您为 fba 给予的大力支持，您的每份鼓励都将成为我们继续前进的动力
       </p>
     </header>
 
     <nav class="sponsor-tabs" aria-label="赞助类型">
-      <button
-        v-for="tab in tabs"
-        :key="tab.key"
-        type="button"
-        :class="['tab-button', { active: activeTab === tab.key }]"
-        :aria-selected="activeTab === tab.key"
-        @click="activeTab = tab.key"
-      >
+      <button v-for="tab in tabs" :key="tab.key" type="button"
+        :class="['tab-button', { active: activeTab === tab.key }]" :aria-selected="activeTab === tab.key"
+        @click="activeTab = tab.key">
         {{ tab.label }}
       </button>
     </nav>
@@ -124,26 +127,12 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
             <SponsorIcon :name="method.icon" />
             <h3>{{ method.name }}</h3>
           </div>
-          <img :src="method.image" :alt="method.name" loading="lazy" />
-        </article>
-
-        <aside class="notice-card">
-          <h3>说明</h3>
-          <ul>
-            <li>
-              <SponsorIcon name="check" />
-              <span>如果您已加入 Discord 社区，请私信作者并发送赞助截图，以获取专属身份标签</span>
-            </li>
-            <li>
-              <SponsorIcon name="check" />
-              <span>您的每一份支持都是我们持续前进的动力，期待未来能以更完善的方式回馈您的信任</span>
-            </li>
-          </ul>
-          <a class="text-link" href="https://wu-clan.github.io/sponsor/" target="_blank" rel="noreferrer">
-            其他赞助方式
+          <img v-if="method.image" :src="method.image" :alt="method.name" loading="lazy" />
+          <a v-else-if="method.link" :href="method.link" target="_blank" rel="noreferrer" class="payment-link">
+            {{ method.linkText || '其他' }}
             <SponsorIcon name="arrow-right" />
           </a>
-        </aside>
+        </article>
       </div>
 
       <aside class="callout-card tip">
@@ -162,12 +151,8 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
       </div>
 
       <div class="booth-grid">
-        <article
-          v-for="plan in boothPlans"
-          :key="plan.name"
-          class="booth-card"
-          :class="{ 'is-full': isBoothFull(plan) }"
-        >
+        <article v-for="plan in boothPlans" :key="plan.name" class="booth-card"
+          :class="{ 'is-full': isBoothFull(plan) }">
           <div class="booth-head">
             <div>
               <span>{{ plan.status }}</span>
@@ -198,7 +183,7 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
           </div>
         </aside>
 
-        <aside class="callout-card warning">
+        <aside class="callout-card notice">
           <strong>注意:</strong>
           <span>由于当前所有展位赞助均为自愿支持性质，我们暂时无法为您提供发票开具服务，对此带来的不便深表歉意</span>
         </aside>
@@ -332,22 +317,50 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
 
 .payment-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 220px)) minmax(240px, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
 }
 
 .payment-card,
-.notice-card,
 .booth-card {
   border: 1px solid var(--sponsor-line);
   border-radius: 16px;
   background: var(--sponsor-soft);
 }
 
-.payment-card,
-.notice-card {
+.payment-card {
   padding: 18px;
+}
+
+.payment-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 16px auto 0;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sponsor-brand) !important;
+  background: var(--sponsor-brand-soft);
+  border-radius: 10px;
+  text-decoration: none !important;
+  width: 180px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  flex-direction: column;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.payment-link:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--sponsor-brand) 18%, transparent);
 }
 
 .card-title {
@@ -358,7 +371,6 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
 }
 
 .card-title h3,
-.notice-card h3,
 .booth-card h3 {
   margin: 0;
   color: var(--sponsor-ink);
@@ -404,8 +416,8 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   color: var(--sponsor-ink);
 }
 
-.callout-card p + .plain-list,
-.callout-card .plain-list + p {
+.callout-card p+.plain-list,
+.callout-card .plain-list+p {
   margin-top: 10px;
 }
 
@@ -414,16 +426,24 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   background: var(--sponsor-brand-soft);
 }
 
-.callout-card.warning {
+.callout-card.notice {
   border-color: color-mix(in srgb, #eab308 36%, var(--sponsor-line));
   background: color-mix(in srgb, #eab308 10%, var(--sponsor-card));
 }
 
-.callout-card.warning strong {
+.callout-card.notice strong {
   color: #ca8a04;
 }
 
-.notice-card ul,
+.callout-card.warning {
+  border-color: color-mix(in srgb, #dc2626 38%, var(--sponsor-line));
+  background: color-mix(in srgb, #dc2626 10%, var(--sponsor-card));
+}
+
+.callout-card.warning strong {
+  color: #dc2626;
+}
+
 .check-list,
 .plain-list {
   padding: 0;
@@ -431,7 +451,6 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   list-style: none;
 }
 
-.notice-card li,
 .check-list li {
   display: flex;
   gap: 8px;
@@ -441,20 +460,18 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   line-height: 1.6;
 }
 
-.notice-card li + li,
-.check-list li + li,
-.plain-list li + li {
+.check-list li+li,
+.plain-list li+li {
   margin-top: 8px;
 }
 
-.notice-card svg,
 .check-list svg {
   margin-top: 0.24em;
   color: var(--sponsor-brand);
 }
 
-.text-link,
 .contact-button {
+  flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -465,15 +482,6 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   border-radius: 12px;
   font-weight: 700;
   text-decoration: none !important;
-}
-
-.text-link {
-  color: var(--sponsor-brand) !important;
-  background: var(--sponsor-brand-soft);
-}
-
-.contact-button {
-  flex: none;
   color: #fff !important;
   background: var(--sponsor-brand);
 }
@@ -578,6 +586,7 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
 }
 
 @media (max-width: 860px) {
+
   .payment-grid,
   .booth-grid,
   .booth-footer {
@@ -605,8 +614,7 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   }
 
   .tab-button,
-  .contact-button,
-  .text-link {
+  .contact-button {
     width: 100%;
   }
 

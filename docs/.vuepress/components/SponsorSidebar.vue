@@ -4,16 +4,8 @@
   </div>
   <div class="brand-container">
     <div class="sidebar-brand">
-      <div
-          class="brand"
-          @click="openSponsorLink(homeSponsor.href)"
-      >
-        <img
-            v-if="shouldShowSponsor(homeSponsor)"
-            :alt="homeSponsor.alt"
-            :src="homeSponsor.link"
-            class="brand-image"
-        />
+      <div class="brand" @click="openSponsorLink(homeSponsor.href)">
+        <img v-if="shouldShowSponsor(homeSponsor)" :alt="homeSponsor.alt" :src="homeSponsor.link" class="brand-image" />
         <span v-else class="brand-text">成为赞助商</span>
       </div>
     </div>

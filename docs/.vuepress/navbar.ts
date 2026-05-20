@@ -86,7 +86,7 @@ export const myNavbar: ThemeNavItem[] = defineNavbarConfig([
         link: "/ai/prompt",
       },
       {
-        text: "llms.txt",
+        text: "LLMs.txt",
         icon: "octicon:ai-model-16",
         link: "/ai/llms",
       },

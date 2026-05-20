@@ -119,7 +119,7 @@ watch(() => route.path, () => {
             <line x1="40" y1="12" x2="40" y2="2" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" />
             <circle cx="40" cy="2" r="4" fill="#f472b6" filter="url(#glow)">
               <animate attributeName="fill" values="#f472b6;#fbbf24;#34d399;#f472b6" dur="2s"
-                       repeatCount="indefinite" />
+                repeatCount="indefinite" />
             </circle>
           </g>
 
@@ -148,7 +148,7 @@ watch(() => route.path, () => {
             <ellipse class="eye-lid" cx="32" cy="34" rx="7" ry="8" fill="url(#face-grad)" />
             <!-- 笑眼 ◡ -->
             <path class="happy-eye" d="M26 32 Q32 40 38 32" stroke="#1e1b4b" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
+              stroke-linecap="round" />
           </g>
 
           <!-- 右眼 -->
@@ -162,7 +162,7 @@ watch(() => route.path, () => {
             <ellipse class="eye-lid" cx="48" cy="34" rx="7" ry="8" fill="url(#face-grad)" />
             <!-- 笑眼 ◡ -->
             <path class="happy-eye" d="M42 32 Q48 40 54 32" stroke="#1e1b4b" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
+              stroke-linecap="round" />
           </g>
 
           <!-- 腮红 -->
@@ -172,7 +172,7 @@ watch(() => route.path, () => {
           <!-- 嘴巴 -->
           <path d="M32 46 Q40 54 48 46" stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round">
             <animate attributeName="d" values="M32 46 Q40 54 48 46;M32 48 Q40 52 48 48;M32 46 Q40 54 48 46" dur="2s"
-                     repeatCount="indefinite" />
+              repeatCount="indefinite" />
           </path>
 
           <!-- 身体 -->
@@ -188,8 +188,7 @@ watch(() => route.path, () => {
           <g class="left-arm">
             <ellipse cx="18" cy="70" rx="6" ry="8" fill="#a78bfa">
               <animateTransform attributeName="transform" type="rotate"
-                                values="0 18 62;15 18 62;0 18 62;-5 18 62;0 18 62" dur="1.5s"
-                                repeatCount="indefinite" />
+                values="0 18 62;15 18 62;0 18 62;-5 18 62;0 18 62" dur="1.5s" repeatCount="indefinite" />
             </ellipse>
           </g>
 
@@ -197,8 +196,7 @@ watch(() => route.path, () => {
           <g class="right-arm">
             <ellipse cx="62" cy="70" rx="6" ry="8" fill="#a78bfa">
               <animateTransform attributeName="transform" type="rotate"
-                                values="0 62 62;-30 62 62;0 62 62;-30 62 62;0 62 62" dur="0.8s"
-                                repeatCount="indefinite" />
+                values="0 62 62;-30 62 62;0 62 62;-30 62 62;0 62 62" dur="0.8s" repeatCount="indefinite" />
             </ellipse>
           </g>
 
@@ -213,19 +211,19 @@ watch(() => route.path, () => {
             <text x="5" y="20" font-size="10" fill="#fbbf24">✦</text>
             <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
             <animateTransform attributeName="transform" type="translate" values="0,0;2,-5;0,0" dur="2s"
-                              repeatCount="indefinite" />
+              repeatCount="indefinite" />
           </g>
           <g>
             <text x="70" y="15" font-size="8" fill="#f472b6">✦</text>
             <animate attributeName="opacity" values="0;1;0" dur="2.5s" begin="0.5s" repeatCount="indefinite" />
             <animateTransform attributeName="transform" type="translate" values="0,0;-2,-4;0,0" dur="2.5s" begin="0.5s"
-                              repeatCount="indefinite" />
+              repeatCount="indefinite" />
           </g>
           <g>
             <text x="12" y="55" font-size="6" fill="#34d399">♥</text>
             <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite" />
             <animateTransform attributeName="transform" type="translate" values="0,0;-3,-8;0,0" dur="3s" begin="1s"
-                              repeatCount="indefinite" />
+              repeatCount="indefinite" />
           </g>
         </g>
       </svg>
@@ -283,9 +281,12 @@ watch(() => route.path, () => {
   0% {
     transform: scaleY(0);
   }
-  15%, 85% {
+
+  15%,
+  85% {
     transform: scaleY(1);
   }
+
   100% {
     transform: scaleY(0);
   }
@@ -296,9 +297,12 @@ watch(() => route.path, () => {
   0% {
     opacity: 0;
   }
-  15%, 85% {
+
+  15%,
+  85% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -311,11 +315,15 @@ watch(() => route.path, () => {
 
 /* 腮红变亮动画 */
 @keyframes blush-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
-  20%, 70% {
+
+  20%,
+  70% {
     opacity: 1;
     transform: scale(1.1);
   }
@@ -333,18 +341,24 @@ watch(() => route.path, () => {
 
 /* 右手挥动动画 */
 @keyframes click-wave {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(0deg);
   }
+
   20% {
     transform: rotate(-40deg);
   }
+
   40% {
     transform: rotate(10deg);
   }
+
   60% {
     transform: rotate(-35deg);
   }
+
   80% {
     transform: rotate(5deg);
   }
@@ -352,15 +366,20 @@ watch(() => route.path, () => {
 
 /* 左手摆动动画 */
 @keyframes click-wave-left {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(0deg);
   }
+
   25% {
     transform: rotate(20deg);
   }
+
   50% {
     transform: rotate(-10deg);
   }
+
   75% {
     transform: rotate(15deg);
   }
@@ -387,15 +406,15 @@ watch(() => route.path, () => {
   font-size: 14px;
   font-weight: 600;
   box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25),
-  0 0 0 2px rgba(167, 139, 250, 0.3),
-  inset 0 -2px 10px rgba(167, 139, 250, 0.1);
+    0 0 0 2px rgba(167, 139, 250, 0.3),
+    inset 0 -2px 10px rgba(167, 139, 250, 0.1);
   transform-origin: bottom right;
   width: fit-content;
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
   animation: bubble-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
-  bubble-expand 2s ease-out 0.8s forwards;
+    bubble-expand 2s ease-out 0.8s forwards;
 }
 
 /* 打字机文字效果 */
@@ -423,14 +442,17 @@ watch(() => route.path, () => {
 .ai-cursor.is-typing {
   opacity: 1;
   animation: cursor-blink 0.5s ease-in-out infinite,
-  cursor-glow 1.5s ease-in-out infinite;
+    cursor-glow 1.5s ease-in-out infinite;
 }
 
 /* 光标闪烁动画 */
 @keyframes cursor-blink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.3;
   }
@@ -438,14 +460,17 @@ watch(() => route.path, () => {
 
 /* 光标发光效果 */
 @keyframes cursor-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 2px #7c3aed,
-    0 0 4px rgba(124, 58, 237, 0.5);
+      0 0 4px rgba(124, 58, 237, 0.5);
   }
+
   50% {
     box-shadow: 0 0 4px #a78bfa,
-    0 0 8px rgba(167, 139, 250, 0.7),
-    0 0 12px rgba(124, 58, 237, 0.4);
+      0 0 8px rgba(167, 139, 250, 0.7),
+      0 0 12px rgba(124, 58, 237, 0.4);
   }
 }
 
@@ -480,6 +505,7 @@ watch(() => route.path, () => {
     max-width: 0;
     padding: 12px 0;
   }
+
   100% {
     max-width: 400px;
     padding: 12px 18px;
@@ -492,6 +518,7 @@ watch(() => route.path, () => {
     opacity: 0;
     transform: scale(0) translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -500,9 +527,12 @@ watch(() => route.path, () => {
 
 /* 气泡轻微浮动 */
 @keyframes bubble-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
@@ -510,15 +540,20 @@ watch(() => route.path, () => {
 
 /* 机器人浮动弹跳动画 */
 @keyframes float-bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(-2deg);
   }
+
   25% {
     transform: translateY(-7px) rotate(2deg);
   }
+
   50% {
     transform: translateY(-5px) rotate(-1deg);
   }
+
   75% {
     transform: translateY(-9px) rotate(1deg);
   }
