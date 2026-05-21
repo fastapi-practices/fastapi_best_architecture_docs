@@ -17,11 +17,11 @@ const showSidebarSponsorOnAsideTop = computed(() => !hasSidebar.value && hasAsid
 
 <template>
   <Layout>
-    <template #layout-top>
+    <!--<template #layout-top>
       <div class="custom-content">
         <BannerTop />
       </div>
-    </template>
+    </template>-->
     <!-- <template #nav-bar-content-after> -->
     <!--   <div> -->
     <!--     <button class="login-button"> -->

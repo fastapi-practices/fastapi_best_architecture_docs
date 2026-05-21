@@ -33,7 +33,7 @@
 }
 
 /* 霓虹灯悬浮文字 - 在标题上方 */
-.hero-content {
+/*.hero-content {
     position: relative;
 }
 
@@ -50,7 +50,7 @@
     padding: 6px 12px;
     filter: drop-shadow(0 0 3px rgba(255, 107, 157, 0.4)) drop-shadow(0 0 8px rgba(255, 107, 157, 0.7)) drop-shadow(0 0 15px rgba(255, 107, 157, 1));
     animation: neon-glow-flicker-light 3s ease-in-out infinite;
-}
+}*/
 
 /* 首页非全屏样式 */
 .vp-home-hero:not(.full) .hero-container {
