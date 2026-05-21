@@ -13,6 +13,7 @@ import PluginMarketplace from "./components/PluginMarketplace.vue";
 import Pricing from "./components/Pricing.vue";
 import ProjectStats from './components/ProjectStats.vue';
 import SponsorHome from './components/SponsorHome.vue';
+import SponsorLayoutFloat from './components/SponsorLayoutFloat.vue';
 import SponsorPage from './components/SponsorPage.vue';
 import SponsorSwiper from './components/SponsorSwiper.vue';
 import Testimonials from './components/Testimonials.vue';
@@ -40,5 +41,5 @@ export default defineClientConfig({
         //    'layout-top': () => h(BannerTop),
         //}),
     },
-    rootComponents: [AiNeuralBadge],
+    rootComponents: [AiNeuralBadge, SponsorLayoutFloat],
 })
