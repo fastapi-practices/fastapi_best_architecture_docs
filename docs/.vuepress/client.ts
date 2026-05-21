@@ -1,15 +1,11 @@
 // @ts-ignore
 import { defineClientConfig } from 'vuepress/client'
-import { h } from 'vue';
-// @ts-ignore
-import { NotFound } from "vuepress-theme-plume/client";
 // @ts-ignore
 import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 // @ts-ignore
 import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 
 import Layout from './layouts/Layout.vue'
-import BannerTop from './components/BannerTop.vue';
 import FeatureBento from './components/FeatureBento.vue';
 import GitEmoji from "./components/GitEmoji.vue";
 import HomeSponsor from './components/HomeSponsor.vue';
@@ -40,9 +36,9 @@ export default defineClientConfig({
     },
     layouts: {
         Layout,
-        NotFound: () => h(NotFound, null, {
-            'layout-top': () => h(BannerTop),
-        }),
+        //NotFound: () => h(NotFound, null, {
+        //    'layout-top': () => h(BannerTop),
+        //}),
     },
     rootComponents: [AiNeuralBadge],
 })

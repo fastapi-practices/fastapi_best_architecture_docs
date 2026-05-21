@@ -40,7 +40,7 @@ updateDocumentClass();
 </script>
 
 <style>
-html:not(.banner-dismissed) {
+html:has(.banner-dismissed) {
   --vp-layout-top-height: 50px;
 }
 
