@@ -15,7 +15,7 @@ const paymentMethods = [
   {
     name: '微信赞助',
     icon: 'wechat' as SponsorIconName,
-    image: 'https://github.com/wu-clan/picx-images-hosting/raw/master/pay/weixin_zs.jpg',
+    image: 'https://wu-clan.github.io/picx-images-hosting/pay/weixin_zs.jpg',
   },
   {
     name: '支付宝赞助',
