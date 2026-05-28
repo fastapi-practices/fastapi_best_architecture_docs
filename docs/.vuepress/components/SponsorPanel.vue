@@ -89,7 +89,7 @@ const shouldShowExtraBecomeSponsor = computed(() => {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   transition: opacity 0.3s ease;
 }
 

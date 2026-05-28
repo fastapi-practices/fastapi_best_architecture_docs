@@ -85,4 +85,8 @@ const processedGeneralSponsors = computed(() =>
 .sponsor-swiper :deep(.swiper-slide) {
   background-color: var(--vp-c-bg-soft);
 }
+
+.sponsor-swiper :deep(.swiper-slide-img) {
+  object-fit: contain !important
+}
 </style>
