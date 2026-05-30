@@ -41,7 +41,7 @@ id_key = Annotated[
 用于集成操作人信息到数据库表
 
 ::: warning
-在 fba 中，并没有默认集成操作人员信息到各个数据库表，但是我们提供了非常简易的集成方式
+在 fba 中，并没有默认集成操作人员信息，但是我们提供了非常简易的集成方式
 
 [**操作人博客**](../../blog/operator.md){.read-more}
 :::
@@ -62,6 +62,37 @@ class DateTimeMixin(MappedAsDataclass):
     )
 ```
 
+### 逻辑删除
+
+用于集成逻辑删除标记到数据库表，已集成在 [Base](#base-基类) 基类中
+
+```python
+class LogicalDeleteMixin(MappedAsDataclass):
+    """逻辑删除 Mixin 数据类"""
+
+    deleted: Mapped[int] = mapped_column(
+        BigInteger,
+        init=False,
+        default=0,
+        server_default='0',
+        sort_order=999,
+        comment='是否已删除（0：否；id：是）',
+    )
+    deleted_time: Mapped[datetime | None] = mapped_column(
+        TimeZone,
+        init=False,
+        default=None,
+        sort_order=999,
+        comment='删除时间',
+    )
+```
+
+::: warning
+逻辑删除不只是给模型添加字段，还需要同步处理 CRUD 查询条件、删除操作、唯一约束、关联查询等内容
+
+[**逻辑删除博客**](../../blog/logical-delete.md){.read-more}
+:::
+
 ## 数据类基类
 
 声明性数据类基类，它将带有数据类集成，允许使用更高级配置，==但未集成日期时间=={.note}
@@ -76,10 +107,10 @@ class DataClassBase(MappedAsDataclass, MappedBase):
 
 ## Base 基类
 
-声明性数据类基类，带有数据类和日期时间集成
+声明性数据类基类，带有数据类、日期时间和逻辑删除集成
 
 ```python
-class Base(DataClassBase, DateTimeMixin):
+class Base(DataClassBase, DateTimeMixin, LogicalDeleteMixin):
 
     __abstract__ = True
 ```
