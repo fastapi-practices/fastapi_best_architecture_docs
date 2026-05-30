@@ -586,7 +586,7 @@ Celery 连接 RabbitMQ 服务的密码
 
 ### `CELERY_BROKER` <Badge type="info" text="Literal['rabbitmq', 'redis']" />
 
-Celery 代理模式（开发模式默认使用 Redis，线上模式强制切换为 Rabbitmq）
+Celery 代理模式（开发模式默认使用 Redis，生产模式强制切换为 RabbitMQ）
 
 ### `CELERY_RABBITMQ_VHOST` <Badge type="info" text="str" />
 

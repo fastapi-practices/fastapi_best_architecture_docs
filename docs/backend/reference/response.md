@@ -38,7 +38,7 @@ def test() -> ResponseModel:
 ## Schema 模式
 
 上面我们已经讲解了统一返回模型，但是，FastAPI 中的优势之一还包括完全自动的 OpenAPI 和文档，如果我们全局使用
-ResponseModel 做为统一响应模型，你会在 Swagger 文档得到（如图所示）
+ResponseModel 作为统一响应模型时，你会在 Swagger 文档中看到如下结构
 
 ![response_model](/images/response_model.png)
 
@@ -141,7 +141,7 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
 ## 响应状态码
 
 在文件 `backend/common/response/response_code.py` 中内置了多种定义响应状态码的方式，我们可以根据 `CustomResponseCode` 和
-`CustomResponse` 定义自己需要的的响应状态码，因为在实际项目中，响应状态码并没有统一的标准
+`CustomResponse` 定义自己需要的响应状态码，因为在实际项目中，响应状态码通常会根据业务约定进行调整
 
 当我们定义好自定义响应状态码之后，可以像下面这样使用
 

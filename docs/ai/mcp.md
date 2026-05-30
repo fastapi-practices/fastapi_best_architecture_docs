@@ -10,12 +10,12 @@ title: MCP
 
 相关文章：[linuxdo#1360514](https://linux.do/t/topic/1360514)
 
-首当其冲的绝对是它，ace 绝对是无与伦比的存在，检索快，定位准；
+ace 的优势在于上下文检索速度快、定位准确，适合在较大的代码库中辅助 AI 理解项目结构
 
-但其存在国内账号注册难，订阅开通难，费用昂贵，易封号等多重机制，只能说是且用且珍惜
+但它在账号注册、订阅开通、费用和账号稳定性方面存在一定门槛，实际使用前需要结合团队环境评估
 
 ## chrome-devtools
 
 相关文章：[chrome-devtools-mcp](https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session?hl=zh-cn)
 
-让编码智能体使用 Chrome DevTools MCP 调试您的浏览器会话
+让编码智能体使用 Chrome DevTools MCP 调试浏览器会话。

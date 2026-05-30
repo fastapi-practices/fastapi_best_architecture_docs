@@ -90,7 +90,7 @@ config:
 
 - 支持多租户吗？
 
-  支持。实验性多租户已落地，详见 [PR #1101](https://github.com/fastapi-practices/fastapi-best-architecture/pull/1101)，咱不包含前端实施
+  支持。实验性多租户能力已在后端落地，详见 [PR #1101](https://github.com/fastapi-practices/fastapi-best-architecture/pull/1101)，但暂不包含前端实施
 
 - 可以商用吗？
 

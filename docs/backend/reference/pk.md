@@ -74,9 +74,8 @@ title: 主键
 3. 阅读 [注意事项](#注意事项)
 
 ::: caution Windows 平台警告
-如果您正在 Windows 平台中使用 mysql >= 8.0，还需要更新 `backend/database/db.py` 文件内的 `mysql+asyncmy` 为
-`mysql+aiomysql`，否则，您将无法在本地正常新增数据。相关
-issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
+如果你在 Windows 平台中使用 MySQL 8.0+，并且遇到 `asyncmy` 相关写入异常，可尝试将 `backend/database/db.py` 文件内的
+`mysql+asyncmy` 调整为 `mysql+aiomysql`。相关 issue：[asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
 :::
 
 ## 注意事项

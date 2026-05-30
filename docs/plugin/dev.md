@@ -48,7 +48,8 @@ fba 会在每次启动前对所有插件进行实时解析
 
 ### 数据库兼容性
 
-fba 内所有官方实现都同时兼容 mysql 和 postgresql，但我们不对第三方插件进行强制要求，如果您对此感兴趣，请查看 SQLAlchemy 2.0
+fba 内置插件同时兼容 MySQL 和 PostgreSQL。第三方插件可以根据自身场景选择支持的数据库；如果需要同时兼容多种数据库，请参考
+SQLAlchemy 2.0
 官方文档：[TypeDecorator](https://docs.sqlalchemy.org/en/20/core/custom_types.html#typedecorator-recipes)、
 [with_variant](https://docs.sqlalchemy.org/en/20/core/type_api.html#sqlalchemy.types.TypeEngine.with_variant)
 
@@ -188,8 +189,8 @@ EMAIL_CAPTCHA_REDIS_PREFIX: str
 EMAIL_CAPTCHA_EXPIRE_SECONDS: int
 ```
 
-整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】，但是，在发布的插件中，我们无法添加这些配置，只能通过
-`README` 进行说明，提醒用户如何完成插件全局配置
+整个结构分为【插件配置说明注释】、【插件环境变量配置及注释】、【插件基础配置及注释】。在发布的插件中，我们无法直接修改使用者项目里的
+`backend/core/conf.py`，只能通过 `README` 进行说明，提醒用户如何完成插件全局配置
 
 ### 热插拔
 
@@ -223,7 +224,7 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int
     EMAIL_CAPTCHA_EXPIRE_SECONDS = 180  # 3 分钟
     ```
 
-完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件后，将无损适配热插拔
+完成以上配置后，如果插件无需更多修改，通过 [CLI 或 Git](./install.md) 方式安装插件时，即可适配热插拔配置加载
 
 ::: important 全局配置应用优先级
 
@@ -237,8 +238,8 @@ graph LR
 :::
 
 ::: tip
-除此之外，我们仍强烈建议您在开发阶段添加 [全局配置](#全局配置)，并在发布的插件 README 中添加全局配置说明，如果你和你的插件用户想通过
-IDE 获取全局配置键入提示，这是必需的，相反，你们将无法获取 IDE 键入提示
+除此之外，我们仍建议在开发阶段添加[全局配置](#全局配置)，并在发布的插件 README 中说明这些配置。如果希望插件作者和使用者都能通过
+IDE 获取配置项类型提示，这一步是必要的
 :::
 
 ### 钩子函数

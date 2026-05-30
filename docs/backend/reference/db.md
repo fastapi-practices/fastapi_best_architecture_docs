@@ -10,7 +10,7 @@ fba 支持 PostgreSQL、MySQL 两种数据库，默认配置使用 PostgreSQL
 
 ## Docker 镜像
 
-如果你未在本地安装或习惯使用 Docker 镜像，
+如果你未在本地安装数据库，或更习惯使用 Docker，可以参考以下命令启动数据库容器
 
 ### PostgreSQL
 
@@ -21,7 +21,7 @@ docker run -d \
   -e POSTGRES_DB='fba' \
   -e POSTGRES_PASSWORD='123456' \
   -e TZ='Asia/Shanghai' \
-  -v fba_postgres:/var/lib/postgresql/data \ 
+  -v fba_postgres:/var/lib/postgresql/data \
   -p 5432:5432 \
   postgres:16
 ```
@@ -36,7 +36,7 @@ docker run -d \
   -e MYSQL_ROOT_PASSWORD=123456 \
   -e TZ=Asia/Shanghai \
   -v fba_mysql:/var/lib/mysql \
-  -p 3306 \
+  -p 3306:3306 \
   mysql:8.0.41 \
   --default-authentication-plugin=mysql_native_password \
   --character-set-server=utf8mb4 \
@@ -77,7 +77,7 @@ DATABASE_PASSWORD='123456'
 
 - 删除 `with_variant` 相关代码（如果存在），仅保留数据库对应的类型
 - 删除 `backend/core/conf.py` 文件中的 `DATABASE_TYPE` 及其相关的调用代码
-- 删除 `.env_example` 和 `.env` 文件中的 `DATABASE_TYPE`
-- 更新 `backend/templates/py/model.jinja` 文件中的 `database_type` 相关代码
+- 删除 `.env.example` 和 `.env` 文件中的 `DATABASE_TYPE`
+- 更新代码生成插件模板中的 `database_type` 相关代码
 - 删除 `backend/sql` 目录中不需要的文件夹
 - 删除 `docker-compose.yml` 文件中不需要的容器脚本

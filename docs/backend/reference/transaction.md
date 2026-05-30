@@ -7,7 +7,7 @@ SQLAlchemy，你可以查看 [#6921](https://github.com/sqlalchemy/sqlalchemy/di
 了解详情
 
 ::: details 简要总结
-任何遵循 [PEP-429](https://peps.python.org/pep-0249) 进行设计的 Python 数据库连接器或 ORM，都将默认开启事务
+任何遵循 [PEP 249](https://peps.python.org/pep-0249/) 进行设计的 Python 数据库连接器或 ORM，通常都会默认开启事务
 
 在 SQLAlchemy 中，你可以选择不使用它自身的事务模式，但这需要将数据库本身的事务隔离级别设置为 `AUTOCOMMIT`
 ，详情请查看: [了解 DBAPI 级别的 Autocommit 隔离级别](https://docs.sqlalchemy.org.cn/en/20/core/connections.html#understanding-the-dbapi-level-autocommit-isolation-level)
@@ -15,7 +15,7 @@ SQLAlchemy，你可以查看 [#6921](https://github.com/sqlalchemy/sqlalchemy/di
 
 ## CurrentSession
 
-这是一种类似于官方文档的使用方法，但这种方法并没有真正开启事务，它通常仅用于查询操作
+这是一种接近 FastAPI 官方示例的使用方式。它提供普通数据库会话，通常用于查询操作
 
 ```python
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
@@ -27,7 +27,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 CurrentSession = Annotated[AsyncSession, Depends(get_db)]
 ```
 
-这种方法通常直接应用于接口函数，在 session 应用方面，它被认为是线程安全的
+这种方法通常直接应用于接口函数。会话生命周期由依赖注入管理，适合请求级数据库访问
 
 ```python
 @router.get('')
@@ -37,7 +37,7 @@ async def get_pagination_apis(db: CurrentSession) -> ResponseModel:
 
 ## CurrentSessionTransaction
 
-与 `CurrentSession` 不同，此方法将直接自动开启事务，你可以将它用于增删改操作
+与 `CurrentSession` 不同，此方法会通过 `async_db_session.begin()` 自动开启事务，适合增删改操作。
 
 ```python
 async def get_db_transaction() -> AsyncGenerator[AsyncSession, None]:
@@ -53,14 +53,13 @@ CurrentSessionTransaction = Annotated[AsyncSession, Depends(get_db_transaction)]
 
 ```python
 @router.post('')
-async def get_pagination_apis(db: CurrentSession) -> ResponseModel:
+async def create_api(db: CurrentSessionTransaction) -> ResponseModel:
     ...
 ```
 
 ## `begin()`
 
-这种方式由 SQLAlchemy 官方实现，在线程安全方面，由于在同一个函数中，可能存在多次调用，所以没有 `CurrentSession` 和
-`CurrentSessionTransaction` 更加严谨，但此方式可以在任意地方使用
+这种方式由 SQLAlchemy 官方实现，可在 service、工具函数等任意位置使用。与请求依赖方式相比，它需要开发者自行控制调用边界，避免在同一业务流程中重复开启不必要的事务
 
 ```python{2}
 async def create(*, obj: CreateIns) -> None:

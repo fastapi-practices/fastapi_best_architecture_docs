@@ -1,37 +1,38 @@
 ---
-title: Socketio
+title: Socket.IO
 ---
 
 ## 为什么不用 ws
 
-WebSocket 已被集成到 fastapi 中，并且可以直接使用，为什么还要 socketio？原因有很多，可以简单概括为 socektio 功能性和稳定性更高，如果使用
-ws，很多东西可能还要手搓封装，但 socektio 把这些东西基本都写好了，所以，何乐而不为呢
+FastAPI 已经可以直接使用 WebSocket。fba 仍然集成
+Socket.IO，是因为它在事件模型、自动重连、房间、广播和客户端生态方面提供了更完整的封装。对于需要实时通知、任务进度推送等场景，Socket.IO
+可以减少大量自定义协议和连接管理代码
 
-## 什么是 socketio？
+## 什么是 Socket.IO？
 
-socketio 是一种传输协议，可以在客户端和服务器之间实现基于事件的实时双向通信
+Socket.IO 是一套基于事件的实时双向通信方案，可以在客户端和服务器之间传递事件消息
 
-没有 socketio 时：
+没有 Socket.IO 时：
 
 你的 leader 在出差，给你任命了一项非常着急的任务，这项任务就等同于事件，但你并不能很快的完成此任务，可是你的 leader
 过一会儿就会问你怎么样了（轮询），你很烦，不想理他（延迟反应）
 
-使用 socketio 时：
+使用 Socket.IO 时：
 
 你的 leader 就坐在你的旁边，你的工作效率飞升，马上就完成了任务，并且直接口头传达了完成，他立马就听见了（实时）
 
 ## 集成
 
-在 fba 中，你可以在 `backend/common/socketio/` 目录下查阅本地 socketio 实现，其中包含两个文件
+在 fba 中，你可以在 `backend/common/socketio/` 目录下查看 Socket.IO 的本地实现，其中包含两个文件
 
 `actions.py`：此文件主要用于定义一些全局事件，方便我们对事件进行统一管理
 
-`server.py`：此文件是在 fba 中的服务端标准实现，其中包含 socketio 授权连接
+`server.py`：此文件是在 fba 中的服务端标准实现，其中包含 Socket.IO 授权连接
 
-但这些并不是主要集成代码，我们可以进入 `backend/core/register.py` 文件，找到以下方法
+但这些并不是主要集成代码。你可以进入 `backend/core/registrar.py` 文件，找到以下方法
 
 ```python
-def register_socket_app(app: FastAPI):
+def register_socket_app(app: FastAPI) -> None:
     """
     socket 应用
 
@@ -49,5 +50,5 @@ def register_socket_app(app: FastAPI):
     app.mount('/ws', socket_app)
 ```
 
-我们通过 `python-socketio` ASGI 应用定义方式，分别将 socketio 和 fastapi 应用作为参数填入，此时你已创建了一个 socket
-应用，然后我们通过 fastapi 内置的挂载功能，将 socket 应用挂载到 fastapi 应用中，至此，你已完成 fastapi 集成 socketio
+这里通过 `python-socketio` 创建 ASGI 应用，并把 Socket.IO 服务端实例和 FastAPI 应用传入。随后使用 FastAPI 的 `mount()` 方法将
+Socket.IO 应用挂载到 `/ws`，完成实时通信能力集成。

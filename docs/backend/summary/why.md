@@ -12,11 +12,13 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 > [!IMPORTANT]
 > 我们不会去对比任何其他架构，我们认为每个架构都有自己的特点，适用于不同的场景。
 >
-> 但 ==fba 绝对是开源架构中，代码最整洁，最规范且最令人赏心悦目的项目之一=={.tip}
+> fba 会持续追求清晰、规范、易维护的代码结构，并尽量保持较低的上手和改造成本
+>
+> 同时，==fba 绝对是开源架构中，代码最整洁，最规范且最令人赏心悦目的项目之一=={.tip}
 
 ## 目标
 
-我们的目标是提供一个最佳架构，让开发者可以快速上手，能够专注于业务逻辑开发，或从此架构中获得灵感，优化本地架构设计，所以我们只会不断完善和优化我们的架构，为开发者带来更好的体验
+我们的目标是提供一套可直接落地的后端架构，让开发者快速进入业务开发，也能从中借鉴分层、配置、权限、插件和部署等工程实践。我们会持续完善架构，让它更稳定、更清晰、更容易扩展
 
 ## 承诺
 
@@ -24,17 +26,17 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 架构
 
-独一无二，自主研发，自主命名，开发人员可轻松驾驭的独特架构：[三层架构](../summary/intro.md#三层架构)
+fba 采用清晰的[三层架构](../summary/intro.md#三层架构)，将 API、Service、CRUD/DAO、Schema 和 Model 的职责拆开，降低业务代码之间的耦合
 
 ## 开放性
 
 - MIT 协议 + 架构源码全量开源
 - GitHub 模板仓库，便捷复制和自主命名
-- 没有任何以 `fba` 强制命名的内容，也就是说，你可以通过 IDE 统一替换所有 `fba` 关键字为其他
+- 没有强制绑定 `fba` 命名，你可以按团队规范替换项目名称、包名和业务前缀
 
 ## 灵活性
 
-最具灵活性的代表就是我们的【插件系统】，不仅如此，在接口响应，错误定义，包括架构本身，我们一直在致力于使其既好用又简洁，这些设计对开发者非常友善
+插件系统是 fba 灵活性的主要体现。除此之外，接口响应、错误定义、配置管理和目录分层也都尽量保持简单直接，便于开发者按业务需要扩展。
 
 ## 长期维护
 
@@ -44,17 +46,16 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 
 ## 框架由来
 
-我们有一个完整的关于 fba 由来的 [issues](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
-，但它被不小心永久删除且无法恢复 😭，我们尝试联系了 GitHub 支持，但不幸的是，我们仍无法获取完整 issues 😭
+我们曾有一个关于 fba 由来的完整 [issue](https://github.com/fastapi-practices/fastapi_sqlalchemy_mysql/issues/5)
+，但该内容已被永久删除且无法恢复。我们曾尝试联系 GitHub 支持，仍未能取回完整记录。
 
 大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 fba 创建之前，找到了 fba
-的前身仓库 [fastapi_sqlalchemy_mysql](slim.md#sqlalchemy)，并创建了 issue：【几点讨论与建议】；我们就此 issue
-展开了为期数天的讨论，最终决定并创建了
-fba
+的前身仓库 [fastapi_sqlalchemy_mysql](slim.md#sqlalchemy)，并创建了 issue：【几点讨论与建议】。围绕这个 issue 的讨论持续了数天，最终促成了
+fba 的创建。
 
 ## 套件产物
 
-在创建和迭代 fba 的同时，我们创建了很多与之相关的套件，且他们非常实用，并且我们做到了 0 耦合，您完全可以将它们用到其他与之相关的项目中去
+在创建和迭代 fba 的同时，我们也沉淀了一些独立套件。这些套件与 fba 保持低耦合，可以在其他 FastAPI 或 SQLAlchemy 项目中单独使用。
 
 <CardGrid>
   <LinkCard 
@@ -78,23 +79,23 @@ fba
 ## 精简版
 
 尽管我们在 fba
-中尽可能地降低了耦合度，但是对于一个简易版本来讲，它需要删除太多东西，因此，我们同时提供了精简版本，详情请查看：[精简版](./slim.md)
+中尽可能降低了耦合度，但如果只需要一个最小化架构，完整版本仍然包含较多功能模块。因此我们同时提供精简版本，详情请查看：[精简版](./slim.md)
 
 ## 质量与规范
 
 - 全局使用 reStructuredText 文档风格
 
-  我们采用了 rest 文档风格，这是一种非常流行的 Python 代码文档，并且，与 IDE 有非常好的集成
+  我们采用 reStructuredText 风格编写 Python 文档字符串，它在 Python 生态中应用广泛，并且与主流 IDE 集成良好
 
 - 快速同步框架新特性
 
-  我们追求新事物，拥抱新事物，我们会积极跟进 FastAPI 中的新特性，在不受 Issue 影响的情况下，尽可能地将所有好用的新特性集成进来
+  我们会积极跟进 FastAPI、Pydantic、SQLAlchemy 等核心依赖的新特性，并在兼容性允许的前提下逐步集成。
 
 - 严格的代码质量
 
   我们有十分严格的 CI
-  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/pyproject.toml)
-  ，使用非常流行且强大的 Ruff 作为支撑，为每次 PR 的代码质量做到严格把控
+  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/pyproject.toml)，使用
+  Ruff 作为主要代码检查工具，对每次 PR 的代码质量进行约束
 
 - 持续的认可
 
