@@ -102,7 +102,7 @@ config:
 
 - AI 赋能怎么开启？
 
-  安装 [fba skills](/fastapi_best_architecture_docs/ai/skills.html) 即可在 Claude Code、Cursor、Trae 等 AI 工具中获取 fba 专属上下文与脚手架命令
+  安装 [fba skills](./ai/skills.md) 即可在 Claude Code、Cursor、Trae 等 AI 工具中获取 fba 专属上下文与脚手架命令
 :::
 
 ::: center

@@ -48,7 +48,7 @@ import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 ，但它被不小心永久删除且无法恢复 😭，我们尝试联系了 GitHub 支持，但不幸的是，我们仍无法获取完整 issues 😭
 
 大致内容为我们的核心团队成员 [downdawn](https://github.com/downdawn) 在 fba 创建之前，找到了 fba
-的前身仓库 [fastapi_sqlalchemy_mysql](fsm.md#sqlalchemy)，并创建了 issue：【几点讨论与建议】；我们就此 issue
+的前身仓库 [fastapi_sqlalchemy_mysql](slim.md#sqlalchemy)，并创建了 issue：【几点讨论与建议】；我们就此 issue
 展开了为期数天的讨论，最终决定并创建了
 fba
 
@@ -78,7 +78,7 @@ fba
 ## 精简版
 
 尽管我们在 fba
-中尽可能地降低了耦合度，但是对于一个简易版本来讲，它需要删除太多东西，因此，我们同时提供了精简版本，详情请查看：[精简版](./fsm.md)
+中尽可能地降低了耦合度，但是对于一个简易版本来讲，它需要删除太多东西，因此，我们同时提供了精简版本，详情请查看：[精简版](./slim.md)
 
 ## 质量与规范
 
@@ -93,7 +93,7 @@ fba
 - 严格的代码质量
 
   我们有十分严格的 CI
-  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/.ruff.toml)
+  代码质量检测和[规则](https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/pyproject.toml)
   ，使用非常流行且强大的 Ruff 作为支撑，为每次 PR 的代码质量做到严格把控
 
 - 持续的认可

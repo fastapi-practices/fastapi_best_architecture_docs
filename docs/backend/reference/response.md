@@ -93,7 +93,7 @@ def test() -> ResponseSchemaModel[GetApiDetail]:
     return response_base.success(data=GetApiDetail(...))
 ```
 
-此实例包含三个返回方法：`success()`、`fail()`、`fast_sucess()`
+此实例包含三个返回方法：`success()`、`fail()`、`fast_success()`
 
 ::: warning
 它们都是同步方法，而不是异步。因为这些返回方法并不涉及 io 操作，所以，定义为异步，不但没有性能提升，反而增加了异步协程的开销

@@ -149,6 +149,10 @@ Redis 缓存过期时长（秒）
 
 ## Snowflake（雪花算法）
 
+### `SNOWFLAKE_ENABLED` <Badge type="info" text="bool" />
+
+是否启用雪花算法作为分布式主键生成方案
+
 ### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
 
 雪花算法数据中心 ID
@@ -496,7 +500,15 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 操作日志队列超时时长，达到上限后，操作日志将批量写入数据库
 
+### `OPERA_LOG_BODY_MAX_SIZE` <Badge type="info" text="int" />
+
+操作日志记录请求体内容的最大字节数
+
 ## 插件配置
+
+### `PLUGIN_REQUIRED` <Badge type="info" text="list[str]" />
+
+项目启动时必须加载的插件列表
 
 ### `PLUGIN_PIP_CHINA` <Badge type="info" text="bool" />
 
@@ -533,6 +545,22 @@ pip 下载最大重试次数
 ### `GRAFANA_OTLP_GRPC_ENDPOINT` <Badge type="info" text="str" />
 
 Grafana OTLP 协议 grpc 地址，用于发送遥测数据
+
+### `GRAFANA_PROMETHEUS_APP_NAME` <Badge type="info" text="str" />
+
+Prometheus 中标识后端服务的应用名称
+
+### `GRAFANA_CELERY_OTEL_SERVICE_NAME` <Badge type="info" text="str" />
+
+Celery Worker 上报 OpenTelemetry 数据时使用的服务名称
+
+### `GRAFANA_METRICS_PATH` <Badge type="info" text="str" />
+
+Prometheus 抓取 FastAPI 指标数据的路径
+
+### `GRAFANA_PROMETHEUS_EXEMPLAR_TRACE_ID_KEY` <Badge type="info" text="str" />
+
+Prometheus exemplar 中关联 Trace ID 的标签键名
 
 ## 应用：Task
 
