@@ -32,8 +32,8 @@ const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.v
 <style scoped>
 .sponsor-exclusive-popup {
   position: fixed;
-  bottom: 56px;
-  left: 56px;
+  bottom: 24px;
+  left: 24px;
   z-index: 99;
   display: flex;
   flex-direction: column;

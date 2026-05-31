@@ -234,8 +234,8 @@ watch(() => route.path, () => {
 <style scoped>
 .ai-float-bot {
   position: fixed;
-  bottom: 60px;
-  right: 80px;
+  bottom: 24px;
+  right: 36px;
   z-index: 100;
   cursor: pointer;
   transition: transform 0.3s ease;
