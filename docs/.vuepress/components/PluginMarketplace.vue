@@ -207,7 +207,7 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000
 const STAR_CACHE_KEY = 'fba_plugins_stars_cache'
 const STAR_CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIX = '_ui'
-const INSTALL_DOC_BASE = '/fastapi_best_architecture_docs/plugin/install'
+const INSTALL_DOC_BASE = '/fastapi_best_architecture_docs/plugin/install.html'
 
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
