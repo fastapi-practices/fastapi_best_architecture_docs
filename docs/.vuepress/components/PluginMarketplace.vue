@@ -86,15 +86,18 @@
           </a>
 
           <div class="card-footer-actions">
-            <a :href="getInstallUrl(plugin.git.path)" class="card-action-btn card-action-install">
+            <button type="button" class="card-action-btn card-action-command"
+              :class="{ copied: copiedInstallCommandPath === plugin.git.path }"
+              :aria-label="copiedInstallCommandPath === plugin.git.path ? '已复制安装命令' : '安装插件'"
+              :title="buildInstallCommand(plugin)" @click="copyInstallCommand(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                aria-hidden="true">
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 3v12"></path>
                 <path d="M7 10l5 5 5-5"></path>
                 <path d="M5 21h14"></path>
               </svg>
-              <span>安装</span>
-            </a>
+              <span>{{ copiedInstallCommandPath === plugin.git.path ? '已复制' : '安装' }}</span>
+            </button>
 
             <a :href="getStarUrl(plugin.git.url)" target="_blank" rel="noreferrer"
               class="card-action-btn card-action-like">
@@ -124,6 +127,31 @@
         </article>
       </div>
     </div>
+
+    <Transition name="install-notice">
+      <div v-if="installNotice.visible" class="install-notice" role="status" aria-live="polite">
+        <button type="button" class="install-notice-close" aria-label="关闭安装提示" @click="closeInstallNotice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6L6 18"></path>
+            <path d="M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="install-notice-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </div>
+        <div class="install-notice-body">
+          <p class="install-notice-title">{{ installNotice.title }}</p>
+          <ul class="install-notice-desc">
+            <li v-for="tip in installNotice.tips" :key="tip">{{ tip }}</li>
+          </ul>
+          <a :href="installNotice.docUrl" class="install-notice-link">查看安装文档</a>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -132,6 +160,13 @@ import { useClipboard } from '@vueuse/core'
 import { ref, computed, onMounted, onBeforeUnmount, reactive } from 'vue'
 
 type PluginType = 'backend' | 'frontend'
+
+interface InstallNotice {
+  visible: boolean
+  title: string
+  tips: string[]
+  docUrl: string
+}
 
 interface PluginItem {
   git: {
@@ -189,8 +224,17 @@ const searchQuery = ref('')
 const failedIcons = reactive(new Set<string>())
 const starCounts = reactive<Record<string, number>>({})
 const copiedPluginPath = ref('')
+const copiedInstallCommandPath = ref('')
+const installNotice = reactive<InstallNotice>({
+  visible: false,
+  title: '',
+  tips: [],
+  docUrl: ''
+})
 const { copy: copyToClipboard } = useClipboard({ legacy: true })
 let copiedTimer: ReturnType<typeof setTimeout> | null = null
+let copiedInstallCommandTimer: ReturnType<typeof setTimeout> | null = null
+let installNoticeTimer: ReturnType<typeof setTimeout> | null = null
 
 const filteredPlugins = computed(() => {
   let result = plugins.value
@@ -228,6 +272,30 @@ const getPluginType = (path: string): PluginType => {
 
 const getInstallUrl = (path: string): string => {
   return `${INSTALL_DOC_BASE}${getPluginType(path) === 'frontend' ? '#前端' : '#后端'}`
+}
+
+const buildInstallCommand = (plugin: PluginItem): string => {
+  const args = ['fba', 'add', '--repo-url', plugin.git.url]
+  if (getPluginType(plugin.git.path) === 'frontend') {
+    args.push('--frontend')
+  }
+  return args.join(' ')
+}
+
+const buildInstallTips = (plugin: PluginItem): string[] => {
+  const pluginName = plugin.plugin.summary.trim()
+  if (getPluginType(plugin.git.path) === 'frontend') {
+    return [
+      `已复制「${pluginName}」的安装命令`,
+      '请在后端项目根目录激活虚拟环境后执行',
+      'CLI 会继续询问前端项目根路径'
+    ]
+  }
+  return [
+    `已复制「${pluginName}」的安装命令`,
+    '请在后端项目根目录激活虚拟环境后执行',
+    '按插件 README 完成配置后重启服务'
+  ]
 }
 
 const getRepoFullName = (url: string): string => {
@@ -276,6 +344,37 @@ const sharePlugin = async (plugin: PluginItem) => {
     }, 1800)
   } catch (e) {
     console.warn('Share copy failed:', e)
+  }
+}
+
+const copyInstallCommand = async (plugin: PluginItem) => {
+  try {
+    const command = buildInstallCommand(plugin)
+    await copyToClipboard(command)
+    copiedInstallCommandPath.value = plugin.git.path
+    installNotice.title = '安装命令已复制'
+    installNotice.tips = buildInstallTips(plugin)
+    installNotice.docUrl = getInstallUrl(plugin.git.path)
+    installNotice.visible = true
+
+    if (copiedInstallCommandTimer) clearTimeout(copiedInstallCommandTimer)
+    copiedInstallCommandTimer = setTimeout(() => {
+      copiedInstallCommandPath.value = ''
+      copiedInstallCommandTimer = null
+    }, 1800)
+
+    if (installNoticeTimer) clearTimeout(installNoticeTimer)
+    installNoticeTimer = setTimeout(closeInstallNotice, 8000)
+  } catch (e) {
+    console.warn('Install command copy failed:', e)
+  }
+}
+
+const closeInstallNotice = () => {
+  installNotice.visible = false
+  if (installNoticeTimer) {
+    clearTimeout(installNoticeTimer)
+    installNoticeTimer = null
   }
 }
 
@@ -488,6 +587,8 @@ onMounted(fetchPlugins)
 
 onBeforeUnmount(() => {
   if (copiedTimer) clearTimeout(copiedTimer)
+  if (copiedInstallCommandTimer) clearTimeout(copiedInstallCommandTimer)
+  if (installNoticeTimer) clearTimeout(installNoticeTimer)
 })
 </script>
 
@@ -904,9 +1005,10 @@ onBeforeUnmount(() => {
   color: var(--frontend-accent);
 }
 
-.card-action-install:hover {
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 24%, var(--vp-c-divider));
-  color: var(--vp-c-brand-1);
+.card-action-command:hover,
+.card-action-command.copied {
+  border-color: color-mix(in srgb, #16a34a 24%, var(--vp-c-divider));
+  color: #16a34a;
 }
 
 .card-action-icon {
@@ -918,6 +1020,117 @@ onBeforeUnmount(() => {
 .tag {
   font-size: 12px;
   color: var(--vp-c-text-3);
+}
+
+.install-notice {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 12px;
+  width: min(420px, calc(100vw - 32px));
+  padding: 16px 44px 16px 16px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  border: 1px solid color-mix(in srgb, #16a34a 26%, var(--vp-c-divider));
+  border-radius: 8px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.14);
+}
+
+.install-notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, transparent);
+  border-radius: 50%;
+}
+
+.install-notice-icon svg,
+.install-notice-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.install-notice-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.install-notice-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.install-notice-desc {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  list-style: disc;
+}
+
+.install-notice-desc li {
+  padding-left: 2px;
+}
+
+.install-notice-desc li + li {
+  margin-top: 2px;
+}
+
+.install-notice-link {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.install-notice-link:hover {
+  text-decoration: underline;
+}
+
+.install-notice-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--vp-c-text-3);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.install-notice-close:hover {
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+}
+
+.install-notice-enter-active,
+.install-notice-leave-active {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.install-notice-enter-from,
+.install-notice-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 @media (max-width: 768px) {
@@ -936,6 +1149,11 @@ onBeforeUnmount(() => {
 
   .card-footer-actions {
     margin-top: 10px;
+  }
+
+  .install-notice {
+    right: 16px;
+    bottom: 16px;
   }
 }
 </style>
