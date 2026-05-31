@@ -3,7 +3,7 @@ import { BulletinOptions } from "vuepress-theme-plume";
 import path from 'node:path'
 
 export const myBulletin: BulletinOptions = {
-    // layout: 'center',
+    layout: 'bottom-right',
     border: true,
     enablePage: true,
     lifetime: 'session',
