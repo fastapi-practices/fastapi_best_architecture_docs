@@ -17,7 +17,9 @@ import SponsorLayoutFloat from './components/SponsorLayoutFloat.vue';
 import SponsorPage from './components/SponsorPage.vue';
 import SponsorSwiper from './components/SponsorSwiper.vue';
 import Testimonials from './components/Testimonials.vue';
-import AiNeuralBadge from './components/AiNeuralBadge.vue';
+// import AiNeuralBadge from './components/AiNeuralBadge.vue';
+
+// @ts-ignore
 import './styles/custom.css'
 
 export default defineClientConfig({
@@ -41,5 +43,8 @@ export default defineClientConfig({
         //    'layout-top': () => h(BannerTop),
         //}),
     },
-    rootComponents: [AiNeuralBadge, SponsorLayoutFloat],
+    rootComponents: [
+        // AiNeuralBadge,
+        SponsorLayoutFloat,
+    ],
 })
