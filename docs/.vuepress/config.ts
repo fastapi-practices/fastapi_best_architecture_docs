@@ -18,9 +18,6 @@ export default defineUserConfig({
         baiduAnalyticsPlugin({
             id: '3fac49b26d8f26702c22aad4381c0641'
         }),
-        umamiAnalyticsPlugin({
-            id: '3f4c3f0b-51e4-4c78-a331-33e4e63796a9'
-        }),
         clarityAnalyticsPlugin({
             id: 'uhawbqsmxt'
         })
