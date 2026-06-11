@@ -9,7 +9,7 @@ title: 作者作品
 <CardGrid>
   <LinkCard
     title="提肛了吗"
-    icon="fluent:desktop-pulse-24-regular"
+    icon="https://wu-clan.github.io/picx-images-hosting/Kegel-Reminder.png"
     href="https://kegel-reminder.wu-clan.cc/"
     target="_blank"
     description="面向长期电脑工作者的桌面健康节奏提醒应用，可配置起身活动、补水、拉伸、活动肩颈等提醒，支持 Windows、macOS、Linux"

@@ -22,25 +22,6 @@ export default defineUserConfig({
             id: 'uhawbqsmxt'
         })
     ],
-    bundler: viteBundler({
-        viteOptions: {
-            build: {
-                cssMinify: 'esbuild',
-            },
-            plugins: [
-                {
-                    name: 'filter-vueuse-invalid-annotation',
-                    onLog(level, log) {
-                        if (
-                            log.code === 'INVALID_ANNOTATION'
-                            && log.id?.includes('@vueuse/core')
-                        ) {
-                            return false
-                        }
-                    },
-                },
-            ],
-        },
-    }),
+    bundler: viteBundler(),
     shouldPrefetch: false,
 })
