@@ -2,7 +2,7 @@
   <section class="feature-bento">
     <header class="fb-header">
       <h2 class="fb-title">企业级开发，开箱即用</h2>
-      <p class="fb-subtitle">把企业级的「重」，拆成可装可拆的「轻」</p>
+      <p class="fb-subtitle">三层架构打底，插件生态扩展，AI 贯穿协作</p>
     </header>
 
     <div class="fb-grid">
@@ -37,54 +37,54 @@ const ic = (name: string, color: string) =>
 
 const items: Feature[] = [
   {
-    key: 'stack',
-    title: '现代技术栈',
-    details: 'FastAPI · SQLAlchemy 2.0 · Pydantic v2 · Celery，全栈异步，生产可用',
-    icon: ic('ph:stack-duotone', '#009485'),
+    key: 'architecture',
+    title: '三层架构打底',
+    details: 'API → Service → CRUD/DAO 分层，边界清晰，配套代码生成，新人 30 分钟即可上手',
+    icon: ic('ph:squares-four-duotone', '#009485'),
     iconColor: '#009485',
     size: 'flagship',
     tone: 'brand',
   },
   {
-    key: 'jwt',
-    title: '高性能 JWT',
-    details: '缓存 + 白名单加持的自研认证中间件',
+    key: 'plugin',
+    title: '插件生态扩展',
+    details: 'AI、Auth、Storage、Notification 装即用、卸即净，企业可自建私有仓库',
+    icon: ic('ph:puzzle-piece-duotone', '#7c3aed'),
+    iconColor: '#7c3aed',
+    size: 'small',
+    tone: 'violet',
+  },
+  {
+    key: 'ai',
+    title: 'AI 项目上下文',
+    details: 'fba skills + LLMs.txt 让 Claude Code、Cursor、Codex 等直接读懂项目规范',
+    icon: ic('ph:sparkle-duotone', '#ec4899'),
+    iconColor: '#ec4899',
+    size: 'small',
+    tone: 'rose',
+  },
+  {
+    key: 'auth',
+    title: '认证权限内置',
+    details: 'JWT、RBAC、数据权限、OAuth 2.0 等企业基础件预置',
     icon: ic('ph:shield-check-duotone', '#0ea5e9'),
     iconColor: '#0ea5e9',
     size: 'small',
     tone: 'sky',
   },
   {
-    key: 'rbac',
-    title: '高级权限控制',
-    details: 'RBAC + 数据权限，颗粒度可调',
-    icon: ic('ph:key-duotone', '#f59e0b'),
+    key: 'ops',
+    title: '缓存队列与运维',
+    details: 'Redis、Celery、全链路日志、时区方案按需启用',
+    icon: ic('ph:stack-duotone', '#f59e0b'),
     iconColor: '#f59e0b',
     size: 'small',
     tone: 'amber',
   },
   {
-    key: 'codegen',
-    title: '内置代码生成器',
-    details: '预览、写入、下载，一键告别重复 CV',
-    icon: ic('ph:magic-wand-duotone', '#ec4899'),
-    iconColor: '#ec4899',
-    size: 'small',
-    tone: 'rose',
-  },
-  {
-    key: 'tz',
-    title: '全局时区支持',
-    details: '开箱即用的时区方案，告别时间错乱',
-    icon: ic('ph:globe-duotone', '#0ea5e9'),
-    iconColor: '#0ea5e9',
-    size: 'small',
-    tone: 'sky',
-  },
-  {
     key: 'docker',
     title: '一键容器部署',
-    details: 'Docker Compose 编排就位，极速上线',
+    details: 'Docker Compose 编排就位，MySQL / PostgreSQL 生产可用',
     icon: ic('ph:cloud-arrow-up-duotone', '#009485'),
     iconColor: '#009485',
     size: 'small',
