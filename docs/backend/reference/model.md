@@ -2,6 +2,10 @@
 title: 模型
 ---
 
+::: tip
+设计模型或迁移前，可结合 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 检查 Base、id_key、字段类型、主键模式和插件 SQL 初始化要求
+:::
+
 通用模型位于 `backend/common/model.py` 文件中
 
 ## 主键

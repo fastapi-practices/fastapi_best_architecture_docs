@@ -2,6 +2,10 @@
 title: 插件开发
 ---
 
+::: tip
+开发或审查插件时，建议让 AI 使用 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 的 plugin 参考；其中整理了 plugin.toml 校验、depends_on、热插拔配置、hooks、SQL 脚本和 README 规范
+:::
+
 ::: info
 在官方仓库中，包含多个内置插件，位于 `backend/plugin` 目录下，结合官方仓库阅读此文档，效果更佳
 :::

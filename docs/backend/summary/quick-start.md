@@ -161,6 +161,10 @@ Pydantic 的基础用法
 
 ## 开发流程
 
+::: tip
+使用 AI 辅助开发时，建议先安装 [fba skills](https://skills.sh/fastapi-practices/skills/fba)，再按 model、schema、router、service、crud 的顺序生成或审查代码
+:::
+
 ::: note
 仅供参考，实际以个人开发习惯为准
 :::

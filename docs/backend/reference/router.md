@@ -2,6 +2,10 @@
 title: 路由
 ---
 
+::: tip
+新增接口前，可使用 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 对齐路由结构、router 导入别名、CurrentSession / CurrentSessionTransaction 和响应模型用法
+:::
+
 fba 中的路由遵循 Restful API 规范
 
 ## 路由结构

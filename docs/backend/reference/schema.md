@@ -2,6 +2,10 @@
 title: schema
 ---
 
+::: tip
+让 AI 生成入参/出参模型时，先引用 [fba skills](https://skills.sh/fastapi-practices/skills/fba)，可以统一 SchemaBase、Field(description=...)、更新入参可选字段和驼峰返回约定
+:::
+
 在 fba 中，我们为 Schema 进行了大量量身定制，详情请查看：`backend\common\schema.py`
 
 ## 类命名

@@ -2,6 +2,11 @@
 title: 配置
 ---
 
+::: tip
+配置插件或部署参数时，可以让 AI 结合 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 检查
+backend/core/conf.py、.env、插件 [settings] 和配置优先级，减少环境差异导致的问题
+:::
+
 fba 配置文件位于 `backend/core/conf.py`
 ，所有应用和插件的配置都应统一放置在此文件内，包含  <Badge type="warning" text="env" /> 标签的配置默认为环境变量配置
 

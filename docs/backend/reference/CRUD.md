@@ -2,6 +2,10 @@
 title: CRUD
 ---
 
+::: tip
+编写 Service / CRUD 层时，可以让 AI 先读取 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 中的命名、编码风格和架构参考，避免把业务逻辑下沉到 CRUD 或把查询细节散落到 API 层
+:::
+
 我们在 fba 中使用 sqlalchemy-crud-plus 作为数据库操作基类，
 它是一款由我们自主构建的基于 SQLAlchemy 2.0 的高级异步 CRUD SDK，它可适用于任何 FastAPI + SQLAlchemy 项目
 

@@ -3,6 +3,10 @@ title: 代码生成
 ---
 
 ::: tip
+代码生成后仍建议结合 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 复核分层命名、响应模型、分页、事务、权限和格式化结果，不要把生成结果直接视为最终代码
+:::
+
+::: tip
 此功能当前仅适用于后端工程，不包含前端代码
 :::
 
