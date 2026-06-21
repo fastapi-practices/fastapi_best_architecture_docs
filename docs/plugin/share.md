@@ -2,7 +2,7 @@
 title: 插件分享
 ---
 
-想要将插件与他人分享，您必须为此创建一个公开的 Github 仓库
+想要将插件与他人分享，您必须为此创建一个公开的 GitHub 仓库
 
 ## 后端
 
@@ -10,11 +10,13 @@ title: 插件分享
 `插件名 == 仓库名` -> `ai == ai`
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性
+
+后端插件名也是 Python 包名，建议仅使用小写字母、数字和下划线
 :::
 
 :::: steps
 
-1. 创建插件 Github 仓库
+1. 创建插件 GitHub 仓库
 
    推荐通过 [fba_plugin_template](https://github.com/fastapi-practices/fba_plugin_template)
    创建。模板仓库内当前没有实质性内容，只是为了能够更好的将插件与 fba 关联起来
@@ -23,7 +25,7 @@ title: 插件分享
 
 2. 上传代码
 
-   将在 fba 中开发好的所有插件代码提交到刚刚创建的插件 Github 仓库中
+   将在 fba 中开发好的所有插件代码提交到刚刚创建的插件 GitHub 仓库中
 
    ::: important
    应拷贝插件目录中的所有文件，而不是拷贝插件目录
@@ -49,8 +51,7 @@ title: 插件分享
 
 2. 上传代码
 
-   将在 fba_ui 中开发好的所有插件代码提交到刚刚创建的插件 Github
-   仓库中，仅限 [Vben Admin Antd](../frontend/summary/intro.md) 工程
+   将在 [前端工程](../frontend/summary/intro.md) 中开发好的所有插件代码提交到刚刚创建的插件 GitHub 仓库中
 
    ::: important
    应拷贝插件目录中的所有文件，而不是拷贝插件目录
@@ -70,7 +71,7 @@ title: 插件分享
 
 1. Fork 仓库
 
-   [进入 fba 插件 github 仓库](https://github.com/fastapi-practices/plugins)，将仓库 fork 到个人账户
+   [进入 fba 插件 GitHub 仓库](https://github.com/fastapi-practices/plugins)，将仓库 fork 到个人账户
 
 2. 克隆仓库
 
@@ -122,7 +123,7 @@ title: 插件分享
 
 ## 更新插件
 
-要想更新插件，你需要为 fba 插件 github 仓库创建一个 PR.
+要想更新插件，你需要为 fba 插件 GitHub 仓库创建一个 PR.
 
 执行与发布相同的步骤，并更新以下行为：
 
