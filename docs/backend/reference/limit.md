@@ -27,9 +27,15 @@ RateLimiter 设计为 FastAPI 的依赖项，直接在路由中使用 `Depends` 
 
 ```python
 # 每分钟最多 60 次
+from fastapi import Depends
+from pyrate_limiter import Duration, Rate
+
+from backend.utils.limiter import RateLimiter
+
+
 @app.get(
     "/api/example", 
-    dependencies=[Depends(RateLimiter(Rate(5, Duration.MINUTE)))]
+    dependencies=[Depends(RateLimiter(Rate(60, Duration.MINUTE)))]
 )
 async def example():
     return {"message": "success"}
@@ -39,6 +45,12 @@ async def example():
 
 ```python
 # 每秒 10 次 + 每分钟 100 次
+from fastapi import Depends
+from pyrate_limiter import Duration, Rate
+
+from backend.utils.limiter import RateLimiter
+
+
 @app.post(
     "/api/heavy", 
     dependencies=[
@@ -57,8 +69,14 @@ async def heavy_endpoint():
 ### 自定义 Identifier
 
 ```python
+from fastapi import Depends, Request
+from pyrate_limiter import Duration, Rate
+
+from backend.utils.limiter import RateLimiter
+
+
 async def user_identifier(request: Request) -> str:
-    return f"user:{request.user.id}"
+    return f'user:{request.user.id}'
 
 
 @app.get(

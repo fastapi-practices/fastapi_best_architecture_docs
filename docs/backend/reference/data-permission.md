@@ -113,7 +113,7 @@ FastAPI 解析 Depends(DataPermissionFilter)
 filter_data_permission() 执行
     ├── 超级管理员 → 无过滤，查看所有数据
     ├── 角色 is_filter_scopes=False → 无过滤
-    ├── 无数据规则 → 无过滤
+    ├── 启用数据权限过滤但无可用数据规则 → 无可见数据
     └── 存在数据规则 → 构建 SQLAlchemy 条件
         ├── 解析模型模板变量（__ALL__ 等）
         ├── 解析字段模板变量（__dept_id__ 等）

@@ -47,7 +47,7 @@ title: Docker 部署
    @tab celery
 
    ```shell:no-line-numbers
-   docker build --build-arg SERVER_TYPE=celery -t fba_celery_independent .
+   docker build --build-arg SERVER_TYPE=fba_celery_worker -t fba_celery_worker_independent .
    ```
 
    :::
@@ -60,13 +60,13 @@ title: Docker 部署
    @tab fba
 
    ```shell:no-line-numbers
-   docker run -d -p 8000:8000 --name fba_server fba_server_independent
+   docker run -d -p 8001:8001 --name fba_server fba_server_independent
    ```
 
    @tab celery
 
    ```shell:no-line-numbers
-   docker run -d -p 8555:8555 --name fba_celery fba_celery_independent
+   docker run -d --name fba_celery_worker fba_celery_worker_independent
    ```
 
    :::

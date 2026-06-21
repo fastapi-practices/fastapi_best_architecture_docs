@@ -71,7 +71,15 @@ title: 主键
 
 1. 务必仔细查看本章节警告内容，确保数据库环境整洁
 2. 更新 `backend/core/conf.py` 中的 `DATABASE_PK_MODE` 配置为 `snowflake`
-3. 阅读 [注意事项](#注意事项)
+3. 按需配置雪花节点 ID
+4. 阅读 [注意事项](#注意事项)
+
+雪花算法支持两种节点分配方式：
+
+- 固定分配：同时配置 `SNOWFLAKE_DATACENTER_ID` 和 `SNOWFLAKE_WORKER_ID`
+- 自动分配：二者都保持为 `None`，服务启动时通过 Redis 自动抢占可用节点，并通过心跳续期
+
+`SNOWFLAKE_DATACENTER_ID` 和 `SNOWFLAKE_WORKER_ID` 必须同时配置或同时为空，且取值范围均为 `0` 到 `31`
 
 ::: caution Windows 平台警告
 如果你在 Windows 平台中使用 MySQL 8.0+，并且遇到 `asyncmy` 相关写入异常，可尝试将 `backend/database/db.py` 文件内的

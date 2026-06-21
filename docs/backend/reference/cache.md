@@ -27,32 +27,53 @@ redis_client: RedisCli = RedisCli()
 自动缓存函数结果
 
 ```python
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from backend.app.admin.crud.crud_user import user_dao
 from backend.common.cache.decorator import cached
 
-@cached(name="user:detail", key="user_id")
-async def get_user_detail(user_id: int):
-    user = await User.get_or_none(id=user_id)
-    return user.dict() if user else None
+
+@cached(name='user:detail', key='user_id')
+async def get_user_detail(db: AsyncSession, user_id: int):
+    return await user_dao.get(db, user_id)
 ```
 
 - 第一次调用 → 执行函数 → 缓存结果
 - 后续调用 → 直接从缓存（L1 或 Redis）返回
+- `key='user_id'` 表示从函数关键字参数中取 `user_id` 作为缓存键，最终键名类似 `user:detail:1`
 
 ### @cache_invalidate
 
 方法执行后自动失效指定缓存
 
 ```python
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from backend.app.admin.crud.crud_user import user_dao
 from backend.common.cache.decorator import cache_invalidate
 
-@cache_invalidate(name="user:detail", key="user_id")
-async def update_user(user_id: int, name: str):
-    await User.filter(id=user_id).update(name=name)
-    return {"message": "updated"}
+
+@cache_invalidate(name='user:detail', key='user_id')
+async def update_user(db: AsyncSession, user_id: int, name: str) -> None:
+    await user_dao.update(db, user_id, {'nickname': name})
 ```
 
 - 执行更新后 → 自动删除 L1 和 Redis 缓存
 - 通过 Pub/Sub 广播 → 通知其他节点清理本地 L1 缓存
+- 默认 `atomic=True`，缓存失效失败时会抛出异常，避免数据已经变更但缓存仍旧存在
+
+### key_builder
+
+如果缓存键无法直接从单个参数中获取，可使用自定义函数生成缓存键
+
+```python
+from backend.common.cache.decorator import cached, user_key_builder
+
+
+@cached(name='user:profile', key_builder=user_key_builder)
+async def get_current_user_profile():
+    ...
+```
 
 ## 对比
 

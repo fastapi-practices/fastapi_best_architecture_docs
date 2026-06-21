@@ -33,7 +33,7 @@ docs 在线文档地址
 
 redoc 在线文档地址
 
-### `FASTAPI_OPENAPI_URL` <Badge type="info" text="str" />
+### `FASTAPI_OPENAPI_URL` <Badge type="info" text="str | None" />
 
 openapi JSON 数据在线地址
 
@@ -153,11 +153,11 @@ Redis 缓存过期时长（秒）
 
 是否启用雪花算法作为分布式主键生成方案
 
-### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
+### `SNOWFLAKE_DATACENTER_ID` <Badge type="info" text="int | None" /> <Badge type="warning" text="env" />
 
 雪花算法数据中心 ID
 
-### `SNOWFLAKE_WORKER_ID` <Badge type="info" text="int" /> <Badge type="warning" text="env" />
+### `SNOWFLAKE_WORKER_ID` <Badge type="info" text="int | None" /> <Badge type="warning" text="env" />
 
 雪花算法工作机器 ID
 
