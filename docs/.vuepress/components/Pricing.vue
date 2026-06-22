@@ -83,7 +83,6 @@ import { openSponsorLink } from "../data/sponsors";
 .pricing-container {
   margin: 0 auto;
   max-width: 1200px;
-  min-height: 800px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -101,6 +100,7 @@ import { openSponsorLink } from "../data/sponsors";
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 750px;
 }
 
 .pricing-card.highlighted {
