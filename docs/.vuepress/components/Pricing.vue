@@ -83,6 +83,7 @@ import { openSponsorLink } from "../data/sponsors";
 .pricing-container {
   margin: 0 auto;
   max-width: 1200px;
+  min-height: 800px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
