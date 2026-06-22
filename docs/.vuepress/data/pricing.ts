@@ -9,8 +9,7 @@ export const plans = {
             '所有文档访问',
             '自由使用',
             'MIT 许可证',
-            '✨ 不要求保留版权',
-            '✨ 不要求保留许可证声明',
+            '不要求保留版权标识',
         ]
     },
     professional: {
@@ -25,7 +24,6 @@ export const plans = {
             'Discord 身份标签',
             'Discord 专属频道',
             '优先支持',
-            '部署指导',
         ]
     },
     enterprise: {
@@ -38,8 +36,9 @@ export const plans = {
         features: [
             '所有专业版功能',
             '专属企业群组',
-            '远程支持',
-            '......',
+            '1对1部署指导',
+            '架构使用答疑',
+            '远程协助',
         ]
     }
 }
