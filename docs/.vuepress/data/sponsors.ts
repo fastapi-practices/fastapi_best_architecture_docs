@@ -24,6 +24,12 @@ export const goldSponsors: Sponsor[] = [
     //    alt: 'Bywave',
     //    expiryTime: '2099-12-31T23:59:59',
     //},
+    {
+        link: 'https://cdn5.telesco.pe/file/mL5FgURZAJEoIHxEp84vXFkTfZpSaDDBYauk_PAw0bKaBWpLYgWkjAHboM_vpPe-VAJvD_KcCdKT8ph7T6sYqBpzOZnibPTurIpus_esTKdEVhLRNHzGZj6yCU92mSH4fx_oh_qZFrKr_sGLOEat9WyPbUMfXDNQOJKm6WEDEZhtU2U_tRuFi-XiIYp4Pc5NiSJsCsUO3E7NgRgWLFGklXTsrXm1kPaGgPU1KCaJUj_MhFwAb_6VNkq2k6VBWIFI3wFotH-t-ugZ5e3faQuG4m1VINZQDYt_mjFhc5I2-iif9WMkj7DsXEOMV5tCl-gGXgIlw3nTpd9D0DHswSi3XQ.jpg',
+        href: 'https://xn--mesr8b36x.com/#/register?code=vpybf4Rw',
+        alt: '大机场',
+        expiryTime: '2099-12-31T23:59:59',
+    },
     { ...defaultSponsor }
 ]
 
