@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { h, ref } from 'vue'
+import { h, onBeforeUnmount, ref } from 'vue'
 
 type SponsorTab = 'honor' | 'booth'
-type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'sponsor'
+type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'copy' | 'sponsor'
+type SnippetKey = 'promotion' | 'inquiry'
 
 const activeTab = ref<SponsorTab>('honor')
+const copiedSnippet = ref<SnippetKey | ''>('')
+let copiedSnippetTimer: ReturnType<typeof setTimeout> | null = null
 
 const tabs: { key: SponsorTab; label: string }[] = [
   { key: 'honor', label: '荣誉赞助' },
@@ -35,14 +38,28 @@ const boothPlans = [
     name: '独家展位',
     status: '空缺',
     price: '沟通 / 月',
-    placements: ['首页独家展示位', '文档左侧边栏独家展示位', '文档右侧边栏独家展示位', '博客右侧边栏独家展示位', '移动端可见'],
+    quota: '仅 1 席',
+    placements: [
+      '首页独家展示位',
+      'GitHub README 可见',
+      'CLI 启动命令可见',
+      '文档左侧边栏独家展示位',
+      '文档右侧边栏独家展示位',
+      '博客右侧边栏独家展示位',
+      '移动端可见',
+    ],
     material: '7:3 横版图，品牌名、Logo、链接',
   },
   {
     name: '金牌展位',
     status: '空缺',
     price: '沟通 / 月',
-    placements: ['首页轮播固定展示位', '文档右侧边栏大号展示位'],
+    quota: '仅 3 席',
+    placements: [
+      '首页轮播固定展示位',
+      'GitHub README 可见',
+      '文档右侧边栏大号展示位',
+    ],
     material: '同独家',
   },
   {
@@ -63,6 +80,18 @@ const promotionRules = [
   '拒绝一切违反法律法规、灰产相关的产品推广',
 ]
 
+const inquiryLines = [
+  '产品名称：',
+  '官网 / 落地页：',
+  '意向档位：独家 / 金牌 / 银牌',
+  '投放周期：1 个月 / 3 个月 / 12 个月',
+  '希望上线时间：',
+  '联系方式：',
+]
+
+const sponsorEmail = 'jianhengwu0407@gmail.com'
+const sponsorMailto = `mailto:${sponsorEmail}?subject=${encodeURIComponent('fba 展位赞助咨询')}&body=${encodeURIComponent(inquiryLines.join('\n'))}`
+
 const announcementLines = [
   '感谢 xxx 老板对 fba 项目的慷慨赞助，以下是老板的产品，大家感兴趣的可以关注一下：',
   'xxx 商品名称',
@@ -74,6 +103,7 @@ const iconPaths: Record<SponsorIconName, string[]> = {
   wechat: ['M10 6a6 5 0 0 0-6 5c0 1.7.9 3.2 2.4 4.1L6 18l2.8-1.5c.4.1.8.1 1.2.1a6 5 0 0 0 6-5 6 5 0 0 0-6-5.6Z', 'M14 10a5 4.2 0 0 1 5 4.2c0 1.4-.7 2.6-1.9 3.4l.3 2.4-2.3-1.2h-1.1a5 4.2 0 0 1-5-4.2'],
   'arrow-right': ['M5 12h14', 'm13 6 6 6-6 6'],
   check: ['m5 12 4 4L19 6'],
+  copy: ['M8 8h10v10H8z', 'M5 16H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1'],
   sponsor: ['M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z'],
 }
 
@@ -93,6 +123,40 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
     'stroke-linejoin': 'round',
   })),
 )
+
+const copySnippet = async (key: SnippetKey, lines: string[]) => {
+  const text = lines.join('\n')
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text)
+    } else {
+      const textarea = document.createElement('textarea')
+      textarea.value = text
+      textarea.setAttribute('readonly', '')
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+    }
+
+    copiedSnippet.value = key
+
+    if (copiedSnippetTimer) clearTimeout(copiedSnippetTimer)
+    copiedSnippetTimer = setTimeout(() => {
+      copiedSnippet.value = ''
+      copiedSnippetTimer = null
+    }, 1800)
+  } catch (e) {
+    console.warn('Copy sponsor snippet failed:', e)
+  }
+}
+
+onBeforeUnmount(() => {
+  if (copiedSnippetTimer) clearTimeout(copiedSnippetTimer)
+})
 </script>
 
 <template>
@@ -147,7 +211,7 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
           <h2 id="booth-title">展位赞助</h2>
           <p>适合希望触达 fba 文档读者的产品或服务。请先联系作者确认价格、排期和素材</p>
         </div>
-        <a class="contact-button" href="./group.html">联系作者</a>
+        <a class="contact-button" :href="sponsorMailto">邮件联系</a>
       </div>
 
       <div class="booth-grid">
@@ -155,7 +219,10 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
           :class="{ 'is-full': isBoothFull(plan) }">
           <div class="booth-head">
             <div>
-              <span>{{ plan.status }}</span>
+              <div class="booth-badges">
+                <span>{{ plan.status }}</span>
+                <span v-if="plan.quota" class="booth-quota">{{ plan.quota }}</span>
+              </div>
               <h3>{{ plan.name }}</h3>
             </div>
             <strong v-if="!isBoothFull(plan)">{{ plan.price }}</strong>
@@ -174,12 +241,36 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
         <aside class="callout-card promotion">
           <strong>推广:</strong>
           <div>
-            <p>选择【独家展位、特别展位】赞助，可帮助您的产品在 Discord 社区和微信交流群以公告的形式进行推广一次</p>
+            <p>选择【独家展位、金牌展位】赞助，可帮助您的产品在 Discord 社区以公告的形式进行推广一次</p>
             <ul class="plain-list">
               <li v-for="rule in promotionRules" :key="rule">{{ rule }}</li>
             </ul>
             <p>公告消息如下：（您也可以提供自定义非政治、非法律法规敏感的推广词/图片）</p>
-            <pre class="announcement"><code>{{ announcementLines.join('\n') }}</code></pre>
+            <div class="snippet-block">
+              <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'promotion' }"
+                :aria-label="copiedSnippet === 'promotion' ? '已复制公告消息' : '复制公告消息'"
+                :title="copiedSnippet === 'promotion' ? '已复制' : '复制'"
+                @click="copySnippet('promotion', announcementLines)">
+                <SponsorIcon name="copy" />
+              </button>
+              <pre class="announcement"><code>{{ announcementLines.join('\n') }}</code></pre>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="callout-card inquiry">
+          <strong>咨询:</strong>
+          <div>
+            <p>联系作者时可直接发送以下信息，方便快速确认价格、排期和展示素材</p>
+            <div class="snippet-block">
+              <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'inquiry' }"
+                :aria-label="copiedSnippet === 'inquiry' ? '已复制咨询模板' : '复制咨询模板'"
+                :title="copiedSnippet === 'inquiry' ? '已复制' : '复制'"
+                @click="copySnippet('inquiry', inquiryLines)">
+                <SponsorIcon name="copy" />
+              </button>
+              <pre class="announcement"><code>{{ inquiryLines.join('\n') }}</code></pre>
+            </div>
           </div>
         </aside>
 
@@ -256,8 +347,10 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
 }
 
 .sponsor-tabs {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
+  width: 100%;
   padding: 4px;
   margin-bottom: 26px;
   border: 1px solid var(--sponsor-line);
@@ -416,6 +509,11 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   color: var(--sponsor-ink);
 }
 
+.callout-card>div {
+  flex: 1;
+  min-width: 0;
+}
+
 .callout-card p+.plain-list,
 .callout-card .plain-list+p {
   margin-top: 10px;
@@ -442,6 +540,11 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
 
 .callout-card.warning strong {
   color: #dc2626;
+}
+
+.callout-card.inquiry {
+  border-color: color-mix(in srgb, var(--sponsor-brand) 28%, var(--sponsor-line));
+  background: var(--sponsor-brand-soft);
 }
 
 .check-list,
@@ -525,15 +628,26 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   gap: 12px;
 }
 
+.booth-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
 .booth-head span {
   display: inline-flex;
-  margin-bottom: 7px;
   padding: 2px 7px;
   border-radius: 999px;
   color: var(--sponsor-brand);
   background: var(--sponsor-brand-soft);
   font-size: 12px;
   font-weight: 700;
+}
+
+.booth-head .booth-quota {
+  color: #7c3aed;
+  background: color-mix(in srgb, #7c3aed 12%, transparent);
 }
 
 .booth-head strong {
@@ -572,14 +686,53 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   padding-left: 1.15em;
 }
 
-.announcement {
+.snippet-block {
+  position: relative;
   margin: 12px 0 0;
-  padding: 12px;
-  overflow-x: auto;
+  overflow: hidden;
+  width: 100%;
   border: 1px solid var(--sponsor-line);
   border-radius: 10px;
-  color: var(--sponsor-ink);
   background: var(--sponsor-card);
+}
+
+.snippet-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--sponsor-brand) 24%, var(--sponsor-line));
+  border-radius: 7px;
+  color: var(--sponsor-brand);
+  background: color-mix(in srgb, var(--sponsor-brand) 10%, var(--sponsor-card));
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.snippet-copy .sponsor-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.snippet-copy:hover,
+.snippet-copy.copied {
+  color: #fff;
+  background: var(--sponsor-brand);
+  border-color: var(--sponsor-brand);
+}
+
+.announcement {
+  margin: 0;
+  padding: 12px 48px 12px 12px;
+  overflow-x: auto;
+  color: var(--sponsor-ink);
+  background: transparent;
   font-size: 12px;
   line-height: 1.7;
   white-space: pre-wrap;
@@ -608,8 +761,6 @@ const SponsorIcon = (props: { name: SponsorIconName }) => h(
   }
 
   .sponsor-tabs {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
   }
 
