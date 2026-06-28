@@ -5,7 +5,7 @@
       <span class="vp-tagline"> · 企业级</span>
       <span class="vp-place">后端架构解决方案</span>
       <span class="vp-date"> · 完全开源</span>
-      <a class="vp-primary-action" href="/fastapi_best_architecture_docs/users.html" target="_self">用户登记</a>
+      <a class="vp-primary-action" :href="withBase('/users.html')" target="_self">用户登记</a>
     </p>
     <button @click="dismiss">
       <Icon name="mingcute:close-fill" />
@@ -19,6 +19,7 @@
 
 <script setup>
 import { useStorage } from "@vueuse/core";
+import { withBase } from "vuepress/client";
 
 const isDismissed = useStorage("fba-docs-banner-top", true);
 

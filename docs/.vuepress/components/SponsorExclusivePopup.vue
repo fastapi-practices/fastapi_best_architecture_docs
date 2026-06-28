@@ -19,13 +19,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { withBase } from 'vuepress/client'
 import { homeSponsor, shouldShowSponsor } from '../data/sponsors'
 import GradientText from './bits/GradientText.vue'
 
 const hasBrand = computed(() => shouldShowSponsor(homeSponsor))
+const sponsorHref = computed(() => withBase('/sponsors.html'))
 const targetHref = computed(() => hasBrand.value
-  ? homeSponsor.href || '/fastapi_best_architecture_docs/sponsors.html'
-  : '/fastapi_best_architecture_docs/sponsors.html')
+  ? homeSponsor.href || sponsorHref.value
+  : sponsorHref.value)
 const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.value))
 </script>
 

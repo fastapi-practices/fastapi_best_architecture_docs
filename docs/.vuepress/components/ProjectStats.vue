@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, reactive } from 'vue'
+import { withBase } from 'vuepress/client'
 
 interface RawStats {
   stars: number | null
@@ -166,7 +167,7 @@ const items = computed(() => [
     display: format(stats.plugins),
     suffix: '',
     loading: loading.plugins,
-    href: '/fastapi_best_architecture_docs/marketplace.html',
+    href: withBase('/marketplace.html'),
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-3V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3H4a1 1 0 0 0-1 1v8a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V8a1 1 0 0 0-1-1z"/><path d="M9 14v3"/><path d="M15 14v3"/></svg>`,
   },
 ])

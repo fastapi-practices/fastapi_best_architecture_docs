@@ -1,4 +1,8 @@
-export const sponsorUrl: string = typeof window !== 'undefined' ? window.location.origin + '/fastapi_best_architecture_docs/sponsors.html' : 'https://fastapi-practices.github.io/fastapi_best_architecture_docs/sponsors.html';
+import { withBase } from 'vuepress/client';
+
+const sponsorPath = withBase('/sponsors.html');
+
+export const sponsorUrl: string = typeof window !== 'undefined' ? window.location.origin + sponsorPath : sponsorPath;
 
 export interface Sponsor {
     link: string;

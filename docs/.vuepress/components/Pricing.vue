@@ -18,7 +18,7 @@
           </ul>
         </div>
         <button class="cta-button"
-          @click="openSponsorLink('/fastapi_best_architecture_docs/backend/summary/quick-start.html')">
+          @click="openSponsorLink(withBase('/backend/summary/quick-start.html'))">
           立即使用
         </button>
       </div>
@@ -45,7 +45,7 @@
         </div>
         <p style="text-align: center; color: var(--vp-c-text-2);">此版本用于赞助支持</p>
         <button class="cta-button primary"
-          @click="openSponsorLink('/fastapi_best_architecture_docs/sponsors.html')">立即购买
+          @click="openSponsorLink(withBase('/sponsors.html'))">立即购买
         </button>
       </div>
 
@@ -75,6 +75,7 @@
 </template>
 
 <script setup>
+import { withBase } from "vuepress/client";
 import { plans } from "../data/pricing";
 import { openSponsorLink } from "../data/sponsors";
 </script>

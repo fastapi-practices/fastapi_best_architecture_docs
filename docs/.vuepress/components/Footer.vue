@@ -14,7 +14,7 @@
           <a href="https://discord.com/invite/yNN3wTbVAC" target="_blank" class="social-link">
             <Icon name="line-md:discord" size="2rem" />
           </a>
-          <a href="/fastapi_best_architecture_docs/blog/" class="social-link">
+          <a :href="withBase('/blog/')" class="social-link">
             <Icon name="la:blog" size="2rem" />
           </a>
         </div>
@@ -22,7 +22,7 @@
       <div class="footer-section">
         <div class="section-title">使用文档</div>
         <div class="link-list">
-          <a v-for="link in links.product" :key="link.name" :href="link.href"
+          <a v-for="link in links.product" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
@@ -31,7 +31,7 @@
       <div class="footer-section">
         <div class="section-title">生态系统</div>
         <div class="link-list">
-          <a v-for="link in links.community" :key="link.name" :href="link.href"
+          <a v-for="link in links.community" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
@@ -40,7 +40,7 @@
       <div class="footer-section">
         <div class="section-title">插件系统</div>
         <div class="link-list">
-          <a v-for="link in links.resources" :key="link.name" :href="link.href"
+          <a v-for="link in links.resources" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
             {{ link.name }}
           </a>
@@ -49,7 +49,7 @@
       <div class="footer-section">
         <div class="section-title">更多</div>
         <div class="link-list">
-          <a v-for="link in links.friendlyLinks" :key="link.name" :href="link.href" rel="noopener noreferrer"
+          <a v-for="link in links.friendlyLinks" :key="link.name" :href="resolveLink(link.href)" rel="noopener noreferrer"
             class="footer-link">
             {{ link.name }}
           </a>
@@ -86,34 +86,38 @@
 </template>
 
 <script setup>
+import { withBase } from "vuepress/client";
+
 const currentYear = new Date().getFullYear();
+
+const resolveLink = (href) => href.startsWith("http") ? href : withBase(href);
 
 const links = {
   product: [
-    { name: "快速开始", href: "/fastapi_best_architecture_docs/backend/summary/quick-start" },
-    { name: "Vben UI", href: "/fastapi_best_architecture_docs/frontend/summary/intro" },
+    { name: "快速开始", href: "/backend/summary/quick-start" },
+    { name: "Vben UI", href: "/frontend/summary/intro" },
     { name: "接口文档", href: "https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0" },
-    { name: "常见问题", href: "/fastapi_best_architecture_docs/questions" },
+    { name: "常见问题", href: "/questions" },
     {
       name: "更新记录",
       href: "https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md"
     },
   ],
   community: [
-    { name: "技术栈", href: "/fastapi_best_architecture_docs/stack" },
-    { name: "交流群", href: "/fastapi_best_architecture_docs/group" },
+    { name: "技术栈", href: "/stack" },
+    { name: "交流群", href: "/group" },
     { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi-best-architecture/issues" },
     { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi-best-architecture/discussions" },
     { name: "想法和建议", href: "https://discord.gg/xp8M6nY4NA" },
   ],
   resources: [
-    { name: "插件开发", href: "/fastapi_best_architecture_docs/plugin/dev" },
-    { name: "插件分享", href: "/fastapi_best_architecture_docs/plugin/share" },
-    { name: "插件安装", href: "/fastapi_best_architecture_docs/plugin/install" },
-    { name: "插件市场", href: "/fastapi_best_architecture_docs/marketplace" },
+    { name: "插件开发", href: "/plugin/dev" },
+    { name: "插件分享", href: "/plugin/share" },
+    { name: "插件安装", href: "/plugin/install" },
+    { name: "插件市场", href: "/marketplace" },
   ],
   friendlyLinks: [
-    { name: "隐私政策", href: "/fastapi_best_architecture_docs/privacy-policy" },
+    { name: "隐私政策", href: "/privacy-policy" },
     { name: "服务状态", href: "https://status.wu-clan.site/status/services" },
   ],
 };

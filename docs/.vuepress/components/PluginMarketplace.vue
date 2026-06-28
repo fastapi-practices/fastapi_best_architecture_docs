@@ -8,9 +8,9 @@
         维护的插件，扩展你的应用能力
       </p>
       <div class="header-actions">
-        <a href="/fastapi_best_architecture_docs/plugin/dev" class="action-link">创建插件</a>
+        <a :href="withBase('/plugin/dev')" class="action-link">创建插件</a>
         <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">申请插件</a>
-        <a href="/fastapi_best_architecture_docs/plugin/share" class="action-link">发布插件</a>
+        <a :href="withBase('/plugin/share')" class="action-link">发布插件</a>
       </div>
     </header>
 
@@ -158,6 +158,7 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 import { ref, computed, onMounted, onBeforeUnmount, reactive } from 'vue'
+import { withBase } from 'vuepress/client'
 
 type PluginType = 'backend' | 'frontend'
 
@@ -207,7 +208,7 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000
 const STAR_CACHE_KEY = 'fba_plugins_stars_cache'
 const STAR_CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIX = '_ui'
-const INSTALL_DOC_BASE = '/fastapi_best_architecture_docs/plugin/install.html'
+const INSTALL_DOC_BASE = withBase('/plugin/install.html')
 
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',

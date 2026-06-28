@@ -12,8 +12,8 @@ title: LLMs.txt
 
 我们提供多个 llms.txt 路由来帮助 AI 工具访问文档：
 
-- [llms.txt](https://docs.fba.wu-clan.cc/fastapi_best_architecture_docs/llms.txt) - 包含主要文档入口和链接的结构化概览
-- [llms-full.txt](https://docs.fba.wu-clan.cc/fastapi_best_architecture_docs/llms-full.txt) - 提供包含实现细节和示例的完整文档
+- [llms.txt](https://docs.fba.wu-clan.cc/llms.txt) - 包含主要文档入口和链接的结构化概览
+- [llms-full.txt](https://docs.fba.wu-clan.cc/llms-full.txt) - 提供包含实现细节和示例的完整文档
 
 ## 在 AI 工具中的使用
 

@@ -4,9 +4,8 @@ import { myBulletin } from "./bulletin";
 import { mySidebar } from "./sidebar";
 import { myNavbar } from "./navbar";
 
-export const myTheme: Theme = plumeTheme({
-  hostname:
-    "https://fastapi-practices.github.io/fastapi_best_architecture_docs/",
+export const createTheme = (hostname: string): Theme => plumeTheme({
+  hostname,
   logo: "https://wu-clan.github.io/picx-images-hosting/logo/fba.png",
   docsRepo:
     "https://github.com/fastapi-practices/fastapi_best_architecture_docs",
@@ -80,3 +79,5 @@ export const myTheme: Theme = plumeTheme({
     locale: "/",
   },
 });
+
+export const myTheme: Theme = createTheme("https://fastapi-practices.github.io");

@@ -5,7 +5,7 @@
       <p class="hs-desc">
         如果 fba 为你省下时间，欢迎请作者喝杯奶茶，让我们走得更远
       </p>
-      <a href="/fastapi_best_architecture_docs/sponsors.html" class="hs-btn">
+      <a :href="withBase('/sponsors.html')" class="hs-btn">
         支持一下
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round" aria-hidden="true">
@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vuepress/client'
 </script>
 
 <style scoped>
