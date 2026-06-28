@@ -707,10 +707,10 @@ onBeforeUnmount(() => {
   width: 28px;
   height: 28px;
   padding: 0;
-  border: 1px solid color-mix(in srgb, var(--sponsor-brand) 24%, var(--sponsor-line));
+  border: 1px solid var(--sponsor-line);
   border-radius: 7px;
-  color: var(--sponsor-brand);
-  background: color-mix(in srgb, var(--sponsor-brand) 10%, var(--sponsor-card));
+  color: var(--sponsor-muted);
+  background: color-mix(in srgb, var(--sponsor-muted) 8%, var(--sponsor-card));
   cursor: pointer;
   transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
@@ -722,9 +722,9 @@ onBeforeUnmount(() => {
 
 .snippet-copy:hover,
 .snippet-copy.copied {
-  color: #fff;
-  background: var(--sponsor-brand);
-  border-color: var(--sponsor-brand);
+  color: var(--sponsor-ink);
+  background: color-mix(in srgb, var(--sponsor-muted) 12%, var(--sponsor-card));
+  border-color: color-mix(in srgb, var(--sponsor-muted) 30%, var(--sponsor-line));
 }
 
 .announcement {
