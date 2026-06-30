@@ -27,9 +27,6 @@ importers:
       '@vuepress/plugin-baidu-analytics':
         specifier: 2.0.0-rc.130
         version: 2.0.0-rc.130(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))
-      '@vuepress/plugin-clarity-analytics':
-        specifier: 2.0.0-rc.130
-        version: 2.0.0-rc.130(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1054,11 +1051,6 @@ packages:
 
   '@vuepress/plugin-cache@2.0.0-rc.130':
     resolution: {integrity: sha512-x1QSGZ8ZaDo/2n5Sh3xTUmEE0ZfZZn870rvwYZ6A5RGBtsS86WeWrt68LIqFm1SrueyUrzBOWIwlLNm/jawz1w==}
-    peerDependencies:
-      vuepress: 2.0.0-rc.30
-
-  '@vuepress/plugin-clarity-analytics@2.0.0-rc.130':
-    resolution: {integrity: sha512-laXslCVHvmOVkGg3dJ6gv5H5+KA0TLTKf/7bqR9j5s7pIrLTdf5TuF+jEpGoHaPlHj62sMa2N4zfCdyGrtn3yA==}
     peerDependencies:
       vuepress: 2.0.0-rc.30
 
@@ -3738,16 +3730,6 @@ snapshots:
       ci-info: 4.4.0
       lru-cache: 11.5.1
       vuepress: 2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3))
-
-  '@vuepress/plugin-clarity-analytics@2.0.0-rc.130(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))':
-    dependencies:
-      '@vuepress/helper': 2.0.0-rc.130(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))
-      vue: 3.5.35(typescript@6.0.3)
-      vuepress: 2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3))
-    transitivePeerDependencies:
-      - '@vuepress/bundler-vite'
-      - '@vuepress/bundler-webpack'
-      - typescript
 
   '@vuepress/plugin-comment@2.0.0-rc.130(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(typescript@6.0.3)(yaml@2.9.0))(typescript@6.0.3)(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))':
     dependencies:

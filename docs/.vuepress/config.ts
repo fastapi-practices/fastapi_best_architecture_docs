@@ -17,9 +17,6 @@ export default defineUserConfig({
         baiduAnalyticsPlugin({
             id: '3fac49b26d8f26702c22aad4381c0641'
         }),
-        clarityAnalyticsPlugin({
-            id: 'uhawbqsmxt'
-        })
     ],
     bundler: viteBundler(),
     shouldPrefetch: false,
