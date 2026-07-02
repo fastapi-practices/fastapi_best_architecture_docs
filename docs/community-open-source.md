@@ -21,3 +21,7 @@ title: 社区开源
 <CardGrid>
   <RepoCard repo="eginner01/uFBA-shadcn-ui" :fullname="false" />
 </CardGrid>
+
+<CardGrid>
+  <RepoCard repo="yuWorm/fba-ui-shadcn-react" :fullname="false" />
+</CardGrid>
