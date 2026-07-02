@@ -1,0 +1,1 @@
+import{Vr as e}from"./common-B3xBdDlO.js";export{e as createArchitectureServices};
