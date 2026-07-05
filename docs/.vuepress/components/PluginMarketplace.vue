@@ -69,7 +69,7 @@
                   <span class="card-title">{{ plugin.plugin.summary }}</span>
                   <span class="card-version">v{{ plugin.plugin.version }}</span>
                 </div>
-                <p class="card-author">{{ plugin.plugin.author }} / {{ getName(plugin.git.path) }}</p>
+                <p class="card-author">{{ plugin.plugin.author }} / {{ getPluginName(plugin.git.path) }}</p>
               </div>
             </a>
           </div>
@@ -207,7 +207,7 @@ const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
 const STAR_CACHE_KEY = 'fba_plugins_stars_cache'
 const STAR_CACHE_DURATION = 24 * 60 * 60 * 1000
-const FRONTEND_REPO_SUFFIX = '_ui'
+const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
 const INSTALL_DOC_BASE = withBase('/plugin/install.html')
 
 const DATA_SOURCES = [
@@ -250,6 +250,7 @@ const filteredPlugins = computed(() => {
       p.plugin?.summary?.toLowerCase().includes(query) ||
       p.plugin?.description?.toLowerCase().includes(query) ||
       p.plugin?.author?.toLowerCase().includes(query) ||
+      getPluginName(p.git?.path || '').toLowerCase().includes(query) ||
       p.git?.path?.toLowerCase().includes(query)
     )
   }
@@ -257,18 +258,28 @@ const filteredPlugins = computed(() => {
   return result
 })
 
-const getName = (path: string): string => {
+const getRepoName = (path: string): string => {
   if (!path) return 'unknown'
   const parts = path.split('/')
   return parts[parts.length - 1] || 'unknown'
 }
 
+const getFrontendRepoSuffix = (repoName: string): string => {
+  return FRONTEND_REPO_SUFFIXES.find(suffix => repoName.endsWith(suffix)) || ''
+}
+
+const getPluginName = (path: string): string => {
+  const repoName = getRepoName(path)
+  const suffix = getFrontendRepoSuffix(repoName)
+  return suffix ? repoName.slice(0, -suffix.length) : repoName
+}
+
 const getInitial = (path: string): string => {
-  return getName(path).charAt(0).toUpperCase()
+  return getPluginName(path).charAt(0).toUpperCase()
 }
 
 const getPluginType = (path: string): PluginType => {
-  return getName(path).endsWith(FRONTEND_REPO_SUFFIX) ? 'frontend' : 'backend'
+  return getFrontendRepoSuffix(getRepoName(path)) ? 'frontend' : 'backend'
 }
 
 const getInstallUrl = (path: string): string => {

@@ -10,8 +10,6 @@ title: 插件分享
 `插件名 == 仓库名` -> `ai == ai`
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性
-
-后端插件名也是 Python 包名，建议仅使用小写字母、数字和下划线
 :::
 
 :::: steps
@@ -36,9 +34,10 @@ title: 插件分享
 ## 前端
 
 ::: warning 插件仓库命名规则
-`插件名 == 仓库名_ui` -> `ai == ai_ui`
+- `插件名 == 仓库名_ui` -> `ai == ai_ui`
+- `插件名 == 仓库名-ui` -> `ai-chat == ai-chat-ui`
 
-为了更好的与后端插件进行区分，必须为前端插件仓库名添加 `_ui` 后缀
+为了更好的与后端插件进行区分，必须为前端插件仓库名添加 `_ui` 或 `-ui` 后缀
 
 插件总是独一无二的，不允许安装同名插件，所以在对插件进行命名时，应尽量保持其独特性
 :::
@@ -91,6 +90,8 @@ title: 插件分享
 
    ```shell
    # 注意替换 your-username、your-plugin-name
+   # 后端插件：plugins/your-plugin-name
+   # 前端插件：plugins/your-plugin-name-ui 或 plugins/your_plugin_name_ui
    git submodule add https://github.com/your-username/your-plugin-name.git plugins/your-plugin-name
    git add plugins/your-plugin-name
    ```
