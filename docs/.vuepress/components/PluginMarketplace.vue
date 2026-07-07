@@ -5,7 +5,7 @@
       <p class="header-subtitle">
         发现由
         <a href="https://github.com/fastapi-practices/plugins" target="_blank">fastapi-practices/plugins</a>
-        维护的插件，扩展你的应用能力
+        收录的插件，扩展你的应用能力
       </p>
       <div class="header-actions">
         <a :href="withBase('/plugin/dev')" class="action-link">创建插件</a>
@@ -70,6 +70,14 @@
                   <span class="card-version">v{{ plugin.plugin.version }}</span>
                 </div>
                 <p class="card-author">{{ plugin.plugin.author }} / {{ getPluginName(plugin.git.path) }}</p>
+                <div class="card-badges">
+                  <span class="card-badge" :class="`card-badge-${getPluginType(plugin.git.path)}`">
+                    {{ getPluginTypeLabel(plugin.git.path) }}
+                  </span>
+                  <span class="card-badge" :class="getMaintainerBadgeClass(plugin)">
+                    {{ getMaintainerLabel(plugin) }}
+                  </span>
+                </div>
               </div>
             </a>
           </div>
@@ -282,6 +290,10 @@ const getPluginType = (path: string): PluginType => {
   return getFrontendRepoSuffix(getRepoName(path)) ? 'frontend' : 'backend'
 }
 
+const getPluginTypeLabel = (path: string): string => {
+  return getPluginType(path) === 'frontend' ? '前端' : '后端'
+}
+
 const getInstallUrl = (path: string): string => {
   return `${INSTALL_DOC_BASE}${getPluginType(path) === 'frontend' ? '#前端' : '#后端'}`
 }
@@ -314,6 +326,22 @@ const getRepoFullName = (url: string): string => {
   const match = url.match(/github\.com\/([^/]+)\/([^/?#]+)/i)
   if (!match) return ''
   return `${match[1]}/${match[2].replace(/\.git$/i, '')}`
+}
+
+const getRepoOwner = (url: string): string => {
+  return getRepoFullName(url).split('/')[0] || ''
+}
+
+const isOfficialPlugin = (plugin: PluginItem): boolean => {
+  return getRepoOwner(plugin.git.url) === 'fastapi-practices'
+}
+
+const getMaintainerLabel = (plugin: PluginItem): string => {
+  return isOfficialPlugin(plugin) ? '官方' : '社区'
+}
+
+const getMaintainerBadgeClass = (plugin: PluginItem): string => {
+  return isOfficialPlugin(plugin) ? 'card-badge-official' : 'card-badge-community'
 }
 
 const getStarUrl = (url: string): string => {
@@ -955,6 +983,51 @@ onBeforeUnmount(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 7px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 62%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 82%, transparent);
+  border-radius: 999px;
+}
+
+.card-badge-backend {
+  color: var(--backend-accent);
+  border-color: color-mix(in srgb, var(--backend-accent) 22%, var(--vp-c-divider));
+  background: color-mix(in srgb, var(--backend-accent) 10%, transparent);
+}
+
+.card-badge-frontend {
+  color: var(--frontend-accent);
+  border-color: color-mix(in srgb, var(--frontend-accent) 22%, var(--vp-c-divider));
+  background: color-mix(in srgb, var(--frontend-accent) 10%, transparent);
+}
+
+.card-badge-official {
+  color: #0f766e;
+  border-color: color-mix(in srgb, #0f766e 22%, var(--vp-c-divider));
+  background: color-mix(in srgb, #0f766e 10%, transparent);
+}
+
+.card-badge-community {
+  color: #b45309;
+  border-color: color-mix(in srgb, #b45309 22%, var(--vp-c-divider));
+  background: color-mix(in srgb, #b45309 10%, transparent);
 }
 
 .card-desc {
