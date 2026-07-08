@@ -57,12 +57,12 @@ fba 会在每次启动前对所有插件进行实时解析
 
 ### 数据库兼容性
 
-fba 内置插件同时兼容 MySQL 和 PostgreSQL。第三方插件可以根据自身场景选择支持的数据库，并在 `plugin.toml` 的 `[plugin].database` 中声明支持范围；如果需要同时兼容多种数据库，请参考
+fba 内置插件同时兼容 MySQL 和 PostgreSQL。应用级和扩展级插件必须在 `plugin.toml` 的 `[plugin].database` 中声明支持范围，能力型插件如果不包含模型或 SQL，则可以省略 `[plugin].database`；如果需要同时兼容多种数据库，请参考
 SQLAlchemy 2.0 
 官方文档：[TypeDecorator](https://docs.sqlalchemy.org/en/20/core/custom_types.html#typedecorator-recipes)、
 [with_variant](https://docs.sqlalchemy.org/en/20/core/type_api.html#sqlalchemy.types.TypeEngine.with_variant)
 
-如果插件包含 `model` 目录，则必须至少为一种数据库提供完整的初始化和销毁 SQL 脚本，包括 `init.sql`、`destroy.sql`、`init_snowflake.sql`、`destroy_snowflake.sql`。`[plugin].database` 中声明的数据库应与实际提供的 SQL 脚本保持一致
+如果插件包含 `model` 目录，则必须声明 `[plugin].database`，并至少为一种数据库提供完整的初始化和销毁 SQL 脚本，包括 `init.sql`、`destroy.sql`、`init_snowflake.sql`、`destroy_snowflake.sql`。`[plugin].database` 中声明的数据库应与实际提供的 SQL 脚本保持一致
 
 ### 插件目录结构
 
@@ -205,9 +205,6 @@ author = ''
 # 标签
 # 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
-# 数据库支持
-# 当前支持：mysql、postgresql
-database = ['']
 
 # 代码中的配置项（全大写）
 # 该配置项为可选，详情请查看：热插拔
