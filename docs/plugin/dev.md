@@ -33,11 +33,14 @@ title: 插件开发
 
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 此类插件会被注入到 app 目录下已存在的应用中，目标应用由 `plugin.toml` 中的 `[app].extend` 指定，我们称这类插件为【扩展级插件】
+
+@tab <Icon name="material-symbols:extension-outline" />能力型插件
+此类插件不会注入路由，只提供可被其他代码导入的能力，例如工具函数、SDK 封装、Provider、Adapter 或通用能力包，我们称这类插件为【能力型插件】
 :::
 
 ### 插件路由
 
-如果插件符合插件开发的要求，则插件中的所有路由都将自动注入到 FastAPI 应用中。但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
+如果应用级插件或扩展级插件符合插件开发的要求，则插件中的路由会自动注入到 FastAPI 应用中。但值得注意的是，启动时间可能会随着插件数量的递增而增加，因为
 fba 会在每次启动前对所有插件进行实时解析
 
 ::: tabs#plugin
@@ -47,6 +50,9 @@ fba 会在每次启动前对所有插件进行实时解析
 @tab <Icon name="fluent:table-simple-include-16-regular" />扩展级插件
 必须将目标应用中的 api 目录结构进行 1:1 复制，每个接口文件都需要定义 `router`，并在 `plugin.toml` 中提供对应的 `[api.xxx]` 配置，可参考 fba
 中的内置插件 [notice](https://github.com/fastapi-practices/fastapi-best-architecture/tree/master/backend/plugin/notice/api)
+
+@tab <Icon name="material-symbols:extension-outline" />能力型插件
+不会注入路由，也不需要 `api` 目录。其他插件或业务代码可通过 Python import 使用它提供的模块、函数、类或配置
 :::
 
 ### 数据库兼容性
@@ -67,7 +73,7 @@ SQLAlchemy 2.0
 ::: file-tree
 
 - xxx # 插件名 <Badge type="danger" text="必须" />
-    - api/ # 接口 <Badge type="danger" text="必须" />
+    - api/ # 接口 <Badge type="danger" text="应用级和扩展级插件必须" />
     - crud/ # CRUD
     - model # 模型
         - __init__.py # 在此文件内导入所有模型类 <Badge type="danger" text="目录存在则必须" />
@@ -97,7 +103,7 @@ SQLAlchemy 2.0
 
 `plugin.toml` 是插件的配置文件，每个插件都必须包含此文件
 
-插件系统通过是否存在顶层 `[api]` 配置判断插件级别：存在 `[api]` 时为扩展级插件，否则为应用级插件
+插件系统通过 `plugin.toml` 的配置结构判断插件级别：存在顶层 `[api]` 配置时为扩展级插件；存在 `[app].router` 时为应用级插件；不存在 `[app]` 和 `[api]` 时为能力型插件
 
 ::: tabs#plugin
 @tab <Icon name="carbon:app" />应用级插件
@@ -174,6 +180,34 @@ extend = '应用文件夹名称'
 prefix = ''
 # 标签，用于 Swagger 文档
 tags = ''
+
+# 代码中的配置项（全大写）
+# 该配置项为可选，详情请查看：热插拔
+[settings]
+XXX = 'value'
+```
+
+@tab <Icon name="material-symbols:extension-outline" />能力型插件
+
+```toml
+# 插件信息
+[plugin]
+# 图标（插件仓库内的图标路径或图标链接地址），可选
+icon = 'assets/icon.svg'
+# 摘要（简短描述）
+summary = ''
+# 版本号，必须为 x.y.z 格式，例如 0.0.1
+version = '0.0.1'
+# 描述
+description = ''
+# 作者
+author = ''
+# 标签
+# 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
+tags = ['']
+# 数据库支持
+# 当前支持：mysql、postgresql
+database = ['']
 
 # 代码中的配置项（全大写）
 # 该配置项为可选，详情请查看：热插拔
