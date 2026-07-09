@@ -70,14 +70,6 @@
                   <span class="card-version">v{{ plugin.plugin.version }}</span>
                 </div>
                 <p class="card-author">{{ plugin.plugin.author }} / {{ getPluginName(plugin.git.path) }}</p>
-                <div class="card-badges">
-                  <span class="card-badge" :class="`card-badge-${getPluginType(plugin.git.path)}`">
-                    {{ getPluginTypeLabel(plugin.git.path) }}
-                  </span>
-                  <span class="card-badge" :class="getMaintainerBadgeClass(plugin)">
-                    {{ getMaintainerLabel(plugin) }}
-                  </span>
-                </div>
               </div>
             </a>
           </div>
@@ -94,6 +86,15 @@
           </a>
 
           <div class="card-footer-actions">
+            <div class="card-identity">
+              <span class="card-identity-item" :class="`card-identity-item-${getPluginType(plugin.git.path)}`">
+                {{ getPluginTypeLabel(plugin.git.path) }}
+              </span>
+              <span class="card-identity-separator">·</span>
+              <span class="card-identity-item" :class="getMaintainerIdentityClass(plugin)">
+                {{ getMaintainerLabel(plugin) }}
+              </span>
+            </div>
             <button type="button" class="card-action-btn card-action-command"
               :class="{ copied: copiedInstallCommandPath === plugin.git.path }"
               :aria-label="copiedInstallCommandPath === plugin.git.path ? '已复制安装命令' : '安装插件'"
@@ -106,16 +107,6 @@
               </svg>
               <span>{{ copiedInstallCommandPath === plugin.git.path ? '已复制' : '安装' }}</span>
             </button>
-
-            <a :href="getStarUrl(plugin.git.url)" target="_blank" rel="noreferrer"
-              class="card-action-btn card-action-like">
-              <svg class="card-action-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M12 3.75l2.56 5.19 5.73.83-4.14 4.04.98 5.7L12 16.78l-5.13 2.73.98-5.7-4.14-4.04 5.73-.83L12 3.75z">
-                </path>
-              </svg>
-              <span>{{ getStarLabel(plugin) }}</span>
-            </a>
 
             <button type="button" class="card-action-btn card-action-share"
               :class="{ copied: copiedPluginPath === plugin.git.path }"
@@ -131,6 +122,7 @@
               </svg>
               <span>{{ copiedPluginPath === plugin.git.path ? '已复制' : '分享' }}</span>
             </button>
+
           </div>
         </article>
       </div>
@@ -213,8 +205,6 @@ const DB_TABLES: Record<string, string> = {
 
 const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
-const STAR_CACHE_KEY = 'fba_plugins_stars_cache'
-const STAR_CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
 const INSTALL_DOC_BASE = withBase('/plugin/install.html')
 
@@ -231,7 +221,6 @@ const validTags = ref<string[]>([])
 const currentTag = ref('all')
 const searchQuery = ref('')
 const failedIcons = reactive(new Set<string>())
-const starCounts = reactive<Record<string, number>>({})
 const copiedPluginPath = ref('')
 const copiedInstallCommandPath = ref('')
 const installNotice = reactive<InstallNotice>({
@@ -340,25 +329,8 @@ const getMaintainerLabel = (plugin: PluginItem): string => {
   return isOfficialPlugin(plugin) ? '官方' : '社区'
 }
 
-const getMaintainerBadgeClass = (plugin: PluginItem): string => {
-  return isOfficialPlugin(plugin) ? 'card-badge-official' : 'card-badge-community'
-}
-
-const getStarUrl = (url: string): string => {
-  const repo = getRepoFullName(url)
-  return repo ? `https://github.com/${repo}/stargazers` : url
-}
-
-const formatStarCount = (count: number): string => {
-  if (count >= 1000000) return `${(count / 1000000).toFixed(1).replace(/\.0$/, '')}M`
-  if (count >= 1000) return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k`
-  return String(count)
-}
-
-const getStarLabel = (plugin: PluginItem): string => {
-  const repo = getRepoFullName(plugin.git.url)
-  const count = starCounts[repo]
-  return typeof count === 'number' ? formatStarCount(count) : '点赞'
+const getMaintainerIdentityClass = (plugin: PluginItem): string => {
+  return isOfficialPlugin(plugin) ? 'card-identity-item-official' : 'card-identity-item-community'
 }
 
 const buildShareText = (plugin: PluginItem): string => {
@@ -454,68 +426,6 @@ const resetFilters = () => {
   currentTag.value = 'all'
 }
 
-const loadStarCache = (): Record<string, { count: number, timestamp: number }> => {
-  try {
-    const cached = localStorage.getItem(STAR_CACHE_KEY)
-    return cached ? JSON.parse(cached) : {}
-  } catch (e) {
-    console.warn('Star cache read error:', e)
-    return {}
-  }
-}
-
-const saveStarCache = (cache: Record<string, { count: number, timestamp: number }>) => {
-  try {
-    localStorage.setItem(STAR_CACHE_KEY, JSON.stringify(cache))
-  } catch (e) {
-    console.warn('Star cache write error:', e)
-  }
-}
-
-const syncPluginStars = async (pluginList: PluginItem[]) => {
-  const now = Date.now()
-  const starCache = loadStarCache()
-  const repoNames = Array.from(new Set(pluginList.map(plugin => getRepoFullName(plugin.git.url)).filter(Boolean)))
-
-  repoNames.forEach(repo => {
-    const cached = starCache[repo]
-    if (cached) {
-      starCounts[repo] = cached.count
-    }
-  })
-
-  for (const repo of repoNames) {
-    const cached = starCache[repo]
-    if (cached && now - cached.timestamp < STAR_CACHE_DURATION) continue
-
-    try {
-      const response = await fetch(`https://api.github.com/repos/${repo}`, {
-        headers: {
-          Accept: 'application/vnd.github+json'
-        }
-      })
-
-      if (!response.ok) {
-        if (response.status === 403 || response.status === 429) break
-        continue
-      }
-
-      const data = await response.json()
-      if (typeof data.stargazers_count === 'number') {
-        starCounts[repo] = data.stargazers_count
-        starCache[repo] = {
-          count: data.stargazers_count,
-          timestamp: Date.now()
-        }
-      }
-    } catch (e) {
-      console.warn(`Failed to fetch stars for ${repo}:`, e)
-    }
-  }
-
-  saveStarCache(starCache)
-}
-
 const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginItem[] } => {
   const tags: string[] = []
   const pluginList: PluginItem[] = []
@@ -592,7 +502,6 @@ const fetchPlugins = async () => {
   if (cached) {
     validTags.value = cached.tags
     plugins.value = cached.plugins
-    syncPluginStars(cached.plugins)
     loading.value = false
 
     fetchWithFallback()
@@ -601,7 +510,6 @@ const fetchPlugins = async () => {
         validTags.value = data.tags
         plugins.value = data.plugins
         saveToCache(data)
-        syncPluginStars(data.plugins)
       })
       .catch(() => {
       })
@@ -614,7 +522,6 @@ const fetchPlugins = async () => {
     validTags.value = data.tags
     plugins.value = data.plugins
     saveToCache(data)
-    syncPluginStars(data.plugins)
   } catch (e) {
     console.error('Fetch error:', e)
     error.value = '加载失败，请检查网络连接'
@@ -853,6 +760,48 @@ onBeforeUnmount(() => {
   transition: all 0.2s ease;
 }
 
+.card-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: center;
+  margin-right: auto;
+  color: var(--vp-c-text-3);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.card-identity-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-identity-separator {
+  color: color-mix(in srgb, var(--vp-c-text-3) 72%, transparent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 0;
+}
+
+.card-identity-item-backend {
+  color: var(--backend-accent);
+}
+
+.card-identity-item-frontend {
+  color: var(--frontend-accent);
+}
+
+.card-identity-item-official {
+  color: #0f766e;
+}
+
+.card-identity-item-community {
+  color: #b45309;
+}
+
 .card-main-link {
   display: flex;
   flex: 1;
@@ -880,10 +829,6 @@ onBeforeUnmount(() => {
 
 .plugin-card-backend {
   border-color: color-mix(in srgb, var(--backend-accent) 10%, var(--vp-c-divider));
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--backend-accent) 4%, transparent),
-      transparent 78px),
-    var(--vp-c-bg-soft);
 }
 
 .plugin-card-backend:hover {
@@ -893,10 +838,6 @@ onBeforeUnmount(() => {
 
 .plugin-card-frontend {
   border-color: color-mix(in srgb, var(--frontend-accent) 12%, var(--vp-c-divider));
-  background: linear-gradient(135deg,
-      color-mix(in srgb, var(--frontend-accent) 8%, transparent),
-      transparent 58%),
-    var(--vp-c-bg-soft);
 }
 
 .plugin-card-frontend:hover {
@@ -956,6 +897,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  min-width: 0;
 }
 
 .card-title {
@@ -983,51 +925,6 @@ onBeforeUnmount(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.card-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.card-badge {
-  display: inline-flex;
-  align-items: center;
-  height: 20px;
-  padding: 0 7px;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--vp-c-text-2);
-  background: color-mix(in srgb, var(--vp-c-bg) 62%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 82%, transparent);
-  border-radius: 999px;
-}
-
-.card-badge-backend {
-  color: var(--backend-accent);
-  border-color: color-mix(in srgb, var(--backend-accent) 22%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--backend-accent) 10%, transparent);
-}
-
-.card-badge-frontend {
-  color: var(--frontend-accent);
-  border-color: color-mix(in srgb, var(--frontend-accent) 22%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--frontend-accent) 10%, transparent);
-}
-
-.card-badge-official {
-  color: #0f766e;
-  border-color: color-mix(in srgb, #0f766e 22%, var(--vp-c-divider));
-  background: color-mix(in srgb, #0f766e 10%, transparent);
-}
-
-.card-badge-community {
-  color: #b45309;
-  border-color: color-mix(in srgb, #b45309 22%, var(--vp-c-divider));
-  background: color-mix(in srgb, #b45309 10%, transparent);
 }
 
 .card-desc {
@@ -1077,11 +974,6 @@ onBeforeUnmount(() => {
 
 .card-action-btn:hover {
   color: var(--vp-c-text-1);
-}
-
-.card-action-like:hover {
-  border-color: color-mix(in srgb, var(--backend-accent) 24%, var(--vp-c-divider));
-  color: var(--backend-accent);
 }
 
 .card-action-share:hover,

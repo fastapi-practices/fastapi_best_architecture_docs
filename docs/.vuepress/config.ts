@@ -18,6 +18,14 @@ export default defineUserConfig({
             id: '3fac49b26d8f26702c22aad4381c0641'
         }),
     ],
-    bundler: viteBundler(),
+    bundler: viteBundler({
+        viteOptions: {
+            server: {
+                watch: {
+                    ignored: ['**/.vuepress/dist/**'],
+                },
+            },
+        },
+    }),
     shouldPrefetch: false,
 })
