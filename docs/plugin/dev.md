@@ -205,6 +205,11 @@ author = ''
 # 标签
 # 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
+# 数据库支持
+# 当前支持：mysql、postgresql
+database = ['']
+# 依赖的插件列表，可选，用于控制插件启动和注入顺序
+depends_on = []
 
 # 代码中的配置项（全大写）
 # 该配置项为可选，详情请查看：热插拔
