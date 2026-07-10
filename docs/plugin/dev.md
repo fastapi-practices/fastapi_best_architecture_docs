@@ -285,6 +285,21 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int
     EMAIL_CAPTCHA_EXPIRE_SECONDS = 180  # 3 分钟
     ```
 
+- 配置项用途说明
+
+  如果 `plugin.toml` 包含非空的 `[settings]`，插件 README 必须在现有“配置说明”之后增加“配置项说明”，按照
+  `plugin.toml` 中的顺序逐项说明用途。此处只说明配置项控制或影响的功能，不重复类型、默认值、配置来源或配置方式
+
+    ```md:no-line-numbers
+    ## 配置项说明
+
+    - `EMAIL_HOST`：邮件服务主机地址
+    - `EMAIL_PORT`：邮件服务连接端口
+    - `EMAIL_SSL`：是否使用 SSL 连接邮件服务
+    - `EMAIL_CAPTCHA_REDIS_PREFIX`：邮箱验证码 Redis 缓存键前缀
+    - `EMAIL_CAPTCHA_EXPIRE_SECONDS`：邮箱验证码有效时长
+    ```
+
 完成以上配置后，如果插件无需更多修改，通过 [CLI、ZIP 或 Git](./install.md) 方式安装插件时，即可适配热插拔配置加载。安装器会将 `.env.example` 追加到 `backend/.env`，但仍需要根据插件 README 修改占位值
 
 ::: important 全局配置应用优先级

@@ -22,7 +22,11 @@ export default defineUserConfig({
         viteOptions: {
             server: {
                 watch: {
-                    ignored: ['**/.vuepress/dist/**'],
+                    ignored: [
+                        '**/.vuepress/.cache/**',
+                        '**/.vuepress/.temp/**',
+                        '**/.vuepress/dist/**',
+                    ],
                 },
             },
         },
