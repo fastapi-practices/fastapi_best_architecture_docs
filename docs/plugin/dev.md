@@ -306,10 +306,15 @@ EMAIL_CAPTCHA_EXPIRE_SECONDS: int
 
 ```mermaid
 graph LR
-    System("系统环境变量") --> DotEnv[".env"]
+    Dynamic("动态配置") --> System("系统环境变量")
+    System --> DotEnv[".env"]
     DotEnv --> Plugin["插件 settings 配置项"]
     Plugin --> Defaults["conf.py"]
 ```
+
+`settings_customise_sources()` 只负责“系统环境变量 -> .env -> 插件 settings 配置项 -> conf.py 默认值”这一静态配置链。动态配置是业务运行期间按需加载的覆盖层，不属于 Pydantic Settings 配置源
+
+插件只有在确实需要管理端运行时调整时才应接入动态配置。可动态覆盖的字段必须在加载函数中显式声明类型转换映射，并在读取字段前完成加载。完整标准参见[配置](../backend/reference/conf.md#配置标准)
 
 :::
 
