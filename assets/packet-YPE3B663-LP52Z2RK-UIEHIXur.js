@@ -1,0 +1,1 @@
+import{Fr as e}from"./common-DNwdM-1A.js";export{e as createPacketServices};
