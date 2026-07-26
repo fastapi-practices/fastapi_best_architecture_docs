@@ -5,3 +5,4 @@ node_modules/
 .temp/
 .cache/
 dist/
+.codegraph/
