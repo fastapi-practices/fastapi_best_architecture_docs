@@ -5,7 +5,7 @@
       <div class="footer-section brand-section">
         <div class="section-title">FastAPI Best Architecture</div>
         <div class="section-description">
-          基于 FastAPI 构建的企业级后端架构解决方案
+          {{ t('footer.description') }}
         </div>
         <div class="social-links">
           <a href="https://github.com/fastapi-practices/fastapi-best-architecture" target="_blank" class="social-link">
@@ -14,13 +14,13 @@
           <a href="https://discord.com/invite/yNN3wTbVAC" target="_blank" class="social-link">
             <Icon name="line-md:discord" size="2rem" />
           </a>
-          <a :href="withBase('/blog/')" class="social-link">
+          <a :href="resolveLink(withLocale('/blog/'))" class="social-link">
             <Icon name="la:blog" size="2rem" />
           </a>
         </div>
       </div>
       <div class="footer-section">
-        <div class="section-title">使用文档</div>
+        <div class="section-title">{{ t('footer.docs') }}</div>
         <div class="link-list">
           <a v-for="link in links.product" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="footer-section">
-        <div class="section-title">生态系统</div>
+        <div class="section-title">{{ t('footer.ecosystem') }}</div>
         <div class="link-list">
           <a v-for="link in links.community" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="footer-section">
-        <div class="section-title">插件系统</div>
+        <div class="section-title">{{ t('footer.plugins') }}</div>
         <div class="link-list">
           <a v-for="link in links.resources" :key="link.name" :href="resolveLink(link.href)"
             :target="link.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer" class="footer-link">
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="footer-section">
-        <div class="section-title">更多</div>
+        <div class="section-title">{{ t('footer.more') }}</div>
         <div class="link-list">
           <a v-for="link in links.friendlyLinks" :key="link.name" :href="resolveLink(link.href)" rel="noopener noreferrer"
             class="footer-link">
@@ -86,41 +86,44 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { withBase } from "vuepress/client";
+import { useI18n } from "../composables/useI18n";
 
 const currentYear = new Date().getFullYear();
+const { t, withLocale } = useI18n();
 
-const resolveLink = (href) => href.startsWith("http") ? href : withBase(href);
+const resolveLink = (href) => href.startsWith("http") ? href : withBase(withLocale(href));
 
-const links = {
+const links = computed(() => ({
   product: [
-    { name: "快速开始", href: "/backend/summary/quick-start" },
+    { name: t("footer.quickStart"), href: "/backend/summary/quick-start" },
     { name: "Vben UI", href: "/frontend/summary/intro" },
-    { name: "接口文档", href: "https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0" },
-    { name: "常见问题", href: "/questions" },
+    { name: t("footer.apiDocs"), href: "https://apifox.com/apidoc/shared-28a93f02-730b-4f33-bb5e-4dad92058cc0" },
+    { name: t("footer.faq"), href: "/questions" },
     {
-      name: "更新记录",
+      name: t("footer.changelog"),
       href: "https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md"
     },
   ],
   community: [
-    { name: "技术栈", href: "/stack" },
-    { name: "交流群", href: "/group" },
-    { name: "Github 问题", href: "https://github.com/fastapi-practices/fastapi-best-architecture/issues" },
-    { name: "Github 讨论", href: "https://github.com/fastapi-practices/fastapi-best-architecture/discussions" },
-    { name: "想法和建议", href: "https://discord.gg/xp8M6nY4NA" },
+    { name: t("footer.techStack"), href: "/stack" },
+    { name: t("footer.chatGroups"), href: "/group" },
+    { name: t("footer.githubIssues"), href: "https://github.com/fastapi-practices/fastapi-best-architecture/issues" },
+    { name: t("footer.githubDiscussions"), href: "https://github.com/fastapi-practices/fastapi-best-architecture/discussions" },
+    { name: t("footer.ideas"), href: "https://discord.gg/xp8M6nY4NA" },
   ],
   resources: [
-    { name: "插件开发", href: "/plugin/dev" },
-    { name: "插件分享", href: "/plugin/share" },
-    { name: "插件安装", href: "/plugin/install" },
-    { name: "插件市场", href: "/marketplace" },
+    { name: t("footer.pluginDev"), href: "/plugin/dev" },
+    { name: t("footer.pluginShare"), href: "/plugin/share" },
+    { name: t("footer.pluginInstall"), href: "/plugin/install" },
+    { name: t("footer.marketplace"), href: "/marketplace" },
   ],
   friendlyLinks: [
-    { name: "隐私政策", href: "/privacy-policy" },
-    { name: "服务状态", href: "https://status.wu-clan.site/status/services" },
+    { name: t("footer.privacy"), href: "/privacy-policy" },
+    { name: t("footer.status"), href: "https://status.wu-clan.site/status/services" },
   ],
-};
+}));
 </script>
 
 <style scoped>

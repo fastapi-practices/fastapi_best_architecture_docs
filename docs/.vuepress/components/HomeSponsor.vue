@@ -1,12 +1,12 @@
 <template>
   <section class="home-sponsor">
     <div class="hs-inner">
-      <h2 class="hs-title">请 fba 喝杯奶茶 🧋</h2>
+      <h2 class="hs-title">{{ t('homeSponsor.title') }}</h2>
       <p class="hs-desc">
-        如果 fba 为你省下时间，欢迎请作者喝杯奶茶，让我们走得更远
+        {{ t('homeSponsor.desc') }}
       </p>
-      <a :href="withBase('/sponsors.html')" class="hs-btn">
-        支持一下
+      <a :href="sponsorsHref" class="hs-btn">
+        {{ t('homeSponsor.support') }}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14" />
@@ -18,7 +18,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { withBase } from 'vuepress/client'
+import { useI18n } from '../composables/useI18n'
+
+const { t, withLocale } = useI18n()
+const sponsorsHref = computed(() => withBase(withLocale('/sponsors.html')))
 </script>
 
 <style scoped>

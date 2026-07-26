@@ -38,7 +38,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/110005582?v=4
         desc: 一个平平无奇的网管
         location: 深圳，广东
-        organization: '--'
+        organization: --
         socials:
           - icon: github
             link: https://github.com/dividduang
@@ -50,7 +50,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/63089130?v=4
         desc: 大数据运维吗喽，主要做监控、告警、平台分析以及运维开发等工作，略懂一些 Go 和 Python
         location: 成都，四川
-        organization: '--'
+        organization: --
         socials:
           - icon: github
             link: https://github.com/Meepoljdx
@@ -62,7 +62,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/124766156?v=4
         desc: 运维开发工程师，开发语言 Python，目前开发能力不是很高，自己写一个运维平台
         location: 成都，四川
-        organization: '--'
+        organization: --
         socials:
           - icon: github
             link: https://github.com/xiangshen123
@@ -71,7 +71,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/33371724?v=4
         desc: 国企 java 后端，深度学习开发选手
         location: 济南，山东
-        organization: '--'
+        organization: --
         socials:
           - icon: github
             link: https://github.com/chenansheng
@@ -80,7 +80,7 @@ groups:
         avatar: https://avatars.githubusercontent.com/u/49424658?v=4
         desc: 苦哈哈的全干工程师
         location: 西安，陕西
-        organization: '--'
+        organization: --
         socials:
           - icon: github
             link: https://github.com/imbalich

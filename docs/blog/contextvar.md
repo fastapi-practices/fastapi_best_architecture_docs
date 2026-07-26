@@ -4,6 +4,7 @@ createTime: 2025-10-13 18:30
 sticky: true
 tags:
   - Python
+permalink: /blog/cyy4b8ki/
 ---
 
 在异步编程和并发场景中，如何优雅地管理上下文相关的状态变量？传统的全局变量容易导致状态污染，而线程本地存储（

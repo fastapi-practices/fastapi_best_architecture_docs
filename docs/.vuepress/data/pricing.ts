@@ -1,3 +1,7 @@
+/**
+ * @deprecated Pricing copy now lives in `docs/.vuepress/locales/*`.
+ * Kept only for any external imports; prefer `t('pricing.*')` / `tm('pricing.*')`.
+ */
 export const plans = {
     openSource: {
         title: '开源版',

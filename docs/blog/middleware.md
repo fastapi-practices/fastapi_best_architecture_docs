@@ -3,6 +3,7 @@ title: FastAPI 如何编写自定义中间件
 createTime: 2024-10-31 18:30
 tags:
   - FastAPI
+permalink: /blog/bc69acsi/
 ---
 
 在编写中间件之前，我们首先要对中间件有一些了解

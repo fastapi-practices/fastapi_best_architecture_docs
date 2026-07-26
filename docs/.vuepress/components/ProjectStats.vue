@@ -1,8 +1,8 @@
 <template>
   <section class="project-stats">
     <header class="stats-header">
-      <h2 class="stats-title">开源驱动，社区共建</h2>
-      <p class="stats-subtitle">数字会说话，这是开发者们的真实选择</p>
+      <h2 class="stats-title">{{ t('projectStats.title') }}</h2>
+      <p class="stats-subtitle">{{ t('projectStats.subtitle') }}</p>
     </header>
 
     <div class="stats-grid">
@@ -23,6 +23,9 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive } from 'vue'
 import { withBase } from 'vuepress/client'
+import { useI18n } from '../composables/useI18n'
+
+const { t, withLocale } = useI18n()
 
 interface RawStats {
   stars: number | null
@@ -154,7 +157,7 @@ const items = computed(() => [
   },
   {
     key: 'contributors',
-    label: '贡献者',
+    label: t('projectStats.contributors'),
     display: format(stats.contributors),
     suffix: '+',
     loading: loading.contributors,
@@ -163,11 +166,11 @@ const items = computed(() => [
   },
   {
     key: 'plugins',
-    label: '官方插件',
+    label: t('projectStats.plugins'),
     display: format(stats.plugins),
     suffix: '',
     loading: loading.plugins,
-    href: withBase('/marketplace.html'),
+    href: withBase(withLocale('/marketplace.html')),
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-3V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3H4a1 1 0 0 0-1 1v8a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V8a1 1 0 0 0-1-1z"/><path d="M9 14v3"/><path d="M15 14v3"/></svg>`,
   },
 ])

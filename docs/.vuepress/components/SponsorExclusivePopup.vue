@@ -1,19 +1,19 @@
 <template>
   <a class="sponsor-exclusive-popup" :href="targetHref" :target="isExternal ? '_blank' : '_self'"
-    :title="hasBrand ? homeSponsor.alt : '独家赞助商席位 - 立即咨询'">
+    :title="hasBrand ? homeSponsor.alt : t('sponsorHome.emptyTitle')">
     <span class="sh-pop-label">
       <span class="sh-dot"></span>
-      {{ hasBrand ? '独家赞助商' : '独家赞助商席位现已空缺' }}
+      {{ hasBrand ? t('sponsorHome.exclusive') : t('sponsorHome.emptyLabel') }}
     </span>
 
     <span class="sh-pop-body">
       <img v-if="hasBrand" :src="homeSponsor.link" :alt="homeSponsor.alt" class="sh-pop-img" />
       <span v-else class="sh-pop-cta">
-        <GradientText text="立即咨询 ->" :colors="['#009485', '#c8abfa']" :animation-speed="3" />
+        <GradientText :text="t('sponsorHome.inquireNow')" :colors="['#009485', '#c8abfa']" :animation-speed="3" />
       </span>
     </span>
 
-    <span class="sh-pop-footer">fba 官方合作伙伴</span>
+    <span class="sh-pop-footer">{{ t('sponsorHome.partner') }}</span>
   </a>
 </template>
 
@@ -21,10 +21,12 @@
 import { computed } from 'vue'
 import { withBase } from 'vuepress/client'
 import { homeSponsor, shouldShowSponsor } from '../data/sponsors'
+import { useI18n } from '../composables/useI18n'
 import GradientText from './bits/GradientText.vue'
 
+const { t, withLocale } = useI18n()
 const hasBrand = computed(() => shouldShowSponsor(homeSponsor))
-const sponsorHref = computed(() => withBase('/sponsors.html'))
+const sponsorHref = computed(() => withBase(withLocale('/sponsors.html')))
 const targetHref = computed(() => hasBrand.value
   ? homeSponsor.href || sponsorHref.value
   : sponsorHref.value)

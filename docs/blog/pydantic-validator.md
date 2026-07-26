@@ -3,6 +3,7 @@ title: Pydantic 字段验证方法全解析
 createTime: 2026-1-18 22:30
 tags:
   - Pydantic
+permalink: /blog/zmrwdlky/
 ---
 
 ## 内置约束参数

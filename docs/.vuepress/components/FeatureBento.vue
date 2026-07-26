@@ -1,8 +1,8 @@
 <template>
   <section class="feature-bento">
     <header class="fb-header">
-      <h2 class="fb-title">企业级开发，开箱即用</h2>
-      <p class="fb-subtitle">三层架构打底，插件生态扩展，AI 贯穿协作</p>
+      <h2 class="fb-title">{{ title }}</h2>
+      <p class="fb-subtitle">{{ subtitle }}</p>
     </header>
 
     <div class="fb-grid">
@@ -22,6 +22,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from '../composables/useI18n'
+
 interface Feature {
   key: string
   title: string
@@ -32,14 +35,19 @@ interface Feature {
   tone: 'brand' | 'violet' | 'rose' | 'amber' | 'sky' | 'emerald' | 'slate'
 }
 
+const { t } = useI18n()
+
+const title = computed(() => t('featureBento.title'))
+const subtitle = computed(() => t('featureBento.subtitle'))
+
 const ic = (name: string, color: string) =>
   `https://api.iconify.design/${name}.svg?color=${encodeURIComponent(color)}&width=64&height=64`
 
-const items: Feature[] = [
+const items = computed<Feature[]>(() => [
   {
     key: 'architecture',
-    title: '三层架构打底',
-    details: 'API → Service → CRUD/DAO 分层，边界清晰，配套代码生成，新人 30 分钟即可上手',
+    title: t('featureBento.architectureTitle'),
+    details: t('featureBento.architectureDesc'),
     icon: ic('ph:squares-four-duotone', '#009485'),
     iconColor: '#009485',
     size: 'flagship',
@@ -47,8 +55,8 @@ const items: Feature[] = [
   },
   {
     key: 'plugin',
-    title: '插件生态扩展',
-    details: 'AI、Auth、Storage、Notification 装即用、卸即净，企业可自建私有仓库',
+    title: t('featureBento.pluginTitle'),
+    details: t('featureBento.pluginDesc'),
     icon: ic('ph:puzzle-piece-duotone', '#7c3aed'),
     iconColor: '#7c3aed',
     size: 'small',
@@ -56,8 +64,8 @@ const items: Feature[] = [
   },
   {
     key: 'ai',
-    title: 'AI 项目上下文',
-    details: 'fba skills + LLMs.txt 让 Claude Code、Cursor、Codex 等直接读懂项目规范',
+    title: t('featureBento.aiTitle'),
+    details: t('featureBento.aiDesc'),
     icon: ic('ph:sparkle-duotone', '#ec4899'),
     iconColor: '#ec4899',
     size: 'small',
@@ -65,8 +73,8 @@ const items: Feature[] = [
   },
   {
     key: 'auth',
-    title: '认证权限内置',
-    details: 'JWT、RBAC、数据权限、OAuth 2.0 等企业基础件预置',
+    title: t('featureBento.authTitle'),
+    details: t('featureBento.authDesc'),
     icon: ic('ph:shield-check-duotone', '#0ea5e9'),
     iconColor: '#0ea5e9',
     size: 'small',
@@ -74,8 +82,8 @@ const items: Feature[] = [
   },
   {
     key: 'ops',
-    title: '缓存队列与运维',
-    details: 'Redis、Celery、全链路日志、时区方案按需启用',
+    title: t('featureBento.opsTitle'),
+    details: t('featureBento.opsDesc'),
     icon: ic('ph:stack-duotone', '#f59e0b'),
     iconColor: '#f59e0b',
     size: 'small',
@@ -83,14 +91,14 @@ const items: Feature[] = [
   },
   {
     key: 'docker',
-    title: '一键容器部署',
-    details: 'Docker Compose 编排就位，MySQL / PostgreSQL 生产可用',
+    title: t('featureBento.dockerTitle'),
+    details: t('featureBento.dockerDesc'),
     icon: ic('ph:cloud-arrow-up-duotone', '#009485'),
     iconColor: '#009485',
     size: 'small',
     tone: 'emerald',
   },
-]
+])
 </script>
 
 <style scoped>

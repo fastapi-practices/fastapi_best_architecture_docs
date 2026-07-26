@@ -3,6 +3,7 @@ title: FastAPI 为什么使用 JWT 认证中间件
 createTime: 2025-06-15 17:42
 tags:
   - FastAPI
+permalink: /blog/ibigfps6/
 ---
 
 在构建现代 Web 应用时，安全认证是不可或缺的一环。今天，让我们一起来看看 fba 项目中的 JWT 认证中间件：

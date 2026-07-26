@@ -1,8 +1,8 @@
 <template>
   <section class="testimonials">
     <header class="t-header">
-      <h2 class="t-title">社区在说</h2>
-      <p class="t-subtitle">越来越多团队，选择 fba 构建下一代后端</p>
+      <h2 class="t-title">{{ t('testimonials.title') }}</h2>
+      <p class="t-subtitle">{{ t('testimonials.subtitle') }}</p>
     </header>
 
     <div class="t-marquee">
@@ -29,6 +29,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from '../composables/useI18n'
 
 interface Testimonial {
   name: string
@@ -37,110 +38,16 @@ interface Testimonial {
   avatar?: string
 }
 
-const items: Testimonial[] = [
-  {
-    name: 'wu-clan',
-    role: '核心维护者 · fba',
-    quote: 'fba 想解决的不是“怎么写一个接口”，而是团队真的开始协作后，那些权限、日志、分层、部署、可维护性问题。',
-    avatar: 'https://avatars.githubusercontent.com/u/52145145?v=4',
-  },
-  {
-    name: 'downdawn',
-    role: 'AI 全干工程师 · 核心团队',
-    quote: '三层架构 + 插件系统，让我把精力都还给业务，AI 加持下的节奏直接拉满。',
-    avatar: 'https://avatars.githubusercontent.com/u/41266749?v=4',
-  },
-  {
-    name: 'Davidduang',
-    role: '平台架构师 · 社区核心',
-    quote: '最舒服的是边界感。API 处理协议，Service 写业务，CRUD/DAO 管数据访问，后面换人维护也能快速找到位置。',
-    avatar: 'https://avatars.githubusercontent.com/u/110005582?v=4',
-  },
-  {
-    name: 'imba',
-    role: '全栈工程师 · 社区伙伴',
-    quote: '插件市场这个方向很对，想加什么就装什么，不想用的时候也不会粘在主工程里。',
-    avatar: 'https://avatars.githubusercontent.com/u/49424658?v=4',
-  },
-  {
-    name: '向申',
-    role: '运维开发 · 社区伙伴',
-    quote: '有 Trace ID，排查问题少绕很多路。',
-    avatar: 'https://avatars.githubusercontent.com/u/124766156?v=4',
-  },
-  {
-    name: 'Meepo',
-    role: '大数据运维 · 名誉成员',
-    quote: '我更看重落地成本。Docker Compose、监控、日志这些东西先放好，后面从测试环境推到部署环境时，心里会踏实很多。',
-    avatar: 'https://avatars.githubusercontent.com/u/63089130?v=4',
-  },
-  {
-    name: 'taylortaurus',
-    role: 'AI 工程师 · 社区用户',
-    quote: '这根本不是写代码，这是在享受降维打击！优雅的架构配上神级插件生态，在 AI 的疯狂加持下，效率直接原地起飞，简直是后端的终极救星！',
-    avatar: 'https://github.com/taylortaurus.png',
-  },
-  {
-    name: 'huyuwei1996',
-    role: '后端工程师 · 社区贡献者',
-    quote: 'RBAC、JWT、缓存这些都有了，新项目不用先搭半天架子。',
-    avatar: 'https://avatars.githubusercontent.com/u/20592484?v=4',
-  },
-  {
-    name: 'yzbf-lin',
-    role: '平台开发 · 社区伙伴',
-    quote: '项目越往后写，越能感觉到统一分层的价值。不是每个人都按自己的习惯放代码，review 的时候也少很多“这个应该放哪”的讨论。',
-    avatar: 'https://avatars.githubusercontent.com/u/72718331?v=4',
-  },
-  {
-    name: 'IAseven',
-    role: '全栈开发 · 社区伙伴',
-    quote: '代码生成挺省心，尤其是后台管理这类重复模块。',
-    avatar: 'https://avatars.githubusercontent.com/u/38178039?v=4',
-  },
-  {
-    name: 'byte-voyager',
-    role: '系统架构师 · 社区伙伴',
-    quote: '它没有把架构做得很重，但该有的工程约束都在。对中后台、管理系统、内部平台这类项目来说，这个尺度刚好。',
-    avatar: 'https://avatars.githubusercontent.com/u/16448666?v=4',
-  },
-  {
-    name: 'AH-Toby',
-    role: 'Python 开发 · 社区伙伴',
-    quote: '目录结构一看就懂，少解释很多。',
-    avatar: 'https://avatars.githubusercontent.com/u/35453550?v=4',
-  },
-  {
-    name: 'yuWorm',
-    role: '服务端工程师 · 社区伙伴',
-    quote: 'MySQL、PostgreSQL 都照顾到了，再加上插件化扩展，后面业务变复杂也不至于把主工程越写越乱。',
-    avatar: 'https://avatars.githubusercontent.com/u/34805071?v=4',
-  },
-  {
-    name: 'SmallGarbage',
-    role: '运维开发 · 社区伙伴',
-    quote: '部署、排障、交接都比临时拼出来的 FastAPI 项目轻松。',
-    avatar: 'https://avatars.githubusercontent.com/u/48581918?v=4',
-  },
-  {
-    name: 'SoulEater',
-    role: '后端工程师 · 社区伙伴',
-    quote: '很多脚手架只管“跑起来”，fba 更像是把上线前会遇到的通用环节提前串了一遍。你可以不全用，但需要的时候它已经在那里。',
-    avatar: 'https://avatars.githubusercontent.com/u/3403324?v=4',
-  },
-  {
-    name: 'shj366',
-    role: '独立开发者 · 社区伙伴',
-    quote: 'LLMs 文档和 skills 对 AI 工具很友好。一个人做项目时，边写边问规范，确实能少踩坑。',
-    avatar: 'https://avatars.githubusercontent.com/u/73154524?v=4',
-  },
-]
+const { t, tm } = useI18n()
+
+const items = computed(() => tm<Testimonial[]>('testimonials.items') || [])
 
 const rows = computed(() => {
+  const list = items.value
   const rowCount = 2
-  const rowSize = Math.ceil(items.length / rowCount)
+  const rowSize = Math.ceil(list.length / rowCount)
   return Array.from({ length: rowCount }, (_, idx) =>
-    items.slice(idx * rowSize, (idx + 1) * rowSize)
+    list.slice(idx * rowSize, (idx + 1) * rowSize)
   ).filter(row => row.length > 0)
 })
 </script>

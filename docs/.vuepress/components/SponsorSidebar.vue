@@ -1,12 +1,12 @@
 <template>
   <div class="brand-header">
-    <span>独家赞助</span>
+    <span>{{ t('sponsorUi.exclusiveShort') }}</span>
   </div>
   <div class="brand-container">
     <div class="sidebar-brand">
       <div class="brand" @click="openSponsorLink(homeSponsor.href)">
         <img v-if="shouldShowSponsor(homeSponsor)" :alt="homeSponsor.alt" :src="homeSponsor.link" class="brand-image" />
-        <span v-else class="brand-text">成为赞助商</span>
+        <span v-else class="brand-text">{{ t('sponsorUi.becomeSponsor') }}</span>
       </div>
     </div>
   </div>
@@ -14,6 +14,9 @@
 
 <script setup>
 import { homeSponsor, openSponsorLink, shouldShowSponsor } from "../data/sponsors";
+import { useI18n } from "../composables/useI18n";
+
+const { t } = useI18n();
 </script>
 
 <style scoped>

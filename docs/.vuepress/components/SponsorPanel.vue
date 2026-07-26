@@ -1,6 +1,6 @@
 <template>
   <div class="brand-header">
-    <span>倾情赞助</span>
+    <span>{{ t('sponsorUi.heartfelt') }}</span>
   </div>
   <div class="brand-container">
     <div class="gold-sponsors">
@@ -15,21 +15,25 @@
         <img :alt="brand.alt" :src="brand.link" class="brand-image" />
       </div>
     </div>
-    <div v-if="shouldShowExtraBecomeSponsor" class="brand-item become-brand" @click="openSponsorLink(sponsorUrl)">
-      <span class="brand-text">成为赞助商</span>
+    <div v-if="shouldShowExtraBecomeSponsor" class="brand-item become-brand" @click="openSponsorLink(localeSponsorUrl)">
+      <span class="brand-text">{{ t('sponsorUi.becomeSponsor') }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
+import { withBase } from "vuepress/client";
 import {
   generalSponsors,
   goldSponsors,
   openSponsorLink,
   shouldShowSponsor,
-  sponsorUrl
 } from "../data/sponsors";
+import { useI18n } from "../composables/useI18n";
+
+const { t, withLocale } = useI18n();
+const localeSponsorUrl = computed(() => withBase(withLocale('/sponsors.html')));
 
 const shouldShowExtraBecomeSponsor = computed(() => {
   return (goldSponsors.filter(brand => shouldShowSponsor(brand)).length +

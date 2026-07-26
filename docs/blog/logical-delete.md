@@ -3,6 +3,7 @@ title: FastAPI 如何从物理删除迁移到逻辑删除
 createTime: 2026-05-30 17:30
 tags:
   - FastAPI
+permalink: /blog/fkfs0m05/
 ---
 
 在后台管理系统中，删除通常不是简单的 `delete from table where id = ?`。

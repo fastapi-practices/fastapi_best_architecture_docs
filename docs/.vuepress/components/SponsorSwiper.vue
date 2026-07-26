@@ -1,18 +1,18 @@
 <template>
   <section class="sponsor-swiper">
     <header class="ss-header">
-      <h2 class="ss-title">金牌赞助商</h2>
+      <h2 class="ss-title">{{ t('sponsorUi.goldTitle') }}</h2>
     </header>
     <Swiper v-if="processedGoldSponsors.length > 0" :items="processedGoldSponsors" mode="broadcast" :loop="false"
       :height="162" :slides-per-view="3" :space-between="10" mousewheel />
-    <p v-else class="ss-empty">席位虚位以待 · <a :href="withBase('/sponsors.html')">来当首位赞助商</a></p>
+    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a></p>
 
     <header class="ss-header">
-      <h2 class="ss-title">银牌赞助商</h2>
+      <h2 class="ss-title">{{ t('sponsorUi.silverTitle') }}</h2>
     </header>
     <Swiper v-if="processedGeneralSponsors.length > 0" :items="processedGeneralSponsors" mode="carousel" :height="168"
       :slides-per-view="4" :space-between="10" :speed="5000" />
-    <p v-else class="ss-empty">席位虚位以待 · <a :href="withBase('/sponsors.html')">来当首位赞助商</a></p>
+    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a></p>
   </section>
 </template>
 
@@ -22,6 +22,10 @@ import { withBase } from 'vuepress/client'
 // @ts-ignore
 import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 import { goldSponsors, generalSponsors, shouldShowSponsor } from '../data/sponsors'
+import { useI18n } from '../composables/useI18n'
+
+const { t, withLocale } = useI18n()
+const sponsorsHref = computed(() => withBase(withLocale('/sponsors.html')))
 
 const processedGoldSponsors = computed(() =>
   goldSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)

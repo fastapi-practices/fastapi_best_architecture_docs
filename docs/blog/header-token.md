@@ -3,6 +3,7 @@ title: FastAPI 如何使用自定义 header token 实现授权
 createTime: 2025-03-09 18:00
 tags:
   - FastAPI
+permalink: /blog/bb865lbr/
 ---
 
 在 FastAPI 官方高级安全教程中，为我们介绍了两种授权方式，分别是 OAuth2 scopes 和 HTTP Basic Auth，两种方式都可以实现

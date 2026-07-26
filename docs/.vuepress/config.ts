@@ -1,8 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import { viteBundler } from '@vuepress/bundler-vite'
 import { baiduAnalyticsPlugin } from "@vuepress/plugin-baidu-analytics";
-import { umamiAnalyticsPlugin } from "@vuepress/plugin-umami-analytics";
-import { clarityAnalyticsPlugin } from "@vuepress/plugin-clarity-analytics";
 import { myTheme } from "./theme";
 
 export default defineUserConfig({
@@ -12,6 +10,18 @@ export default defineUserConfig({
     head: [
         ['link', { rel: 'icon', href: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.svg' }],
     ],
+    locales: {
+        '/': {
+            lang: 'zh-CN',
+            title: 'FastAPI Best Architecture',
+            description: '基于 FastAPI 构建的企业级后端架构解决方案',
+        },
+        '/en/': {
+            lang: 'en-US',
+            title: 'FastAPI Best Architecture',
+            description: 'Enterprise-grade backend architecture solution built with FastAPI',
+        },
+    },
     theme: myTheme,
     plugins: [
         baiduAnalyticsPlugin({

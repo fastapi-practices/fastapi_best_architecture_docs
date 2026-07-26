@@ -4,6 +4,7 @@ createTime: 2026-1-14 13:30
 sticky: true
 tags:
   - AI
+permalink: /blog/4l7pf9p3/
 ---
 
 Claude 的“智能体”（agentic）功能越来越强大，随着 **Skills**（技能）的推出，用户开始关注其生态系统中各个组件的角色与协作方式

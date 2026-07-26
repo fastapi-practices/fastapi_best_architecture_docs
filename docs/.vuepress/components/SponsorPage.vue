@@ -1,102 +1,74 @@
 <script setup lang="ts">
-import { h, onBeforeUnmount, ref } from 'vue'
+import { computed, h, onBeforeUnmount, ref } from 'vue'
+import { withBase } from 'vuepress/client'
+import { useI18n } from '../composables/useI18n'
 
 type SponsorTab = 'honor' | 'booth'
 type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'copy' | 'sponsor'
 type SnippetKey = 'promotion' | 'inquiry'
 
+interface BoothPlan {
+  key: string
+  name: string
+  status: 'vacant' | 'full' | string
+  price: string
+  quota?: string
+  placements: string[]
+  material: string
+}
+
+const { t, tm, withLocale } = useI18n()
+
 const activeTab = ref<SponsorTab>('honor')
 const copiedSnippet = ref<SnippetKey | ''>('')
 let copiedSnippetTimer: ReturnType<typeof setTimeout> | null = null
 
-const tabs: { key: SponsorTab; label: string }[] = [
-  { key: 'honor', label: '荣誉赞助' },
-  { key: 'booth', label: '展位赞助' },
-]
+const tabs = computed(() => [
+  { key: 'honor' as const, label: t('sponsors.honorTab') },
+  { key: 'booth' as const, label: t('sponsors.boothTab') },
+])
 
-const paymentMethods = [
+const paymentMethods = computed(() => [
   {
-    name: '微信赞助',
+    name: t('sponsors.wechat'),
     icon: 'wechat' as SponsorIconName,
     image: 'https://wu-clan.github.io/picx-images-hosting/pay/weixin_zs.jpg',
   },
   {
-    name: '支付宝赞助',
+    name: t('sponsors.alipay'),
     icon: 'alipay' as SponsorIconName,
     image: 'https://wu-clan.github.io/picx-images-hosting/pay/zfb.jpg',
   },
   {
-    name: '其他赞助',
+    name: t('sponsors.other'),
     icon: 'sponsor' as SponsorIconName,
     link: 'https://wu-clan.github.io/sponsor/',
-    linkText: '其他赞助',
+    linkText: t('sponsors.other'),
   },
-]
+])
 
-const boothPlans = [
-  {
-    name: '独家展位',
-    status: '空缺',
-    price: '沟通 / 月',
-    quota: '仅 1 席',
-    placements: [
-      '首页独家展示位',
-      'GitHub README 可见',
-      'CLI 启动命令可见',
-      '文档左侧边栏独家展示位',
-      '文档右侧边栏独家展示位',
-      '博客右侧边栏独家展示位',
-      '移动端可见',
-    ],
-    material: '7:3 横版图，品牌名、Logo、链接',
-  },
-  {
-    name: '金牌展位',
-    status: '空缺',
-    price: '沟通 / 月',
-    quota: '仅 3 席',
-    placements: [
-      '首页轮播固定展示位',
-      'GitHub README 可见',
-      '文档右侧边栏大号展示位',
-    ],
-    material: '同独家',
-  },
-  {
-    name: '银牌展位',
-    status: '空缺',
-    price: '沟通 / 月',
-    placements: ['首页轮播滚动展示位', '文档右侧边栏小号展示位'],
-    material: '5:3 横版图，品牌名、Logo、链接',
-  },
-]
+const boothPlans = computed(() => tm<BoothPlan[]>('sponsors.booths') || [])
+const promotionRules = computed(() => tm<string[]>('sponsors.promotionRules') || [])
+const inquiryLines = computed(() => tm<string[]>('sponsors.inquiryLines') || [])
+const announcementLines = computed(() => tm<string[]>('sponsors.announcementLines') || [])
 
-function isBoothFull(plan: { status: string }) {
-  return plan.status.includes('满')
+const whyLink = computed(() =>
+  withBase(withLocale(`/backend/summary/why.html#${t('sponsors.whyAnchor')}`)),
+)
+const groupLink = computed(() => withBase(withLocale('/group.html')))
+
+function isBoothFull(plan: BoothPlan) {
+  return plan.status === 'full'
 }
 
-const promotionRules = [
-  '优先推广和程序员相关的互联网产品，比如：键盘、显示器、耳机、低代码开发平台、开发软件、云服务器、个人博客等等；如果与程序员无关，可酌情考虑',
-  '拒绝一切违反法律法规、灰产相关的产品推广',
-]
-
-const inquiryLines = [
-  '产品名称：',
-  '官网 / 落地页：',
-  '意向档位：独家 / 金牌 / 银牌',
-  '投放周期：1 个月 / 3 个月 / 12 个月',
-  '希望上线时间：',
-  '联系方式：',
-]
+function statusLabel(plan: BoothPlan) {
+  return plan.status === 'full' ? t('sponsors.statusFull') : t('sponsors.statusVacant')
+}
 
 const sponsorEmail = 'jianhengwu0407@gmail.com'
-const sponsorMailto = `mailto:${sponsorEmail}?subject=${encodeURIComponent('fba 展位赞助咨询')}&body=${encodeURIComponent(inquiryLines.join('\n'))}`
-
-const announcementLines = [
-  '感谢 xxx 老板对 fba 项目的慷慨赞助，以下是老板的产品，大家感兴趣的可以关注一下：',
-  'xxx 商品名称',
-  '链接：https://xxx.xx',
-]
+const sponsorMailto = computed(() =>
+  `mailto:${sponsorEmail}?subject=${encodeURIComponent(t('sponsors.mailSubject'))}&body=${encodeURIComponent(inquiryLines.value.join('\n'))}`,
+)
 
 const iconPaths: Record<SponsorIconName, string[]> = {
   alipay: ['M5 4h14v16H5z', 'M8 15c3.8-.4 6.8-2 8-5', 'M9 9h6', 'M12 7v8', 'M8 16c2.8 1.4 5.6 1.4 8 0'],
@@ -162,17 +134,17 @@ onBeforeUnmount(() => {
 <template>
   <main class="sponsor-page">
     <header class="page-header">
-      <h1>赞助 fba</h1>
+      <h1>{{ t('sponsors.title') }}</h1>
       <p>
-        自 fba 创建以来，我们一直致力于
+        {{ t('sponsors.introBefore') }}
         <a href="https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/CHANGELOG.md"
-          target="_blank" rel="noreferrer">持续更新</a>
-        和
-        <a href="./backend/summary/why.html#长期维护">积极维护</a>，为此，我们投入了大量的时间和无限的热爱。感谢您为 fba 给予的大力支持，您的每份鼓励都将成为我们继续前进的动力
+          target="_blank" rel="noreferrer">{{ t('sponsors.continuousUpdates') }}</a>
+        {{ t('sponsors.introAnd') }}
+        <a :href="whyLink">{{ t('sponsors.activeMaintenance') }}</a>{{ t('sponsors.introAfter') }}
       </p>
     </header>
 
-    <nav class="sponsor-tabs" aria-label="赞助类型">
+    <nav class="sponsor-tabs" :aria-label="t('sponsors.tabsAria')">
       <button v-for="tab in tabs" :key="tab.key" type="button"
         :class="['tab-button', { active: activeTab === tab.key }]" :aria-selected="activeTab === tab.key"
         @click="activeTab = tab.key">
@@ -182,7 +154,7 @@ onBeforeUnmount(() => {
 
     <section v-show="activeTab === 'honor'" class="tab-panel" aria-labelledby="honor-title">
       <div class="section-title">
-        <h2 id="honor-title">荣誉赞助</h2>
+        <h2 id="honor-title">{{ t('sponsors.honorTitle') }}</h2>
       </div>
 
       <div class="payment-grid">
@@ -193,34 +165,34 @@ onBeforeUnmount(() => {
           </div>
           <img v-if="method.image" :src="method.image" :alt="method.name" loading="lazy" />
           <a v-else-if="method.link" :href="method.link" target="_blank" rel="noreferrer" class="payment-link">
-            {{ method.linkText || '其他' }}
+            {{ method.linkText || t('sponsors.otherFallback') }}
             <SponsorIcon name="arrow-right" />
           </a>
         </article>
       </div>
 
       <aside class="callout-card tip">
-        <strong>提示:</strong>
-        <span>如果您已加入 <a href="./group.html">Discord</a> 社区，请私信作者并发送赞助截图，以获取专属身份标签</span>
+        <strong>{{ t('sponsors.tipLabel') }}</strong>
+        <span>{{ t('sponsors.tipBefore') }} <a :href="groupLink">Discord</a> {{ t('sponsors.tipAfter') }}</span>
       </aside>
     </section>
 
     <section v-show="activeTab === 'booth'" class="tab-panel" aria-labelledby="booth-title">
       <div class="section-title with-action">
         <div>
-          <h2 id="booth-title">展位赞助</h2>
-          <p>适合希望触达 fba 文档读者的产品或服务。请先联系作者确认价格、排期和素材</p>
+          <h2 id="booth-title">{{ t('sponsors.boothTitle') }}</h2>
+          <p>{{ t('sponsors.boothDesc') }}</p>
         </div>
-        <a class="contact-button" :href="sponsorMailto">邮件联系</a>
+        <a class="contact-button" :href="sponsorMailto">{{ t('sponsors.contactEmail') }}</a>
       </div>
 
       <div class="booth-grid">
-        <article v-for="plan in boothPlans" :key="plan.name" class="booth-card"
+        <article v-for="plan in boothPlans" :key="plan.key || plan.name" class="booth-card"
           :class="{ 'is-full': isBoothFull(plan) }">
           <div class="booth-head">
             <div>
               <div class="booth-badges">
-                <span>{{ plan.status }}</span>
+                <span>{{ statusLabel(plan) }}</span>
                 <span v-if="plan.quota" class="booth-quota">{{ plan.quota }}</span>
               </div>
               <h3>{{ plan.name }}</h3>
@@ -233,23 +205,23 @@ onBeforeUnmount(() => {
               <span>{{ placement }}</span>
             </li>
           </ul>
-          <p class="material-line">素材：{{ plan.material }}</p>
+          <p class="material-line">{{ t('sponsors.materialPrefix') }}{{ plan.material }}</p>
         </article>
       </div>
 
       <div class="booth-footer">
         <aside class="callout-card promotion">
-          <strong>推广:</strong>
+          <strong>{{ t('sponsors.promotionLabel') }}</strong>
           <div>
-            <p>选择【独家展位、金牌展位】赞助，可帮助您的产品在 Discord 社区以公告的形式进行推广一次</p>
+            <p>{{ t('sponsors.promotionDesc') }}</p>
             <ul class="plain-list">
               <li v-for="rule in promotionRules" :key="rule">{{ rule }}</li>
             </ul>
-            <p>公告消息如下：（您也可以提供自定义非政治、非法律法规敏感的推广词/图片）</p>
+            <p>{{ t('sponsors.announcementHint') }}</p>
             <div class="snippet-block">
               <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'promotion' }"
-                :aria-label="copiedSnippet === 'promotion' ? '已复制公告消息' : '复制公告消息'"
-                :title="copiedSnippet === 'promotion' ? '已复制' : '复制'"
+                :aria-label="copiedSnippet === 'promotion' ? t('sponsors.copiedAnnouncement') : t('sponsors.copyAnnouncement')"
+                :title="copiedSnippet === 'promotion' ? t('sponsors.copied') : t('sponsors.copy')"
                 @click="copySnippet('promotion', announcementLines)">
                 <SponsorIcon name="copy" />
               </button>
@@ -259,13 +231,13 @@ onBeforeUnmount(() => {
         </aside>
 
         <aside class="callout-card inquiry">
-          <strong>咨询:</strong>
+          <strong>{{ t('sponsors.inquiryLabel') }}</strong>
           <div>
-            <p>联系作者时可直接发送以下信息，方便快速确认价格、排期和展示素材</p>
+            <p>{{ t('sponsors.inquiryDesc') }}</p>
             <div class="snippet-block">
               <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'inquiry' }"
-                :aria-label="copiedSnippet === 'inquiry' ? '已复制咨询模板' : '复制咨询模板'"
-                :title="copiedSnippet === 'inquiry' ? '已复制' : '复制'"
+                :aria-label="copiedSnippet === 'inquiry' ? t('sponsors.copiedInquiry') : t('sponsors.copyInquiry')"
+                :title="copiedSnippet === 'inquiry' ? t('sponsors.copied') : t('sponsors.copy')"
                 @click="copySnippet('inquiry', inquiryLines)">
                 <SponsorIcon name="copy" />
               </button>
@@ -275,13 +247,13 @@ onBeforeUnmount(() => {
         </aside>
 
         <aside class="callout-card notice">
-          <strong>注意:</strong>
-          <span>由于当前所有展位赞助均为自愿支持性质，我们暂时无法为您提供发票开具服务，对此带来的不便深表歉意</span>
+          <strong>{{ t('sponsors.noticeLabel') }}</strong>
+          <span>{{ t('sponsors.noticeText') }}</span>
         </aside>
 
         <aside class="callout-card warning">
-          <strong>警告:</strong>
-          <span>展位转化效果可能因市场环境、受众行为等多种因素影响，我们无法保证确切的转化结果</span>
+          <strong>{{ t('sponsors.warningLabel') }}</strong>
+          <span>{{ t('sponsors.warningText') }}</span>
         </aside>
       </div>
     </section>

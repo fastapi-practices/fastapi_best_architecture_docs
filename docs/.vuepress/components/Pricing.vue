@@ -4,80 +4,87 @@
       <div class="pricing-card">
         <div class="card-content">
           <div class="card-header">
-            <h2>{{ plans.openSource.title }}</h2>
-            <p class="card-description">{{ plans.openSource.description }}</p>
+            <h2>{{ t('pricing.openSource.title') }}</h2>
+            <p class="card-description">{{ t('pricing.openSource.description') }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price" style="margin-bottom: 59px">免费</div>
+            <div class="current-price" style="margin-bottom: 59px">{{ t('pricing.free') }}</div>
           </div>
           <ul class="features-list">
-            <li v-for="(feature, index) in plans.openSource.features" :key="index">
+            <li v-for="(feature, index) in openSourceFeatures" :key="index">
               <span class="feature-icon">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
         <button class="cta-button"
-          @click="openSponsorLink(withBase('/backend/summary/quick-start.html'))">
-          立即使用
+          @click="openSponsorLink(withBase(withLocale('/backend/summary/quick-start.html')))">
+          {{ t('pricing.getStarted') }}
         </button>
       </div>
 
       <div class="pricing-card highlighted">
-        <div class="popular-tag">最受欢迎</div>
+        <div class="popular-tag">{{ t('pricing.mostPopular') }}</div>
         <div class="card-content">
           <div class="card-header">
-            <h2>{{ plans.professional.title }}</h2>
-            <p class="card-description">{{ plans.professional.description }}</p>
+            <h2>{{ t('pricing.professional.title') }}</h2>
+            <p class="card-description">{{ t('pricing.professional.description') }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.professional.price.current }}</div>
-            <div v-if="plans.professional.price.original" class="original-price">
-              <del>{{ plans.professional.price.original }}</del>
+            <div class="current-price">{{ t('pricing.professional.priceCurrent') }}</div>
+            <div class="original-price">
+              <del>{{ t('pricing.professional.priceOriginal') }}</del>
             </div>
           </div>
           <ul class="features-list">
-            <li v-for="(feature, index) in plans.professional.features" :key="index">
+            <li v-for="(feature, index) in professionalFeatures" :key="index">
               <span class="feature-icon">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
-        <p style="text-align: center; color: var(--vp-c-text-2);">此版本用于赞助支持</p>
+        <p style="text-align: center; color: var(--vp-c-text-2);">{{ t('pricing.sponsorNote') }}</p>
         <button class="cta-button primary"
-          @click="openSponsorLink(withBase('/sponsors.html'))">立即购买
+          @click="openSponsorLink(withBase(withLocale('/sponsors.html')))">{{ t('pricing.buyNow') }}
         </button>
       </div>
 
       <div class="pricing-card">
         <div class="card-content">
           <div class="card-header">
-            <h2>{{ plans.enterprise.title }}</h2>
-            <p class="card-description">{{ plans.enterprise.description }}</p>
+            <h2>{{ t('pricing.enterprise.title') }}</h2>
+            <p class="card-description">{{ t('pricing.enterprise.description') }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price">{{ plans.enterprise.price.current }}</div>
-            <div v-if="plans.enterprise.price.original" class="original-price">
-              <del>{{ plans.enterprise.price.original }}</del>
+            <div class="current-price">{{ t('pricing.enterprise.priceCurrent') }}</div>
+            <div class="original-price">
+              <del>{{ t('pricing.enterprise.priceOriginal') }}</del>
             </div>
           </div>
           <ul class="features-list">
-            <li v-for="(feature, index) in plans.enterprise.features" :key="index">
+            <li v-for="(feature, index) in enterpriseFeatures" :key="index">
               <span class="feature-icon">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
-        <button class="cta-button">无此方案</button>
+        <button class="cta-button">{{ t('pricing.notAvailable') }}</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { withBase } from "vuepress/client";
-import { plans } from "../data/pricing";
 import { openSponsorLink } from "../data/sponsors";
+import { useI18n } from "../composables/useI18n";
+
+const { t, tm, withLocale } = useI18n();
+
+const openSourceFeatures = computed(() => tm('pricing.openSource.features') || [])
+const professionalFeatures = computed(() => tm('pricing.professional.features') || [])
+const enterpriseFeatures = computed(() => tm('pricing.enterprise.features') || [])
 </script>
 
 <style scoped>

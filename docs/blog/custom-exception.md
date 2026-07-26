@@ -3,6 +3,7 @@ title: FastAPI 如何自定义异常
 createTime: 2025-01-26 16:43
 tags:
   - FastAPI
+permalink: /blog/vt1onthd/
 ---
 
 我们为 fba 精心设计了全局异常拦截器，它可以自动拦截所有异常信息，并按照标准化的返回信息进行异常信息返回

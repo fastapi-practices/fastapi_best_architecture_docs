@@ -1,16 +1,16 @@
 <template>
   <div class="plugin-marketplace">
     <header class="marketplace-header">
-      <h1 class="header-title">插件市场</h1>
+      <h1 class="header-title">{{ t('marketplace.title') }}</h1>
       <p class="header-subtitle">
-        发现由
+        {{ t('marketplace.subtitleBefore') }}
         <a href="https://github.com/fastapi-practices/plugins" target="_blank">fastapi-practices/plugins</a>
-        收录的插件，扩展你的应用能力
+        {{ t('marketplace.subtitleAfter') }}
       </p>
       <div class="header-actions">
-        <a :href="withBase('/plugin/dev')" class="action-link">创建插件</a>
-        <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">申请插件</a>
-        <a :href="withBase('/plugin/share')" class="action-link">发布插件</a>
+        <a :href="withBase(withLocale('/plugin/dev'))" class="action-link">{{ t('marketplace.create') }}</a>
+        <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">{{ t('marketplace.request') }}</a>
+        <a :href="withBase(withLocale('/plugin/share'))" class="action-link">{{ t('marketplace.publish') }}</a>
       </div>
     </header>
 
@@ -22,12 +22,12 @@
           <path d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"></path>
           <path d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"></path>
         </svg>
-        <input v-model="searchQuery" type="text" placeholder="探索符合你需求的插件：名称、作者、描述..." class="search-input" />
+        <input v-model="searchQuery" type="text" :placeholder="t('marketplace.searchPlaceholder')" class="search-input" />
       </div>
 
       <div class="filter-tabs">
         <button class="filter-tab" :class="{ active: currentTag === 'all' }" @click="currentTag = 'all'">
-          全部
+          {{ t('marketplace.all') }}
         </button>
         <button v-for="tag in filteredValidTags" :key="tag" class="filter-tab" :class="{ active: currentTag === tag }"
           @click="currentTag = tag">
@@ -39,17 +39,17 @@
     <div class="marketplace-content">
       <div v-if="loading" class="loading-state">
         <div class="loading-spinner"></div>
-        <span>正在加载插件列表...</span>
+        <span>{{ t('marketplace.loading') }}</span>
       </div>
 
       <div v-else-if="error" class="error-state">
         <span>{{ error }}</span>
-        <button @click="fetchPlugins" class="retry-btn">重试</button>
+        <button @click="fetchPlugins" class="retry-btn">{{ t('marketplace.retry') }}</button>
       </div>
 
       <div v-else-if="filteredPlugins.length === 0" class="empty-state">
-        <span>未找到匹配的插件</span>
-        <button @click="resetFilters" class="reset-btn">清除筛选</button>
+        <span>{{ t('marketplace.empty') }}</span>
+        <button @click="resetFilters" class="reset-btn">{{ t('marketplace.clearFilters') }}</button>
       </div>
 
       <div v-else class="plugin-grid">
@@ -97,7 +97,7 @@
             </div>
             <button type="button" class="card-action-btn card-action-command"
               :class="{ copied: copiedInstallCommandPath === plugin.git.path }"
-              :aria-label="copiedInstallCommandPath === plugin.git.path ? '已复制安装命令' : '安装插件'"
+              :aria-label="copiedInstallCommandPath === plugin.git.path ? t('marketplace.installCommandCopied') : t('marketplace.installPlugin')"
               :title="buildInstallCommand(plugin)" @click="copyInstallCommand(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -105,13 +105,13 @@
                 <path d="M7 10l5 5 5-5"></path>
                 <path d="M5 21h14"></path>
               </svg>
-              <span>{{ copiedInstallCommandPath === plugin.git.path ? '已复制' : '安装' }}</span>
+              <span>{{ copiedInstallCommandPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.install') }}</span>
             </button>
 
             <button type="button" class="card-action-btn card-action-share"
               :class="{ copied: copiedPluginPath === plugin.git.path }"
-              :aria-label="copiedPluginPath === plugin.git.path ? '已复制' : '分享'"
-              :title="copiedPluginPath === plugin.git.path ? '已复制' : '分享'" @click="sharePlugin(plugin)">
+              :aria-label="copiedPluginPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.share')"
+              :title="copiedPluginPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.share')" @click="sharePlugin(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 aria-hidden="true">
                 <path d="M8.59 13.51l6.83 3.98"></path>
@@ -120,7 +120,7 @@
                 <circle cx="6" cy="12" r="3"></circle>
                 <circle cx="18" cy="19" r="3"></circle>
               </svg>
-              <span>{{ copiedPluginPath === plugin.git.path ? '已复制' : '分享' }}</span>
+              <span>{{ copiedPluginPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.share') }}</span>
             </button>
 
           </div>
@@ -130,7 +130,7 @@
 
     <Transition name="install-notice">
       <div v-if="installNotice.visible" class="install-notice" role="status" aria-live="polite">
-        <button type="button" class="install-notice-close" aria-label="关闭安装提示" @click="closeInstallNotice">
+        <button type="button" class="install-notice-close" :aria-label="t('marketplace.closeInstallTip')" @click="closeInstallNotice">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" aria-hidden="true">
             <path d="M18 6L6 18"></path>
@@ -148,7 +148,7 @@
           <ul class="install-notice-desc">
             <li v-for="tip in installNotice.tips" :key="tip">{{ tip }}</li>
           </ul>
-          <a :href="installNotice.docUrl" class="install-notice-link">查看安装文档</a>
+          <a :href="installNotice.docUrl" class="install-notice-link">{{ t('marketplace.viewInstallDocs') }}</a>
         </div>
       </div>
     </Transition>
@@ -159,6 +159,9 @@
 import { useClipboard } from '@vueuse/core'
 import { ref, computed, onMounted, onBeforeUnmount, reactive } from 'vue'
 import { withBase } from 'vuepress/client'
+import { useI18n } from '../composables/useI18n'
+
+const { t, tm, withLocale } = useI18n()
 
 type PluginType = 'backend' | 'frontend'
 
@@ -186,18 +189,6 @@ interface PluginItem {
 }
 
 // Data sync from: https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/plugin/validator.py
-const TAG_LABELS: Record<string, string> = {
-  ai: 'AI',
-  mcp: 'MCP',
-  agent: 'Agent',
-  auth: '认证',
-  storage: '存储',
-  notification: '通知',
-  task: '任务',
-  payment: '支付',
-  other: '其他'
-}
-
 const DB_TABLES: Record<string, string> = {
   mysql: 'MySQL',
   postgresql: 'PostgreSQL'
@@ -206,7 +197,7 @@ const DB_TABLES: Record<string, string> = {
 const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
-const INSTALL_DOC_BASE = withBase('/plugin/install.html')
+const INSTALL_DOC_BASE = computed(() => withBase(withLocale('/plugin/install.html')))
 
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
@@ -280,11 +271,16 @@ const getPluginType = (path: string): PluginType => {
 }
 
 const getPluginTypeLabel = (path: string): string => {
-  return getPluginType(path) === 'frontend' ? '前端' : '后端'
+  return getPluginType(path) === 'frontend'
+    ? t('marketplace.frontend')
+    : t('marketplace.backend')
 }
 
 const getInstallUrl = (path: string): string => {
-  return `${INSTALL_DOC_BASE}${getPluginType(path) === 'frontend' ? '#前端' : '#后端'}`
+  const anchor = getPluginType(path) === 'frontend'
+    ? t('marketplace.frontendAnchor')
+    : t('marketplace.backendAnchor')
+  return `${INSTALL_DOC_BASE.value}${anchor}`
 }
 
 const buildInstallCommand = (plugin: PluginItem): string => {
@@ -299,15 +295,15 @@ const buildInstallTips = (plugin: PluginItem): string[] => {
   const pluginName = plugin.plugin.summary.trim()
   if (getPluginType(plugin.git.path) === 'frontend') {
     return [
-      `已复制「${pluginName}」的安装命令`,
-      '请在后端项目根目录激活虚拟环境后执行',
-      'CLI 会继续询问前端项目根路径'
+      t('marketplace.installCommandCopiedFor', { name: pluginName }),
+      t('marketplace.activateVenvTip'),
+      t('marketplace.frontendPathTip'),
     ]
   }
   return [
-    `已复制「${pluginName}」的安装命令`,
-    '请在后端项目根目录激活虚拟环境后执行',
-    '按插件 README 完成配置后重启服务'
+    t('marketplace.installCommandCopiedFor', { name: pluginName }),
+    t('marketplace.activateVenvTip'),
+    t('marketplace.restartServiceTip'),
   ]
 }
 
@@ -326,7 +322,7 @@ const isOfficialPlugin = (plugin: PluginItem): boolean => {
 }
 
 const getMaintainerLabel = (plugin: PluginItem): string => {
-  return isOfficialPlugin(plugin) ? '官方' : '社区'
+  return isOfficialPlugin(plugin) ? t('marketplace.official') : t('marketplace.community')
 }
 
 const getMaintainerIdentityClass = (plugin: PluginItem): string => {
@@ -338,9 +334,9 @@ const buildShareText = (plugin: PluginItem): string => {
   const description = plugin.plugin.description?.replace(/\s+/g, ' ').trim()
 
   return [
-    `发现一个不错的 fba 插件「${summary}」`,
-    description || '值得放进你的项目里试一试。',
-    `仓库地址：${plugin.git.url}`
+    t('marketplace.shareFound', { name: summary }),
+    description || t('marketplace.shareTry'),
+    t('marketplace.shareRepo', { url: plugin.git.url }),
   ].join('\n')
 }
 
@@ -364,7 +360,7 @@ const copyInstallCommand = async (plugin: PluginItem) => {
     const command = buildInstallCommand(plugin)
     await copyToClipboard(command)
     copiedInstallCommandPath.value = plugin.git.path
-    installNotice.title = '安装命令已复制'
+    installNotice.title = t('marketplace.installCommandCopiedTitle')
     installNotice.tips = buildInstallTips(plugin)
     installNotice.docUrl = getInstallUrl(plugin.git.path)
     installNotice.visible = true
@@ -400,20 +396,25 @@ const getColor = (str: string): string => {
 }
 
 const getTagLabel = (tag: string): string => {
-  return TAG_LABELS[tag] || tag
+  const fixed: Record<string, string> = { ai: 'AI', mcp: 'MCP', agent: 'Agent' }
+  if (fixed[tag]) return fixed[tag]
+  const labels = tm<Record<string, string>>('marketplace.tags') || {}
+  return labels[tag] || tag
 }
 
 const getDbLabel = (db: string): string => {
   return DB_TABLES[db] || db
 }
 
+const KNOWN_TAGS = new Set(['ai', 'mcp', 'agent', 'auth', 'storage', 'notification', 'task', 'payment', 'other'])
+
 const filteredValidTags = computed(() => {
-  return validTags.value.filter(tag => tag in TAG_LABELS)
+  return validTags.value.filter(tag => KNOWN_TAGS.has(tag))
 })
 
 const getValidTags = (tags: string[] | undefined): string[] => {
   if (!tags) return []
-  return tags.filter(tag => tag in TAG_LABELS)
+  return tags.filter(tag => KNOWN_TAGS.has(tag))
 }
 
 const getValidDatabases = (databases: string[] | undefined): string[] => {
@@ -524,7 +525,7 @@ const fetchPlugins = async () => {
     saveToCache(data)
   } catch (e) {
     console.error('Fetch error:', e)
-    error.value = '加载失败，请检查网络连接'
+    error.value = t('marketplace.loadFailed')
   } finally {
     loading.value = false
   }

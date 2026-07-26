@@ -1,16 +1,16 @@
 <template>
   <SponsorExclusivePopup v-if="isHomePage && isFullHero" />
   <a v-else-if="isHomePage" class="sponsor-home mode-inline" :href="targetHref"
-    :target="isExternal ? '_blank' : '_self'" :title="hasBrand ? homeSponsor.alt : '独家赞助商席位 - 立即咨询'">
+    :target="isExternal ? '_blank' : '_self'" :title="hasBrand ? homeSponsor.alt : emptyTitle">
     <template v-if="hasBrand">
-      <span class="sh-inline-label">独家赞助商</span>
+      <span class="sh-inline-label">{{ t('sponsorHome.exclusive') }}</span>
       <span class="sh-inline-body">
         <img :src="homeSponsor.link" :alt="homeSponsor.alt" class="sh-inline-img" />
       </span>
-      <span class="sh-inline-label sh-inline-label-right">fba 官方合作伙伴</span>
+      <span class="sh-inline-label sh-inline-label-right">{{ t('sponsorHome.partner') }}</span>
     </template>
     <span v-else class="sh-inline-empty">
-      <GradientText text="独家赞助商席位现已空缺 - 立即咨询" :colors="['#009485', '#c8abfa']" :animation-speed="3" />
+      <GradientText :text="emptyText" :colors="['#009485', '#c8abfa']" :animation-speed="3" />
     </span>
   </a>
 </template>
@@ -19,17 +19,22 @@
 import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, withBase } from 'vuepress/client'
 import { homeSponsor, shouldShowSponsor } from '../data/sponsors'
+import { useI18n } from '../composables/useI18n'
 import GradientText from './bits/GradientText.vue'
 import SponsorExclusivePopup from './SponsorExclusivePopup.vue'
 
 const route = useRoute()
+const { t, withLocale } = useI18n()
 const isHomePage = ref(false)
 const isFullHero = ref(false)
 let observer: MutationObserver | null = null
 let raf = 0
 
+const emptyTitle = computed(() => t('sponsorHome.emptyTitle'))
+const emptyText = computed(() => t('sponsorHome.emptyText'))
+
 const hasBrand = computed(() => shouldShowSponsor(homeSponsor))
-const sponsorHref = computed(() => withBase('/sponsors.html'))
+const sponsorHref = computed(() => withBase(withLocale('/sponsors.html')))
 const targetHref = computed(() => hasBrand.value
   ? homeSponsor.href || sponsorHref.value
   : sponsorHref.value)

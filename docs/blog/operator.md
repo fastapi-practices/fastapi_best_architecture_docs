@@ -3,6 +3,7 @@ title: FastAPI 如何添加操作人信息
 createTime: 2024-12-13 12:15
 tags:
   - FastAPI
+permalink: /blog/lib1a43h/
 ---
 
 我们常见的后台管理系统中，经常会有一些比如创建人，更新人这类的信息，那这些信息是如何做的呢？下面我们就来讲一讲我们在 fba
