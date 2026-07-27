@@ -14,14 +14,6 @@ Prompts are not about quantity — they are about usefulness. Ineffective prompt
 Disable any automatic git save related actions (add, commit...).
 ```
 
-## Language Norms
-
-```markdown
-## Language norms
-
-Thinking and executing are always in English, but replies are always in Chinese.
-```
-
 ## File Writes
 
 ```markdown

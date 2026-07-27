@@ -14,14 +14,6 @@ title: Prompt
 Disable any automatic git save related actions (add, commit...).
 ```
 
-## 语言规范
-
-```markdown
-## Language norms
-
-Thinking and executing are always in English, but replies are always in Chinese.
-```
-
 ## 文件写入
 
 ```markdown
