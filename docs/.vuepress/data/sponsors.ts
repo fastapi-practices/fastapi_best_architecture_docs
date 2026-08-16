@@ -27,7 +27,7 @@ export const goldSponsors: Sponsor[] = [
 
 export const generalSponsors: Sponsor[] = [
     {
-        link: 'https://u.bws.lol/favicon.png',
+        link: 'https://u.bws.lol/bywave-brand.png',
         href: 'https://u.bws.lol/register?aff=SLMYG84W',
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',
