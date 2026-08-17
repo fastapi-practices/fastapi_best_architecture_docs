@@ -194,6 +194,7 @@ export default {
         'Everything in Open Source',
         'Discord identity badge',
         'Discord private channel',
+        'WeChat group',
         'Priority support',
       ],
     },

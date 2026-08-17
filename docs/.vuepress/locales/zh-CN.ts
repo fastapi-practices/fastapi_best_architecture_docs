@@ -183,6 +183,7 @@ export default {
         '所有开源版功能',
         'Discord 身份标签',
         'Discord 专属频道',
+        '微信交流群',
         '优先支持',
       ],
     },
