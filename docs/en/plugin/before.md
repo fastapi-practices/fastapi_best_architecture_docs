@@ -12,6 +12,15 @@ Provide a co-creation platform that moves away from tightly coupled integrations
 
 The project provides basic plugin management for install, enable/disable, download, and uninstall. The marketplace is mainly for discovery and navigation. Third-party plugin quality, updates, pricing, and technical support remain the responsibility of plugin developers.
 
+## Groups
+
+The marketplace organizes plugins into four groups so they are easier to find and filter. Each plugin belongs to both a side group and a maintainer group, for example "Backend · Official".
+
+- **Backend**: plugins installed into `backend/plugin`
+- **Frontend**: plugins installed into the frontend project; repository names end with `_ui` or `-ui`
+- **Official**: maintained by the `fastapi-practices` organization
+- **Community**: maintained by community developers
+
 ## Development
 
 See [Plugin Development](dev.md).

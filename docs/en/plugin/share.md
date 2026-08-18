@@ -136,6 +136,8 @@ Plugins are always unique. If the plugin name already exists, you must choose a 
 
    The fba team will review as soon as possible. Once your PR is merged, the plugin is published to the [Plugin Marketplace](../marketplace.md).
 
+   The marketplace assigns four groups automatically: Backend / Frontend from the repository name, Official / Community from the repository owner. Repositories that follow the frontend suffix rule go to Frontend; repositories under `fastapi-practices` go to Official; everything else goes to Community.
+
 ::::
 
 ## Updating a Plugin

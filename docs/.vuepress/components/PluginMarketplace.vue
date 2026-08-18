@@ -25,14 +25,32 @@
         <input v-model="searchQuery" type="text" :placeholder="t('marketplace.searchPlaceholder')" class="search-input" />
       </div>
 
-      <div class="filter-tabs">
-        <button class="filter-tab" :class="{ active: currentTag === 'all' }" @click="currentTag = 'all'">
-          {{ t('marketplace.all') }}
-        </button>
-        <button v-for="tag in filteredValidTags" :key="tag" class="filter-tab" :class="{ active: currentTag === tag }"
-          @click="currentTag = tag">
-          {{ getTagLabel(tag) }}
-        </button>
+      <div class="filter-panel">
+        <div class="filter-row">
+          <span class="filter-label">{{ t('marketplace.groupFilter') }}</span>
+          <div class="filter-tabs">
+            <button class="filter-tab" :class="{ active: currentGroup === 'all' }" @click="currentGroup = 'all'">
+              {{ t('marketplace.all') }}
+            </button>
+            <button v-for="group in pluginGroups" :key="group" class="filter-tab"
+              :class="{ active: currentGroup === group, [`filter-tab-${group}`]: true }"
+              @click="currentGroup = group">
+              {{ getGroupLabel(group) }}
+            </button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">{{ t('marketplace.tagFilter') }}</span>
+          <div class="filter-tabs">
+            <button class="filter-tab" :class="{ active: currentTag === 'all' }" @click="currentTag = 'all'">
+              {{ t('marketplace.all') }}
+            </button>
+            <button v-for="tag in filteredValidTags" :key="tag" class="filter-tab"
+              :class="{ active: currentTag === tag }" @click="currentTag = tag">
+              {{ getTagLabel(tag) }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -164,6 +182,7 @@ import { useI18n } from '../composables/useI18n'
 const { t, tm, withLocale } = useI18n()
 
 type PluginType = 'backend' | 'frontend'
+type PluginGroup = 'backend' | 'frontend' | 'official' | 'community'
 
 interface InstallNotice {
   visible: boolean
@@ -197,6 +216,7 @@ const DB_TABLES: Record<string, string> = {
 const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
+const PLUGIN_GROUPS: PluginGroup[] = ['backend', 'frontend', 'official', 'community']
 const INSTALL_DOC_BASE = computed(() => withBase(withLocale('/plugin/install.html')))
 
 const DATA_SOURCES = [
@@ -210,6 +230,8 @@ const error = ref('')
 const plugins = ref<PluginItem[]>([])
 const validTags = ref<string[]>([])
 const currentTag = ref('all')
+const currentGroup = ref<'all' | PluginGroup>('all')
+const pluginGroups = PLUGIN_GROUPS
 const searchQuery = ref('')
 const failedIcons = reactive(new Set<string>())
 const copiedPluginPath = ref('')
@@ -225,8 +247,20 @@ let copiedTimer: ReturnType<typeof setTimeout> | null = null
 let copiedInstallCommandTimer: ReturnType<typeof setTimeout> | null = null
 let installNoticeTimer: ReturnType<typeof setTimeout> | null = null
 
+const matchesGroup = (plugin: PluginItem, group: PluginGroup): boolean => {
+  if (group === 'backend' || group === 'frontend') {
+    return getPluginType(plugin.git?.path || '') === group
+  }
+  return group === 'official' ? isOfficialPlugin(plugin) : !isOfficialPlugin(plugin)
+}
+
 const filteredPlugins = computed(() => {
   let result = plugins.value
+  const group = currentGroup.value
+
+  if (group !== 'all') {
+    result = result.filter(p => matchesGroup(p, group))
+  }
 
   if (currentTag.value !== 'all') {
     result = result.filter(p => p.plugin?.tags?.includes(currentTag.value))
@@ -274,6 +308,10 @@ const getPluginTypeLabel = (path: string): string => {
   return getPluginType(path) === 'frontend'
     ? t('marketplace.frontend')
     : t('marketplace.backend')
+}
+
+const getGroupLabel = (group: PluginGroup): string => {
+  return t(`marketplace.${group}`)
 }
 
 const getInstallUrl = (path: string): string => {
@@ -425,6 +463,7 @@ const getValidDatabases = (databases: string[] | undefined): string[] => {
 const resetFilters = () => {
   searchQuery.value = ''
   currentTag.value = 'all'
+  currentGroup.value = 'all'
 }
 
 const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginItem[] } => {
@@ -546,6 +585,10 @@ onBeforeUnmount(() => {
   --backend-soft: var(--vp-c-brand-soft);
   --frontend-accent: #7c3aed;
   --frontend-soft: rgba(124, 58, 237, 0.12);
+  --official-accent: #0f766e;
+  --official-soft: rgba(15, 118, 110, 0.12);
+  --community-accent: #b45309;
+  --community-soft: rgba(180, 83, 9, 0.12);
   max-width: 1400px;
   margin: 0 auto;
   padding: 48px 24px;
@@ -645,6 +688,29 @@ onBeforeUnmount(() => {
   color: var(--vp-c-text-3);
 }
 
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  flex-shrink: 0;
+}
+
 .filter-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -673,6 +739,30 @@ onBeforeUnmount(() => {
   color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
   border-color: var(--vp-c-brand-1);
+}
+
+.filter-tab-backend.active {
+  color: var(--backend-accent);
+  background: var(--backend-soft);
+  border-color: var(--backend-accent);
+}
+
+.filter-tab-frontend.active {
+  color: var(--frontend-accent);
+  background: var(--frontend-soft);
+  border-color: var(--frontend-accent);
+}
+
+.filter-tab-official.active {
+  color: var(--official-accent);
+  background: var(--official-soft);
+  border-color: var(--official-accent);
+}
+
+.filter-tab-community.active {
+  color: var(--community-accent);
+  background: var(--community-soft);
+  border-color: var(--community-accent);
 }
 
 .marketplace-content {
@@ -796,11 +886,11 @@ onBeforeUnmount(() => {
 }
 
 .card-identity-item-official {
-  color: #0f766e;
+  color: var(--official-accent);
 }
 
 .card-identity-item-community {
-  color: #b45309;
+  color: var(--community-accent);
 }
 
 .card-main-link {

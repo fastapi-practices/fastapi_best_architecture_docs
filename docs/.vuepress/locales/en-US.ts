@@ -350,6 +350,8 @@ export default {
     publish: 'Publish Plugin',
     searchPlaceholder: 'Search plugins by name, author, or description...',
     all: 'All',
+    groupFilter: 'Group',
+    tagFilter: 'Tag',
     loading: 'Loading plugins...',
     retry: 'Retry',
     empty: 'No matching plugins found',

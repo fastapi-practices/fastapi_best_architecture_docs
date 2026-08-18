@@ -332,6 +332,8 @@ export default {
     publish: '发布插件',
     searchPlaceholder: '探索符合你需求的插件：名称、作者、描述...',
     all: '全部',
+    groupFilter: '分组',
+    tagFilter: '标签',
     loading: '正在加载插件列表...',
     retry: '重试',
     empty: '未找到匹配的插件',
