@@ -255,7 +255,6 @@ export default {
       {
         key: 'exclusive',
         name: '独家展位',
-        status: 'vacant',
         price: '沟通 / 月',
         quota: '仅 1 席',
         placements: [
@@ -272,7 +271,6 @@ export default {
       {
         key: 'gold',
         name: '金牌展位',
-        status: 'vacant',
         price: '沟通 / 月',
         quota: '仅 3 席',
         placements: [
@@ -285,7 +283,6 @@ export default {
       {
         key: 'silver',
         name: '银牌展位',
-        status: 'vacant',
         price: '沟通 / 月',
         placements: ['首页轮播滚动展示位', '文档右侧边栏小号展示位'],
         material: '5:3 横版图，品牌名、Logo、链接',

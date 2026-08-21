@@ -18,7 +18,12 @@ export const defaultSponsor: Sponsor = {
     expiryTime: '2099-12-31T23:59:59',
 };
 
-export const homeSponsor: Sponsor = { ...defaultSponsor };
+export const homeSponsor: Sponsor = {
+    link: 'https://purple-sun-4f5a.wuyao1243.workers.dev/',
+    href: 'https://claude.uy/home',
+    alt: 'Claude.uy',
+    expiryTime: '2099-12-31T23:59:59',
+};
 
 
 export const goldSponsors: Sponsor[] = [
@@ -45,12 +50,40 @@ export const openSponsorLink = (href: string, target?: string) => {
     window.open(href, target || '_self');
 };
 
+const PLACEHOLDER_ALT = '成为赞助商';
+
+/** 各展位席位上限，银牌展位不限席 */
+export const boothCapacity = {
+    exclusive: 1,
+    gold: 3,
+} as const;
+
 export function shouldShowSponsor(sponsor: Sponsor): boolean {
-    // @ts-ignore
-    if (!sponsor.alt.includes('成为赞助商') && sponsor.expiryTime) {
-        const now = new Date();
-        const expiryDate = new Date(sponsor.expiryTime);
-        return now < expiryDate;
+    if (!sponsor.alt || sponsor.alt.includes(PLACEHOLDER_ALT) || !sponsor.expiryTime) {
+        return false;
     }
-    return false;
+    return new Date() < new Date(sponsor.expiryTime);
+}
+
+export function getActiveSponsors(sponsors: Sponsor[]): Sponsor[] {
+    return sponsors.filter(shouldShowSponsor);
+}
+
+export function getBoothOccupiedCount(key: string): number {
+    switch (key) {
+        case 'exclusive':
+            return shouldShowSponsor(homeSponsor) ? 1 : 0;
+        case 'gold':
+            return getActiveSponsors(goldSponsors).length;
+        case 'silver':
+            return getActiveSponsors(generalSponsors).length;
+        default:
+            return 0;
+    }
+}
+
+export function isBoothFull(key: string): boolean {
+    const capacity = boothCapacity[key as keyof typeof boothCapacity];
+    if (!capacity) return false;
+    return getBoothOccupiedCount(key) >= capacity;
 }

@@ -273,7 +273,6 @@ export default {
       {
         key: 'exclusive',
         name: 'Exclusive Booth',
-        status: 'vacant',
         price: 'Contact / mo',
         quota: '1 seat only',
         placements: [
@@ -290,7 +289,6 @@ export default {
       {
         key: 'gold',
         name: 'Gold Booth',
-        status: 'vacant',
         price: 'Contact / mo',
         quota: '3 seats only',
         placements: [
@@ -303,7 +301,6 @@ export default {
       {
         key: 'silver',
         name: 'Silver Booth',
-        status: 'vacant',
         price: 'Contact / mo',
         placements: ['Scrolling homepage carousel slot', 'Small right sidebar on docs'],
         material: '5:3 landscape image, brand name, logo, and link',
