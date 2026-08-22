@@ -246,6 +246,7 @@ export default {
     contactEmail: 'Email us',
     mailSubject: 'fba booth sponsorship inquiry',
     materialPrefix: 'Creative: ',
+    materialText: '{ratio} landscape image URL, brand name, and destination URL',
     promotionLabel: 'Promotion:',
     promotionDesc:
       'Exclusive or Gold booth sponsorship includes one Discord community announcement for your product',
@@ -284,7 +285,6 @@ export default {
           'Exclusive right sidebar on blog',
           'Visible on mobile',
         ],
-        material: '7:3 landscape image, brand name, logo, and link',
       },
       {
         key: 'gold',
@@ -296,14 +296,12 @@ export default {
           'Visible on GitHub README',
           'Large right sidebar on docs',
         ],
-        material: 'Same as Exclusive',
       },
       {
         key: 'silver',
         name: 'Silver Booth',
         price: 'Contact / mo',
         placements: ['Scrolling homepage carousel slot', 'Small right sidebar on docs'],
-        material: '5:3 landscape image, brand name, logo, and link',
       },
     ],
     promotionRules: [
@@ -311,8 +309,9 @@ export default {
       'No promotions that violate laws or involve gray-area products',
     ],
     inquiryLines: [
-      'Product name:',
-      'Website / landing page:',
+      'Brand name:',
+      'Destination URL:',
+      'Landscape image URL:',
       'Preferred tier: Exclusive / Gold / Silver',
       'Duration: 1 month / 3 months / 12 months',
       'Preferred go-live date:',

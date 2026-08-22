@@ -58,6 +58,22 @@ export const boothCapacity = {
     gold: 3,
 } as const;
 
+/**
+ * 展位横版图比例
+ * 素材对应 Sponsor 字段：link 横版图链接、alt 品牌名、href 跳转链接
+ */
+export const boothAspectRatio = {
+    exclusive: '7:3',
+    gold: '7:3',
+    silver: '5:3',
+} as const;
+
+export type BoothKey = keyof typeof boothAspectRatio;
+
+export function getBoothAspectRatio(key: string): string | undefined {
+    return boothAspectRatio[key as BoothKey];
+}
+
 export function shouldShowSponsor(sponsor: Sponsor): boolean {
     if (!sponsor.alt || sponsor.alt.includes(PLACEHOLDER_ALT) || !sponsor.expiryTime) {
         return false;

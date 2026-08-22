@@ -233,6 +233,7 @@ export default {
     contactEmail: '邮件联系',
     mailSubject: 'fba 展位赞助咨询',
     materialPrefix: '素材：',
+    materialText: '{ratio} 横版图链接、品牌名、跳转链接',
     promotionLabel: '推广:',
     promotionDesc: '选择【独家展位、金牌展位】赞助，可帮助您的产品在 Discord 社区以公告的形式进行推广一次',
     announcementHint: '公告消息如下：（您也可以提供自定义非政治、非法律法规敏感的推广词/图片）',
@@ -266,7 +267,6 @@ export default {
           '博客右侧边栏独家展示位',
           '移动端可见',
         ],
-        material: '7:3 横版图，品牌名、Logo、链接',
       },
       {
         key: 'gold',
@@ -278,14 +278,12 @@ export default {
           'GitHub README 可见',
           '文档右侧边栏大号展示位',
         ],
-        material: '同独家',
       },
       {
         key: 'silver',
         name: '银牌展位',
         price: '沟通 / 月',
         placements: ['首页轮播滚动展示位', '文档右侧边栏小号展示位'],
-        material: '5:3 横版图，品牌名、Logo、链接',
       },
     ],
     promotionRules: [
@@ -293,8 +291,9 @@ export default {
       '拒绝一切违反法律法规、灰产相关的产品推广',
     ],
     inquiryLines: [
-      '产品名称：',
-      '官网 / 落地页：',
+      '品牌名：',
+      '跳转链接：',
+      '横版图链接：',
       '意向档位：独家 / 金牌 / 银牌',
       '投放周期：1 个月 / 3 个月 / 12 个月',
       '希望上线时间：',

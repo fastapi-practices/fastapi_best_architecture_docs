@@ -2,6 +2,7 @@
 import { computed, h, onBeforeUnmount, ref } from 'vue'
 import { withBase } from 'vuepress/client'
 import { useI18n } from '../composables/useI18n'
+import { getBoothAspectRatio, isBoothFull } from '../data/sponsors'
 
 type SponsorTab = 'honor' | 'booth'
 type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'copy' | 'sponsor'
@@ -10,11 +11,9 @@ type SnippetKey = 'promotion' | 'inquiry'
 interface BoothPlan {
   key: string
   name: string
-  status: 'vacant' | 'full' | string
   price: string
   quota?: string
   placements: string[]
-  material: string
 }
 
 const { t, tm, withLocale } = useI18n()
@@ -57,12 +56,13 @@ const whyLink = computed(() =>
 )
 const groupLink = computed(() => withBase(withLocale('/group.html')))
 
-function isBoothFull(plan: BoothPlan) {
-  return plan.status === 'full'
+function statusLabel(plan: BoothPlan) {
+  return isBoothFull(plan.key) ? t('sponsors.statusFull') : t('sponsors.statusVacant')
 }
 
-function statusLabel(plan: BoothPlan) {
-  return plan.status === 'full' ? t('sponsors.statusFull') : t('sponsors.statusVacant')
+function materialLabel(plan: BoothPlan) {
+  const ratio = getBoothAspectRatio(plan.key)
+  return ratio ? t('sponsors.materialText', { ratio }) : ''
 }
 
 const sponsorEmail = 'jianhengwu0407@gmail.com'
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
 
       <div class="booth-grid">
         <article v-for="plan in boothPlans" :key="plan.key || plan.name" class="booth-card"
-          :class="{ 'is-full': isBoothFull(plan) }">
+          :class="{ 'is-full': isBoothFull(plan.key) }">
           <div class="booth-head">
             <div>
               <div class="booth-badges">
@@ -197,7 +197,7 @@ onBeforeUnmount(() => {
               </div>
               <h3>{{ plan.name }}</h3>
             </div>
-            <strong v-if="!isBoothFull(plan)">{{ plan.price }}</strong>
+            <strong v-if="!isBoothFull(plan.key)">{{ plan.price }}</strong>
           </div>
           <ul class="check-list">
             <li v-for="placement in plan.placements" :key="placement">
@@ -205,7 +205,7 @@ onBeforeUnmount(() => {
               <span>{{ placement }}</span>
             </li>
           </ul>
-          <p class="material-line">{{ t('sponsors.materialPrefix') }}{{ plan.material }}</p>
+          <p v-if="materialLabel(plan)" class="material-line">{{ t('sponsors.materialPrefix') }}{{ materialLabel(plan) }}</p>
         </article>
       </div>
 
