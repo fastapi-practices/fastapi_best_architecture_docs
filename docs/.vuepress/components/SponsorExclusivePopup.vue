@@ -7,7 +7,8 @@
     </span>
 
     <span class="sh-pop-body">
-      <img v-if="hasBrand" :src="homeSponsor.link" :alt="homeSponsor.alt" class="sh-pop-img" />
+      <SponsorMedia v-if="hasBrand" :src="homeSponsor.link" :alt="homeSponsor.alt" :ink="homeSponsor.ink" fit="cover"
+        loading="eager" />
       <span v-else class="sh-pop-cta">
         <GradientText :text="t('sponsorHome.inquireNow')" :colors="['#009485', '#c8abfa']" :animation-speed="3" />
       </span>
@@ -23,6 +24,7 @@ import { withBase } from 'vuepress/client'
 import { homeSponsor, shouldShowSponsor } from '../data/sponsors'
 import { useI18n } from '../composables/useI18n'
 import GradientText from './bits/GradientText.vue'
+import SponsorMedia from './SponsorMedia.vue'
 
 const { t, withLocale } = useI18n()
 const hasBrand = computed(() => shouldShowSponsor(homeSponsor))
@@ -115,17 +117,6 @@ const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.v
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-.sh-pop-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-[data-theme="dark"] .sh-pop-img {
-  filter: grayscale(1) invert(1);
 }
 
 .sh-pop-cta {

@@ -6,13 +6,13 @@
     <div class="gold-sponsors">
       <div v-for="brand in goldSponsors" v-show="shouldShowSponsor(brand)" class="brand-item gold"
         @click="openSponsorLink(brand.href, '_blank')">
-        <img :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <SponsorMedia :src="brand.link" :alt="brand.alt" :ink="brand.ink" fit="cover" />
       </div>
     </div>
     <div class="general-sponsors">
       <div v-for="brand in generalSponsors" v-show="shouldShowSponsor(brand)" class="brand-item"
         @click="openSponsorLink(brand.href, '_blank')">
-        <img :alt="brand.alt" :src="brand.link" class="brand-image" />
+        <SponsorMedia :src="brand.link" :alt="brand.alt" :ink="brand.ink" />
       </div>
     </div>
     <div v-if="shouldShowExtraBecomeSponsor" class="brand-item become-brand" @click="openSponsorLink(localeSponsorUrl)">
@@ -31,6 +31,7 @@ import {
   shouldShowSponsor,
 } from "../data/sponsors";
 import { useI18n } from "../composables/useI18n";
+import SponsorMedia from "./SponsorMedia.vue";
 
 const { t, withLocale } = useI18n();
 const localeSponsorUrl = computed(() => withBase(withLocale('/sponsors.html')));
@@ -77,24 +78,18 @@ const shouldShowExtraBecomeSponsor = computed(() => {
   align-items: center;
   justify-content: center;
   height: 66px;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  transition: outline-color 0.3s ease;
   position: relative;
 }
 
 .brand-item:hover {
-  border: 1px solid var(--vp-c-brand);
+  outline: 1px solid var(--vp-c-brand);
+  outline-offset: -1px;
 }
 
 .brand-item.gold {
   height: 96px;
-}
-
-.brand-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: opacity 0.3s ease;
 }
 
 .brand-text {
@@ -107,7 +102,8 @@ const shouldShowExtraBecomeSponsor = computed(() => {
   padding: 0 8px;
 }
 
-.brand-item.gold .brand-text {
+.brand-item.gold .brand-text,
+.brand-item.gold :deep(.sponsor-media__name) {
   font-size: 13px;
 }
 

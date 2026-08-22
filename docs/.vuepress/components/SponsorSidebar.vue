@@ -5,7 +5,8 @@
   <div class="brand-container">
     <div class="sidebar-brand">
       <div class="brand" @click="openSponsorLink(homeSponsor.href)">
-        <img v-if="shouldShowSponsor(homeSponsor)" :alt="homeSponsor.alt" :src="homeSponsor.link" class="brand-image" />
+        <SponsorMedia v-if="shouldShowSponsor(homeSponsor)" :src="homeSponsor.link" :alt="homeSponsor.alt"
+          :ink="homeSponsor.ink" fit="cover" />
         <span v-else class="brand-text">{{ t('sponsorUi.becomeSponsor') }}</span>
       </div>
     </div>
@@ -15,6 +16,7 @@
 <script setup>
 import { homeSponsor, openSponsorLink, shouldShowSponsor } from "../data/sponsors";
 import { useI18n } from "../composables/useI18n";
+import SponsorMedia from "./SponsorMedia.vue";
 
 const { t } = useI18n();
 </script>
@@ -45,16 +47,12 @@ const { t } = useI18n();
   align-items: center;
   justify-content: center;
   height: 89px;
+  overflow: hidden;
 }
 
 .brand:hover {
-  border: 1px solid var(--vp-c-brand);
-}
-
-.brand-image {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+  outline: 1px solid var(--vp-c-brand);
+  outline-offset: -1px;
 }
 
 .brand-text {

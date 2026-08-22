@@ -3,37 +3,81 @@
     <header class="ss-header">
       <h2 class="ss-title">{{ t('sponsorUi.goldTitle') }}</h2>
     </header>
-    <Swiper v-if="processedGoldSponsors.length > 0" :items="processedGoldSponsors" mode="broadcast" :loop="false"
-      :height="162" :slides-per-view="3" :space-between="10" mousewheel />
-    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a></p>
+    <ClientOnly v-if="goldSponsorsList.length > 0">
+      <Swiper class="vp-swiper" :style="{ width: '100%', height: '162px' }" :modules="goldModules" :slides-per-view="3"
+        :space-between="10" :loop="false" :navigation="true" :pagination="{ dynamicBullets: true, clickable: true }"
+        :mousewheel="true" :speed="300">
+        <SwiperSlide v-for="(item, index) in goldSponsorsList" :key="(item.link || item.alt || '') + index">
+          <a v-if="item.href" :href="item.href" target="_blank" rel="noopener noreferrer"
+            class="swiper-slide-link no-icon">
+            <SponsorMedia :src="item.link" :alt="item.alt" :ink="item.ink" fit="cover" />
+          </a>
+          <SponsorMedia v-else :src="item.link" :alt="item.alt" :ink="item.ink" fit="cover" />
+        </SwiperSlide>
+      </Swiper>
+    </ClientOnly>
+    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a>
+    </p>
 
     <header class="ss-header">
       <h2 class="ss-title">{{ t('sponsorUi.silverTitle') }}</h2>
     </header>
-    <Swiper v-if="processedGeneralSponsors.length > 0" :items="processedGeneralSponsors" mode="carousel" :height="168"
-      :slides-per-view="4" :space-between="10" :speed="5000" />
-    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a></p>
+    <ClientOnly v-if="generalSponsorsList.length > 0">
+      <Swiper class="vp-swiper swiper-no-swiping" :style="{ width: '100%', height: '168px' }" :modules="silverModules"
+        :autoplay="{ delay: 0, disableOnInteraction: false }" :slides-per-view="4" :space-between="10"
+        :loop="generalSponsorsList.length > 4" :speed="5000" @swiper="onSilverSwiper">
+        <SwiperSlide v-for="(item, index) in generalSponsorsList" :key="(item.link || item.alt || '') + index">
+          <a v-if="item.href" :href="item.href" target="_blank" rel="noopener noreferrer"
+            class="swiper-slide-link no-icon">
+            <SponsorMedia :src="item.link" :alt="item.alt" :ink="item.ink" />
+          </a>
+          <SponsorMedia v-else :src="item.link" :alt="item.alt" :ink="item.ink" />
+        </SwiperSlide>
+      </Swiper>
+    </ClientOnly>
+    <p v-else class="ss-empty">{{ t('sponsorUi.seatWaiting') }} <a :href="sponsorsHref">{{ t('sponsorUi.beFirst') }}</a>
+    </p>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useMutationObserver } from '@vueuse/core'
+import { Autoplay, Mousewheel, Navigation, Pagination } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper/types'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { computed, onMounted } from 'vue'
 import { withBase } from 'vuepress/client'
-// @ts-ignore
-import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 import { goldSponsors, generalSponsors, shouldShowSponsor } from '../data/sponsors'
 import { useI18n } from '../composables/useI18n'
+import SponsorMedia from './SponsorMedia.vue'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const { t, withLocale } = useI18n()
 const sponsorsHref = computed(() => withBase(withLocale('/sponsors.html')))
 
-const processedGoldSponsors = computed(() =>
-  goldSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
-)
+const goldSponsorsList = computed(() => goldSponsors.filter(shouldShowSponsor))
+const generalSponsorsList = computed(() => generalSponsors.filter(shouldShowSponsor))
 
-const processedGeneralSponsors = computed(() =>
-  generalSponsors.filter(sponsor => shouldShowSponsor(sponsor) && sponsor.link)
-)
+const goldModules = [Navigation, Pagination, Mousewheel]
+const silverModules = [Autoplay]
+
+let silverSwiper: SwiperType | undefined
+
+function onSilverSwiper(swiper: SwiperType) {
+  silverSwiper = swiper
+}
+
+onMounted(() => {
+  useMutationObserver(() => document.documentElement, () => {
+    if (!silverSwiper)
+      return
+    silverSwiper.wrapperEl.style.transform = 'translate3d(0px, 0px, 0px)'
+    setTimeout(() => silverSwiper?.update(), 350)
+  }, { attributeFilter: ['data-theme'] })
+})
 </script>
 
 <style scoped>
@@ -78,7 +122,26 @@ const processedGeneralSponsors = computed(() =>
   text-decoration: underline;
 }
 
+.sponsor-swiper :deep(.vp-swiper) {
+  margin: 24px 0;
+}
+
+.sponsor-swiper :deep(.swiper) {
+  --swiper-theme-color: var(--vp-c-bg);
+  --swiper-pagination-bullet-inactive-color: var(--vp-c-bg);
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+}
+
+.sponsor-swiper :deep(.swiper-slide) {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--vp-c-bg-soft);
+}
+
 .sponsor-swiper :deep(.swiper-slide-link) {
+  display: flex;
+  height: 100%;
   border: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
@@ -87,11 +150,7 @@ const processedGeneralSponsors = computed(() =>
   border: 1px solid var(--vp-c-brand-1);
 }
 
-.sponsor-swiper :deep(.swiper-slide) {
-  background-color: var(--vp-c-bg-soft);
-}
-
-.sponsor-swiper :deep(.swiper-slide-img) {
-  object-fit: contain !important
+.sponsor-swiper :deep(.swiper-wrapper) {
+  transition-timing-function: linear;
 }
 </style>

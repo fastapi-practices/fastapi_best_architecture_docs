@@ -5,7 +5,7 @@
     <template v-if="hasBrand">
       <span class="sh-inline-label">{{ t('sponsorHome.exclusive') }}</span>
       <span class="sh-inline-body">
-        <img :src="homeSponsor.link" :alt="homeSponsor.alt" class="sh-inline-img" />
+        <SponsorMedia :src="homeSponsor.link" :alt="homeSponsor.alt" :ink="homeSponsor.ink" fit="cover" />
       </span>
       <span class="sh-inline-label sh-inline-label-right">{{ t('sponsorHome.partner') }}</span>
     </template>
@@ -22,6 +22,7 @@ import { homeSponsor, shouldShowSponsor } from '../data/sponsors'
 import { useI18n } from '../composables/useI18n'
 import GradientText from './bits/GradientText.vue'
 import SponsorExclusivePopup from './SponsorExclusivePopup.vue'
+import SponsorMedia from './SponsorMedia.vue'
 
 const route = useRoute()
 const { t, withLocale } = useI18n()
@@ -112,17 +113,6 @@ watch(() => route.path, () => scheduleCheck())
   overflow: hidden;
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-}
-
-.sh-inline-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-[data-theme="dark"] .sh-inline-img {
-  filter: grayscale(1) invert(1);
 }
 
 .sh-inline-empty {

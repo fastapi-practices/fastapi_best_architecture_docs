@@ -9,6 +9,8 @@ export interface Sponsor {
     href?: string;
     alt?: string;
     expiryTime: string; // ISO 格式日期：2099-12-31T23:59:59
+    /** 透明单色 Logo 的墨色：white 浅色主题反色，black 深色主题反色，满版/带背景图不填 */
+    ink?: 'white' | 'black';
 }
 
 export const defaultSponsor: Sponsor = {
@@ -36,6 +38,7 @@ export const generalSponsors: Sponsor[] = [
         href: 'https://u.bws.lol/register?aff=SLMYG84W',
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',
+        ink: 'white',
     },
     {
         link: '',
