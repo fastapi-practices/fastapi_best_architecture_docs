@@ -106,3 +106,22 @@ export function isBoothFull(key: string): boolean {
     if (!capacity) return false;
     return getBoothOccupiedCount(key) >= capacity;
 }
+
+export interface GoldSlot {
+    index: number
+    sponsor: Sponsor | null
+}
+
+export function getGoldDisplaySlots(): GoldSlot[] {
+    const active = getActiveSponsors(goldSponsors)
+    return Array.from({ length: boothCapacity.gold }, (_, index) => ({
+        index,
+        sponsor: active[index] ?? null,
+    }))
+}
+
+export function getRecommendedBoothKey(): BoothKey {
+    if (!isBoothFull('exclusive')) return 'exclusive'
+    if (!isBoothFull('gold')) return 'gold'
+    return 'silver'
+}

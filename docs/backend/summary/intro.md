@@ -98,9 +98,7 @@ fba 没有采用传统多应用或微服务目录结构，而是根据 FastAPI �
 
 ## 贡献者
 
-<a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
-</a>
+[![contributors](https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture)](https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors)
 
 ## 许可证
 

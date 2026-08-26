@@ -1,29 +1,33 @@
 <template>
-  <div class="pricing-container">
+  <div class="pricing-page">
+    <header class="pricing-header">
+      <p class="pricing-kicker">{{ t('pricing.kicker') }}</p>
+      <h1 class="pricing-title">{{ t('pricing.title') }}</h1>
+      <p class="pricing-subtitle">{{ t('pricing.subtitle') }}</p>
+    </header>
+
     <div class="pricing-cards">
-      <div class="pricing-card">
+      <article class="pricing-card">
         <div class="card-content">
           <div class="card-header">
             <h2>{{ t('pricing.openSource.title') }}</h2>
             <p class="card-description">{{ t('pricing.openSource.description') }}</p>
           </div>
           <div class="price-section">
-            <div class="current-price" style="margin-bottom: 59px">{{ t('pricing.free') }}</div>
+            <div class="current-price">{{ t('pricing.free') }}</div>
+            <p class="price-hint">MIT</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in openSourceFeatures" :key="index">
-              <span class="feature-icon">✓</span>
+              <span class="feature-icon" aria-hidden="true">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
-        <button class="cta-button"
-          @click="openSponsorLink(withBase(withLocale('/backend/summary/quick-start.html')))">
-          {{ t('pricing.getStarted') }}
-        </button>
-      </div>
+        <a class="cta-button" :href="quickStartHref">{{ t('pricing.getStarted') }}</a>
+      </article>
 
-      <div class="pricing-card highlighted">
+      <article class="pricing-card highlighted">
         <div class="popular-tag">{{ t('pricing.mostPopular') }}</div>
         <div class="card-content">
           <div class="card-header">
@@ -32,24 +36,20 @@
           </div>
           <div class="price-section">
             <div class="current-price">{{ t('pricing.professional.priceCurrent') }}</div>
-            <div class="original-price">
-              <del>{{ t('pricing.professional.priceOriginal') }}</del>
-            </div>
+            <p class="price-hint">{{ t('pricing.professional.priceHint') }}</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in professionalFeatures" :key="index">
-              <span class="feature-icon">✓</span>
+              <span class="feature-icon" aria-hidden="true">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
-        <p style="text-align: center; color: var(--vp-c-text-2);">{{ t('pricing.sponsorNote') }}</p>
-        <button class="cta-button primary"
-          @click="openSponsorLink(withBase(withLocale('/sponsors.html')))">{{ t('pricing.buyNow') }}
-        </button>
-      </div>
+        <p class="sponsor-note">{{ t('pricing.sponsorNote') }}</p>
+        <a class="cta-button primary" :href="honorHref">{{ t('pricing.buyNow') }}</a>
+      </article>
 
-      <div class="pricing-card">
+      <article class="pricing-card">
         <div class="card-content">
           <div class="card-header">
             <h2>{{ t('pricing.enterprise.title') }}</h2>
@@ -57,27 +57,32 @@
           </div>
           <div class="price-section">
             <div class="current-price">{{ t('pricing.enterprise.priceCurrent') }}</div>
-            <div class="original-price">
-              <del>{{ t('pricing.enterprise.priceOriginal') }}</del>
-            </div>
+            <p class="price-hint">{{ t('pricing.enterprise.priceHint') }}</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in enterpriseFeatures" :key="index">
-              <span class="feature-icon">✓</span>
+              <span class="feature-icon" aria-hidden="true">✓</span>
               {{ feature }}
             </li>
           </ul>
         </div>
-        <button class="cta-button">{{ t('pricing.notAvailable') }}</button>
-      </div>
+        <a class="cta-button" :href="enterpriseMailto">{{ t('pricing.contactEnterprise') }}</a>
+      </article>
     </div>
+
+    <section class="brand-banner">
+      <div class="brand-copy">
+        <h2>{{ t('pricing.brandTitle') }}</h2>
+        <p>{{ t('pricing.brandDesc') }}</p>
+      </div>
+      <a class="cta-button primary brand-cta" :href="boothHref">{{ t('pricing.brandCta') }}</a>
+    </section>
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { withBase } from "vuepress/client";
-import { openSponsorLink } from "../data/sponsors";
 import { useI18n } from "../composables/useI18n";
 
 const { t, tm, withLocale } = useI18n();
@@ -85,46 +90,85 @@ const { t, tm, withLocale } = useI18n();
 const openSourceFeatures = computed(() => tm('pricing.openSource.features') || [])
 const professionalFeatures = computed(() => tm('pricing.professional.features') || [])
 const enterpriseFeatures = computed(() => tm('pricing.enterprise.features') || [])
+const quickStartHref = computed(() => withBase(withLocale('/backend/summary/quick-start.html')))
+const honorHref = computed(() => withBase(withLocale('/sponsors.html')) + '#honor')
+const boothHref = computed(() => withBase(withLocale('/sponsors.html')) + '#booth')
+const enterpriseMailto = computed(() => {
+  const subject = encodeURIComponent(t('pricing.enterprise.mailSubject'))
+  return `mailto:jianhengwu0407@gmail.com?subject=${subject}`
+})
 </script>
 
 <style scoped>
-.pricing-container {
+.pricing-page {
+  --pricing-brand: var(--vp-c-brand-1);
+  max-width: 1120px;
   margin: 0 auto;
-  max-width: 1200px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 48px 20px 72px;
+}
+
+.pricing-header {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.pricing-kicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pricing-brand);
+}
+
+.pricing-title {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: var(--vp-c-text-1);
+}
+
+.pricing-subtitle {
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
 }
 
 .pricing-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .pricing-card {
   position: relative;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 750px;
+  min-height: 0;
+  padding: 28px 24px 24px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: var(--vp-c-bg-soft);
 }
 
 .pricing-card.highlighted {
-  border: 2px solid var(--vp-c-brand-1);
+  border: 1px solid color-mix(in srgb, var(--pricing-brand) 42%, var(--vp-c-divider));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pricing-brand) 10%, transparent), transparent 42%), var(--vp-c-bg-soft);
 }
 
 .popular-tag {
   position: absolute;
-  top: -18px;
+  top: -12px;
   right: 20px;
-  background-color: var(--vp-c-brand-1);
-  color: white;
-  padding: 0.25rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  background-color: var(--pricing-brand);
+  color: #fff;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .card-content {
@@ -132,92 +176,154 @@ const enterpriseFeatures = computed(() => tm('pricing.enterprise.features') || [
 }
 
 .card-header {
-  margin: -1rem 0 1.5rem;
+  margin: 0 0 1.25rem;
   text-align: center;
 }
 
+.card-header h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-text-1);
+}
+
 .card-description {
-  font-size: 0.9rem;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--vp-c-text-2);
 }
 
 .price-section {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .current-price {
   font-size: 2rem;
-  font-weight: bold;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 0.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pricing-brand);
 }
 
-.original-price {
+.price-hint {
+  margin: 6px 0 0;
+  font-size: 13px;
   color: var(--vp-c-text-3);
-  font-size: 1rem;
-  margin-top: 10px;
 }
 
 .features-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.25rem;
 }
 
 .features-list li {
-  padding: 0.5rem 0;
+  padding: 0.45rem 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--vp-c-text-1);
 }
 
 .feature-icon {
-  color: var(--vp-c-brand-1);
-  margin-right: 0.5rem;
-  font-weight: bold;
+  color: var(--pricing-brand);
+  font-weight: 700;
+}
+
+.sponsor-note {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }
 
 .cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--pricing-brand);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none !important;
+  color: var(--pricing-brand) !important;
+  background: transparent;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: var(--vp-c-brand-1);
-  color: white;
+  background-color: var(--pricing-brand);
+  color: #fff !important;
 }
 
 .cta-button.primary {
-  background-color: var(--vp-c-brand-1);
-  color: white;
+  background-color: var(--pricing-brand);
+  color: #fff !important;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -10px rgba(0, 148, 133, 0.55);
+}
+
+.brand-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid color-mix(in srgb, var(--pricing-brand) 22%, var(--vp-c-divider));
+  border-radius: 16px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--pricing-brand) 10%, var(--vp-c-bg-soft)), var(--vp-c-bg-soft) 62%);
+}
+
+.brand-copy h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-text-1);
+}
+
+.brand-copy p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+.brand-cta {
+  flex: none;
+  width: auto;
+  min-width: 168px;
+}
+
+@media (max-width: 959px) {
+  .pricing-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 767px) {
-  .pricing-cards {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 2rem 1rem 4rem;
+  .pricing-page {
+    padding: 36px 16px 56px;
   }
 
-  .pricing-card {
-    padding: 1.5rem;
+  .pricing-cards,
+  .brand-banner {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
   }
-}
 
-@media (min-width: 768px) and (max-width: 959px) {
-  .pricing-cards {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 2rem 2rem 5rem;
-  }
-}
-
-@media (min-width: 960px) {
-  .pricing-cards {
-    padding: 3rem 2em 6em;
+  .brand-cta {
+    width: 100%;
   }
 }
 </style>

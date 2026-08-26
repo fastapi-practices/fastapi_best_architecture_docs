@@ -7,6 +7,7 @@ signDown: true
 config:
   - type: hero
     background: tint-plate
+    full: true
     tintPlate: 240
     hero:
       name: FastAPI Best Architecture
@@ -31,11 +32,38 @@ config:
           text: DeepWiki Docs
           link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
   - type: SponsorHome
+  - type: features
+    title: Enterprise-ready, out of the box
+    description: Three-layer core, plugin ecosystem, AI-first collaboration
+    features:
+      - title: Three-layer foundation
+        icon: ph:squares-four-duotone
+        details: API → Service → CRUD/DAO layers with clear boundaries and code generation — productive in 30 minutes
+        link: /en/backend/summary/intro
+      - title: Plugin ecosystem
+        icon: ph:puzzle-piece-duotone
+        details: AI, Auth, Storage, Notification — install and remove cleanly; private registries for enterprises
+        link: /en/plugin/before
+      - title: AI project context
+        icon: ph:sparkle-duotone
+        details: fba skills + LLMs.txt help Claude Code, Cursor, Codex and more understand project conventions
+        link: /en/ai/skills
+      - title: Auth & permissions built-in
+        icon: ph:shield-check-duotone
+        details: JWT, RBAC, data permissions, OAuth 2.0 and other enterprise essentials included
+        link: /en/backend/reference/RBAC
+      - title: Cache, queue & ops
+        icon: ph:stack-duotone
+        details: Redis, Celery, end-to-end logging, and timezone support when you need them
+        link: /en/backend/reference/cache
+      - title: One-click container deploy
+        icon: ph:cloud-arrow-up-duotone
+        details: Docker Compose ready with production-ready MySQL / PostgreSQL setups
+        link: /en/backend/deploy/Docker
   - type: ProjectStats
-  - type: SponsorSwiper
-  - type: FeatureBento
   - type: Testimonials
   - type: custom
+  - type: SponsorSwiper
   - type: HomeSponsor
 ---
 

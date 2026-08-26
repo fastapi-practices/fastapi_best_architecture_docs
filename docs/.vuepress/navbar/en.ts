@@ -116,11 +116,6 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: "material-symbols:groups-outline",
                         link: "/en/community-open-source",
                     },
-                    {
-                        text: "Author's Works",
-                        icon: "material-symbols:work-outline",
-                        link: "/en/works",
-                    },
                 ],
             },
             {

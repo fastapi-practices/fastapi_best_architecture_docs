@@ -116,11 +116,6 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
                         icon: "material-symbols:groups-outline",
                         link: "/community-open-source",
                     },
-                    {
-                        text: "作者作品",
-                        icon: "material-symbols:work-outline",
-                        link: "/works",
-                    },
                 ],
             },
             {

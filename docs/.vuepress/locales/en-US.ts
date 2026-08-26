@@ -21,28 +21,6 @@ export default {
     privacy: 'Privacy Policy',
     status: 'Service Status',
   },
-  featureBento: {
-    title: 'Enterprise-ready, out of the box',
-    subtitle: 'Three-layer core, plugin ecosystem, AI-first collaboration',
-    architectureTitle: 'Three-layer foundation',
-    architectureDesc:
-      'API → Service → CRUD/DAO layers with clear boundaries and code generation — productive in 30 minutes',
-    pluginTitle: 'Plugin ecosystem',
-    pluginDesc:
-      'AI, Auth, Storage, Notification — install and remove cleanly; private registries for enterprises',
-    aiTitle: 'AI project context',
-    aiDesc:
-      'fba skills + LLMs.txt help Claude Code, Cursor, Codex and more understand project conventions',
-    authTitle: 'Auth & permissions built-in',
-    authDesc:
-      'JWT, RBAC, data permissions, OAuth 2.0 and other enterprise essentials included',
-    opsTitle: 'Cache, queue & ops',
-    opsDesc:
-      'Redis, Celery, end-to-end logging, and timezone support when you need them',
-    dockerTitle: 'One-click container deploy',
-    dockerDesc:
-      'Docker Compose ready with production-ready MySQL / PostgreSQL setups',
-  },
   projectStats: {
     title: 'Open source, community driven',
     subtitle: "The numbers speak for developers' real choices",
@@ -167,29 +145,36 @@ export default {
     ],
   },
   pricing: {
+    kicker: 'MIT licensed',
+    title: 'Everything is free. Sponsoring keeps it going',
+    subtitle:
+      'fba has no paywall. The open-source edition is production-ready. Sponsorship is voluntary support for maintenance, and unlocks community identity',
     free: 'Free',
     getStarted: 'Get Started',
-    mostPopular: 'Most Popular',
-    sponsorNote: 'This plan supports sponsorship',
-    buyNow: 'Buy Now',
-    notAvailable: 'Not Available',
+    mostPopular: 'Support the project',
+    sponsorNote: 'Any amount helps long-term maintenance',
+    buyNow: 'Sponsor now',
+    contactEnterprise: 'Talk to us',
+    brandTitle: 'Want developers to see your product?',
+    brandDesc:
+      'Place your brand on the homepage, docs sidebar, GitHub README, and CLI startup. Gold seats are open',
+    brandCta: 'View brand booths',
     openSource: {
       title: 'Open Source',
-      description: 'For individual developers and independent projects',
+      description: 'Ready for production, for individuals and teams',
       features: [
-        'All core features',
-        'Full architecture source code',
+        'Full source and core features',
         'All official plugins',
-        'Full documentation access',
-        'Free to use',
+        'Docs in Chinese and English',
+        'Free for commercial use',
         'MIT License',
       ],
     },
     professional: {
-      title: 'Professional',
-      description: 'A power tool for professional developers',
+      title: 'Sponsor',
+      description: 'Thank the maintainers and help fba keep shipping',
       priceCurrent: 'Any amount',
-      priceOriginal: '￥1999',
+      priceHint: 'Voluntary support, no required tier',
       features: [
         'Everything in Open Source',
         'Discord identity badge',
@@ -200,11 +185,12 @@ export default {
     },
     enterprise: {
       title: 'Enterprise',
-      description: 'Built for teams and large-scale projects',
-      priceCurrent: '￥xxxx',
-      priceOriginal: '￥19999',
+      description: 'Custom services for teams and large-scale projects',
+      priceCurrent: 'Custom quote',
+      priceHint: 'Scoped to team size and delivery needs',
+      mailSubject: 'fba enterprise inquiry',
       features: [
-        'Everything in Professional',
+        'Everything in Sponsor',
         'Private enterprise group',
         '1-on-1 deployment guidance',
         'Architecture Q&A',
@@ -229,52 +215,81 @@ export default {
     whyAnchor: 'long-term-maintenance',
     introAfter:
       '. We have invested a great deal of time and passion. Thank you for supporting fba — every bit of encouragement keeps us moving forward',
+    honorIntro:
+      'Any amount is welcome. After donating, DM the author on Discord with a screenshot to receive an identity badge',
     tabsAria: 'Sponsorship types',
     honorTab: 'Honorary',
-    boothTab: 'Booth',
+    boothTab: 'Brand booth',
     honorTitle: 'Honorary Sponsorship',
     wechat: 'WeChat',
     alipay: 'Alipay',
     other: 'Other',
     otherFallback: 'Other',
-    tipLabel: 'Tip:',
+    tipLabel: 'Claim your badge',
     tipBefore: 'If you have joined the',
-    tipAfter: 'community, please DM the author with a sponsorship screenshot to receive an exclusive identity badge',
-    boothTitle: 'Booth Sponsorship',
+    tipAfter: 'community, DM the author with a sponsorship screenshot to receive an exclusive identity badge',
+    boothTitle: 'Brand booths',
     boothDesc:
-      'Ideal for products or services that want to reach fba docs readers. Contact the author first to confirm pricing, schedule, and creatives',
+      'Pricing and schedule are confirmed by inquiry. We prefer developer tools, cloud, hardware, and education products',
     contactEmail: 'Email us',
     mailSubject: 'fba booth sponsorship inquiry',
+    mailSubjectTier: 'fba booth sponsorship inquiry · {name}',
     materialPrefix: 'Creative: ',
     materialText: '{ratio} landscape image URL, brand name, and destination URL',
-    promotionLabel: 'Promotion:',
-    promotionDesc:
-      'Exclusive or Gold booth sponsorship includes one Discord community announcement for your product',
+    promotionLabel: 'Announcement',
+    promotionDesc: 'Exclusive or Gold booths include one Discord community announcement',
     announcementHint:
-      'Sample announcement (you may also provide custom non-political, non-sensitive copy/images):',
+      'Sample announcement (you may also provide custom, non-sensitive copy or images):',
     copyAnnouncement: 'Copy announcement',
     copiedAnnouncement: 'Announcement copied',
-    inquiryLabel: 'Inquiry:',
-    inquiryDesc:
-      'When contacting the author, send the following details so we can confirm pricing, schedule, and display creatives quickly',
-    copyInquiry: 'Copy inquiry template',
-    copiedInquiry: 'Inquiry template copied',
     copy: 'Copy',
     copied: 'Copied',
-    noticeLabel: 'Note:',
-    noticeText:
-      'All booth sponsorships are currently voluntary support. We cannot issue invoices for now and apologize for any inconvenience',
-    warningLabel: 'Warning:',
-    warningText:
-      'Booth conversion results may vary with market conditions and audience behavior. We cannot guarantee specific outcomes',
+    inquireTier: 'Inquire this tier',
+    tierFull: 'This tier is full',
+    remaining: '{n}/{cap} seats left',
+    unlimited: 'Unlimited seats',
+    audienceAria: 'Audience',
+    audience: [
+      { value: '2.5k+', label: 'GitHub Stars' },
+      { value: '370+', label: 'Forks' },
+      { value: 'ZH / EN', label: 'Bilingual docs' },
+      { value: '4+', label: 'Placements' },
+    ],
+    placementTitle: 'Where your brand appears',
+    placementDesc: 'One creative set covers the docs site, the repository, and local CLI startup',
+    placements: [
+      { key: 'home', title: 'Docs homepage', desc: 'Exclusive banner or gold carousel — seen on first open' },
+      { key: 'sidebar', title: 'Docs sidebar', desc: 'Stays visible while people read guides and posts' },
+      { key: 'readme', title: 'GitHub README', desc: 'The first impression before star or clone' },
+      { key: 'cli', title: 'CLI startup', desc: 'Shown every time the project starts locally' },
+    ],
+    faqTitle: 'Placement notes',
+    faq: [
+      {
+        q: 'How is pricing set?',
+        a: 'Booths are priced per month after a short conversation. Mention the tier and 1 / 3 / 12 month duration in your email or DM, and we will reply with a quote and schedule',
+      },
+      {
+        q: 'Can you issue invoices?',
+        a: 'Booth sponsorship is currently voluntary support, so we cannot issue invoices yet',
+      },
+      {
+        q: 'Do you guarantee clicks or conversions?',
+        a: 'We cannot guarantee specific conversion numbers. We do guarantee the agreed placement and duration',
+      },
+      {
+        q: 'What products are a fit?',
+        a: 'We prefer developer-related products such as tools, cloud, courses, and hardware. Unrelated categories can be reviewed case by case. Illegal or gray-area products are declined',
+      },
+    ],
     statusVacant: 'Open',
     statusFull: 'Full',
-    pricePerMonth: 'Contact / mo',
+    pricePerMonth: 'Custom / mo',
     booths: [
       {
         key: 'exclusive',
         name: 'Exclusive Booth',
-        price: 'Contact / mo',
+        price: 'Custom / mo',
         quota: '1 seat only',
         placements: [
           'Exclusive homepage placement',
@@ -289,7 +304,7 @@ export default {
       {
         key: 'gold',
         name: 'Gold Booth',
-        price: 'Contact / mo',
+        price: 'Custom / mo',
         quota: '3 seats only',
         placements: [
           'Fixed homepage carousel slot',
@@ -300,7 +315,7 @@ export default {
       {
         key: 'silver',
         name: 'Silver Booth',
-        price: 'Contact / mo',
+        price: 'Custom / mo',
         placements: ['Scrolling homepage carousel slot', 'Small right sidebar on docs'],
       },
     ],
@@ -318,7 +333,7 @@ export default {
       'Contact:',
     ],
     announcementLines: [
-      'Thanks to xxx for generously sponsoring the fba project. Here is their product — check it out if you are interested:',
+      'Thanks to xxx for sponsoring the fba project. Here is their product — check it out if you are interested:',
       'xxx product name',
       'Link: https://xxx.xx',
     ],

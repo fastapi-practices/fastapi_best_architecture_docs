@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { computed, h, onBeforeUnmount, ref } from 'vue'
+import { computed, h, onBeforeUnmount, onMounted, ref } from 'vue'
 import { withBase } from 'vuepress/client'
 import { useI18n } from '../composables/useI18n'
-import { getBoothAspectRatio, isBoothFull } from '../data/sponsors'
+import {
+  boothCapacity,
+  getBoothAspectRatio,
+  getBoothOccupiedCount,
+  getRecommendedBoothKey,
+  isBoothFull,
+} from '../data/sponsors'
 
 type SponsorTab = 'honor' | 'booth'
 type SponsorIconName = 'alipay' | 'wechat' | 'arrow-right' | 'check' | 'copy' | 'sponsor'
-type SnippetKey = 'promotion' | 'inquiry'
+type SnippetKey = 'promotion'
 
 interface BoothPlan {
   key: string
@@ -16,15 +22,31 @@ interface BoothPlan {
   placements: string[]
 }
 
+interface AudienceItem {
+  value: string
+  label: string
+}
+
+interface PlacementItem {
+  key: string
+  title: string
+  desc: string
+}
+
+interface FaqItem {
+  q: string
+  a: string
+}
+
 const { t, tm, withLocale } = useI18n()
 
-const activeTab = ref<SponsorTab>('honor')
+const activeTab = ref<SponsorTab>('booth')
 const copiedSnippet = ref<SnippetKey | ''>('')
 let copiedSnippetTimer: ReturnType<typeof setTimeout> | null = null
 
 const tabs = computed(() => [
-  { key: 'honor' as const, label: t('sponsors.honorTab') },
   { key: 'booth' as const, label: t('sponsors.boothTab') },
+  { key: 'honor' as const, label: t('sponsors.honorTab') },
 ])
 
 const paymentMethods = computed(() => [
@@ -47,9 +69,12 @@ const paymentMethods = computed(() => [
 ])
 
 const boothPlans = computed(() => tm<BoothPlan[]>('sponsors.booths') || [])
-const promotionRules = computed(() => tm<string[]>('sponsors.promotionRules') || [])
 const inquiryLines = computed(() => tm<string[]>('sponsors.inquiryLines') || [])
 const announcementLines = computed(() => tm<string[]>('sponsors.announcementLines') || [])
+const audience = computed(() => tm<AudienceItem[]>('sponsors.audience') || [])
+const placements = computed(() => tm<PlacementItem[]>('sponsors.placements') || [])
+const faqItems = computed(() => tm<FaqItem[]>('sponsors.faq') || [])
+const recommendedKey = computed(() => getRecommendedBoothKey())
 
 const whyLink = computed(() =>
   withBase(withLocale(`/backend/summary/why.html#${t('sponsors.whyAnchor')}`)),
@@ -60,15 +85,39 @@ function statusLabel(plan: BoothPlan) {
   return isBoothFull(plan.key) ? t('sponsors.statusFull') : t('sponsors.statusVacant')
 }
 
+function remainingLabel(plan: BoothPlan) {
+  const cap = boothCapacity[plan.key as keyof typeof boothCapacity]
+  if (!cap) return t('sponsors.unlimited')
+  const used = getBoothOccupiedCount(plan.key)
+  if (used >= cap) return t('sponsors.statusFull')
+  return t('sponsors.remaining', { n: cap - used, cap })
+}
+
 function materialLabel(plan: BoothPlan) {
   const ratio = getBoothAspectRatio(plan.key)
   return ratio ? t('sponsors.materialText', { ratio }) : ''
 }
 
 const sponsorEmail = 'jianhengwu0407@gmail.com'
-const sponsorMailto = computed(() =>
-  `mailto:${sponsorEmail}?subject=${encodeURIComponent(t('sponsors.mailSubject'))}&body=${encodeURIComponent(inquiryLines.value.join('\n'))}`,
-)
+
+function inquiryLinesFor(plan?: BoothPlan) {
+  const lines = [...inquiryLines.value]
+  if (!plan) return lines
+  return lines.map((line) => {
+    if (line.startsWith('意向档位')) return `意向档位：${plan.name}`
+    if (line.startsWith('Preferred tier')) return `Preferred tier: ${plan.name}`
+    return line
+  })
+}
+
+function planMailto(plan?: BoothPlan) {
+  const subject = plan
+    ? t('sponsors.mailSubjectTier', { name: plan.name })
+    : t('sponsors.mailSubject')
+  return `mailto:${sponsorEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(inquiryLinesFor(plan).join('\n'))}`
+}
+
+const sponsorMailto = computed(() => planMailto())
 
 const iconPaths: Record<SponsorIconName, string[]> = {
   alipay: ['M5 4h14v16H5z', 'M8 15c3.8-.4 6.8-2 8-5', 'M9 9h6', 'M12 7v8', 'M8 16c2.8 1.4 5.6 1.4 8 0'],
@@ -126,7 +175,28 @@ const copySnippet = async (key: SnippetKey, lines: string[]) => {
   }
 }
 
+function tabFromHash(): SponsorTab {
+  if (typeof window === 'undefined') return 'booth'
+  return window.location.hash.replace(/^#/, '') === 'honor' ? 'honor' : 'booth'
+}
+
+function setTab(tab: SponsorTab) {
+  activeTab.value = tab
+  if (typeof window === 'undefined') return
+  history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${tab}`)
+}
+
+function onHashChange() {
+  activeTab.value = tabFromHash()
+}
+
+onMounted(() => {
+  activeTab.value = tabFromHash()
+  window.addEventListener('hashchange', onHashChange)
+})
+
 onBeforeUnmount(() => {
+  window.removeEventListener('hashchange', onHashChange)
   if (copiedSnippetTimer) clearTimeout(copiedSnippetTimer)
 })
 </script>
@@ -144,17 +214,112 @@ onBeforeUnmount(() => {
       </p>
     </header>
 
+    <ul class="audience-grid" :aria-label="t('sponsors.audienceAria')">
+      <li v-for="item in audience" :key="item.label">
+        <strong>{{ item.value }}</strong>
+        <span>{{ item.label }}</span>
+      </li>
+    </ul>
+
     <nav class="sponsor-tabs" :aria-label="t('sponsors.tabsAria')">
       <button v-for="tab in tabs" :key="tab.key" type="button"
         :class="['tab-button', { active: activeTab === tab.key }]" :aria-selected="activeTab === tab.key"
-        @click="activeTab = tab.key">
+        @click="setTab(tab.key)">
         {{ tab.label }}
       </button>
     </nav>
 
-    <section v-show="activeTab === 'honor'" class="tab-panel" aria-labelledby="honor-title">
+    <section v-show="activeTab === 'booth'" id="booth" class="tab-panel" aria-labelledby="booth-title">
+      <div class="section-title with-action">
+        <div>
+          <h2 id="booth-title">{{ t('sponsors.boothTitle') }}</h2>
+          <p>{{ t('sponsors.boothDesc') }}</p>
+        </div>
+        <div class="section-actions">
+          <a class="contact-button" :href="sponsorMailto">{{ t('sponsors.contactEmail') }}</a>
+        </div>
+      </div>
+
+      <div class="booth-grid">
+        <article v-for="plan in boothPlans" :key="plan.key || plan.name" class="booth-card"
+          :class="{ 'is-full': isBoothFull(plan.key), 'is-recommended': recommendedKey === plan.key && !isBoothFull(plan.key) }">
+          <div class="booth-head">
+            <div>
+              <div class="booth-badges">
+                <span>{{ statusLabel(plan) }}</span>
+                <span class="booth-quota">{{ remainingLabel(plan) }}</span>
+              </div>
+              <h3>{{ plan.name }}</h3>
+            </div>
+            <strong v-if="!isBoothFull(plan.key)">{{ plan.price }}</strong>
+          </div>
+          <ul class="check-list">
+            <li v-for="placement in plan.placements" :key="placement">
+              <SponsorIcon name="check" />
+              <span>{{ placement }}</span>
+            </li>
+          </ul>
+          <p v-if="materialLabel(plan)" class="material-line">{{ t('sponsors.materialPrefix') }}{{ materialLabel(plan) }}</p>
+          <a v-if="!isBoothFull(plan.key)" class="contact-button booth-cta" :href="planMailto(plan)">
+            {{ t('sponsors.inquireTier') }}
+          </a>
+          <p v-else class="tier-full">{{ t('sponsors.tierFull') }}</p>
+        </article>
+      </div>
+
+      <section class="placement-section" aria-labelledby="placement-title">
+        <div class="section-title">
+          <h2 id="placement-title">{{ t('sponsors.placementTitle') }}</h2>
+          <p>{{ t('sponsors.placementDesc') }}</p>
+        </div>
+        <div class="placement-grid">
+          <article v-for="item in placements" :key="item.key" class="placement-card">
+            <div class="placement-preview" :class="`placement-${item.key}`" aria-hidden="true">
+              <span class="mock-bar"></span>
+              <span class="mock-ad"></span>
+              <span class="mock-line"></span>
+              <span class="mock-line short"></span>
+            </div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="booth-footer">
+        <aside class="callout-card promotion">
+          <strong>{{ t('sponsors.promotionLabel') }}</strong>
+          <div>
+            <p>{{ t('sponsors.promotionDesc') }}</p>
+            <p>{{ t('sponsors.announcementHint') }}</p>
+            <div class="snippet-block">
+              <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'promotion' }"
+                :aria-label="copiedSnippet === 'promotion' ? t('sponsors.copiedAnnouncement') : t('sponsors.copyAnnouncement')"
+                :title="copiedSnippet === 'promotion' ? t('sponsors.copied') : t('sponsors.copy')"
+                @click="copySnippet('promotion', announcementLines)">
+                <SponsorIcon name="copy" />
+              </button>
+              <pre class="announcement"><code>{{ announcementLines.join('\n') }}</code></pre>
+            </div>
+          </div>
+        </aside>
+
+        <section class="faq-list" aria-labelledby="faq-title">
+          <h2 id="faq-title">{{ t('sponsors.faqTitle') }}</h2>
+          <VPCollapse>
+            <VPCollapseItem v-for="(item, index) in faqItems" :key="item.q" :index="index">
+              <template #title>{{ item.q }}</template>
+              <p>{{ item.a }}</p>
+            </VPCollapseItem>
+          </VPCollapse>
+        </section>
+      </div>
+    </section>
+
+    <section v-show="activeTab === 'honor'" id="honor" class="tab-panel" aria-labelledby="honor-title">
       <div class="section-title">
         <h2 id="honor-title">{{ t('sponsors.honorTitle') }}</h2>
+        <p>{{ t('sponsors.honorIntro') }}</p>
       </div>
 
       <div class="payment-grid">
@@ -175,87 +340,6 @@ onBeforeUnmount(() => {
         <strong>{{ t('sponsors.tipLabel') }}</strong>
         <span>{{ t('sponsors.tipBefore') }} <a :href="groupLink">Discord</a> {{ t('sponsors.tipAfter') }}</span>
       </aside>
-    </section>
-
-    <section v-show="activeTab === 'booth'" class="tab-panel" aria-labelledby="booth-title">
-      <div class="section-title with-action">
-        <div>
-          <h2 id="booth-title">{{ t('sponsors.boothTitle') }}</h2>
-          <p>{{ t('sponsors.boothDesc') }}</p>
-        </div>
-        <a class="contact-button" :href="sponsorMailto">{{ t('sponsors.contactEmail') }}</a>
-      </div>
-
-      <div class="booth-grid">
-        <article v-for="plan in boothPlans" :key="plan.key || plan.name" class="booth-card"
-          :class="{ 'is-full': isBoothFull(plan.key) }">
-          <div class="booth-head">
-            <div>
-              <div class="booth-badges">
-                <span>{{ statusLabel(plan) }}</span>
-                <span v-if="plan.quota" class="booth-quota">{{ plan.quota }}</span>
-              </div>
-              <h3>{{ plan.name }}</h3>
-            </div>
-            <strong v-if="!isBoothFull(plan.key)">{{ plan.price }}</strong>
-          </div>
-          <ul class="check-list">
-            <li v-for="placement in plan.placements" :key="placement">
-              <SponsorIcon name="check" />
-              <span>{{ placement }}</span>
-            </li>
-          </ul>
-          <p v-if="materialLabel(plan)" class="material-line">{{ t('sponsors.materialPrefix') }}{{ materialLabel(plan) }}</p>
-        </article>
-      </div>
-
-      <div class="booth-footer">
-        <aside class="callout-card promotion">
-          <strong>{{ t('sponsors.promotionLabel') }}</strong>
-          <div>
-            <p>{{ t('sponsors.promotionDesc') }}</p>
-            <ul class="plain-list">
-              <li v-for="rule in promotionRules" :key="rule">{{ rule }}</li>
-            </ul>
-            <p>{{ t('sponsors.announcementHint') }}</p>
-            <div class="snippet-block">
-              <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'promotion' }"
-                :aria-label="copiedSnippet === 'promotion' ? t('sponsors.copiedAnnouncement') : t('sponsors.copyAnnouncement')"
-                :title="copiedSnippet === 'promotion' ? t('sponsors.copied') : t('sponsors.copy')"
-                @click="copySnippet('promotion', announcementLines)">
-                <SponsorIcon name="copy" />
-              </button>
-              <pre class="announcement"><code>{{ announcementLines.join('\n') }}</code></pre>
-            </div>
-          </div>
-        </aside>
-
-        <aside class="callout-card inquiry">
-          <strong>{{ t('sponsors.inquiryLabel') }}</strong>
-          <div>
-            <p>{{ t('sponsors.inquiryDesc') }}</p>
-            <div class="snippet-block">
-              <button type="button" class="snippet-copy" :class="{ copied: copiedSnippet === 'inquiry' }"
-                :aria-label="copiedSnippet === 'inquiry' ? t('sponsors.copiedInquiry') : t('sponsors.copyInquiry')"
-                :title="copiedSnippet === 'inquiry' ? t('sponsors.copied') : t('sponsors.copy')"
-                @click="copySnippet('inquiry', inquiryLines)">
-                <SponsorIcon name="copy" />
-              </button>
-              <pre class="announcement"><code>{{ inquiryLines.join('\n') }}</code></pre>
-            </div>
-          </div>
-        </aside>
-
-        <aside class="callout-card notice">
-          <strong>{{ t('sponsors.noticeLabel') }}</strong>
-          <span>{{ t('sponsors.noticeText') }}</span>
-        </aside>
-
-        <aside class="callout-card warning">
-          <strong>{{ t('sponsors.warningLabel') }}</strong>
-          <span>{{ t('sponsors.warningText') }}</span>
-        </aside>
-      </div>
     </section>
   </main>
 </template>
@@ -316,6 +400,45 @@ onBeforeUnmount(() => {
   color: var(--sponsor-brand);
   font-weight: 650;
   text-decoration: none;
+}
+
+.sponsor-page .audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.sponsor-page .audience-grid li,
+.sponsor-page .audience-grid li + li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 88px;
+  margin: 0;
+  padding: 16px 14px;
+  border: 1px solid var(--sponsor-line);
+  border-radius: 14px;
+  background: var(--sponsor-soft);
+}
+
+.sponsor-page .audience-grid strong {
+  display: block;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--sponsor-brand);
+}
+
+.sponsor-page .audience-grid span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--sponsor-muted);
 }
 
 .sponsor-tabs {
@@ -380,6 +503,18 @@ onBeforeUnmount(() => {
   max-width: none;
 }
 
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: none;
+}
+
+.section-actions .contact-button,
+.section-actions .ghost-button {
+  margin-top: 0;
+}
+
 .payment-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -396,9 +531,6 @@ onBeforeUnmount(() => {
 
 .payment-card {
   padding: 18px;
-}
-
-.payment-card {
   display: flex;
   flex-direction: column;
 }
@@ -486,41 +618,13 @@ onBeforeUnmount(() => {
   min-width: 0;
 }
 
-.callout-card p+.plain-list,
-.callout-card .plain-list+p {
-  margin-top: 10px;
-}
-
-.callout-card.tip {
-  border-color: color-mix(in srgb, var(--sponsor-brand) 30%, var(--sponsor-line));
-  background: var(--sponsor-brand-soft);
-}
-
-.callout-card.notice {
-  border-color: color-mix(in srgb, #eab308 36%, var(--sponsor-line));
-  background: color-mix(in srgb, #eab308 10%, var(--sponsor-card));
-}
-
-.callout-card.notice strong {
-  color: #ca8a04;
-}
-
-.callout-card.warning {
-  border-color: color-mix(in srgb, #dc2626 38%, var(--sponsor-line));
-  background: color-mix(in srgb, #dc2626 10%, var(--sponsor-card));
-}
-
-.callout-card.warning strong {
-  color: #dc2626;
-}
-
-.callout-card.inquiry {
+.callout-card.tip,
+.callout-card.promotion {
   border-color: color-mix(in srgb, var(--sponsor-brand) 28%, var(--sponsor-line));
   background: var(--sponsor-brand-soft);
 }
 
-.check-list,
-.plain-list {
+.check-list {
   padding: 0;
   margin: 14px 0 0;
   list-style: none;
@@ -535,8 +639,7 @@ onBeforeUnmount(() => {
   line-height: 1.6;
 }
 
-.check-list li+li,
-.plain-list li+li {
+.check-list li+li {
   margin-top: 8px;
 }
 
@@ -545,7 +648,8 @@ onBeforeUnmount(() => {
   color: var(--sponsor-brand);
 }
 
-.contact-button {
+.contact-button,
+.ghost-button {
   flex: none;
   display: inline-flex;
   align-items: center;
@@ -556,9 +660,21 @@ onBeforeUnmount(() => {
   padding: 0 15px;
   border-radius: 12px;
   font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.contact-button {
   text-decoration: none !important;
   color: #fff !important;
   background: var(--sponsor-brand);
+  border: 1px solid var(--sponsor-brand);
+}
+
+.ghost-button {
+  color: var(--sponsor-brand);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--sponsor-brand) 35%, var(--sponsor-line));
 }
 
 .booth-grid {
@@ -573,13 +689,13 @@ onBeforeUnmount(() => {
   padding: 18px;
 }
 
-.booth-card:first-child {
+.booth-card.is-recommended {
   border-color: color-mix(in srgb, var(--sponsor-brand) 42%, var(--sponsor-line));
   background: linear-gradient(180deg, var(--sponsor-brand-soft), transparent 70%), var(--sponsor-soft);
 }
 
 .booth-card.is-full,
-.booth-card.is-full:first-child {
+.booth-card.is-full.is-recommended {
   border-color: color-mix(in srgb, var(--sponsor-muted) 24%, var(--sponsor-line));
   background: color-mix(in srgb, var(--sponsor-soft) 72%, var(--sponsor-card));
 }
@@ -639,6 +755,171 @@ onBeforeUnmount(() => {
   font-size: 13px;
 }
 
+.booth-cta,
+.tier-full {
+  margin-top: 14px;
+  width: 100%;
+}
+
+.tier-full {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sponsor-muted);
+}
+
+.placement-section {
+  margin-top: 28px;
+}
+
+.placement-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.placement-card {
+  padding: 14px;
+  border: 1px solid var(--sponsor-line);
+  border-radius: 14px;
+  background: var(--sponsor-soft);
+}
+
+.placement-card h3 {
+  margin: 12px 0 0;
+  font-size: 15px;
+}
+
+.placement-card p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--sponsor-muted);
+}
+
+.placement-preview {
+  position: relative;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--sponsor-card);
+  border: 1px solid var(--sponsor-line);
+}
+
+.mock-bar,
+.mock-ad,
+.mock-line {
+  position: absolute;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--sponsor-muted) 16%, transparent);
+}
+
+.mock-ad {
+  background: color-mix(in srgb, var(--sponsor-brand) 38%, transparent);
+}
+
+.placement-home .mock-bar {
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  height: 8px;
+}
+
+.placement-home .mock-ad {
+  top: 22px;
+  left: 8px;
+  right: 8px;
+  height: 28px;
+}
+
+.placement-home .mock-line {
+  top: 56px;
+  left: 8px;
+  width: 70%;
+  height: 6px;
+}
+
+.placement-home .mock-line.short {
+  top: 68px;
+  width: 48%;
+}
+
+.placement-sidebar .mock-bar {
+  top: 8px;
+  left: 8px;
+  width: 28%;
+  bottom: 8px;
+}
+
+.placement-sidebar .mock-ad {
+  top: 14px;
+  left: 12px;
+  width: 22%;
+  height: 22px;
+}
+
+.placement-sidebar .mock-line {
+  top: 14px;
+  left: 42%;
+  right: 10px;
+  height: 6px;
+}
+
+.placement-sidebar .mock-line.short {
+  top: 28px;
+  width: 38%;
+  left: 42%;
+}
+
+.placement-readme .mock-bar {
+  top: 8px;
+  left: 8px;
+  width: 36%;
+  height: 10px;
+}
+
+.placement-readme .mock-ad {
+  top: 26px;
+  left: 8px;
+  right: 8px;
+  height: 24px;
+}
+
+.placement-readme .mock-line {
+  top: 58px;
+  left: 8px;
+  width: 80%;
+  height: 6px;
+}
+
+.placement-cli {
+  background: #111827;
+}
+
+.placement-cli .mock-bar {
+  top: 14px;
+  left: 12px;
+  width: 42%;
+  height: 6px;
+  background: color-mix(in srgb, #34d399 55%, transparent);
+}
+
+.placement-cli .mock-ad {
+  top: 32px;
+  left: 12px;
+  right: 12px;
+  height: 18px;
+}
+
+.placement-cli .mock-line {
+  top: 58px;
+  left: 12px;
+  width: 58%;
+  height: 6px;
+  background: color-mix(in srgb, #9ca3af 45%, transparent);
+}
+
 .booth-footer {
   display: grid;
   grid-template-columns: 1fr;
@@ -650,12 +931,9 @@ onBeforeUnmount(() => {
   margin-top: 0;
 }
 
-.plain-list {
-  color: var(--sponsor-muted);
-  font-size: 14px;
-  line-height: 1.65;
-  list-style: disc;
-  padding-left: 1.15em;
+.faq-list h2 {
+  margin: 8px 0 0;
+  font-size: 18px;
 }
 
 .snippet-block {
@@ -684,7 +962,6 @@ onBeforeUnmount(() => {
   color: var(--sponsor-muted);
   background: color-mix(in srgb, var(--sponsor-muted) 8%, var(--sponsor-card));
   cursor: pointer;
-  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 .snippet-copy .sponsor-icon {
@@ -711,11 +988,11 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 860px) {
-
+  .audience-grid,
   .payment-grid,
   .booth-grid,
-  .booth-footer {
-    grid-template-columns: 1fr;
+  .placement-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .payment-card img {
@@ -732,12 +1009,17 @@ onBeforeUnmount(() => {
     padding: 36px 14px 56px;
   }
 
-  .sponsor-tabs {
-    width: 100%;
+  .audience-grid,
+  .payment-grid,
+  .booth-grid,
+  .placement-grid {
+    grid-template-columns: 1fr;
   }
 
+  .sponsor-tabs,
   .tab-button,
-  .contact-button {
+  .contact-button,
+  .ghost-button {
     width: 100%;
   }
 

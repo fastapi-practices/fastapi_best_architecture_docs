@@ -6,7 +6,6 @@ import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 
 import Layout from './layouts/Layout.vue'
-import FeatureBento from './components/FeatureBento.vue';
 import GitEmoji from "./components/GitEmoji.vue";
 import HomeSponsor from './components/HomeSponsor.vue';
 import PluginMarketplace from "./components/PluginMarketplace.vue";
@@ -25,7 +24,6 @@ import './styles/custom.css'
 export default defineClientConfig({
     enhance({ app }) {
         app.component('RepoCard', RepoCard)
-        app.component('FeatureBento', FeatureBento)
         app.component('GitEmoji', GitEmoji)
         app.component('HomeSponsor', HomeSponsor)
         app.component('PluginMarketplace', PluginMarketplace)

@@ -98,9 +98,7 @@ If this structure does not fit your team, you can adjust it while keeping the la
 
 ## Contributors
 
-<a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
-</a>
+[![contributors](https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture)](https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors)
 
 ## License
 

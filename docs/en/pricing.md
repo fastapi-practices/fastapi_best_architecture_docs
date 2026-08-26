@@ -1,6 +1,6 @@
 ---
 pageLayout: page
-title: Pricing
+title: Free forever · Support fba
 ---
 
 <Pricing />

@@ -63,6 +63,13 @@
     margin: 24px 0 49px !important;
 }
 
+/* 首页 features 描述与 :deep(.description) 一致 */
+.vp-home-features .description {
+    font-size: 15px;
+    color: var(--vp-c-text-2);
+    margin-bottom: 36px;
+}
+
 /* 首页按钮 */
 .vp-button.medium {
     border-radius: 10px !important;

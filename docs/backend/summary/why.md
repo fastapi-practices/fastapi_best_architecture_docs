@@ -2,10 +2,6 @@
 title: 为什么选择我们？
 ---
 
-<script setup>
-import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
-</script>
-
 > [!TIP]
 > 此仓库作为模板库公开，任何个人或企业均可自由使用！
 

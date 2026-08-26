@@ -30,6 +30,13 @@ export default defineUserConfig({
     ],
     bundler: viteBundler({
         viteOptions: {
+            optimizeDeps: {
+                include: [
+                    'mark.js/src/vanilla.js',
+                    '@vueuse/integrations/useFocusTrap',
+                    'minisearch',
+                ],
+            },
             server: {
                 watch: {
                     ignored: [

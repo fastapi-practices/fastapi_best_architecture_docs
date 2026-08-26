@@ -7,6 +7,7 @@ signDown: true
 config:
   - type: hero
     background: tint-plate
+    full: true
     tintPlate: 240
     hero:
       name: FastAPI Best Architecture
@@ -29,11 +30,38 @@ config:
           text: DeepWiki 文档
           link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
   - type: SponsorHome
+  - type: features
+    title: 企业级开发，开箱即用
+    description: 三层架构打底，插件生态扩展，AI 贯穿协作
+    features:
+      - title: 三层架构打底
+        icon: ph:squares-four-duotone
+        details: API → Service → CRUD/DAO 分层，边界清晰，配套代码生成，新人 30 分钟即可上手
+        link: /backend/summary/intro
+      - title: 插件生态扩展
+        icon: ph:puzzle-piece-duotone
+        details: AI、Auth、Storage、Notification 装即用、卸即净，企业可自建私有仓库
+        link: /plugin/before
+      - title: AI 项目上下文
+        icon: ph:sparkle-duotone
+        details: fba skills + LLMs.txt 让 Claude Code、Cursor、Codex 等直接读懂项目规范
+        link: /ai/skills
+      - title: 认证权限内置
+        icon: ph:shield-check-duotone
+        details: JWT、RBAC、数据权限、OAuth 2.0 等企业基础件预置
+        link: /backend/reference/RBAC
+      - title: 缓存队列与运维
+        icon: ph:stack-duotone
+        details: Redis、Celery、全链路日志、时区方案按需启用
+        link: /backend/reference/cache
+      - title: 一键容器部署
+        icon: ph:cloud-arrow-up-duotone
+        details: Docker Compose 编排就位，MySQL / PostgreSQL 生产可用
+        link: /backend/deploy/Docker
   - type: ProjectStats
-  - type: SponsorSwiper
-  - type: FeatureBento
   - type: Testimonials
   - type: custom
+  - type: SponsorSwiper
   - type: HomeSponsor
 ---
 
@@ -41,7 +69,7 @@ config:
 
 ## 常见问题
 
-<p class="subtitle">也许，你正想问</p>
+<p class="description">也许，你正想问</p>
 
 :::
 
@@ -75,7 +103,7 @@ config:
 
 ## 贡献者
 
-<p class="subtitle">每一次提交，都在让 fba 变得更好</p>
+<p class="description">每一次提交，都在让 fba 变得更好</p>
 
 <a href="https://github.com/fastapi-practices/fastapi-best-architecture/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=fastapi-practices/fastapi-best-architecture"/>
@@ -84,7 +112,7 @@ config:
 :::
 
 <style scoped>
-  :deep(.subtitle) {
+  :deep(.description) {
     font-size: 15px;
     color: var(--vp-c-text-2);
     margin-bottom: 36px;

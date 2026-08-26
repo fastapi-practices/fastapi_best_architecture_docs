@@ -2,10 +2,6 @@
 title: Why Choose Us?
 ---
 
-<script setup>
-import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
-</script>
-
 > [!TIP]
 > This repository is published as a template and can be used freely by individuals and companies.
 
