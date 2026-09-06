@@ -8,8 +8,8 @@
         {{ t('marketplace.subtitleAfter') }}
       </p>
       <div class="header-actions">
-        <a :href="withBase(withLocale('/plugin/dev'))" class="action-link">{{ t('marketplace.create') }}</a>
         <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">{{ t('marketplace.request') }}</a>
+        <a :href="withBase(withLocale('/plugin/dev'))" class="action-link">{{ t('marketplace.develop') }}</a>
         <a :href="withBase(withLocale('/plugin/share'))" class="action-link">{{ t('marketplace.publish') }}</a>
         <a :href="withBase(withLocale('/plugin/install'))" class="action-link">{{ t('marketplace.installPlugin') }}</a>
       </div>
