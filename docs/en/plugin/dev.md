@@ -388,6 +388,8 @@ author = ''
 # Tags
 # Currently supported: ai, mcp, agent, auth, storage, notification, task, payment, other
 tags = ['']
+# Dependent plugins, optional, controls plugin load order
+depends_on = []
 ```
 
 ## Notes

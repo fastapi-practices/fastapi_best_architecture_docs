@@ -399,6 +399,8 @@ author = ''
 # 标签
 # 当前支持：ai、mcp、agent、auth、storage、notification、task、payment、other
 tags = ['']
+# 依赖的插件列表，可选，用于控制插件加载顺序
+depends_on = []
 ```
 
 ## 注意事项
