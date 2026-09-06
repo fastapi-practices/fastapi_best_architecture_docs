@@ -46,7 +46,7 @@ Plugins are always unique. Installing plugins with the same name is not allowed,
 
 1. Create a personal plugin repository
 
-   Prefer creating it from [fba_ui_plugin_template](https://github.com/fastapi-practices/fba_ui_plugin_template), for the same reason as the backend.
+   Prefer creating it from [fba-ui-plugin-template](https://github.com/fastapi-practices/fba-ui-plugin-template), for the same reason as the backend.
 
 2. Upload the code
 

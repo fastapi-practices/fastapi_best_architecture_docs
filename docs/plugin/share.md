@@ -46,7 +46,7 @@ title: 插件分享
 
 1. 创建个人插件仓库
 
-   推荐通过 [fba_ui_plugin_template](https://github.com/fastapi-practices/fba_ui_plugin_template) 创建，原因与后端相同
+   推荐通过 [fba-ui-plugin-template](https://github.com/fastapi-practices/fba-ui-plugin-template) 创建，原因与后端相同
 
 2. 上传代码
 
