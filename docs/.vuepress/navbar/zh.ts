@@ -173,7 +173,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         ],
     },
     {
-        text: "插件系统",
+        text: "插件市场",
         icon: "flat-color-icons:puzzle",
         link: "/marketplace",
     },

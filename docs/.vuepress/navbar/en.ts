@@ -173,7 +173,7 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
         ],
     },
     {
-        text: "Plugins",
+        text: "Marketplace",
         icon: "flat-color-icons:puzzle",
         link: "/en/marketplace",
     },

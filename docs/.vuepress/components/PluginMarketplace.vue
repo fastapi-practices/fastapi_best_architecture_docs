@@ -83,7 +83,7 @@
                   <span class="card-title">{{ plugin.plugin.summary }}</span>
                   <span class="card-version">v{{ plugin.plugin.version }}</span>
                 </div>
-                <p class="card-author">{{ plugin.plugin.author }} / {{ getPluginName(plugin.git.path) }}</p>
+                <p class="card-author">{{ plugin.plugin.author }} / {{ getRepoName(plugin.git.path) }}</p>
               </div>
             </a>
           </div>
