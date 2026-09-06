@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/response_model.png`,t=`/fastapi_best_architecture_docs/images/response_schema_model.png`;export{e as n,t};

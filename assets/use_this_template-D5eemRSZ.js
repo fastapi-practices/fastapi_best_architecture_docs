@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/use_this_template.png`;export{e as t};
