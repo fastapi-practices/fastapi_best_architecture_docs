@@ -15,7 +15,6 @@
           </div>
           <div class="price-section">
             <div class="current-price">{{ t('pricing.free') }}</div>
-            <p class="price-hint">MIT</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in openSourceFeatures" :key="index">
@@ -36,7 +35,6 @@
           </div>
           <div class="price-section">
             <div class="current-price">{{ t('pricing.professional.priceCurrent') }}</div>
-            <p class="price-hint">{{ t('pricing.professional.priceHint') }}</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in professionalFeatures" :key="index">
@@ -57,7 +55,6 @@
           </div>
           <div class="price-section">
             <div class="current-price">{{ t('pricing.enterprise.priceCurrent') }}</div>
-            <p class="price-hint">{{ t('pricing.enterprise.priceHint') }}</p>
           </div>
           <ul class="features-list">
             <li v-for="(feature, index) in enterpriseFeatures" :key="index">
@@ -66,7 +63,7 @@
             </li>
           </ul>
         </div>
-        <a class="cta-button" :href="enterpriseMailto">{{ t('pricing.contactEnterprise') }}</a>
+        <button type="button" class="cta-button" disabled>{{ t('pricing.unavailable') }}</button>
       </article>
     </div>
 
@@ -93,10 +90,6 @@ const enterpriseFeatures = computed(() => tm('pricing.enterprise.features') || [
 const quickStartHref = computed(() => withBase(withLocale('/backend/summary/quick-start.html')))
 const honorHref = computed(() => withBase(withLocale('/sponsors.html')) + '#honor')
 const boothHref = computed(() => withBase(withLocale('/sponsors.html')) + '#booth')
-const enterpriseMailto = computed(() => {
-  const subject = encodeURIComponent(t('pricing.enterprise.mailSubject'))
-  return `mailto:jianhengwu0407@gmail.com?subject=${subject}`
-})
 </script>
 
 <style scoped>
@@ -196,7 +189,7 @@ const enterpriseMailto = computed(() => {
 
 .price-section {
   text-align: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
 }
 
 .current-price {
@@ -204,12 +197,6 @@ const enterpriseMailto = computed(() => {
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--pricing-brand);
-}
-
-.price-hint {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: var(--vp-c-text-3);
 }
 
 .features-list {
@@ -249,11 +236,13 @@ const enterpriseMailto = computed(() => {
   padding: 0 16px;
   border: 1px solid var(--pricing-brand);
   border-radius: 10px;
+  font-family: inherit;
   font-weight: 700;
   font-size: 14px;
   text-decoration: none !important;
   color: var(--pricing-brand) !important;
   background: transparent;
+  appearance: none;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -270,6 +259,21 @@ const enterpriseMailto = computed(() => {
 .cta-button.primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px -10px rgba(0, 148, 133, 0.55);
+}
+
+.cta-button:disabled {
+  cursor: not-allowed;
+  color: var(--vp-c-text-3) !important;
+  border-color: var(--vp-c-divider);
+  background: transparent;
+  opacity: 0.7;
+}
+
+.cta-button:disabled:hover {
+  background: transparent;
+  color: var(--vp-c-text-3) !important;
+  transform: none;
+  box-shadow: none;
 }
 
 .brand-banner {

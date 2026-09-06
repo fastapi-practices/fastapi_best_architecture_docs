@@ -12,10 +12,6 @@ title: Skills
 
 [antdv-next skills](https://skills.sh/antdv-next/skills/antdv-next) Antdv Next Vue 3 component library skill
 
-## brainstorming
-
-[brainstorming skills](https://skills.sh/obra/superpowers/brainstorming) Socratic design improvement
-
 ## excalidraw-diagram
 
 [excalidraw-diagram skills](https://skills.sh/axtonliu/axton-obsidian-visual-skills/excalidraw-diagram) Generate Excalidraw diagrams from natural language descriptions

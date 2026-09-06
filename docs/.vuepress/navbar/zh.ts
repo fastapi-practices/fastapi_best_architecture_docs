@@ -107,11 +107,6 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
                         link: "/stack",
                     },
                     {
-                        text: "官方开源",
-                        icon: "simple-icons:github",
-                        link: "/open-source",
-                    },
-                    {
                         text: "社区开源",
                         icon: "material-symbols:groups-outline",
                         link: "/community-open-source",
@@ -180,44 +175,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: "插件系统",
         icon: "flat-color-icons:puzzle",
-        items: [
-            {
-                text: "文档",
-                items: [
-                    {
-                        text: "前言",
-                        icon: "flat-color-icons:document",
-                        link: "/plugin/before",
-                    },
-                    {
-                        text: "插件开发",
-                        icon: "flat-color-icons:command-line",
-                        link: "/plugin/dev",
-                    },
-                    {
-                        text: "插件分享",
-                        icon: "flat-color-icons:share",
-                        link: "/plugin/share",
-                    },
-                    {
-                        text: "插件安装",
-                        icon: "flat-color-icons:download",
-                        link: "/plugin/install",
-                    },
-                ],
-            },
-            {
-                text: "更多",
-                items: [
-                    {
-                        text: "插件市场",
-                        icon: "flat-color-icons:shop",
-                        badge: { text: 'NEW', type: 'tip' },
-                        link: "/marketplace",
-                    },
-                ],
-            },
-        ],
+        link: "/marketplace",
     },
     {
         text: "Pricing",

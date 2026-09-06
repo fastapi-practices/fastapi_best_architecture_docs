@@ -146,7 +146,7 @@ export default {
   },
   pricing: {
     kicker: 'MIT licensed',
-    title: 'Everything is free. Sponsoring keeps it going',
+    title: 'Everything is free',
     subtitle:
       'fba has no paywall. The open-source edition is production-ready. Sponsorship is voluntary support for maintenance, and unlocks community identity',
     free: 'Free',
@@ -154,7 +154,7 @@ export default {
     mostPopular: 'Support the project',
     sponsorNote: 'Any amount helps long-term maintenance',
     buyNow: 'Sponsor now',
-    contactEnterprise: 'Talk to us',
+    unavailable: 'No such plan',
     brandTitle: 'Want developers to see your product?',
     brandDesc:
       'Place your brand on the homepage, docs sidebar, GitHub README, and CLI startup. Gold seats are open',
@@ -174,7 +174,6 @@ export default {
       title: 'Sponsor',
       description: 'Thank the maintainers and help fba keep shipping',
       priceCurrent: 'Any amount',
-      priceHint: 'Voluntary support, no required tier',
       features: [
         'Everything in Open Source',
         'Discord identity badge',
@@ -187,8 +186,6 @@ export default {
       title: 'Enterprise',
       description: 'Custom services for teams and large-scale projects',
       priceCurrent: 'Custom quote',
-      priceHint: 'Scoped to team size and delivery needs',
-      mailSubject: 'fba enterprise inquiry',
       features: [
         'Everything in Sponsor',
         'Private enterprise group',
@@ -202,7 +199,6 @@ export default {
     exclusive: 'Exclusive Sponsor',
     partner: 'fba Official Partner',
     emptyTitle: 'Exclusive sponsor slot - inquire now',
-    emptyText: 'Exclusive sponsor slot is open - inquire now',
     emptyLabel: 'Exclusive sponsor slot is open',
     inquireNow: 'Inquire now ->',
   },
@@ -369,7 +365,7 @@ export default {
     clearFilters: 'Clear filters',
     loadFailed: 'Failed to load. Please check your network connection',
     installCommandCopied: 'Install command copied',
-    installPlugin: 'Install plugin',
+    installPlugin: 'Install Plugin',
     copied: 'Copied',
     install: 'Install',
     share: 'Share',
@@ -398,6 +394,30 @@ export default {
       payment: 'Payment',
       other: 'Other',
     },
+  },
+  privacyPolicy: {
+    title: 'Privacy Policy',
+    updated: 'Last updated',
+    effective: 'Effective date',
+    date: '2026/9/6',
+  },
+  usersPage: {
+    title: 'User Registry',
+    subtitle: 'If you or your organization use fba in a project, you are welcome to register',
+    cta: 'Register',
+    empty: 'No entries yet',
+    projectSection: 'Open-source projects',
+    orgSection: 'Companies / organizations',
+    projects: [
+      {
+        name: 'fba',
+        description:
+          'An enterprise-grade backend architecture solution built on FastAPI, following a three-layer design. Supports Python 3.10 and above.',
+        url: 'https://docs.fba.wu-clan.cc/',
+        logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
+      },
+    ],
+    organizations: [],
   },
   common: {
     copy: 'Copy',

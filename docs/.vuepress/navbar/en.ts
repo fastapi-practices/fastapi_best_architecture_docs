@@ -107,11 +107,6 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
                         link: "/en/stack",
                     },
                     {
-                        text: "Official Open Source",
-                        icon: "simple-icons:github",
-                        link: "/en/open-source",
-                    },
-                    {
                         text: "Community Open Source",
                         icon: "material-symbols:groups-outline",
                         link: "/en/community-open-source",
@@ -180,44 +175,7 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
     {
         text: "Plugins",
         icon: "flat-color-icons:puzzle",
-        items: [
-            {
-                text: "Docs",
-                items: [
-                    {
-                        text: "Introduction",
-                        icon: "flat-color-icons:document",
-                        link: "/en/plugin/before",
-                    },
-                    {
-                        text: "Plugin Development",
-                        icon: "flat-color-icons:command-line",
-                        link: "/en/plugin/dev",
-                    },
-                    {
-                        text: "Plugin Sharing",
-                        icon: "flat-color-icons:share",
-                        link: "/en/plugin/share",
-                    },
-                    {
-                        text: "Plugin Installation",
-                        icon: "flat-color-icons:download",
-                        link: "/en/plugin/install",
-                    },
-                ],
-            },
-            {
-                text: "More",
-                items: [
-                    {
-                        text: "Marketplace",
-                        icon: "flat-color-icons:shop",
-                        badge: { text: 'NEW', type: 'tip' },
-                        link: "/en/marketplace",
-                    },
-                ],
-            },
-        ],
+        link: "/en/marketplace",
     },
     {
         text: "Pricing",

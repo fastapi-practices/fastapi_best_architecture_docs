@@ -11,45 +11,41 @@
         <a :href="withBase(withLocale('/plugin/dev'))" class="action-link">{{ t('marketplace.create') }}</a>
         <a href="https://github.com/fastapi-practices/plugins/issues" target="_blank" class="action-link">{{ t('marketplace.request') }}</a>
         <a :href="withBase(withLocale('/plugin/share'))" class="action-link">{{ t('marketplace.publish') }}</a>
+        <a :href="withBase(withLocale('/plugin/install'))" class="action-link">{{ t('marketplace.installPlugin') }}</a>
       </div>
     </header>
 
     <div class="marketplace-controls">
       <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11.5 3.5l1.15 2.85 2.85 1.15-2.85 1.15-1.15 2.85-1.15-2.85-2.85-1.15 2.85-1.15L11.5 3.5z"></path>
-          <path d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"></path>
-          <path d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"></path>
-        </svg>
-        <input v-model="searchQuery" type="text" :placeholder="t('marketplace.searchPlaceholder')" class="search-input" />
-      </div>
-
-      <div class="filter-panel">
-        <div class="filter-row">
-          <span class="filter-label">{{ t('marketplace.groupFilter') }}</span>
-          <div class="filter-tabs">
-            <button class="filter-tab" :class="{ active: currentGroup === 'all' }" @click="currentGroup = 'all'">
-              {{ t('marketplace.all') }}
-            </button>
-            <button v-for="group in pluginGroups" :key="group" class="filter-tab"
-              :class="{ active: currentGroup === group, [`filter-tab-${group}`]: true }"
-              @click="currentGroup = group">
-              {{ getGroupLabel(group) }}
-            </button>
-          </div>
+        <div class="search-field">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.5 3.5l1.15 2.85 2.85 1.15-2.85 1.15-1.15 2.85-1.15-2.85-2.85-1.15 2.85-1.15L11.5 3.5z"></path>
+            <path d="M18.3 11.8l.72 1.78 1.78.72-1.78.72-.72 1.78-.72-1.78-1.78-.72 1.78-.72.72-1.78z"></path>
+            <path d="M6.2 13.4l.92 2.28 2.28.92-2.28.92-0.92 2.28-.92-2.28-2.28-.92 2.28-.92.92-2.28z"></path>
+          </svg>
+          <input v-model="searchQuery" type="text" :placeholder="t('marketplace.searchPlaceholder')" class="search-input" />
         </div>
-        <div class="filter-row">
-          <span class="filter-label">{{ t('marketplace.tagFilter') }}</span>
-          <div class="filter-tabs">
-            <button class="filter-tab" :class="{ active: currentTag === 'all' }" @click="currentTag = 'all'">
-              {{ t('marketplace.all') }}
-            </button>
-            <button v-for="tag in filteredValidTags" :key="tag" class="filter-tab"
-              :class="{ active: currentTag === tag }" @click="currentTag = tag">
-              {{ getTagLabel(tag) }}
-            </button>
-          </div>
+
+        <div class="filter-selects">
+          <label class="filter-select-field">
+            <span class="filter-label">{{ t('marketplace.groupFilter') }}</span>
+            <select v-model="currentGroup" class="filter-select">
+              <option value="all">{{ t('marketplace.all') }}</option>
+              <option v-for="group in pluginGroups" :key="group" :value="group">
+                {{ getGroupLabel(group) }}
+              </option>
+            </select>
+          </label>
+          <label class="filter-select-field">
+            <span class="filter-label">{{ t('marketplace.tagFilter') }}</span>
+            <select v-model="currentTag" class="filter-select">
+              <option value="all">{{ t('marketplace.all') }}</option>
+              <option v-for="tag in filteredValidTags" :key="tag" :value="tag">
+                {{ getTagLabel(tag) }}
+              </option>
+            </select>
+          </label>
         </div>
       </div>
     </div>
@@ -643,17 +639,30 @@ onBeforeUnmount(() => {
 }
 
 .marketplace-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 32px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 32px;
 }
 
 .search-wrapper {
-  position: relative;
+  display: flex;
+  align-items: stretch;
   width: 100%;
-  max-width: 600px;
+  min-height: 40px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.search-wrapper:focus-within {
+  border-color: var(--vp-c-brand-1);
+}
+
+.search-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
 }
 
 .search-icon {
@@ -670,99 +679,59 @@ onBeforeUnmount(() => {
 .search-input {
   width: 100%;
   height: 40px;
-  padding: 0 14px 0 42px;
+  padding: 0 12px 0 42px;
   font-size: 14px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
+  border: none;
+  background: transparent;
   color: var(--vp-c-text-1);
-  transition: all 0.2s;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--vp-c-brand-1);
 }
 
 .search-input::placeholder {
   color: var(--vp-c-text-3);
 }
 
-.filter-panel {
+.filter-selects {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.filter-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--vp-c-text-3);
+  align-items: stretch;
   flex-shrink: 0;
 }
 
-.filter-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+.filter-select-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px 0 12px;
+  border-left: 1px solid var(--vp-c-divider);
+  cursor: pointer;
 }
 
-.filter-tab {
-  padding: 4px 12px;
+.filter-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-3);
+  white-space: nowrap;
+}
+
+.filter-select {
+  min-width: 64px;
+  max-width: 120px;
+  height: 100%;
+  padding: 0;
+  border: none;
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.filter-tab:hover {
   color: var(--vp-c-text-1);
-  background: var(--vp-c-bg-soft);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.filter-tab.active {
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand-1);
-}
-
-.filter-tab-backend.active {
-  color: var(--backend-accent);
-  background: var(--backend-soft);
-  border-color: var(--backend-accent);
-}
-
-.filter-tab-frontend.active {
-  color: var(--frontend-accent);
-  background: var(--frontend-soft);
-  border-color: var(--frontend-accent);
-}
-
-.filter-tab-official.active {
-  color: var(--official-accent);
-  background: var(--official-soft);
-  border-color: var(--official-accent);
-}
-
-.filter-tab-community.active {
-  color: var(--community-accent);
-  background: var(--community-soft);
-  border-color: var(--community-accent);
+.filter-select:focus {
+  outline: none;
 }
 
 .marketplace-content {
@@ -1209,6 +1178,35 @@ onBeforeUnmount(() => {
   .header-actions {
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  .search-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .search-field {
+    flex: 1 1 100%;
+  }
+
+  .filter-selects {
+    flex: 1 1 100%;
+    border-top: 1px solid var(--vp-c-divider);
+  }
+
+  .filter-select-field {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+  }
+
+  .filter-select-field:first-child {
+    border-left: none;
+  }
+
+  .filter-select {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
   }
 
   .card-author {

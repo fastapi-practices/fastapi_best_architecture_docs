@@ -31,7 +31,6 @@ config:
         - theme: alt
           text: DeepWiki Docs
           link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
-  - type: SponsorHome
   - type: features
     title: Enterprise-ready, out of the box
     description: Three-layer core, plugin ecosystem, AI-first collaboration

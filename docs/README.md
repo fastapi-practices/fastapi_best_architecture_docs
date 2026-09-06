@@ -29,7 +29,6 @@ config:
         - theme: alt
           text: DeepWiki 文档
           link: https://deepwiki.com/fastapi-practices/fastapi-best-architecture
-  - type: SponsorHome
   - type: features
     title: 企业级开发，开箱即用
     description: 三层架构打底，插件生态扩展，AI 贯穿协作

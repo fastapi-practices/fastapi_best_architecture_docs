@@ -3,103 +3,119 @@ title: Privacy Policy
 pageLayout: page
 ---
 
-<div style="max-width: 1200px; margin: 0 auto; padding: 2rem 0;">
-<div>Last updated: <strong>2025/9/26</strong></div>
-<div>Effective date: <strong>2025/9/26</strong></div>
+<PrivacyPolicy>
+
 <h2>Introduction</h2>
 <p>
-  <i>fba</i> is a product provided by <i>wu-clan</i> (hereinafter “we” or “us”).
-  When you use our services, we may collect and use information related to you. This Privacy Policy explains how we collect, use, store, and share that information when you use our services, and how we provide access, updates, control, and protection for that information.
-  This Privacy Policy is closely related to the <i>fba</i> services you use. Please read it carefully and, when needed, follow its guidance to make choices you consider appropriate. Technical terms in this Privacy Policy are explained as simply as possible, with further links where helpful.
+  This Privacy Policy is issued by <i>wu-clan</i> / FastAPI Practices (“we”, “us”) for the official <i>fba</i> (FastAPI Best Architecture) documentation website.
+  It explains how we collect, use, store, share, and protect information related to you, and how you can exercise your rights.
 </p>
-<p><strong>By using or continuing to use our services, you agree that we may collect, use, store, and share your related information in accordance with this Privacy Policy.</strong></p>
-<p>If you have any questions about this Privacy Policy or related matters, please contact us at <strong>jianhengwu0407@gmail.com</strong>.</p>
+<p>
+  This Policy applies only to this website and the services we use to operate it. <strong>It does not apply to fba projects that you or others deploy and operate yourselves.</strong> Processing that arises from a self-hosted deployment is the responsibility of that operator.
+</p>
+<p class="privacy-notice"><strong>Please read this Policy before using the website. By continuing to visit or use the website, you acknowledge and agree that we may process related information as described here. If you do not agree, please stop using the website and refuse cookies in your browser settings.</strong></p>
+<p>If you have questions about this Policy or related matters, contact us at <a href="mailto:jianhengwu0407@gmail.com">jianhengwu0407@gmail.com</a>.</p>
 
 <h2>1. Information We Collect</h2>
-<p>When we or our third-party partners provide services, we may collect, store, and use the following information related to you. If you do not provide relevant information, you may be unable to register as a user, use certain services, or achieve the intended effect of those services.</p>
+<p>This website is an open-source documentation site for developers. <strong>It does not provide registration, login, or user accounts</strong>, and we do not actively collect phone numbers, ID numbers, biometrics, or other sensitive personal information. We process information only as needed for the purposes below.</p>
 
+<h3>1.1 Information you provide</h3>
 <ul>
-    <li><strong>Personal information</strong> — related personal information you provide when registering an account or using our services, such as phone number, email address, and similar data.</li>
-    <li><strong>Log information</strong> — information the system may collect through cookies, identifiers, and related technologies when you use our services, including your <strong>device information</strong>, <strong>browsing information</strong>, and <strong>click information</strong>, stored as log information to provide a personalized experience and protect service security. You can refuse or manage cookies, identifiers, or related technologies via browser settings.</li>
+  <li><strong>Contact information</strong> — if you email us, we receive your email address and the contents of the message so we can reply.</li>
+  <li><strong>Community interaction</strong> — if you comment via Giscus, open a GitHub issue or pull request, or join the user registry, the relevant platform processes your GitHub account, display name, avatar, and the content you publish. GitHub handles that information under its own policy; we use it only insofar as it is publicly visible.</li>
 </ul>
 
-<h2>2. Storage of Information</h2>
-<strong>2.1 How and how long information is stored</strong>
+<h3>1.2 Information collected automatically</h3>
 <ul>
- <li>We store your information securely, including local storage (for example app data caching), databases, and server logs.</li>
- <li>In general, we store your personal information only for as long as necessary to achieve the service purpose, or as required by laws and regulations.</li>
+  <li><strong>Access logs</strong> — the hosting provider may record access time, request path, browser type, device and OS information, referrer, and IP address, to keep the site available, debug issues, and protect security.</li>
+  <li><strong>Analytics</strong> — we use Baidu Analytics to understand page views, traffic sources, and general usage. It may collect device information, pages viewed, and visit duration through cookies or anonymous identifiers, so we can improve the docs and the site. Baidu Analytics is operated by Baidu under its own privacy policy.</li>
 </ul>
 
-<strong>2.2 Where information is stored</strong>
+<h3>1.3 Information stored only on your device</h3>
 <ul>
- <li>In accordance with applicable laws and regulations, personal information collected within China is stored within China.</li>
- <li>We currently do not transfer or store your personal information across borders. If cross-border transfer or storage becomes necessary in the future, we will inform you of the purpose, recipient, security measures, and risks, and obtain your consent.</li>
+  <li>The site may use browser <strong>localStorage</strong> to cache public data such as the plugin marketplace list and project stats, to avoid repeat requests. This data stays on your device and is not uploaded to our servers because of that cache. You can clear it in your browser at any time.</li>
 </ul>
 
-<strong>2.3 Notice when products or services stop operating</strong>
+<h2>2. How We Use Information</h2>
+<p>We use collected information only to:</p>
 <ul>
- <li>If our products or services stop operating, we will notify you via push notification, announcement, or similar means, and delete or anonymize your personal information within a reasonable period, unless laws and regulations provide otherwise.</li>
+  <li>Provide, maintain, and improve this website and the documentation;</li>
+  <li>Measure visits and understand how the docs are used;</li>
+  <li>Respond to inquiries, feedback, or rights requests;</li>
+  <li>Protect the site, debug issues, and prevent abuse;</li>
+  <li>Meet obligations under applicable laws.</li>
+</ul>
+<p>We <strong>do not</strong> use your information for personalized advertising, and we do not sell your personal information to advertisers.</p>
+
+<h2>3. Cookies and Similar Technologies</h2>
+<p>This website and third-party services may use cookies or similar technologies:</p>
+<ul>
+  <li><strong>Necessary or functional</strong> — language preference, theme, local cache, and similar browsing features;</li>
+  <li><strong>Analytics</strong> — Baidu Analytics uses cookies or identifiers to produce visit statistics.</li>
+</ul>
+<p>You can refuse or delete cookies in your browser. After you refuse, some analytics will not run; reading the docs is generally unaffected. Clearing browser data also removes local caches.</p>
+
+<h2>4. Storage of Information</h2>
+<h3>4.1 How and how long</h3>
+<ul>
+  <li>Contact emails are kept only as long as needed to handle the inquiry, complete a rights request, or meet legal duties, then deleted or anonymized.</li>
+  <li>Access logs and analytics retention follow the hosting provider and Baidu Analytics. We do not keep them indefinitely on our own.</li>
+  <li>Local caches on your device are under your control and can be cleared at any time.</li>
+</ul>
+<h3>4.2 Where</h3>
+<ul>
+  <li>This website is hosted on an overseas platform, so access logs may be stored outside mainland China.</li>
+  <li>Baidu Analytics data is processed by Baidu in mainland China.</li>
+  <li>Comments, source hosting, and collaboration take place on GitHub and similar overseas platforms.</li>
 </ul>
 
-<h2>3. Information Security</h2>
-<p>
-We use various security technologies and procedures to prevent loss, misuse, unauthorized access, or disclosure of information. For example, in some services we use encryption (such as SSL) to protect personal information you provide. Please understand that due to technical limitations and possible malicious means, even with strong security measures it is impossible to guarantee 100% security of information on the Internet. You should also understand that the systems and communication networks you use to access our services may experience problems caused by factors beyond our control.
-</p>
-
-<h2>4. How We Use Information</h2>
-<p>We may use information collected while providing services to you for the following purposes:</p>
+<h2>5. Processors, Sharing, and Third-Party Services</h2>
+<p>To run this website, your browser may send necessary requests to the parties below. We do not sell your personal information.</p>
 <ul>
-  <li>To provide services to you;</li>
-  <li>For identity verification, customer service, security protection, fraud monitoring, archiving, and backup when providing services, to ensure the security of products and services we offer;</li>
-  <li>To help us design new services and improve existing ones;</li>
-  <li>To better understand how you access and use our services so we can respond to personalized needs, such as language settings, location settings, personalized help and guidance, or other responses to you and other users;</li>
-  <li>To provide more relevant advertising instead of generic ads;</li>
-  <li>To evaluate and improve the effectiveness of advertising and other promotional activities in our services;</li>
-  <li>For software authentication or software upgrade management;</li>
-  <li>To invite you to participate in surveys about our products and services.</li>
+  <li><strong>Hosting</strong> — Vercel or similar providers process requests and access logs for delivery and security;</li>
+  <li><strong>Baidu Analytics</strong> — visit statistics;</li>
+  <li><strong>GitHub / Giscus</strong> — source hosting, documentation comments, and community collaboration;</li>
+  <li><strong>Content delivery</strong> — some images, plugin lists, or stats may load via GitHub, jsDelivr, or other CDNs;</li>
+  <li><strong>Sponsor display</strong> — the site may show sponsor names or creative. This is public display; we do not provide sponsors with information that identifies you.</li>
 </ul>
+<p>If you leave this site for GitHub, Discord, or other third-party sites, their own privacy policies apply, and we are not responsible for their processing.</p>
+<p>We may provide information without additional consent where required by law, including matters directly related to national security, public security, or criminal justice; where it is necessary to protect major lawful rights and interests and consent is hard to obtain; where you have made the information public yourself or it was collected from lawful public sources without violating your major interests; and other cases provided by laws and administrative regulations.</p>
 
-<h2>5. Information Sharing</h2>
+<h2>6. Cross-Border Provision</h2>
 <p>
-We currently do not proactively share or transfer your personal information to third parties. If other sharing or transfer of your personal information is needed, or if you request that we share or transfer your personal information to a third party, we will obtain your explicit consent directly or confirm that the third party has obtained it.
+  Because hosting, comments, and open-source collaboration use overseas services, when you visit this website, comment, or interact with us on GitHub, related information (such as IP address, device information, GitHub account, and public content) may be transferred outside the People’s Republic of China.
+  This is done to provide documentation access, comments, and collaboration. If you do not want that transfer to occur, please stop using the relevant features.
 </p>
+
+<h2>7. Information Security</h2>
 <p>
-For purposes such as delivering ads and evaluating or optimizing ad performance, we may need to share some of your data with advertisers, agencies, and other third-party partners, and require them to strictly follow our data privacy protection measures and requirements, including but not limited to processing under data protection agreements, commitments, and related policies, avoiding identification of individuals, and protecting privacy.
+  We take reasonable technical and organizational measures to protect information, including HTTPS. No internet transmission or storage is completely secure. Please keep your GitHub account, email, and similar credentials safe, and avoid submitting unnecessary sensitive personal information on this website or in public channels.
 </p>
-<p>
-We will not share information that can identify you personally (such as your name or email address) with partners unless you explicitly authorize it.
-</p>
-<p>
-We will not publicly disclose collected personal information. If public disclosure is necessary, we will inform you of the purpose, types of information disclosed, and any sensitive information that may be involved, and obtain your explicit consent.
-</p>
-<p>
-As our business develops, we may undergo mergers, acquisitions, asset transfers, or similar transactions. We will inform you of such circumstances and continue to protect, or require the new controller to continue to protect, your personal information in accordance with laws and regulations and standards no lower than those in this Privacy Policy.
-</p>
-<p>
-In addition, under related laws, regulations, and national standards, we may share, transfer, or publicly disclose personal information without prior authorization in the following cases:
-</p>
+
+<h2>8. Your Rights</h2>
+<p>Where applicable law grants them, you have the right to access, copy, correct, or delete your personal information, restrict or refuse processing, and withdraw consent. This website has no user accounts, so please send requests to <a href="mailto:jianhengwu0407@gmail.com">jianhengwu0407@gmail.com</a> and describe what you are asking for so we can verify and handle them.</p>
 <ul>
-  <li>Directly related to national security or national defense security;</li>
-  <li>Directly related to public safety, public health, or major public interests;</li>
-  <li>Directly related to criminal investigation, prosecution, trial, and enforcement of judgments;</li>
-  <li>Necessary to protect the life, property, or other major lawful rights and interests of the personal information subject or other individuals, where it is difficult to obtain the person's consent;</li>
-  <li>Personal information that the subject has disclosed to the public on their own;</li>
-  <li>Personal information collected from lawfully publicly disclosed sources, such as lawful news reports or government information disclosure channels.</li>
+  <li>You can clear cookies and local caches in your browser;</li>
+  <li>You can stop using the website, or block analytics scripts and third-party requests in your browser;</li>
+  <li>Content on GitHub / Giscus can be managed through your GitHub account and the relevant page features.</li>
 </ul>
+<p>We will respond promptly after verifying your identity. If you believe our processing has harmed your lawful rights, you may also complain to the competent cyberspace, industry and information technology, or market regulation authorities.</p>
 
-<h2>6. Your Rights</h2>
+<h2>9. Protection of Minors</h2>
 <p>
-While you use our services, we may provide product-specific settings so you can query, delete, correct, or withdraw related personal information. Please follow the corresponding guidance. We also provide complaint and reporting channels, and your feedback will be handled promptly. If you cannot exercise your personal information rights through the above means, you may submit a request via the contact methods in this Privacy Policy, and we will respond in accordance with laws and regulations.
-</p>
-<p>When you decide to stop using our products or services, you may apply to cancel your account. After cancellation, except as otherwise required by laws and regulations, we will delete or anonymize your personal information.</p>
-
-<h2>7. Changes</h2>
-<p>
-We may revise the terms of this Privacy Policy from time to time. When changes occur, we will present the new Privacy Policy upon version updates and explain the effective date. Please carefully read the updated Privacy Policy. <strong>If you continue to use our services, you agree that we may process your personal information in accordance with the updated Privacy Policy.</strong>
+  This website is intended for software developers and is not directed at children under fourteen. We do not actively collect their personal information.
+  If you are a guardian and find that a minor has provided personal information without consent, contact us at the email above and we will delete it promptly.
 </p>
 
-<h2>8. Protection of Minors</h2>
+<h2>10. Changes</h2>
 <p>
-We encourage parents or guardians to guide minors under eighteen in using our services. We recommend that minors encourage their parents or guardians to read this Privacy Policy, and that minors seek parental or guardian consent and guidance before submitting personal information.
+  We may revise this Policy as our services, technology, or the law change. We will publish the updated Policy on this page and change the effective date at the top.
+  For material changes, we will give notice in a reasonable way, such as a notice on the page. If you continue to use the website after an update, you agree to the updated Policy.
 </p>
-</div>
+
+<h2>11. Contact Us</h2>
+<p>Personal information handler: wu-clan / FastAPI Practices</p>
+<p>Email: <a href="mailto:jianhengwu0407@gmail.com">jianhengwu0407@gmail.com</a></p>
+<p>For questions, complaints, or rights requests about this Policy, please use the email above.</p>
+
+</PrivacyPolicy>
