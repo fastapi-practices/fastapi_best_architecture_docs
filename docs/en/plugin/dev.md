@@ -319,15 +319,15 @@ Starting from ==v1.13.3=={.note}, plugins support hook functions for more flexib
 
 Hook functions must be defined in `hooks.py` at the plugin root. They apply only to enabled plugins and run according to [Plugin Dependencies](#plugin-dependencies) resolution. Currently supported:
 
-#### lifespan
+#### `def lifespan()`
 
 [Lifespan function](https://fastapi.tiangolo.com/advanced/events/#lifespan). Signature matches FastAPI lifespan: receives the `FastAPI` app instance and is registered automatically before app startup.
 
-#### setup
+#### `def setup()`
 
 Startup function. Receives the `FastAPI` app instance, supports sync and async, runs automatically before app startup.
 
-#### otel
+#### `def otel()`
 
 OpenTelemetry initialization function. Receives the `FastAPI` app instance, supports sync and async, runs automatically during observability initialization.
 
@@ -377,11 +377,11 @@ Plugins live under `apps/web-antdv-next/src/plugins`. The directory structure is
 [plugin]
 # Icon (path inside the plugin repo or icon URL), optional
 icon = 'assets/icon.svg'
-# Summary (short description)
+# Summary (short description). Prefer the matching backend service plus UI, e.g. AI UI
 summary = ''
 # Version, must be x.y.z format, e.g. 0.0.1
 version = '0.0.1'
-# Description
+# Description. Prefer stating this is the frontend of the corresponding backend plugin, e.g. frontend for the fba AI plugin
 description = ''
 # Author
 author = ''

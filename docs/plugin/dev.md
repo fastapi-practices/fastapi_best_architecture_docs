@@ -330,15 +330,15 @@ IDE 获取配置项类型提示，这一步是必要的
 
 钩子函数必须在插件根目录 `hooks.py` 文件中定义，只会对已启用插件生效，并会按照 [插件依赖](#插件依赖) 的解析结果执行，目前支持如下：
 
-#### lifespan
+#### `def lifespan()`
 
 [生命周期函数](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan)，函数签名与 FastAPI lifespan 一致，接收 `FastAPI` 应用实例，并在应用启动前自动注册
 
-#### setup
+#### `def setup()`
 
 启动函数，接收 `FastAPI` 应用实例，支持同步和异步，在应用启动前自动执行
 
-#### otel
+#### `def otel()`
 
 OpenTelemetry 初始化函数，接收 `FastAPI` 应用实例，支持同步和异步，在可观测性初始化阶段自动执行
 
@@ -388,11 +388,11 @@ OpenTelemetry 初始化函数，接收 `FastAPI` 应用实例，支持同步和�
 [plugin]
 # 图标（插件仓库内的图标路径或图标链接地址），可选
 icon = 'assets/icon.svg'
-# 摘要（简短描述）
+# 摘要（简短描述），建议写成对应后端服务的 UI，例如 AI UI
 summary = ''
 # 版本号，必须为 x.y.z 格式，例如 0.0.1
 version = '0.0.1'
-# 描述
+# 描述，建议说明这是对应后端插件的前端实现，例如 fba AI 插件的前端实现
 description = ''
 # 作者
 author = ''
