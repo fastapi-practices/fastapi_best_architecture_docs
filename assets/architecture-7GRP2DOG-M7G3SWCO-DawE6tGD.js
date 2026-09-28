@@ -1,0 +1,1 @@
+import{Gt as e}from"./common-fNLQmoFW.js";export{e as createArchitectureServices};

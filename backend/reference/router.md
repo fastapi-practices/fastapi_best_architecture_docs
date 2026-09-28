@@ -1,0 +1,47 @@
+---
+url: /fastapi_best_architecture_docs/backend/reference/router.md
+---
+::: tip
+新增接口前，可使用 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 对齐路由结构、router 导入别名、CurrentSession / CurrentSessionTransaction 和响应模型用法
+:::
+
+fba 中的路由遵循 Restful API 规范
+
+## 路由结构
+
+我们有一个关于路由器的历史讨论，如果你感兴趣，可以查看：[#4](https://github.com/fastapi-practices/fastapi-best-architecture/discussions/4)
+
+当前路由结构如下所示：
+
+::: file-tree
+
+* backend # 后端
+  * app # 应用
+    * xxx # 自定义应用&#x20;
+      * api # 接口
+        * v1
+          * xxx # 子包
+            * **init**.py # 在此文件内注册子包内 xxx.py 文件中的路由
+            * xxx.py
+            * ...
+        * **init**.py
+        * router.py # 在此文件内注册所有子包 **init**.py 文件中的路由
+    * xxx # 自定义应用&#x20;
+      * api # 接口
+        * v1
+          * **init**.py # 不做任何操作
+          * xxx.py
+          * ...
+        * **init**.py
+        * router.py # 在此文件内注册所有 xxx.py 文件中的路由
+  * **init**.py
+  * router.py # 在此文件内注册所有 app 目录下 router.py 文件中的路由
+
+:::
+
+::: warning
+我们统一命名了所有接口路由参数为 router，这很有助于我们编写接口，但是，不可忽略的是，在注册路由时，一定要注意我们的导入方式
+
+在 fba 中，我们可以查看所有路由的导入，它们看起来像 `from backend.app.admin.api.v1.sys.user import router as user_router`
+，我们这里务必导入文件内的路由参数 `router`，为了避免参数名称冲突，我们可以使用 `as` 为路由参数起一个别名
+:::

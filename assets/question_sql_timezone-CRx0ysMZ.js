@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/question_db_timezone.png`,t=`/fastapi_best_architecture_docs/images/question_sql_timezone.png`;export{e as n,t};
