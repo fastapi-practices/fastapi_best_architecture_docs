@@ -9,6 +9,15 @@ groups:
   - title: 核心团队
     desc: 核心团队成员是那些积极参与维护一个或多个核心项目的人，他们对项目做出了重大贡献
     list:
+      - name: Davidduang
+        link: https://github.com/dividduang
+        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
+        desc: 一个平平无奇的网管
+        location: 深圳，广东
+        organization: --
+        socials:
+          - icon: github
+            link: https://github.com/dividduang
       - name: wu-clan
         link: https://wu-clan.github.io/homepage/
         avatar: https://avatars.githubusercontent.com/u/52145145?v=4
@@ -33,15 +42,6 @@ groups:
         socials:
           - icon: github
             link: https://github.com/downdawn
-      - name: Davidduang
-        link: https://github.com/dividduang
-        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
-        desc: 一个平平无奇的网管
-        location: 深圳，广东
-        organization: --
-        socials:
-          - icon: github
-            link: https://github.com/dividduang
   - title: 名誉核心团队
     desc: 名誉核心团队成员在过去曾为项目做出过突出贡献，我们在此向他们致敬
     list:

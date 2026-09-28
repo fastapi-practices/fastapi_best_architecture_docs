@@ -12,6 +12,15 @@ groups:
       Core team members actively maintain one or more core projects and have
       made significant contributions
     list:
+      - name: Davidduang
+        link: https://github.com/dividduang
+        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
+        desc: An ordinary network admin
+        location: Shenzhen, Guangdong
+        organization: --
+        socials:
+          - icon: github
+            link: https://github.com/dividduang
       - name: wu-clan
         link: https://wu-clan.github.io/homepage/
         avatar: https://avatars.githubusercontent.com/u/52145145?v=4
@@ -36,15 +45,6 @@ groups:
         socials:
           - icon: github
             link: https://github.com/downdawn
-      - name: Davidduang
-        link: https://github.com/dividduang
-        avatar: https://avatars.githubusercontent.com/u/110005582?v=4
-        desc: An ordinary network admin
-        location: Shenzhen, Guangdong
-        organization: --
-        socials:
-          - icon: github
-            link: https://github.com/dividduang
   - title: Honorary Core Team
     desc: >-
       Honorary core team members made outstanding contributions in the past. We
