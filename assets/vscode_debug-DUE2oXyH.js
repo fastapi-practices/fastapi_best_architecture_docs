@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/vscode_debug.png`;export{e as t};
