@@ -398,7 +398,7 @@ export default {
     projects: [
       {
         name: 'fba',
-        description: '基于 FastAPI 框架的企业级后端架构解决方案，遵循三层架构设计，支持 Python 3.10 及以上版本',
+        description: '基于 FastAPI 框架的企业级后端架构解决方案，遵循三层架构设计，支持 Python 3.12 及以上版本',
         url: 'https://docs.fba.wu-clan.cc/',
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
       },

@@ -12,7 +12,7 @@ fba is aimed at developers with some Python backend experience. If you are just 
 
 1. Prepare the local environment
 
-    - Python 3.10+
+    - Python 3.12+
     - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) (current stable version recommended)
     - PostgreSQL 16.0+ or MySQL 8.0+
       [Use **Snowflake primary keys**](../reference/pk.md){.read-more}

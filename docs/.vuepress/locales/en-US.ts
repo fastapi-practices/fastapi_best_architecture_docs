@@ -412,7 +412,7 @@ export default {
       {
         name: 'fba',
         description:
-          'An enterprise-grade backend architecture solution built on FastAPI, following a three-layer design. Supports Python 3.10 and above.',
+          'An enterprise-grade backend architecture solution built on FastAPI, following a three-layer design. Supports Python 3.12 and above.',
         url: 'https://docs.fba.wu-clan.cc/',
         logo: 'https://wu-clan.github.io/picx-images-hosting/logo/fba.png',
       },

@@ -14,7 +14,7 @@ config:
       tagline: Enterprise Backend Architecture
       text: >-
         Built on FastAPI with a frontend-backend split and a classic three-layer
-        design. Supports Python 3.10+
+        design. Supports Python 3.12+
       actions:
         - theme: brand
           text: Get Started ->

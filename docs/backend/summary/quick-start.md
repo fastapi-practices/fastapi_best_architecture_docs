@@ -13,7 +13,7 @@ Pydantic 的基础用法
 
 1. 准备本地环境
 
-    - Python 3.10+
+    - Python 3.12+
     - [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)（建议使用当前稳定版本）
     - PostgreSQL 16.0 + 或 MySQL 8.0+
       [使用**雪花主键 ID**](../reference/pk.md){.read-more}
