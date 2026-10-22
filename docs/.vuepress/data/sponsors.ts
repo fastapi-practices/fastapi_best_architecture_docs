@@ -29,7 +29,13 @@ export const homeSponsor: Sponsor = {
 
 
 export const goldSponsors: Sponsor[] = [
-    { ...defaultSponsor }
+    {
+        link: 'https://refuseless.com/favicon.ico',
+        href: 'https://refuseless.com/?ref=ublxjgsr',
+        alt: 'Bywave',
+        expiryTime: '2099-12-31T23:59:59',
+        ink: 'white',
+    },
 ]
 
 export const generalSponsors: Sponsor[] = [
@@ -39,12 +45,6 @@ export const generalSponsors: Sponsor[] = [
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',
         ink: 'white',
-    },
-    {
-        link: '',
-        href: 'https://xn--mesr8b36x.com/#/register?code=vpybf4Rw',
-        alt: '大机场',
-        expiryTime: '2099-12-31T23:59:59',
     },
     { ...defaultSponsor }
 ]
