@@ -787,24 +787,24 @@ onBeforeUnmount(() => {
 .plugin-grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 @media (min-width: 640px) {
   .plugin-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 960px) {
   .plugin-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1280px) {
   .plugin-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -812,6 +812,7 @@ onBeforeUnmount(() => {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
   padding: 16px 18px;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
