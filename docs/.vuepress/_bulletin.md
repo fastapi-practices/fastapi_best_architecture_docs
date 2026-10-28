@@ -1,4 +1,4 @@
-全新项目 [fba-buddy](https://github.com/fastapi-practices/fba-buddy) 已开放
+全新项目 [fba-buddy](https://fba-buddy.wu-clan.cc/) 已开放
 
 基于 Electron、React 和 TypeScript 的桌面 AI 工作台，支持 Chat、Work、Coding 三种会话模式
 
