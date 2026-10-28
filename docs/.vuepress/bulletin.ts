@@ -5,7 +5,7 @@ import path from 'node:path'
 const baseBulletin: Omit<BulletinOptions, 'title' | 'contentFile'> = {
     layout: 'bottom-right',
     border: true,
-    enablePage: false,
+    enablePage: true,
     lifetime: 'session',
 }
 
