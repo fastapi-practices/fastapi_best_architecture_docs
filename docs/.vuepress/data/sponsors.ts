@@ -30,8 +30,8 @@ export const homeSponsor: Sponsor = {
 
 export const goldSponsors: Sponsor[] = [
     {
-        link: 'https://refuseless.com/favicon.ico',
-        href: 'https://refuseless.com/?ref=ublxjgsr',
+        link: 'https://u.bws.lol/bywave-brand.png',
+        href: 'https://u.bws.lol/register?aff=SLMYG84W',
         alt: 'Bywave',
         expiryTime: '2099-12-31T23:59:59',
         ink: 'white',
@@ -40,9 +40,16 @@ export const goldSponsors: Sponsor[] = [
 
 export const generalSponsors: Sponsor[] = [
     {
-        link: 'https://u.bws.lol/bywave-brand.png',
-        href: 'https://u.bws.lol/register?aff=SLMYG84W',
-        alt: 'Bywave',
+        link: 'https://refuseless.com/favicon.ico',
+        href: 'https://refuseless.com/?ref=ublxjgsr',
+        alt: 'Refuseless',
+        expiryTime: '2099-12-31T23:59:59',
+        ink: 'white',
+    },
+    {
+        link: 'https://saydone.wyyy.site/apple-touch-icon.png',
+        href: 'https://saydone.wyyy.site/',
+        alt: 'Saydone',
         expiryTime: '2099-12-31T23:59:59',
         ink: 'white',
     },
