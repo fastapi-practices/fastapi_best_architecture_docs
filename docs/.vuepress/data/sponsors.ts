@@ -9,7 +9,7 @@ export interface Sponsor {
     href?: string;
     alt?: string;
     expiryTime: string; // ISO 格式日期：2099-12-31T23:59:59
-    /** 透明单色 Logo 的墨色：white 浅色主题反色，black 深色主题反色，满版/带背景图不填 */
+    /** 透明单色 Logo 的墨色：white 浅色主题加深色背景，black 深色主题加浅色背景，Logo 颜色始终不变，满版/带背景图不填 */
     ink?: 'white' | 'black';
 }
 
@@ -44,14 +44,12 @@ export const generalSponsors: Sponsor[] = [
         href: 'https://refuseless.com/?ref=ublxjgsr',
         alt: 'Refuseless',
         expiryTime: '2099-12-31T23:59:59',
-        ink: 'white',
     },
     {
         link: 'https://saydone.wyyy.site/apple-touch-icon.png',
         href: 'https://saydone.wyyy.site/',
         alt: 'Saydone',
         expiryTime: '2099-12-31T23:59:59',
-        ink: 'white',
     },
     { ...defaultSponsor }
 ]

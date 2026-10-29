@@ -133,12 +133,21 @@
     object-fit: cover;
 }
 
-html:not([data-theme="dark"]) .sponsor-media.is-ink-white img {
-    filter: invert(1);
+/* Logo 颜色保持不变，仅在与主题背景撞色时反色背景 */
+html:not([data-theme="dark"]) .sponsor-media.is-ink-white {
+    background-color: #202127;
 }
 
-[data-theme="dark"] .sponsor-media.is-ink-black img {
-    filter: invert(1);
+[data-theme="dark"] .sponsor-media.is-ink-black {
+    background-color: #f6f7f9;
+}
+
+html:not([data-theme="dark"]) .sponsor-media.is-ink-white .sponsor-media__name {
+    color: #fff;
+}
+
+[data-theme="dark"] .sponsor-media.is-ink-black .sponsor-media__name {
+    color: #1b1b1f;
 }
 
 .sponsor-media__name {

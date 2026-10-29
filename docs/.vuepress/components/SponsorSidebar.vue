@@ -6,7 +6,7 @@
     <div class="sidebar-brand">
       <div class="brand" @click="openSponsorLink(homeSponsor.href)">
         <SponsorMedia v-if="shouldShowSponsor(homeSponsor)" :src="homeSponsor.link" :alt="homeSponsor.alt"
-          :ink="homeSponsor.ink" fit="cover" />
+          :ink="homeSponsor.ink" />
         <span v-else class="brand-text">{{ t('sponsorUi.becomeSponsor') }}</span>
       </div>
     </div>

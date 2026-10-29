@@ -6,7 +6,7 @@
     <div class="gold-sponsors">
       <div v-for="brand in goldSponsors" v-show="shouldShowSponsor(brand)" class="brand-item gold"
         @click="openSponsorLink(brand.href, '_blank')">
-        <SponsorMedia :src="brand.link" :alt="brand.alt" :ink="brand.ink" fit="cover" />
+        <SponsorMedia :src="brand.link" :alt="brand.alt" :ink="brand.ink" />
       </div>
     </div>
     <div class="general-sponsors">
