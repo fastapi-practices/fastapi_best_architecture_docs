@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/code-generator1.png`,t=`/fastapi_best_architecture_docs/images/code-generator2.png`;export{e as n,t};
