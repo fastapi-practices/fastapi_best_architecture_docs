@@ -7,6 +7,7 @@ import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 
 import Layout from './layouts/Layout.vue'
 import GitEmoji from "./components/GitEmoji.vue";
+import HeroTitleParticles from './components/HeroTitleParticles.vue';
 import HomeSponsor from './components/HomeSponsor.vue';
 import PluginMarketplace from "./components/PluginMarketplace.vue";
 import Pricing from "./components/Pricing.vue";
@@ -44,6 +45,7 @@ export default defineClientConfig({
         //}),
     },
     rootComponents: [
+        HeroTitleParticles,
         // AiNeuralBadge,
         SponsorLayoutFloat,
     ],

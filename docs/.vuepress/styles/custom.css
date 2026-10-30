@@ -58,6 +58,38 @@
     padding-bottom: 96px !important;
 }
 
+/* 首页标题字号与单行展示空间 */
+@media (min-width: 960px) {
+    .vp-home-hero .hero-content {
+        width: min(1280px, calc(100vw - 32px)) !important;
+        max-width: none !important;
+    }
+
+    .vp-home-hero .hero-name {
+        font-size: clamp(62px, 6.4vw, 86px) !important;
+        line-height: 1.06 !important;
+        white-space: nowrap !important;
+    }
+
+    .vp-home-hero .hero-tagline {
+        font-size: clamp(56px, 5.4vw, 78px) !important;
+        line-height: 1.08 !important;
+        white-space: nowrap !important;
+    }
+}
+
+@media (max-width: 959px) {
+    .vp-home-hero .hero-name {
+        font-size: clamp(40px, 11.6vw, 47px) !important;
+        line-height: 1.12 !important;
+    }
+
+    .vp-home-hero .hero-tagline {
+        font-size: clamp(38px, 10.8vw, 44px) !important;
+        line-height: 1.12 !important;
+    }
+}
+
 /* 首页文字说明 */
 .hero-text {
     margin: 24px 0 49px !important;
