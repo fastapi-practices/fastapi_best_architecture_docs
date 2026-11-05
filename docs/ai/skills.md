@@ -8,6 +8,14 @@ title: Skills
 
 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 提供完整的架构规范、编码风格、Service / CRUD 开发流程、分页、缓存、Celery、i18n、插件开发与分享指导
 
+安装命令：
+
+```bash
+npx skills add fastapi-practices/skills
+```
+
+涉及插件时，直接让 Agent 使用 `fba skill` 即可。可配合 [插件任务提示词](./prompt.md#插件任务) 使用
+
 ## antdv-next
 
 [antdv-next skills](https://skills.sh/antdv-next/skills/antdv-next) Antdv Next Vue 3 组件库技能

@@ -3,7 +3,9 @@ title: 插件开发
 ---
 
 ::: tip
-开发或审查插件时，建议让 AI 使用 [fba skills](https://skills.sh/fastapi-practices/skills/fba) 的 plugin 参考；其中整理了 plugin.toml 校验、depends_on、热插拔配置、hooks、SQL 脚本和 README 规范
+开发或审查插件时，建议让 AI 使用 [fba skills](https://skills.sh/fastapi-practices/skills/fba)；插件结构、校验和发布规则由 skill 负责，提示词只需描述任务
+
+未安装时先运行 `npx skills add fastapi-practices/skills`
 :::
 
 ::: info

@@ -21,3 +21,26 @@ Disable any automatic git save related actions (add, commit...).
 
 When writing too much file content at one time, always write in batches.
 ```
+
+## 插件任务
+
+::: tip
+使用前需安装 fba skill：
+
+```bash
+npx skills add fastapi-practices/skills
+```
+:::
+
+```markdown
+使用 fba skill 处理插件任务：<例如：将现有功能改造成插件 / 开发新插件 / 检查并准备发布>
+
+- 项目或插件目录：<目录>
+- 插件名：<plugin_name>
+- 插件类型：<backend / frontend>
+
+先阅读相关规范并给出简短方案，等我确认后再修改
+完成后运行必要校验，并说明如何发布或申请
+如果当前环境缺少 fba skill 或其他必要工具，请先提醒我，不要自行安装或假设可用
+未经我明确同意，不要执行 git add、commit、push、fork 或 PR 操作
+```

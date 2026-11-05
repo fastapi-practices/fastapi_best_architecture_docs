@@ -4,6 +4,10 @@ title: Sharing Plugins
 
 To share a plugin with others, you must create a public GitHub repository for it.
 
+::: tip
+Template repositories are optional. They only provide a quick public-repository skeleton. If you do not use a template, create a normal public repository that follows the directory and naming rules below.
+:::
+
 ## Backend
 
 ::: warning Plugin repository naming rules
@@ -66,21 +70,36 @@ Before publishing a plugin, confirm it meets these requirements:
 - The repository name follows the naming rules in this document
 - Backend plugin root contains `plugin.toml`, `README.md`, and `__init__.py`
 - Frontend plugin root contains `plugin.toml`
+- The repository root is the plugin root; do not add another plugin directory level
 - Plugin info in `plugin.toml` is complete, with a version in `x.y.z` format
 - Fields such as `tags`, `database`, and `depends_on` follow the [Plugin Development](./dev.md) docs
 - If the plugin includes models, provide init and destroy SQL for the corresponding databases
 - `README.md` should cover configuration, usage, uninstallation, and feedback channels
 - The plugin should not silently modify core files of the main project
 
+You can use the [Plugin task](../ai/prompt.md#plugin-task) prompt to have an AI agent run the pre-publish checks. Git and GitHub write operations still require separate approval.
+
 ## Publishing a Plugin
 
-To publish a plugin, open a PR against the fba plugins repository.
+The marketplace tracks plugins with Git submodules, so publishing still requires a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins). The difference is that the Issue form can run validation and create the submodule PR automatically, without manually forking, cloning, and editing submodules.
 
 The fba team reviews against the pre-publish checklist and the plugin's actual purpose. Only after approval does the plugin appear in the [Plugin Marketplace](../marketplace.md).
 
 ::: tip
 Plugins are always unique. If the plugin name already exists, you must choose a new name for the plugin you are about to publish.
 :::
+
+### Automatic Submission (Recommended)
+
+After the plugin repository is public and passes the pre-publish checklist, [submit a plugin submission issue](https://github.com/fastapi-practices/plugins/issues/new?template=plugin-submission.yml).
+
+The workflow validates only the repository structure and `plugin.toml`; it does not execute plugin code. If validation passes, it creates a submodule PR for maintainer review.
+
+### Manual Submission (Fallback)
+
+Use the manual flow when automation is unavailable or a maintainer needs to adjust the submodule manually.
+
+This flow requires Git to be installed locally.
 
 :::: steps
 
@@ -128,7 +147,7 @@ Plugins are always unique. If the plugin name already exists, you must choose a 
    git push --set-upstream origin add-your-plugin-branch
    ```
 
-6. PR
+6. Create a PR
 
    Create a PR on GitHub.
 
@@ -143,6 +162,8 @@ Plugins are always unique. If the plugin name already exists, you must choose a 
 ## Updating a Plugin
 
 To update a plugin, open a PR against the fba plugins GitHub repository.
+
+Publish the new version in the plugin repository first, then update the marketplace submodule pointer. Do not point the submodule at an uncommitted or unpushed plugin revision.
 
 Follow the same steps as publishing, with these changes:
 

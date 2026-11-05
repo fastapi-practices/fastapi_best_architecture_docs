@@ -3,7 +3,9 @@ title: Plugin Development
 ---
 
 ::: tip
-When developing or reviewing plugins, have AI use the plugin reference in [fba skills](https://skills.sh/fastapi-practices/skills/fba). It covers plugin.toml validation, depends_on, hot-plugging config, hooks, SQL scripts, and README conventions.
+When developing or reviewing plugins, have AI use [fba skills](https://skills.sh/fastapi-practices/skills/fba). The skill owns plugin structure, validation, and publishing rules, so the prompt only needs to describe the task.
+
+If it is not installed, run `npx skills add fastapi-practices/skills` first.
 :::
 
 ::: info

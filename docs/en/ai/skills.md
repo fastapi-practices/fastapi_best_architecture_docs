@@ -8,6 +8,14 @@ title: Skills
 
 [fba skills](https://skills.sh/fastapi-practices/skills/fba) provides complete architecture conventions, coding style, Service / CRUD development flow, pagination, cache, Celery, i18n, and plugin development and sharing guidance.
 
+Installation:
+
+```bash
+npx skills add fastapi-practices/skills
+```
+
+For plugin work, ask the agent to use the `fba` skill. You can pair it with the [Plugin task prompt](./prompt.md#plugin-task).
+
 ## antdv-next
 
 [antdv-next skills](https://skills.sh/antdv-next/skills/antdv-next) Antdv Next Vue 3 component library skill

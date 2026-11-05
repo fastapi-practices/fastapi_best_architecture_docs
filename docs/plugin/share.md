@@ -4,6 +4,10 @@ title: 插件分享
 
 想要将插件与他人分享，您必须为此创建一个公开的 GitHub 仓库
 
+::: tip
+插件模板仓库不是强制入口，只用于快速创建公开仓库骨架。如果不使用模板，按本文的目录和命名规则创建普通公开仓库即可
+:::
+
 ## 后端
 
 ::: warning 插件仓库命名规则
@@ -66,21 +70,36 @@ title: 插件分享
 - 插件仓库命名符合当前文档中的命名规则
 - 后端插件根目录包含 `plugin.toml`、`README.md`、`__init__.py`
 - 前端插件根目录包含 `plugin.toml`
+- 仓库根目录就是插件根目录，不能再多包一层插件目录
 - `plugin.toml` 中的插件信息完整，版本号符合 `x.y.z`
 - `tags`、`database`、`depends_on` 等字段符合 [插件开发](./dev.md) 文档要求
 - 如果插件包含模型，应提供对应数据库的初始化和销毁 SQL
 - `README.md` 应说明配置、使用方式、卸载方式和反馈方式
 - 插件不应静默修改主项目核心文件
 
+可以让 AI Agent 使用 [插件任务](../ai/prompt.md#插件任务) 提示词完成发布前检查，但 Git 和 GitHub 写操作仍需要单独授权
+
 ## 发布插件
 
-要想发布插件，你需要为 fba 插件仓库创建一个 PR
+插件市场通过 Git submodule 跟踪插件，因此正式发布仍需要在 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 创建一个 PR。区别在于：你可以通过 Issue 表单让自动化完成校验和 submodule PR 创建，不再需要手动 fork、clone 和提交子模块
 
 fba 团队会根据发布前检查项和插件实际用途进行审核，通过后插件才会进入 [插件市场](../marketplace.md)
 
 ::: tip
 插件总是独一无二的，如果插件名已存在，那你只能选择为即将发布的插件换个新名字
 :::
+
+### 自动申请（推荐）
+
+插件仓库公开并通过发布前检查后，[提交插件发布申请](https://github.com/fastapi-practices/plugins/issues/new?template=plugin-submission.yml)
+
+工作流只校验仓库结构和 `plugin.toml`，不会执行插件代码；校验通过后会自动创建 submodule PR，等待维护者审核
+
+### 手动提交（备用）
+
+自动化不可用或需要人工调整 submodule 时，可以按以下步骤手动提交
+
+手动方式需要本地安装 Git
 
 :::: steps
 
@@ -128,9 +147,9 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
    git push --set-upstream origin add-your-plugin-branch
    ```
 
-6. PR
+6. 创建 PR
 
-   通过 GitHub 创建 PR
+   通过 GitHub 从你的分支创建 PR
 
 7. 合并
 
@@ -143,6 +162,8 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 ## 更新插件
 
 要想更新插件，你需要为 fba 插件 GitHub 仓库创建一个 PR
+
+先发布插件仓库中的新版本，再更新插件市场的 submodule 指针。不要把 submodule 指向未提交或未推送的插件版本
 
 ==执行与发布相同的步骤，并更新以下行为：==
 
