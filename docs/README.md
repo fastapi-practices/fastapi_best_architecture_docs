@@ -35,7 +35,7 @@ config:
     features:
       - title: 三层架构打底
         icon: ph:squares-four-duotone
-        details: API → Service → CRUD/DAO 分层，边界清晰，配套代码生成，新人 30 分钟即可上手
+        details: API → Service → CRUD/DAO 分层，边界清晰，新人 30 分钟即可上手
         link: /backend/summary/intro
       - title: 插件生态扩展
         icon: ph:puzzle-piece-duotone
@@ -75,7 +75,7 @@ config:
 ::: collapse accordion
 - 与原生 FastAPI 项目相比，fba 多了什么？
 
-  在 FastAPI 之上预置了三层架构、RBAC、JWT、缓存、全链路日志、时区、Docker、代码生成、插件系统等企业级必需件——开箱即用，不必从零搭脚手架
+  在 FastAPI 之上预置了三层架构、RBAC、JWT、缓存、全链路日志、时区、Docker、插件系统等企业级必需件——开箱即用，不必从零搭脚手架
 
 - 为什么选三层架构，而不是 DDD？
 

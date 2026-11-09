@@ -29,11 +29,20 @@
 
         <div class="filter-selects">
           <label class="filter-select-field">
-            <span class="filter-label">{{ t('marketplace.groupFilter') }}</span>
-            <select v-model="currentGroup" class="filter-select">
+            <span class="filter-label">{{ t('marketplace.maintainerFilter') }}</span>
+            <select v-model="currentMaintainer" class="filter-select">
               <option value="all">{{ t('marketplace.all') }}</option>
-              <option v-for="group in pluginGroups" :key="group" :value="group">
-                {{ getGroupLabel(group) }}
+              <option v-for="maintainer in pluginMaintainers" :key="maintainer" :value="maintainer">
+                {{ getMaintainerFilterLabel(maintainer) }}
+              </option>
+            </select>
+          </label>
+          <label class="filter-select-field">
+            <span class="filter-label">{{ t('marketplace.typeFilter') }}</span>
+            <select v-model="currentType" class="filter-select">
+              <option value="all">{{ t('marketplace.all') }}</option>
+              <option v-for="type in pluginTypes" :key="type" :value="type">
+                {{ getTypeFilterLabel(type) }}
               </option>
             </select>
           </label>
@@ -178,7 +187,7 @@ import { useI18n } from '../composables/useI18n'
 const { t, tm, withLocale } = useI18n()
 
 type PluginType = 'backend' | 'frontend'
-type PluginGroup = 'backend' | 'frontend' | 'official' | 'community'
+type PluginMaintainer = 'official' | 'community'
 
 interface InstallNotice {
   visible: boolean
@@ -211,7 +220,8 @@ const DB_TABLES: Record<string, string> = {
 const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
-const PLUGIN_GROUPS: PluginGroup[] = ['backend', 'frontend', 'official', 'community']
+const PLUGIN_TYPES: PluginType[] = ['backend', 'frontend']
+const PLUGIN_MAINTAINERS: PluginMaintainer[] = ['official', 'community']
 const INSTALL_DOC_BASE = computed(() => withBase(withLocale('/plugin/install.html')))
 
 const DATA_SOURCES = [
@@ -225,8 +235,10 @@ const error = ref('')
 const plugins = ref<PluginItem[]>([])
 const validTags = ref<string[]>([])
 const currentTag = ref('all')
-const currentGroup = ref<'all' | PluginGroup>('all')
-const pluginGroups = PLUGIN_GROUPS
+const currentMaintainer = ref<'all' | PluginMaintainer>('all')
+const currentType = ref<'all' | PluginType>('all')
+const pluginMaintainers = PLUGIN_MAINTAINERS
+const pluginTypes = PLUGIN_TYPES
 const searchQuery = ref('')
 const failedIcons = reactive(new Set<string>())
 const copiedPluginPath = ref('')
@@ -242,19 +254,25 @@ let copiedTimer: ReturnType<typeof setTimeout> | null = null
 let copiedInstallCommandTimer: ReturnType<typeof setTimeout> | null = null
 let installNoticeTimer: ReturnType<typeof setTimeout> | null = null
 
-const matchesGroup = (plugin: PluginItem, group: PluginGroup): boolean => {
-  if (group === 'backend' || group === 'frontend') {
-    return getPluginType(plugin.git?.path || '') === group
-  }
-  return group === 'official' ? isOfficialPlugin(plugin) : !isOfficialPlugin(plugin)
+const matchesMaintainer = (plugin: PluginItem, maintainer: PluginMaintainer): boolean => {
+  return maintainer === 'official' ? isOfficialPlugin(plugin) : !isOfficialPlugin(plugin)
+}
+
+const matchesType = (plugin: PluginItem, type: PluginType): boolean => {
+  return getPluginType(plugin.git?.path || '') === type
 }
 
 const filteredPlugins = computed(() => {
   let result = plugins.value
-  const group = currentGroup.value
+  const maintainer = currentMaintainer.value
+  const type = currentType.value
 
-  if (group !== 'all') {
-    result = result.filter(p => matchesGroup(p, group))
+  if (maintainer !== 'all') {
+    result = result.filter(p => matchesMaintainer(p, maintainer))
+  }
+
+  if (type !== 'all') {
+    result = result.filter(p => matchesType(p, type))
   }
 
   if (currentTag.value !== 'all') {
@@ -305,8 +323,12 @@ const getPluginTypeLabel = (path: string): string => {
     : t('marketplace.backend')
 }
 
-const getGroupLabel = (group: PluginGroup): string => {
-  return t(`marketplace.${group}`)
+const getMaintainerFilterLabel = (maintainer: PluginMaintainer): string => {
+  return t(`marketplace.${maintainer}`)
+}
+
+const getTypeFilterLabel = (type: PluginType): string => {
+  return t(`marketplace.${type}`)
 }
 
 const getInstallUrl = (path: string): string => {
@@ -458,7 +480,8 @@ const getValidDatabases = (databases: string[] | undefined): string[] => {
 const resetFilters = () => {
   searchQuery.value = ''
   currentTag.value = 'all'
-  currentGroup.value = 'all'
+  currentMaintainer.value = 'all'
+  currentType.value = 'all'
 }
 
 const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginItem[] } => {
@@ -1220,6 +1243,22 @@ onBeforeUnmount(() => {
   .install-notice {
     right: 16px;
     bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-selects {
+    flex-wrap: wrap;
+  }
+
+  .filter-select-field {
+    flex: 1 1 50%;
+  }
+
+  .filter-select-field:nth-child(3) {
+    flex-basis: 100%;
+    border-left: none;
+    border-top: 1px solid var(--vp-c-divider);
   }
 }
 </style>

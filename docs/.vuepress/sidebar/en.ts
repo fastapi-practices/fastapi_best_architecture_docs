@@ -55,7 +55,6 @@ export const enSidebar: ThemeSidebarMulti = {
                 { text: 'Cache', link: 'cache' },
                 { text: 'i18n', link: 'i18n' },
                 { text: 'Data Permission', link: 'data-permission' },
-                { text: 'Code Generation', link: 'code-generation' },
                 { text: 'Primary Key', link: 'pk' },
                 { text: 'Database', link: 'db' },
                 { text: 'Multi-tenancy', link: 'tenant' },

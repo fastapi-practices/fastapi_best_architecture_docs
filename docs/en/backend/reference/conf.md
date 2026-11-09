@@ -637,12 +637,6 @@ Redis prefix for Celery data storage
 
 Maximum retry count when a Celery task fails
 
-## Plugin: Code Generator
-
-### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
-
-ZIP archive filename when downloading generated code
-
 ## Plugin: OAuth2
 
 ### `OAUTH2_GITHUB_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />

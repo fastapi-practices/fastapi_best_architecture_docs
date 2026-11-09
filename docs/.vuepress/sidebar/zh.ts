@@ -43,7 +43,6 @@ export const zhSidebar: ThemeSidebarMulti = {
                 { text: '缓存', link: 'cache' },
                 { text: '国际化', link: 'i18n' },
                 { text: '数据权限', link: 'data-permission' },
-                { text: '代码生成', link: 'code-generation' },
                 { text: '切换主键', link: 'pk' },
                 { text: '数据库', link: 'db' },
                 { text: '多租户', link: 'tenant' },

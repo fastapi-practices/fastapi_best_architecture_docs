@@ -93,7 +93,7 @@ export default {
       {
         name: 'IAseven',
         role: '全栈开发 · 社区伙伴',
-        quote: '代码生成挺省心，尤其是后台管理这类重复模块。',
+        quote: 'AI 直接生成代码，再按项目规范收敛，比模板套用更省心。',
         avatar: 'https://avatars.githubusercontent.com/u/38178039?v=4',
       },
       {
@@ -345,7 +345,8 @@ export default {
     publish: '发布插件',
     searchPlaceholder: '探索符合你需求的插件：名称、作者、描述...',
     all: '全部',
-    groupFilter: '分组',
+    maintainerFilter: '来源',
+    typeFilter: '类型',
     tagFilter: '标签',
     loading: '正在加载插件列表...',
     retry: '重试',

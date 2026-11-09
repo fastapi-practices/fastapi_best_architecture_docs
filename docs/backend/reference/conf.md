@@ -639,12 +639,6 @@ Celery 数据存储到 Redis 时的前缀
 
 Celery 任务执行失败时的最大重试次数
 
-## 插件：Code Generator
-
-### `CODE_GENERATOR_DOWNLOAD_ZIP_FILENAME` <Badge type="info" text="str" />
-
-下载代码时的 ZIP 压缩包文件名
-
 ## 插件：OAuth2
 
 ### `OAUTH2_GITHUB_CLIENT_ID` <Badge type="info" text="str" /> <Badge type="warning" text="env" />

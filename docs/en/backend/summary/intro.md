@@ -52,7 +52,6 @@ If this structure does not fit your team, you can adjust it while keeping the la
 - [x] Custom OAuth 2.0: ready-to-use authorization login
 - [x] Plugin system: zero-coupling extension and composition
 - [x] Scheduled tasks: flexible async job scheduling
-- [x] Code generation: one-click preview, write, and download
 - [x] Operation logs: complete normal/exception records
 - [x] Login logs: detailed login behavior tracking
 - [x] Cache monitoring: real-time cache statistics
@@ -84,7 +83,6 @@ If this structure does not fit your team, you can adjust it while keeping the la
     - log/ # Logs
     - middleware/ # Middleware
     - plugin # Plugins
-        - code_generator/ # Code generation
         - …
     - scripts/ # Scripts
     - sql/ # Init SQL files

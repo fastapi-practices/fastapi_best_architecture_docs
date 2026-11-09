@@ -97,7 +97,7 @@ export default {
         name: 'IAseven',
         role: 'Full-stack developer · community partner',
         quote:
-          'Code generation is a real time-saver, especially for repetitive admin modules.',
+          'Letting AI write the code and then tightening it to project conventions saves more time than rigid templates.',
         avatar: 'https://avatars.githubusercontent.com/u/38178039?v=4',
       },
       {
@@ -357,7 +357,8 @@ export default {
     publish: 'Publish Plugin',
     searchPlaceholder: 'Search plugins by name, author, or description...',
     all: 'All',
-    groupFilter: 'Group',
+    maintainerFilter: 'Source',
+    typeFilter: 'Type',
     tagFilter: 'Tag',
     loading: 'Loading plugins...',
     retry: 'Retry',

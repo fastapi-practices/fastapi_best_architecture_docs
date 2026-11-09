@@ -80,9 +80,8 @@ Typical models using logical delete today:
 - `DictData`: dictionary data
 - `Notice`: notices
 - `UserSocial`: OAuth2 social account bindings
-- `GenBusiness`: code generation businesses
 
-Logs, task results, code-gen columns, and similar models do not inherit `Base` and do not use logical delete.
+Logs, task results, and similar models do not inherit `Base` and do not use logical delete.
 
 ## Delete Operations
 
@@ -172,7 +171,7 @@ __table_args__ = (
 
 The database then only enforces uniqueness of username and email among undeleted rows. Deleted rows have different `deleted` values and do not block new data.
 
-The same approach applies to roles, departments, data scopes, data rules, task schedules, parameter config, dictionary types, code-gen businesses, and similar models.
+The same approach applies to roles, departments, data scopes, data rules, task schedules, parameter config, dictionary types, and similar models.
 
 ## Migration Pitfalls
 

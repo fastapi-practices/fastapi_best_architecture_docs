@@ -37,7 +37,7 @@ config:
     features:
       - title: Three-layer foundation
         icon: ph:squares-four-duotone
-        details: API → Service → CRUD/DAO layers with clear boundaries and code generation — productive in 30 minutes
+        details: API → Service → CRUD/DAO layers with clear boundaries — productive in 30 minutes
         link: /en/backend/summary/intro
       - title: Plugin ecosystem
         icon: ph:puzzle-piece-duotone
@@ -77,7 +77,7 @@ config:
 ::: collapse accordion
 - What does fba add on top of plain FastAPI?
 
-  On top of FastAPI it ships a three-layer architecture, RBAC, JWT, caching, end-to-end logging, timezone handling, Docker, code generation, a plugin system, and other enterprise essentials — ready out of the box, no scaffolding from scratch.
+  On top of FastAPI it ships a three-layer architecture, RBAC, JWT, caching, end-to-end logging, timezone handling, Docker, a plugin system, and other enterprise essentials — ready out of the box, no scaffolding from scratch.
 
 - Why three-layer architecture instead of DDD?
 
