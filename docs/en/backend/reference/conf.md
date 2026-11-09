@@ -81,9 +81,9 @@ Whether to enable FastAPI static file serving
 
 ## Database Configuration
 
-### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" /> <Badge type="warning" text="env" />
-
-Database type. Only `postgresql` and `mysql` are supported. Check third-party plugin compatibility.
+::: warning
+Starting from fba 2.0.0, the `DATABASE_TYPE` and `DATABASE_CHARSET` settings have been removed along with MySQL support
+:::
 
 ### `DATABASE_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
@@ -112,10 +112,6 @@ Whether to output SQLAlchemy pool operation logs
 ### `DATABASE_SCHEMA` <Badge type="info" text="str" />
 
 Database name to connect to
-
-### `DATABASE_CHARSET` <Badge type="info" text="str" />
-
-Database charset (MySQL only)
 
 ### `DATABASE_PK_MODE` <Badge type="info" text="Literal['autoincrement', 'snowflake']" />
 

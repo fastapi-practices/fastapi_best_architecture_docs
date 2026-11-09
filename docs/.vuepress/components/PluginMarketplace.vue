@@ -205,7 +205,6 @@ interface PluginItem {
 
 // Data sync from: https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/plugin/validator.py
 const DB_TABLES: Record<string, string> = {
-  mysql: 'MySQL',
   postgresql: 'PostgreSQL'
 }
 

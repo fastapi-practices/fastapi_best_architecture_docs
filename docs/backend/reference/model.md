@@ -121,6 +121,10 @@ class Base(DataClassBase, DateTimeMixin, LogicalDeleteMixin):
 
 ## 字符串类型
 
-对于长文本，fba 提供了内置的 PostgreSQL 和 MySQL 兼容类型 `UniversalText`
+::: warning
+自 fba 2.0.0 起，fba 移除了 MySQL 支持，内置的 `UniversalText` 兼容类型同步下线，长文本请使用 SQLAlchemy 原生的 `sa.Text` 类型
+:::
+
+对于长文本，fba 使用 SQLAlchemy 原生的 `sa.Text` 类型
 
 对于常见文本，fba 通常使用以下长度单位：`32`、`64`、`128`、`256`、`512`

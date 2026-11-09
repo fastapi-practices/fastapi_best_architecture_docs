@@ -54,7 +54,7 @@ Local deployment is meant to quickly provide a local API service.
 
 4. Start the container
 
-   Because the build does not include a database, make sure the required databases (PostgreSQL / MySQL, Redis) are installed and running locally.
+   Because the build does not include a database, make sure the required databases (PostgreSQL, Redis) are installed and running locally.
 
    ::: tabs#dockerfile
    @tab fba
@@ -107,25 +107,15 @@ fba uses a free SSL certificate: [httpsok-SSL](https://httpsok.com/p/4Qjd). Cert
    In the docker-compose scripts, the `.env.server` file is mounted as the fba environment file. Changes you make locally are synced into the Docker container, so updating environment variables does not require a rebuild.
    :::
 
-   ::: warning
-   If you are using a MySQL database, update part of `.env.server` as follows:
-
-   ```dotenv:no-line-numbers
-   # Database
-   DATABASE_TYPE='mysql'
-   DATABASE_HOST='fba_mysql'
-   DATABASE_PORT=3306
-   DATABASE_USER='root'
-   DATABASE_PASSWORD='123456'
-   ```
-
-   :::
-
 3. Update configuration as needed in `backend/core/conf.py`
 
 4. Update the docker-compose scripts
 
    The `docker-compose.yml` script includes comments — modify it as needed.
+
+   ::: warning
+   Starting from fba 2.0.0, the compose scripts no longer ship a MySQL container. Extend `docker-compose.yml` yourself if you still need one
+   :::
 
 5. Run the one-click start command
 

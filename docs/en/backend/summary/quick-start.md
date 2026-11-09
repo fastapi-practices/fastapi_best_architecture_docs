@@ -6,6 +6,10 @@ title: Quick Start
 fba is aimed at developers with some Python backend experience. If you are just starting with FastAPI, first get comfortable with Python async, FastAPI, SQLAlchemy, and Pydantic basics.
 :::
 
+::: warning
+Starting from fba 2.0.0, MySQL support has been removed and fba supports PostgreSQL only
+:::
+
 ## Local Development
 
 :::: steps
@@ -14,9 +18,9 @@ fba is aimed at developers with some Python backend experience. If you are just 
 
     - Python 3.12+
     - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) (current stable version recommended)
-    - PostgreSQL 16.0+ or MySQL 8.0+
+    - PostgreSQL 16.0+
       [Use **Snowflake primary keys**](../reference/pk.md){.read-more}
-      [Use **MySQL**](../reference/db.md){.read-more}
+      [Configure the **database**](../reference/db.md){.read-more}
     - <p>Redis (latest stable recommended)</p>
 
 2. Prepare the source code <Badge type="warning" text="Choose one" />
@@ -37,7 +41,7 @@ fba is aimed at developers with some Python backend experience. If you are just 
 
    ![use_this_template](/images/use_this_template.png)
    :::
-3. Start PostgreSQL/MySQL and Redis
+3. Start PostgreSQL and Redis
 4. Initialize
 
    ::: tabs
@@ -54,7 +58,6 @@ fba is aimed at developers with some Python backend experience. If you are just 
     1. Create the database: `fba`
 
         - PostgreSQL users can create it directly
-        - MySQL users should choose utf8mb4 encoding
 
     2. env
 
@@ -108,9 +111,9 @@ fba is aimed at developers with some Python backend experience. If you are just 
 
         2. Initialize test data
 
-           Architecture: run the primary-key mode scripts under `backend/sql/{mysql|postgresql}/`
+           Architecture: run the primary-key mode scripts under `backend/sql/postgresql/`
 
-           Plugins: run the primary-key mode scripts under `backend/plugin/{plugin}/sql/{mysql|postgresql}/`
+           Plugins: run the primary-key mode scripts under `backend/plugin/{plugin}/sql/postgresql/`
 
            ```shell:no-line-numbers
            fba --sql path/to/script
@@ -189,9 +192,9 @@ Unit tests are run with `pytest`. The project only provides basic test examples,
 
 ::: steps
 
-1. Create the test database `fba_test` with utf8mb4 encoding (PostgreSQL users can ignore encoding)
+1. Create the test database `fba_test`
 2. Create tables: export DDL for all tables from the `fba` database, then apply it to `fba_test`
-3. Initialize test data using scripts under `backend/sql/{mysql|postgresql}/` for the matching primary-key mode
+3. Initialize test data using scripts under `backend/sql/postgresql/` for the matching primary-key mode
 4. Open a terminal in the project root and run:
 
    ```shell:no-line-numbers

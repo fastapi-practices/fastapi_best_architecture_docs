@@ -121,6 +121,10 @@ class Base(DataClassBase, DateTimeMixin, LogicalDeleteMixin):
 
 ## String Types
 
-For long text, fba provides a built-in PostgreSQL- and MySQL-compatible type `UniversalText`.
+::: warning
+Starting from fba 2.0.0, MySQL support has been removed and the built-in `UniversalText` compatibility type is gone with it. Use the native SQLAlchemy `sa.Text` type for long text
+:::
+
+For long text, fba uses the native SQLAlchemy `sa.Text` type.
 
 For common text fields, fba typically uses these length units: `32`, `64`, `128`, `256`, `512`.

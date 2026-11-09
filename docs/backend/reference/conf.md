@@ -82,9 +82,9 @@ openapi JSON 数据在线地址
 
 ## 数据库配置
 
-### `DATABASE_TYPE` <Badge type="info" text="Literal['mysql', 'postgresql']" /> <Badge type="warning" text="env" />
-
-数据库类型，仅支持 `postgresql` 和 `mysql`，需注意第三方插件兼容性
+::: warning
+自 fba 2.0.0 起，`DATABASE_TYPE` 与 `DATABASE_CHARSET` 配置项已随 MySQL 支持一并移除
+:::
 
 ### `DATABASE_HOST` <Badge type="info" text="str" /> <Badge type="warning" text="env" />
 
@@ -113,10 +113,6 @@ openapi JSON 数据在线地址
 ### `DATABASE_SCHEMA` <Badge type="info" text="str" />
 
 需要连接的数据库
-
-### `DATABASE_CHARSET` <Badge type="info" text="str" />
-
-数据库字符集，仅用于 mysql
 
 ### `DATABASE_PK_MODE` <Badge type="info" text="Literal['autoincrement', 'snowflake']" />
 

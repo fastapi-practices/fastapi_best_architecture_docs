@@ -81,7 +81,9 @@ title: 插件分享
 
 ## 发布插件
 
-插件市场通过 Git submodule 跟踪插件，因此正式发布仍需要在 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 创建一个 PR。区别在于：你可以通过 Issue 表单让自动化完成校验和 submodule PR 创建，不再需要手动 fork、clone 和提交子模块
+插件市场通过 Git submodule 跟踪插件，因此正式发布仍需要在 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 创建一个 PR
+
+PR 应由插件作者使用自己的 GitHub 账号从 fork 创建，确保提交和 PR 归属正确
 
 fba 团队会根据发布前检查项和插件实际用途进行审核，通过后插件才会进入 [插件市场](../marketplace.md)
 
@@ -89,15 +91,26 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 插件总是独一无二的，如果插件名已存在，那你只能选择为即将发布的插件换个新名字
 :::
 
-### 自动申请（推荐）
+### 使用 AI Agent（推荐）
 
-插件仓库公开并通过发布前检查后，[提交插件发布申请](https://github.com/fastapi-practices/plugins/issues/new?template=plugin-submission.yml)
+安装 [fba skill](../ai/skills.md#fba) 后，将以下提示词交给支持 Skills 的 AI Agent：
 
-工作流只校验仓库结构和 `plugin.toml`，不会执行插件代码；校验通过后会自动创建 submodule PR，等待维护者审核
+```markdown
+使用 fba skill 检查并发布 <插件名> 插件。
+
+- 插件类型：<backend / frontend>
+- 插件仓库：<https://github.com/...>
+
+自检通过后，等我确认，再以我的 GitHub 账号创建插件市场 PR
+```
+
+Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插件市场校验。自检只读取文件，不会执行插件代码
+
+创建 PR 前，Agent 会先展示校验结果和待执行的 Git/GitHub 操作。如果你没有安装或登录 GitHub CLI，Agent 会提供 fork 和网页创建 PR 的地址，不需要为此安装 `gh`
 
 ### 手动提交（备用）
 
-自动化不可用或需要人工调整 submodule 时，可以按以下步骤手动提交
+需要手动调整 submodule 或使用 GitHub 网页操作时，可以按以下步骤提交
 
 手动方式需要本地安装 Git
 

@@ -47,7 +47,7 @@ That does not mean this approach is always better. It has prerequisites and boun
 
 When extending multi-tenancy in fba, we recommend starting with the **shared approach**, mainly because:
 
-- Easier compatibility with both PostgreSQL and MySQL
+- Easier compatibility with PostgreSQL
 - Easier reuse of existing models, plugins, and initialization SQL systems
 - Smoother migration path from existing single-tenant code
 

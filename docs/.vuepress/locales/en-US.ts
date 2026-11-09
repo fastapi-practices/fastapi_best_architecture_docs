@@ -118,7 +118,7 @@ export default {
         name: 'yuWorm',
         role: 'Server engineer · community partner',
         quote:
-          'MySQL and PostgreSQL are both covered, and with plugin-based extension the main project does not have to get messier as business grows.',
+          'PostgreSQL is deeply supported, and with plugin-based extension the main project does not have to get messier as business grows.',
         avatar: 'https://avatars.githubusercontent.com/u/34805071?v=4',
       },
       {

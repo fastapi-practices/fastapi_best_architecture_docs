@@ -45,7 +45,7 @@ export const zhSidebar: ThemeSidebarMulti = {
                 { text: '数据权限', link: 'data-permission' },
                 { text: '代码生成', link: 'code-generation' },
                 { text: '切换主键', link: 'pk' },
-                { text: '切换数据库', link: 'db' },
+                { text: '数据库', link: 'db' },
                 { text: '多租户', link: 'tenant' },
                 { text: 'OAuth 2.0', link: 'oauth2' },
                 { text: 'SocketIo', link: 'socketio' },

@@ -57,7 +57,7 @@ config:
         link: /en/backend/reference/cache
       - title: One-click container deploy
         icon: ph:cloud-arrow-up-duotone
-        details: Docker Compose ready with production-ready MySQL / PostgreSQL setups
+        details: Docker Compose ready with a production-ready PostgreSQL setup
         link: /en/backend/deploy/Docker
   - type: ProjectStats
   - type: Testimonials
@@ -93,7 +93,7 @@ config:
 
 - Which databases are supported?
 
-  First-class support for MySQL and PostgreSQL; Redis as the cache and queue foundation. Other databases can be adapted easily with AI assistance.
+  Starting from fba 2.0.0, PostgreSQL is the only supported database; Redis as the cache and queue foundation. Other databases can be adapted easily with AI assistance.
 
 - How do I enable AI-powered workflows?
 

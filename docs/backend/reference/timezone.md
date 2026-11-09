@@ -20,32 +20,12 @@ title: 时区
 - 全部存读当前时区时间，根据前端传入的时区进行转换（利于本地化管理）
 - 全部存储为数值时间戳，前端转化（极其不易管理，但易操作）
 
-让我们来看一个经典案例：
-
-::: chat title="群聊"
-{:2025-08-26 12:44:00}
-
-{王}
-请教大佬，为啥我查询的时间用的不同的时区和时间戳，返回的数据却是一样的？
-
-![question_db_timezone](/images/question_db_timezone.png)
-
-数据库用的是 mysql，原则上这两个 datetime 的时间戳是不一样的，但是查出来的数据是一样的结果；
-
-{王}
-我直接写 sql 查询，这个两个是符合预期结果的，第一个有数据，第二个查不到；
-
-![question_sql_timezone](/images/question_sql_timezone.png)
-
-这个切换到pg数据库后查询符合预期结果的；
-
-{.}
-**timezone**: not used by the MySQL dialect.
-
-sqlalchemy 和所有 python mysql 驱动默认都不处理 mysql 时区信息，通常是直接丢弃，即便使用 TIMESTAMP 类型
-
-{.}
-更具体的：[sqlalchemy/1985](https://github.com/sqlalchemy/sqlalchemy/issues/1985)
+::: warning
+自 fba 2.0.0 起，fba 移除了 MySQL 支持，用于兼容 MySQL 无时区类型的自定义 `TimeZone` 类型同步下线，时间列统一使用 PostgreSQL 原生的 `TIMESTAMP WITH TIME ZONE`（即 `sa.DateTime(timezone=True)`）
 :::
 
-为此，我们使用了第 2 种解决方案，并创建了自定义 TimeZone 类型，更多详情请查看：`backend/common/model.py`
+fba 采用第 2 种方案：数据库层的所有时间列统一使用 PostgreSQL 原生的 `TIMESTAMP WITH TIME ZONE` 类型（即 SQLAlchemy 的 `sa.DateTime(timezone=True)`），写入前由 `backend/utils/timezone.py` 统一转换为当前时区，读出时数据库返回带时区的时间戳
+
+::: tip
+`TIMESTAMP WITH TIME ZONE` 存储的是时间点本身，不受会话时区影响，因此跨时区的查询与展示都能得到一致的结果
+:::

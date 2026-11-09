@@ -55,7 +55,7 @@ config:
         link: /backend/reference/cache
       - title: 一键容器部署
         icon: ph:cloud-arrow-up-duotone
-        details: Docker Compose 编排就位，MySQL / PostgreSQL 生产可用
+        details: Docker Compose 编排就位，PostgreSQL 生产可用
         link: /backend/deploy/Docker
   - type: ProjectStats
   - type: Testimonials
@@ -91,7 +91,7 @@ config:
 
 - 支持哪些数据库？
 
-  一等支持 MySQL 与 PostgreSQL；Redis 作为缓存与队列底座；其他数据库可通过 AI 轻松适配
+  自 fba 2.0.0 起仅支持 PostgreSQL；Redis 作为缓存与队列底座；其他数据库可通过 AI 轻松适配
 
 - AI 赋能怎么开启？
 

@@ -63,4 +63,4 @@ Search for how to reset a PostgreSQL primary key sequence for the solution.
 
 ## Database Timezone Pitfalls
 
-MySQL does not support a timezone-aware storage type, while PostgreSQL has excellent timezone types. Storing time columns is therefore tricky. We have implemented a solid solution that works with both MySQL and PostgreSQL — [see details](./backend/reference/timezone.md#database).
+PostgreSQL has excellent timezone types, yet storing time columns is still tricky. We have implemented a solid solution for it — [see details](./backend/reference/timezone.md#database).

@@ -113,7 +113,7 @@ export default {
         name: 'yuWorm',
         role: '服务端工程师 · 社区伙伴',
         quote:
-          'MySQL、PostgreSQL 都照顾到了，再加上插件化扩展，后面业务变复杂也不至于把主工程越写越乱。',
+          'PostgreSQL 深度适配，再加上插件化扩展，后面业务变复杂也不至于把主工程越写越乱。',
         avatar: 'https://avatars.githubusercontent.com/u/34805071?v=4',
       },
       {

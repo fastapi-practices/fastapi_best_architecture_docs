@@ -7,6 +7,10 @@ fba 面向具备一定 Python 后端经验的开发者。如果你刚开始学�
 Pydantic 的基础用法
 :::
 
+::: warning
+自 fba 2.0.0 起，fba 已移除 MySQL 支持，仅支持 PostgreSQL 数据库
+:::
+
 ## 本地开发
 
 :::: steps
@@ -15,9 +19,9 @@ Pydantic 的基础用法
 
     - Python 3.12+
     - [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)（建议使用当前稳定版本）
-    - PostgreSQL 16.0 + 或 MySQL 8.0+
+    - PostgreSQL 16.0 +
       [使用**雪花主键 ID**](../reference/pk.md){.read-more}
-      [使用 **MySQL**](../reference/db.md){.read-more}
+      [配置**数据库**](../reference/db.md){.read-more}
     - <p>Redis（推荐最新稳定版）</p>
 
 2. 准备源码 <Badge type="warning" text="二选一" />
@@ -38,7 +42,7 @@ Pydantic 的基础用法
 
    ![use_this_template](/images/use_this_template.png)
    :::
-3. 启动 PostgreSQL/MySQL、Redis
+3. 启动 PostgreSQL、Redis
 4. 初始化
 
    ::: tabs
@@ -55,7 +59,6 @@ Pydantic 的基础用法
     1. 创建数据库：`fba`
 
         - PostgreSQL 用户直接创建
-        - MySQL 用户创建时需选择 utf8mb4 编码
 
     2. env
 
@@ -109,9 +112,9 @@ Pydantic 的基础用法
 
         2. 初始化测试数据
 
-           架构：执行 `backend/sql/{mysql|postgresql}/` 目录下对应主键模式的脚本
+           架构：执行 `backend/sql/postgresql/` 目录下对应主键模式的脚本
 
-           插件：执行 `backend/plugin/{plugin}/sql/{mysql|postgresql}/` 目录下对应主键模式的脚本
+           插件：执行 `backend/plugin/{plugin}/sql/postgresql/` 目录下对应主键模式的脚本
 
            ```shell:no-line-numbers
            fba --sql 脚本文件路径
@@ -191,9 +194,9 @@ Pydantic 的基础用法
 
 ::: steps
 
-1. 创建测试数据库 `fba_test`，选择 utf8mb4 编码，PostgreSQL 用户可忽略编码
+1. 创建测试数据库 `fba_test`
 2. 创建数据库表，利用工具创建 `fba` 库所有表的 DDL 脚本，再通过 `fba_test` 库执行
-3. 初始化测试数据，通过 `backend/sql/{mysql|postgresql}/` 目录下对应主键模式的脚本初始化测试数据
+3. 初始化测试数据，通过 `backend/sql/postgresql/` 目录下对应主键模式的脚本初始化测试数据
 4. 在项目根目录打开终端，执行以下单元测试命令
 
    ```shell:no-line-numbers

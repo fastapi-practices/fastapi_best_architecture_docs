@@ -40,7 +40,7 @@ Use the fba skill for this plugin task: <for example: convert an existing featur
 - Plugin type: <backend / frontend>
 
 Read the relevant conventions and give a short plan first. Wait for my confirmation before changing files
-Run the necessary checks after implementation and explain how to publish or submit the plugin
+Run the necessary checks after implementation and complete the marketplace self-check before publishing
 If the fba skill or another required tool is unavailable, tell me first. Do not install it or assume it is available
 Do not run git add, commit, push, fork, or PR actions without my explicit approval
 ```

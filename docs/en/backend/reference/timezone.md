@@ -20,32 +20,12 @@ Handling timezones in the database is painful. There are three common approaches
 - Store and read everything in the current timezone; convert based on the timezone sent by the frontend (good for localization)
 - Store everything as numeric timestamps; convert on the frontend (hard to manage, but easy to operate)
 
-Consider this classic case:
-
-::: chat title="Group chat"
-{:2025-08-26 12:44:00}
-
-{Wang}
-Quick question — why do I get the same data when querying with different timezones and timestamps?
-
-![question_db_timezone](/images/question_db_timezone.png)
-
-The database is MySQL. In principle these two datetime timestamps should differ, but the query results are the same.
-
-{Wang}
-When I write the SQL directly, the two queries behave as expected: the first returns data, the second returns nothing.
-
-![question_sql_timezone](/images/question_sql_timezone.png)
-
-After switching to PostgreSQL, the query results match expectations.
-
-{.}
-**timezone**: not used by the MySQL dialect.
-
-SQLAlchemy and all Python MySQL drivers do not handle MySQL timezone information by default — they usually discard it, even with the TIMESTAMP type.
-
-{.}
-More details: [sqlalchemy/1985](https://github.com/sqlalchemy/sqlalchemy/issues/1985)
+::: warning
+Starting from fba 2.0.0, MySQL support has been removed and the custom `TimeZone` type is gone with it. Datetime columns now use PostgreSQL's native `TIMESTAMP WITH TIME ZONE` (that is, `sa.DateTime(timezone=True)`)
 :::
 
-For this reason we use the second solution and created a custom TimeZone type. See `backend/common/model.py` for more details.
+fba uses the second solution: every datetime column uses PostgreSQL's native `TIMESTAMP WITH TIME ZONE` type (that is, SQLAlchemy's `sa.DateTime(timezone=True)`). Values are converted to the current timezone by `backend/utils/timezone.py` before being written, and the database returns timezone-aware timestamps on read.
+
+::: tip
+`TIMESTAMP WITH TIME ZONE` stores the instant itself and is not affected by the session timezone, so queries and displays stay consistent across timezones
+:::

@@ -80,10 +80,6 @@ The Snowflake algorithm supports two node allocation modes:
 
 `SNOWFLAKE_DATACENTER_ID` and `SNOWFLAKE_WORKER_ID` must both be set or both be empty, and each must be in the range `0` to `31`.
 
-::: caution Windows Platform Warning
-If you use MySQL 8.0+ on Windows and encounter `asyncmy` write errors, try changing `mysql+asyncmy` to `mysql+aiomysql` in `backend/database/db.py`. Related issue: [asyncmy/issues/35](https://github.com/long2ice/asyncmy/issues/35)
-:::
-
 ## Notes
 
 - When using Snowflake IDs, ensure clock synchronization (e.g. via NTP) and unique node ID allocation

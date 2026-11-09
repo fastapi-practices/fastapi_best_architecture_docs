@@ -81,7 +81,9 @@ You can use the [Plugin task](../ai/prompt.md#plugin-task) prompt to have an AI 
 
 ## Publishing a Plugin
 
-The marketplace tracks plugins with Git submodules, so publishing still requires a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins). The difference is that the Issue form can run validation and create the submodule PR automatically, without manually forking, cloning, and editing submodules.
+The marketplace tracks plugins with Git submodules, so publishing still requires a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins).
+
+The plugin author should create the PR from their own GitHub account through a fork, so commits and the PR remain correctly attributed.
 
 The fba team reviews against the pre-publish checklist and the plugin's actual purpose. Only after approval does the plugin appear in the [Plugin Marketplace](../marketplace.md).
 
@@ -89,15 +91,26 @@ The fba team reviews against the pre-publish checklist and the plugin's actual p
 Plugins are always unique. If the plugin name already exists, you must choose a new name for the plugin you are about to publish.
 :::
 
-### Automatic Submission (Recommended)
+### Use an AI Agent (Recommended)
 
-After the plugin repository is public and passes the pre-publish checklist, [submit a plugin submission issue](https://github.com/fastapi-practices/plugins/issues/new?template=plugin-submission.yml).
+After installing the [fba skill](../ai/skills.md#fba), give this prompt to an AI agent that supports Skills:
 
-The workflow validates only the repository structure and `plugin.toml`; it does not execute plugin code. If validation passes, it creates a submodule PR for maintainer review.
+```markdown
+Use the fba skill to check and publish the <plugin-name> plugin.
+
+- Plugin type: <backend / frontend>
+- Plugin repository: <https://github.com/...>
+
+After validation passes, wait for my confirmation, then create the marketplace PR with my GitHub account
+```
+
+The agent checks the repository structure, `plugin.toml`, SQL, duplicate plugins, and runs the marketplace validation. Validation reads files only and does not execute plugin code.
+
+Before creating the PR, the agent shows the validation result and pending Git/GitHub operations. If GitHub CLI is unavailable or unauthenticated, it provides the fork and browser PR links instead of requiring you to install `gh`.
 
 ### Manual Submission (Fallback)
 
-Use the manual flow when automation is unavailable or a maintainer needs to adjust the submodule manually.
+Use the manual flow when you need to adjust the submodule manually or prefer the GitHub UI.
 
 This flow requires Git to be installed locally.
 

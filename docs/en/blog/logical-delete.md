@@ -184,7 +184,7 @@ For example, menu title rules may be: non-button menu titles must be unique. But
 
 That rule is not a simple `title + deleted`. Adding a constraint would change existing business semantics.
 
-Across MySQL and PostgreSQL, partial indexes, expression indexes, and conditional unique indexes also differ. Such rules are better kept in the business layer until stable, then designed at the database layer.
+In PostgreSQL, partial indexes, expression indexes, and conditional unique indexes also differ from what you might expect. Such rules are better kept in the business layer until stable, then designed at the database layer.
 
 ### 2. Clean historical duplicates before adding unique constraints
 

@@ -54,7 +54,7 @@ title: Docker 部署
 
 4. 启动容器
 
-   由于构建不包含数据库，请确保本地已安装并启动相关数据库（postgresql / mysql、redis）
+   由于构建不包含数据库，请确保本地已安装并启动相关数据库（postgresql、redis）
 
    ::: tabs#dockerfile
    @tab fba
@@ -109,25 +109,15 @@ fba 正在使用免费 SSL 证书：[httpsok-SSL](https://httpsok.com/p/4Qjd)，
    docker 容器，这意味着，修改环境变量将无需重新 build
    :::
 
-   ::: warning
-   如果您正在使用 MySQL 数据库，需修改 `.env.server` 部分配置如下：
-
-   ```dotenv:no-line-numbers
-   # Database
-   DATABASE_TYPE='mysql'
-   DATABASE_HOST='fba_mysql'
-   DATABASE_PORT=3306
-   DATABASE_USER='root'
-   DATABASE_PASSWORD='123456'
-   ```
-
-   :::
-
 3. 按需修改配置文件 `backend/core/conf.py`
 
 4. 更新 docker-compose 脚本
 
    脚本 `docker-compose.yml` 中有相关注释说明，根据需要进行修改即可
+
+   ::: warning
+   自 fba 2.0.0 起，编排脚本不再包含 MySQL 容器，如仍需使用请自行扩展 `docker-compose.yml`
+   :::
 
 5. 执行一键启动命令
 
