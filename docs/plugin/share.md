@@ -72,8 +72,8 @@ title: 插件分享
 - 前端插件根目录包含 `plugin.toml`
 - 仓库根目录就是插件根目录，不能再多包一层插件目录
 - `plugin.toml` 中的插件信息完整，版本号符合 `x.y.z`
-- `tags`、`database`、`depends_on` 等字段符合 [插件开发](./dev.md) 文档要求
-- 如果插件包含模型，应提供对应数据库的初始化和销毁 SQL
+- `tags`、`depends_on` 等字段符合 [插件开发](./dev.md) 文档要求
+- 如果插件包含模型或 SQL 脚本，应提供 PostgreSQL 的初始化和销毁 SQL
 - `README.md` 应说明配置、使用方式、卸载方式和反馈方式
 - 插件不应静默修改主项目核心文件
 

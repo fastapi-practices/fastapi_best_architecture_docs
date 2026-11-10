@@ -57,12 +57,16 @@ Do not inject routes and do not need an `api` directory. Other plugins or busine
 ### Database Compatibility
 
 ::: warning
-Starting from fba 2.0.0, plugins target PostgreSQL only and `[plugin].database` can only declare `postgresql`
+Starting from fba 2.0.0, plugins target PostgreSQL only
 :::
 
-fba built-in plugins support PostgreSQL only. Application-level and extension-level plugins must declare supported databases in `[plugin].database` in `plugin.toml`. Capability plugins without models or SQL may omit `[plugin].database`.
+fba supports PostgreSQL only, and `plugin.toml` no longer declares databases
 
-If a plugin includes a `model` directory, it must declare `[plugin].database` and provide complete init and destroy SQL, including `init.sql`, `destroy.sql`, `init_snowflake.sql`, and `destroy_snowflake.sql`. Databases declared in `[plugin].database` should match the SQL scripts actually provided.
+Whether a plugin touches the database is derived from its models, so the manifest does not declare it:
+
+- When a plugin defines ORM tables, it must provide the complete PostgreSQL init and destroy scripts, including `init.sql`, `destroy.sql`, `init_snowflake.sql`, and `destroy_snowflake.sql`
+- When a plugin defines no tables but ships a `sql` directory, it must provide the same complete script set
+- When a plugin defines no tables and ships no `sql` directory, it is a pure capability plugin and needs no database configuration at all
 
 ### Plugin Directory Structure
 
@@ -80,7 +84,7 @@ The plugin name is also a Python package name. Prefer lowercase letters, digits,
         - …
     - schema/ # Data transfer
     - service/ # Services
-    - sql # Recommended if the plugin has models or needs SQL
+    - sql # Required if the plugin has models or needs SQL
         - postgresql
             - destroy.sql # Auto-increment id destroy (auto-run on uninstall)
             - destroy_snowflake.sql # Snowflake id destroy
@@ -122,9 +126,6 @@ author = ''
 # Tags
 # Currently supported: ai, mcp, agent, auth, storage, notification, task, payment, other
 tags = ['']
-# Database support
-# Currently supported: postgresql
-database = ['']
 # Dependent plugins, optional, controls startup and injection order
 depends_on = []
 
@@ -158,9 +159,6 @@ author = ''
 # Tags
 # Currently supported: ai, mcp, agent, auth, storage, notification, task, payment, other
 tags = ['']
-# Database support
-# Currently supported: postgresql
-database = ['']
 # Dependent plugins, optional, controls startup and injection order
 depends_on = []
 
@@ -203,9 +201,6 @@ author = ''
 # Tags
 # Currently supported: ai, mcp, agent, auth, storage, notification, task, payment, other
 tags = ['']
-# Database support
-# Currently supported: postgresql
-database = ['']
 # Dependent plugins, optional, controls startup and injection order
 depends_on = []
 

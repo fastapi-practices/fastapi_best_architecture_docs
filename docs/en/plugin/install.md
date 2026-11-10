@@ -19,7 +19,7 @@ Backend plugin install and uninstall are available only in development. In produ
 6. Check and fix auto-appended environment variables and related config per the plugin README.md
 7. Restart the service
 
-CLI installation automatically installs plugin dependencies, syncs plugin model tables, runs initialization SQL matching the current database and primary-key mode, and appends the plugin `.env.example` to `backend/.env`.
+CLI installation automatically installs plugin dependencies, syncs plugin model tables, runs PostgreSQL initialization SQL matching the primary-key mode, and appends the plugin `.env.example` to `backend/.env`.
 
 @tab ZIP
 
@@ -54,7 +54,7 @@ The ZIP filename becomes the plugin directory name. Prefer matching the plugin o
 2. Copy the source folder into `backend/plugin` (the plugin folder name must match the repository name)
 3. Run `fba deps --plugin <plugin>` to install plugin dependencies
 4. Add environment variables and related config per the plugin README.md
-5. Run the matching initialization scripts under the plugin `sql` directory for the current database type and primary-key mode
+5. Run the matching initialization scripts under the plugin `sql/postgresql` directory for the primary-key mode
 6. Sync plugin model tables or generate migration files
 7. Restart the service
 

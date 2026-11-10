@@ -72,8 +72,8 @@ Before publishing a plugin, confirm it meets these requirements:
 - Frontend plugin root contains `plugin.toml`
 - The repository root is the plugin root; do not add another plugin directory level
 - Plugin info in `plugin.toml` is complete, with a version in `x.y.z` format
-- Fields such as `tags`, `database`, and `depends_on` follow the [Plugin Development](./dev.md) docs
-- If the plugin includes models, provide init and destroy SQL for the corresponding databases
+- Fields such as `tags` and `depends_on` follow the [Plugin Development](./dev.md) docs
+- If the plugin includes models or SQL scripts, provide PostgreSQL init and destroy SQL
 - `README.md` should cover configuration, usage, uninstallation, and feedback channels
 - The plugin should not silently modify core files of the main project
 
