@@ -99,10 +99,7 @@
 
           <a :href="plugin.git.url" target="_blank" rel="noreferrer" class="card-main-link card-main-link-body">
             <p class="card-desc">{{ plugin.plugin.description }}</p>
-            <div class="card-tags"
-              v-if="getValidDatabases(plugin.plugin.database).length || getValidTags(plugin.plugin.tags).length">
-              <span v-for="db in getValidDatabases(plugin.plugin.database)" :key="'db-' + db"
-                class="tag">#{{ getDbLabel(db) }}</span>
+            <div class="card-tags" v-if="getValidTags(plugin.plugin.tags).length">
               <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
                 class="tag">#{{ getTagLabel(tag) }}</span>
             </div>
@@ -207,14 +204,8 @@ interface PluginItem {
     version: string
     author: string
     description: string
-    database?: string[]
     tags?: string[]
   }
-}
-
-// Data sync from: https://github.com/fastapi-practices/fastapi-best-architecture/blob/master/backend/plugin/validator.py
-const DB_TABLES: Record<string, string> = {
-  postgresql: 'PostgreSQL'
 }
 
 const CACHE_KEY = 'fba_plugins_cache'
@@ -457,10 +448,6 @@ const getTagLabel = (tag: string): string => {
   return labels[tag] || tag
 }
 
-const getDbLabel = (db: string): string => {
-  return DB_TABLES[db] || db
-}
-
 const KNOWN_TAGS = new Set(['ai', 'mcp', 'agent', 'auth', 'storage', 'notification', 'task', 'payment', 'other'])
 
 const filteredValidTags = computed(() => {
@@ -470,11 +457,6 @@ const filteredValidTags = computed(() => {
 const getValidTags = (tags: string[] | undefined): string[] => {
   if (!tags) return []
   return tags.filter(tag => KNOWN_TAGS.has(tag))
-}
-
-const getValidDatabases = (databases: string[] | undefined): string[] => {
-  if (!databases) return []
-  return databases.filter(db => db in DB_TABLES)
 }
 
 const resetFilters = () => {
