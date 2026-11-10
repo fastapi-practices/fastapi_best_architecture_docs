@@ -25,7 +25,3 @@ title: 时区
 :::
 
 fba 采用第 2 种方案：数据库层的所有时间列统一使用 PostgreSQL 原生的 `TIMESTAMP WITH TIME ZONE` 类型（即 SQLAlchemy 的 `sa.DateTime(timezone=True)`），写入前由 `backend/utils/timezone.py` 统一转换为当前时区，读出时数据库返回带时区的时间戳
-
-::: tip
-`TIMESTAMP WITH TIME ZONE` 存储的是时间点本身，不受会话时区影响，因此跨时区的查询与展示都能得到一致的结果
-:::
