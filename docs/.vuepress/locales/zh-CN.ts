@@ -410,6 +410,14 @@ export default {
     copy: '复制',
     copied: '已复制',
   },
+  skillInstall: {
+    cardTitle: '通过 AI 安装 fba 技能',
+    hint: '复制下面的提示词并粘贴到你的 AI 助手（Claude Code / Cursor / Codex 等），AI 会引导你完成 SkillPay 购买与安装',
+    copy: '复制安装提示词',
+    copied: '已复制',
+    copyTitle: '复制 fba 技能安装提示词',
+    source: '官方安装与购买说明：',
+  },
   gitEmoji: {
     descriptions: {
       art: '改进代码结构/格式',

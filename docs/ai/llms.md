@@ -39,3 +39,11 @@ fba 架构和开发规范的理解
 ## 其他 AI 工具
 
 任何支持 llms.txt 的 AI 工具均可使用以上路径来更好地理解 fba
+
+## 让 AI 按规范写代码
+
+llms.txt 解决「AI 读不懂 fba」，fba skill 解决「AI 动手不守 fba 的规矩」
+
+<FbaSkillInstall />
+
+两者可以同时使用：llms.txt 提供文档上下文，fba skill 提供脚手架命令与开发约定

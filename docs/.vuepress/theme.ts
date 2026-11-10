@@ -1,8 +1,26 @@
 import plumeTheme from "vuepress-theme-plume";
 import { Theme } from "vuepress";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import { myBulletin, myBulletinEn } from "./bulletin";
 import { zhSidebar, enSidebar } from "./sidebar";
 import { zhNavbar, enNavbar } from "./navbar";
+
+const CODE_INCLUDE_RE = /@\[code(?:\s+([^\]]+))?\]\(([^)]+)\)/g;
+
+/**
+ * llms.txt 生成时展开 `@[code](相对路径)` 引用
+ *
+ * 这样 `docs/code` 下的文件可以同时作为网站内容与 llms.txt 的唯一来源
+ */
+const resolveCodeIncludes = (markdown: string, page: any): string => {
+  if (!page?.filePath) return markdown;
+  return markdown.replace(CODE_INCLUDE_RE, (_match, _lang, importPath) => {
+    const target = resolve(dirname(page.filePath), importPath);
+    if (!existsSync(target)) return "";
+    return readFileSync(target, "utf-8").replace(/\n$/, "");
+  });
+};
 
 export const createTheme = (hostname: string): Theme => plumeTheme({
   hostname,
@@ -49,6 +67,7 @@ export const createTheme = (hostname: string): Theme => plumeTheme({
   },
   llmstxt: {
     locale: "/",
+    transformMarkdown: resolveCodeIncludes,
   },
   locales: {
     "/": {

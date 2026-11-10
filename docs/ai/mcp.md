@@ -19,3 +19,9 @@ ace 的优势在于上下文检索速度快、定位准确，适合在较大的�
 Github 仓库：[cg](https://github.com/colbymchenry/codegraph)
 
 类似 ace 的索引工具，开源且免费
+
+## 选择合适的方案
+
+ace、codegraph 解决的是「让 AI 找到相关代码」；如果希望 AI 直接按 fba 规范产出代码，装 fba skill 更直接
+
+<FbaSkillInstall variant="inline" />

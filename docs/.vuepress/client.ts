@@ -7,6 +7,7 @@ import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 
 import Layout from './layouts/Layout.vue'
 import GitEmoji from "./components/GitEmoji.vue";
+import FbaSkillInstall from "./components/FbaSkillInstall.vue";
 import HeroTitleParticles from './components/HeroTitleParticles.vue';
 import HomeSponsor from './components/HomeSponsor.vue';
 import PluginMarketplace from "./components/PluginMarketplace.vue";
@@ -26,6 +27,7 @@ import './styles/custom.css'
 export default defineClientConfig({
     enhance({ app }) {
         app.component('RepoCard', RepoCard)
+        app.component('FbaSkillInstall', FbaSkillInstall)
         app.component('GitEmoji', GitEmoji)
         app.component('HomeSponsor', HomeSponsor)
         app.component('PluginMarketplace', PluginMarketplace)

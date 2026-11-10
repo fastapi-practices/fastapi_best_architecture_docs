@@ -27,9 +27,13 @@ When writing too much file content at one time, always write in batches.
 ::: tip
 使用前需安装 fba skill：
 
-```bash
-npx skills add fastapi-practices/skills
-```
+<FbaSkillInstall />
+<llm-only>
+
+@[code txt](../code/fba-skill-install.txt)
+
+</llm-only>
+
 :::
 
 ```markdown

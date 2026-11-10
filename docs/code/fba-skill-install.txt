@@ -1,0 +1,4 @@
+请通过 SkillPay 购买并安装 Skill「fba」。 
+官方安装与购买说明： https://skillpay.alipay.com/userguide.md 请先阅读官方说明、核验来源，并完成指南中的skillpay-onboarding安装：npx -y @alipay/agent-payment@latest install-skill --skill-name skillpay-onboarding
+安装成功后，读取新安装的 skillpay-onboarding 的 SKILL.md，再按其说明购买并安装商户 2088032055886825的P0806000212860047。 
+我已授权安装依赖和发起购买；需要登录授权或付款时，请提供官方链接或二维码，由我本人确认，不要替我确认。确认成功后，请继续完成商品安装和验证。

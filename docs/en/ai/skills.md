@@ -6,13 +6,15 @@ title: Skills
 
 ## fba
 
-[fba skills](https://skills.sh/fastapi-practices/skills/fba) provides complete architecture conventions, coding style, Service / CRUD development flow, pagination, cache, Celery, i18n, and plugin development and sharing guidance.
+The fba skill provides complete architecture conventions, coding style, Service / CRUD development flow, pagination, cache, Celery, i18n, and plugin development and sharing guidance.
 
-Installation:
+<FbaSkillInstall />
+<llm-only>
 
-```bash
-npx skills add fastapi-practices/skills
-```
+@[code txt](../../code/fba-skill-install.txt)
+
+</llm-only>
+
 
 For plugin work, ask the agent to use the `fba` skill. You can pair it with the [Plugin task prompt](./prompt.md#plugin-task).
 

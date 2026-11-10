@@ -3,8 +3,10 @@ title: schema
 ---
 
 ::: tip
-When having AI generate request/response models, first reference [fba skills](https://skills.sh/fastapi-practices/skills/fba) to keep SchemaBase, Field(description=...), optional update fields, and camelCase response conventions consistent.
+When having AI generate request/response models, first reference <FbaSkillInstall variant="inline" /> to keep SchemaBase, Field(description=...), optional update fields, and camelCase response conventions consistent.
 :::
+
+<FbaSkillInstall />
 
 In fba, Schema has been heavily customized. See: `backend\common\schema.py`
 

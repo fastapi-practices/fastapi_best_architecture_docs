@@ -3,8 +3,10 @@ title: CRUD
 ---
 
 ::: tip
-When writing the Service / CRUD layer, have AI first read the naming, coding style, and architecture references in [fba skills](https://skills.sh/fastapi-practices/skills/fba) so business logic does not sink into CRUD and query details do not leak into the API layer.
+When writing the Service / CRUD layer, have AI first read the naming, coding style, and architecture references in <FbaSkillInstall variant="inline" /> so business logic does not sink into CRUD and query details do not leak into the API layer.
 :::
+
+<FbaSkillInstall />
 
 In fba we use sqlalchemy-crud-plus as the database operation base class.
 It is an advanced async CRUD SDK we built on SQLAlchemy 2.0 and works with any FastAPI + SQLAlchemy project.

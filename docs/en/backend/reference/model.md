@@ -3,8 +3,10 @@ title: Model
 ---
 
 ::: tip
-Before designing models or migrations, use [fba skills](https://skills.sh/fastapi-practices/skills/fba) to check Base, id_key, field types, primary-key mode, and plugin SQL initialization requirements.
+Before designing models or migrations, use <FbaSkillInstall variant="inline" /> to check Base, id_key, field types, primary-key mode, and plugin SQL initialization requirements.
 :::
+
+<FbaSkillInstall />
 
 Common models live in `backend/common/model.py`.
 

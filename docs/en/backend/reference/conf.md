@@ -3,8 +3,10 @@ title: Configuration
 ---
 
 ::: tip
-When configuring plugins or deployment parameters, have AI check `backend/core/conf.py`, `.env`, plugin `[settings]`, and configuration priority together with [fba skills](https://skills.sh/fastapi-practices/skills/fba) to reduce environment-related issues.
+When configuring plugins or deployment parameters, have AI check `backend/core/conf.py`, `.env`, plugin `[settings]`, and configuration priority together with <FbaSkillInstall variant="inline" /> to reduce environment-related issues.
 :::
+
+<FbaSkillInstall />
 
 fba configuration lives in `backend/core/conf.py`.
 All application and plugin settings should be placed in this file. Settings tagged with <Badge type="warning" text="env" /> default to environment variable configuration.

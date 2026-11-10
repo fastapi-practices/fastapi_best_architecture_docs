@@ -38,3 +38,11 @@ In Gemini CLI, specify the llms.txt path via the --context parameter or in .gemi
 ## Other AI Tools
 
 Any AI tool that supports llms.txt can use the paths above to better understand fba.
+
+## Make AI Code by the Rules
+
+llms.txt solves "AI cannot read fba"; the fba skill solves "AI does not follow fba's rules while coding"
+
+<FbaSkillInstall />
+
+The two work together: llms.txt supplies documentation context, while the fba skill supplies scaffolding commands and development conventions

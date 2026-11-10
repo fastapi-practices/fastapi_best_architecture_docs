@@ -424,6 +424,14 @@ export default {
     copy: 'Copy',
     copied: 'Copied',
   },
+  skillInstall: {
+    cardTitle: 'Install the fba skill via AI',
+    hint: 'Copy the prompt below and paste it into your AI assistant (Claude Code / Cursor / Codex, etc.). The AI will guide you through the SkillPay purchase and installation',
+    copy: 'Copy install prompt',
+    copied: 'Copied',
+    copyTitle: 'Copy the fba skill install prompt',
+    source: 'Official install and purchase guide:',
+  },
   gitEmoji: {
     descriptions: {
       art: 'Improve structure / format of the code',
