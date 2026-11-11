@@ -6,7 +6,7 @@ title: Quick Start
 The frontend integrates dictionary features by default, so fba must install the dictionary plugin (built-in) and run the SQL scripts included in the plugin.
 :::
 
-::: steps
+:::: steps
 
 1. Prepare the local environment
 
@@ -48,4 +48,4 @@ The frontend integrates dictionary features by default, so fba must install the 
 
 6. Open the browser: [http://localhost:5173](http://localhost:5173)
 
-:::
+::::
