@@ -39,3 +39,7 @@ The CRUD layer relies on the capabilities provided by `sqlalchemy-crud-plus`, su
 ::: tip
 Paginated lists are usually organized in the service layer, where the method is named `get_list()`. It calls the CRUD layer's `get_select()` to build the query expression and then hands it to `paging_data()`. See [Pagination](./pagination.md) for details
 :::
+
+::: tip
+How the Service layer calls the CRUD layer is described in [Service](./service.md)
+:::

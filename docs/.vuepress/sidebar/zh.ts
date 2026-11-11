@@ -8,49 +8,85 @@ export const zhSidebar: ThemeSidebarMulti = {
             prefix: 'summary/',
             items: [
                 { text: '简介', link: 'intro' },
-                { text: '快速开始', link: 'quick-start' },
                 { text: '为什么选择我们？', link: 'why' },
-                { text: '精简版', link: 'slim' },
+                { text: '快速开始', link: 'quick-start' },
+                { text: '架构总览', link: '/architecture' },
+                {
+                    text: '开发环境',
+                    prefix: '/backend/ide/',
+                    items: [
+                        { text: 'Visual Studio Code', link: 'vscode' },
+                    ]
+                },
             ]
         },
         {
-            text: '编辑器',
+            text: '核心开发',
             collapsed: false,
-            prefix: 'ide/',
+            prefix: 'reference/',
             items: [
-                { text: 'Visual Studio Code', link: 'vscode' },
+                { text: '模型', link: 'model' },
+                { text: 'Schema', link: 'schema' },
+                { text: '路由', link: 'router' },
+                { text: 'Service', link: 'service' },
+                { text: 'CRUD', link: 'CRUD' },
+                { text: '分页', link: 'pagination' },
+                { text: '接口响应', link: 'response' },
             ]
         },
         {
-            text: '参考',
+            text: '基础设施',
+            collapsed: false,
+            prefix: 'reference/',
+            items: [
+                { text: '数据库', link: 'db' },
+                { text: '切换主键', link: 'pk' },
+                { text: '事务', link: 'transaction' },
+                { text: '缓存', link: 'cache' },
+                { text: '时区', link: 'timezone' },
+                { text: '国际化', link: 'i18n' },
+                { text: '节流', link: 'limit' },
+            ]
+        },
+        {
+            text: '安全',
+            collapsed: false,
+            prefix: 'reference/',
+            items: [
+                { text: 'JWT', link: 'jwt' },
+                { text: 'RBAC', link: 'RBAC' },
+                { text: 'CORS', link: 'CORS' },
+                { text: 'OAuth 2.0', link: 'oauth2' },
+                { text: 'SSO', link: 'sso' },
+            ]
+        },
+        {
+            text: '进阶能力',
+            collapsed: false,
+            prefix: 'reference/',
+            items: [
+                { text: '数据权限', link: 'data-permission' },
+                { text: '多租户', link: 'tenant' },
+            ]
+        },
+        {
+            text: '扩展与集成',
+            collapsed: false,
+            prefix: 'reference/',
+            items: [
+                { text: 'Celery', link: 'celery' },
+                { text: 'APScheduler', link: 'apscheduler' },
+                { text: 'SocketIo', link: 'socketio' },
+            ]
+        },
+        {
+            text: '配置与工具',
             collapsed: false,
             prefix: 'reference/',
             items: [
                 { text: '配置', link: 'conf' },
-                { text: 'CLI', link: 'cli' },
-                { text: '模型', link: 'model' },
-                { text: 'Schema', link: 'schema' },
-                { text: '路由', link: 'router' },
-                { text: 'CRUD', link: 'CRUD' },
-                { text: '分页', link: 'pagination' },
-                { text: '接口响应', link: 'response' },
-                { text: 'JWT', link: 'jwt' },
-                { text: 'RBAC', link: 'RBAC' },
-                { text: 'CORS', link: 'CORS' },
-                { text: '时区', link: 'timezone' },
-                { text: '节流', link: 'limit' },
-                { text: '事务', link: 'transaction' },
-                { text: '缓存', link: 'cache' },
-                { text: '国际化', link: 'i18n' },
-                { text: '数据权限', link: 'data-permission' },
-                { text: '切换主键', link: 'pk' },
-                { text: '数据库', link: 'db' },
-                { text: '多租户', link: 'tenant' },
-                { text: 'OAuth 2.0', link: 'oauth2' },
-                { text: 'SocketIo', link: 'socketio' },
-                { text: 'Celery', link: 'celery' },
-                { text: 'APScheduler', link: 'apscheduler' },
-                { text: 'SSO', link: 'sso' },
+                { text: '后端 CLI', link: 'cli' },
+                { text: '工程 CLI', link: '/cli' },
             ]
         },
         {
@@ -60,6 +96,14 @@ export const zhSidebar: ThemeSidebarMulti = {
             items: [
                 { text: 'Docker', link: 'Docker' },
                 { text: '传统', link: 'legacy' },
+            ]
+        },
+        {
+            text: '附录',
+            collapsed: false,
+            prefix: 'summary/',
+            items: [
+                { text: '精简版', link: 'slim' },
             ]
         },
     ],

@@ -180,7 +180,7 @@ Pydantic 的基础用法
 
 3. 定义路由（[router](../reference/router.md)）
 
-4. 编写业务（service）
+4. 编写业务逻辑（[service](../reference/service.md)）
 
 5. 编写数据库操作（[crud](../reference/CRUD.md)）
 

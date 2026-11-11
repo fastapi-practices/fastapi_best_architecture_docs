@@ -39,3 +39,7 @@ CRUD 层依赖 `sqlalchemy-crud-plus` 提供的底层能力，例如 `select_mod
 ::: tip
 分页列表通常由 Service 层组织，方法名统一为 `get_list()`，内部先调用 CRUD 层的 `get_select()` 获取查询表达式，再交由 `paging_data()` 生成分页数据，详情：[分页](./pagination.md)
 :::
+
+::: tip
+Service 层如何调用 CRUD 层，详见：[Service](./service.md)
+:::

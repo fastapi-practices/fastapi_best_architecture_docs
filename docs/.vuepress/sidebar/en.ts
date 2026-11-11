@@ -20,49 +20,85 @@ export const enSidebar: ThemeSidebarMulti = {
             prefix: '/en/backend/summary/',
             items: [
                 { text: 'Overview', link: 'intro' },
-                { text: 'Quick Start', link: 'quick-start' },
                 { text: 'Why Choose Us?', link: 'why' },
-                { text: 'Slim Edition', link: 'slim' },
+                { text: 'Quick Start', link: 'quick-start' },
+                { text: 'Architecture Overview', link: '/en/architecture' },
+                {
+                    text: 'Development Environment',
+                    prefix: '/en/backend/ide/',
+                    items: [
+                        { text: 'Visual Studio Code', link: 'vscode' },
+                    ]
+                },
             ]
         },
         {
-            text: 'Editor',
+            text: 'Core Development',
             collapsed: false,
-            prefix: '/en/backend/ide/',
+            prefix: '/en/backend/reference/',
             items: [
-                { text: 'Visual Studio Code', link: 'vscode' },
+                { text: 'Model', link: 'model' },
+                { text: 'Schema', link: 'schema' },
+                { text: 'Router', link: 'router' },
+                { text: 'Service', link: 'service' },
+                { text: 'CRUD', link: 'CRUD' },
+                { text: 'Pagination', link: 'pagination' },
+                { text: 'API Response', link: 'response' },
             ]
         },
         {
-            text: 'Reference',
+            text: 'Infrastructure',
+            collapsed: false,
+            prefix: '/en/backend/reference/',
+            items: [
+                { text: 'Database', link: 'db' },
+                { text: 'Primary Key', link: 'pk' },
+                { text: 'Transaction', link: 'transaction' },
+                { text: 'Cache', link: 'cache' },
+                { text: 'Timezone', link: 'timezone' },
+                { text: 'i18n', link: 'i18n' },
+                { text: 'Rate Limit', link: 'limit' },
+            ]
+        },
+        {
+            text: 'Security',
+            collapsed: false,
+            prefix: '/en/backend/reference/',
+            items: [
+                { text: 'JWT', link: 'jwt' },
+                { text: 'RBAC', link: 'RBAC' },
+                { text: 'CORS', link: 'CORS' },
+                { text: 'OAuth 2.0', link: 'oauth2' },
+                { text: 'SSO', link: 'sso' },
+            ]
+        },
+        {
+            text: 'Advanced Capabilities',
+            collapsed: false,
+            prefix: '/en/backend/reference/',
+            items: [
+                { text: 'Data Permission', link: 'data-permission' },
+                { text: 'Multi-tenancy', link: 'tenant' },
+            ]
+        },
+        {
+            text: 'Extensions & Integrations',
+            collapsed: false,
+            prefix: '/en/backend/reference/',
+            items: [
+                { text: 'Celery', link: 'celery' },
+                { text: 'APScheduler', link: 'apscheduler' },
+                { text: 'SocketIo', link: 'socketio' },
+            ]
+        },
+        {
+            text: 'Configuration & Tools',
             collapsed: false,
             prefix: '/en/backend/reference/',
             items: [
                 { text: 'Configuration', link: 'conf' },
-                { text: 'CLI', link: 'cli' },
-                { text: 'Model', link: 'model' },
-                { text: 'Schema', link: 'schema' },
-                { text: 'Router', link: 'router' },
-                { text: 'CRUD', link: 'CRUD' },
-                { text: 'Pagination', link: 'pagination' },
-                { text: 'API Response', link: 'response' },
-                { text: 'JWT', link: 'jwt' },
-                { text: 'RBAC', link: 'RBAC' },
-                { text: 'CORS', link: 'CORS' },
-                { text: 'Timezone', link: 'timezone' },
-                { text: 'Rate Limit', link: 'limit' },
-                { text: 'Transaction', link: 'transaction' },
-                { text: 'Cache', link: 'cache' },
-                { text: 'i18n', link: 'i18n' },
-                { text: 'Data Permission', link: 'data-permission' },
-                { text: 'Primary Key', link: 'pk' },
-                { text: 'Database', link: 'db' },
-                { text: 'Multi-tenancy', link: 'tenant' },
-                { text: 'OAuth 2.0', link: 'oauth2' },
-                { text: 'SocketIo', link: 'socketio' },
-                { text: 'Celery', link: 'celery' },
-                { text: 'APScheduler', link: 'apscheduler' },
-                { text: 'SSO', link: 'sso' },
+                { text: 'Backend CLI', link: 'cli' },
+                { text: 'Project CLI', link: '/en/cli' },
             ]
         },
         {
@@ -72,6 +108,14 @@ export const enSidebar: ThemeSidebarMulti = {
             items: [
                 { text: 'Docker', link: 'Docker' },
                 { text: 'Legacy', link: 'legacy' },
+            ]
+        },
+        {
+            text: 'Appendix',
+            collapsed: false,
+            prefix: '/en/backend/summary/',
+            items: [
+                { text: 'Slim Edition', link: 'slim' },
             ]
         },
     ],

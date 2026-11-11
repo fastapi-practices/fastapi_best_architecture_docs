@@ -18,11 +18,15 @@ If this structure does not fit your team, you can adjust it while keeping the la
 
 | Module | Java | fastapi-best-architecture |
 |------|----------------|---------------------------|
-| View | controller | api |
-| Data transfer | dto | schema |
-| Business logic | service + impl | service |
-| Data access | dao / mapper | crud |
-| Model | entity | model |
+| View | controller | [api](../reference/router.md) |
+| Data transfer | dto | [schema](../reference/schema.md) |
+| Business logic | service + impl | [service](../reference/service.md) |
+| Data access | dao / mapper | [crud](../reference/CRUD.md) |
+| Model | entity | [model](../reference/model.md) |
+
+::: tip
+Every layer has its own reference page. Read them in this order: [Model](../reference/model.md) → [Schema](../reference/schema.md) → [Router](../reference/router.md) → [Service](../reference/service.md) → [CRUD](../reference/CRUD.md)
+:::
 
 ## Features
 

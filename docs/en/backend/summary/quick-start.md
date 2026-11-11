@@ -178,7 +178,7 @@ For reference only — follow your own development habits in practice.
 
 3. Define routes ([router](../reference/router.md))
 
-4. Write business logic (service)
+4. Write business logic ([service](../reference/service.md))
 
 5. Write database operations ([crud](../reference/CRUD.md))
 

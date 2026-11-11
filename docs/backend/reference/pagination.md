@@ -87,6 +87,8 @@ async def get_users_paginated(
 
 Service 层通常调用 CRUD 层获取 SQLAlchemy `Select` 对象，再通过 `paging_data()` 生成分页数据
 
+Service 层的完整说明见：[Service](./service.md)
+
 ```python
 from typing import Any
 

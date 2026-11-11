@@ -46,3 +46,7 @@ fba 中的路由遵循 Restful API 规范
 在 fba 中，我们可以查看所有路由的导入，它们看起来像 `from backend.app.admin.api.v1.sys.user import router as user_router`
 ，我们这里务必导入文件内的路由参数 `router`，为了避免参数名称冲突，我们可以使用 `as` 为路由参数起一个别名
 :::
+
+::: tip
+路由处理器保持轻薄，业务逻辑写在 Service 层，详见：[Service](./service.md)
+:::

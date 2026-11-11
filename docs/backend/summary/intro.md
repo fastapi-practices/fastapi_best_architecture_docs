@@ -18,11 +18,15 @@ fba 没有采用传统多应用或微服务目录结构，而是根据 FastAPI �
 
 | 模块   | java           | fastapi-best-architecture |
 |------|----------------|---------------------------|
-| 视图   | controller     | api                       |
-| 数据传输 | dto            | schema                    |
-| 业务逻辑 | service + impl | service                   |
-| 数据访问 | dao / mapper   | crud                      |
-| 模型   | entity         | model                     |
+| 视图   | controller     | [api](../reference/router.md) |
+| 数据传输 | dto            | [schema](../reference/schema.md) |
+| 业务逻辑 | service + impl | [service](../reference/service.md) |
+| 数据访问 | dao / mapper   | [crud](../reference/CRUD.md) |
+| 模型   | entity         | [model](../reference/model.md) |
+
+::: tip
+每一层都有对应的参考文档，建议按 [模型](../reference/model.md) → [Schema](../reference/schema.md) → [路由](../reference/router.md) → [Service](../reference/service.md) → [CRUD](../reference/CRUD.md) 的顺序阅读
+:::
 
 ## 特性
 

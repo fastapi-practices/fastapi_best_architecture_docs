@@ -45,3 +45,7 @@ We uniformly name all API route parameters as `router`, which helps when writing
 
 In fba, all route imports look like `from backend.app.admin.api.v1.sys.user import router as user_router`. Always import the `router` parameter from the file. To avoid name conflicts, use `as` to give the route parameter an alias.
 :::
+
+::: tip
+Keep route handlers thin and put business logic in the Service layer. See [Service](./service.md)
+:::

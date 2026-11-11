@@ -87,6 +87,8 @@ The response includes:
 
 The Service layer usually calls the CRUD layer to obtain a SQLAlchemy `Select` object, then generates paginated data with `paging_data()`.
 
+For the full Service layer guide, see [Service](./service.md)
+
 ```python
 from typing import Any
 
