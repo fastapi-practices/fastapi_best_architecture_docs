@@ -80,7 +80,6 @@ If this structure does not fit your team, you can adjust it while keeping the la
     - core/ # Core config
     - database/ # Database connections
     - locale/ # i18n language packs
-    - log/ # Logs
     - middleware/ # Middleware
     - plugin # Plugins
         - …

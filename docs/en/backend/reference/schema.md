@@ -3,10 +3,8 @@ title: schema
 ---
 
 ::: tip
-When having AI generate request/response models, first reference <FbaSkillInstall variant="inline" /> to keep SchemaBase, Field(description=...), optional update fields, and camelCase response conventions consistent.
+When having AI generate request/response models, first reference <FbaSkillInstall /> to keep SchemaBase, Field(description=...), optional update fields, and camelCase response conventions consistent.
 :::
-
-<FbaSkillInstall />
 
 In fba, Schema has been heavily customized. See: `backend\common\schema.py`
 
@@ -15,12 +13,11 @@ In fba, Schema has been heavily customized. See: `backend\common\schema.py`
 Follow these naming conventions:
 
 - Base schema: `XxxSchemaBase(SchemaBase)`
-- API request params: `XxxParam()`
-- Create params: `CreateXxxParam()`
+- Query params: `XxxQueryParam(SchemaBase)`
+- Create params: `CreateXxxParam()`; user related params use `AddXxxParam()`
 - Update params: `UpdateXxxParam()`
 - Batch delete params: `DeleteXxxParam()`
 - Detail query: `GetXxxDetail()`
-- Detail query (join): `GetXxxWithJoinDetail()`
 - Detail query (relationship): `GetXxxWithRelationDetail()`
 - Tree query: `GetXxxTree()`
 

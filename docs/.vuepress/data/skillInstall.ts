@@ -10,14 +10,9 @@ import promptRaw from '../../code/fba-skill-install.txt?raw'
  *
  * fba 技能安装提示词（唯一来源）
  *
- * 提示词正文存放于 `docs/code/fba-skill-install.txt`，网站上的安装卡片、
- * 行内复制按钮以及 llms.txt 中的 `<llm-only>` 段落都使用同一份内容
+ * 提示词正文存放于 `docs/code/fba-skill-install.txt`，行内复制按钮与 llms.txt 中的
+ * `<llm-only>` 段落都使用同一份内容
  *
  * 该内容由 SkillPay 官方购买流程确定，请勿增删改写任何字符，包括行尾空格
  */
 export const FBA_SKILL_INSTALL_PROMPT = promptRaw.replace(/\n$/, '')
-
-/**
- * fba 技能官方安装与购买说明地址
- */
-export const FBA_SKILL_PAY_URL = 'https://skillpay.alipay.com/userguide.md'

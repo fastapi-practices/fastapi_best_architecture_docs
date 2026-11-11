@@ -3,10 +3,8 @@ title: 模型
 ---
 
 ::: tip
-设计模型或迁移前，可结合 <FbaSkillInstall variant="inline" /> 检查 Base、id_key、字段类型、主键模式和插件 SQL 初始化要求
+设计模型或迁移前，可结合 <FbaSkillInstall /> 检查 Base、id_key、字段类型、主键模式和插件 SQL 初始化要求
 :::
-
-<FbaSkillInstall />
 
 通用模型位于 `backend/common/model.py` 文件中
 
@@ -61,10 +59,10 @@ class DateTimeMixin(MappedAsDataclass):
     """日期时间 Mixin 数据类"""
 
     created_time: Mapped[datetime] = mapped_column(
-        TimeZone, init=False, default_factory=timezone.now, sort_order=999, comment='创建时间'
+        sa.DateTime(timezone=True), init=False, default_factory=timezone.now, sort_order=999, comment='创建时间'
     )
     updated_time: Mapped[datetime | None] = mapped_column(
-        TimeZone, init=False, onupdate=timezone.now, sort_order=999, comment='更新时间'
+        sa.DateTime(timezone=True), init=False, onupdate=timezone.now, sort_order=999, comment='更新时间'
     )
 ```
 
@@ -85,7 +83,7 @@ class LogicalDeleteMixin(MappedAsDataclass):
         comment='是否已删除（0：否；id：是）',
     )
     deleted_time: Mapped[datetime | None] = mapped_column(
-        TimeZone,
+        sa.DateTime(timezone=True),
         init=False,
         default=None,
         sort_order=999,
@@ -129,4 +127,4 @@ class Base(DataClassBase, DateTimeMixin, LogicalDeleteMixin):
 
 对于长文本，fba 使用 SQLAlchemy 原生的 `sa.Text` 类型
 
-对于常见文本，fba 通常使用以下长度单位：`32`、`64`、`128`、`256`、`512`
+对于常见文本，fba 统一使用 `sa.String()` 并显式指定长度，项目内最常见的是 `64`，其次是 `32`、`256`，少量场景使用 `128`、`200`、`512`（例如手机号使用 `11`）

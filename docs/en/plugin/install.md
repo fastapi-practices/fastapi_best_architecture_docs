@@ -3,7 +3,7 @@ title: Plugin Installation
 ---
 
 ::: tip
-You can also hand the commands below to AI and let it install plugins following fba CLI conventions: <FbaSkillInstall variant="inline" />
+You can also hand the commands below to AI and let it install plugins following fba CLI conventions: <FbaSkillInstall />
 :::
 
 ## Backend

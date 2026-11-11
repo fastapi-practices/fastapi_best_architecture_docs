@@ -34,4 +34,4 @@ title: 传统部署
 
 3. 上传
 
-   将 `/apps/web-antd/dist` 目录下的所有文件上传到服务器的 `/var/www/fba_ui/` 目录下
+   将 `/apps/web-antdv-next/dist` 目录下的所有文件上传到服务器的 `/var/www/fba_ui/` 目录下

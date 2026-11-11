@@ -2,7 +2,8 @@
 title: 介绍
 ---
 
-基于 Vben Admin Antd 构建的 fastapi-best-architecture 前端实施
+基于 Vben Admin（Ant Design Vue Next）构建的 fastapi-best-architecture 前端实施，前端工程为 monorepo 结构，实际业务应用位于
+`apps/web-antdv-next` 目录下
 
 ::: warning
 fba 从始至终一直是企业级后端架构解决方案，并没有针对前端的专项计划，前端项目只是一项附加产物

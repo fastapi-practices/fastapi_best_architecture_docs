@@ -3,16 +3,7 @@ title: 插件开发
 ---
 
 ::: tip
-开发或审查插件时，建议让 AI 使用 <FbaSkillInstall variant="inline" />；插件结构、校验和发布规则由 skill 负责，提示词只需描述任务
-
-未安装时，复制下面的提示词交给 AI 即可完成安装
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../code/fba-skill-install.txt)
-
-</llm-only>
+开发或审查插件时，建议让 AI 使用 <FbaSkillInstall />；插件结构、校验和发布规则由 skill 负责，提示词只需描述任务
 
 :::
 

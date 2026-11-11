@@ -97,7 +97,7 @@ config:
 
 - How do I enable AI-powered workflows?
 
-  Install <FbaSkillInstall variant="inline" /> to give Claude Code, Cursor, Trae, and similar tools fba-specific context and scaffolding commands.
+  Install <FbaSkillInstall /> to give Claude Code, Cursor, Trae, and similar tools fba-specific context and scaffolding commands.
 :::
 
 ::: center

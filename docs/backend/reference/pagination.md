@@ -35,13 +35,15 @@ from fastapi import Query
 from backend.app.admin.schema.user import UserQueryParam
 from backend.common.pagination import DependsPagination, PageData
 from backend.common.response.response_schema import ResponseSchemaModel, response_base
+from backend.common.security.jwt import DependsJwtAuth
 from backend.database.db import CurrentSession
 
 
 @router.get(
     '',
-    summary='分页获取用户',
+    summary='分页获取所有用户',
     dependencies=[
+        DependsJwtAuth,
         DependsPagination,
     ],
 )

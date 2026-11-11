@@ -31,7 +31,7 @@ class LogicalDeleteMixin(MappedAsDataclass):
         comment='是否已删除（0：否；id：是）',
     )
     deleted_time: Mapped[datetime | None] = mapped_column(
-        TimeZone,
+        sa.DateTime(timezone=True),
         init=False,
         default=None,
         sort_order=999,

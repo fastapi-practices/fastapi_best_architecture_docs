@@ -33,6 +33,6 @@ title: Traditional Deployment
 
 3. Upload
 
-   Upload all files under `/apps/web-antd/dist` to `/var/www/fba_ui/` on the server.
+   Upload all files under `/apps/web-antdv-next/dist` to `/var/www/fba_ui/` on the server.
 
 :::

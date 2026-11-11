@@ -80,7 +80,6 @@ fba 没有采用传统多应用或微服务目录结构，而是根据 FastAPI �
     - core/ # 核心配置
     - database/ # 数据库连接
     - locale/ # 国际化语言包
-    - log/ # 日志
     - middleware/ # 中间件
     - plugin # 插件
         - …

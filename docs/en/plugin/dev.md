@@ -3,16 +3,7 @@ title: Plugin Development
 ---
 
 ::: tip
-When developing or reviewing plugins, have AI use <FbaSkillInstall variant="inline" />. The skill owns plugin structure, validation, and publishing rules, so the prompt only needs to describe the task.
-
-If it is not installed, copy the prompt below and hand it to your AI assistant.
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../../code/fba-skill-install.txt)
-
-</llm-only>
+When developing or reviewing plugins, have AI use <FbaSkillInstall />. The skill owns plugin structure, validation, and publishing rules, so the prompt only needs to describe the task.
 
 :::
 

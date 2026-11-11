@@ -25,15 +25,7 @@ When writing too much file content at one time, always write in batches.
 ## Plugin Task
 
 ::: tip
-Install fba skills before use:
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../../code/fba-skill-install.txt)
-
-</llm-only>
-
+Install fba skills before use: <FbaSkillInstall />
 :::
 
 ```markdown

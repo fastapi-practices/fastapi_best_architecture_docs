@@ -38,7 +38,7 @@ export const zhSidebar: ThemeSidebarMulti = {
                 { text: 'RBAC', link: 'RBAC' },
                 { text: 'CORS', link: 'CORS' },
                 { text: '时区', link: 'timezone' },
-                { text: '限流', link: 'limit' },
+                { text: '节流', link: 'limit' },
                 { text: '事务', link: 'transaction' },
                 { text: '缓存', link: 'cache' },
                 { text: '国际化', link: 'i18n' },

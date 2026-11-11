@@ -25,15 +25,7 @@ When writing too much file content at one time, always write in batches.
 ## 插件任务
 
 ::: tip
-使用前需安装 fba skill：
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../code/fba-skill-install.txt)
-
-</llm-only>
-
+使用前需安装 fba skill：<FbaSkillInstall />
 :::
 
 ```markdown

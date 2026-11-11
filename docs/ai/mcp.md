@@ -22,6 +22,4 @@ Github 仓库：[cg](https://github.com/colbymchenry/codegraph)
 
 ## 选择合适的方案
 
-ace、codegraph 解决的是「让 AI 找到相关代码」；如果希望 AI 直接按 fba 规范产出代码，装 fba skill 更直接
-
-<FbaSkillInstall variant="inline" />
+ace、codegraph 解决的是「让 AI 找到相关代码」；如果希望 AI 直接按 fba 规范产出代码，装 fba skill 更直接 <FbaSkillInstall />

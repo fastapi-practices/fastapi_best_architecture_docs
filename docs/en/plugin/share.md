@@ -93,7 +93,7 @@ Plugins are always unique. If the plugin name already exists, you must choose a 
 
 ### Use an AI Agent (Recommended)
 
-After installing <FbaSkillInstall variant="inline" />, give this prompt to an AI agent that supports Skills:
+After installing <FbaSkillInstall />, give this prompt to an AI agent that supports Skills:
 
 ```markdown
 Use the fba skill to check and publish the <plugin-name> plugin.

@@ -3,10 +3,8 @@ title: schema
 ---
 
 ::: tip
-让 AI 生成入参/出参模型时，先引用 <FbaSkillInstall variant="inline" />，可以统一 SchemaBase、Field(description=...)、更新入参可选字段和驼峰返回约定
+让 AI 生成入参/出参模型时，先引用 <FbaSkillInstall />，可以统一 SchemaBase、Field(description=...)、更新入参可选字段和驼峰返回约定
 :::
-
-<FbaSkillInstall />
 
 在 fba 中，我们为 Schema 进行了大量量身定制，详情请查看：`backend\common\schema.py`
 
@@ -15,12 +13,11 @@ title: schema
 遵循以下命名规范：
 
 - 基础 schema: `XxxSchemaBase(SchemaBase)`
-- 接口入参：`XxxParam()`
-- 新增入参：`CreateXxxParam()`
+- 查询参数：`XxxQueryParam(SchemaBase)`
+- 新增入参：`CreateXxxParam()`，用户相关入参使用 `AddXxxParam()`
 - 更新入参：`UpdateXxxParam()`
 - 批量删除入参：`DeleteXxxParam()`
 - 查询详情：`GetXxxDetail()`
-- 查询详情（join）：`GetXxxWithJoinDetail()`
 - 查询详情（relationship）：`GetXxxWithRelationDetail()`
 - 查询树：`GetXxxTree()`
 

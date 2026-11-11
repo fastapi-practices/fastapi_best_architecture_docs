@@ -6,15 +6,7 @@ title: Skills
 
 ## fba
 
-fba 技能提供完整的架构规范、编码风格、Service / CRUD 开发流程、分页、缓存、Celery、i18n、插件开发与分享指导
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../code/fba-skill-install.txt)
-
-</llm-only>
-
+fba 技能覆盖编码风格、Service / CRUD 开发流程、分页、缓存、Celery、i18n、插件开发与分享指导，使用前先安装 <FbaSkillInstall />
 
 涉及插件时，直接让 Agent 使用 `fba skill` 即可。可配合 [插件任务提示词](./prompt.md#插件任务) 使用
 

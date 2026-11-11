@@ -41,8 +41,6 @@ Any AI tool that supports llms.txt can use the paths above to better understand 
 
 ## Make AI Code by the Rules
 
-llms.txt solves "AI cannot read fba"; the fba skill solves "AI does not follow fba's rules while coding"
-
-<FbaSkillInstall />
+llms.txt solves "AI cannot read fba"; the fba skill solves "AI does not follow fba's rules while coding" — install it with <FbaSkillInstall />
 
 The two work together: llms.txt supplies documentation context, while the fba skill supplies scaffolding commands and development conventions

@@ -22,6 +22,4 @@ An indexing tool similar to ace — open source and free.
 
 ## Choosing the Right Approach
 
-ace and codegraph solve "help AI locate the right code". If you want AI to produce code that follows fba conventions directly, install the fba skill
-
-<FbaSkillInstall variant="inline" />
+ace and codegraph solve "help AI locate the right code". If you want AI to produce code that follows fba conventions directly, install the fba skill <FbaSkillInstall />

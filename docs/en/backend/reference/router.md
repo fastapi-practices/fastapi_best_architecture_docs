@@ -3,10 +3,8 @@ title: Router
 ---
 
 ::: tip
-Before adding APIs, use <FbaSkillInstall variant="inline" /> to align route structure, router import aliases, CurrentSession / CurrentSessionTransaction, and response model usage.
+Before adding APIs, use <FbaSkillInstall /> to align route structure, router import aliases, CurrentSession / CurrentSessionTransaction, and response model usage.
 :::
-
-<FbaSkillInstall />
 
 Routes in fba follow RESTful API conventions.
 

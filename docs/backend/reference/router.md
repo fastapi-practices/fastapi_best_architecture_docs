@@ -3,10 +3,8 @@ title: 路由
 ---
 
 ::: tip
-新增接口前，可使用 <FbaSkillInstall variant="inline" /> 对齐路由结构、router 导入别名、CurrentSession / CurrentSessionTransaction 和响应模型用法
+新增接口前，可使用 <FbaSkillInstall /> 对齐路由结构、router 导入别名、CurrentSession / CurrentSessionTransaction 和响应模型用法
 :::
-
-<FbaSkillInstall />
 
 fba 中的路由遵循 Restful API 规范
 

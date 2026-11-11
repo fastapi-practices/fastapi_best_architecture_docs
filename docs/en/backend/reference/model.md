@@ -3,10 +3,8 @@ title: Model
 ---
 
 ::: tip
-Before designing models or migrations, use <FbaSkillInstall variant="inline" /> to check Base, id_key, field types, primary-key mode, and plugin SQL initialization requirements.
+Before designing models or migrations, use <FbaSkillInstall /> to check Base, id_key, field types, primary-key mode, and plugin SQL initialization requirements.
 :::
-
-<FbaSkillInstall />
 
 Common models live in `backend/common/model.py`.
 
@@ -61,10 +59,10 @@ class DateTimeMixin(MappedAsDataclass):
     """日期时间 Mixin 数据类"""
 
     created_time: Mapped[datetime] = mapped_column(
-        TimeZone, init=False, default_factory=timezone.now, sort_order=999, comment='创建时间'
+        sa.DateTime(timezone=True), init=False, default_factory=timezone.now, sort_order=999, comment='创建时间'
     )
     updated_time: Mapped[datetime | None] = mapped_column(
-        TimeZone, init=False, onupdate=timezone.now, sort_order=999, comment='更新时间'
+        sa.DateTime(timezone=True), init=False, onupdate=timezone.now, sort_order=999, comment='更新时间'
     )
 ```
 
@@ -85,7 +83,7 @@ class LogicalDeleteMixin(MappedAsDataclass):
         comment='是否已删除（0：否；id：是）',
     )
     deleted_time: Mapped[datetime | None] = mapped_column(
-        TimeZone,
+        sa.DateTime(timezone=True),
         init=False,
         default=None,
         sort_order=999,
@@ -129,4 +127,4 @@ Starting from fba 2.0.0, MySQL support has been removed and the built-in `Univer
 
 For long text, fba uses the native SQLAlchemy `sa.Text` type.
 
-For common text fields, fba typically uses these length units: `32`, `64`, `128`, `256`, `512`.
+For common text fields, fba uses `sa.String()` with an explicit length. `64` is the most common in the project, followed by `32` and `256`; `128`, `200`, and `512` appear in a few places (phone numbers use `11`).

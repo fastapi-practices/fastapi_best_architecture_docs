@@ -6,15 +6,7 @@ title: Skills
 
 ## fba
 
-The fba skill provides complete architecture conventions, coding style, Service / CRUD development flow, pagination, cache, Celery, i18n, and plugin development and sharing guidance.
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../../code/fba-skill-install.txt)
-
-</llm-only>
-
+The fba skill covers coding style, Service / CRUD development flow, pagination, cache, Celery, i18n, and plugin development and sharing guidance. Install it first with <FbaSkillInstall />
 
 For plugin work, ask the agent to use the `fba` skill. You can pair it with the [Plugin task prompt](./prompt.md#plugin-task).
 

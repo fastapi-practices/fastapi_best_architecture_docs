@@ -3,11 +3,9 @@ title: 配置
 ---
 
 ::: tip
-配置插件或部署参数时，可以让 AI 结合 <FbaSkillInstall variant="inline" /> 检查
+配置插件或部署参数时，可以让 AI 结合 <FbaSkillInstall /> 检查
 backend/core/conf.py、.env、插件 [settings] 和配置优先级，减少环境差异导致的问题
 :::
-
-<FbaSkillInstall />
 
 fba 配置文件位于 `backend/core/conf.py`
 ，所有应用和插件的配置都应统一放置在此文件内，包含  <Badge type="warning" text="env" /> 标签的配置默认为环境变量配置
@@ -104,6 +102,14 @@ openapi JSON 数据在线地址
 
 数据库认证密码
 
+### `DATABASE_SOURCES` <Badge type="info" text="dict[str, str]" />
+
+额外数据源配置，键为数据源名称，值为数据库连接地址（URL），`default` 为默认数据源
+
+::: tip
+配置了额外数据源后，可通过 `async_db_session(source='xxx')` 使用对应数据源
+:::
+
 ### `DATABASE_ECHO` <Badge type="info" text="bool | Literal['debug']" />
 
 是否输出 sqlalchemy 操作日志
@@ -146,43 +152,19 @@ Redis 认证密码
 
 Socket 读写操作的超时时间和 Redis 建立 TCP 连接时的超时时间
 
-## 缓存配置
+### `REDIS_MAX_CONNECTIONS` <Badge type="info" text="int" />
 
-### `CACHE_LOCAL_ENABLED` <Badge type="info" text="bool" />
+连接池最大连接数，超出后排队等待而不是无限新建
 
-是否启用本地缓存
+### `REDIS_POOL_TIMEOUT` <Badge type="info" text="int" />
 
-### `CACHE_LOCAL_MAXSIZE` <Badge type="info" text="int" />
+等待空闲连接的超时时间（秒）
 
-本地缓存最大容量
+## HTTP 缓存配置
 
-### `CACHE_LOCAL_TTL` <Badge type="info" text="int" />
+### `HTTP_CACHE_TTL` <Badge type="info" text="int" />
 
-本地缓存过期时长（秒）
-
-### `CACHE_REDIS_TTL` <Badge type="info" text="int" />
-
-Redis 缓存过期时长（秒）
-
-### `CACHE_CONFIG_REDIS_PREFIX` <Badge type="info" text="str" />
-
-系统配置缓存存储到 Redis 时的前缀
-
-### `CACHE_DICT_REDIS_PREFIX` <Badge type="info" text="str" />
-
-字典缓存存储到 Redis 时的前缀
-
-### `CACHE_PUBSUB_CHANNEL` <Badge type="info" text="str" />
-
-缓存失效发布订阅频道
-
-### `CACHE_PUBSUB_RECONNECT_DELAY` <Badge type="info" text="int" />
-
-缓存发布订阅重连延迟（秒）
-
-### `CACHE_PUBSUB_MAX_RECONNECT_ATTEMPTS` <Badge type="info" text="int" />
-
-缓存发布订阅最大重连次数
+HTTP 缓存过期时长（秒），详情：[缓存](./cache.md)
 
 ## Snowflake（雪花算法）
 
@@ -259,6 +241,10 @@ token 在线状态存储到 Redis 时的前缀
 ### `TOKEN_REFRESH_REDIS_PREFIX` <Badge type="info" text="str" />
 
 刷新 token 存储到 Redis 时的前缀
+
+### `TOKEN_SESSION_REDIS_PREFIX` <Badge type="info" text="str" />
+
+token 会话信息存储到 Redis 时的前缀
 
 ### `TOKEN_REQUEST_UNDERLYING_SECURITY` <Badge type="info" text="bool" />
 
@@ -409,12 +395,6 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 
 是否启用跨域中间件
 
-## 请求限制配置
-
-### `REQUEST_LIMITER_REDIS_PREFIX` <Badge type="info" text="str" />
-
-记录请求频率信息到 Redis 时的前缀
-
 ## 时间配置
 
 ### `DATETIME_TIMEZONE` <Badge type="info" text="str" />
@@ -538,6 +518,10 @@ JWT 中间件存储用户信息到 Redis 时的前缀
 操作日志队列批量消费大小，达到上限后，操作日志将批量写入数据库
 
 ### `OPERA_LOG_QUEUE_TIMEOUT` <Badge type="info" text="int" />
+
+### `OPERA_LOG_QUEUE_DRAIN_TIMEOUT` <Badge type="info" text="int" />
+
+停止时排空队列的最长等待时间（秒）
 
 操作日志队列超时时长，达到上限后，操作日志将批量写入数据库
 

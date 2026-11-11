@@ -163,16 +163,8 @@ Starting from fba 2.0.0, MySQL support has been removed and fba supports Postgre
 ## Development Workflow
 
 ::: tip
-When using AI-assisted development, install <FbaSkillInstall variant="inline" /> first, then generate or review code in the order of model, schema, router, service, and crud.
+When using AI-assisted development, install <FbaSkillInstall /> first, then generate or review code in the order of model, schema, router, service, and crud.
 :::
-
-<FbaSkillInstall />
-<llm-only>
-
-@[code txt](../../../code/fba-skill-install.txt)
-
-</llm-only>
-
 
 ::: note
 For reference only — follow your own development habits in practice.

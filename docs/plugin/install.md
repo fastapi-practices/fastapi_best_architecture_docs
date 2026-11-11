@@ -3,7 +3,7 @@ title: 插件安装
 ---
 
 ::: tip
-下面的命令也可以直接交给 AI 执行，让它按 fba 的 CLI 约定完成安装：<FbaSkillInstall variant="inline" />
+下面的命令也可以直接交给 AI 执行，让它按 fba 的 CLI 约定完成安装：<FbaSkillInstall />
 :::
 
 ## 后端

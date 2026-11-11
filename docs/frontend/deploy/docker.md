@@ -14,7 +14,7 @@ title: Docker 部署
 
 2. env
 
-   修改 `/apps/web-antd/.env.production` 中的 `VITE_GLOB_API_URL` 为域名地址（末尾不带斜杠）
+   修改 `/apps/web-antdv-next/.env.production` 中的 `VITE_GLOB_API_URL` 为域名地址（末尾不带斜杠）
 
 3. 更新 nginx 配置
 

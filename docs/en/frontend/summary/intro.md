@@ -2,7 +2,7 @@
 title: Introduction
 ---
 
-A fastapi-best-architecture frontend implementation built on Vben Admin Antd.
+A fastapi-best-architecture frontend implementation built on Vben Admin (Ant Design Vue Next). The frontend is a monorepo, and the business application lives in `apps/web-antdv-next`.
 
 ::: warning
 fba has always been an enterprise-grade backend architecture solution and has never had a dedicated frontend roadmap. The frontend project is an add-on.

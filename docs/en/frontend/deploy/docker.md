@@ -14,7 +14,7 @@ This tutorial uses HTTPS as an example.
 
 2. env
 
-   Set `VITE_GLOB_API_URL` in `/apps/web-antd/.env.production` to your domain address (no trailing slash).
+   Set `VITE_GLOB_API_URL` in `/apps/web-antdv-next/.env.production` to your domain address (no trailing slash).
 
 3. Update nginx configuration
 

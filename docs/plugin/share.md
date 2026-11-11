@@ -93,7 +93,7 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 
 ### 使用 AI Agent（推荐）
 
-安装 <FbaSkillInstall variant="inline" /> 后，将以下提示词交给支持 Skills 的 AI Agent：
+安装 <FbaSkillInstall /> 后，将以下提示词交给支持 Skills 的 AI Agent：
 
 ```markdown
 使用 fba skill 检查并发布 <插件名> 插件。

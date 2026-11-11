@@ -3,10 +3,8 @@ title: Configuration
 ---
 
 ::: tip
-When configuring plugins or deployment parameters, have AI check `backend/core/conf.py`, `.env`, plugin `[settings]`, and configuration priority together with <FbaSkillInstall variant="inline" /> to reduce environment-related issues.
+When configuring plugins or deployment parameters, have AI check `backend/core/conf.py`, `.env`, plugin `[settings]`, and configuration priority together with <FbaSkillInstall /> to reduce environment-related issues.
 :::
-
-<FbaSkillInstall />
 
 fba configuration lives in `backend/core/conf.py`.
 All application and plugin settings should be placed in this file. Settings tagged with <Badge type="warning" text="env" /> default to environment variable configuration.
@@ -103,6 +101,14 @@ Database username
 
 Database password
 
+### `DATABASE_SOURCES` <Badge type="info" text="dict[str, str]" />
+
+Extra data source configuration. Keys are data source names, values are database URLs. `default` is the default data source
+
+::: tip
+Once extra data sources are configured, use them through `async_db_session(source='xxx')`
+:::
+
 ### `DATABASE_ECHO` <Badge type="info" text="bool | Literal['debug']" />
 
 Whether to output SQLAlchemy operation logs
@@ -145,43 +151,19 @@ Default Redis logical database index used globally (0–15)
 
 Socket read/write timeout and Redis TCP connection timeout
 
-## Cache Configuration
+### `REDIS_MAX_CONNECTIONS` <Badge type="info" text="int" />
 
-### `CACHE_LOCAL_ENABLED` <Badge type="info" text="bool" />
+Connection pool maximum size; extra requests queue instead of creating new connections
 
-Whether to enable local cache
+### `REDIS_POOL_TIMEOUT` <Badge type="info" text="int" />
 
-### `CACHE_LOCAL_MAXSIZE` <Badge type="info" text="int" />
+Timeout when waiting for an idle connection (seconds)
 
-Local cache maximum capacity
+## HTTP Cache Configuration
 
-### `CACHE_LOCAL_TTL` <Badge type="info" text="int" />
+### `HTTP_CACHE_TTL` <Badge type="info" text="int" />
 
-Local cache TTL (seconds)
-
-### `CACHE_REDIS_TTL` <Badge type="info" text="int" />
-
-Redis cache TTL (seconds)
-
-### `CACHE_CONFIG_REDIS_PREFIX` <Badge type="info" text="str" />
-
-Redis prefix for system config cache
-
-### `CACHE_DICT_REDIS_PREFIX` <Badge type="info" text="str" />
-
-Redis prefix for dictionary cache
-
-### `CACHE_PUBSUB_CHANNEL` <Badge type="info" text="str" />
-
-Cache invalidation pub/sub channel
-
-### `CACHE_PUBSUB_RECONNECT_DELAY` <Badge type="info" text="int" />
-
-Cache pub/sub reconnect delay (seconds)
-
-### `CACHE_PUBSUB_MAX_RECONNECT_ATTEMPTS` <Badge type="info" text="int" />
-
-Cache pub/sub maximum reconnect attempts
+HTTP cache TTL (seconds). See [Cache](./cache.md) for details
 
 ## Snowflake
 
@@ -258,6 +240,10 @@ Redis prefix for token online status storage
 ### `TOKEN_REFRESH_REDIS_PREFIX` <Badge type="info" text="str" />
 
 Redis prefix for refresh token storage
+
+### `TOKEN_SESSION_REDIS_PREFIX` <Badge type="info" text="str" />
+
+Redis prefix for token session storage
 
 ### `TOKEN_REQUEST_UNDERLYING_SECURITY` <Badge type="info" text="bool" />
 
@@ -407,12 +393,6 @@ Exposed headers for cross-origin responses; these headers may be added to reques
 
 Whether to enable the CORS middleware
 
-## Request Limiter Configuration
-
-### `REQUEST_LIMITER_REDIS_PREFIX` <Badge type="info" text="str" />
-
-Redis prefix for recording request rate information
-
 ## Time Configuration
 
 ### `DATETIME_TIMEZONE` <Badge type="info" text="str" />
@@ -538,6 +518,10 @@ Operation log queue batch consume size. When the limit is reached, operation log
 ### `OPERA_LOG_QUEUE_TIMEOUT` <Badge type="info" text="int" />
 
 Operation log queue timeout. When the limit is reached, operation logs are written to the database in batches.
+
+### `OPERA_LOG_QUEUE_DRAIN_TIMEOUT` <Badge type="info" text="int" />
+
+Maximum time to wait for the operation log queue to drain on shutdown (seconds)
 
 ### `OPERA_LOG_BODY_MAX_SIZE` <Badge type="info" text="int" />
 
