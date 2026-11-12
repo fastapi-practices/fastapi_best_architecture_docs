@@ -69,7 +69,7 @@ title: 插件分享
 - 插件仓库为公开仓库
 - 插件仓库命名符合当前文档中的命名规则
 - 插件仓库根目录包含 `LICENSE` 开源许可证文件
-- 插件仓库已打上全小写标签 `fba-plugin`（使用标签收录方式时）
+- 插件仓库已打上 `fba-plugin` 标签或同名主题（使用标签收录方式时）
 - 后端插件根目录包含 `plugin.toml`、`README.md`、`__init__.py`
 - 前端插件根目录包含 `plugin.toml`
 - 仓库根目录就是插件根目录，不能再多包一层插件目录
@@ -91,7 +91,7 @@ title: 插件分享
 
 插件市场支持两种收录方式，任选其一即可，不必同时使用
 
-- **标签收录**：插件仓库上传到 GitHub 后，打上全小写标签 `fba-plugin` 就会被自动收录，无需提交 PR
+- **标签收录**：插件仓库上传到 GitHub 后，打上 `fba-plugin` 标签或同名主题就会被自动收录，无需提交 PR
 - **PR 收录**：向 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 提交 PR，由 fba 团队审核后收录
 
 ::: tip
@@ -100,10 +100,14 @@ title: 插件分享
 
 ### 方式一：标签收录（无需 PR）
 
-插件仓库上传到 GitHub 之后，只需要为仓库打上全小写标签 `fba-plugin`，插件市场就会在下一次同步时自动收录，无需向 fba 插件仓库提交 PR
+插件仓库上传到 GitHub 之后，只需要为仓库打上 `fba-plugin` 标签或同名主题，插件市场就会在下一次同步时自动收录，无需向 fba 插件仓库提交 PR
 
-::: warning 标签必须为全小写
-标签名统一使用全小写 `fba-plugin`，`FBA-Plugin`、`Fba-Plugin` 等写法都无法被识别
+::: tip 标签名建议使用全小写
+采集端比较标签与主题时会统一转为小写，`FBA-Plugin`、`Fba-Plugin` 这类大小写写法同样能被识别，但字母必须一致，`FB-Plugin` 这类拼写无法识别；推荐仍统一使用全小写 `fba-plugin`，GitHub 的主题由平台规范为小写
+:::
+
+::: tip 标签与主题的关系
+采集端先按主题 `fba-plugin` 检索候选仓库，再逐个核对标签与主题，两者命中其一即可收录。GitHub 的标签必须挂在某个 issue 上，主题则直接挂在仓库上，因此官方工作流会创建标签、补一条标记 issue，并加上同名主题
 :::
 
 #### 自动打标签（推荐）
@@ -129,7 +133,7 @@ jobs:
     uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/label-plugin.yml@master
 ```
 
-该工作流在每次推送后自动创建并应用 `fba-plugin` 标签，并补上同名主题，标签名固定为全小写
+该工作流在每次推送后自动创建并应用 `fba-plugin` 标签，并补上同名主题，传入的标签名会被统一转为小写
 
 也可以直接复制官方工作流文件到插件仓库的 `.github/workflows/label-plugin.yml`
 
@@ -140,7 +144,7 @@ jobs:
 #### 手动打标签
 
 ```shell
-# 1. 创建标签，标签名必须为全小写，已存在时忽略报错
+# 1. 创建标签，标签名建议使用全小写，已存在时忽略报错
 gh label create fba-plugin --repo your-username/your-plugin-name --color 0969da --description "fba plugin"
 
 # 2. 创建标记 issue 并应用标签
@@ -149,7 +153,9 @@ gh issue create --repo your-username/your-plugin-name --title "fba plugin marker
 
 也可以在仓库的 `Issues -> New issue` 页面新建一条 issue，并在右侧标签列表中选择 `fba-plugin`
 
-标签打完后，插件市场会在下一次同步（最多 1 小时）内收录该插件，无需再提交 PR
+还可以在仓库 `Settings -> General -> Topics` 中添加 `fba-plugin` 主题，效果与标签等价，采集端优先通过主题检索候选仓库
+
+标记打完后，插件市场会在下一次同步（最多 1 小时）内收录该插件，无需再提交 PR
 
 ### 方式二：PR 收录
 
@@ -170,7 +176,7 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 - 插件仓库：<https://github.com/...>
 - 收录方式：<标签收录 / PR 收录>
 
-自检通过后，等我确认，再以我的 GitHub 账号为插件仓库打上全小写 `fba-plugin` 标签，或创建插件市场 PR
+自检通过后，等我确认，再以我的 GitHub 账号为插件仓库打上 `fba-plugin` 标签或同名主题，或创建插件市场 PR
 ```
 
 Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插件市场校验。自检只读取文件，不会执行插件代码

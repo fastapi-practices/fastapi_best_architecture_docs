@@ -42,7 +42,7 @@ jobs:
           description: ${{ inputs.description || 'fba plugin' }}
           script: |
             const raw = String(core.getInput('label') || 'fba-plugin').trim()
-            // 标签名统一转为全小写，避免大小写不一致导致收录失败
+            // 标签名统一转为全小写，与采集端的标记常量保持一致
             const label = raw.toLowerCase()
 
             if (label !== raw) {
@@ -92,7 +92,7 @@ jobs:
                   '此 issue 用于为仓库应用插件标记标签，请勿关闭。',
                   '',
                   `插件标记标签: \`${label}\``,
-                  '标签名必须为全小写，插件市场每小时按该标签同步一次数据。',
+                  '标签名建议使用全小写；插件市场每小时按标签或同名主题同步一次数据。',
                 ].join('\n'),
               })
               issueNumber = created.data.number

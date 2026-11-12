@@ -76,7 +76,7 @@
     </div>
 
     <div class="marketplace-content">
-      <div v-if="loading" class="loading-state">
+      <div v-if="loading || !pinyinReady" class="loading-state">
         <div class="loading-spinner"></div>
         <span>{{ t('marketplace.loading') }}</span>
       </div>
@@ -327,11 +327,29 @@ const getCollectSource = (plugin: PluginItem): PluginSource => {
 
 const getPluginSummary = (plugin: PluginItem): string => plugin.plugin?.summary || ''
 
+// 固定语言环境，避免不同浏览器对中英文混排的排序结果不一致
+const nameCollator = new Intl.Collator('en-US', { numeric: true, sensitivity: 'base' })
+
+// 拼音排序模块按需加载，插件市场之外的页面不会带上这部分数据
+const pinyinReady = ref(false)
+let pinyinComparator: ((a: string, b: string) => number) | null = null
+
 const compareByName = (a: PluginItem, b: PluginItem): number => {
-  return getPluginSummary(a).localeCompare(getPluginSummary(b), undefined, {
-    numeric: true,
-    sensitivity: 'base',
-  })
+  const nameA = getPluginSummary(a)
+  const nameB = getPluginSummary(b)
+  if (pinyinComparator) return pinyinComparator(nameA, nameB)
+  return nameCollator.compare(nameA, nameB)
+}
+
+const loadPinyinComparator = async () => {
+  try {
+    const mod = await import('../utils/pinyin')
+    pinyinComparator = mod.compareByPinyin
+  } catch (e) {
+    console.warn('Pinyin sort module load failed:', e)
+  } finally {
+    pinyinReady.value = true
+  }
 }
 
 const getTimeValue = (value?: string | null): number => {
@@ -790,7 +808,9 @@ const refreshLegacyData = async () => {
   }
 }
 
-onMounted(fetchPlugins)
+onMounted(async () => {
+  await Promise.all([loadPinyinComparator(), fetchPlugins()])
+})
 
 onBeforeUnmount(() => {
   if (copiedTimer) clearTimeout(copiedTimer)

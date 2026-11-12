@@ -69,7 +69,7 @@ Before publishing a plugin, confirm it meets these requirements:
 - The plugin repository is public
 - The repository name follows the naming rules in this document
 - The repository root contains a `LICENSE` open source license file
-- The plugin repository is tagged with the lowercase `fba-plugin` label (when using label inclusion)
+- The plugin repository is tagged with the `fba-plugin` label or topic (when using label inclusion)
 - Backend plugin root contains `plugin.toml`, `README.md`, and `__init__.py`
 - Frontend plugin root contains `plugin.toml`
 - The repository root is the plugin root; do not add another plugin directory level
@@ -91,7 +91,7 @@ The marketplace reads the repository license and shows it on the plugin card.
 
 The marketplace supports two inclusion routes. Pick either one; you do not need both.
 
-- **Label inclusion**: once the plugin repository is on GitHub, tagging it with the lowercase `fba-plugin` label is enough. It is collected automatically, no PR required
+- **Label inclusion**: once the plugin repository is on GitHub, tagging it with the `fba-plugin` label or topic is enough. It is collected automatically, no PR required
 - **PR inclusion**: open a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins); the fba team reviews it before it is listed
 
 ::: tip
@@ -100,10 +100,14 @@ Plugins are always unique. If the plugin name already exists, you must choose a 
 
 ### Route 1: Label Inclusion (No PR)
 
-After the plugin repository is pushed to GitHub, tag it with the lowercase `fba-plugin` label. The marketplace collects it on the next sync, so no PR against the fba plugins repository is needed.
+After the plugin repository is pushed to GitHub, tag it with the `fba-plugin` label or the same topic. The marketplace collects it on the next sync, so no PR against the fba plugins repository is needed.
 
-::: warning The label must be lowercase
-The label name is always the lowercase `fba-plugin`. Names such as `FBA-Plugin` or `Fba-Plugin` are not recognized.
+::: tip Use a lowercase label name
+The marketplace collector compares labels and topics case-insensitively, so names such as `FBA-Plugin` or `Fba-Plugin` are recognized as well. The letters must still match: `FB-Plugin` is a different name and is not recognized. Lowercase `fba-plugin` is still recommended, and GitHub normalizes topics to lowercase.
+:::
+
+::: tip Labels and topics
+The collector first searches candidate repositories by the `fba-plugin` topic, then checks the labels and topics of every candidate; either signal is enough. A GitHub label can only live on an issue, while a topic lives on the repository, so the official workflow creates the label, adds a marker issue, and sets the same topic.
 :::
 
 #### Automatic Labeling (Recommended)
@@ -129,7 +133,7 @@ jobs:
     uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/label-plugin.yml@master
 ```
 
-The workflow creates and applies the `fba-plugin` label on every push, and adds a topic with the same name. The label name is always lowercase.
+The workflow creates and applies the `fba-plugin` label on every push, and adds a topic with the same name. Any label name you pass in is lowercased.
 
 You can also copy the official workflow file into `.github/workflows/label-plugin.yml` of the plugin repository.
 
@@ -140,7 +144,7 @@ The label name is lowercased for you, so `FBA-Plugin` is still applied as `fba-p
 #### Manual Labeling
 
 ```shell
-# 1. Create the label; the name must be lowercase. Ignore the error if it already exists
+# 1. Create the label; a lowercase name is recommended. Ignore the error if it already exists
 gh label create fba-plugin --repo your-username/your-plugin-name --color 0969da --description "fba plugin"
 
 # 2. Create a marker issue and apply the label to it
@@ -149,7 +153,9 @@ gh issue create --repo your-username/your-plugin-name --title "fba plugin marker
 
 You can also open `Issues -> New issue` on the repository and pick `fba-plugin` in the label list.
 
-Once the label is applied, the marketplace lists the plugin on the next sync (within an hour). No PR is needed.
+You can also add the `fba-plugin` topic under `Settings -> General -> Topics`. The topic works as an equivalent signal, and the collector discovers candidate repositories through it first.
+
+Once the marker is applied, the marketplace lists the plugin on the next sync (within an hour). No PR is needed.
 
 ### Route 2: PR Inclusion
 
@@ -170,7 +176,7 @@ Use the fba skill to check and publish the <plugin-name> plugin.
 - Plugin repository: <https://github.com/...>
 - Inclusion route: <label inclusion / PR inclusion>
 
-After validation passes, wait for my confirmation, then tag the plugin repository with the lowercase `fba-plugin` label or create the marketplace PR with my GitHub account
+After validation passes, wait for my confirmation, then tag the plugin repository with the `fba-plugin` label or topic, or create the marketplace PR with my GitHub account
 ```
 
 The agent checks the repository structure, `plugin.toml`, SQL, duplicate plugins, and runs the marketplace validation. Validation reads files only and does not execute plugin code.
