@@ -1,0 +1,125 @@
+name: Label fba Plugin
+
+# 供插件仓库直接复用的工作流
+# 调用后会自动为当前仓库创建并应用插件标记标签，标签名强制为全小写
+on:
+  workflow_call:
+    inputs:
+      label:
+        description: '插件标记标签名，必须为全小写'
+        type: string
+        default: 'fba-plugin'
+      color:
+        description: '标签颜色'
+        type: string
+        default: '0969da'
+      description:
+        description: '标签描述'
+        type: string
+        default: 'fba plugin'
+  workflow_dispatch:
+    inputs:
+      label:
+        description: '插件标记标签名，必须为全小写'
+        type: string
+        default: 'fba-plugin'
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Apply plugin label
+        uses: actions/github-script@v7
+        with:
+          # 显式传入输入，确保 workflow_call 与 workflow_dispatch 两种触发方式取值一致
+          label: ${{ inputs.label || 'fba-plugin' }}
+          color: ${{ inputs.color || '0969da' }}
+          description: ${{ inputs.description || 'fba plugin' }}
+          script: |
+            const raw = String(core.getInput('label') || 'fba-plugin').trim()
+            // 标签名统一转为全小写，避免大小写不一致导致收录失败
+            const label = raw.toLowerCase()
+
+            if (label !== raw) {
+              core.warning(`标签名已自动转为全小写: ${raw} -> ${label}`)
+            }
+
+            const color = String(core.getInput('color') || '0969da').replace('#', '')
+            const labelDescription = String(core.getInput('description') || 'fba plugin')
+
+            const { owner, repo } = context.repo
+
+            // 1. 确保标签存在
+            try {
+              await github.rest.issues.createLabel({
+                owner,
+                repo,
+                name: label,
+                color,
+                description: labelDescription,
+              })
+              core.info(`created label: ${label}`)
+            } catch (error) {
+              if (error.status === 422) {
+                core.info(`label already exists: ${label}`)
+              } else {
+                core.warning(`create label failed: ${error.message}`)
+              }
+            }
+
+            // 2. 通过一条标记 issue 应用仓库标签
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              labels: label,
+              state: 'all',
+              per_page: 100,
+            })
+
+            let issueNumber = issues[0]?.number
+
+            if (!issueNumber) {
+              const created = await github.rest.issues.create({
+                owner,
+                repo,
+                title: `fba plugin marker (${label})`,
+                body: [
+                  '此 issue 用于为仓库应用插件标记标签，请勿关闭。',
+                  '',
+                  `插件标记标签: \`${label}\``,
+                  '标签名必须为全小写，插件市场每小时按该标签同步一次数据。',
+                ].join('\n'),
+              })
+              issueNumber = created.data.number
+              core.info(`created marker issue: #${issueNumber}`)
+            }
+
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              labels: [label],
+            })
+
+            core.info(`label applied: ${label}`)
+
+            // 3. 尽力而为地补上同名主题，主题可被直接检索，能加快收录速度
+            try {
+              const repoInfo = await github.rest.repos.get({ owner, repo })
+              const topics = Array.isArray(repoInfo.data.topics) ? repoInfo.data.topics : []
+              if (!topics.includes(label)) {
+                await github.rest.repos.replaceAllTopics({
+                  owner,
+                  repo,
+                  topicNames: [...new Set([...topics, label])],
+                })
+                core.info(`topic applied: ${label}`)
+              }
+            } catch (error) {
+              core.warning(`set topic failed: ${error.message}`)
+            }

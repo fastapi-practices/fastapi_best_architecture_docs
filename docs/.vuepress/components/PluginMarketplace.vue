@@ -55,6 +55,22 @@
               </option>
             </select>
           </label>
+          <label class="filter-select-field">
+            <span class="filter-label">{{ t('marketplace.sortFilter') }}</span>
+            <select v-model="currentSort" class="filter-select">
+              <option value="name">{{ t('marketplace.sortName') }}</option>
+              <option value="updated" :disabled="!hasTimeStats">{{ t('marketplace.sortUpdated') }}</option>
+              <option value="listed" :disabled="!hasTimeStats">{{ t('marketplace.sortListed') }}</option>
+            </select>
+          </label>
+          <label class="filter-select-field">
+            <span class="filter-label">{{ t('marketplace.collectFilter') }}</span>
+            <select v-model="currentCollect" class="filter-select">
+              <option value="all">{{ t('marketplace.all') }}</option>
+              <option value="registry">{{ t('marketplace.collectRegistry') }}</option>
+              <option value="marked">{{ t('marketplace.collectMarked') }}</option>
+            </select>
+          </label>
         </div>
       </div>
     </div>
@@ -90,18 +106,35 @@
               <div class="card-meta">
                 <div class="card-header">
                   <span class="card-title">{{ plugin.plugin.summary }}</span>
-                  <span class="card-version">v{{ plugin.plugin.version }}</span>
+                  <span v-if="plugin.source === 'marked'" class="card-source-badge">
+                    {{ t('marketplace.collectMarked') }}
+                  </span>
                 </div>
-                <p class="card-author">{{ plugin.plugin.author }} / {{ getRepoName(plugin.git.path) }}</p>
+                <p class="card-author">
+                  <span class="card-author-name">{{ plugin.plugin.author }}</span>
+                  <span class="card-author-sep"> / </span>
+                  <span class="card-author-repo">{{ getRepoName(plugin.git.path) }}</span>
+                </p>
               </div>
             </a>
           </div>
 
           <a :href="plugin.git.url" target="_blank" rel="noreferrer" class="card-main-link card-main-link-body">
-            <p class="card-desc">{{ plugin.plugin.description }}</p>
-            <div class="card-tags" v-if="getValidTags(plugin.plugin.tags).length">
+            <div class="card-tags">
               <span v-for="tag in getValidTags(plugin.plugin.tags).slice(0, 3)" :key="tag"
-                class="tag">#{{ getTagLabel(tag) }}</span>
+                class="tag">{{ getTagLabel(tag) }}</span>
+              <span v-if="!getValidTags(plugin.plugin.tags).length" class="tag">
+                {{ t('marketplace.unknownTag') }}
+              </span>
+            </div>
+
+            <p class="card-desc">{{ plugin.plugin.description }}</p>
+
+            <div class="card-meta-row">
+              <template v-for="(item, index) in getMetaItems(plugin)" :key="`${item.text}-${index}`">
+                <span v-if="index > 0" class="meta-dot">·</span>
+                <span class="meta-item" :class="`meta-${item.type}`">{{ item.text }}</span>
+              </template>
             </div>
           </a>
 
@@ -116,7 +149,7 @@
               </span>
             </div>
             <button type="button" class="card-action-btn card-action-command"
-              :class="{ copied: copiedInstallCommandPath === plugin.git.path }"
+              :class="[`card-action-command-${getPluginType(plugin.git.path)}`, { copied: copiedInstallCommandPath === plugin.git.path }]"
               :aria-label="copiedInstallCommandPath === plugin.git.path ? t('marketplace.installCommandCopied') : t('marketplace.installPlugin')"
               :title="buildInstallCommand(plugin)" @click="copyInstallCommand(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -129,7 +162,7 @@
             </button>
 
             <button type="button" class="card-action-btn card-action-share"
-              :class="{ copied: copiedPluginPath === plugin.git.path }"
+              :class="[`card-action-share-${getMaintainerKey(plugin)}`, { copied: copiedPluginPath === plugin.git.path }]"
               :aria-label="copiedPluginPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.share')"
               :title="copiedPluginPath === plugin.git.path ? t('marketplace.copied') : t('marketplace.share')" @click="sharePlugin(plugin)">
               <svg class="card-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -177,7 +210,7 @@
 
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
-import { ref, computed, onMounted, onBeforeUnmount, reactive } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount, reactive } from 'vue'
 import { withBase } from 'vuepress/client'
 import { useI18n } from '../composables/useI18n'
 
@@ -185,6 +218,18 @@ const { t, tm, withLocale } = useI18n()
 
 type PluginType = 'backend' | 'frontend'
 type PluginMaintainer = 'official' | 'community'
+type PluginSource = 'registry' | 'marked'
+type SortKey = 'name' | 'updated' | 'listed'
+
+interface PluginStats {
+  stars?: number
+  forks?: number
+  watchers?: number
+  // 仓库许可证，没有许可证时为 null
+  license?: string | null
+  updatedAt?: string | null
+  listedAt?: string | null
+}
 
 interface InstallNotice {
   visible: boolean
@@ -206,15 +251,35 @@ interface PluginItem {
     description: string
     tags?: string[]
   }
+  // 收录方式：registry 为官方仓库 PR 收录，marked 为标签收录
+  source?: PluginSource
+  stats?: PluginStats
+}
+
+interface MarketData {
+  generatedAt: string | null
+  tags: string[]
+  plugins: PluginItem[]
 }
 
 const CACHE_KEY = 'fba_plugins_cache'
 const CACHE_DURATION = 24 * 60 * 60 * 1000
+// 新数据集每小时更新一次，缓存时长与其保持一致
+const MARKET_CACHE_KEY = 'fba_plugins_market_cache'
+const MARKET_CACHE_DURATION = 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
 const PLUGIN_TYPES: PluginType[] = ['backend', 'frontend']
 const PLUGIN_MAINTAINERS: PluginMaintainer[] = ['official', 'community']
 const INSTALL_DOC_BASE = computed(() => withBase(withLocale('/plugin/install.html')))
 
+// 插件市场数据由 CI 每小时发布到独立分支，运行时直接读取
+const MARKET_DATA_SOURCES = [
+  'https://raw.githubusercontent.com/fastapi-practices/fastapi_best_architecture_docs/refs/heads/marketplace-data/plugins-market.json',
+  'https://fastly.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json',
+  'https://cdn.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json'
+]
+
+// 旧版插件清单，作为新数据集不可用时的兜底
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
   'https://fastly.jsdelivr.net/gh/fastapi-practices/plugins@master/plugins-data.ts',
@@ -228,6 +293,8 @@ const validTags = ref<string[]>([])
 const currentTag = ref('all')
 const currentMaintainer = ref<'all' | PluginMaintainer>('all')
 const currentType = ref<'all' | PluginType>('all')
+const currentCollect = ref<'all' | PluginSource>('all')
+const currentSort = ref<SortKey>('name')
 const pluginMaintainers = PLUGIN_MAINTAINERS
 const pluginTypes = PLUGIN_TYPES
 const searchQuery = ref('')
@@ -253,10 +320,58 @@ const matchesType = (plugin: PluginItem, type: PluginType): boolean => {
   return getPluginType(plugin.git?.path || '') === type
 }
 
+// 收录方式：缺失时按官方仓库 PR 收录处理
+const getCollectSource = (plugin: PluginItem): PluginSource => {
+  return plugin.source === 'marked' ? 'marked' : 'registry'
+}
+
+const getPluginSummary = (plugin: PluginItem): string => plugin.plugin?.summary || ''
+
+const compareByName = (a: PluginItem, b: PluginItem): number => {
+  return getPluginSummary(a).localeCompare(getPluginSummary(b), undefined, {
+    numeric: true,
+    sensitivity: 'base',
+  })
+}
+
+const getTimeValue = (value?: string | null): number => {
+  if (!value) return 0
+  const time = Date.parse(value)
+  return Number.isNaN(time) ? 0 : time
+}
+
+const getStars = (plugin: PluginItem): number => Number(plugin.stats?.stars) || 0
+
+// 排序规则：名称、最近更新、最近上架
+const sorters: Record<SortKey, (a: PluginItem, b: PluginItem) => number> = {
+  name: (a, b) => compareByName(a, b),
+  updated: (a, b) =>
+    getTimeValue(b.stats?.updatedAt) - getTimeValue(a.stats?.updatedAt) ||
+    getStars(b) - getStars(a) ||
+    compareByName(a, b),
+  listed: (a, b) =>
+    getTimeValue(b.stats?.listedAt) - getTimeValue(a.stats?.listedAt) ||
+    getStars(b) - getStars(a) ||
+    compareByName(a, b),
+}
+
+// 兜底数据源没有更新时间，此时按时间排序无意义
+const hasTimeStats = computed(() =>
+  plugins.value.some(plugin => !!plugin.stats?.updatedAt || !!plugin.stats?.listedAt),
+)
+
+// 数据源切换后，若当前排序已不可用则回退到名称排序
+watch(hasTimeStats, (available) => {
+  if (!available && currentSort.value !== 'name') {
+    currentSort.value = 'name'
+  }
+})
+
 const filteredPlugins = computed(() => {
   let result = plugins.value
   const maintainer = currentMaintainer.value
   const type = currentType.value
+  const collect = currentCollect.value
 
   if (maintainer !== 'all') {
     result = result.filter(p => matchesMaintainer(p, maintainer))
@@ -264,6 +379,10 @@ const filteredPlugins = computed(() => {
 
   if (type !== 'all') {
     result = result.filter(p => matchesType(p, type))
+  }
+
+  if (collect !== 'all') {
+    result = result.filter(p => getCollectSource(p) === collect)
   }
 
   if (currentTag.value !== 'all') {
@@ -281,7 +400,8 @@ const filteredPlugins = computed(() => {
     )
   }
 
-  return result
+  // 筛选之后再排序
+  return [...result].sort(sorters[currentSort.value])
 })
 
 const getRepoName = (path: string): string => {
@@ -371,8 +491,12 @@ const getMaintainerLabel = (plugin: PluginItem): string => {
   return isOfficialPlugin(plugin) ? t('marketplace.official') : t('marketplace.community')
 }
 
+const getMaintainerKey = (plugin: PluginItem): 'official' | 'community' => {
+  return isOfficialPlugin(plugin) ? 'official' : 'community'
+}
+
 const getMaintainerIdentityClass = (plugin: PluginItem): string => {
-  return isOfficialPlugin(plugin) ? 'card-identity-item-official' : 'card-identity-item-community'
+  return `card-identity-item-${getMaintainerKey(plugin)}`
 }
 
 const buildShareText = (plugin: PluginItem): string => {
@@ -441,6 +565,33 @@ const getColor = (str: string): string => {
   return colors[Math.abs(hash) % colors.length]
 }
 
+// 卡片元信息：版本 · 许可证 · 日期
+// 仓库没有许可证时不显示该段
+const getMetaItems = (plugin: PluginItem): { text: string, type: string }[] => {
+  const items: { text: string, type: string }[] = [
+    { text: `v${plugin.plugin.version}`, type: 'version' },
+  ]
+
+  const license = plugin.stats?.license
+  if (license) items.push({ text: license, type: 'license' })
+
+  if (plugin.stats?.updatedAt) {
+    items.push({ text: formatDate(plugin.stats.updatedAt), type: 'date' })
+  }
+
+  return items
+}
+
+// 日期格式化
+const formatDate = (value?: string | null): string => {
+  if (!value) return ''
+  const time = Date.parse(value)
+  if (Number.isNaN(time)) return ''
+  const date = new Date(time)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
+}
+
 const getTagLabel = (tag: string): string => {
   const fixed: Record<string, string> = { ai: 'AI', mcp: 'MCP', agent: 'Agent' }
   if (fixed[tag]) return fixed[tag]
@@ -464,6 +615,8 @@ const resetFilters = () => {
   currentTag.value = 'all'
   currentMaintainer.value = 'all'
   currentType.value = 'all'
+  currentCollect.value = 'all'
+  currentSort.value = 'name'
 }
 
 const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginItem[] } => {
@@ -494,13 +647,13 @@ const parseTypeScriptData = (text: string): { tags: string[], plugins: PluginIte
   return { tags, plugins: pluginList }
 }
 
-const loadFromCache = (): { tags: string[], plugins: PluginItem[] } | null => {
+const loadFromCache = <T>(key: string, duration: number): T | null => {
   try {
-    const cached = localStorage.getItem(CACHE_KEY)
+    const cached = localStorage.getItem(key)
     if (cached) {
       const { data, timestamp } = JSON.parse(cached)
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        return data
+      if (Date.now() - timestamp < duration) {
+        return data as T
       }
     }
   } catch (e) {
@@ -509,9 +662,9 @@ const loadFromCache = (): { tags: string[], plugins: PluginItem[] } | null => {
   return null
 }
 
-const saveToCache = (data: { tags: string[], plugins: PluginItem[] }) => {
+const saveToCache = <T>(key: string, data: T) => {
   try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify({
+    localStorage.setItem(key, JSON.stringify({
       data,
       timestamp: Date.now()
     }))
@@ -520,8 +673,29 @@ const saveToCache = (data: { tags: string[], plugins: PluginItem[] }) => {
   }
 }
 
-const fetchWithFallback = async (): Promise<string> => {
-  for (const url of DATA_SOURCES) {
+// 解析插件市场数据集（由 CI 每小时发布）
+const parseMarketData = (text: string): MarketData | null => {
+  try {
+    const raw = JSON.parse(text)
+    const list = Array.isArray(raw?.plugins) ? raw.plugins : []
+    const pluginList = list.filter((item: PluginItem) =>
+      item?.git?.path && item?.git?.url && item?.plugin?.summary
+    )
+    if (!pluginList.length) return null
+
+    return {
+      generatedAt: typeof raw?.generatedAt === 'string' ? raw.generatedAt : null,
+      tags: Array.isArray(raw?.validTags) ? raw.validTags : [],
+      plugins: pluginList,
+    }
+  } catch (e) {
+    console.error('Market data parse error:', e)
+    return null
+  }
+}
+
+const fetchTextWithFallback = async (sources: string[]): Promise<string> => {
+  for (const url of sources) {
     try {
       const response = await fetch(url, { cache: 'no-cache' })
       if (response.ok) {
@@ -534,39 +708,85 @@ const fetchWithFallback = async (): Promise<string> => {
   throw new Error('All data sources failed')
 }
 
+const applyMarketData = (data: MarketData) => {
+  validTags.value = data.tags
+  plugins.value = data.plugins
+}
+
+const fetchMarketData = async (): Promise<MarketData | null> => {
+  try {
+    const text = await fetchTextWithFallback(MARKET_DATA_SOURCES)
+    return parseMarketData(text)
+  } catch (e) {
+    console.warn('Market data fetch failed:', e)
+    return null
+  }
+}
+
 const fetchPlugins = async () => {
   loading.value = true
   error.value = ''
 
-  const cached = loadFromCache()
-  if (cached) {
-    validTags.value = cached.tags
-    plugins.value = cached.plugins
+  // 1. 命中缓存先渲染，再后台刷新
+  const marketCached = loadFromCache<MarketData>(MARKET_CACHE_KEY, MARKET_CACHE_DURATION)
+  if (marketCached?.plugins?.length) {
+    applyMarketData(marketCached)
     loading.value = false
+    refreshMarketData()
+    return
+  }
 
-    fetchWithFallback()
-      .then(text => {
-        const data = parseTypeScriptData(text)
-        validTags.value = data.tags
-        plugins.value = data.plugins
-        saveToCache(data)
-      })
-      .catch(() => {
-      })
+  // 2. 拉取新数据集（含 Star、更新时间等统计信息）
+  const marketData = await fetchMarketData()
+  if (marketData) {
+    applyMarketData(marketData)
+    saveToCache(MARKET_CACHE_KEY, marketData)
+    loading.value = false
+    return
+  }
+
+  // 3. 新数据集不可用时回退到旧版插件清单
+  const legacyCached = loadFromCache<{ tags: string[], plugins: PluginItem[] }>(CACHE_KEY, CACHE_DURATION)
+  if (legacyCached?.plugins?.length) {
+    validTags.value = legacyCached.tags
+    plugins.value = legacyCached.plugins
+    loading.value = false
+    refreshLegacyData()
     return
   }
 
   try {
-    const text = await fetchWithFallback()
+    const text = await fetchTextWithFallback(DATA_SOURCES)
     const data = parseTypeScriptData(text)
     validTags.value = data.tags
     plugins.value = data.plugins
-    saveToCache(data)
+    saveToCache(CACHE_KEY, data)
   } catch (e) {
     console.error('Fetch error:', e)
     error.value = t('marketplace.loadFailed')
   } finally {
     loading.value = false
+  }
+}
+
+// 后台刷新新数据集
+const refreshMarketData = async () => {
+  const data = await fetchMarketData()
+  if (!data) return
+  applyMarketData(data)
+  saveToCache(MARKET_CACHE_KEY, data)
+}
+
+// 后台刷新旧版插件清单
+const refreshLegacyData = async () => {
+  try {
+    const text = await fetchTextWithFallback(DATA_SOURCES)
+    const data = parseTypeScriptData(text)
+    validTags.value = data.tags
+    plugins.value = data.plugins
+    saveToCache(CACHE_KEY, data)
+  } catch (e) {
+    console.warn('Legacy data refresh failed:', e)
   }
 }
 
@@ -644,7 +864,7 @@ onBeforeUnmount(() => {
 
 .marketplace-controls {
   width: 100%;
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto 32px;
 }
 
@@ -885,6 +1105,8 @@ onBeforeUnmount(() => {
 
 .card-main-link-body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .plugin-card:hover {
@@ -975,21 +1197,32 @@ onBeforeUnmount(() => {
   line-height: 1.2;
 }
 
-.card-version {
-  font-size: 11px;
-  color: var(--vp-c-text-2);
+.card-source-badge {
   flex-shrink: 0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: 11px;
+  line-height: 16px;
 }
 
 .card-author {
   font-size: 12px;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   margin: 6px 0 0;
   line-height: 1.2;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.card-author-name {
+  color: var(--vp-c-text-1);
+}
+.card-author-sep {
+  color: var(--vp-c-text-3);
 }
 
 .card-desc {
@@ -1007,10 +1240,8 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: auto;
-  padding-top: 10px;
+  margin-bottom: 10px;
 }
-
 .card-footer-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1041,16 +1272,29 @@ onBeforeUnmount(() => {
   color: var(--vp-c-text-1);
 }
 
-.card-action-share:hover,
-.card-action-share.copied {
-  border-color: color-mix(in srgb, var(--frontend-accent) 24%, var(--vp-c-divider));
-  color: var(--frontend-accent);
+/* 安装按钮跟随前后端配色，分享按钮跟随官方或社区配色 */
+.card-action-command-backend {
+  --action-accent: var(--backend-accent);
+}
+
+.card-action-command-frontend {
+  --action-accent: var(--frontend-accent);
+}
+
+.card-action-share-official {
+  --action-accent: var(--official-accent);
+}
+
+.card-action-share-community {
+  --action-accent: var(--community-accent);
 }
 
 .card-action-command:hover,
-.card-action-command.copied {
-  border-color: color-mix(in srgb, #16a34a 24%, var(--vp-c-divider));
-  color: #16a34a;
+.card-action-command.copied,
+.card-action-share:hover,
+.card-action-share.copied {
+  border-color: color-mix(in srgb, var(--action-accent) 24%, var(--vp-c-divider));
+  color: var(--action-accent);
 }
 
 .card-action-icon {
@@ -1060,8 +1304,40 @@ onBeforeUnmount(() => {
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
   font-size: 12px;
   color: var(--vp-c-text-3);
+}
+.meta-item {
+  white-space: nowrap;
+}
+.meta-dot {
+  color: var(--vp-c-text-3);
+  opacity: 0.6;
+}
+.meta-version {
+  font-weight: 500;
+}
+.meta-date {
+  font-variant-numeric: tabular-nums;
 }
 
 .install-notice {
@@ -1241,6 +1517,10 @@ onBeforeUnmount(() => {
     flex-basis: 100%;
     border-left: none;
     border-top: 1px solid var(--vp-c-divider);
+  }
+
+  .filter-select-field:nth-child(4) {
+    border-left: none;
   }
 }
 </style>

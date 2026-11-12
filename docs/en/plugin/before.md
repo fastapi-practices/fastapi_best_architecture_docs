@@ -21,6 +21,11 @@ The marketplace organizes plugins into four groups so they are easier to find an
 - **Official**: maintained by the `fastapi-practices` organization
 - **Community**: maintained by community developers
 
+Every plugin also carries an inclusion category that explains how it entered the marketplace
+
+- **PR inclusion**: a PR was opened against the [fba plugins repository](https://github.com/fastapi-practices/plugins) and passed review
+- **Label inclusion**: the repository was tagged with the lowercase `fba-plugin` label and was collected automatically, no PR required
+
 ## Development
 
 See [Plugin Development](dev.md).

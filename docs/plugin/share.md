@@ -68,6 +68,8 @@ title: 插件分享
 
 - 插件仓库为公开仓库
 - 插件仓库命名符合当前文档中的命名规则
+- 插件仓库根目录包含 `LICENSE` 开源许可证文件
+- 插件仓库已打上全小写标签 `fba-plugin`（使用标签收录方式时）
 - 后端插件根目录包含 `plugin.toml`、`README.md`、`__init__.py`
 - 前端插件根目录包含 `plugin.toml`
 - 仓库根目录就是插件根目录，不能再多包一层插件目录
@@ -79,19 +81,85 @@ title: 插件分享
 
 可以让 AI Agent 使用 [插件任务](../ai/prompt.md#插件任务) 提示词完成发布前检查，但 Git 和 GitHub 写操作仍需要单独授权
 
+::: tip
+许可证由插件作者自行选择，常见选择有 MIT、Apache-2.0、AGPL-3.0 等
+
+插件市场会读取仓库的许可证标识，并展示在插件卡片上
+:::
+
 ## 发布插件
 
-插件市场通过 Git submodule 跟踪插件，因此正式发布仍需要在 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 创建一个 PR
+插件市场支持两种收录方式，任选其一即可，不必同时使用
 
-PR 应由插件作者使用自己的 GitHub 账号从 fork 创建，确保提交和 PR 归属正确
-
-fba 团队会根据发布前检查项和插件实际用途进行审核，通过后插件才会进入 [插件市场](../marketplace.md)
+- **标签收录**：插件仓库上传到 GitHub 后，打上全小写标签 `fba-plugin` 就会被自动收录，无需提交 PR
+- **PR 收录**：向 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 提交 PR，由 fba 团队审核后收录
 
 ::: tip
 插件总是独一无二的，如果插件名已存在，那你只能选择为即将发布的插件换个新名字
 :::
 
-### 使用 AI Agent（推荐）
+### 方式一：标签收录（无需 PR）
+
+插件仓库上传到 GitHub 之后，只需要为仓库打上全小写标签 `fba-plugin`，插件市场就会在下一次同步时自动收录，无需向 fba 插件仓库提交 PR
+
+::: warning 标签必须为全小写
+标签名统一使用全小写 `fba-plugin`，`FBA-Plugin`、`Fba-Plugin` 等写法都无法被识别
+:::
+
+#### 自动打标签（推荐）
+
+在插件仓库中新建 `.github/workflows/label-plugin.yml`，引用官方工作流即可
+
+```yaml
+name: Label fba Plugin
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  label:
+    uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/label-plugin.yml@master
+```
+
+该工作流在每次推送后自动创建并应用 `fba-plugin` 标签，并补上同名主题，标签名固定为全小写
+
+也可以直接复制官方工作流文件到插件仓库的 `.github/workflows/label-plugin.yml`
+
+::: tip
+标签名会被统一转为全小写，即使传入 `FBA-Plugin` 也会按 `fba-plugin` 处理
+:::
+
+#### 手动打标签
+
+```shell
+# 1. 创建标签，标签名必须为全小写，已存在时忽略报错
+gh label create fba-plugin --repo your-username/your-plugin-name --color 0969da --description "fba plugin"
+
+# 2. 创建标记 issue 并应用标签
+gh issue create --repo your-username/your-plugin-name --title "fba plugin marker (fba-plugin)" --body "此 issue 用于为仓库应用插件标记标签，请勿关闭" --label fba-plugin
+```
+
+也可以在仓库的 `Issues -> New issue` 页面新建一条 issue，并在右侧标签列表中选择 `fba-plugin`
+
+标签打完后，插件市场会在下一次同步（最多 1 小时）内收录该插件，无需再提交 PR
+
+### 方式二：PR 收录
+
+插件市场通过 Git submodule 跟踪插件，因此 PR 收录方式需要在 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 创建一个 PR
+
+PR 应由插件作者使用自己的 GitHub 账号从 fork 创建，确保提交和 PR 归属正确
+
+fba 团队会根据发布前检查项和插件实际用途进行审核，通过后插件才会进入 [插件市场](../marketplace.md)
+
+#### 使用 AI Agent（推荐）
 
 安装 <FbaSkillInstall /> 后，将以下提示词交给支持 Skills 的 AI Agent：
 
@@ -100,15 +168,16 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 
 - 插件类型：<backend / frontend>
 - 插件仓库：<https://github.com/...>
+- 收录方式：<标签收录 / PR 收录>
 
-自检通过后，等我确认，再以我的 GitHub 账号创建插件市场 PR
+自检通过后，等我确认，再以我的 GitHub 账号为插件仓库打上全小写 `fba-plugin` 标签，或创建插件市场 PR
 ```
 
 Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插件市场校验。自检只读取文件，不会执行插件代码
 
-创建 PR 前，Agent 会先展示校验结果和待执行的 Git/GitHub 操作。如果你没有安装或登录 GitHub CLI，Agent 会提供 fork 和网页创建 PR 的地址，不需要为此安装 `gh`
+打标签或创建 PR 前，Agent 会先展示校验结果和待执行的 Git/GitHub 操作。如果你没有安装或登录 GitHub CLI，Agent 会提供网页创建标签和 PR 的地址，不需要为此安装 `gh`
 
-### 手动提交（备用）
+#### 手动提交（备用）
 
 需要手动调整 submodule 或使用 GitHub 网页操作时，可以按以下步骤提交
 
@@ -170,15 +239,20 @@ Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插
 
    插件市场会自动归入四个分组：后端 / 前端由仓库名判断，官方 / 社区由仓库所属组织判断。仓库名符合前端后缀规则的进入前端分组，仓库属于 `fastapi-practices` 的进入官方分组，其余进入社区分组
 
+   插件还会按收录方式归类：PR 收录的插件归入「PR 收录」，标签收录的插件归入「标签收录」
+
 ::::
 
 ## 更新插件
 
-要想更新插件，你需要为 fba 插件 GitHub 仓库创建一个 PR
+更新方式取决于收录方式
+
+- **标签收录**：在插件仓库推送新版本即可，插件市场会在下一次同步时自动更新插件信息与更新时间，无需任何额外操作
+- **PR 收录**：需要在 fba 插件 GitHub 仓库创建一个 PR
 
 先发布插件仓库中的新版本，再更新插件市场的 submodule 指针。不要把 submodule 指向未提交或未推送的插件版本
 
-==执行与发布相同的步骤，并更新以下行为：==
+==PR 收录方式下，执行与发布相同的步骤，并更新以下行为：==
 
 - 更新步骤 4 中的命令
 

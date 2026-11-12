@@ -11,6 +11,14 @@ When developing or reviewing plugins, have AI use <FbaSkillInstall />. The skill
 The official repository includes several built-in plugins under `backend/plugin`. Reading this document alongside the official repository works best.
 :::
 
+::: warning Automatic Labeling After Upload
+Once the plugin repository is pushed to GitHub, the workflow inside it tags the repository with the plugin marker label `fba-plugin` automatically. The marketplace collects the plugin from that label, so no PR against the fba plugins repository is required
+
+The label name must be lowercase. Names such as `FBA-Plugin` or `Fba-Plugin` are not recognized
+
+See [Plugin Sharing](./share.md) for the setup
+:::
+
 ## Backend
 
 ::: steps
@@ -97,6 +105,7 @@ The plugin name is also a Python package name. Prefer lowercase letters, digits,
     - plugin.toml # Plugin config file <Badge type="danger" text="required" />
     - README.md # Usage instructions and your contact info <Badge type="danger" text="required" />
     - requirements.txt # Dependency file
+    - LICENSE # Open source license file <Badge type="warning" text="required for public release" />
 
 :::
 
@@ -363,6 +372,7 @@ Plugins live under `apps/web-antdv-next/src/plugins`. The directory structure is
         - …
     - … # More content
     - plugin.toml # Plugin config file <Badge type="danger" text="required" />
+    - LICENSE # Open source license file <Badge type="warning" text="required for public release" />
 
 :::
 
@@ -398,4 +408,10 @@ Unless necessary, avoid referencing existing architecture methods in plugin code
 
 ::: tip
 If you plan to share the plugin publicly or submit it to the marketplace, also read the pre-publish checklist and maintenance responsibility notes in [Sharing Plugins](./share.md).
+:::
+
+::: tip
+A plugin repository intended for public release should provide a `LICENSE` open source license file at its root and state the chosen license in `README.md`
+
+The plugin author picks the license. The marketplace reads the repository license and shows it on the plugin card.
 :::

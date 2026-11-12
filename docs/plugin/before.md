@@ -21,6 +21,11 @@ title: 前言
 - **官方**：由 `fastapi-practices` 组织维护
 - **社区**：由社区开发者维护
 
+此外，每个插件还有一个「收录方式」分类，用于说明插件是如何进入市场的
+
+- **PR 收录**：向 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 提交 PR，通过审核后收录
+- **标签收录**：仓库打上全小写标签 `fba-plugin` 后被自动收录，无需提交 PR
+
 ## 开发
 
 请移步至 [插件开发](dev.md)

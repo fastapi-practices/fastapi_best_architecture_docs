@@ -68,6 +68,8 @@ Before publishing a plugin, confirm it meets these requirements:
 
 - The plugin repository is public
 - The repository name follows the naming rules in this document
+- The repository root contains a `LICENSE` open source license file
+- The plugin repository is tagged with the lowercase `fba-plugin` label (when using label inclusion)
 - Backend plugin root contains `plugin.toml`, `README.md`, and `__init__.py`
 - Frontend plugin root contains `plugin.toml`
 - The repository root is the plugin root; do not add another plugin directory level
@@ -79,19 +81,85 @@ Before publishing a plugin, confirm it meets these requirements:
 
 You can use the [Plugin task](../ai/prompt.md#plugin-task) prompt to have an AI agent run the pre-publish checks. Git and GitHub write operations still require separate approval.
 
+::: tip
+The plugin author picks the license. Common choices are MIT, Apache-2.0, AGPL-3.0, and so on.
+
+The marketplace reads the repository license and shows it on the plugin card.
+:::
+
 ## Publishing a Plugin
 
-The marketplace tracks plugins with Git submodules, so publishing still requires a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins).
+The marketplace supports two inclusion routes. Pick either one; you do not need both.
 
-The plugin author should create the PR from their own GitHub account through a fork, so commits and the PR remain correctly attributed.
-
-The fba team reviews against the pre-publish checklist and the plugin's actual purpose. Only after approval does the plugin appear in the [Plugin Marketplace](../marketplace.md).
+- **Label inclusion**: once the plugin repository is on GitHub, tagging it with the lowercase `fba-plugin` label is enough. It is collected automatically, no PR required
+- **PR inclusion**: open a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins); the fba team reviews it before it is listed
 
 ::: tip
 Plugins are always unique. If the plugin name already exists, you must choose a new name for the plugin you are about to publish.
 :::
 
-### Use an AI Agent (Recommended)
+### Route 1: Label Inclusion (No PR)
+
+After the plugin repository is pushed to GitHub, tag it with the lowercase `fba-plugin` label. The marketplace collects it on the next sync, so no PR against the fba plugins repository is needed.
+
+::: warning The label must be lowercase
+The label name is always the lowercase `fba-plugin`. Names such as `FBA-Plugin` or `Fba-Plugin` are not recognized.
+:::
+
+#### Automatic Labeling (Recommended)
+
+Create `.github/workflows/label-plugin.yml` in the plugin repository and reuse the official workflow:
+
+```yaml
+name: Label fba Plugin
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  label:
+    uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/label-plugin.yml@master
+```
+
+The workflow creates and applies the `fba-plugin` label on every push, and adds a topic with the same name. The label name is always lowercase.
+
+You can also copy the official workflow file into `.github/workflows/label-plugin.yml` of the plugin repository.
+
+::: tip
+The label name is lowercased for you, so `FBA-Plugin` is still applied as `fba-plugin`.
+:::
+
+#### Manual Labeling
+
+```shell
+# 1. Create the label; the name must be lowercase. Ignore the error if it already exists
+gh label create fba-plugin --repo your-username/your-plugin-name --color 0969da --description "fba plugin"
+
+# 2. Create a marker issue and apply the label to it
+gh issue create --repo your-username/your-plugin-name --title "fba plugin marker (fba-plugin)" --body "This issue carries the plugin marker label. Please keep it open." --label fba-plugin
+```
+
+You can also open `Issues -> New issue` on the repository and pick `fba-plugin` in the label list.
+
+Once the label is applied, the marketplace lists the plugin on the next sync (within an hour). No PR is needed.
+
+### Route 2: PR Inclusion
+
+The marketplace tracks plugins with Git submodules, so this route requires a PR against the [fba plugins repository](https://github.com/fastapi-practices/plugins).
+
+The plugin author should create the PR from their own GitHub account through a fork, so commits and the PR remain correctly attributed.
+
+The fba team reviews against the pre-publish checklist and the plugin's actual purpose. Only after approval does the plugin appear in the [Plugin Marketplace](../marketplace.md).
+
+#### Use an AI Agent (Recommended)
 
 After installing <FbaSkillInstall />, give this prompt to an AI agent that supports Skills:
 
@@ -100,15 +168,16 @@ Use the fba skill to check and publish the <plugin-name> plugin.
 
 - Plugin type: <backend / frontend>
 - Plugin repository: <https://github.com/...>
+- Inclusion route: <label inclusion / PR inclusion>
 
-After validation passes, wait for my confirmation, then create the marketplace PR with my GitHub account
+After validation passes, wait for my confirmation, then tag the plugin repository with the lowercase `fba-plugin` label or create the marketplace PR with my GitHub account
 ```
 
 The agent checks the repository structure, `plugin.toml`, SQL, duplicate plugins, and runs the marketplace validation. Validation reads files only and does not execute plugin code.
 
-Before creating the PR, the agent shows the validation result and pending Git/GitHub operations. If GitHub CLI is unavailable or unauthenticated, it provides the fork and browser PR links instead of requiring you to install `gh`.
+Before tagging or creating the PR, the agent shows the validation result and pending Git/GitHub operations. If GitHub CLI is unavailable or unauthenticated, it provides the browser links for labeling and for the PR instead of requiring you to install `gh`.
 
-### Manual Submission (Fallback)
+#### Manual Submission (Fallback)
 
 Use the manual flow when you need to adjust the submodule manually or prefer the GitHub UI.
 
@@ -170,15 +239,20 @@ This flow requires Git to be installed locally.
 
    The marketplace assigns four groups automatically: Backend / Frontend from the repository name, Official / Community from the repository owner. Repositories that follow the frontend suffix rule go to Frontend; repositories under `fastapi-practices` go to Official; everything else goes to Community.
 
+   Plugins are also grouped by inclusion route: PR-included plugins go to "PR" and label-included plugins go to "Label".
+
 ::::
 
 ## Updating a Plugin
 
-To update a plugin, open a PR against the fba plugins GitHub repository.
+How you update depends on the inclusion route.
+
+- **Label inclusion**: just push a new version to the plugin repository. The marketplace refreshes the plugin info and the update time on the next sync, with no extra step
+- **PR inclusion**: open a PR against the fba plugins GitHub repository
 
 Publish the new version in the plugin repository first, then update the marketplace submodule pointer. Do not point the submodule at an uncommitted or unpushed plugin revision.
 
-Follow the same steps as publishing, with these changes:
+For the PR route, follow the same steps as publishing, with these changes:
 
 - Update the commands in step 4
 

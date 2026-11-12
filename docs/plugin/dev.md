@@ -11,6 +11,14 @@ title: 插件开发
 在官方仓库中，包含多个内置插件，位于 `backend/plugin` 目录下，结合官方仓库阅读此文档，效果更佳
 :::
 
+::: warning 上传 GitHub 后自动打标签
+插件仓库上传到 GitHub 后，仓库内的工作流会自动为仓库打上插件标记标签 `fba-plugin`，插件市场据此自动收录，无需向 fba 插件仓库提交 PR
+
+标签名必须为全小写，`FBA-Plugin`、`Fba-Plugin` 等写法无法被识别
+
+具体配置方式见 [插件分享](./share.md)
+:::
+
 ## 后端
 
 ::: steps
@@ -100,6 +108,7 @@ fba 仅支持 PostgreSQL，`plugin.toml` 不再声明数据库
     - plugin.toml # 插件配置文件 <Badge type="danger" text="必须" />
     - README.md # 插件使用说明和您的联系方式 <Badge type="danger" text="必须" />
     - requirements.txt # 依赖包文件
+    - LICENSE # 开源许可证文件 <Badge type="warning" text="公开发布时必须" />
 
 :::
 
@@ -371,6 +380,7 @@ OpenTelemetry 初始化函数，接收 `FastAPI` 应用实例，支持同步和�
         - …
     - … # 更多内容
     - plugin.toml # 插件配置文件 <Badge type="danger" text="必须" />
+    - LICENSE # 开源许可证文件 <Badge type="warning" text="公开发布时必须" />
 
 :::
 
@@ -406,4 +416,10 @@ depends_on = []
 
 ::: tip
 如果插件计划公开分享或提交到插件市场，请同时阅读 [插件分享](./share.md) 中的发布前检查和维护责任说明
+:::
+
+::: tip
+公开发布的插件仓库应在根目录提供 `LICENSE` 开源许可证文件，并在 `README.md` 中说明所选许可证
+
+许可证由插件作者自行选择，插件市场会读取仓库的许可证标识并展示在插件卡片上
 :::
