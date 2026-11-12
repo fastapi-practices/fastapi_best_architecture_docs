@@ -251,7 +251,7 @@ interface PluginItem {
     description: string
     tags?: string[]
   }
-  // 收录方式：registry 为官方仓库 PR 收录，marked 为标签收录
+  // 收录方式：registry 为官方仓库 PR 收录，marked 为主题收录
   source?: PluginSource
   stats?: PluginStats
 }

@@ -355,7 +355,7 @@ export default {
     sortListed: '最近上架',
     collectFilter: '收录方式',
     collectRegistry: 'PR 收录',
-    collectMarked: '标签收录',
+    collectMarked: '主题收录',
     loading: '正在加载插件列表...',
     retry: '重试',
     empty: '未找到匹配的插件',

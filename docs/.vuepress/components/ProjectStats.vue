@@ -109,7 +109,7 @@ const CONTRIBUTORS_SOURCES: ContributorsSource[] = [
   },
 ]
 
-// 插件市场数据集，包含 PR 收录与标签收录的插件
+// 插件市场数据集，包含 PR 收录与主题收录的插件
 const PLUGIN_MARKET_DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/fastapi_best_architecture_docs/refs/heads/marketplace-data/plugins-market.json',
   'https://fastly.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json',

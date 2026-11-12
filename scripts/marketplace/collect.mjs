@@ -227,7 +227,7 @@ export async function collectRepoPlugin(client, { owner, repo }) {
 
   const branch = info.default_branch || 'master'
   const content = await client.rawFile(owner, repo, 'plugin.toml', branch)
-  // 标签收录的仓库不占用官方仓库的 plugins/ 路径，避免与同名插件冲突
+  // 主题收录的仓库不占用官方仓库的 plugins/ 路径，避免与同名插件冲突
   const parsed = parsePluginToml(content, {
     owner,
     repo,

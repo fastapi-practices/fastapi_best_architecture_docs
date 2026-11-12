@@ -4,7 +4,7 @@
 export const REGISTRY_REPO = 'fastapi-practices/plugins'
 export const REGISTRY_BRANCH = 'master'
 
-// 收录标记：仓库拥有该标签或同名主题，即视为「标签收录」插件
+// 收录标记：仓库拥有该主题或同名标签，即视为「主题收录」插件
 // 统一按小写比较，官方仓库已在使用 fba-plugin 主题
 export const MARKERS = ['fba-plugin']
 

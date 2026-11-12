@@ -2,9 +2,11 @@
 // 校验「标签/主题收录」的判定规则，确保与文档描述一致
 //
 // 文档（docs/plugin/share.md、skills 的 plugin-sharing.md）声称：
-//   1. 标签与主题命中其一即可收录
+//   1. 主题与标签命中其一即可收录
 //   2. 比较时不区分大小写，但字母必须一致
 //   3. GitHub 的主题由平台规范为小写
+//
+// 官方工作流只写主题，标签是历史写法，采集端仍然兼容
 import { hasMarker } from './collect.mjs'
 
 const cases = [

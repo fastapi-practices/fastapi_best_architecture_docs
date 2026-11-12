@@ -24,7 +24,7 @@ title: 前言
 此外，每个插件还有一个「收录方式」分类，用于说明插件是如何进入市场的
 
 - **PR 收录**：向 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 提交 PR，通过审核后收录
-- **标签收录**：仓库打上全小写标签 `fba-plugin` 后被自动收录，无需提交 PR
+- **主题收录**：仓库添加 `fba-plugin` 主题后被自动收录，无需提交 PR
 
 ## 开发
 

@@ -24,7 +24,7 @@ The marketplace organizes plugins into four groups so they are easier to find an
 Every plugin also carries an inclusion category that explains how it entered the marketplace
 
 - **PR inclusion**: a PR was opened against the [fba plugins repository](https://github.com/fastapi-practices/plugins) and passed review
-- **Label inclusion**: the repository was tagged with the lowercase `fba-plugin` label and was collected automatically, no PR required
+- **Topic inclusion**: the repository carries the `fba-plugin` topic and was collected automatically, no PR required
 
 ## Development
 

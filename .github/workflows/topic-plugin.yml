@@ -1,0 +1,63 @@
+name: Mark fba Plugin
+
+# 供插件仓库直接复用的工作流
+# 调用后会自动为当前仓库添加插件标记主题，主题名强制为全小写
+on:
+  workflow_call:
+    inputs:
+      topic:
+        description: '插件标记主题名，必须为全小写'
+        type: string
+        default: 'fba-plugin'
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: '插件标记主题名，必须为全小写'
+        type: string
+        default: 'fba-plugin'
+
+permissions:
+  contents: write
+
+jobs:
+  topic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Apply plugin topic
+        uses: actions/github-script@v7
+        with:
+          # 显式传入输入，确保 workflow_call 与 workflow_dispatch 两种触发方式取值一致
+          topic: ${{ inputs.topic || 'fba-plugin' }}
+          script: |
+            const raw = String(core.getInput('topic') || 'fba-plugin').trim()
+            // 主题名统一转为全小写，GitHub 平台同样会把主题规范为小写
+            const topic = raw.toLowerCase()
+
+            if (topic !== raw) {
+              core.warning(`主题名已自动转为全小写: ${raw} -> ${topic}`)
+            }
+
+            const { owner, repo } = context.repo
+
+            // 插件市场按主题检索插件仓库，主题是收录的唯一标记
+            try {
+              const repoInfo = await github.rest.repos.get({ owner, repo })
+              const topics = Array.isArray(repoInfo.data.topics) ? repoInfo.data.topics : []
+
+              if (topics.includes(topic)) {
+                core.info(`topic already applied: ${topic}`)
+                return
+              }
+
+              await github.rest.repos.replaceAllTopics({
+                owner,
+                repo,
+                topicNames: [...new Set([...topics, topic])],
+              })
+
+              core.info(`topic applied: ${topic}`)
+            } catch (error) {
+              // 主题写入失败必须让工作流失败，否则插件会被静默漏掉
+              core.setFailed(`设置主题失败: ${error.message}`)
+            }

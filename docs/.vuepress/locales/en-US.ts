@@ -367,7 +367,7 @@ export default {
     sortListed: 'Recently Listed',
     collectFilter: 'Inclusion',
     collectRegistry: 'PR',
-    collectMarked: 'Label',
+    collectMarked: 'Topic',
     loading: 'Loading plugins...',
     retry: 'Retry',
     empty: 'No matching plugins found',

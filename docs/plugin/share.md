@@ -69,7 +69,7 @@ title: 插件分享
 - 插件仓库为公开仓库
 - 插件仓库命名符合当前文档中的命名规则
 - 插件仓库根目录包含 `LICENSE` 开源许可证文件
-- 插件仓库已打上 `fba-plugin` 标签或同名主题（使用标签收录方式时）
+- 插件仓库已添加 `fba-plugin` 主题（使用主题收录方式时）
 - 后端插件根目录包含 `plugin.toml`、`README.md`、`__init__.py`
 - 前端插件根目录包含 `plugin.toml`
 - 仓库根目录就是插件根目录，不能再多包一层插件目录
@@ -91,31 +91,31 @@ title: 插件分享
 
 插件市场支持两种收录方式，任选其一即可，不必同时使用
 
-- **标签收录**：插件仓库上传到 GitHub 后，打上 `fba-plugin` 标签或同名主题就会被自动收录，无需提交 PR
+- **主题收录**：插件仓库上传到 GitHub 后，添加 `fba-plugin` 主题就会被自动收录，无需提交 PR
 - **PR 收录**：向 [fba 插件仓库](https://github.com/fastapi-practices/plugins) 提交 PR，由 fba 团队审核后收录
 
 ::: tip
 插件总是独一无二的，如果插件名已存在，那你只能选择为即将发布的插件换个新名字
 :::
 
-### 方式一：标签收录（无需 PR）
+### 方式一：主题收录（无需 PR）
 
-插件仓库上传到 GitHub 之后，只需要为仓库打上 `fba-plugin` 标签或同名主题，插件市场就会在下一次同步时自动收录，无需向 fba 插件仓库提交 PR
+插件仓库上传到 GitHub 之后，只需要为仓库添加 `fba-plugin` 主题，插件市场就会在下一次同步时自动收录，无需向 fba 插件仓库提交 PR
 
-::: tip 标签名建议使用全小写
+::: tip 主题名建议使用全小写
 采集端比较标签与主题时会统一转为小写，`FBA-Plugin`、`Fba-Plugin` 这类大小写写法同样能被识别，但字母必须一致，`FB-Plugin` 这类拼写无法识别；推荐仍统一使用全小写 `fba-plugin`，GitHub 的主题由平台规范为小写
 :::
 
-::: tip 标签与主题的关系
-采集端先按主题 `fba-plugin` 检索候选仓库，再逐个核对标签与主题，两者命中其一即可收录。GitHub 的标签必须挂在某个 issue 上，主题则直接挂在仓库上，因此官方工作流会创建标签、补一条标记 issue，并加上同名主题
+::: tip 主题与标签的关系
+采集端先按主题 `fba-plugin` 检索候选仓库，再逐个核对标签与主题，两者命中其一即可收录。历史上有过「打标签 + 标记 issue」的写法，采集端仍然兼容，新插件只需添加主题
 :::
 
-#### 自动打标签（推荐）
+#### 自动添加主题（推荐）
 
-在插件仓库中新建 `.github/workflows/label-plugin.yml`，引用官方工作流即可
+在插件仓库中新建 `.github/workflows/topic-plugin.yml`，引用官方工作流即可
 
 ```yaml
-name: Label fba Plugin
+name: Mark fba Plugin
 
 on:
   push:
@@ -126,34 +126,25 @@ on:
 
 permissions:
   contents: write
-  issues: write
 
 jobs:
-  label:
-    uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/label-plugin.yml@master
+  topic:
+    uses: fastapi-practices/fastapi_best_architecture_docs/.github/workflows/topic-plugin.yml@master
 ```
 
-该工作流在每次推送后自动创建并应用 `fba-plugin` 标签，并补上同名主题，传入的标签名会被统一转为小写
+该工作流在每次推送后自动写入 `fba-plugin` 主题，传入的主题名会被统一转为小写
 
-也可以直接复制官方工作流文件到插件仓库的 `.github/workflows/label-plugin.yml`
+也可以直接复制官方工作流文件到插件仓库的 `.github/workflows/topic-plugin.yml`
 
 ::: tip
-标签名会被统一转为全小写，即使传入 `FBA-Plugin` 也会按 `fba-plugin` 处理
+主题名会被统一转为全小写，即使传入 `FBA-Plugin` 也会按 `fba-plugin` 处理
 :::
 
-#### 手动打标签
+#### 手动添加主题
 
-```shell
-# 1. 创建标签，标签名建议使用全小写，已存在时忽略报错
-gh label create fba-plugin --repo your-username/your-plugin-name --color 0969da --description "fba plugin"
+在仓库 `Settings -> General -> Topics` 中添加 `fba-plugin` 主题即可，主题名由 GitHub 自动转为小写
 
-# 2. 创建标记 issue 并应用标签
-gh issue create --repo your-username/your-plugin-name --title "fba plugin marker (fba-plugin)" --body "此 issue 用于为仓库应用插件标记标签，请勿关闭" --label fba-plugin
-```
-
-也可以在仓库的 `Issues -> New issue` 页面新建一条 issue，并在右侧标签列表中选择 `fba-plugin`
-
-还可以在仓库 `Settings -> General -> Topics` 中添加 `fba-plugin` 主题，效果与标签等价，采集端优先通过主题检索候选仓库
+采集端也兼容历史写法：在仓库的 `Issues -> New issue` 页面新建一条 issue，并在右侧标签列表中选择 `fba-plugin` 标签，同样能被收录
 
 标记打完后，插件市场会在下一次同步（最多 1 小时）内收录该插件，无需再提交 PR
 
@@ -174,9 +165,9 @@ fba 团队会根据发布前检查项和插件实际用途进行审核，通过�
 
 - 插件类型：<backend / frontend>
 - 插件仓库：<https://github.com/...>
-- 收录方式：<标签收录 / PR 收录>
+- 收录方式：<主题收录 / PR 收录>
 
-自检通过后，等我确认，再以我的 GitHub 账号为插件仓库打上 `fba-plugin` 标签或同名主题，或创建插件市场 PR
+自检通过后，等我确认，再以我的 GitHub 账号为插件仓库添加 `fba-plugin` 主题，或创建插件市场 PR
 ```
 
 Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插件市场校验。自检只读取文件，不会执行插件代码
@@ -245,7 +236,7 @@ Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插
 
    插件市场会自动归入四个分组：后端 / 前端由仓库名判断，官方 / 社区由仓库所属组织判断。仓库名符合前端后缀规则的进入前端分组，仓库属于 `fastapi-practices` 的进入官方分组，其余进入社区分组
 
-   插件还会按收录方式归类：PR 收录的插件归入「PR 收录」，标签收录的插件归入「标签收录」
+   插件还会按收录方式归类：PR 收录的插件归入「PR 收录」，主题收录的插件归入「主题收录」
 
 ::::
 
@@ -253,7 +244,7 @@ Agent 会检查仓库结构、`plugin.toml`、SQL 和重复插件，并运行插
 
 更新方式取决于收录方式
 
-- **标签收录**：在插件仓库推送新版本即可，插件市场会在下一次同步时自动更新插件信息与更新时间，无需任何额外操作
+- **主题收录**：在插件仓库推送新版本即可，插件市场会在下一次同步时自动更新插件信息与更新时间，无需任何额外操作
 - **PR 收录**：需要在 fba 插件 GitHub 仓库创建一个 PR
 
 先发布插件仓库中的新版本，再更新插件市场的 submodule 指针。不要把 submodule 指向未提交或未推送的插件版本
