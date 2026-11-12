@@ -1246,7 +1246,6 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 10px;
 }
 
 .card-action-btn {
