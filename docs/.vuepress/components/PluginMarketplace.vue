@@ -256,30 +256,15 @@ interface PluginItem {
   stats?: PluginStats
 }
 
-interface MarketData {
-  generatedAt: string | null
-  tags: string[]
-  plugins: PluginItem[]
-}
-
 const CACHE_KEY = 'fba_plugins_cache'
-const CACHE_DURATION = 24 * 60 * 60 * 1000
-// 新数据集每小时更新一次，缓存时长与其保持一致
-const MARKET_CACHE_KEY = 'fba_plugins_market_cache'
-const MARKET_CACHE_DURATION = 60 * 60 * 1000
+// 插件仓库推送后即重新生成清单，缓存时长与其保持一致
+const CACHE_DURATION = 60 * 60 * 1000
 const FRONTEND_REPO_SUFFIXES = ['_ui', '-ui'] as const
 const PLUGIN_TYPES: PluginType[] = ['backend', 'frontend']
 const PLUGIN_MAINTAINERS: PluginMaintainer[] = ['official', 'community']
 const INSTALL_DOC_BASE = computed(() => withBase(withLocale('/plugin/install.html')))
 
-// 插件市场数据由 CI 每小时发布到独立分支，运行时直接读取
-const MARKET_DATA_SOURCES = [
-  'https://raw.githubusercontent.com/fastapi-practices/fastapi_best_architecture_docs/refs/heads/marketplace-data/plugins-market.json',
-  'https://fastly.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json',
-  'https://cdn.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json'
-]
-
-// 旧版插件清单，作为新数据集不可用时的兜底
+// 插件清单由官方插件仓库 fastapi-practices/plugins 生成，运行时直接读取
 const DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
   'https://fastly.jsdelivr.net/gh/fastapi-practices/plugins@master/plugins-data.ts',
@@ -691,27 +676,6 @@ const saveToCache = <T>(key: string, data: T) => {
   }
 }
 
-// 解析插件市场数据集（由 CI 每小时发布）
-const parseMarketData = (text: string): MarketData | null => {
-  try {
-    const raw = JSON.parse(text)
-    const list = Array.isArray(raw?.plugins) ? raw.plugins : []
-    const pluginList = list.filter((item: PluginItem) =>
-      item?.git?.path && item?.git?.url && item?.plugin?.summary
-    )
-    if (!pluginList.length) return null
-
-    return {
-      generatedAt: typeof raw?.generatedAt === 'string' ? raw.generatedAt : null,
-      tags: Array.isArray(raw?.validTags) ? raw.validTags : [],
-      plugins: pluginList,
-    }
-  } catch (e) {
-    console.error('Market data parse error:', e)
-    return null
-  }
-}
-
 const fetchTextWithFallback = async (sources: string[]): Promise<string> => {
   for (const url of sources) {
     try {
@@ -726,19 +690,10 @@ const fetchTextWithFallback = async (sources: string[]): Promise<string> => {
   throw new Error('All data sources failed')
 }
 
-const applyMarketData = (data: MarketData) => {
+const applyPluginsData = (data: { tags: string[], plugins: PluginItem[] }) => {
   validTags.value = data.tags
   plugins.value = data.plugins
-}
-
-const fetchMarketData = async (): Promise<MarketData | null> => {
-  try {
-    const text = await fetchTextWithFallback(MARKET_DATA_SOURCES)
-    return parseMarketData(text)
-  } catch (e) {
-    console.warn('Market data fetch failed:', e)
-    return null
-  }
+  saveToCache(CACHE_KEY, data)
 }
 
 const fetchPlugins = async () => {
@@ -746,39 +701,19 @@ const fetchPlugins = async () => {
   error.value = ''
 
   // 1. 命中缓存先渲染，再后台刷新
-  const marketCached = loadFromCache<MarketData>(MARKET_CACHE_KEY, MARKET_CACHE_DURATION)
-  if (marketCached?.plugins?.length) {
-    applyMarketData(marketCached)
+  const cached = loadFromCache<{ tags: string[], plugins: PluginItem[] }>(CACHE_KEY, CACHE_DURATION)
+  if (cached?.plugins?.length) {
+    validTags.value = cached.tags
+    plugins.value = cached.plugins
     loading.value = false
-    refreshMarketData()
+    refreshPlugins()
     return
   }
 
-  // 2. 拉取新数据集（含 Star、更新时间等统计信息）
-  const marketData = await fetchMarketData()
-  if (marketData) {
-    applyMarketData(marketData)
-    saveToCache(MARKET_CACHE_KEY, marketData)
-    loading.value = false
-    return
-  }
-
-  // 3. 新数据集不可用时回退到旧版插件清单
-  const legacyCached = loadFromCache<{ tags: string[], plugins: PluginItem[] }>(CACHE_KEY, CACHE_DURATION)
-  if (legacyCached?.plugins?.length) {
-    validTags.value = legacyCached.tags
-    plugins.value = legacyCached.plugins
-    loading.value = false
-    refreshLegacyData()
-    return
-  }
-
+  // 2. 拉取官方插件仓库生成的插件清单
   try {
     const text = await fetchTextWithFallback(DATA_SOURCES)
-    const data = parseTypeScriptData(text)
-    validTags.value = data.tags
-    plugins.value = data.plugins
-    saveToCache(CACHE_KEY, data)
+    applyPluginsData(parseTypeScriptData(text))
   } catch (e) {
     console.error('Fetch error:', e)
     error.value = t('marketplace.loadFailed')
@@ -787,24 +722,13 @@ const fetchPlugins = async () => {
   }
 }
 
-// 后台刷新新数据集
-const refreshMarketData = async () => {
-  const data = await fetchMarketData()
-  if (!data) return
-  applyMarketData(data)
-  saveToCache(MARKET_CACHE_KEY, data)
-}
-
-// 后台刷新旧版插件清单
-const refreshLegacyData = async () => {
+// 后台刷新插件清单
+const refreshPlugins = async () => {
   try {
     const text = await fetchTextWithFallback(DATA_SOURCES)
-    const data = parseTypeScriptData(text)
-    validTags.value = data.tags
-    plugins.value = data.plugins
-    saveToCache(CACHE_KEY, data)
+    applyPluginsData(parseTypeScriptData(text))
   } catch (e) {
-    console.warn('Legacy data refresh failed:', e)
+    console.warn('Plugins data refresh failed:', e)
   }
 }
 

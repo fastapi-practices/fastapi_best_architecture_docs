@@ -6,5 +6,3 @@ node_modules/
 .cache/
 dist/
 .codegraph/
-plugins-market.json
-marketplace-state.json

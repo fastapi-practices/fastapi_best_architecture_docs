@@ -109,14 +109,7 @@ const CONTRIBUTORS_SOURCES: ContributorsSource[] = [
   },
 ]
 
-// 插件市场数据集，包含 PR 收录与主题收录的插件
-const PLUGIN_MARKET_DATA_SOURCES = [
-  'https://raw.githubusercontent.com/fastapi-practices/fastapi_best_architecture_docs/refs/heads/marketplace-data/plugins-market.json',
-  'https://fastly.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json',
-  'https://cdn.jsdelivr.net/gh/fastapi-practices/fastapi_best_architecture_docs@marketplace-data/plugins-market.json',
-]
-
-// 旧版插件清单，作为兜底
+// 插件清单由官方插件仓库 fastapi-practices/plugins 生成
 const PLUGINS_DATA_SOURCES = [
   'https://raw.githubusercontent.com/fastapi-practices/plugins/refs/heads/master/plugins-data.ts',
   'https://fastly.jsdelivr.net/gh/fastapi-practices/plugins@master/plugins-data.ts',
@@ -242,23 +235,6 @@ const fetchContributors = async () => {
 }
 
 const fetchPlugins = async () => {
-  // 优先使用插件市场数据集
-  for (const url of PLUGIN_MARKET_DATA_SOURCES) {
-    try {
-      const res = await fetch(url, { cache: 'no-cache' })
-      if (!res.ok) continue
-      const data = JSON.parse(await res.text())
-      const count = Array.isArray(data?.plugins) ? data.plugins.length : 0
-      if (count > 0) {
-        stats.plugins = count
-        loading.plugins = false
-        return
-      }
-    } catch (e) {
-      // try next source
-    }
-  }
-
   for (const url of PLUGINS_DATA_SOURCES) {
     try {
       const res = await fetch(url, { cache: 'no-cache' })
