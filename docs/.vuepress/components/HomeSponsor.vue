@@ -64,7 +64,7 @@ const sponsorsHref = computed(() => withBase(withLocale('/sponsors.html')))
   background: var(--vp-c-brand-1);
   border-radius: 10px;
   text-decoration: none !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .hs-btn svg {
@@ -74,6 +74,5 @@ const sponsorsHref = computed(() => withBase(withLocale('/sponsors.html')))
 
 .hs-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px -8px rgba(0, 148, 133, 0.5);
 }
 </style>

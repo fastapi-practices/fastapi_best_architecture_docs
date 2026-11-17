@@ -48,9 +48,9 @@ let themeObserver: MutationObserver | null = null
 function readPalette(): Palette {
   const isDark = document.documentElement.dataset.theme === 'dark'
   return {
-    calm: isDark ? '#f1eee8' : '#292930',
-    heroFrom: isDark ? '#d0b5ff' : '#5b3db7',
-    heroTo: isDark ? '#5ff2df' : '#00756d',
+    calm: isDark ? '#dcd8d1' : '#292930',
+    heroFrom: isDark ? '#9a86cf' : '#5b3db7',
+    heroTo: isDark ? '#27a99a' : '#00756d',
   }
 }
 

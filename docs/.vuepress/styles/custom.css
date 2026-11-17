@@ -52,6 +52,14 @@
     animation: neon-glow-flicker-light 3s ease-in-out infinite;
 }*/
 
+/* 首页大标题：选中时不再绘制重影/阴影，仅保留高亮底色 */
+.vp-home-hero .hero-name::selection,
+.vp-home-hero .hero-tagline::selection {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-color: rgba(0, 148, 133, 0.25);
+}
+
 /* 首页非全屏样式 */
 .vp-home-hero:not(.full) .hero-container {
     padding-top: 166px !important;

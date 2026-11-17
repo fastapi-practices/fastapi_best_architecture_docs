@@ -53,18 +53,12 @@ const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.v
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid rgba(0, 148, 133, 0.22);
-  box-shadow:
-    0 10px 28px -12px rgba(0, 148, 133, 0.35),
-    0 4px 12px -6px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 [data-theme="dark"] .sponsor-exclusive-popup {
   background: rgba(28, 28, 32, 0.82);
   border-color: rgba(0, 148, 133, 0.38);
-  box-shadow:
-    0 12px 32px -12px rgba(0, 0, 0, 0.5),
-    0 4px 14px -6px rgba(0, 148, 133, 0.3);
 }
 
 .sponsor-exclusive-popup:hover {
@@ -90,7 +84,6 @@ const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.v
   height: 6px;
   border-radius: 50%;
   background: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(0, 148, 133, 0.18);
   flex-shrink: 0;
   animation: sh-dot-pulse 2.4s ease-in-out infinite;
 }
@@ -99,11 +92,11 @@ const isExternal = computed(() => hasBrand.value && /^https?:/.test(targetHref.v
 
   0%,
   100% {
-    box-shadow: 0 0 0 3px rgba(0, 148, 133, 0.18);
+    opacity: 1;
   }
 
   50% {
-    box-shadow: 0 0 0 5px rgba(0, 148, 133, 0.05);
+    opacity: 0.45;
   }
 }
 

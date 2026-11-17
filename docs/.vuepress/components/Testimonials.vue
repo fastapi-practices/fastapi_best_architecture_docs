@@ -184,7 +184,6 @@ const rows = computed(() => {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--vp-c-bg);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
 

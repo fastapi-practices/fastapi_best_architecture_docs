@@ -343,7 +343,7 @@ onMounted(async () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
   overflow: hidden;
 }
 
@@ -360,7 +360,6 @@ onMounted(async () => {
 .stats-card:hover {
   border-color: var(--vp-c-brand-1);
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px -12px rgba(0, 148, 133, 0.35);
 }
 
 .stats-card:hover::before {

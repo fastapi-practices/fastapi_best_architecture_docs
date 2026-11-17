@@ -6,21 +6,6 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: "material-symbols:menu-book-outline",
         items: [
             {
-                text: "工程化",
-                items: [
-                    {
-                        text: "架构",
-                        icon: "material-symbols:account-tree-outline",
-                        link: "/architecture",
-                    },
-                    {
-                        text: "CLI",
-                        icon: "material-symbols:terminal",
-                        link: "/cli",
-                    },
-                ],
-            },
-            {
                 text: "后端",
                 items: [
                     {
@@ -48,6 +33,21 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: "Vben UI",
                         icon: "material-symbols:widgets-outline",
                         link: "/frontend/summary/intro",
+                    },
+                ],
+            },
+            {
+                text: "工程化",
+                items: [
+                    {
+                        text: "架构",
+                        icon: "material-symbols:account-tree-outline",
+                        link: "/architecture",
+                    },
+                    {
+                        text: "CLI",
+                        icon: "material-symbols:terminal",
+                        link: "/cli",
                     },
                 ],
             },

@@ -6,21 +6,6 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: "material-symbols:menu-book-outline",
         items: [
             {
-                text: "Engineering",
-                items: [
-                    {
-                        text: "Architecture",
-                        icon: "material-symbols:account-tree-outline",
-                        link: "/en/architecture",
-                    },
-                    {
-                        text: "CLI",
-                        icon: "material-symbols:terminal",
-                        link: "/en/cli",
-                    },
-                ],
-            },
-            {
                 text: "Backend",
                 items: [
                     {
@@ -48,6 +33,21 @@ export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
                         text: "Vben UI",
                         icon: "material-symbols:widgets-outline",
                         link: "/en/frontend/summary/intro",
+                    },
+                ],
+            },
+            {
+                text: "Engineering",
+                items: [
+                    {
+                        text: "Architecture",
+                        icon: "material-symbols:account-tree-outline",
+                        link: "/en/architecture",
+                    },
+                    {
+                        text: "CLI",
+                        icon: "material-symbols:terminal",
+                        link: "/en/cli",
                     },
                 ],
             },
