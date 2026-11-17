@@ -1,0 +1,1 @@
+export{r as createArchitectureServices}from"./chunk-ZUNWM646-DwrUVT4s.js";

@@ -1,0 +1,1 @@
+var e=`/fastapi_best_architecture_docs/images/directory_structure.png`,t=`/fastapi_best_architecture_docs/images/architecture.png`;export{e as n,t};
